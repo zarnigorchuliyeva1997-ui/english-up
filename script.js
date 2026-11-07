@@ -36,3 +36,14 @@ function selectLevel(level) {
 function openBeginner() {
     selectLevel("Beginner");
 }
+function openLesson1() {
+    document.getElementById("beginnerPage").style.display = "none";
+    document.getElementById("lesson1Page").style.display = "block";
+    window.scrollTo(0, 0);
+}
+
+function backToBeginner() {
+    document.getElementById("lesson1Page").style.display = "none";
+    document.getElementById("beginnerPage").style.display = "block";
+    window.scrollTo(0, 0);
+}
