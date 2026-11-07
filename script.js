@@ -1,7 +1,6 @@
 
 function showMessage(text) {
     const message = document.getElementById("message");
-
     message.textContent = text;
     message.style.display = "block";
 
@@ -10,11 +9,18 @@ function showMessage(text) {
     }, 3000);
 }
 
-const menuBtn = document.getElementById("menuBtn");
+function openLessons() {
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("lessonsPage").style.display = "block";
+    window.scrollTo(0, 0);
+}
 
-menuBtn.addEventListener("click", function () {
-    showMessage("English Up platformasiga xush kelibsiz!");
-});
+function goHome() {
+    document.getElementById("lessonsPage").style.display = "none";
+    document.getElementById("homePage").style.display = "block";
+    window.scrollTo(0, 0);
+}
 
-console.log("English Up muvaffaqiyatli ishga tushdi!");
-
+function selectLevel(level) {
+    showMessage(level + " darslari tayyorlanmoqda!");
+}
