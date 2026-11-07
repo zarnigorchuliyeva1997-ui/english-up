@@ -4,126 +4,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Up</title>
+    <meta name="description" content="English Up — ingliz tilini noldan o‘rganing">
+    <title>English Up | Beginner</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
+<header class="header">
     <div class="logo">English<span>Up</span>.</div>
-    <button onclick="goHome()">Home</button>
+    <button onclick="goHome()">Bosh sahifa</button>
 </header>
 
-<main id="homePage">
+<main id="homePage" class="page">
     <section class="hero">
-        <h1>English Up</h1>
-        <p>Ingliz tilini malakali ustoz bilan mutlaqo noldan o‘rganing.</p>
-        <button onclick="openLessons()">Darslarni boshlash</button>
+        <span class="hero-label">WELCOME TO ENGLISH UP</span>
+        <h1>Ingliz tilini noldan o‘rganing!</h1>
+        <p>Qadamma-qadam, sodda va amaliy usulda ingliz tilini o‘rganing.</p>
+        <button onclick="openLessons()">Darslarni boshlash →</button>
+    </section>
+
+    <section class="section">
+        <h2>English Up imkoniyatlari</h2>
+        <div class="feature-grid">
+            <div class="feature-card">📚<h3>Darslar</h3><p>Darajalar bo‘yicha ta’lim</p></div>
+            <div class="feature-card">📝<h3>Testlar</h3><p>Bilimingizni tekshiring</p></div>
+            <div class="feature-card">🎧<h3>Listening</h3><p>Eshitish ko‘nikmasi</p></div>
+        </div>
     </section>
 </main>
 
-<main id="lessonsPage" style="display:none">
+<main id="lessonsPage" class="page" style="display:none">
     <section class="section">
         <button class="back-btn" onclick="goHome()">← Bosh sahifa</button>
-        <h1 class="page-title">Darslar 📚</h1>
+        <h1 class="page-title">O‘quv darajalari 📚</h1>
         <p class="subtitle">O‘z darajangizni tanlang.</p>
 
         <div class="level-list">
-            <div class="level-card" onclick="selectLevel('Beginner')">
+            <div class="level-card" onclick="openBeginner()">
                 <span>🌱</span><div><h3>Beginner</h3><p>Mutlaqo noldan</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="selectLevel('Elementary')">
+            <div class="level-card" onclick="showMessage('Elementary tez orada!')">
                 <span>🌿</span><div><h3>Elementary</h3><p>Asosiy bilimlar</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="selectLevel('Pre-Intermediate')">
-                <span>📘</span><div><h3>Pre-Intermediate</h3><p>Keyingi bosqich</p></div><b>→</b>
+            <div class="level-card" onclick="showMessage('Pre-Intermediate tez orada!')">
+                <span>📘</span><div><h3>Pre-Intermediate</h3><p>O‘rta darajaga qadam</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="selectLevel('Intermediate')">
+            <div class="level-card" onclick="showMessage('Intermediate tez orada!')">
                 <span>📗</span><div><h3>Intermediate</h3><p>O‘rta daraja</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="selectLevel('Upper-Intermediate')">
+            <div class="level-card" onclick="showMessage('Upper-Intermediate tez orada!')">
                 <span>📙</span><div><h3>Upper-Intermediate</h3><p>Yuqori daraja</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="selectLevel('IELTS')">
+            <div class="level-card" onclick="showMessage('IELTS tez orada!')">
                 <span>🎓</span><div><h3>IELTS</h3><p>Imtihonga tayyorgarlik</p></div><b>→</b>
             </div>
         </div>
     </section>
 </main>
 
-<main id="beginnerPage" style="display:none">
+<main id="beginnerPage" class="page" style="display:none">
     <section class="section">
         <button class="back-btn" onclick="openLessons()">← Darajalar</button>
         <h1 class="page-title">Beginner 🌱</h1>
-        <p class="subtitle">Ingliz tilini mutlaqo noldan boshlang.</p>
+        <p class="subtitle">Birinchi 5 ta dars orqali ingliz tilini boshlang.</p>
+
+        <div class="progress-card">
+            <h3>Beginner kursi</h3>
+            <p>5 ta boshlang‘ich dars</p>
+            <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
 
         <div class="level-list">
-            <div class="level-card" onclick="openLesson1()">
-                <span>📘</span>
-                <div><h3>1-dars — Alphabet</h3><p>Ingliz alifbosi</p></div>
-                <b>→</b>
+            <div class="level-card" onclick="openLesson(1)">
+                <span>🔤</span><div><h3>1-dars — Alphabet</h3><p>Ingliz alifbosi</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="showMessage('2-dars tez orada!')">
-                <span>📗</span>
-                <div><h3>2-dars — Greetings</h3><p>Salomlashish</p></div>
-                <b>→</b>
+            <div class="level-card" onclick="openLesson(2)">
+                <span>👋</span><div><h3>2-dars — Greetings</h3><p>Salomlashish</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="showMessage('3-dars tez orada!')">
-                <span>📙</span>
-                <div><h3>3-dars — To be</h3><p>Am, is, are</p></div>
-                <b>→</b>
+            <div class="level-card" onclick="openLesson(3)">
+                <span>🔢</span><div><h3>3-dars — Numbers and Colors</h3><p>Sonlar va ranglar</p></div><b>→</b>
             </div>
-            <div class="level-card" onclick="showMessage('4-dars tez orada!')">
-                <span>📕</span>
-                <div><h3>4-dars — My Family</h3><p>Oila haqida</p></div>
-                <b>→</b>
+            <div class="level-card" onclick="openLesson(4)">
+                <span>👤</span><div><h3>4-dars — Pronouns</h3><p>Olmoshlar</p></div><b>→</b>
+            </div>
+            <div class="level-card" onclick="openLesson(5)">
+                <span>📖</span><div><h3>5-dars — Verb To Be</h3><p>Am, is, are</p></div><b>→</b>
             </div>
         </div>
     </section>
 </main>
 
-<main id="lesson1Page" style="display:none">
+<main id="lessonPage" class="page" style="display:none">
     <section class="section">
-        <button class="back-btn" onclick="backToBeginner()">← Beginner</button>
-        <h1 class="page-title">1-dars — English Alphabet 🔤</h1>
-        <p class="subtitle">Ingliz alifbosidagi 26 ta harf.</p>
-
-        <div class="level-list">
-            <div class="level-card"><h3>A a — Ey</h3></div>
-            <div class="level-card"><h3>B b — Bi</h3></div>
-            <div class="level-card"><h3>C c — Si</h3></div>
-            <div class="level-card"><h3>D d — Di</h3></div>
-            <div class="level-card"><h3>E e — Ii</h3></div>
-            <div class="level-card"><h3>F f — Ef</h3></div>
-            <div class="level-card"><h3>G g — Ji</h3></div>
-            <div class="level-card"><h3>H h — Eych</h3></div>
-            <div class="level-card"><h3>I i — Ay</h3></div>
-            <div class="level-card"><h3>J j — Jey</h3></div>
-            <div class="level-card"><h3>K k — Key</h3></div>
-            <div class="level-card"><h3>L l — El</h3></div>
-            <div class="level-card"><h3>M m — Em</h3></div>
-            <div class="level-card"><h3>N n — En</h3></div>
-            <div class="level-card"><h3>O o — Ou</h3></div>
-            <div class="level-card"><h3>P p — Pi</h3></div>
-            <div class="level-card"><h3>Q q — Kyu</h3></div>
-            <div class="level-card"><h3>R r — Ar</h3></div>
-            <div class="level-card"><h3>S s — Es</h3></div>
-            <div class="level-card"><h3>T t — Ti</h3></div>
-            <div class="level-card"><h3>U u — Yu</h3></div>
-            <div class="level-card"><h3>V v — Vi</h3></div>
-            <div class="level-card"><h3>W w — Dabliyu</h3></div>
-            <div class="level-card"><h3>X x — Eks</h3></div>
-            <div class="level-card"><h3>Y y — Uay</h3></div>
-            <div class="level-card"><h3>Z z — Zed / Zi</h3></div>
+        <button class="back-btn" onclick="openBeginner()">← Beginner darslari</button>
+        <div id="lessonContent"></div>
+        <div class="lesson-navigation">
+            <button id="previousLesson" onclick="changeLesson(-1)">← Oldingi dars</button>
+            <button id="nextLesson" onclick="changeLesson(1)">Keyingi dars →</button>
         </div>
-
-        <p class="subtitle">Eslatma: harflarning nomi va so‘z ichidagi talaffuzi farq qilishi mumkin.</p>
     </section>
 </main>
 
 <div id="message" class="message"></div>
 
-<footer>
+<footer class="footer">
     <div class="logo">English<span>Up</span>.</div>
     <p>Learn today. Succeed tomorrow.</p>
     <small>© 2026 English Up</small>
