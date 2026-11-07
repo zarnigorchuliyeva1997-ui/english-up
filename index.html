@@ -2,14 +2,85 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#102B50">
-  <title>English Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102B50">
+    <title>English Up | Learn English</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>ENGLISH UP 🚀</h1>
-  <h2>Ingliz tilini mutlaqo noldan o‘rganing!</h2>
-  <p>Bilim sari birinchi qadamingizni biz bilan boshlang.</p>
+
+<header class="header">
+    <div class="logo">English<span>Up</span>.</div>
+    <button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tag">WELCOME TO ENGLISH UP</span>
+            <h1>Ingliz tilini <span>noldan</span> o‘rganing!</h1>
+            <p>Oddiy so‘zlardan boshlab, erkin muloqot va IELTS sari birgalikda qadam tashlang.</p>
+            <button class="primary-btn" onclick="showMessage('Tez orada darslar boshlanadi!')">
+                O‘qishni boshlash →
+            </button>
+        </div>
+        <div class="hero-icon">🌍</div>
+    </section>
+
+    <section class="section">
+        <h2>O‘quv markazimiz</h2>
+        <p class="subtitle">Bilim olish uchun o‘zingizga kerakli bo‘limni tanlang.</p>
+
+        <div class="grid">
+            <div class="card" onclick="showMessage('Lessons bo‘limi tez orada ochiladi!')">
+                <div class="card-icon">📚</div>
+                <h3>Lessons</h3>
+                <p>Ketma-ket ingliz tili darslari</p>
+            </div>
+
+            <div class="card" onclick="showMessage('Vocabulary bo‘limi tez orada ochiladi!')">
+                <div class="card-icon">📖</div>
+                <h3>Vocabulary</h3>
+                <p>Yangi so‘zlar va iboralar</p>
+            </div>
+
+            <div class="card" onclick="showMessage('Tests bo‘limi tez orada ochiladi!')">
+                <div class="card-icon">✍️</div>
+                <h3>Tests</h3>
+                <p>Bilimingizni sinab ko‘ring</p>
+            </div>
+
+            <div class="card" onclick="showMessage('Speaking & Listening tez orada ochiladi!')">
+                <div class="card-icon">🎧</div>
+                <h3>Speaking & Listening</h3>
+                <p>Tinglash va gapirish mashqlari</p>
+            </div>
+
+            <div class="card" onclick="showMessage('My Progress tez orada ochiladi!')">
+                <div class="card-icon">📊</div>
+                <h3>My Progress</h3>
+                <p>O‘z natijalaringizni kuzating</p>
+            </div>
+
+            <div class="card" onclick="showMessage('English Up bilan kelajagingizni yarating!')">
+                <div class="card-icon">🏆</div>
+                <h3>My Goals</h3>
+                <p>Maqsad va yutuqlaringiz</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="logo">English<span>Up</span>.</div>
+    <p>Learn today. Succeed tomorrow.</p>
+    <small>© 2026 English Up. All rights reserved.</small>
+</footer>
+
+<div id="message" class="message"></div>
+
+<script src="script.js"></script>
 </body>
-</html>
+          </html>
+              
