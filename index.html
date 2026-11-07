@@ -4,123 +4,375 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#123c69">
-  <title>English Up</title>
+  <meta name="theme-color" content="#7047eb">
+  <meta name="description" content="English Up — ingliz tilini noldan o‘rganish platformasi.">
+  <title>English Up | Learn English</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <button class="logo" onclick="goHome()">English Up</button>
-  <button class="home-btn" onclick="goHome()">Bosh sahifa</button>
-</header>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">English Up</div>
 
-<main id="homePage" class="page">
-  <section class="hero">
-    <h1>Ingliz tilini noldan o‘rganing!</h1>
-    <p>English Up bilan qadamma-qadam ingliz tilini o‘rganing.</p>
-    <button class="primary-btn" onclick="openLessons()">Darslarni boshlash</button>
-  </section>
+    <nav class="main-nav" id="mainNav">
+      <button class="nav-btn active" onclick="goHome()">Home</button>
+      <button class="nav-btn" onclick="openLessons()">Lessons</button>
+      <button class="nav-btn" onclick="openVocabulary()">Vocabulary</button>
+      <button class="nav-btn" onclick="openTests()">Tests</button>
+      <button class="nav-btn" onclick="openSpeaking()">Speaking</button>
+      <button class="nav-btn" onclick="openProgress()">My Progress</button>
+    </nav>
 
-  <section class="features">
-    <h2>English Up imkoniyatlari</h2>
-    <div class="feature-card">📚 Interaktiv darslar</div>
-    <div class="feature-card">✍️ Amaliy mashqlar</div>
-    <div class="feature-card">🎯 Bilimni tekshiruvchi testlar</div>
-  </section>
-</main>
+    <button class="home-btn" onclick="goHome()">⌂ Home</button>
+  </header>
 
-<main id="lessonsPage" class="page" style="display:none">
-  <button class="back-btn" onclick="goHome()">← Bosh sahifa</button>
-  <h1 class="page-title">O‘quv darajalari</h1>
-  <p class="subtitle">O‘zingizga mos darajani tanlang.</p>
 
-  <div class="level-list">
-    <button class="level-card" onclick="openBeginner()">
-      <strong>Beginner</strong>
-      <span>Mutlaqo boshlang‘ich daraja</span>
-    </button>
-    <button class="level-card" onclick="showMessage('Elementary darslari tez orada qo‘shiladi.')">
-      <strong>Elementary</strong>
-      <span>Boshlang‘ich bilimlarni mustahkamlash</span>
-    </button>
-    <button class="level-card" onclick="showMessage('Pre-Intermediate darslari tez orada qo‘shiladi.')">
-      <strong>Pre-Intermediate</strong>
-      <span>O‘rta darajaga tayyorgarlik</span>
-    </button>
-    <button class="level-card" onclick="showMessage('Intermediate darslari tez orada qo‘shiladi.')">
-      <strong>Intermediate</strong>
-      <span>O‘rta daraja</span>
-    </button>
-    <button class="level-card" onclick="showMessage('Upper-Intermediate darslari tez orada qo‘shiladi.')">
-      <strong>Upper-Intermediate</strong>
-      <span>Yuqori o‘rta daraja</span>
-    </button>
-    <button class="level-card" onclick="showMessage('IELTS kursi tez orada qo‘shiladi.')">
-      <strong>IELTS</strong>
-      <span>IELTS imtihoniga tayyorgarlik</span>
-    </button>
-  </div>
-</main>
+  <!-- HOME PAGE -->
+  <main>
 
-<main id="beginnerPage" class="page" style="display:none">
-  <button class="back-btn" onclick="openLessons()">← Darajalar</button>
-  <h1 class="page-title">Beginner</h1>
-  <p class="subtitle">Birinchi 5 ta darsingizni boshlang.</p>
+    <section id="homePage" class="page active">
 
-  <div class="progress-card">
-    <h3>O‘quv jarayoni</h3>
-    <div class="progress-track">
-      <div id="beginnerProgress" class="progress-fill"></div>
-    </div>
-    <p id="progressText">0 / 5 dars bajarildi</p>
-  </div>
+      <div class="hero">
+        <div class="hero-content">
+          <span class="hero-label">WELCOME TO ENGLISH UP</span>
 
-  <div class="lesson-list">
-    <button class="lesson-card" onclick="openLesson(1)">
-      <span class="lesson-number">01</span>
-      <span><strong>English Alphabet</strong><small>Ingliz alifbosi</small></span>
-      <span>→</span>
-    </button>
+          <h1>Ingliz tilini noldan o‘rganing!</h1>
 
-    <button class="lesson-card" onclick="openLesson(2)">
-      <span class="lesson-number">02</span>
-      <span><strong>Greetings</strong><small>Salomlashish</small></span>
-      <span>→</span>
-    </button>
+          <p>
+            Oddiy so‘zlardan boshlab, erkin gapirish sari.
+            Har kuni yangi bilim, yangi imkoniyat!
+          </p>
 
-    <button class="lesson-card" onclick="openLesson(3)">
-      <span class="lesson-number">03</span>
-      <span><strong>Numbers and Colors</strong><small>Sonlar va ranglar</small></span>
-      <span>→</span>
-    </button>
+          <button class="primary-btn" onclick="openLessons()">
+            Darslarni boshlash →
+          </button>
+        </div>
+      </div>
 
-    <button class="lesson-card" onclick="openLesson(4)">
-      <span class="lesson-number">04</span>
-      <span><strong>Pronouns</strong><small>Olmoshlar</small></span>
-      <span>→</span>
-    </button>
+      <h2 class="page-title">Bizning o‘quv bo‘limlarimiz</h2>
+      <p class="subtitle">O‘zingizga kerakli bo‘limni tanlang.</p>
 
-    <button class="lesson-card" onclick="openLesson(5)">
-      <span class="lesson-number">05</span>
-      <span><strong>Verb To Be</strong><small>Am / Is / Are</small></span>
-      <span>→</span>
-    </button>
-  </div>
-</main>
+      <div class="features">
 
-<main id="lessonPage" class="page" style="display:none">
-  <button class="back-btn" onclick="openBeginner()">← Beginner darslari</button>
-  <div id="lessonContent"></div>
-</main>
+        <div class="feature-card" onclick="openLessons()">
+          <div class="feature-icon">📚</div>
+          <h3>Lessons</h3>
+          <p>Bosqichma-bosqich ingliz tili darslari.</p>
+        </div>
 
-<div id="message" class="message"></div>
+        <div class="feature-card" onclick="openVocabulary()">
+          <div class="feature-icon">📖</div>
+          <h3>Vocabulary</h3>
+          <p>Yangi so‘zlar va ularning talaffuzi.</p>
+        </div>
 
-<footer class="footer">
-  <p>© English Up — Learn English step by step.</p>
-</footer>
+        <div class="feature-card" onclick="openTests()">
+          <div class="feature-icon">📝</div>
+          <h3>Tests</h3>
+          <p>Bilimingizni sinab ko‘ring.</p>
+        </div>
 
-<script src="script.js"></script>
+        <div class="feature-card" onclick="openSpeaking()">
+          <div class="feature-icon">🎧</div>
+          <h3>Speaking & Listening</h3>
+          <p>Tinglash va gapirish mashqlari.</p>
+        </div>
+
+        <div class="feature-card" onclick="openProgress()">
+          <div class="feature-icon">🏆</div>
+          <h3>My Progress</h3>
+          <p>O‘z natijalaringizni kuzating.</p>
+        </div>
+
+        <div class="feature-card" onclick="openLessons()">
+          <div class="feature-icon">🚀</div>
+          <h3>Start Learning</h3>
+          <p>Bugunoq o‘rganishni boshlang.</p>
+        </div>
+
+      </div>
+
+      <div class="progress-card">
+        <h3>🎯 Mening o‘quv yo‘lim</h3>
+        <p>Beginner bosqichidan boshlang va maqsadingizga intiling.</p>
+        <div class="progress-track">
+          <div class="progress-fill" id="homeProgress" style="width:0%"></div>
+        </div>
+        <p id="homeProgressText">0 / 10 dars bajarildi</p>
+      </div>
+
+    </section>
+
+
+    <!-- LESSON LEVELS PAGE -->
+    <section id="lessonsPage" class="page">
+
+      <button class="back-btn" onclick="goHome()">← Orqaga</button>
+
+      <h1 class="page-title">📚 English Lessons</h1>
+      <p class="subtitle">
+        O‘z darajangizni tanlang va o‘rganishni boshlang.
+      </p>
+
+      <div class="level-list">
+
+        <div class="level-card" onclick="openBeginner()">
+          <div class="level-icon">🌱</div>
+          <h3>Beginner</h3>
+          <p>Ingliz tilini mutlaqo noldan boshlang.</p>
+          <span>10 ta dars →</span>
+        </div>
+
+        <div class="level-card" onclick="showMessage('Elementary tez orada qo‘shiladi!')">
+          <div class="level-icon">🌿</div>
+          <h3>Elementary</h3>
+          <p>Oddiy suhbat va kundalik ingliz tili.</p>
+          <span>Tez orada →</span>
+        </div>
+
+        <div class="level-card" onclick="showMessage('Pre-Intermediate tez orada qo‘shiladi!')">
+          <div class="level-icon">🌳</div>
+          <h3>Pre-Intermediate</h3>
+          <p>Bilimingizni keyingi bosqichga olib chiqing.</p>
+          <span>Tez orada →</span>
+        </div>
+
+        <div class="level-card" onclick="showMessage('Intermediate tez orada qo‘shiladi!')">
+          <div class="level-icon">⭐</div>
+          <h3>Intermediate</h3>
+          <p>Mustaqil muloqot va rivojlanish.</p>
+          <span>Tez orada →</span>
+        </div>
+
+        <div class="level-card" onclick="showMessage('Upper-Intermediate tez orada qo‘shiladi!')">
+          <div class="level-icon">💎</div>
+          <h3>Upper-Intermediate</h3>
+          <p>Murakkab mavzular va ravon nutq.</p>
+          <span>Tez orada →</span>
+        </div>
+
+        <div class="level-card" onclick="showMessage('IELTS kursi tez orada qo‘shiladi!')">
+          <div class="level-icon">🎓</div>
+          <h3>IELTS</h3>
+          <p>Academic IELTS uchun tayyorgarlik.</p>
+          <span>Tez orada →</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BEGINNER PAGE -->
+    <section id="beginnerPage" class="page">
+
+      <button class="back-btn" onclick="openLessons()">← Darajalar</button>
+
+      <h1 class="page-title">🌱 Beginner Course</h1>
+
+      <p class="subtitle">
+        Ingliz tilini noldan o‘rganish uchun 10 ta mukammal dars.
+      </p>
+
+      <div class="progress-card">
+        <h3>📊 Beginner progress</h3>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="beginnerProgress" style="width:0%"></div>
+        </div>
+
+        <p id="beginnerProgressText">0 / 10 dars bajarildi</p>
+      </div>
+
+      <div id="beginnerLessonList" class="lesson-list">
+
+        <div class="lesson-card" onclick="openLesson(1)">
+          <div class="lesson-number">01</div>
+          <h3>English Alphabet</h3>
+          <p>Ingliz alifbosi va harflar talaffuzi.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(2)">
+          <div class="lesson-number">02</div>
+          <h3>Greetings and Introductions</h3>
+          <p>Salomlashish va tanishish.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(3)">
+          <div class="lesson-number">03</div>
+          <h3>Numbers and Colors</h3>
+          <p>Sonlar va ranglar.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(4)">
+          <div class="lesson-number">04</div>
+          <h3>Personal Pronouns</h3>
+          <p>Kishilik olmoshlari.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(5)">
+          <div class="lesson-number">05</div>
+          <h3>Verb To Be</h3>
+          <p>Am, is, are fe'llari.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(6)">
+          <div class="lesson-number">06</div>
+          <h3>Nouns and Articles</h3>
+          <p>Otlar va a, an, the artikllari.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(7)">
+          <div class="lesson-number">07</div>
+          <h3>This, That, These, Those</h3>
+          <p>Ko‘rsatish olmoshlari.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(8)">
+          <div class="lesson-number">08</div>
+          <h3>Have and Has</h3>
+          <p>Egalikni ifodalash.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(9)">
+          <div class="lesson-number">09</div>
+          <h3>There Is and There Are</h3>
+          <p>Mavjudlikni ifodalash.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+        <div class="lesson-card" onclick="openLesson(10)">
+          <div class="lesson-number">10</div>
+          <h3>Present Simple</h3>
+          <p>Oddiy hozirgi zamon.</p>
+          <span>▶ Darsni boshlash</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SINGLE LESSON PAGE -->
+    <section id="lessonPage" class="page">
+
+      <button class="back-btn" onclick="openBeginner()">← Beginner darslari</button>
+
+      <div id="lessonContent" class="lesson-content">
+        <h2>Dars tanlanmagan</h2>
+        <p>Davom etish uchun Beginner bo‘limidan dars tanlang.</p>
+      </div>
+
+    </section>
+
+
+    <!-- VOCABULARY PAGE -->
+    <section id="vocabularyPage" class="page">
+
+      <button class="back-btn" onclick="goHome()">← Orqaga</button>
+
+      <h1 class="page-title">📖 Vocabulary</h1>
+
+      <p class="subtitle">
+        Yangi so‘zlar, talaffuz va tarjimalarni o‘rganing.
+      </p>
+
+      <div id="vocabularyContent" class="lesson-content">
+        <p>Vocabulary bo‘limi darslar bilan birgalikda ishga tushadi.</p>
+      </div>
+
+    </section>
+
+
+    <!-- TESTS PAGE -->
+    <section id="testsPage" class="page">
+
+      <button class="back-btn" onclick="goHome()">← Orqaga</button>
+
+      <h1 class="page-title">📝 Tests</h1>
+
+      <p class="subtitle">
+        Bilimingizni testlar orqali mustahkamlang.
+      </p>
+
+      <div id="testsContent" class="lesson-content">
+        <p>Testlar darslar bilan birgalikda ishga tushadi.</p>
+      </div>
+
+    </section>
+
+
+    <!-- SPEAKING PAGE -->
+    <section id="speakingPage" class="page">
+
+      <button class="back-btn" onclick="goHome()">← Orqaga</button>
+
+      <h1 class="page-title">🎧 Speaking & Listening</h1>
+
+      <p class="subtitle">
+        Tinglang, talaffuz qiling va gapirishni mashq qiling.
+      </p>
+
+      <div id="speakingContent" class="lesson-content">
+        <p>Speaking va Listening mashqlari tez orada ishga tushadi.</p>
+      </div>
+
+    </section>
+
+
+    <!-- PROGRESS PAGE -->
+    <section id="progressPage" class="page">
+
+      <button class="back-btn" onclick="goHome()">← Orqaga</button>
+
+      <h1 class="page-title">🏆 My Progress</h1>
+
+      <p class="subtitle">
+        O‘z o‘quv natijalaringizni kuzatib boring.
+      </p>
+
+      <div class="progress-card">
+        <h3>Beginner Course</h3>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progressPageBar" style="width:0%"></div>
+        </div>
+
+        <p id="progressPageText">0 / 10 dars bajarildi</p>
+      </div>
+
+      <div id="progressDetails" class="lesson-content">
+        <p>Sizning natijalaringiz shu yerda ko‘rsatiladi.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- MESSAGE -->
+  <div id="message" class="message"></div>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 English Up</p>
+    <p>Learn step by step. Speak with confidence.</p>
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+
 </body>
-    </html>
-    
+</html>
