@@ -6,7 +6,6 @@
 ========================================= */
 
 const $ = id => document.getElementById(id);
-
 const M = (q, a, correct) => ({ q, a, correct });
 
 const lessons = [
@@ -178,7 +177,8 @@ const lessons = [
  M("Seven qaysi son?",["6","8","7"],2)
  ]
 },
-   {
+
+{
  id:4,
  title:"Personal Pronouns",
  subtitle:"Kishilik olmoshlari",
@@ -347,6 +347,8 @@ const lessons = [
  M("___ book",["a","an","are"],0),
  M("The artikli nimani bildiradi?",["Aniq narsani","Faqat ko‘plikni","O‘tgan zamonni"],0)
  ]
+},
+
 {
  id:7,
  title:"This, That, These, Those",
@@ -575,6 +577,7 @@ const lessons = [
 }
 
 ];
+
 /* =========================================
    4-QISM — NAVIGATION, VOICE, LESSONS
 ========================================= */
@@ -835,11 +838,10 @@ function questionHTML(item, index, type) {
     </div>
   `;
 }
+
 /* =========================================
    5-QISM — TEST, HOMEWORK, PROGRESS
 ========================================= */
-
-// TEST JAVOBLARINI TEKSHIRISH
 
 function checkQuestionGroup(type) {
   const containerId = type === "test"
@@ -1098,11 +1100,10 @@ function renderProgress() {
     </div>
   `;
 }
+
 /* =========================================
    6-QISM — ENGLISH UP VOCABULARY SYSTEM
 ========================================= */
-
-// VOCABULARY DARAJALARI
 
 let currentVocabularyLevel = "beginner";
 
@@ -1255,14 +1256,10 @@ function saveLearnedVocabulary(words) {
 }
 
 
-// SO‘ZNING UNIKAL KALITI
-
 function getVocabularyKey(level, word) {
   return level + ":" + word.toLowerCase();
 }
 
-
-// SO‘Z YODLANGANINI BELGILASH
 
 function toggleVocabularyLearned(level, word) {
   const learned = getLearnedVocabulary();
@@ -1279,7 +1276,6 @@ function toggleVocabularyLearned(level, word) {
   }
 
   saveLearnedVocabulary(learned);
-
   renderVocabulary();
 }
 
@@ -1532,6 +1528,7 @@ function filterVocabulary() {
     `;
   }).join("");
 }
+
 /* =========================================
    7-QISM — TESTS, SPEAKING, START
 ========================================= */
@@ -1651,14 +1648,6 @@ function showMessage(text) {
   window.englishUpMessageTimer = setTimeout(() => {
     message.style.display = "none";
   }, 3000);
-}
-
-
-// DARAJALAR O‘ZGARGANDA SPEAKINGNI YANGILASH
-
-function openSpeaking() {
-  renderSpeaking();
-  showPage("speakingPage");
 }
 
 
