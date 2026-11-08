@@ -1,4 +1,3 @@
-
 "use strict";
 
 /* =========================================
@@ -179,8 +178,7 @@ const lessons = [
  M("Seven qaysi son?",["6","8","7"],2)
  ]
 },
-
-{
+   {
  id:4,
  title:"Personal Pronouns",
  subtitle:"Kishilik olmoshlari",
@@ -221,7 +219,7 @@ const lessons = [
  ["it","it","u (narsa)"],
  ["we","wii","biz"],
  ["they","they","ular"],
- ["person","pर्सən","inson"],
+ ["person","pərsən","inson"],
  ["man","men","erkak"],
  ["woman","wumən","ayol"],
  ["child","chayld","bola"],
@@ -349,8 +347,6 @@ const lessons = [
  M("___ book",["a","an","are"],0),
  M("The artikli nimani bildiradi?",["Aniq narsani","Faqat ko‘plikni","O‘tgan zamonni"],0)
  ]
-},
-
 {
  id:7,
  title:"This, That, These, Those",
@@ -579,644 +575,1103 @@ const lessons = [
 }
 
 ];
-
-
 /* =========================================
-   PAGE NAVIGATION
+   4-QISM — NAVIGATION, VOICE, LESSONS
 ========================================= */
 
+// SAHIFALARNI BOSHQARISH
+
 function hideAllPages() {
- document.querySelectorAll(".page").forEach(page => {
-  page.classList.remove("active");
- });
+  document.querySelectorAll(".page").forEach(page => {
+    page.style.display = "none";
+  });
 }
 
-function showPage(id) {
- hideAllPages();
- const page = $(id);
- if (page) page.classList.add("active");
- window.scrollTo({top:0,behavior:"smooth"});
+function showPage(pageId) {
+  hideAllPages();
+  const page = $(pageId);
+  if (page) page.style.display = "block";
+  window.scrollTo(0, 0);
 }
 
 function goHome() {
- showPage("homePage");
- updateProgress();
+  showPage("homePage");
+  updateProgress();
 }
 
 function openLessons() {
- showPage("lessonsPage");
+  showPage("lessonsPage");
 }
 
 function openBeginner() {
- showPage("beginnerPage");
- updateProgress();
+  showPage("beginnerPage");
 }
 
 function openVocabulary() {
- renderVocabulary();
- showPage("vocabularyPage");
+  renderVocabulary();
+  showPage("vocabularyPage");
 }
 
 function openTests() {
- renderAllTests();
- showPage("testsPage");
+  renderAllTests();
+  showPage("testsPage");
 }
 
 function openSpeaking() {
- renderSpeaking();
- showPage("speakingPage");
+  renderSpeaking();
+  showPage("speakingPage");
 }
 
 function openProgress() {
- renderProgress();
- showPage("progressPage");
+  renderProgress();
+  showPage("progressPage");
 }
 
 
-/* =========================================
-   VOICE / PRONUNCIATION
-========================================= */
+// OVOZ CHIQARISH
 
 function speakEnglish(word) {
- if (!("speechSynthesis" in window)) {
-  showMessage("Qurilmangiz ovozli o‘qishni qo‘llab-quvvatlamaydi.");
-  return;
- }
+  if (!("speechSynthesis" in window)) {
+    showMessage("Brauzeringiz ovoz funksiyasini qo‘llab-quvvatlamaydi.");
+    return;
+  }
 
- window.speechSynthesis.cancel();
+  speechSynthesis.cancel();
 
- const utterance = new SpeechSynthesisUtterance(word);
- utterance.lang = "en-US";
- utterance.rate = 0.78;
- utterance.pitch = 1;
+  const speech = new SpeechSynthesisUtterance(word);
+  speech.lang = "en-US";
+  speech.rate = 0.78;
+  speech.pitch = 1;
 
- window.speechSynthesis.speak(utterance);
+  speechSynthesis.speak(speech);
 }
 
 
-/* =========================================
-   LESSON RENDERING
-========================================= */
+// DARSNI OCHISH
 
 let currentLesson = 1;
 
 function openLesson(id) {
- const lesson = lessons.find(item => item.id === id);
+  const lesson = lessons.find(item => item.id === Number(id));
 
- if (!lesson) {
-  showMessage("Dars topilmadi.");
-  return;
- }
+  if (!lesson) {
+    showMessage("Dars topilmadi.");
+    return;
+  }
 
- currentLesson = id;
- renderLesson(lesson);
- showPage("lessonPage");
+  currentLesson = lesson.id;
+  renderLesson(lesson);
+  showPage("lessonPage");
 }
+
+
+// DARSNI EKRANGA CHIQARISH
 
 function renderLesson(lesson) {
- const content = $("lessonContent");
+  const container = $("lessonContent");
+  if (!container) return;
 
- let html = `
- <div class="lesson-heading">
-  <span class="badge">BEGINNER • LESSON ${lesson.id}</span>
-  <h1>${lesson.title}</h1>
-  <p>${lesson.subtitle}</p>
- </div>
+  container.innerHTML = `
+    <div class="lesson-card">
 
- <div class="lesson-section">
-  ${lesson.explanation}
- </div>
+      <h1>${lesson.title}</h1>
+      <p>${lesson.subtitle}</p>
 
- <h2>📌 Misollar</h2>
- <div class="lesson-example">
- `;
+      <div class="lesson-explanation">
+        ${lesson.explanation}
+      </div>
 
- lesson.examples.forEach(example => {
-  html += `<p>${example}</p>`;
- });
+      <h2>📚 Misollar</h2>
 
- html += `
- </div>
+      <div class="lesson-examples">
+        ${lesson.examples.map((example, index) => `
+          <div class="example-item">
+            <span>${index + 1}. ${example}</span>
+            <button onclick="speakEnglish('${example.replace(/'/g, "\\'")}')">
+              🔊
+            </button>
+          </div>
+        `).join("")}
+      </div>
 
- <h2>📖 15 ta yangi so‘z</h2>
- <p>Har bir so‘zni tinglang, talaffuz qiling va tarjimasini yodlang.</p>
+      <h2>🗣 Vocabulary</h2>
 
- <div class="vocabulary-table">
- `;
+      <div class="lesson-vocabulary">
+        ${lesson.vocab.map((word, index) => `
+          <div class="vocab-item">
+            <div>
+              <strong>${index + 1}. ${word[0]}</strong>
+              <small>${word[1]}</small>
+              <span>${word[2]}</span>
+            </div>
+            <button onclick="speakEnglish('${word[0]}')">🔊</button>
+          </div>
+        `).join("")}
+      </div>
 
- lesson.vocab.forEach((word,index) => {
-  html += `
-   <div class="vocab-row">
-    <span class="vocab-number">${index+1}.</span>
-    <div class="vocab-info">
-     <b>${word[0]}</b>
-     <small>Talaffuzi: ${word[1]}</small>
-     <small>Tarjimasi: ${word[2]}</small>
+      <h2>✍️ Mashqlar</h2>
+
+      <div id="practiceQuestions">
+        ${makeVocabularyQuestions(lesson, 10, "practice")}
+      </div>
+
+      <button onclick="checkQuestionGroup('practice')">
+        Javoblarni tekshirish
+      </button>
+
+      <div id="practiceResult"></div>
+
+      <h2>📝 Mavzu testi</h2>
+
+      <div id="testQuestions">
+        ${makeTests(lesson)}
+      </div>
+
+      <button onclick="checkQuestionGroup('test')">
+        Testni yakunlash
+      </button>
+
+      <div id="testResult"></div>
+
+      <h2>🏠 Uyga vazifa</h2>
+
+      <div class="homework">
+        ${makeHomework(lesson)}
+      </div>
+
+      <button onclick="markLessonComplete(${lesson.id})">
+        ✅ Darsni tugatdim
+      </button>
+
+      <div class="lesson-navigation">
+        <button onclick="changeLesson(-1)">⬅️ Oldingi dars</button>
+        <button onclick="changeLesson(1)">Keyingi dars ➡️</button>
+      </div>
+
     </div>
-    <button class="check-btn voice-btn" onclick="speakEnglish('${word[0]}')">🔊</button>
-   </div>
   `;
- });
-
- html += `
- </div>
-
- <h2>🎧 Talaffuz mashqi</h2>
- <p>Quyidagi 10 ta so‘zni ovozli tinglang va o‘zingiz ham takrorlang.</p>
-
- <div class="task-card">
- `;
-
- lesson.vocab.slice(0,10).forEach((word,index) => {
-  html += `
-   <p>
-    ${index+1}. <b>${word[0]}</b>
-    <button class="check-btn voice-btn" onclick="speakEnglish('${word[0]}')">🔊 Tinglash</button>
-   </p>
-  `;
- });
-
- html += `
- </div>
-
- <h2>📝 Qo‘shimcha 10 ta mashq</h2>
- <p>To‘g‘ri javobni tanlang. Har bir savoldan keyin natijangiz ko‘rsatiladi.</p>
- <div id="practiceArea">
- `;
-
- const practice = makeVocabularyQuestions(lesson,10,"practice");
-
- practice.forEach((item,index) => {
-  html += questionHTML(item,index,"practice");
- });
-
- html += `
- </div>
- <button class="check-btn" onclick="checkQuestionGroup('practice')">Mashqlarni tekshirish</button>
- <div id="practiceResult" class="result"></div>
-
- <h2>🧠 Mavzu bo‘yicha 10 ta test</h2>
- <p>Har bir savolda uchta variantdan birini tanlang.</p>
-
- <div id="testArea">
- `;
-
- const tests = makeTests(lesson);
-
- tests.forEach((item,index) => {
-  html += questionHTML(item,index,"test");
- });
-
- html += `
- </div>
- <button class="check-btn" onclick="checkQuestionGroup('test')">Testni tekshirish</button>
- <div id="testResult" class="result"></div>
-
- <h2>✍️ Uyga vazifa — daftarda bajaring</h2>
- <p>Quyidagi topshiriqlarni daftaringizga yozib bajaring.</p>
- <div class="task-card">
-  <ol>
- `;
-
- makeHomework(lesson).forEach(task => {
-  html += `<li>${task}</li>`;
- });
-
- html += `
-  </ol>
- </div>
-
- <button class="check-btn" onclick="markLessonComplete(${lesson.id})">
-  ✓ Darsni tugatdim
- </button>
-
- <div class="lesson-navigation">
-  <button class="back-btn" onclick="changeLesson(-1)">← Oldingi dars</button>
-  <button class="check-btn" onclick="changeLesson(1)">Keyingi dars →</button>
- </div>
- `;
-
- content.innerHTML = html;
 }
 
 
-/* =========================================
-   QUESTION GENERATION
-========================================= */
+// LUG‘AT MASHQLARINI YARATISH
 
-function makeVocabularyQuestions(lesson,count,type) {
- const words = lesson.vocab;
- const questions = [];
+function makeVocabularyQuestions(lesson, count, type) {
+  return Array.from({ length: count }, (_, index) => {
+    const wordIndex = (index * 2) % lesson.vocab.length;
+    const word = lesson.vocab[wordIndex];
 
- for (let i=0;i<count;i++) {
-  const index = (i * 2) % words.length;
-  const correct = words[index];
+    const wrong1 = lesson.vocab[(wordIndex + 3) % lesson.vocab.length];
+    const wrong2 = lesson.vocab[(wordIndex + 7) % lesson.vocab.length];
 
-  const wrong1 = words[(index+3) % words.length];
-  const wrong2 = words[(index+7) % words.length];
+    const options = [
+      { text: word[2], correct: true },
+      { text: wrong1[2], correct: false },
+      { text: wrong2[2], correct: false }
+    ];
 
-  const options = [
-   correct[0],
-   wrong1[0],
-   wrong2[0]
-  ];
+    const shift = index % 3;
+    const rotated = [
+      ...options.slice(shift),
+      ...options.slice(0, shift)
+    ];
 
-  const shift = (i + lesson.id) % 3;
-  const shuffled = options.slice(shift).concat(options.slice(0,shift));
-
-  questions.push({
-   q:`"${correct[2]}" so‘zining inglizchasi qaysi?`,
-   a:shuffled,
-   correct:shuffled.indexOf(correct[0])
-  });
- }
-
- return questions;
+    return questionHTML({
+      q: `"${word[0]}" so‘zining tarjimasi nima?`,
+      a: rotated.map(option => option.text),
+      correct: rotated.findIndex(option => option.correct)
+    }, index, type);
+  }).join("");
 }
+
+
+// TESTLARNI YARATISH
 
 function makeTests(lesson) {
- const vocabQuestions = makeVocabularyQuestions(lesson,7,"test");
- const ruleQuestions = lesson.rules.map(item => ({
-  q:item.q,
-  a:item.a,
-  correct:item.correct
- }));
+  const questions = [...lesson.rules];
 
- return [...ruleQuestions,...vocabQuestions];
+  lesson.vocab.slice(0, 7).forEach((word, index) => {
+    questions.push(
+      M(
+        `"${word[2]}" ingliz tilida qanday bo‘ladi?`,
+        [
+          word[0],
+          lesson.vocab[(index + 3) % lesson.vocab.length][0],
+          lesson.vocab[(index + 7) % lesson.vocab.length][0]
+        ],
+        0
+      )
+    );
+  });
+
+  return questions.map((question, index) =>
+    questionHTML(question, index, "test")
+  ).join("");
 }
 
-function questionHTML(item,index,type) {
- let html = `
- <div class="task-card question-card"
-      data-type="${type}"
-      data-answer="${item.correct}">
-  <p><b>${index+1}. ${item.q}</b></p>
- `;
 
- item.a.forEach((option,i) => {
-  html += `
-   <label>
-    <input type="radio"
-      name="${type}_${index}"
-      value="${i}">
-    ${option}
-   </label>
+// SAVOL HTML
+
+function questionHTML(item, index, type) {
+  return `
+    <div class="question-card"
+         data-type="${type}"
+         data-correct="${item.correct}">
+
+      <p><strong>${index + 1}. ${item.q}</strong></p>
+
+      <div class="question-options">
+        ${item.a.map((option, optionIndex) => `
+          <label class="question-option">
+            <input
+              type="radio"
+              name="${type}_${index}"
+              value="${optionIndex}"
+            >
+            ${option}
+          </label>
+        `).join("")}
+      </div>
+
+    </div>
   `;
- });
-
- html += `</div>`;
- return html;
 }
-
-
 /* =========================================
-   CHECK ANSWERS
+   5-QISM — TEST, HOMEWORK, PROGRESS
 ========================================= */
+
+// TEST JAVOBLARINI TEKSHIRISH
 
 function checkQuestionGroup(type) {
- const cards = document.querySelectorAll(
-  `.question-card[data-type="${type}"]`
- );
+  const containerId = type === "test"
+    ? "testQuestions"
+    : "practiceQuestions";
 
- if (!cards.length) return;
+  const resultId = type === "test"
+    ? "testResult"
+    : "practiceResult";
 
- let score = 0;
- let answered = 0;
+  const container = $(containerId);
+  const result = $(resultId);
 
- cards.forEach(card => {
-  const selected = card.querySelector("input:checked");
-  const correct = Number(card.dataset.answer);
+  if (!container || !result) return;
 
-  card.querySelectorAll("label").forEach((label,index) => {
-   label.style.border = "1px solid transparent";
-   if (index === correct) {
-    label.style.background = "#e4fff2";
-   } else {
-    label.style.background = "";
-   }
+  const questions = container.querySelectorAll(".question-card");
+
+  let correctCount = 0;
+  let answeredCount = 0;
+
+  questions.forEach(question => {
+    const correct = Number(question.dataset.correct);
+    const selected = question.querySelector("input:checked");
+    const labels = question.querySelectorAll(".question-option");
+
+    labels.forEach(label => {
+      label.style.background = "";
+      label.style.borderColor = "";
+    });
+
+    if (selected) {
+      answeredCount++;
+
+      const answer = Number(selected.value);
+
+      if (answer === correct) {
+        correctCount++;
+        selected.parentElement.style.background = "#dcfce7";
+        selected.parentElement.style.borderColor = "#16a34a";
+      } else {
+        selected.parentElement.style.background = "#fee2e2";
+        selected.parentElement.style.borderColor = "#dc2626";
+      }
+    }
+
+    if (labels[correct]) {
+      labels[correct].style.borderColor = "#16a34a";
+    }
   });
 
-  if (selected) {
-   answered++;
-   if (Number(selected.value) === correct) {
-    score++;
-   } else {
-    selected.parentElement.style.background = "#fff0f2";
-   }
+  const total = questions.length;
+  const percent = Math.round((correctCount / total) * 100);
+
+  result.innerHTML = `
+    <div class="result-card">
+      <h3>Natija: ${correctCount}/${total}</h3>
+      <p>Javob berilgan: ${answeredCount}/${total}</p>
+      <h2>${percent}%</h2>
+      <p>
+        ${percent >= 80
+          ? "Ajoyib! Juda yaxshi natija! 🎉"
+          : percent >= 50
+          ? "Yaxshi! Yana bir bor mashq qiling. 👍"
+          : "Ko‘proq takrorlang. Siz uddalaysiz! 💪"}
+      </p>
+    </div>
+  `;
+
+  if (type === "test") {
+    saveTestResult(currentLesson, correctCount, total);
   }
- });
-
- const result = $(type + "Result");
-
- if (answered < cards.length) {
-  result.innerHTML =
-   `Siz ${answered}/${cards.length} ta savolga javob berdingiz. Barcha savollarni belgilang.`;
-  result.className = "result incorrect";
-  return;
- }
-
- const percent = Math.round(score/cards.length*100);
-
- result.innerHTML =
-  `Natija: ${score}/${cards.length} (${percent}%). ` +
-  (percent >= 80 ? "Ajoyib natija! 🎉" :
-   percent >= 60 ? "Yaxshi! Yana mashq qiling. 👍" :
-   "Mavzuni qayta o‘rganib, yana urinib ko‘ring. 💪");
-
- result.className = percent >= 60 ?
-  "result correct" : "result incorrect";
-
- if (type === "test") {
-  saveTestResult(currentLesson,score,cards.length);
- }
 }
 
 
-/* =========================================
-   HOMEWORK
-========================================= */
+// UYGA VAZIFA
 
 function makeHomework(lesson) {
- const words = lesson.vocab;
+  return `
+    <div class="homework-card">
 
- return [
-  `Mavzuni daftaringizga qisqacha tushuntirib yozing.`,
-  `Yangi 15 ta so‘zni inglizcha va o‘zbekcha yozing.`,
-  `15 ta so‘zning talaffuzini ovoz chiqarib mashq qiling.`,
-  `"${words[0][0]}" so‘zi bilan bitta gap tuzing.`,
-  `"${words[3][0]}" so‘zi bilan bitta gap tuzing.`,
-  `O‘rgangan mavzu bo‘yicha 5 ta inglizcha gap yozing.`,
-  `5 ta o‘zbekcha gapni ingliz tiliga tarjima qiling.`,
-  `Mavzuga oid 5 ta savol tuzing.`,
-  `Bugungi darsdagi qoidalarni misollar bilan takrorlang.`,
-  `Ertangi darsdan oldin barcha yangi so‘zlarni qayta yodlang.`
- ];
+      <p><strong>1-topshiriq.</strong> Quyidagi so‘zlardan foydalanib 5 ta gap tuzing.</p>
+
+      <p>
+        ${lesson.vocab.slice(0, 5).map(word => word[0]).join(", ")}
+      </p>
+
+      <p><strong>2-topshiriq.</strong> Darsdagi 5 ta misolni ovoz chiqarib o‘qing.</p>
+
+      <p><strong>3-topshiriq.</strong> Yangi 15 ta so‘zni yodlang.</p>
+
+      <p><strong>4-topshiriq.</strong> Mavzu bo‘yicha 5 ta savol yozing.</p>
+
+      <p><strong>5-topshiriq.</strong> O‘zingiz haqingizda 5 ta gap yozing.</p>
+
+    </div>
+  `;
 }
 
 
-/* =========================================
-   LESSON COMPLETION AND PROGRESS
-========================================= */
+// TUGATILGAN DARSLARNI SAQLASH
 
 function getCompleted() {
- try {
-  return JSON.parse(localStorage.getItem("englishUpCompleted")) || [];
- } catch(e) {
-  return [];
- }
+  try {
+    return JSON.parse(
+      localStorage.getItem("englishUpCompleted")
+    ) || [];
+  } catch (error) {
+    return [];
+  }
 }
+
 
 function markLessonComplete(id) {
- let completed = getCompleted();
+  const completed = getCompleted();
 
- if (!completed.includes(id)) {
-  completed.push(id);
+  if (!completed.includes(Number(id))) {
+    completed.push(Number(id));
+
+    localStorage.setItem(
+      "englishUpCompleted",
+      JSON.stringify(completed)
+    );
+  }
+
+  updateProgress();
+  showMessage("Dars muvaffaqiyatli tugatildi! 🎉");
+}
+
+
+// TEST NATIJASINI SAQLASH
+
+function saveTestResult(id, score, total) {
+  let results = {};
+
+  try {
+    results = JSON.parse(
+      localStorage.getItem("englishUpTestResults")
+    ) || {};
+  } catch (error) {
+    results = {};
+  }
+
+  results[id] = {
+    score: score,
+    total: total,
+    percent: Math.round((score / total) * 100),
+    date: new Date().toLocaleDateString()
+  };
+
   localStorage.setItem(
-   "englishUpCompleted",
-   JSON.stringify(completed)
+    "englishUpTestResults",
+    JSON.stringify(results)
   );
- }
 
- showMessage("Dars bajarildi! Barakalla! 🎉");
- updateProgress();
+  updateProgress();
 }
 
-function saveTestResult(id,score,total) {
- let results = {};
 
- try {
-  results = JSON.parse(localStorage.getItem("englishUpTests")) || {};
- } catch(e) {}
-
- results[id] = {
-  score,
-  total,
-  date:new Date().toISOString()
- };
-
- localStorage.setItem("englishUpTests",JSON.stringify(results));
-}
+// UMUMIY PROGRESS
 
 function updateProgress() {
- const completed = getCompleted();
- const percent = Math.round(completed.length/10*100);
+  const completed = getCompleted();
+  const percent = Math.round(
+    (completed.length / lessons.length) * 100
+  );
 
- const ids = [
-  "homeProgress",
-  "beginnerProgress",
-  "progressPageBar"
- ];
+  const homeProgress = $("homeProgress");
+  const beginnerProgress = $("beginnerProgress");
+  const progressPageBar = $("progressPageBar");
 
- ids.forEach(id => {
-  if ($(id)) $(id).style.width = percent + "%";
- });
-
- const texts = [
-  "homeProgressText",
-  "beginnerProgressText",
-  "progressPageText"
- ];
-
- texts.forEach(id => {
-  if ($(id)) {
-   $(id).textContent =
-    `${completed.length} / 10 dars bajarildi`;
+  if (homeProgress) {
+    homeProgress.style.width = percent + "%";
   }
- });
+
+  if (beginnerProgress) {
+    beginnerProgress.style.width = percent + "%";
+  }
+
+  if (progressPageBar) {
+    progressPageBar.style.width = percent + "%";
+  }
+
+  const ids = [
+    "homeProgressText",
+    "beginnerProgressText",
+    "progressText"
+  ];
+
+  ids.forEach(id => {
+    const element = $(id);
+    if (element) {
+      element.textContent =
+        `${completed.length}/${lessons.length} dars (${percent}%)`;
+    }
+  });
 }
+
+
+// PROGRESS SAHIFASI
 
 function renderProgress() {
- updateProgress();
+  const container = $("progressContent");
+  if (!container) return;
 
- const completed = getCompleted();
- const details = $("progressDetails");
+  const completed = getCompleted();
 
- if (!details) return;
+  let results = {};
 
- let html = "<h3>📚 Darslar holati</h3>";
-
- lessons.forEach(lesson => {
-  const done = completed.includes(lesson.id);
-
-  html += `
-   <p>
-    ${done ? "✅" : "⭕"}
-    ${lesson.id}. ${lesson.title}
-    — ${done ? "Bajarilgan" : "Bajarilmagan"}
-   </p>
-  `;
- });
-
- let results = {};
-
- try {
-  results = JSON.parse(localStorage.getItem("englishUpTests")) || {};
- } catch(e) {}
-
- html += "<h3>📝 Test natijalari</h3>";
-
- lessons.forEach(lesson => {
-  const result = results[lesson.id];
-
-  if (result) {
-   html += `
-    <p>${lesson.title}: ${result.score}/${result.total}</p>
-   `;
+  try {
+    results = JSON.parse(
+      localStorage.getItem("englishUpTestResults")
+    ) || {};
+  } catch (error) {
+    results = {};
   }
- });
 
- details.innerHTML = html;
+  const percent = Math.round(
+    (completed.length / lessons.length) * 100
+  );
+
+  container.innerHTML = `
+    <div class="progress-card">
+
+      <h2>📊 Mening natijalarim</h2>
+
+      <h3>${completed.length}/${lessons.length} ta dars tugatildi</h3>
+
+      <div class="progress-bar">
+        <div style="
+          width:${percent}%;
+          height:100%;
+          background:#16a34a;
+          border-radius:20px;
+        "></div>
+      </div>
+
+      <h3>${percent}% bajarildi</h3>
+
+      <h2>📝 Test natijalari</h2>
+
+      ${lessons.map(lesson => {
+        const result = results[lesson.id];
+
+        return `
+          <div class="progress-item">
+            <strong>${lesson.title}</strong>
+            <p>
+              ${result
+                ? `${result.score}/${result.total} — ${result.percent}%`
+                : "Hali test ishlanmagan"}
+            </p>
+          </div>
+        `;
+      }).join("")}
+
+    </div>
+  `;
+}
+/* =========================================
+   6-QISM — ENGLISH UP VOCABULARY SYSTEM
+========================================= */
+
+// VOCABULARY DARAJALARI
+
+let currentVocabularyLevel = "beginner";
+
+const vocabularyLevels = [
+  {
+    id: "beginner",
+    name: "Beginner",
+    uzbek: "Boshlang‘ich daraja",
+    target: 1000,
+    description: "Ingliz tilini noldan boshlayotganlar uchun."
+  },
+  {
+    id: "elementary",
+    name: "Elementary",
+    uzbek: "Boshlang‘ichdan keyingi daraja",
+    target: 1000,
+    description: "Oddiy kundalik muloqot uchun."
+  },
+  {
+    id: "pre-intermediate",
+    name: "Pre-Intermediate",
+    uzbek: "O‘rta darajaga tayyorgarlik",
+    target: 1000,
+    description: "Fikrlarni kengroq ifodalash uchun."
+  },
+  {
+    id: "intermediate",
+    name: "Intermediate",
+    uzbek: "O‘rta daraja",
+    target: 1000,
+    description: "Erkinroq muloqot va tushunish uchun."
+  },
+  {
+    id: "upper-intermediate",
+    name: "Upper-Intermediate",
+    uzbek: "Yuqori o‘rta daraja",
+    target: 1000,
+    description: "Murakkab mavzular va ravon nutq uchun."
+  },
+  {
+    id: "ielts",
+    name: "IELTS",
+    uzbek: "IELTS akademik lug‘ati",
+    target: 1000,
+    description: "Academic English va IELTS uchun."
+  }
+];
+
+
+// SO‘Z TURINI ANIQLASH
+
+const vocabularyTypes = {
+  pronoun: [
+    "i", "you", "he", "she", "it", "we", "they",
+    "this", "that", "these", "those"
+  ],
+
+  verb: [
+    "meet", "have", "has", "work", "study", "read",
+    "write", "speak", "listen", "play", "watch",
+    "eat", "drink", "go", "come", "like"
+  ],
+
+  adjective: [
+    "happy", "sad", "tired", "ready", "hungry",
+    "busy", "beautiful", "fine", "red", "blue",
+    "green", "yellow", "black", "near", "far"
+  ],
+
+  adverb: [
+    "always", "usually"
+  ],
+
+  number: [
+    "one", "two", "three", "four", "five",
+    "six", "seven", "eight", "nine", "ten"
+  ]
+};
+
+function getVocabularyType(word) {
+  const value = word.toLowerCase();
+
+  for (const type in vocabularyTypes) {
+    if (vocabularyTypes[type].includes(value)) {
+      return type;
+    }
+  }
+
+  if (["there"].includes(value)) return "other";
+
+  return "noun";
+}
+
+const vocabularyTypeNames = {
+  all: "Barcha so‘zlar",
+  noun: "Ot (Noun)",
+  verb: "Fe'l (Verb)",
+  adjective: "Sifat (Adjective)",
+  adverb: "Ravish (Adverb)",
+  pronoun: "Olmosh (Pronoun)",
+  number: "Son (Number)",
+  other: "Boshqa"
+};
+
+
+// BEGINNER SO‘ZLARINI DARS LUG‘ATLARIDAN OLISH
+
+const beginnerVocabulary = lessons.flatMap(lesson =>
+  lesson.vocab.map(word => ({
+    word: word[0],
+    pronunciation: word[1],
+    translation: word[2],
+    type: getVocabularyType(word[0]),
+    topic: lesson.title,
+    lessonId: lesson.id
+  }))
+);
+
+
+// BARCHA DARAJALAR UCHUN LUG‘AT MA'LUMOTLARI
+
+const vocabularyData = {
+  beginner: beginnerVocabulary,
+  elementary: [],
+  "pre-intermediate": [],
+  intermediate: [],
+  "upper-intermediate": [],
+  ielts: []
+};
+
+
+// YODLANGAN SO‘ZLARNI SAQLASH
+
+function getLearnedVocabulary() {
+  try {
+    return JSON.parse(
+      localStorage.getItem("englishUpVocabularyLearned")
+    ) || [];
+  } catch (error) {
+    return [];
+  }
 }
 
 
-/* =========================================
-   VOCABULARY PAGE
-========================================= */
+function saveLearnedVocabulary(words) {
+  localStorage.setItem(
+    "englishUpVocabularyLearned",
+    JSON.stringify(words)
+  );
+}
+
+
+// SO‘ZNING UNIKAL KALITI
+
+function getVocabularyKey(level, word) {
+  return level + ":" + word.toLowerCase();
+}
+
+
+// SO‘Z YODLANGANINI BELGILASH
+
+function toggleVocabularyLearned(level, word) {
+  const learned = getLearnedVocabulary();
+  const key = getVocabularyKey(level, word);
+
+  const index = learned.indexOf(key);
+
+  if (index === -1) {
+    learned.push(key);
+    showMessage("So‘z yodlanganlar ro‘yxatiga qo‘shildi! ✅");
+  } else {
+    learned.splice(index, 1);
+    showMessage("So‘z ro‘yxatdan olib tashlandi.");
+  }
+
+  saveLearnedVocabulary(learned);
+
+  renderVocabulary();
+}
+
+
+// DARAJANI TANLASH
+
+function selectVocabularyLevel(level) {
+  currentVocabularyLevel = level;
+  renderVocabulary();
+}
+
+
+// VOCABULARY SAHIFASI
 
 function renderVocabulary() {
- const area = $("vocabularyContent");
- if (!area) return;
+  const container = $("vocabularyContent");
+  if (!container) return;
 
- let html = "<h2>📖 Beginner Vocabulary</h2>";
+  const learned = getLearnedVocabulary();
 
- lessons.forEach(lesson => {
-  html += `<h3>${lesson.id}. ${lesson.title}</h3>`;
+  const level = vocabularyLevels.find(
+    item => item.id === currentVocabularyLevel
+  );
 
-  lesson.vocab.forEach(word => {
-   html += `
-    <div class="vocab-row">
-     <div class="vocab-info">
-      <b>${word[0]}</b>
-      <small>Talaffuzi: ${word[1]}</small>
-      <small>Tarjimasi: ${word[2]}</small>
-     </div>
-     <button class="check-btn" onclick="speakEnglish('${word[0]}')">🔊</button>
+  const words = vocabularyData[currentVocabularyLevel] || [];
+
+  const learnedCount = words.filter(word =>
+    learned.includes(
+      getVocabularyKey(currentVocabularyLevel, word.word)
+    )
+  ).length;
+
+  container.innerHTML = `
+
+    <div class="vocabulary-main">
+
+      <h1>📚 English Up Vocabulary</h1>
+
+      <p>So‘zlarni bosqichma-bosqich o‘rganing!</p>
+
+      <h2>🎯 Darajani tanlang</h2>
+
+      <div class="vocabulary-levels">
+
+        ${vocabularyLevels.map(item => `
+          <button
+            class="vocabulary-level-button"
+            style="
+              background:${item.id === currentVocabularyLevel
+                ? "#1456a0"
+                : "#eef3fa"};
+              color:${item.id === currentVocabularyLevel
+                ? "white"
+                : "#17365d"};
+            "
+            onclick="selectVocabularyLevel('${item.id}')"
+          >
+            <strong>${item.name}</strong>
+            <small>${item.uzbek}</small>
+          </button>
+        `).join("")}
+
+      </div>
+
+      <div class="vocabulary-information">
+
+        <h2>${level.name}</h2>
+
+        <p>${level.description}</p>
+
+        <div class="vocabulary-statistics">
+          <div>
+            <strong>${words.length}</strong>
+            <span>Mavjud so‘zlar</span>
+          </div>
+
+          <div>
+            <strong>${learnedCount}</strong>
+            <span>Yodlangan</span>
+          </div>
+
+          <div>
+            <strong>${level.target}</strong>
+            <span>Maqsad</span>
+          </div>
+        </div>
+
+        <div class="vocabulary-progress">
+          <div style="
+            width:${words.length
+              ? (learnedCount / words.length) * 100
+              : 0}%;
+            height:100%;
+            background:#16a34a;
+            border-radius:20px;
+          "></div>
+        </div>
+
+        <p>${learnedCount} / ${words.length} ta so‘z yodlangan</p>
+
+      </div>
+
+      ${
+        words.length === 0
+        ? `
+          <div class="vocabulary-empty">
+            <h3>🚧 Bu daraja tayyorlanmoqda</h3>
+            <p>
+              ${level.name} lug‘ati bosqichma-bosqich
+              yangi so‘zlar bilan to‘ldiriladi.
+            </p>
+            <p>Hozircha boshqa tayyor darajalarni o‘rganishingiz mumkin.</p>
+          </div>
+        `
+        : `
+
+          <h2>🔎 So‘zlarni qidirish</h2>
+
+          <input
+            id="vocabSearch"
+            type="search"
+            placeholder="Inglizcha yoki o‘zbekcha so‘z..."
+            oninput="filterVocabulary()"
+          >
+
+          <div class="vocabulary-filters">
+
+            <select
+              id="vocabTypeFilter"
+              onchange="filterVocabulary()"
+            >
+              ${Object.entries(vocabularyTypeNames).map(([key, name]) => `
+                <option value="${key}">${name}</option>
+              `).join("")}
+            </select>
+
+            <select
+              id="vocabTopicFilter"
+              onchange="filterVocabulary()"
+            >
+              <option value="all">Barcha mavzular</option>
+
+              ${[...new Set(words.map(word => word.topic))].map(topic => `
+                <option value="${topic}">${topic}</option>
+              `).join("")}
+            </select>
+
+          </div>
+
+          <div id="vocabularyList"></div>
+
+        `
+      }
+
     </div>
-   `;
-  });
- });
+  `;
 
- area.innerHTML = html;
+  if (words.length > 0) {
+    filterVocabulary();
+  }
 }
 
 
+// QIDIRISH VA SARALASH
+
+function filterVocabulary() {
+  const searchInput = $("vocabSearch");
+  const typeFilter = $("vocabTypeFilter");
+  const topicFilter = $("vocabTopicFilter");
+  const list = $("vocabularyList");
+
+  if (!searchInput || !typeFilter || !topicFilter || !list) return;
+
+  const search = searchInput.value.toLowerCase().trim();
+  const selectedType = typeFilter.value;
+  const selectedTopic = topicFilter.value;
+
+  const words = vocabularyData[currentVocabularyLevel] || [];
+  const learned = getLearnedVocabulary();
+
+  const filteredWords = words.filter(item => {
+    const matchesSearch =
+      item.word.toLowerCase().includes(search) ||
+      item.translation.toLowerCase().includes(search) ||
+      item.pronunciation.toLowerCase().includes(search);
+
+    const matchesType =
+      selectedType === "all" || item.type === selectedType;
+
+    const matchesTopic =
+      selectedTopic === "all" || item.topic === selectedTopic;
+
+    return matchesSearch && matchesType && matchesTopic;
+  });
+
+  if (filteredWords.length === 0) {
+    list.innerHTML = `
+      <div class="vocabulary-empty">
+        <p>😕 Bu qidiruv bo‘yicha so‘z topilmadi.</p>
+      </div>
+    `;
+    return;
+  }
+
+  list.innerHTML = filteredWords.map((item, index) => {
+    const isLearned = learned.includes(
+      getVocabularyKey(currentVocabularyLevel, item.word)
+    );
+
+    return `
+      <div class="vocabulary-word-card">
+
+        <div class="vocabulary-word-top">
+
+          <div>
+            <h3>${index + 1}. ${item.word}</h3>
+            <p>🔊 ${item.pronunciation}</p>
+            <strong>${item.translation}</strong>
+          </div>
+
+          <button
+            onclick="speakEnglish('${item.word}')"
+            aria-label="Talaffuzni eshitish"
+          >
+            🔊
+          </button>
+
+        </div>
+
+        <div class="vocabulary-word-info">
+          <span>${vocabularyTypeNames[item.type]}</span>
+          <span>${item.topic}</span>
+        </div>
+
+        <button
+          class="vocabulary-learn-button"
+          style="
+            background:${isLearned ? "#16a34a" : "#1456a0"};
+            color:white;
+          "
+          onclick="toggleVocabularyLearned(
+            '${currentVocabularyLevel}',
+            '${item.word}'
+          )"
+        >
+          ${isLearned ? "✅ Yodlandi" : "➕ Yodladim"}
+        </button>
+
+      </div>
+    `;
+  }).join("");
+}
 /* =========================================
-   ALL TESTS PAGE
+   7-QISM — TESTS, SPEAKING, START
 ========================================= */
+
+// BARCHA DARSLAR TESTLARI
 
 function renderAllTests() {
- const area = $("testsContent");
- if (!area) return;
+  const container = $("testsContent");
+  if (!container) return;
 
- let html = `
- <h2>📝 Beginner testlari</h2>
- <p>Kerakli darsni tanlang.</p>
- `;
+  container.innerHTML = `
+    <h1>📝 Barcha testlar</h1>
+    <p>O‘zingiz bilimingizni sinab ko‘ring.</p>
 
- lessons.forEach(lesson => {
-  html += `
-   <div class="lesson-card">
-    <h3>${lesson.id}. ${lesson.title}</h3>
-    <p>Mavzu bo‘yicha testlarni ishlash.</p>
-    <button class="check-btn"
-     onclick="openLesson(${lesson.id})">
-     Testni boshlash →
-    </button>
-   </div>
+    <div class="all-tests-list">
+      ${lessons.map(lesson => `
+        <div class="test-lesson-card">
+          <h3>${lesson.id}. ${lesson.title}</h3>
+          <p>${lesson.subtitle}</p>
+
+          <button onclick="openLesson(${lesson.id})">
+            Testni boshlash
+          </button>
+        </div>
+      `).join("")}
+    </div>
   `;
- });
-
- area.innerHTML = html;
 }
 
 
-/* =========================================
-   SPEAKING PAGE
-========================================= */
+// SPEAKING VA TALAFFUZ
 
 function renderSpeaking() {
- const area = $("speakingContent");
- if (!area) return;
+  const container = $("speakingContent");
+  if (!container) return;
 
- let html = `
- <h2>🎧 Speaking & Listening</h2>
- <p>So‘zlarni tinglang va ovoz chiqarib takrorlang.</p>
- `;
+  const words = vocabularyData[currentVocabularyLevel] || [];
 
- lessons.forEach(lesson => {
-  html += `<h3>${lesson.title}</h3>`;
+  container.innerHTML = `
+    <h1>🗣 Speaking & Listening</h1>
 
-  lesson.vocab.slice(0,5).forEach(word => {
-   html += `
-    <div class="vocab-row">
-     <div class="vocab-info">
-      <b>${word[0]}</b>
-      <small>${word[2]}</small>
-     </div>
-     <button class="check-btn"
-      onclick="speakEnglish('${word[0]}')">
-      🔊 Tinglash
-     </button>
+    <p>So‘zlarni tinglang va ovoz chiqarib takrorlang.</p>
+
+    <div class="speaking-word-list">
+
+      ${words.slice(0, 30).map((item, index) => `
+        <div class="speaking-word-card">
+          <div>
+            <strong>${index + 1}. ${item.word}</strong>
+            <p>${item.translation}</p>
+          </div>
+
+          <button onclick="speakEnglish('${item.word}')">
+            🔊 Eshitish
+          </button>
+        </div>
+      `).join("")}
+
+      ${
+        words.length === 0
+        ? "<p>Bu daraja uchun speaking so‘zlari tayyorlanmoqda.</p>"
+        : ""
+      }
+
     </div>
-   `;
-  });
- });
-
- area.innerHTML = html;
+  `;
 }
 
 
-/* =========================================
-   LESSON NAVIGATION
-========================================= */
+// OLDINGI VA KEYINGI DARSGA O‘TISH
 
 function changeLesson(direction) {
- const next = currentLesson + direction;
+  const nextLesson = currentLesson + direction;
 
- if (next < 1) {
-  showMessage("Bu birinchi dars.");
-  return;
- }
+  if (nextLesson < 1) {
+    showMessage("Bu birinchi dars.");
+    return;
+  }
 
- if (next > lessons.length) {
-  showMessage("Beginner kursining barcha darslari tugadi! 🎉");
-  openBeginner();
-  return;
- }
+  if (nextLesson > lessons.length) {
+    showMessage("🎉 Beginner kursini tugatdingiz!");
+    goHome();
+    return;
+  }
 
- openLesson(next);
+  openLesson(nextLesson);
 }
 
 
-/* =========================================
-   MESSAGE
-========================================= */
+// XABAR KO‘RSATISH
 
 function showMessage(text) {
- const message = $("message");
- if (!message) return;
+  let message = $("message");
 
- message.textContent = text;
- message.style.display = "block";
+  if (!message) {
+    message = document.createElement("div");
+    message.id = "message";
 
- clearTimeout(window.englishUpMessageTimer);
+    message.style.position = "fixed";
+    message.style.bottom = "20px";
+    message.style.left = "50%";
+    message.style.transform = "translateX(-50%)";
+    message.style.background = "#17365d";
+    message.style.color = "white";
+    message.style.padding = "12px 20px";
+    message.style.borderRadius = "12px";
+    message.style.zIndex = "9999";
 
- window.englishUpMessageTimer = setTimeout(() => {
-  message.style.display = "none";
- },3000);
+    document.body.appendChild(message);
+  }
+
+  message.textContent = text;
+  message.style.display = "block";
+
+  clearTimeout(window.englishUpMessageTimer);
+
+  window.englishUpMessageTimer = setTimeout(() => {
+    message.style.display = "none";
+  }, 3000);
 }
 
 
-/* =========================================
-   START
-========================================= */
+// DARAJALAR O‘ZGARGANDA SPEAKINGNI YANGILASH
 
-document.addEventListener("DOMContentLoaded",() => {
- updateProgress();
- goHome();
+function openSpeaking() {
+  renderSpeaking();
+  showPage("speakingPage");
+}
+
+
+// SAYT ISHGA TUSHISHI
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateProgress();
+  goHome();
 });
 
-/* HTML onclick functions */
+
+// GLOBAL FUNKSIYALAR
+
 window.goHome = goHome;
 window.openLessons = openLessons;
 window.openBeginner = openBeginner;
@@ -1225,8 +1680,18 @@ window.openVocabulary = openVocabulary;
 window.openTests = openTests;
 window.openSpeaking = openSpeaking;
 window.openProgress = openProgress;
+
 window.speakEnglish = speakEnglish;
 window.checkQuestionGroup = checkQuestionGroup;
 window.markLessonComplete = markLessonComplete;
 window.changeLesson = changeLesson;
 window.showMessage = showMessage;
+
+window.renderVocabulary = renderVocabulary;
+window.filterVocabulary = filterVocabulary;
+window.selectVocabularyLevel = selectVocabularyLevel;
+window.toggleVocabularyLearned = toggleVocabularyLearned;
+
+window.renderAllTests = renderAllTests;
+window.renderSpeaking = renderSpeaking;
+window.renderProgress = renderProgress;
