@@ -1,1 +1,191 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1456a0">
+  <meta name="description" content="English Up Vocabulary — inglizcha so'zlarni bosqichma-bosqich o'rganing.">
+
+  <title>Vocabulary | English Up</title>
+
+  <link rel="stylesheet" href="vocabulary.css">
+</head>
+<body>
+
+  <header class="vocab-header">
+    <a href="index.html" class="back-btn">← Back</a>
+    <div class="brand">
+      <span>ENGLISH</span><strong>UP</strong>
+    </div>
+    <button id="themeToggle" class="theme-btn" aria-label="Change theme">☀️</button>
+  </header>
+
+  <main class="vocab-container">
+
+    <section class="welcome-section">
+      <p class="eyebrow">BUILD YOUR VOCABULARY</p>
+      <h1>VOCABULARY</h1>
+      <p>Learn new words. Improve your English.</p>
+    </section>
+
+    <!-- LEVEL SELECTION -->
+    <section id="levelSection">
+      <h2>Choose Your Level</h2>
+      <div id="levelList" class="level-grid"></div>
+    </section>
+
+    <!-- VOCABULARY TYPE -->
+    <section id="typeSection" class="hidden">
+      <button class="back-link" id="backToLevels">← Levels</button>
+      <h2 id="selectedLevelTitle"></h2>
+
+      <div class="type-grid">
+        <button class="type-card" data-type="general">
+          <span class="type-icon">📚</span>
+          <h3>General Vocabulary</h3>
+          <p>Umumiy lug‘at</p>
+          <span id="generalCount">Words</span>
+        </button>
+
+        <button class="type-card" data-type="daily">
+          <span class="type-icon">📅</span>
+          <h3>Daily Vocabulary</h3>
+          <p>Kunlik lug‘at</p>
+          <span>Daily learning plan</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- DAILY PLAN -->
+    <section id="planSection" class="hidden">
+      <button class="back-link" id="backToTypes">← Back</button>
+      <h2>Choose Your Daily Goal</h2>
+      <p>Bir kunda qancha so‘z o‘rganmoqchisiz?</p>
+
+      <div class="goal-grid">
+        <button class="goal-btn" data-goal="20">20 <small>words/day</small></button>
+        <button class="goal-btn" data-goal="30">30 <small>words/day</small></button>
+        <button class="goal-btn" data-goal="40">40 <small>words/day</small></button>
+      </div>
+
+      <div id="planInfo" class="plan-info"></div>
+      <button id="startPlan" class="primary-btn" disabled>
+        Start Learning
+      </button>
+    </section>
+
+    <!-- DAILY WORDS -->
+    <section id="learningSection" class="hidden">
+      <button class="back-link" id="backToPlan">← Back</button>
+
+      <div class="learning-heading">
+        <div>
+          <p id="dayLabel">DAY 1</p>
+          <h2>Daily Vocabulary</h2>
+        </div>
+        <span id="wordCounter">0 / 30</span>
+      </div>
+
+      <div class="progress-track">
+        <div id="learningProgress" class="progress-fill"></div>
+      </div>
+
+      <div id="wordCard" class="word-card">
+        <p id="wordNumber">WORD 1</p>
+        <h2 id="englishWord">Apple</h2>
+        <button id="pronunciationBtn" class="audio-btn">
+          🔊 Listen
+        </button>
+        <h3 id="uzbekWord">Olma</h3>
+        <div class="example-box">
+          <p>Example</p>
+          <p id="wordExample"></p>
+          <p id="exampleTranslation"></p>
+        </div>
+        <button id="favoriteBtn" class="favorite-btn">☆ Favorite</button>
+      </div>
+
+      <div class="learning-actions">
+        <button id="previousWord" class="secondary-btn">Previous</button>
+        <button id="nextWord" class="primary-btn">Next</button>
+      </div>
+    </section>
+
+    <!-- GENERAL WORDS -->
+    <section id="generalSection" class="hidden">
+      <button class="back-link" id="backFromGeneral">← Back</button>
+      <h2 id="generalTitle">General Vocabulary</h2>
+
+      <input
+        type="search"
+        id="wordSearch"
+        placeholder="Search English or Uzbek word..."
+      >
+
+      <div id="generalWordList" class="word-list"></div>
+    </section>
+
+    <!-- DAILY TEST -->
+    <section id="testSection" class="hidden">
+      <h2>Daily Vocabulary Test</h2>
+      <p id="testProgress"></p>
+
+      <div class="test-card">
+        <p>Choose the correct translation:</p>
+        <h2 id="testQuestion"></h2>
+        <div id="testOptions" class="test-options"></div>
+      </div>
+
+      <p id="testFeedback" aria-live="polite"></p>
+      <button id="nextQuestion" class="primary-btn hidden">
+        Next Question
+      </button>
+    </section>
+
+    <!-- TEST RESULT -->
+    <section id="resultSection" class="hidden">
+      <h2>Test Result</h2>
+      <div class="result-card">
+        <h1 id="resultPercent">0%</h1>
+        <p id="resultMessage"></p>
+        <p id="resultDetails"></p>
+      </div>
+      <button id="retryTest" class="secondary-btn">Try Again</button>
+      <button id="continueLearning" class="primary-btn hidden">
+        Continue to Next Day
+      </button>
+    </section>
+
+    <!-- FAVORITES -->
+    <section id="favoritesSection" class="hidden">
+      <button class="back-link" id="backFromFavorites">← Back</button>
+      <h2>⭐ My Favorite Words</h2>
+      <div id="favoriteWordList" class="word-list"></div>
+    </section>
+
+    <!-- PROGRESS -->
+    <section id="progressSection" class="hidden">
+      <button class="back-link" id="backFromProgress">← Back</button>
+      <h2>📊 My Progress</h2>
+      <div id="progressContent"></div>
+    </section>
+
+    <!-- MAIN NAVIGATION -->
+    <nav class="bottom-nav">
+      <button id="homeNav">🏠<span>Home</span></button>
+      <button id="favoritesNav">⭐<span>Favorites</span></button>
+      <button id="progressNav">📊<span>Progress</span></button>
+    </nav>
+
+  </main>
+
+  <footer class="vocab-footer">
+    <strong>ENGLISH UP</strong>
+    <p>Learn English step by step.</p>
+  </footer>
+
+  <script src="vocabulary.js" defer></script>
+</body>
+</html>
+
