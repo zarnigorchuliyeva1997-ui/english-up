@@ -1,8 +1,9 @@
-
 const $ = id => document.getElementById(id);
 
+// ==================== LEVELS ====================
+
 const levels = [
-  { id: "beginner", name: "Beginner", total: 1000 },
+  { id: "beginner", name: "Beginner", total: 600 },
   { id: "elementary", name: "Elementary", total: 2000 },
   { id: "pre", name: "Pre-Intermediate", total: 2000 },
   { id: "intermediate", name: "Intermediate", total: 2000 },
@@ -10,7 +11,69 @@ const levels = [
   { id: "ielts", name: "IELTS", total: 2000 }
 ];
 
-// Har bir darajaning General va Daily lug'atlari alohida.
+// ==================== BEGINNER: 600 WORDS ====================
+// 20 kun x 30 ta so‘z.
+// Takrorlangan so‘zlar yangi so‘zlar bilan almashtirildi.
+
+const beginnerDays = [
+`House|Uy;Home|Xonadon;Room|Xona;Door|Eshik;Window|Deraza;Wall|Devor;Floor|Pol;Roof|Tom;Table|Stol;Chair|Stul;Bed|Karavot;Kitchen|Oshxona;Bathroom|Hammom;Garden|Bog‘;Family|Oila;Mother|Ona;Father|Ota;Brother|Aka, uka;Sister|Opa, singil;Child|Bola;Baby|Chaqaloq;Son|O‘g‘il;Daughter|Qiz farzand;Friend|Do‘st;Man|Erkak;Woman|Ayol;Boy|O‘g‘il bola;Girl|Qiz bola;People|Odamlar;Name|Ism`,
+
+`Book|Kitob;Pen|Ruchka;Pencil|Qalam;Paper|Qog‘oz;Notebook|Daftar;Bag|Sumka;School|Maktab;Teacher|O‘qituvchi;Student|O‘quvchi;Lesson|Dars;Class|Sinf;Desk|Parta;Board|Doska;Question|Savol;Answer|Javob;Word|So‘z;Sentence|Gap;Letter|Harf;Number|Raqam;Page|Sahifa;Story|Hikoya;Picture|Rasm;Map|Xarita;Test|Sinov;Homework|Uy vazifasi;English|Ingliz tili;Language|Til;Dictionary|Lug‘at;Reading|O‘qish;Writing|Yozish`,
+
+`Water|Suv;Milk|Sut;Tea|Choy;Coffee|Qahva;Juice|Sharbat;Bread|Non;Rice|Guruch;Meat|Go‘sht;Fish|Baliq;Chicken|Tovuq;Egg|Tuxum;Cheese|Pishloq;Butter|Sariyog‘;Sugar|Shakar;Salt|Tuz;Soup|Sho‘rva;Salad|Salat;Apple|Olma;Banana|Banan;Orange|Apelsin;Grape|Uzum;Lemon|Limon;Potato|Kartoshka;Tomato|Pomidor;Onion|Piyoz;Carrot|Sabzi;Breakfast|Nonushta;Lunch|Tushlik;Dinner|Kechki ovqat;Food|Ovqat`,
+
+`Head|Bosh;Hair|Soch;Face|Yuz;Eye|Ko‘z;Ear|Quloq;Nose|Burun;Mouth|Og‘iz;Tooth|Tish;Neck|Bo‘yin;Shoulder|Yelka;Arm|Qo‘l;Hand|Kaft, qo‘l;Finger|Barmoq;Leg|Oyoq;Foot|Oyoq panjasi;Knee|Tizza;Back|Orqa;Heart|Yurak;Body|Tana;Skin|Teri;Blood|Qon;Cheek|Yonoq;Health|Salomatlik;Pain|Og‘riq;Doctor|Shifokor;Nurse|Hamshira;Hospital|Kasalxona;Medicine|Dori;Sick|Kasal;Healthy|Sog‘lom`,
+
+`Go|Bormoq;Come|Kelmoq;Eat|Yemoq;Drink|Ichmoq;Sleep|Uxlamoq;Wake|Uyg‘onmoq;Read|O‘qimoq;Write|Yozmoq;Speak|Gapirmoq;Listen|Tinglamoq;Learn|O‘rganmoq;Teach|O‘rgatmoq;Work|Ishlamoq;Play|O‘ynamoq;Walk|Yurmoq;Run|Yugurmoq;Sit|O‘tirmoq;Stand|Turmoq;Open|Ochmoq;Close|Yopmoq;Start|Boshlamoq;Finish|Tugatmoq;Make|Yasamoq;Do|Bajarmoq;Help|Yordam bermoq;Need|Kerak bo‘lmoq;Want|Xohlamoq;Like|Yoqtirmoq;Love|Sevmoq;Live|Yashamoq`,
+
+`See|Ko‘rmoq;Look|Qaramoq;Watch|Tomosha qilmoq;Hear|Eshitmoq;Say|Aytmoq;Tell|Aytib bermoq;Ask|So‘ramoq;Reply|Javob bermoq;Call|Qo‘ng‘iroq qilmoq;Meet|Uchrashmoq;Know|Bilmoq;Think|O‘ylamoq;Understand|Tushunmoq;Remember|Eslamoq;Forget|Unutmoq;Find|Topmoq;Lose|Yo‘qotmoq;Give|Bermoq;Take|Olmoq;Bring|Olib kelmoq;Buy|Sotib olmoq;Sell|Sotmoq;Pay|To‘lamoq;Send|Yubormoq;Get|Olmoq;Keep|Saqlamoq;Put|Qo‘ymoq;Use|Foydalanmoq;Try|Harakat qilmoq;Wait|Kutmoq`,
+
+`Big|Katta;Small|Kichik;Long|Uzun;Short|Qisqa;Tall|Baland bo‘yli;Low|Past;High|Yuqori;Wide|Keng;Narrow|Tor;Thick|Qalin;Thin|Yupqa;Heavy|Og‘ir;Light|Yengil;Strong|Kuchli;Weak|Kuchsiz;Fast|Tez;Slow|Sekin;Easy|Oson;Difficult|Qiyin;Good|Yaxshi;Bad|Yomon;Beautiful|Chiroyli;Ugly|Xunuk;Clean|Toza;Dirty|Kir;New|Yangi;Old|Eski;Young|Yosh;Rich|Boy;Poor|Kambag‘al`,
+
+`Happy|Xursand;Sad|Xafa;Angry|Jahli chiqqan;Afraid|Qo‘rqqan;Tired|Charchagan;Busy|Band;Free|Bo‘sh;Hungry|Och;Thirsty|Chanqagan;Sleepy|Uyqusi kelgan;Bored|Zerikkan;Excited|Hayajonlangan;Worried|Xavotirlangan;Calm|Tinch;Kind|Mehribon;Nice|Yoqimli;Friendly|Do‘stona;Polite|Odobli;Rude|Qo‘pol;Clever|Aqlli;Stupid|Ahmoq;Funny|Kulgili;Serious|Jiddiy;Shy|Uyatchan;Brave|Jasur;Lazy|Dangasa;Active|Faol;Careful|Ehtiyotkor;Honest|Halol;Important|Muhim`,
+
+`Sun|Quyosh;Moon|Oy;Star|Yulduz;Sky|Osmon;Cloud|Bulut;Rain|Yomg‘ir;Snow|Qor;Wind|Shamol;Storm|Bo‘ron;Weather|Ob-havo;Hot|Issiq;Cold|Sovuq;Warm|Iliq;Cool|Salqin;Spring|Bahor;Summer|Yoz;Autumn|Kuz;Winter|Qish;Season|Fasl;Tree|Daraxt;Flower|Gul;Grass|Maysa;Leaf|Barg;Forest|O‘rmon;River|Daryo;Lake|Ko‘l;Sea|Dengiz;Mountain|Tog‘;Earth|Yer;Nature|Tabiat`,
+
+`Cat|Mushuk;Dog|It;Bird|Qush;Horse|Ot;Cow|Sigir;Sheep|Qo‘y;Goat|Echki;Pig|Cho‘chqa;Duck|O‘rdak;Hen|Tovuq;Rabbit|Quyon;Mouse|Sichqon;Lion|Sher;Tiger|Yo‘lbars;Elephant|Fil;Monkey|Maymun;Bear|Ayiq;Wolf|Bo‘ri;Fox|Tulki;Deer|Kiyik;Snake|Ilon;Frog|Qurbaqa;Turtle|Toshbaqa;Bee|Asalari;Butterfly|Kapalak;Ant|Chumoli;Fly|Pashsha;Spider|O‘rgimchak;Insect|Hasharot;Animal|Hayvon`,
+
+`Red|Qizil;Blue|Ko‘k;Green|Yashil;Yellow|Sariq;Black|Qora;White|Oq;Brown|Jigarrang;Pink|Pushti;Purple|Binafsha;Turquoise|Feruza rang;Grey|Kulrang;Gold|Oltin rang;Silver|Kumush rang;Color|Rang;Shirt|Ko‘ylak;T-shirt|Futbolka;Trousers|Shim;Jeans|Jinsi shim;Dress|Ko‘ylak;Skirt|Yubka;Jacket|Kurtka;Coat|Palto;Shoes|Oyoq kiyim;Socks|Paypoq;Hat|Shlyapa;Cap|Kepka;Scarf|Sharf;Gloves|Qo‘lqop;Belt|Kamar;Clothes|Kiyimlar`,
+
+`One|Bir;Two|Ikki;Three|Uch;Four|To‘rt;Five|Besh;Six|Olti;Seven|Yetti;Eight|Sakkiz;Nine|To‘qqiz;Ten|O‘n;Eleven|O‘n bir;Twelve|O‘n ikki;Thirteen|O‘n uch;Fourteen|O‘n to‘rt;Fifteen|O‘n besh;Sixteen|O‘n olti;Seventeen|O‘n yetti;Eighteen|O‘n sakkiz;Nineteen|O‘n to‘qqiz;Twenty|Yigirma;Thirty|O‘ttiz;Forty|Qirq;Fifty|Ellik;Sixty|Oltmish;Seventy|Yetmish;Eighty|Sakson;Ninety|To‘qson;Hundred|Yuz;Thousand|Ming;First|Birinchi`,
+
+`Monday|Dushanba;Tuesday|Seshanba;Wednesday|Chorshanba;Thursday|Payshanba;Friday|Juma;Saturday|Shanba;Sunday|Yakshanba;Week|Hafta;Month|Oy;Year|Yil;Today|Bugun;Tomorrow|Ertaga;Yesterday|Kecha;Morning|Ertalab;Afternoon|Tushdan keyin;Evening|Kechqurun;Night|Tun;Hour|Soat;Minute|Daqiqa;Second|Soniya;Time|Vaqt;Early|Erta;Late|Kech;Now|Hozir;Soon|Tez orada;Always|Har doim;Usually|Odatda;Sometimes|Ba’zan;Never|Hech qachon;Often|Tez-tez`,
+
+`Street|Ko‘cha;Road|Yo‘l;City|Shahar;Village|Qishloq;Country|Mamlakat;Town|Shaharcha;Shop|Do‘kon;Market|Bozor;Bank|Bank;Park|Bog‘;Station|Bekat;Airport|Aeroport;Hotel|Mehmonxona;Restaurant|Restoran;Cafe|Kafe;Hospital|Kasalxona;Pharmacy|Dorixona;Library|Kutubxona;Museum|Muzey;Cinema|Kinoteatr;Office|Ofis;Factory|Zavod;Farm|Ferma;Church|Cherkov;Mosque|Masjid;Bridge|Ko‘prik;Building|Bino;Address|Manzil;Place|Joy;Center|Markaz`,
+
+`Car|Mashina;Bus|Avtobus;Train|Poyezd;Plane|Samolyot;Bicycle|Velosiped;Motorcycle|Mototsikl;Taxi|Taksi;Truck|Yuk mashinasi;Boat|Qayiq;Ship|Kema;Highway|Magistral yo‘l;Traffic|Yo‘l harakati;Driver|Haydovchi;Passenger|Yo‘lovchi;Ticket|Chipta;Travel|Sayohat;Trip|Safar;Journey|Sayohat;Backpack|Ryukzak;Suitcase|Chamadon;Passport|Pasport;Direction|Yo‘nalish;Arrival|Yetib kelish;Departure|Jo‘nab ketish;Left|Chap;Right|O‘ng;Straight|To‘g‘ri;Near|Yaqin;Far|Uzoq;Distance|Masofa`,
+
+`Money|Pul;Price|Narx;Cost|Qiymat;Cheap|Arzon;Expensive|Qimmat;Shopkeeper|Do‘kondor;Customer|Xaridor;Seller|Sotuvchi;Buyer|Xaridor;Cash|Naqd pul;Card|Karta;Coin|Tanga;Note|Banknota;Wallet|Hamyon;Purse|Hamyoncha;Change|Qaytim;Bill|Hisob;Sale|Savdo;Supermarket|Supermarket;Store|Do‘kon;Product|Mahsulot;Item|Buyum;Size|O‘lcham;Weight|Og‘irlik;Kilo|Kilogramm;Gram|Gramm;Piece|Dona;Pair|Juft;Enough|Yetarli;Extra|Qo‘shimcha`,
+
+`Phone|Telefon;Mobile|Mobil telefon;Computer|Kompyuter;Laptop|Noutbuk;Screen|Ekran;Keyboard|Klaviatura;Mouse|Sichqoncha;Internet|Internet;Website|Veb-sayt;Email|Elektron pochta;Message|Xabar;Photo|Surat;Video|Video;Camera|Kamera;Radio|Radio;Television|Televizor;News|Yangiliklar;Music|Musiqa;Song|Qo‘shiq;Movie|Film;Game|O‘yin;App|Ilova;Password|Parol;File|Fayl;Download|Yuklab olish;Upload|Yuklash;Search|Qidirmoq;Click|Bosmoq;Share|Ulashmoq;Online|Onlayn`,
+
+`Quince|Behi;Pear|Nok;Peach|Shaftoli;Plum|Olxo‘ri;Cherry|Gilos;Strawberry|Qulupnay;Watermelon|Tarvuz;Melon|Qovun;Apricot|O‘rik;Pomegranate|Anor;Fig|Anjir;Date|Xurmo;Pineapple|Ananas;Mango|Mango;Coconut|Kokos;Cucumber|Bodring;Cabbage|Karam;Pepper|Qalampir;Garlic|Sarimsoq;Bean|Loviya;Pea|No‘xat;Corn|Makkajo‘xori;Pumpkin|Qovoq;Mushroom|Qo‘ziqorin;Lettuce|Salat bargi;Flour|Un;Honey|Asal;Jam|Murabbo;Cake|Tort;Biscuit|Pechenye`,
+
+`Cook|Ovqat pishirmoq;Wash|Yuvmoq;Dust|Chang artmoq;Sweep|Supurmoq;Mop|Pol artmoq;Cut|Kesmoq;Break|Sindirmoq;Fix|Tuzatmoq;Build|Qurmoq;Draw|Chizmoq;Paint|Bo‘yamoq;Dance|Raqsga tushmoq;Sing|Qo‘shiq aytmoq;Smile|Tabassum qilmoq;Laugh|Kulmoq;Whisper|Pichirlamoq;Jump|Sakramoq;Swim|Suzmoq;Drive|Haydamoq;Ride|Minmoq;Glide|Sirpanib uchmoq;Climb|Chiqmoq;Fall|Yiqilmoq;Carry|Ko‘tarmoq;Push|Itarmoq;Pull|Tortmoq;Throw|Otmoq;Catch|Tutmoq;Touch|Tegmoq;Drop|Tushirib yubormoq`,
+
+`Discover|Kashf qilmoq;Choose|Tanlamoq;Decide|Qaror qilmoq;Plan|Rejalashtirmoq;Adjust|Moslashtirmoq;Move|Harakatlanmoq;Turn|Burilmoq;Follow|Ergashmoq;Lead|Boshqarmoq;Stop|To‘xtamoq;Continue|Davom ettirmoq;Return|Qaytmoq;Leave|Ketmoq;Arrive|Yetib kelmoq;Enter|Kirmoq;Exit|Chiqmoq;Pass|O‘tmoq;Cross|Kesib o‘tmoq;Reach|Yetib bormoq;Explore|Kezmoq;Stay|Qolmoq;Visit|Tashrif buyurmoq;Invite|Taklif qilmoq;Join|Qo‘shilmoq;Accept|Qabul qilmoq;Refuse|Rad etmoq;Agree|Rozi bo‘lmoq;Promise|Va’da bermoq;Explain|Tushuntirmoq;Describe|Tasvirlamoq`
+];
+
+// Kunlik so‘zlarni mavjud dastur formatiga aylantiramiz.
+const beginnerDaily = beginnerDays.flatMap(day =>
+  day.split(";").map(item => {
+    const [english, uzbek] = item.split("|");
+    return [
+      english,
+      uzbek,
+      "",
+      `I can use "${english}" in English.`,
+      `Men ingliz tilida "${uzbek}" so‘zini ishlata olaman.`,
+      "noun"
+    ];
+  })
+);
+
+// ==================== OTHER VOCABULARY ====================
+
 const vocabulary = {
   beginner: {
     general: [
@@ -35,38 +98,7 @@ const vocabulary = {
       ["speak","Gapirmoq","spiːk","Speak slowly, please.","Iltimos, sekin gapiring.","verb"],
       ["help","Yordam bermoq","help","Can you help me?","Menga yordam bera olasizmi?","verb"]
     ],
-    daily: [
-      ["teacher","O‘qituvchi","ˈtiː.tʃər","My teacher is nice.","O‘qituvchim yaxshi.","noun"],
-      ["student","O‘quvchi","ˈstjuː.dənt","She is a student.","U o‘quvchi.","noun"],
-      ["table","Stol","ˈteɪ.bəl","The book is on the table.","Kitob stol ustida.","noun"],
-      ["chair","Stul","tʃeər","Sit on the chair.","Stulga o‘tiring.","noun"],
-      ["door","Eshik","dɔːr","Open the door.","Eshikni oching.","noun"],
-      ["window","Deraza","ˈwɪn.dəʊ","Close the window.","Derazani yoping.","noun"],
-      ["pen","Ruchka","pen","This is my pen.","Bu mening ruchkam.","noun"],
-      ["bag","Sumka","bæɡ","My bag is black.","Sumkam qora.","noun"],
-      ["phone","Telefon","fəʊn","My phone is new.","Telefonim yangi.","noun"],
-      ["room","Xona","ruːm","My room is clean.","Xonam toza.","noun"],
-      ["open","Ochmoq","ˈəʊ.pən","Open your book.","Kitobingizni oching.","verb"],
-      ["close","Yopmoq","kləʊz","Close the door.","Eshikni yoping.","verb"],
-      ["sit","O‘tirmoq","sɪt","Please sit here.","Iltimos, shu yerga o‘tiring.","verb"],
-      ["stand","Turmoq","stænd","Stand near me.","Yonimda turing.","verb"],
-      ["listen","Tinglamoq","ˈlɪs.ən","Listen carefully.","Diqqat bilan tinglang.","verb"],
-      ["watch","Tomosha qilmoq","wɒtʃ","I watch TV.","Men televizor ko‘raman.","verb"],
-      ["sleep","Uxlamoq","sliːp","I sleep at night.","Men tunda uxlayman.","verb"],
-      ["wake","Uyg‘onmoq","weɪk","I wake up early.","Men erta uyg‘onaman.","verb"],
-      ["walk","Piyoda yurmoq","wɔːk","We walk to school.","Biz maktabga piyoda boramiz.","verb"],
-      ["buy","Sotib olmoq","baɪ","I buy some bread.","Men biroz non sotib olaman.","verb"],
-      ["bread","Non","bred","I like fresh bread.","Men yangi nonni yoqtiraman.","noun"],
-      ["milk","Sut","mɪlk","The milk is cold.","Sut sovuq.","noun"],
-      ["morning","Ertalab","ˈmɔː.nɪŋ","Good morning!","Xayrli tong!","noun"],
-      ["evening","Kechqurun","ˈiːv.nɪŋ","Good evening!","Xayrli kech!","noun"],
-      ["today","Bugun","təˈdeɪ","Today is Monday.","Bugun dushanba.","adverb"],
-      ["happy","Xursand","ˈhæp.i","I am happy.","Men xursandman.","adjective"],
-      ["small","Kichik","smɔːl","It is a small house.","Bu kichik uy.","adjective"],
-      ["big","Katta","bɪɡ","They have a big car.","Ularda katta mashina bor.","adjective"],
-      ["beautiful","Chiroyli","ˈbjuː.tɪ.fəl","It is a beautiful day.","Bugun chiroyli kun.","adjective"],
-      ["important","Muhim","ɪmˈpɔː.tənt","English is important.","Ingliz tili muhim.","adjective"]
-    ]
+    daily: beginnerDaily
   },
 
   elementary: {
@@ -157,6 +189,8 @@ const vocabulary = {
   }
 };
 
+// ==================== STATE ====================
+
 const state = {
   level: null,
   type: null,
@@ -183,6 +217,7 @@ function showSection(id) {
     "learningSection", "generalSection", "testSection",
     "resultSection", "favoritesSection", "progressSection"
   ];
+
   sections.forEach(section => $(section).classList.add("hidden"));
   $(id).classList.remove("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -191,6 +226,8 @@ function showSection(id) {
 function getWords(level, type = "general") {
   return vocabulary[level]?.[type] || [];
 }
+
+// ==================== LEVELS ====================
 
 function renderLevels() {
   $("levelList").innerHTML = levels.map(level => `
@@ -208,13 +245,15 @@ function renderLevels() {
 function selectLevel(id) {
   state.level = id;
   const level = levels.find(item => item.id === id);
-  $("selectedLevelTitle").textContent = level.name;
 
-  const count = getWords(id, "general").length;
-  $("generalCount").textContent = `${count} words available`;
+  $("selectedLevelTitle").textContent = level.name;
+  $("generalCount").textContent =
+    `${getWords(id, "general").length} words available`;
 
   showSection("typeSection");
 }
+
+// ==================== TYPE SELECTION ====================
 
 document.querySelectorAll("[data-type]").forEach(button => {
   button.addEventListener("click", () => {
@@ -225,9 +264,12 @@ document.querySelectorAll("[data-type]").forEach(button => {
       showSection("generalSection");
     } else {
       state.goal = 30;
+
       document.querySelectorAll(".goal-btn").forEach(btn => {
         btn.classList.toggle("active", Number(btn.dataset.goal) === 30);
+        btn.disabled = Number(btn.dataset.goal) !== 30;
       });
+
       updatePlanInfo();
       $("startPlan").disabled = false;
       showSection("planSection");
@@ -235,41 +277,38 @@ document.querySelectorAll("[data-type]").forEach(button => {
   });
 });
 
+// ==================== DAILY PLAN ====================
+
 function updatePlanInfo() {
   const total = getWords(state.level, "daily").length;
-  const days = Math.max(1, Math.ceil(total / state.goal));
+  const days = Math.ceil(total / 30);
 
   $("planInfo").innerHTML =
-    `📚 Hozircha: <strong>${total}</strong> ta so‘z mavjud<br>` +
-    `🎯 Kunlik maqsad: <strong>${state.goal}</strong> ta so‘z<br>` +
-    `📅 Hozirgi bazada: <strong>${days}</strong> kunlik material`;
+    `📚 Jami: <strong>${total}</strong> ta so‘z<br>` +
+    `🎯 Kunlik maqsad: <strong>30</strong> ta so‘z<br>` +
+    `📅 Umumiy reja: <strong>${days}</strong> kun`;
 }
 
-document.querySelectorAll(".goal-btn").forEach(button => {
-  button.addEventListener("click", () => {
-    state.goal = Number(button.dataset.goal);
-    document.querySelectorAll(".goal-btn").forEach(btn => {
-      btn.classList.toggle("active", btn === button);
-    });
-    updatePlanInfo();
-  });
-});
-
 $("startPlan").addEventListener("click", () => {
+  state.goal = 30;
+
   const key = `${state.level}_daily`;
   const saved = state.progress[key] || { day: 1, passed: [] };
+
   state.day = saved.day || 1;
   state.index = 0;
+
   loadDailyWords();
 });
 
 function loadDailyWords() {
   const all = getWords(state.level, "daily");
-  const start = (state.day - 1) * state.goal;
-  state.words = all.slice(start, start + state.goal);
+  const start = (state.day - 1) * 30;
+
+  state.words = all.slice(start, start + 30);
 
   if (!state.words.length) {
-    alert("Hozircha keyingi kun uchun yangi so‘zlar qo‘shilmagan.");
+    alert("🎉 Siz barcha mavjud kunlarni tugatdingiz!");
     showSection("typeSection");
     return;
   }
@@ -278,6 +317,8 @@ function loadDailyWords() {
   renderWord();
   showSection("learningSection");
 }
+
+// ==================== WORD LEARNING ====================
 
 function renderWord() {
   const word = state.words[state.index];
@@ -297,32 +338,41 @@ function renderWord() {
   );
 
   $("favoriteBtn").textContent = isFavorite ? "★ Favorite" : "☆ Favorite";
+
   $("previousWord").disabled = state.index === 0;
+
   $("nextWord").textContent =
     state.index === state.words.length - 1 ? "Take Test" : "Next";
 }
 
 $("pronunciationBtn").addEventListener("click", () => {
   const word = state.words[state.index];
+
   if (!("speechSynthesis" in window)) {
     alert("Audio bu brauzerda ishlamaydi.");
     return;
   }
+
   const speech = new SpeechSynthesisUtterance(word[0]);
   speech.lang = "en-US";
   speech.rate = 0.8;
+
   speechSynthesis.cancel();
   speechSynthesis.speak(speech);
 });
 
 $("favoriteBtn").addEventListener("click", () => {
   const word = state.words[state.index];
+
   const index = state.favorites.findIndex(item =>
     item[0] === word[0] && item[item.length - 1] === state.level
   );
 
-  if (index >= 0) state.favorites.splice(index, 1);
-  else state.favorites.push([...word, state.level]);
+  if (index >= 0) {
+    state.favorites.splice(index, 1);
+  } else {
+    state.favorites.push([...word, state.level]);
+  }
 
   saveData();
   renderWord();
@@ -344,10 +394,14 @@ $("nextWord").addEventListener("click", () => {
   }
 });
 
+// ==================== GENERAL VOCABULARY ====================
+
 function renderGeneral() {
   const words = getWords(state.level, "general");
+
   $("generalTitle").textContent =
     `${levels.find(item => item.id === state.level).name} — General Vocabulary`;
+
   $("wordSearch").value = "";
   displayGeneralWords(words);
 }
@@ -367,29 +421,37 @@ function displayGeneralWords(words) {
 
 $("wordSearch").addEventListener("input", event => {
   const query = event.target.value.toLowerCase().trim();
+
   const filtered = getWords(state.level, "general").filter(word =>
     word[0].toLowerCase().includes(query) ||
     word[1].toLowerCase().includes(query)
   );
+
   displayGeneralWords(filtered);
 });
+
+// ==================== TEST ====================
 
 function startTest() {
   state.questions = [...state.words].sort(() => Math.random() - 0.5);
   state.questionIndex = 0;
   state.score = 0;
   state.answered = false;
+
   renderQuestion();
   showSection("testSection");
 }
 
 function renderQuestion() {
   const word = state.questions[state.questionIndex];
+
   $("testProgress").textContent =
     `Question ${state.questionIndex + 1} / ${state.questions.length}`;
+
   $("testQuestion").textContent = word[0];
   $("testFeedback").textContent = "";
   $("nextQuestion").classList.add("hidden");
+
   state.answered = false;
 
   const all = [
@@ -402,7 +464,8 @@ function renderQuestion() {
     .sort(() => Math.random() - 0.5)
     .slice(0, 3);
 
-  const options = [...otherWords, word].sort(() => Math.random() - 0.5);
+  const options = [...otherWords, word]
+    .sort(() => Math.random() - 0.5);
 
   $("testOptions").innerHTML = options.map(option => `
     <button class="test-option" data-answer="${option[0]}">
@@ -417,18 +480,22 @@ function renderQuestion() {
 
 function checkAnswer(button, correctWord) {
   if (state.answered) return;
+
   state.answered = true;
 
   const correct = button.dataset.answer === correctWord[0];
+
   if (correct) {
     state.score++;
     $("testFeedback").textContent = "✅ Correct!";
   } else {
-    $("testFeedback").textContent = `❌ Correct answer: ${correctWord[1]}`;
+    $("testFeedback").textContent =
+      `❌ Correct answer: ${correctWord[1]}`;
   }
 
   document.querySelectorAll(".test-option").forEach(option => {
     option.disabled = true;
+
     if (option.dataset.answer === correctWord[0]) {
       option.classList.add("correct");
     } else if (option === button) {
@@ -437,6 +504,7 @@ function checkAnswer(button, correctWord) {
   });
 
   $("nextQuestion").classList.remove("hidden");
+
   $("nextQuestion").textContent =
     state.questionIndex === state.questions.length - 1
       ? "See Result"
@@ -445,9 +513,15 @@ function checkAnswer(button, correctWord) {
 
 $("nextQuestion").addEventListener("click", () => {
   state.questionIndex++;
-  if (state.questionIndex < state.questions.length) renderQuestion();
-  else showResult();
+
+  if (state.questionIndex < state.questions.length) {
+    renderQuestion();
+  } else {
+    showResult();
+  }
 });
+
+// ==================== TEST RESULT ====================
 
 function showResult() {
   const total = state.questions.length;
@@ -455,24 +529,35 @@ function showResult() {
   const passed = percent >= 80;
 
   $("resultPercent").textContent = `${percent}%`;
+
   $("resultMessage").textContent = passed
     ? "🎉 Excellent! You passed."
     : "📖 Keep practising. You can try again.";
+
   $("resultDetails").textContent =
     `${state.score} correct answers out of ${total}.`;
 
   const key = `${state.level}_daily`;
-  if (!state.progress[key]) state.progress[key] = { day: 1, passed: [] };
+
+  if (!state.progress[key]) {
+    state.progress[key] = { day: 1, passed: [] };
+  }
 
   if (passed) {
     if (!state.progress[key].passed.includes(state.day)) {
       state.progress[key].passed.push(state.day);
     }
-    state.progress[key].day = Math.max(state.progress[key].day, state.day + 1);
+
+    state.progress[key].day = Math.max(
+      state.progress[key].day,
+      state.day + 1
+    );
   }
 
   saveData();
+
   $("continueLearning").classList.toggle("hidden", !passed);
+
   showSection("resultSection");
 }
 
@@ -483,6 +568,8 @@ $("continueLearning").addEventListener("click", () => {
   state.index = 0;
   loadDailyWords();
 });
+
+// ==================== FAVORITES ====================
 
 function renderFavorites() {
   $("favoriteWordList").innerHTML = state.favorites.length
@@ -496,25 +583,37 @@ function renderFavorites() {
     : "<p>Hozircha sevimli so‘zlar yo‘q.</p>";
 }
 
+// ==================== PROGRESS ====================
+
 function renderProgress() {
   let html = "";
+
   levels.forEach(level => {
     const data = state.progress[`${level.id}_daily`] || {
       day: 1,
       passed: []
     };
+
+    const totalDays = level.id === "beginner" ? 20 : 0;
+
     html += `
       <div class="word-item">
         <strong>${level.name}</strong>
         <p>Ochilgan kun: ${data.day}</p>
         <p>O‘tilgan kunlar: ${data.passed.length}</p>
+        ${totalDays ? `<p>Jami kunlar: ${totalDays}</p>` : ""}
       </div>
     `;
   });
+
   $("progressContent").innerHTML = html;
 }
 
-$("homeNav").addEventListener("click", () => showSection("levelSection"));
+// ==================== BOTTOM NAVIGATION ====================
+
+$("homeNav").addEventListener("click", () => {
+  showSection("levelSection");
+});
 
 $("favoritesNav").addEventListener("click", () => {
   renderFavorites();
@@ -526,17 +625,41 @@ $("progressNav").addEventListener("click", () => {
   showSection("progressSection");
 });
 
-$("backToLevels").addEventListener("click", () => showSection("levelSection"));
-$("backToTypes").addEventListener("click", () => showSection("typeSection"));
-$("backToPlan").addEventListener("click", () => showSection("planSection"));
-$("backFromGeneral").addEventListener("click", () => showSection("typeSection"));
-$("backFromFavorites").addEventListener("click", () => showSection("levelSection"));
-$("backFromProgress").addEventListener("click", () => showSection("levelSection"));
+// ==================== BACK BUTTONS ====================
+
+$("backToLevels").addEventListener("click", () => {
+  showSection("levelSection");
+});
+
+$("backToTypes").addEventListener("click", () => {
+  showSection("typeSection");
+});
+
+$("backToPlan").addEventListener("click", () => {
+  showSection("planSection");
+});
+
+$("backFromGeneral").addEventListener("click", () => {
+  showSection("typeSection");
+});
+
+$("backFromFavorites").addEventListener("click", () => {
+  showSection("levelSection");
+});
+
+$("backFromProgress").addEventListener("click", () => {
+  showSection("levelSection");
+});
+
+// ==================== DARK MODE ====================
 
 $("themeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark");
+
   const dark = document.body.classList.contains("dark");
+
   $("themeToggle").textContent = dark ? "🌙" : "☀️";
+
   localStorage.setItem("euVocabTheme", dark ? "dark" : "light");
 });
 
@@ -544,6 +667,8 @@ if (localStorage.getItem("euVocabTheme") === "dark") {
   document.body.classList.add("dark");
   $("themeToggle").textContent = "🌙";
 }
+
+// ==================== START APP ====================
 
 renderLevels();
 showSection("levelSection");
