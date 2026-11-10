@@ -1,523 +1,453 @@
-
-:root {
-  --primary: #1456a0;
-  --primary-light: #eaf2ff;
-  --bg: #f4f7fc;
-  --card: #ffffff;
-  --text: #17243a;
-  --muted: #718096;
-  --border: #e4eaf2;
-  --shadow: 0 8px 25px rgba(20, 50, 90, .08);
-}
-
+/* ==========================================
+   ASOSIY SOZLAMALAR
+========================================== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  transition: .25s;
-}
-
-button, input {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-}
-
-.vocab-header {
-  height: 70px;
-  background: var(--card);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5%;
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.back-btn, .back-link {
-  text-decoration: none;
-  color: var(--primary);
-  font-weight: 700;
-  background: transparent;
-}
-
-.brand {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.brand strong, .vocab-footer strong {
-  color: var(--primary);
-}
-
-.theme-btn {
-  background: var(--primary-light);
-  padding: 10px;
-  border-radius: 12px;
-  font-size: 18px;
-}
-
-.vocab-container {
-  width: min(100% - 30px, 1050px);
-  margin: 30px auto 110px;
-}
-
-.welcome-section {
-  text-align: center;
-  padding: 35px 15px;
-  margin-bottom: 30px;
-  background: linear-gradient(135deg, #1456a0, #287de0);
-  color: white;
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-}
-
-.eyebrow {
-  font-size: 12px;
-  letter-spacing: 3px;
-  opacity: .85;
-  margin-bottom: 12px;
-}
-
-.welcome-section h1 {
-  font-size: clamp(30px, 6vw, 48px);
-  margin-bottom: 10px;
-}
-
-.welcome-section p:last-child {
-  opacity: .9;
-}
-
-section h2 {
-  font-size: 23px;
-  margin-bottom: 18px;
-}
-
-.level-grid, .type-grid, .goal-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 15px;
-}
-
-.level-card, .type-card, .goal-btn {
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 17px;
-  padding: 23px 15px;
-  text-align: left;
-  box-shadow: var(--shadow);
-  transition: .2s;
-}
-
-.level-card:hover, .type-card:hover, .goal-btn:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary);
-}
-
-.level-card h3, .type-card h3 {
-  margin-bottom: 8px;
-  font-size: 17px;
-}
-
-.level-card p, .type-card p {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.type-card {
-  text-align: center;
-  padding: 28px 15px;
-}
-
-.type-icon {
-  font-size: 35px;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.type-card span:last-child {
-  color: var(--primary);
-  font-size: 13px;
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
-}
-
-.goal-btn {
-  text-align: center;
-  font-size: 27px;
-  font-weight: 800;
-}
-
-.goal-btn small {
-  display: block;
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 7px;
-}
-
-.goal-btn.active {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
-}
-
-.goal-btn.active small {
-  color: white;
-}
-
-.plan-info {
-  background: var(--primary-light);
-  padding: 18px;
-  border-radius: 14px;
-  margin: 20px 0;
-  line-height: 1.8;
-}
-
-.primary-btn, .secondary-btn {
-  padding: 14px 22px;
-  border-radius: 12px;
-  font-weight: 700;
-  min-height: 48px;
-}
-
-.primary-btn {
-  background: var(--primary);
-  color: white;
-}
-
-.primary-btn:disabled {
-  opacity: .45;
-  cursor: not-allowed;
-}
-
-.secondary-btn {
-  background: var(--primary-light);
-  color: var(--primary);
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 22px;
-}
-
-.learning-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.learning-heading p, #wordNumber {
-  color: var(--primary);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-#wordCounter {
-  color: var(--muted);
-  font-weight: bold;
-}
-
-.progress-track {
-  height: 9px;
-  background: var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 22px;
-}
-
-.progress-fill {
-  width: 0;
-  height: 100%;
-  background: #20b77a;
-  transition: .3s;
-}
-
-.word-card, .test-card, .result-card {
-  background: var(--card);
-  padding: 30px 20px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.word-card h2 {
-  font-size: 34px;
-  margin: 15px 0;
-}
-
-.audio-btn {
-  background: var(--primary-light);
-  color: var(--primary);
-  border-radius: 25px;
-  padding: 10px 18px;
-  margin: 5px 0 18px;
-}
-
-.word-card h3 {
-  font-size: 23px;
-  margin-bottom: 22px;
-}
-
-.example-box {
-  background: var(--bg);
-  border-radius: 13px;
-  padding: 17px;
-  line-height: 1.7;
-  text-align: left;
-}
-
-.example-box p:first-child {
-  color: var(--primary);
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-#exampleTranslation {
-  color: var(--muted);
-  margin-top: 5px;
-}
-
-.favorite-btn {
-  margin-top: 18px;
-  padding: 10px 18px;
-  border-radius: 20px;
-  color: #d18b00;
-  background: #fff5d9;
-}
-
-.learning-actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.learning-actions button {
-  flex: 1;
-}
-
-#wordSearch {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
-  color: var(--text);
-  margin-bottom: 18px;
-  outline: none;
-}
-
-.word-list {
-  display: grid;
-  gap: 12px;
-}
-
-.word-item {
-  background: var(--card);
-  padding: 17px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  box-shadow: var(--shadow);
-}
-
-.word-item strong {
-  color: var(--primary);
-  font-size: 17px;
-}
-
-.word-item p {
-  margin-top: 6px;
-  color: var(--muted);
-}
-
-.test-card {
-  margin-top: 18px;
-}
-
-.test-card h2 {
-  margin: 20px 0;
-}
-
-.test-options {
-  display: grid;
-  gap: 10px;
-}
-
-.test-option {
-  padding: 14px;
-  background: var(--bg);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 11px;
-  text-align: left;
-}
-
-.test-option:hover {
-  border-color: var(--primary);
-}
-
-.test-option.correct {
-  background: #d9f8e8;
-  border-color: #20a66b;
-  color: #087344;
-}
-
-.test-option.wrong {
-  background: #ffe5e5;
-  border-color: #e05b5b;
-  color: #a32626;
-}
-
-#testFeedback {
-  margin: 15px 0;
-  font-weight: bold;
-}
-
-.result-card h1 {
-  font-size: 55px;
-  color: var(--primary);
-  margin-bottom: 15px;
-}
-
-.result-card p {
-  margin: 10px 0;
-  line-height: 1.6;
-}
-
-#retryTest, #continueLearning {
-  margin-top: 15px;
-  width: 100%;
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: var(--card);
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 5px;
-  z-index: 20;
-}
-
-.bottom-nav button {
-  background: transparent;
-  color: var(--muted);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-size: 20px;
-}
-
-.bottom-nav span {
-  font-size: 11px;
-}
-
-.vocab-footer {
-  text-align: center;
-  padding: 25px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.vocab-footer p {
-  margin-top: 7px;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
 }
 
 .hidden {
-  display: none !important;
+    display: none !important;
 }
 
-/* DARK MODE */
-body.dark {
-  --bg: #101827;
-  --card: #1b293c;
-  --text: #edf3fc;
-  --muted: #a5b3c7;
-  --border: #304159;
-  --primary-light: #263d5c;
-  --shadow: 0 8px 25px rgba(0, 0, 0, .15);
+/* ==========================================
+   HEADER (YUQORI QISM)
+========================================== */
+.vocab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-body.dark .test-option {
-  background: #26364c;
+.back-btn {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
 }
 
-body.dark .test-option.correct {
-  background: #164b38;
-  color: #a7f3d0;
+.brand span {
+    color: #6a1b9a;
+    font-weight: 300;
+}
+.brand strong {
+    color: #6a1b9a;
+    font-weight: 800;
 }
 
-body.dark .test-option.wrong {
-  background: #542d36;
-  color: #fecaca;
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-@media (min-width: 700px) {
-  .level-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .type-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .goal-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .word-card {
-    padding: 45px;
-  }
+/* ==========================================
+   ASOSIY KONTEYNER
+========================================== */
+.vocab-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-@media (max-width: 420px) {
-  .vocab-container {
-    width: calc(100% - 22px);
-    margin-top: 18px;
-  }
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
 
-  .level-grid, .type-grid {
+.eyebrow {
+    color: #7f8c8d;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* ==========================================
+   DARAJALAR (BEGINNER)
+========================================== */
+.level-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.level-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.level-card:hover {
+    border-color: #1456a0;
+    box-shadow: 0 4px 12px rgba(20, 86, 160, 0.1);
+}
+
+.level-card h3 {
+    color: #1456a0;
+    margin-bottom: 5px;
+}
+
+.level-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* ==========================================
+   40 KUNLIK REJA (GRID)
+========================================== */
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 10px;
-  }
-
-  .level-card, .type-card {
-    padding: 18px 10px;
-  }
-
-  .level-card h3, .type-card h3 {
-    font-size: 15px;
-  }
-
-  .welcome-section {
-    padding: 28px 12px;
-  }
-
-  .word-card h2 {
-    font-size: 29px;
-  }
+    margin-top: 20px;
 }
 
+.day-card {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.day-card:hover:not(.locked) {
+    border-color: #1456a0;
+}
+
+.day-card.completed {
+    background: #e8f5e9;
+    border-color: #4caf50;
+    color: #2e7d32;
+}
+
+.day-card.completed::after {
+    content: " ✅";
+    display: block;
+    font-size: 12px;
+}
+
+.day-card.locked {
+    background: #f0f0f0;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.day-card.locked::after {
+    content: " 🔒";
+    display: block;
+    font-size: 12px;
+}
+
+/* ==========================================
+   SO'ZLAR KARTOCHKASI
+========================================== */
+.learning-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#wordCounter {
+    background: #e3f2fd;
+    color: #1456a0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.progress-track {
+    width: 100%;
+    background: #e0e0e0;
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #1456a0;
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.word-card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#wordNumber {
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+#englishWord {
+    font-size: 36px;
+    color: #1456a0;
+    margin-bottom: 10px;
+}
+
+.audio-btn {
+    background: #f0f4f9;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #1456a0;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+    transition: 0.2s;
+}
+
+.audio-btn:hover {
+    background: #e3f2fd;
+}
+
+#uzbekWord {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.example-box {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 4px solid #1456a0;
+    margin-bottom: 20px;
+}
+
+.example-box p:first-child {
+    font-size: 12px;
+    color: #888;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+#wordExample {
+    font-style: italic;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+#exampleTranslation {
+    font-size: 14px;
+    color: #666;
+}
+
+.favorite-btn {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #666;
+    transition: 0.2s;
+}
+
+.favorite-btn:hover {
+    background: #fff8e1;
+    color: #f39c12;
+    border-color: #f39c12;
+}
+
+/* ==========================================
+   TUGMALAR (LEARNING ACTIONS)
+========================================== */
+.learning-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-btn {
+    flex: 1;
+    background: #1456a0;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary-btn:hover {
+    background: #0d3b73;
+}
+
+.primary-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.secondary-btn {
+    flex: 1;
+    background: #fff;
+    color: #1456a0;
+    border: 2px solid #1456a0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.secondary-btn:hover {
+    background: #f0f4f9;
+}
+
+.secondary-btn:disabled {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   TEST QISMI
+========================================== */
+.test-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+.test-card > p {
+    color: #888;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#testQuestion {
+    font-size: 28px;
+    color: #1456a0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.test-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-btn {
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: left;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: #1456a0;
+    background: #f0f4f9;
+}
+
+.option-btn.correct {
+    background: #e8f5e9;
+    border-color: #4caf50;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.option-btn.wrong {
+    background: #ffebee;
+    border-color: #f44336;
+    color: #c62828;
+}
+
+#testFeedback {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ==========================================
+   NATIJA (RESULT)
+========================================== */
+.result-card {
+    background: #fff;
+    padding: 40px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 20px 0;
+}
+
+#resultPercent {
+    font-size: 60px;
+    color: #1456a0;
+    margin-bottom: 10px;
+}
+
+#resultMessage {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#resultDetails {
+    color: #666;
+}
+
+/* ==========================================
+   ORQAGA QAYTISH TUGMASI
+========================================== */
+.back-link {
+    background: none;
+    border: none;
+    color: #1456a0;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
