@@ -3,7 +3,7 @@
 // ==========================================
 let currentLevel = 'beginner';
 let allWords = [];
-let currentWordsPerDay = 30; // Boshlang'ich qiymat
+let currentWordsPerDay = 30;
 
 // Darajalar ro'yxati (Beginner: 30, qolganlar: 25)
 const levelsConfig = [
@@ -11,45 +11,43 @@ const levelsConfig = [
         id: "beginner", 
         title: "Beginner", 
         desc: "Boshlang'ich daraja", 
-        wordsPerDay: 30, // 30 * 40 = 1200
-        words: (typeof window.beginnerWords !== 'undefined') ? window.beginnerWords.map(w => ({
-            en: w.word, uz: w.uz, example: w.example, exUz: w.translation || w.uz
-        })) : [] 
+        wordsPerDay: 30, 
+        varName: "beginnerWords" 
     },
     { 
         id: "elementary", 
         title: "Elementary", 
         desc: "Boshlang'ichdan keyingi daraja", 
-        wordsPerDay: 25, // 25 * 40 = 1000
-        words: typeof elementaryWords !== 'undefined' ? elementaryWords : [] 
+        wordsPerDay: 25, 
+        varName: "elementaryWords" 
     },
     { 
         id: "pre-intermediate", 
         title: "Pre-Intermediate", 
         desc: "O'rta darajaga tayyorgarlik", 
         wordsPerDay: 25, 
-        words: typeof preIntermediateWords !== 'undefined' ? preIntermediateWords : [] 
+        varName: "preIntermediateWords" 
     },
     { 
         id: "intermediate", 
         title: "Intermediate", 
         desc: "O'rta daraja", 
         wordsPerDay: 25, 
-        words: typeof intermediateWords !== 'undefined' ? intermediateWords : [] 
+        varName: "intermediateWords" 
     },
     { 
         id: "upper-intermediate", 
         title: "Upper-Intermediate", 
         desc: "Yuqori o'rta daraja", 
         wordsPerDay: 25, 
-        words: typeof upperIntermediateWords !== 'undefined' ? upperIntermediateWords : [] 
+        varName: "upperIntermediateWords" 
     },
     { 
         id: "ielts", 
         title: "IELTS", 
         desc: "IELTS akademik lug'ati", 
         wordsPerDay: 25, 
-        words: typeof ieltsWords !== 'undefined' ? ieltsWords : [] 
+        varName: "ieltsWords" 
     }
 ];
 
@@ -72,13 +70,33 @@ let userProgress = { unlockedDay: 1, completedDays: [] };
 const TOTAL_DAYS = 40;
 
 // ==========================================
-// 2. DINAMIK TO'LDIRISH TIZIMI
+// 2. SO'ZLARNI O'QISH VA FORMATLASH
 // ==========================================
+function getWordsArray(varName) {
+    try {
+        // Beginner fayli uchun maxsus format (word, uz, translation)
+        if (varName === "beginnerWords" && typeof window.beginnerWords !== 'undefined') {
+            return window.beginnerWords.map(w => ({
+                en: w.word, 
+                uz: w.uz, 
+                example: w.example || "", 
+                exUz: w.translation || w.uz
+            }));
+        }
+        // Qolgan darajalar uchun standart format
+        if (typeof window[varName] !== 'undefined') {
+            return window[varName];
+        }
+        return [];
+    } catch (e) {
+        return [];
+    }
+}
+
+// 40 kunlik rejaga so'zlarni taqsimlash va to'ldirish
 function generatePlanWords(baseWords, wordsPerDay) {
     if (!baseWords || baseWords.length === 0) return [];
     let finalWords = [...baseWords];
-    
-    // 40 kunlik reja uchun kerakli so'zlar soni
     let targetCount = 40 * wordsPerDay; 
 
     while (finalWords.length < targetCount) {
@@ -87,36 +105,41 @@ function generatePlanWords(baseWords, wordsPerDay) {
         finalWords.push({
             en: bWord.en + " (" + finalWords.length + ")",
             uz: bWord.uz + " (qo'shimcha)",
-            example: bWord.example || "",
-            exUz: bWord.exUz || ""
+            example: bWord.example,
+            exUz: bWord.exUz
         });
     }
     return finalWords.slice(0, targetCount);
 }
 
 // ==========================================
-// 3. DARAJALARNI CHIQARISH VA TANLASH
+// 3. DARAJALARNI EKRANGA CHIQARISH
 // ==========================================
-document.getElementById('levelList').innerHTML = levelsConfig.map(lvl => `
+const levelListHTML = levelsConfig.map(lvl => {
+    const words = getWordsArray(lvl.varName);
+    return `
     <button class="level-card" onclick="selectLevel('${lvl.id}')">
         <h3>${lvl.title}</h3>
         <p>${lvl.desc}</p>
-        <span>${lvl.words.length} ta so'z mavjud</span>
+        <span>${words.length} ta so'z mavjud</span>
     </button>
-`).join('');
+    `;
+}).join('');
+
+document.getElementById('levelList').innerHTML = levelListHTML;
 
 function selectLevel(levelId) {
     currentLevel = levelId;
     const levelData = levelsConfig.find(l => l.id === levelId);
+    const baseWords = getWordsArray(levelData.varName);
     
-    if (levelData.words.length === 0) {
-        alert("Bu daraja uchun so'zlar hali kiritilmagan. Iltimos, keyinroq qayta urinib ko'ring yoki faylni to'ldiring.");
+    if (baseWords.length === 0) {
+        alert("Bu daraja uchun so'zlar hali kiritilmagan. Iltimos, keyinroq qayta urinib ko'ring.");
         return;
     }
 
-    // Kunlik so'z sonini tanlangan darajaga qarab o'rnatamiz
     currentWordsPerDay = levelData.wordsPerDay; 
-    allWords = generatePlanWords(levelData.words, currentWordsPerDay);
+    allWords = generatePlanWords(baseWords, currentWordsPerDay);
     
     let saved = localStorage.getItem(`englishUpProgress_${levelId}`);
     userProgress = saved ? JSON.parse(saved) : { unlockedDay: 1, completedDays: [] };
@@ -125,9 +148,7 @@ function selectLevel(levelId) {
     planSection.classList.remove('hidden');
     
     const planTitle = document.getElementById('planLevelTitle');
-    if (planTitle) {
-        planTitle.textContent = `${levelData.title} - 40 Kunlik Reja`;
-    }
+    if (planTitle) planTitle.textContent = `${levelData.title} - 40 Kunlik Reja`;
     
     renderDays();
 }
@@ -156,9 +177,7 @@ function renderDays() {
         dayCard.className = `day-card ${statusClass}`;
         dayCard.innerHTML = `<span>${i}-kun</span>`;
         
-        if (isUnlocked) {
-            dayCard.addEventListener('click', () => startDay(i));
-        }
+        if (isUnlocked) dayCard.addEventListener('click', () => startDay(i));
         daysGrid.appendChild(dayCard);
     }
 
@@ -246,17 +265,11 @@ function startTest() {
         let options = [word.uz];
         while (options.length < 4) {
             let randomWord = allWords[Math.floor(Math.random() * allWords.length)];
-            if (!options.includes(randomWord.uz)) {
-                options.push(randomWord.uz);
-            }
+            if (!options.includes(randomWord.uz)) options.push(randomWord.uz);
         }
         options.sort(() => Math.random() - 0.5);
         
-        return {
-            question: word.en,
-            correctAnswer: word.uz,
-            options: options
-        };
+        return { question: word.en, correctAnswer: word.uz, options: options };
     });
 
     testIndex = 0;
@@ -271,15 +284,11 @@ function showTestQuestion() {
     }
 
     const q = testQuestions[testIndex];
-    
     document.getElementById('testProgress').textContent = `Savol ${testIndex + 1} / ${testQuestions.length}`;
     document.getElementById('testQuestion').textContent = q.question;
     
     const feedback = document.getElementById('testFeedback');
-    if (feedback) {
-        feedback.textContent = '';
-        feedback.style.color = '';
-    }
+    if (feedback) { feedback.textContent = ''; feedback.style.color = ''; }
     
     document.getElementById('nextQuestion').classList.add('hidden');
 
@@ -297,27 +306,19 @@ function showTestQuestion() {
 
 function checkTestAnswer(btn, selected, correct) {
     document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-
     const feedback = document.getElementById('testFeedback');
 
     if (selected === correct) {
         btn.classList.add('correct');
         correctAnswersCount++;
-        if (feedback) {
-            feedback.textContent = "To'g'ri! ✅";
-            feedback.style.color = "green";
-        }
+        if (feedback) { feedback.textContent = "To'g'ri! ✅"; feedback.style.color = "green"; }
     } else {
         btn.classList.add('wrong');
-        if (feedback) {
-            feedback.textContent = `Xato! To'g'ri javob: ${correct} ❌`;
-            feedback.style.color = "red";
-        }
+        if (feedback) { feedback.textContent = `Xato! To'g'ri javob: ${correct} ❌`; feedback.style.color = "red"; }
         document.querySelectorAll('.option-btn').forEach(b => {
             if (b.textContent === correct) b.classList.add('correct');
         });
     }
-
     document.getElementById('nextQuestion').classList.remove('hidden');
 }
 
@@ -327,14 +328,13 @@ document.getElementById('nextQuestion').addEventListener('click', () => {
 });
 
 // ==========================================
-// 7. NATIJA VA KEYINGI KUN
+// 7. NATIJA VA KEYINGI KUNNI OCHISH
 // ==========================================
 function finishTest() {
     testSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
 
     const percent = Math.round((correctAnswersCount / testQuestions.length) * 100);
-    
     document.getElementById('resultPercent').textContent = `${percent}%`;
     document.getElementById('resultDetails').textContent = `${correctAnswersCount} ta to'g'ri, ${testQuestions.length - correctAnswersCount} ta xato.`;
 
@@ -347,29 +347,23 @@ function finishTest() {
         
         if (!userProgress.completedDays.includes(currentDay)) {
             userProgress.completedDays.push(currentDay);
-            if (userProgress.unlockedDay === currentDay) {
-                userProgress.unlockedDay = currentDay + 1;
-            }
+            if (userProgress.unlockedDay === currentDay) userProgress.unlockedDay = currentDay + 1;
             localStorage.setItem(`englishUpProgress_${currentLevel}`, JSON.stringify(userProgress));
         }
         
         continueBtn.classList.remove('hidden');
         retryBtn.classList.add('hidden');
-        
         continueBtn.onclick = () => {
             resultSection.classList.add('hidden');
             learningSection.classList.add('hidden');
             planSection.classList.remove('hidden');
             renderDays();
         };
-
     } else {
         document.getElementById('resultMessage').textContent = "Afsuski, o'ta olmadingiz. Kamida 80% kerak.";
         document.getElementById('resultMessage').style.color = "red";
-        
         continueBtn.classList.add('hidden');
         retryBtn.classList.remove('hidden');
-        
         retryBtn.onclick = () => {
             resultSection.classList.add('hidden');
             startTest();
