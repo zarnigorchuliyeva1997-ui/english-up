@@ -1,3 +1,6 @@
+// ==========================================
+// DARAJALARNI BOSHQARISH TIZIMI (TOZA KOD)
+// ==========================================
 let currentLevel = 'beginner';
 let allWords = [];
 let currentWordsPerDay = 30;
@@ -26,11 +29,24 @@ let correctAnswersCount = 0;
 let userProgress = { unlockedDay: 1, completedDays: [] };
 const TOTAL_DAYS = 40;
 
+// ==========================================
+// SO'ZLARNI O'QISH (BEGINNER FORMATINI TO'G'RILASH)
+// ==========================================
 function getWordsArray(varName) {
     try {
+        if (varName === "beginnerWords" && typeof window.beginnerWords !== 'undefined') {
+            return window.beginnerWords.map(w => ({
+                en: w.en || w.word, 
+                uz: w.uz, 
+                example: w.example || "", 
+                exUz: w.exUz || w.translation || w.uz
+            }));
+        }
         if (typeof window[varName] !== 'undefined') return window[varName];
         return [];
-    } catch (e) { return []; }
+    } catch (e) { 
+        return []; 
+    }
 }
 
 function generatePlanWords(baseWords, wordsPerDay) {
@@ -41,12 +57,18 @@ function generatePlanWords(baseWords, wordsPerDay) {
         let randomIndex = Math.floor(Math.random() * baseWords.length);
         let bWord = baseWords[randomIndex];
         finalWords.push({
-            en: bWord.en + " (" + finalWords.length + ")", uz: bWord.uz + " (qo'shimcha)", example: bWord.example, exUz: bWord.exUz
+            en: bWord.en + " (" + finalWords.length + ")", 
+            uz: bWord.uz + " (qo'shimcha)", 
+            example: bWord.example, 
+            exUz: bWord.exUz
         });
     }
     return finalWords.slice(0, targetCount);
 }
 
+// ==========================================
+// DARAJALARNI EKRANGA CHIQARISH
+// ==========================================
 document.getElementById('levelList').innerHTML = levelsConfig.map(lvl => {
     const words = getWordsArray(lvl.varName);
     return `<button class="level-card" onclick="selectLevel('${lvl.id}')">
@@ -59,7 +81,10 @@ function selectLevel(levelId) {
     const levelData = levelsConfig.find(l => l.id === levelId);
     const baseWords = getWordsArray(levelData.varName);
     
-    if (baseWords.length === 0) { alert("So'zlar kiritilmagan."); return; }
+    if (baseWords.length === 0) { 
+        alert("Bu daraja uchun so'zlar hali kiritilmagan."); 
+        return; 
+    }
 
     currentWordsPerDay = levelData.wordsPerDay; 
     allWords = generatePlanWords(baseWords, currentWordsPerDay);
@@ -74,9 +99,13 @@ function selectLevel(levelId) {
 }
 
 document.getElementById('backToLevels').addEventListener('click', () => {
-    planSection.classList.add('hidden'); levelSection.classList.remove('hidden');
+    planSection.classList.add('hidden'); 
+    levelSection.classList.remove('hidden');
 });
 
+// ==========================================
+// 40 KUNLIK REJA
+// ==========================================
 function renderDays() {
     const daysGrid = document.getElementById('daysGrid');
     daysGrid.innerHTML = '';
@@ -95,16 +124,23 @@ function renderDays() {
     document.getElementById('planProgressText').textContent = `${userProgress.completedDays.length} / ${TOTAL_DAYS} kun bajarildi`;
 }
 
+// ==========================================
+// KUNNI BOSHLASH VA SO'ZLAR
+// ==========================================
 function startDay(day) {
-    currentDay = day; currentWordIndex = 0;
+    currentDay = day; 
+    currentWordIndex = 0;
     const startIndex = (day - 1) * currentWordsPerDay;
     dayWords = allWords.slice(startIndex, startIndex + currentWordsPerDay);
-    planSection.classList.add('hidden'); learningSection.classList.remove('hidden');
+    planSection.classList.add('hidden'); 
+    learningSection.classList.remove('hidden');
     showWord();
 }
 
 document.getElementById('backToPlan').addEventListener('click', () => {
-    learningSection.classList.add('hidden'); planSection.classList.remove('hidden'); renderDays(); 
+    learningSection.classList.add('hidden'); 
+    planSection.classList.remove('hidden'); 
+    renderDays(); 
 });
 
 function showWord() {
@@ -123,19 +159,32 @@ function showWord() {
 
 document.getElementById('pronunciationBtn').addEventListener('click', () => {
     const utterance = new SpeechSynthesisUtterance(document.getElementById('englishWord').textContent);
-    utterance.lang = 'en-US'; speechSynthesis.speak(utterance);
+    utterance.lang = 'en-US'; 
+    speechSynthesis.speak(utterance);
 });
 
 document.getElementById('nextWord').addEventListener('click', () => {
-    if (currentWordIndex < dayWords.length - 1) { currentWordIndex++; showWord(); } else { startTest(); }
+    if (currentWordIndex < dayWords.length - 1) { 
+        currentWordIndex++; 
+        showWord(); 
+    } else { 
+        startTest(); 
+    }
 });
 
 document.getElementById('previousWord').addEventListener('click', () => {
-    if (currentWordIndex > 0) { currentWordIndex--; showWord(); }
+    if (currentWordIndex > 0) { 
+        currentWordIndex--; 
+        showWord(); 
+    }
 });
 
+// ==========================================
+// TEST MANTIQI
+// ==========================================
 function startTest() {
-    learningSection.classList.add('hidden'); testSection.classList.remove('hidden');
+    learningSection.classList.add('hidden'); 
+    testSection.classList.remove('hidden');
     testQuestions = dayWords.map(word => {
         let options = [word.uz];
         while (options.length < 4) {
@@ -145,21 +194,31 @@ function startTest() {
         options.sort(() => Math.random() - 0.5);
         return { question: word.en, correctAnswer: word.uz, options: options };
     });
-    testIndex = 0; correctAnswersCount = 0; showTestQuestion();
+    testIndex = 0; 
+    correctAnswersCount = 0; 
+    showTestQuestion();
 }
 
 function showTestQuestion() {
-    if (testIndex >= testQuestions.length) { finishTest(); return; }
+    if (testIndex >= testQuestions.length) { 
+        finishTest(); 
+        return; 
+    }
     const q = testQuestions[testIndex];
     document.getElementById('testProgress').textContent = `Savol ${testIndex + 1} / ${testQuestions.length}`;
     document.getElementById('testQuestion').textContent = q.question;
     const feedback = document.getElementById('testFeedback');
-    if (feedback) { feedback.textContent = ''; feedback.style.color = ''; }
+    if (feedback) { 
+        feedback.textContent = ''; 
+        feedback.style.color = ''; 
+    }
     document.getElementById('nextQuestion').classList.add('hidden');
-    const optionsDiv = document.getElementById('testOptions'); optionsDiv.innerHTML = '';
+    const optionsDiv = document.getElementById('testOptions'); 
+    optionsDiv.innerHTML = '';
     q.options.forEach(opt => {
         const btn = document.createElement('button');
-        btn.className = 'option-btn'; btn.textContent = opt;
+        btn.className = 'option-btn'; 
+        btn.textContent = opt;
         btn.onclick = () => checkTestAnswer(btn, opt, q.correctAnswer);
         optionsDiv.appendChild(btn);
     });
@@ -169,25 +228,42 @@ function checkTestAnswer(btn, selected, correct) {
     document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
     const feedback = document.getElementById('testFeedback');
     if (selected === correct) {
-        btn.classList.add('correct'); correctAnswersCount++;
-        if (feedback) { feedback.textContent = "To'g'ri! ✅"; feedback.style.color = "green"; }
+        btn.classList.add('correct'); 
+        correctAnswersCount++;
+        if (feedback) { 
+            feedback.textContent = "To'g'ri! ✅"; 
+            feedback.style.color = "green"; 
+        }
     } else {
         btn.classList.add('wrong');
-        if (feedback) { feedback.textContent = `Xato! To'g'ri javob: ${correct} ❌`; feedback.style.color = "red"; }
-        document.querySelectorAll('.option-btn').forEach(b => { if (b.textContent === correct) b.classList.add('correct'); });
+        if (feedback) { 
+            feedback.textContent = `Xato! To'g'ri javob: ${correct} ❌`; 
+            feedback.style.color = "red"; 
+        }
+        document.querySelectorAll('.option-btn').forEach(b => { 
+            if (b.textContent === correct) b.classList.add('correct'); 
+        });
     }
     document.getElementById('nextQuestion').classList.remove('hidden');
 }
 
-document.getElementById('nextQuestion').addEventListener('click', () => { testIndex++; showTestQuestion(); });
+document.getElementById('nextQuestion').addEventListener('click', () => { 
+    testIndex++; 
+    showTestQuestion(); 
+});
 
+// ==========================================
+// NATIJA VA KEYINGI KUN
+// ==========================================
 function finishTest() {
-    testSection.classList.add('hidden'); resultSection.classList.remove('hidden');
+    testSection.classList.add('hidden'); 
+    resultSection.classList.remove('hidden');
     const percent = Math.round((correctAnswersCount / testQuestions.length) * 100);
     document.getElementById('resultPercent').textContent = `${percent}%`;
     document.getElementById('resultDetails').textContent = `${correctAnswersCount} ta to'g'ri, ${testQuestions.length - correctAnswersCount} ta xato.`;
     const continueBtn = document.getElementById('continueLearning');
     const retryBtn = document.getElementById('retryTest');
+    
     if (percent >= 80) {
         document.getElementById('resultMessage').textContent = "Ajoyib! Siz testdan o'tdingiz.";
         document.getElementById('resultMessage').style.color = "green";
@@ -196,15 +272,22 @@ function finishTest() {
             if (userProgress.unlockedDay === currentDay) userProgress.unlockedDay = currentDay + 1;
             localStorage.setItem(`englishUpProgress_${currentLevel}`, JSON.stringify(userProgress));
         }
-        continueBtn.classList.remove('hidden'); retryBtn.classList.add('hidden');
+        continueBtn.classList.remove('hidden'); 
+        retryBtn.classList.add('hidden');
         continueBtn.onclick = () => {
-            resultSection.classList.add('hidden'); learningSection.classList.add('hidden');
-            planSection.classList.remove('hidden'); renderDays();
+            resultSection.classList.add('hidden'); 
+            learningSection.classList.add('hidden');
+            planSection.classList.remove('hidden'); 
+            renderDays();
         };
     } else {
         document.getElementById('resultMessage').textContent = "Afsuski, o'ta olmadingiz. Kamida 80% kerak.";
         document.getElementById('resultMessage').style.color = "red";
-        continueBtn.classList.add('hidden'); retryBtn.classList.remove('hidden');
-        retryBtn.onclick = () => { resultSection.classList.add('hidden'); startTest(); };
+        continueBtn.classList.add('hidden'); 
+        retryBtn.classList.remove('hidden');
+        retryBtn.onclick = () => { 
+            resultSection.classList.add('hidden'); 
+            startTest(); 
+        };
     }
 }
