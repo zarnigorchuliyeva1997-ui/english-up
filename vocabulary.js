@@ -72,9 +72,9 @@ const TOTAL_DAYS = 40;
 // ==========================================
 // 2. SO'ZLARNI O'QISH VA FORMATLASH
 // ==========================================
+// Bu funksiya sizning beginner-words.js dagi maxsus formatni o'qiydi
 function getWordsArray(varName) {
     try {
-        // Beginner fayli uchun maxsus format (word, uz, translation)
         if (varName === "beginnerWords" && typeof window.beginnerWords !== 'undefined') {
             return window.beginnerWords.map(w => ({
                 en: w.word, 
@@ -83,7 +83,6 @@ function getWordsArray(varName) {
                 exUz: w.translation || w.uz
             }));
         }
-        // Qolgan darajalar uchun standart format
         if (typeof window[varName] !== 'undefined') {
             return window[varName];
         }
@@ -93,7 +92,6 @@ function getWordsArray(varName) {
     }
 }
 
-// 40 kunlik rejaga so'zlarni taqsimlash va to'ldirish
 function generatePlanWords(baseWords, wordsPerDay) {
     if (!baseWords || baseWords.length === 0) return [];
     let finalWords = [...baseWords];
@@ -113,7 +111,7 @@ function generatePlanWords(baseWords, wordsPerDay) {
 }
 
 // ==========================================
-// 3. DARAJALARNI EKRANGA CHIQARISH
+// 3. DARAJALARNI CHIQARISH (6 TA)
 // ==========================================
 const levelListHTML = levelsConfig.map(lvl => {
     const words = getWordsArray(lvl.varName);
@@ -134,7 +132,7 @@ function selectLevel(levelId) {
     const baseWords = getWordsArray(levelData.varName);
     
     if (baseWords.length === 0) {
-        alert("Bu daraja uchun so'zlar hali kiritilmagan. Iltimos, keyinroq qayta urinib ko'ring.");
+        alert("Bu daraja uchun so'zlar hali kiritilmagan.");
         return;
     }
 
@@ -159,7 +157,7 @@ document.getElementById('backToLevels').addEventListener('click', () => {
 });
 
 // ==========================================
-// 4. 40 KUNLIK REJANI CHIZISH
+// 4. 40 KUNLIK REJA
 // ==========================================
 function renderDays() {
     const daysGrid = document.getElementById('daysGrid');
@@ -187,7 +185,7 @@ function renderDays() {
 }
 
 // ==========================================
-// 5. KUNNI BOSHLASH VA SO'ZLAR
+// 5. SO'ZLAR VA OVOZ
 // ==========================================
 function startDay(day) {
     currentDay = day;
@@ -328,7 +326,7 @@ document.getElementById('nextQuestion').addEventListener('click', () => {
 });
 
 // ==========================================
-// 7. NATIJA VA KEYINGI KUNNI OCHISH
+// 7. NATIJA
 // ==========================================
 function finishTest() {
     testSection.classList.add('hidden');
