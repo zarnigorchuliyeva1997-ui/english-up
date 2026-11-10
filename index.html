@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -19,7 +18,8 @@
     <nav class="main-nav" id="mainNav">
       <button class="nav-btn active" onclick="goHome()">Home</button>
       <button class="nav-btn" onclick="openLessons()">Lessons</button>
-      <button class="nav-btn" onclick="openVocabulary()">Vocabulary</button>
+      <!-- VOCABULARY TUGMASI YANGILANDI -->
+      <button class="nav-btn" onclick="window.location.href='vocabulary.html'">Vocabulary</button>
       <button class="nav-btn" onclick="openTests()">Tests</button>
       <button class="nav-btn" onclick="openSpeaking()">Speaking</button>
       <button class="nav-btn" onclick="openProgress()">My Progress</button>
@@ -62,7 +62,8 @@
           <p>Bosqichma-bosqich ingliz tili darslari.</p>
         </div>
 
-        <div class="feature-card" onclick="openVocabulary()">
+        <!-- VOCABULARY KARTOCHKASI YANGILANDI -->
+        <div class="feature-card" onclick="window.location.href='vocabulary.html'">
           <div class="feature-icon">📖</div>
           <h3>Vocabulary</h3>
           <p>Yangi so‘zlar va ularning talaffuzi.</p>
@@ -276,22 +277,7 @@
     </section>
 
 
-    <!-- VOCABULARY PAGE -->
-    <section id="vocabularyPage" class="page">
-
-      <button class="back-btn" onclick="goHome()">← Orqaga</button>
-
-      <h1 class="page-title">📖 Vocabulary</h1>
-
-      <p class="subtitle">
-        Yangi so‘zlar, talaffuz va tarjimalarni o‘rganing.
-      </p>
-
-      <div id="vocabularyContent" class="lesson-content">
-        <p>Vocabulary bo‘limi darslar bilan birgalikda ishga tushadi.</p>
-      </div>
-
-    </section>
+    <!-- ESKI VOCABULARY PAGE O'CHIRILDI (Endi alohida fayl ishlatiladi) -->
 
 
     <!-- TESTS PAGE -->
