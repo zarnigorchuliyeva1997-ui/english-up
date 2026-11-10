@@ -1,36 +1,25 @@
 // ==========================================
-// 1. DARAJALARNI BOSHQARISH TIZIMI
+// 1. SO'ZLARNI TAYYORLASH VA DARAJALAR
 // ==========================================
 let currentLevel = 'beginner';
 let allWords = [];
 
-// Sizning so'zlaringizni bizning tizimga moslashtiruvchi funksiya
-function formatWords(rawWords) {
-    if (!rawWords || !Array.isArray(rawWords)) return [];
-    return rawWords.map(w => {
-        // Sizning faylingizdagi "word" va "translation" ni "en" va "uz" ga o'giramiz
-        return {
-            en: w.word || w.en,
-            uz: w.uz || w.translation,
-            example: w.example || "",
-            exUz: w.translation || w.exUz || "" // Misol tarjimasi bo'lmasa, tarjimani o'zini qo'yamiz
-        };
-    });
-}
+// Beginner faylingizni o'qish va formatlash
+const beginnerData = (typeof window.beginnerWords !== 'undefined') ? window.beginnerWords.map(w => ({
+    en: w.word,
+    uz: w.uz,
+    example: w.example,
+    exUz: w.translation || w.uz
+})) : (typeof beginnerWords !== 'undefined' ? beginnerWords : []);
 
-// Darajalar ro'yxati (Fayllar bilan avtomatik bog'lanadi)
+// Darajalar ro'yxati
 const levelsConfig = [
-    { 
-        id: "beginner", 
-        title: "Beginner", 
-        desc: "Boshlang'ich daraja", 
-        words: (typeof window.beginnerWords !== 'undefined') ? formatWords(window.beginnerWords) : [] 
-    },
-    { id: "elementary", title: "Elementary", desc: "Boshlang'ichdan keyingi daraja", words: (typeof elementaryWords !== 'undefined') ? elementaryWords : [] },
-    { id: "pre-intermediate", title: "Pre-Intermediate", desc: "O'rta darajaga tayyorgarlik", words: (typeof preIntermediateWords !== 'undefined') ? preIntermediateWords : [] },
-    { id: "intermediate", title: "Intermediate", desc: "O'rta daraja", words: (typeof intermediateWords !== 'undefined') ? intermediateWords : [] },
-    { id: "upper-intermediate", title: "Upper-Intermediate", desc: "Yuqori o'rta daraja", words: (typeof upperIntermediateWords !== 'undefined') ? upperIntermediateWords : [] },
-    { id: "ielts", title: "IELTS", desc: "IELTS akademik lug'ati", words: (typeof ieltsWords !== 'undefined') ? ieltsWords : [] }
+    { id: "beginner", title: "Beginner", desc: "Boshlang'ich daraja", words: beginnerData },
+    { id: "elementary", title: "Elementary", desc: "Boshlang'ichdan keyingi daraja", words: typeof elementaryWords !== 'undefined' ? elementaryWords : [] },
+    { id: "pre-intermediate", title: "Pre-Intermediate", desc: "O'rta darajaga tayyorgarlik", words: typeof preIntermediateWords !== 'undefined' ? preIntermediateWords : [] },
+    { id: "intermediate", title: "Intermediate", desc: "O'rta daraja", words: typeof intermediateWords !== 'undefined' ? intermediateWords : [] },
+    { id: "upper-intermediate", title: "Upper-Intermediate", desc: "Yuqori o'rta daraja", words: typeof upperIntermediateWords !== 'undefined' ? upperIntermediateWords : [] },
+    { id: "ielts", title: "IELTS", desc: "IELTS akademik lug'ati", words: typeof ieltsWords !== 'undefined' ? ieltsWords : [] }
 ];
 
 // HTML Elementlar
@@ -40,7 +29,6 @@ const learningSection = document.getElementById('learningSection');
 const testSection = document.getElementById('testSection');
 const resultSection = document.getElementById('resultSection');
 
-// O'zgaruvchilar
 let currentDay = 1;
 let currentWordIndex = 0;
 let dayWords = [];
@@ -53,27 +41,26 @@ const WORDS_PER_DAY = 30;
 const TOTAL_DAYS = 40;
 
 // ==========================================
-// 2. DINAMIK 1200 TAGA YETKAZISH TIZIMI
+// 2. DINAMIK 1200 TAGA YETKAZISH
 // ==========================================
 function generate1200Words(baseWords) {
     if (!baseWords || baseWords.length === 0) return [];
     let finalWords = [...baseWords];
-    
     while (finalWords.length < 1200) {
         let randomIndex = Math.floor(Math.random() * baseWords.length);
         let bWord = baseWords[randomIndex];
         finalWords.push({
             en: bWord.en + " (" + finalWords.length + ")",
             uz: bWord.uz + " (qo'shimcha)",
-            example: bWord.example,
-            exUz: bWord.exUz
+            example: bWord.example || "",
+            exUz: bWord.exUz || ""
         });
     }
     return finalWords.slice(0, 1200);
 }
 
 // ==========================================
-// 3. DARAJALARNI CHIQARISH VA TANLASH
+// 3. DARAJALARNI EKRANGA CHIQARISH
 // ==========================================
 document.getElementById('levelList').innerHTML = levelsConfig.map(lvl => `
     <button class="level-card" onclick="selectLevel('${lvl.id}')">
@@ -88,7 +75,7 @@ function selectLevel(levelId) {
     const levelData = levelsConfig.find(l => l.id === levelId);
     
     if (levelData.words.length === 0) {
-        alert("Bu daraja uchun so'zlar hali kiritilmagan. Iltimos, keyinroq qayta urinib ko'ring yoki faylni to'ldiring.");
+        alert("Bu daraja uchun so'zlar hali kiritilmagan.");
         return;
     }
 
@@ -114,7 +101,7 @@ document.getElementById('backToLevels').addEventListener('click', () => {
 });
 
 // ==========================================
-// 4. 40 KUNLIK REJANI CHIZISH
+// 4. 40 KUNLIK REJA
 // ==========================================
 function renderDays() {
     const daysGrid = document.getElementById('daysGrid');
@@ -144,7 +131,7 @@ function renderDays() {
 }
 
 // ==========================================
-// 5. KUNNI BOSHLASH VA SO'ZLAR
+// 5. SO'ZLARNI KO'RSATISH
 // ==========================================
 function startDay(day) {
     currentDay = day;
@@ -303,7 +290,7 @@ document.getElementById('nextQuestion').addEventListener('click', () => {
 });
 
 // ==========================================
-// 7. NATIJA VA KEYINGI KUN
+// 7. NATIJA
 // ==========================================
 function finishTest() {
     testSection.classList.add('hidden');
