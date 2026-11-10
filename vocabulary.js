@@ -1,25 +1,56 @@
 // ==========================================
-// 1. SO'ZLARNI TAYYORLASH VA DARAJALAR
+// 1. DARAJALARNI BOSHQARISH TIZIMI
 // ==========================================
 let currentLevel = 'beginner';
 let allWords = [];
+let currentWordsPerDay = 30; // Boshlang'ich qiymat
 
-// Beginner faylingizni o'qish va formatlash
-const beginnerData = (typeof window.beginnerWords !== 'undefined') ? window.beginnerWords.map(w => ({
-    en: w.word,
-    uz: w.uz,
-    example: w.example,
-    exUz: w.translation || w.uz
-})) : (typeof beginnerWords !== 'undefined' ? beginnerWords : []);
-
-// Darajalar ro'yxati
+// Darajalar ro'yxati (Beginner: 30, qolganlar: 25)
 const levelsConfig = [
-    { id: "beginner", title: "Beginner", desc: "Boshlang'ich daraja", words: beginnerData },
-    { id: "elementary", title: "Elementary", desc: "Boshlang'ichdan keyingi daraja", words: typeof elementaryWords !== 'undefined' ? elementaryWords : [] },
-    { id: "pre-intermediate", title: "Pre-Intermediate", desc: "O'rta darajaga tayyorgarlik", words: typeof preIntermediateWords !== 'undefined' ? preIntermediateWords : [] },
-    { id: "intermediate", title: "Intermediate", desc: "O'rta daraja", words: typeof intermediateWords !== 'undefined' ? intermediateWords : [] },
-    { id: "upper-intermediate", title: "Upper-Intermediate", desc: "Yuqori o'rta daraja", words: typeof upperIntermediateWords !== 'undefined' ? upperIntermediateWords : [] },
-    { id: "ielts", title: "IELTS", desc: "IELTS akademik lug'ati", words: typeof ieltsWords !== 'undefined' ? ieltsWords : [] }
+    { 
+        id: "beginner", 
+        title: "Beginner", 
+        desc: "Boshlang'ich daraja", 
+        wordsPerDay: 30, // 30 * 40 = 1200
+        words: (typeof window.beginnerWords !== 'undefined') ? window.beginnerWords.map(w => ({
+            en: w.word, uz: w.uz, example: w.example, exUz: w.translation || w.uz
+        })) : [] 
+    },
+    { 
+        id: "elementary", 
+        title: "Elementary", 
+        desc: "Boshlang'ichdan keyingi daraja", 
+        wordsPerDay: 25, // 25 * 40 = 1000
+        words: typeof elementaryWords !== 'undefined' ? elementaryWords : [] 
+    },
+    { 
+        id: "pre-intermediate", 
+        title: "Pre-Intermediate", 
+        desc: "O'rta darajaga tayyorgarlik", 
+        wordsPerDay: 25, 
+        words: typeof preIntermediateWords !== 'undefined' ? preIntermediateWords : [] 
+    },
+    { 
+        id: "intermediate", 
+        title: "Intermediate", 
+        desc: "O'rta daraja", 
+        wordsPerDay: 25, 
+        words: typeof intermediateWords !== 'undefined' ? intermediateWords : [] 
+    },
+    { 
+        id: "upper-intermediate", 
+        title: "Upper-Intermediate", 
+        desc: "Yuqori o'rta daraja", 
+        wordsPerDay: 25, 
+        words: typeof upperIntermediateWords !== 'undefined' ? upperIntermediateWords : [] 
+    },
+    { 
+        id: "ielts", 
+        title: "IELTS", 
+        desc: "IELTS akademik lug'ati", 
+        wordsPerDay: 25, 
+        words: typeof ieltsWords !== 'undefined' ? ieltsWords : [] 
+    }
 ];
 
 // HTML Elementlar
@@ -29,6 +60,7 @@ const learningSection = document.getElementById('learningSection');
 const testSection = document.getElementById('testSection');
 const resultSection = document.getElementById('resultSection');
 
+// O'zgaruvchilar
 let currentDay = 1;
 let currentWordIndex = 0;
 let dayWords = [];
@@ -37,16 +69,19 @@ let testIndex = 0;
 let correctAnswersCount = 0;
 let userProgress = { unlockedDay: 1, completedDays: [] };
 
-const WORDS_PER_DAY = 30;
 const TOTAL_DAYS = 40;
 
 // ==========================================
-// 2. DINAMIK 1200 TAGA YETKAZISH
+// 2. DINAMIK TO'LDIRISH TIZIMI
 // ==========================================
-function generate1200Words(baseWords) {
+function generatePlanWords(baseWords, wordsPerDay) {
     if (!baseWords || baseWords.length === 0) return [];
     let finalWords = [...baseWords];
-    while (finalWords.length < 1200) {
+    
+    // 40 kunlik reja uchun kerakli so'zlar soni
+    let targetCount = 40 * wordsPerDay; 
+
+    while (finalWords.length < targetCount) {
         let randomIndex = Math.floor(Math.random() * baseWords.length);
         let bWord = baseWords[randomIndex];
         finalWords.push({
@@ -56,11 +91,11 @@ function generate1200Words(baseWords) {
             exUz: bWord.exUz || ""
         });
     }
-    return finalWords.slice(0, 1200);
+    return finalWords.slice(0, targetCount);
 }
 
 // ==========================================
-// 3. DARAJALARNI EKRANGA CHIQARISH
+// 3. DARAJALARNI CHIQARISH VA TANLASH
 // ==========================================
 document.getElementById('levelList').innerHTML = levelsConfig.map(lvl => `
     <button class="level-card" onclick="selectLevel('${lvl.id}')">
@@ -75,11 +110,13 @@ function selectLevel(levelId) {
     const levelData = levelsConfig.find(l => l.id === levelId);
     
     if (levelData.words.length === 0) {
-        alert("Bu daraja uchun so'zlar hali kiritilmagan.");
+        alert("Bu daraja uchun so'zlar hali kiritilmagan. Iltimos, keyinroq qayta urinib ko'ring yoki faylni to'ldiring.");
         return;
     }
 
-    allWords = generate1200Words(levelData.words);
+    // Kunlik so'z sonini tanlangan darajaga qarab o'rnatamiz
+    currentWordsPerDay = levelData.wordsPerDay; 
+    allWords = generatePlanWords(levelData.words, currentWordsPerDay);
     
     let saved = localStorage.getItem(`englishUpProgress_${levelId}`);
     userProgress = saved ? JSON.parse(saved) : { unlockedDay: 1, completedDays: [] };
@@ -101,7 +138,7 @@ document.getElementById('backToLevels').addEventListener('click', () => {
 });
 
 // ==========================================
-// 4. 40 KUNLIK REJA
+// 4. 40 KUNLIK REJANI CHIZISH
 // ==========================================
 function renderDays() {
     const daysGrid = document.getElementById('daysGrid');
@@ -131,14 +168,14 @@ function renderDays() {
 }
 
 // ==========================================
-// 5. SO'ZLARNI KO'RSATISH
+// 5. KUNNI BOSHLASH VA SO'ZLAR
 // ==========================================
 function startDay(day) {
     currentDay = day;
     currentWordIndex = 0;
     
-    const startIndex = (day - 1) * WORDS_PER_DAY;
-    const endIndex = startIndex + WORDS_PER_DAY;
+    const startIndex = (day - 1) * currentWordsPerDay;
+    const endIndex = startIndex + currentWordsPerDay;
     dayWords = allWords.slice(startIndex, endIndex);
 
     planSection.classList.add('hidden');
@@ -290,7 +327,7 @@ document.getElementById('nextQuestion').addEventListener('click', () => {
 });
 
 // ==========================================
-// 7. NATIJA
+// 7. NATIJA VA KEYINGI KUN
 // ==========================================
 function finishTest() {
     testSection.classList.add('hidden');
