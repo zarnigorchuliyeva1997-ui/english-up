@@ -18,7 +18,7 @@
     <nav class="main-nav" id="mainNav">
       <button class="nav-btn active" onclick="goHome()">Home</button>
       <button class="nav-btn" onclick="openLessons()">Lessons</button>
-      <!-- VOCABULARY TUGMASI YANGILANDI -->
+      <!-- VOCABULARY TUGMASI YANGI SAHIFAGA O'TADI -->
       <button class="nav-btn" onclick="window.location.href='vocabulary.html'">Vocabulary</button>
       <button class="nav-btn" onclick="openTests()">Tests</button>
       <button class="nav-btn" onclick="openSpeaking()">Speaking</button>
@@ -31,23 +31,13 @@
 
   <!-- HOME PAGE -->
   <main>
-
     <section id="homePage" class="page active">
-
       <div class="hero">
         <div class="hero-content">
           <span class="hero-label">WELCOME TO ENGLISH UP</span>
-
           <h1>Ingliz tilini noldan o‘rganing!</h1>
-
-          <p>
-            Oddiy so‘zlardan boshlab, erkin gapirish sari.
-            Har kuni yangi bilim, yangi imkoniyat!
-          </p>
-
-          <button class="primary-btn" onclick="openLessons()">
-            Darslarni boshlash →
-          </button>
+          <p>Oddiy so‘zlardan boshlab, erkin gapirish sari. Har kuni yangi bilim, yangi imkoniyat!</p>
+          <button class="primary-btn" onclick="openLessons()">Darslarni boshlash →</button>
         </div>
       </div>
 
@@ -55,14 +45,13 @@
       <p class="subtitle">O‘zingizga kerakli bo‘limni tanlang.</p>
 
       <div class="features">
-
         <div class="feature-card" onclick="openLessons()">
           <div class="feature-icon">📚</div>
           <h3>Lessons</h3>
           <p>Bosqichma-bosqich ingliz tili darslari.</p>
         </div>
 
-        <!-- VOCABULARY KARTOCHKASI YANGILANDI -->
+        <!-- VOCABULARY KARTOCHKASI YANGI SAHIFAGA O'TADI -->
         <div class="feature-card" onclick="window.location.href='vocabulary.html'">
           <div class="feature-icon">📖</div>
           <h3>Vocabulary</h3>
@@ -92,7 +81,6 @@
           <h3>Start Learning</h3>
           <p>Bugunoq o‘rganishni boshlang.</p>
         </div>
-
       </div>
 
       <div class="progress-card">
@@ -103,22 +91,16 @@
         </div>
         <p id="homeProgressText">0 / 10 dars bajarildi</p>
       </div>
-
     </section>
 
 
     <!-- LESSON LEVELS PAGE -->
     <section id="lessonsPage" class="page">
-
       <button class="back-btn" onclick="goHome()">← Orqaga</button>
-
       <h1 class="page-title">📚 English Lessons</h1>
-      <p class="subtitle">
-        O‘z darajangizni tanlang va o‘rganishni boshlang.
-      </p>
+      <p class="subtitle">O‘z darajangizni tanlang va o‘rganishni boshlang.</p>
 
       <div class="level-list">
-
         <div class="level-card" onclick="openBeginner()">
           <div class="level-icon">🌱</div>
           <h3>Beginner</h3>
@@ -160,195 +142,139 @@
           <p>Academic IELTS uchun tayyorgarlik.</p>
           <span>Tez orada →</span>
         </div>
-
       </div>
-
     </section>
 
 
     <!-- BEGINNER PAGE -->
     <section id="beginnerPage" class="page">
-
       <button class="back-btn" onclick="openLessons()">← Darajalar</button>
-
       <h1 class="page-title">🌱 Beginner Course</h1>
-
-      <p class="subtitle">
-        Ingliz tilini noldan o‘rganish uchun 10 ta mukammal dars.
-      </p>
+      <p class="subtitle">Ingliz tilini noldan o‘rganish uchun 10 ta mukammal dars.</p>
 
       <div class="progress-card">
         <h3>📊 Beginner progress</h3>
-
         <div class="progress-track">
           <div class="progress-fill" id="beginnerProgress" style="width:0%"></div>
         </div>
-
         <p id="beginnerProgressText">0 / 10 dars bajarildi</p>
       </div>
 
       <div id="beginnerLessonList" class="lesson-list">
-
         <div class="lesson-card" onclick="openLesson(1)">
           <div class="lesson-number">01</div>
           <h3>English Alphabet</h3>
           <p>Ingliz alifbosi va harflar talaffuzi.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(2)">
           <div class="lesson-number">02</div>
           <h3>Greetings and Introductions</h3>
           <p>Salomlashish va tanishish.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(3)">
           <div class="lesson-number">03</div>
           <h3>Numbers and Colors</h3>
           <p>Sonlar va ranglar.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(4)">
           <div class="lesson-number">04</div>
           <h3>Personal Pronouns</h3>
           <p>Kishilik olmoshlari.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(5)">
           <div class="lesson-number">05</div>
           <h3>Verb To Be</h3>
           <p>Am, is, are fe'llari.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(6)">
           <div class="lesson-number">06</div>
           <h3>Nouns and Articles</h3>
           <p>Otlar va a, an, the artikllari.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(7)">
           <div class="lesson-number">07</div>
           <h3>This, That, These, Those</h3>
           <p>Ko‘rsatish olmoshlari.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(8)">
           <div class="lesson-number">08</div>
           <h3>Have and Has</h3>
           <p>Egalikni ifodalash.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(9)">
           <div class="lesson-number">09</div>
           <h3>There Is and There Are</h3>
           <p>Mavjudlikni ifodalash.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
         <div class="lesson-card" onclick="openLesson(10)">
           <div class="lesson-number">10</div>
           <h3>Present Simple</h3>
           <p>Oddiy hozirgi zamon.</p>
           <span>▶ Darsni boshlash</span>
         </div>
-
       </div>
-
     </section>
 
 
     <!-- SINGLE LESSON PAGE -->
     <section id="lessonPage" class="page">
-
       <button class="back-btn" onclick="openBeginner()">← Beginner darslari</button>
-
       <div id="lessonContent" class="lesson-content">
         <h2>Dars tanlanmagan</h2>
         <p>Davom etish uchun Beginner bo‘limidan dars tanlang.</p>
       </div>
-
     </section>
-
-
-    <!-- ESKI VOCABULARY PAGE O'CHIRILDI (Endi alohida fayl ishlatiladi) -->
-
 
     <!-- TESTS PAGE -->
     <section id="testsPage" class="page">
-
       <button class="back-btn" onclick="goHome()">← Orqaga</button>
-
       <h1 class="page-title">📝 Tests</h1>
-
-      <p class="subtitle">
-        Bilimingizni testlar orqali mustahkamlang.
-      </p>
-
+      <p class="subtitle">Bilimingizni testlar orqali mustahkamlang.</p>
       <div id="testsContent" class="lesson-content">
         <p>Testlar darslar bilan birgalikda ishga tushadi.</p>
       </div>
-
     </section>
-
 
     <!-- SPEAKING PAGE -->
     <section id="speakingPage" class="page">
-
       <button class="back-btn" onclick="goHome()">← Orqaga</button>
-
       <h1 class="page-title">🎧 Speaking & Listening</h1>
-
-      <p class="subtitle">
-        Tinglang, talaffuz qiling va gapirishni mashq qiling.
-      </p>
-
+      <p class="subtitle">Tinglang, talaffuz qiling va gapirishni mashq qiling.</p>
       <div id="speakingContent" class="lesson-content">
         <p>Speaking va Listening mashqlari tez orada ishga tushadi.</p>
       </div>
-
     </section>
-
 
     <!-- PROGRESS PAGE -->
     <section id="progressPage" class="page">
-
       <button class="back-btn" onclick="goHome()">← Orqaga</button>
-
       <h1 class="page-title">🏆 My Progress</h1>
-
-      <p class="subtitle">
-        O‘z o‘quv natijalaringizni kuzatib boring.
-      </p>
-
+      <p class="subtitle">O‘z o‘quv natijalaringizni kuzatib boring.</p>
       <div class="progress-card">
         <h3>Beginner Course</h3>
-
         <div class="progress-track">
           <div class="progress-fill" id="progressPageBar" style="width:0%"></div>
         </div>
-
         <p id="progressPageText">0 / 10 dars bajarildi</p>
       </div>
-
       <div id="progressDetails" class="lesson-content">
         <p>Sizning natijalaringiz shu yerda ko‘rsatiladi.</p>
       </div>
-
     </section>
 
   </main>
 
-
   <!-- MESSAGE -->
   <div id="message" class="message"></div>
-
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -356,9 +282,7 @@
     <p>Learn step by step. Speak with confidence.</p>
   </footer>
 
-
   <!-- JAVASCRIPT -->
   <script src="script.js"></script>
-
 </body>
 </html>
