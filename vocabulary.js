@@ -1,7 +1,7 @@
 // ==========================================
 // 1. SO'ZLAR BAZASI (Hozircha 30 ta namuna)
 // ==========================================
-// KEYINCHALIK SHU YERGA O'ZINGIZDAGI 600 TA SO'ZNI QO'YASIZ
+// KEYINCHALIK SHU YERGA O'ZINGIZDAGI 600 TA (va 1200 ta) SO'ZNI QO'YASIZ
 const allWords = [
     { en: "apple", uz: "olma", example: "I eat an apple.", exUz: "Men olma yeyman." },
     { en: "book", uz: "kitob", example: "This is a book.", exUz: "Bu kitob." },
@@ -187,7 +187,7 @@ document.getElementById('previousWord').addEventListener('click', () => {
 });
 
 // ==========================================
-// 4. TEST MANTIQI
+// 4. TEST MANTIQI (YANGILANGAN VA TOZALANGAN)
 // ==========================================
 function startTest() {
     learningSection.classList.add('hidden');
@@ -225,9 +225,17 @@ function showTestQuestion() {
     }
 
     const q = testQuestions[testIndex];
+    
     document.getElementById('testProgress').textContent = `Savol ${testIndex + 1} / ${testQuestions.length}`;
     document.getElementById('testQuestion').textContent = q.question;
-    document.getElementById('testFeedback').textContent = '';
+    
+    // Matnlarni tozalash
+    const feedback = document.getElementById('testFeedback');
+    if (feedback) {
+        feedback.textContent = '';
+        feedback.style.color = '';
+    }
+    
     document.getElementById('nextQuestion').classList.add('hidden');
 
     const optionsDiv = document.getElementById('testOptions');
@@ -246,15 +254,21 @@ function checkTestAnswer(btn, selected, correct) {
     // Barcha tugmalarni o'chirib qo'yamiz (boshqasini bosmasligi uchun)
     document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
 
+    const feedback = document.getElementById('testFeedback');
+
     if (selected === correct) {
         btn.classList.add('correct');
         correctAnswersCount++;
-        document.getElementById('testFeedback').textContent = "To'g'ri! ✅";
-        document.getElementById('testFeedback').style.color = "green";
+        if (feedback) {
+            feedback.textContent = "To'g'ri! ✅";
+            feedback.style.color = "green";
+        }
     } else {
         btn.classList.add('wrong');
-        document.getElementById('testFeedback').textContent = `Xato! To'g'ri javob: ${correct} ❌`;
-        document.getElementById('testFeedback').style.color = "red";
+        if (feedback) {
+            feedback.textContent = `Xato! To'g'ri javob: ${correct} ❌`;
+            feedback.style.color = "red";
+        }
         // To'g'ri javobni yashil qilib ko'rsatamiz
         document.querySelectorAll('.option-btn').forEach(b => {
             if (b.textContent === correct) b.classList.add('correct');
