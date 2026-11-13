@@ -996,5 +996,7 @@ window.upperIntermediateWords = [
     { en: "resolve", uz: "hal qilmoq", example: "Resolve the conflict.", exUz: "Mojaroni hal qiling." },
     { en: "youth", uz: "yoshlik", example: "He spent his youth in the village.", exUz: "U yoshligini qishloqda o'tkazdi." },
     { en: "zeal", uz: "shijoat", example: "She worked with great zeal.", exUz: "U katta shijoat bilan ishladi." },
-    { en: "zone", uz: "hudud", example: "This is a safe zone.", exUz: "Bu xavfsiz hudud." }
+    { en: "zone", uz: "hudud", example: "This is a safe zone.", exUz: "Bu xavfsiz hudud." },
+      { en: "youth", uz: "yoshlik", example: "He spent his youth in the village.", exUz: "U yoshligini qishloqda o'tkazdi." },
+  { en: "zeal", uz: "shijoat", example: "She worked with great zeal.", exUz: "U katta shijoat bilan ishladi." }
 ]
