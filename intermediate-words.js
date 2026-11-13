@@ -989,4 +989,14 @@ window.intermediateWords = [
     { en: "confidence", uz: "o'ziga ishonch", example: "She has confidence in herself.", exUz: "U o'ziga ishonch bildiradi." },
     { en: "determined", uz: "qat'iyatli", example: "He is a determined person.", exUz: "U qat'iyatli inson." },
     { en: "independent", uz: "mustaqil", example: "She is an independent woman.", exUz: "U mustaqil ayol." }
+        { en: "accurate", uz: "aniq", example: "The information is accurate.", exUz: "Ma'lumot aniq." },
+    { en: "achieve", uz: "erishmoq", example: "You can achieve your goals.", exUz: "Siz maqsadlaringizga erisha olasiz." },
+    { en: "active", uz: "faol", example: "She is an active member of the club.", exUz: "U klubning faol a'zosi." },
+    { en: "actual", uz: "haqiqiy", example: "The actual cost was higher.", exUz: "Haqiqiy xarajat yuqoriroq edi." },
+    { en: "adapt", uz: "moslashmoq", example: "Animals adapt to their environment.", exUz: "Hayvonlar o'z muhitiga moslashadilar." },
+    { en: "adopt", uz: "qabul qilmoq", example: "They adopted a child.", exUz: "Ular bola asrab olishdi." },
+    { en: "adventure", uz: "sarguzasht", example: "It was a great adventure.", exUz: "Bu ajoyib sarguzasht edi." },
+    { en: "afford", uz: "qurbi yetmoq", example: "We can't afford a new car.", exUz: "Yangi mashinaga qurbimiz yetmaydi." },
+    { en: "affordable", uz: "hamyonbop", example: "The prices are affordable.", exUz: "Narxlar hamyonbop." },
+    { en: "afraid", uz: "qo'rqqan", example: "I am afraid of dogs.", exUz: "Men itlardan qo'rqaman." }
 ];
