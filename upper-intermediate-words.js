@@ -298,7 +298,7 @@ window.upperIntermediateWords = [
     { en: "compile", uz: "jamlamoq", example: "Compile the data.", exUz: "Ma'lumotlarni jamlang." },
     { en: "compiler", uz: "jamlovchi", example: "The compiler is a program.", exUz: "Jamlovchi - bu dastur." },
     { en: "complementary", uz: "bir-birini to'ldiruvchi", example: "They are complementary.", exUz: "Ular bir-birini to'ldiruvchi." },
-    { en: "complement", uz: "to'ldirmoq", example: "This complements the meal.", exUz: "Bu ovqatni to'ldiradi." }
+    { en: "complement", uz: "to'ldirmoq", example: "This complements the meal.", exUz: "Bu ovqatni to'ldiradi." },
     { en: "complexity", uz: "murakkablik", example: "The complexity is high.", exUz: "Murakkablik yuqori." },
     { en: "complex", uz: "murakkab", example: "It is a complex problem.", exUz: "Bu murakkab muammo." },
     { en: "compliance", uz: "rioya qilish", example: "Compliance is required.", exUz: "Rioya qilish talab qilinadi." },
@@ -994,9 +994,7 @@ window.upperIntermediateWords = [
     { en: "remarkable", uz: "ajoyib", example: "It was a remarkable achievement.", exUz: "Bu ajoyib yutuq edi." },
     { en: "remedy", uz: "chora", example: "There is no remedy.", exUz: "Hech qanday chora yo'q." },
     { en: "resolve", uz: "hal qilmoq", example: "Resolve the conflict.", exUz: "Mojaroni hal qiling." },
-    { en: "yield", uz: "hosil bermoq", example: "The farm yields a lot of crops.", exUz: "Ferma ko'p hosil beradi." },
-  { en: "yield", uz: "hosil bermoq", example: "The farm yields a lot of crops.", exUz: "Ferma ko'plab hosil beradi." },
-  { en: "youth", uz: "yoshlik", example: "He spent his youth in the village.", exUz: "U yoshligini qishloqda o'tkazdi." },
-  { en: "zeal", uz: "shijoat", example: "She worked with great zeal.", exUz: "U katta shijoat bilan ishladi." },
-  { en: "zone", uz: "hudud", example: "This is a safe zone.", exUz: "Bu xavfsiz hudud." }
+    { en: "youth", uz: "yoshlik", example: "He spent his youth in the village.", exUz: "U yoshligini qishloqda o'tkazdi." },
+    { en: "zeal", uz: "shijoat", example: "She worked with great zeal.", exUz: "U katta shijoat bilan ishladi." },
+    { en: "zone", uz: "hudud", example: "This is a safe zone.", exUz: "Bu xavfsiz hudud." }
 ]
