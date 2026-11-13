@@ -988,7 +988,7 @@ window.intermediateWords = [
     { en: "wisdom", uz: "donolik", example: "He has great wisdom.", exUz: "U katta donolikka ega." },
     { en: "confidence", uz: "o'ziga ishonch", example: "She has confidence in herself.", exUz: "U o'ziga ishonch bildiradi." },
     { en: "determined", uz: "qat'iyatli", example: "He is a determined person.", exUz: "U qat'iyatli inson." },
-    { en: "independent", uz: "mustaqil", example: "She is an independent woman.", exUz: "U mustaqil ayol." }
+    { en: "independent", uz: "mustaqil", example: "She is an independent woman.", exUz: "U mustaqil ayol." },
         { en: "accurate", uz: "aniq", example: "The information is accurate.", exUz: "Ma'lumot aniq." },
     { en: "achieve", uz: "erishmoq", example: "You can achieve your goals.", exUz: "Siz maqsadlaringizga erisha olasiz." },
     { en: "active", uz: "faol", example: "She is an active member of the club.", exUz: "U klubning faol a'zosi." },
