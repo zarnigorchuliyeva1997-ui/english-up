@@ -997,4 +997,3 @@ window.synonymWords = [
   { word: "Moderately", translation: "o'rtacha", synonyms: ["reasonably", "fairly", "somewhat"], antonyms: ["extremely", "excessively", "greatly"] },
   { word: "Fairly", translation: "adolatli", synonyms: ["reasonably", "quite", "moderately"], antonyms: ["extremely", "excessively", "unfairly"] }
 ];
-
