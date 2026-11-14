@@ -30,21 +30,21 @@
       </div>
     </section>
 
-    <!-- 2. 40 KUNLIK REJA -->
+    <!-- 2. KUNLIK REJA (Beginner, Elementary va hokazolar uchun) -->
     <section id="planSection" class="hidden">
       <button class="back-link" id="backToLevels">← Levels</button>
-      <h2 id="planLevelTitle">40 Kunlik Reja</h2>
+      <h2 id="planLevelTitle">Kunlik Reja</h2>
       <p>Har kuni so'zlar. Testdan 80% o'tsangiz, keyingi kun ochiladi.</p>
       
       <div class="progress-track">
         <div id="planProgress" class="progress-fill"></div>
       </div>
-      <p id="planProgressText" style="text-align: center; font-weight: bold; margin-bottom: 20px;">0 / 40 kun bajarildi</p>
+      <p id="planProgressText" style="text-align: center; font-weight: bold; margin-bottom: 20px;">0 / 50 kun bajarildi</p>
 
       <div id="daysGrid" class="days-grid"></div>
     </section>
 
-    <!-- 3. SO'ZLARNI KO'RISH -->
+    <!-- 3. SO'ZLARNI KO'RISH (Beginner, Elementary va hokazolar uchun) -->
     <section id="learningSection" class="hidden">
       <button class="back-link" id="backToPlan">← Orqaga</button>
 
@@ -78,7 +78,7 @@
       </div>
     </section>
 
-    <!-- 4. TEST QISMI -->
+    <!-- 4. TEST QISMI (Beginner, Elementary va hokazolar uchun) -->
     <section id="testSection" class="hidden">
       <h2>Daily Vocabulary Test</h2>
       <p id="testProgress">Savol 1 / 30</p>
@@ -93,7 +93,7 @@
       <button id="nextQuestion" class="primary-btn hidden">Next Question</button>
     </section>
 
-    <!-- 5. TEST NATIJASI -->
+    <!-- 5. TEST NATIJASI (Beginner, Elementary va hokazolar uchun) -->
     <section id="resultSection" class="hidden">
       <h2>Test Result</h2>
       <div class="result-card">
@@ -105,36 +105,89 @@
       <button id="continueLearning" class="primary-btn hidden">Keyingi kunga o'tish</button>
     </section>
 
-    <!-- 6. YANGI: SINONIM VA ANTONIM BO'LIMI -->
-    <section id="synonymSection" class="hidden">
-      <button class="back-link" id="backToLevelsFromSynonym">← Levels</button>
+    <!-- 6. SINONIM: 100 KUNLIK REJA -->
+    <section id="synonymPlanSection" class="hidden">
+      <button class="back-link" id="backToLevelsFromSynPlan">← Levels</button>
       <h2>Sinonim va Antonim</h2>
-      <p id="synonymProgressText">Savol 1 / 10</p>
+      <p>100 kunlik reja. Har kuni 20 ta so'z. Testdan 80% o'tsangiz, keyingi kun ochiladi.</p>
+      
+      <div class="progress-track">
+        <div id="synPlanProgress" class="progress-fill"></div>
+      </div>
+      <p id="synPlanProgressText" style="text-align: center; font-weight: bold; margin-bottom: 20px;">0 / 100 kun bajarildi</p>
 
-      <div class="test-card">
-        <p id="synonymTypeLabel">Sinonimini toping:</p>
-        <h2 id="synonymQuestionWord">Word</h2>
-        <div id="synonymOptions" class="test-options"></div>
+      <div id="synDaysGrid" class="days-grid"></div>
+    </section>
+
+    <!-- 7. SINONIM: SO'ZLARNI KO'RISH -->
+    <section id="synonymLearningSection" class="hidden">
+      <button class="back-link" id="backToSynPlan">← Orqaga</button>
+
+      <div class="learning-heading">
+        <div>
+          <p id="synDayLabel">DAY 1</p>
+          <h2>Sinonim va Antonim</h2>
+        </div>
+        <span id="synWordCounter">1 / 20</span>
       </div>
 
-      <p id="synonymFeedback" aria-live="polite"></p>
-      <button id="nextSynonymQuestion" class="primary-btn hidden">Next Question</button>
+      <div class="progress-track">
+        <div id="synLearningProgress" class="progress-fill"></div>
+      </div>
+
+      <div id="synWordCard" class="word-card">
+        <p id="synWordNumber">WORD 1</p>
+        <h2 id="synEnglishWord">Happy</h2>
+        <h3 id="synUzbekWord">baxtli</h3>
+        <div class="example-box">
+          <p><strong>Sinonimlar:</strong> <span id="synSynonyms"></span></p>
+          <p><strong>Antonimlar:</strong> <span id="synAntonyms"></span></p>
+        </div>
+      </div>
+
+      <div class="learning-actions">
+        <button id="synPreviousWord" class="secondary-btn">Previous</button>
+        <button id="synNextWord" class="primary-btn">Next →</button>
+      </div>
+    </section>
+
+    <!-- 8. SINONIM: TEST QISMI -->
+    <section id="synonymTestSection" class="hidden">
+      <h2>Sinonim va Antonim Testi</h2>
+      <p id="synTestProgress">Savol 1 / 20</p>
+
+      <div class="test-card">
+        <p id="synTypeLabel">Sinonimini toping:</p>
+        <h2 id="synTestQuestion"></h2>
+        <div id="synTestOptions" class="test-options"></div>
+      </div>
+
+      <p id="synTestFeedback" aria-live="polite"></p>
+      <button id="synNextQuestion" class="primary-btn hidden">Next Question</button>
+    </section>
+
+    <!-- 9. SINONIM: NATIJA -->
+    <section id="synonymResultSection" class="hidden">
+      <h2>Test Natijasi</h2>
+      <div class="result-card">
+        <h1 id="synResultPercent">0%</h1>
+        <p id="synResultMessage"></p>
+        <p id="synResultDetails"></p>
+      </div>
+      <button id="synRetryTest" class="secondary-btn">Qaytadan urinish</button>
+      <button id="synContinueLearning" class="primary-btn hidden">Keyingi kunga o'tish</button>
     </section>
 
   </main>
 
-  <!-- Skriptlar (Tartibga e'tibor bering) -->
+  <!-- Skriptlar -->
   <script src="beginner-words.js"></script>
   <script src="elementary-words.js"></script>
   <script src="pre-intermediate-words.js"></script>
   <script src="intermediate-words.js"></script>
   <script src="upper-intermediate-words.js"></script>
   <script src="ielts-words.js"></script>
-  
-  <!-- YANGI: Sinonimlar bazasi -->
   <script src="synonym-words.js"></script>
-  
-  <!-- Asosiy mantiq fayli -->
   <script src="vocabulary.js"></script>
 </body>
 </html>
