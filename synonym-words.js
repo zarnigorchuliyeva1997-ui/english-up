@@ -1,4 +1,4 @@
-const synonymWords = [
+window.synonymWords = [
   { word: "Happy", translation: "baxtli", synonyms: ["glad", "joyful", "pleased"], antonyms: ["sad", "unhappy", "miserable"] },
   { word: "Sad", translation: "xafa", synonyms: ["unhappy", "sorrowful", "upset"], antonyms: ["happy", "cheerful", "joyful"] },
   { word: "Big", translation: "katta", synonyms: ["large", "huge", "enormous"], antonyms: ["small", "tiny", "little"] },
