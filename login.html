@@ -8,136 +8,152 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { 
             background: linear-gradient(135deg, #e0eafc, #cfdef3); 
-            color: #333; min-height: 100vh; display: flex; justify-content: center; align-items: center; 
+            color: #333; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;
         }
         .container { 
             background: #fff; padding: 30px 25px; border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 400px; width: 90%; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 450px; width: 100%; text-align: center;
         }
-        .logo { color: #6a1b9a; font-weight: 900; font-size: 28px; margin-bottom: 5px; letter-spacing: 1px;}
-        .slogan { font-size: 14px; color: #777; margin-bottom: 25px; font-style: italic; }
         
-        .btn { 
-            display: block; width: 100%; padding: 14px; border: none; border-radius: 10px; 
-            font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; 
-            margin-bottom: 15px; transition: 0.3s; color: white;
-        }
-        .btn-telegram { background-color: #0088cc; box-shadow: 0 4px 10px rgba(0,136,204,0.3); }
-        .btn-submit { background-color: #6a1b9a; box-shadow: 0 4px 10px rgba(106,27,154,0.3); }
-        .btn-success { background-color: #388e3c; box-shadow: 0 4px 10px rgba(56,142,60,0.3); }
+        .hidden { display: none !important; }
 
+        /* 1-oyna dizayni */
+        .intro-title { color: #6a1b9a; font-weight: 900; font-size: 28px; margin-bottom: 15px; letter-spacing: 1px;}
+        .intro-text { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 20px; text-align: left; }
+        .btn-next { background-color: #6a1b9a; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 10px; }
+
+        /* 2-oyna dizayni */
+        .pricing-title { color: #333; font-size: 20px; margin-bottom: 20px; font-weight: bold;}
+        .price-list { background: #f9f9f9; border-radius: 10px; padding: 15px; margin-bottom: 20px; text-align: left; }
+        .price-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; }
+        .price-item:last-child { border-bottom: none; }
+        .price-name { font-weight: 500; color: #444; }
+        .price-cost { font-weight: bold; color: #2e7d32; }
+        
+        .btn-telegram { background-color: #0088cc; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; width: 100%; cursor: pointer; margin-bottom: 20px; text-decoration: none; display: block; }
+        
         input[type="text"] { 
             width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 10px; 
             font-size: 16px; margin-bottom: 15px; outline: none; transition: 0.3s;
         }
         input[type="text"]:focus { border-color: #6a1b9a; }
-
-        .hidden { display: none !important; }
-        .error-msg { color: #d32f2f; font-size: 14px; margin-bottom: 10px; font-weight: bold; }
         
+        .btn-submit { background-color: #388e3c; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; width: 100%; cursor: pointer; }
+        
+        .error-msg { color: #d32f2f; font-size: 14px; margin-bottom: 10px; font-weight: bold; }
+
+        /* Xush kelibsiz oynasi */
         .welcome-icon { font-size: 50px; margin-bottom: 10px; }
         .welcome-name { color: #6a1b9a; font-size: 24px; margin-bottom: 15px; font-weight: bold; }
-        .time-badge { 
-            background: #e8f5e9; color: #2e7d32; padding: 10px 15px; 
-            border-radius: 10px; font-weight: bold; margin-bottom: 20px; display: inline-block; 
-        }
+        .time-badge { background: #e8f5e9; color: #2e7d32; padding: 10px 15px; border-radius: 10px; font-weight: bold; margin-bottom: 20px; display: inline-block; }
+        .btn-success { background-color: #388e3c; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; width: 100%; cursor: pointer; text-decoration: none; display: block;}
     </style>
 </head>
 <body>
 
     <div class="container">
         
-        <!-- 1-OYNA: Kirish qismi -->
-        <div id="auth-section">
-            <div class="logo">ENGLISH<span style="color:#9c27b0">UP</span></div>
-            <div class="slogan">Sizning orzuyingiz kaliti!</div>
+        <!-- 1-OYNA: English Up haqida ma'lumot -->
+        <div id="intro-section">
+            <div class="intro-title">ENGLISH<span style="color:#9c27b0">UP</span></div>
+            <div class="intro-text">
+                <p><strong>English Up</strong> — bu ingliz tilini noldan mukammal darajagacha o'rganish uchun yaratilgan beqiyos platforma!</p>
+                <p style="margin-top: 10px;">Bu yerda sizni <strong>qimmatbaho va samarali darslar</strong>, har bir dars oxirida <strong>uyga vazifalar</strong> va ularni avtomatik tekshirish tizimi kutmoqda. Eng asosiysi, platformamizda <strong>AI (Sun'iy intellekt) bilan cheklanmagan holda, istalgan vaqtda ingliz tilida suhbat qilishingiz</strong> va talaffuzingizni oshirishingiz mumkin!</p>
+            </div>
+            <button class="btn-next" onclick="showPricing()">Davom etish</button>
+        </div>
+
+        <!-- 2-OYNA: Narxlar va Obuna -->
+        <div id="pricing-section" class="hidden">
+            <div class="pricing-title">Obuna tariflari</div>
             
-            <!-- Telegram havolasi -->
-            <a href="https://t.me/EnglishUpAdmin" target="_blank" class="btn btn-telegram">✈️ Obuna sotib olish</a>
+            <div class="price-list">
+                <div class="price-item">
+                    <span class="price-name">1 oylik</span>
+                    <span class="price-cost">150 000 so'm</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-name">2 oylik</span>
+                    <span class="price-cost">280 000 so'm</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-name">3 oylik</span>
+                    <span class="price-cost">320 000 so'm</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-name">5 oylik</span>
+                    <span class="price-cost">700 000 so'm</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-name">1 yillik</span>
+                    <span class="price-cost">1 500 000 so'm</span>
+                </div>
+            </div>
+
+            <!-- Telegram havolasi (o'zingiznikiga almashtiring) -->
+            <a href="https://t.me/EnglishUpAdmin" target="_blank" class="btn-telegram">✈️ Obuna sotib olish uchun bog'lanish</a>
             
             <p style="font-size: 13px; color: #555; margin-bottom: 10px;">To'lov qilib, kod olgan bo'lsangiz, uni kiriting:</p>
             
             <input type="text" id="codeInput" placeholder="Kodingizni kiriting...">
             <div id="errorMsg" class="error-msg hidden">Noto'g'ri kod! Iltimos, qaytadan urinib ko'ring.</div>
             
-            <button class="btn btn-submit" onclick="checkCode()">Tasdiqlash</button>
+            <button class="btn-submit" onclick="checkCode()">Tasdiqlash</button>
         </div>
 
-        <!-- 2-OYNA: Ism kiritish -->
+        <!-- 3-OYNA: Ism kiritish -->
         <div id="name-section" class="hidden">
             <div class="welcome-icon">🎉</div>
-            <div class="logo">Kod qabul qilindi!</div>
+            <div class="intro-title">Kod qabul qilindi!</div>
             <p style="font-size: 14px; color: #555; margin: 15px 0;">Tizimga kirish uchun ismingizni kiriting:</p>
             
             <input type="text" id="userNameInput" placeholder="Ismingiz...">
-            <button class="btn btn-submit" onclick="saveUser()">Boshlash</button>
+            <button class="btn-submit" onclick="saveUser()">Boshlash</button>
         </div>
 
-        <!-- 3-OYNA: Xush kelibsiz -->
+        <!-- 4-OYNA: Xush kelibsiz -->
         <div id="welcome-section" class="hidden">
             <div class="welcome-icon">👋</div>
-            <div class="logo">Xush kelibsiz!</div>
+            <div class="intro-title">Xush kelibsiz!</div>
             <div class="welcome-name" id="welcomeName">Ism</div>
             <div class="time-badge" id="timeLeft">Yuklanmoqda...</div>
-            <a href="lessons/index.html" class="btn btn-success">Darslarga o'tish</a>
+            <a href="lessons/index.html" class="btn-success">Darslarga o'tish</a>
         </div>
 
     </div>
 
     <script>
-        // ==========================================
-        // 1. BAZA SOZLAMALARI
-        // ==========================================
-        // Admin panelda yaratilgan kodlar avtomatik shu yerga tushadi.
-        // Agar admin panel boshqa brauzerda bo'lsa, kodni shu yerga qo'lda qo'shishingiz mumkin.
-        // "englishUpGeneratedCodes" - bu admin.html yaratgan kodlar xotirasi.
-        
-        let adminGeneratedCodes = JSON.parse(localStorage.getItem('englishUpGeneratedCodes')) || {};
-        
-        // Zaxira (test) kodlari (agar admin panel ishlamasa yoki yangi qurilmada bo'lsa)
-        const backupCodes = {
-            "UP-1M-X8F2": 30, 
-            "UP-3M-A1B2": 90,
-            "UP-5M-C3D4": 150,
-            "UP-8M-E5F6": 240,
-            "UP-1Y-TEST": 365
-        };
-
         let userData = JSON.parse(localStorage.getItem('englishUpUser'));
 
-        // ==========================================
-        // 2. ISHLASH MANTIQI
-        // ==========================================
         window.onload = function() {
             if (userData && userData.name && userData.expireDate) {
                 let now = new Date().getTime();
                 if (now < userData.expireDate) {
-                    showWelcome(); // Vaqti bor
+                    showWelcome(); // Vaqti bor, eslab qolgan
                 } else {
                     localStorage.removeItem('englishUpUser'); // Vaqti tugagan
                 }
             }
         };
 
+        function showPricing() {
+            document.getElementById('intro-section').classList.add('hidden');
+            document.getElementById('pricing-section').classList.remove('hidden');
+        }
+
         function checkCode() {
             let input = document.getElementById('codeInput').value.trim().toUpperCase();
             let errorMsg = document.getElementById('errorMsg');
 
-            // Kod admin panelda yaratilganmi yoki zaxira kodlardanmi tekshiramiz
-            let days = null;
-            
-            if (adminGeneratedCodes[input]) {
-                days = adminGeneratedCodes[input]; // Admin yaratgan kod
-            } else if (backupCodes[input]) {
-                days = backupCodes[input]; // Zaxira kod
-            }
+            // Admin panel yaratgan kodlarni o'qiymiz
+            let generatedCodes = JSON.parse(localStorage.getItem('englishUpGeneratedCodes')) || {};
+            let days = generatedCodes[input];
 
             if (days) {
                 let expireDate = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
-                
                 localStorage.setItem('tempExpire', expireDate);
                 
-                document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('pricing-section').classList.add('hidden');
                 document.getElementById('name-section').classList.remove('hidden');
                 errorMsg.classList.add('hidden');
             } else {
@@ -149,15 +165,9 @@
             let name = document.getElementById('userNameInput').value.trim();
             if (name !== "") {
                 let expireDate = localStorage.getItem('tempExpire');
-                
-                let finalData = {
-                    name: name,
-                    expireDate: parseInt(expireDate)
-                };
-                
+                let finalData = { name: name, expireDate: parseInt(expireDate) };
                 localStorage.setItem('englishUpUser', JSON.stringify(finalData));
                 localStorage.removeItem('tempExpire');
-                
                 showWelcome();
             } else {
                 alert("Iltimos, ismingizni kiriting!");
@@ -165,7 +175,8 @@
         }
 
         function showWelcome() {
-            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('intro-section').classList.add('hidden');
+            document.getElementById('pricing-section').classList.add('hidden');
             document.getElementById('name-section').classList.add('hidden');
             document.getElementById('welcome-section').classList.remove('hidden');
             
