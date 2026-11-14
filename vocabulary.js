@@ -4,14 +4,17 @@
 let currentLevel = 'beginner';
 let allWords = [];
 let currentWordsPerDay = 30;
+let currentTotalDays = 40; // Yangi: har bir daraja uchun kunlar soni
 
 const levelsConfig = [
-    { id: "beginner", title: "Beginner", desc: "Boshlang'ich daraja", wordsPerDay: 30, varName: "beginnerWords" },
-    { id: "elementary", title: "Elementary", desc: "Keyingi daraja", wordsPerDay: 25, varName: "elementaryWords" },
-    { id: "pre-intermediate", title: "Pre-Intermediate", desc: "O'rta daraja", wordsPerDay: 25, varName: "preIntermediateWords" },
-    { id: "intermediate", title: "Intermediate", desc: "O'rta daraja", wordsPerDay: 25, varName: "intermediateWords" },
-    { id: "upper-intermediate", title: "Upper-Intermediate", desc: "Yuqori daraja", wordsPerDay: 25, varName: "upperIntermediateWords" },
-    { id: "ielts", title: "IELTS", desc: "IELTS lug'ati", wordsPerDay: 25, varName: "ieltsWords" }
+    // Har bir darajaga totalDays qo'shildi
+    { id: "beginner", title: "Beginner", desc: "Boshlang'ich daraja", wordsPerDay: 30, totalDays: 40, varName: "beginnerWords" },
+    { id: "elementary", title: "Elementary", desc: "Keyingi daraja", wordsPerDay: 25, totalDays: 40, varName: "elementaryWords" },
+    { id: "pre-intermediate", title: "Pre-Intermediate", desc: "O'rta daraja", wordsPerDay: 25, totalDays: 40, varName: "preIntermediateWords" },
+    { id: "intermediate", title: "Intermediate", desc: "O'rta daraja", wordsPerDay: 25, totalDays: 40, varName: "intermediateWords" },
+    { id: "upper-intermediate", title: "Upper-Intermediate", desc: "Yuqori daraja", wordsPerDay: 25, totalDays: 40, varName: "upperIntermediateWords" },
+    // IELTS uchun 80 kun qilib belgilandi
+    { id: "ielts", title: "IELTS", desc: "IELTS lug'ati", wordsPerDay: 25, totalDays: 80, varName: "ieltsWords" }
 ];
 
 const levelSection = document.getElementById('levelSection');
@@ -19,7 +22,7 @@ const planSection = document.getElementById('planSection');
 const learningSection = document.getElementById('learningSection');
 const testSection = document.getElementById('testSection');
 const resultSection = document.getElementById('resultSection');
-const synonymSection = document.getElementById('synonymSection'); // YANGI
+const synonymSection = document.getElementById('synonymSection');
 
 let currentDay = 1;
 let currentWordIndex = 0;
@@ -28,7 +31,6 @@ let testQuestions = [];
 let testIndex = 0;
 let correctAnswersCount = 0;
 let userProgress = { unlockedDay: 1, completedDays: [] };
-const TOTAL_DAYS = 40;
 
 // ==========================================
 // SO'ZLARNI O'QISH
@@ -50,10 +52,11 @@ function getWordsArray(varName) {
     }
 }
 
-function generatePlanWords(baseWords, wordsPerDay) {
+// Reja so'zlarini yaratish (endi targetCount darajaning o'zidan olinadi)
+function generatePlanWords(baseWords, wordsPerDay, totalDays) {
     if (!baseWords || baseWords.length === 0) return [];
     let finalWords = [...baseWords];
-    let targetCount = 40 * wordsPerDay; 
+    let targetCount = totalDays * wordsPerDay; 
     while (finalWords.length < targetCount) {
         let randomIndex = Math.floor(Math.random() * baseWords.length);
         let bWord = baseWords[randomIndex];
@@ -88,14 +91,17 @@ function selectLevel(levelId) {
     }
 
     currentWordsPerDay = levelData.wordsPerDay; 
-    allWords = generatePlanWords(baseWords, currentWordsPerDay);
+    currentTotalDays = levelData.totalDays; // Kunlar sonini olamiz
+    allWords = generatePlanWords(baseWords, currentWordsPerDay, currentTotalDays);
     
     let saved = localStorage.getItem(`englishUpProgress_${levelId}`);
     userProgress = saved ? JSON.parse(saved) : { unlockedDay: 1, completedDays: [] };
     
     levelSection.classList.add('hidden');
     planSection.classList.remove('hidden');
-    document.getElementById('planLevelTitle').textContent = `${levelData.title} - 40 Kunlik Reja`;
+    
+    // Sarlavhada 40 emas, o'sha darajaning kunlar soni chiqadi
+    document.getElementById('planLevelTitle').textContent = `${levelData.title} - ${currentTotalDays} Kunlik Reja`;
     renderDays();
 }
 
@@ -105,12 +111,14 @@ document.getElementById('backToLevels').addEventListener('click', () => {
 });
 
 // ==========================================
-// 40 KUNLIK REJA
+// REJA KUNLARINI CHIQARISH
 // ==========================================
 function renderDays() {
     const daysGrid = document.getElementById('daysGrid');
     daysGrid.innerHTML = '';
-    for (let i = 1; i <= TOTAL_DAYS; i++) {
+    
+    // TOTAL_DAYS o'rniga currentTotalDays ishlatiladi
+    for (let i = 1; i <= currentTotalDays; i++) {
         const isUnlocked = i <= userProgress.unlockedDay;
         const isCompleted = userProgress.completedDays.includes(i);
         let statusClass = isCompleted ? 'completed' : (isUnlocked ? '' : 'locked');
@@ -120,9 +128,10 @@ function renderDays() {
         if (isUnlocked) dayCard.addEventListener('click', () => startDay(i));
         daysGrid.appendChild(dayCard);
     }
-    const percent = (userProgress.completedDays.length / TOTAL_DAYS) * 100;
+    
+    const percent = (userProgress.completedDays.length / currentTotalDays) * 100;
     document.getElementById('planProgress').style.width = percent + '%';
-    document.getElementById('planProgressText').textContent = `${userProgress.completedDays.length} / ${TOTAL_DAYS} kun bajarildi`;
+    document.getElementById('planProgressText').textContent = `${userProgress.completedDays.length} / ${currentTotalDays} kun bajarildi`;
 }
 
 // ==========================================
@@ -294,10 +303,9 @@ function finishTest() {
 }
 
 // ==========================================
-// YANGI: SINONIM VA ANTONIM BO'LIMI
+// SINONIM VA ANTONIM BO'LIMI
 // ==========================================
 
-// 1. Darajalar ro'yxatiga "Sinonim va Antonim" kartochkasini qo'shish
 const levelListContainer = document.getElementById('levelList');
 const synonymBtnHTML = `
     <button class="level-card" onclick="openSynonymSection()" style="border: 2px solid #1456a0;">
@@ -310,26 +318,22 @@ if (levelListContainer) {
     levelListContainer.insertAdjacentHTML('beforeend', synonymBtnHTML);
 }
 
-// 2. Sinonim testi uchun o'zgaruvchilar
 let synonymQuestions = [];
 let currentSynonymIndex = 0;
 let synonymScore = 0;
 
-// 3. Bo'limga kirish funksiyasi
 function openSynonymSection() {
     if (levelSection) levelSection.classList.add('hidden');
     if (synonymSection) synonymSection.classList.remove('hidden');
     startSynonymTest();
 }
 
-// 4. Testni boshlash
 function startSynonymTest() {
     synonymQuestions = [];
     currentSynonymIndex = 0;
     synonymScore = 0;
 
-    // DIQQAT: synonym-words.js faylingizdagi o'zgaruvchi nomi shu yerda "synonymWords" deb olindi.
-    // Agar u boshqacha bo'lsa (masalan synonymData), shu joyni o'zgartiring.
+    // synonym-words.js dagi o'zgaruvchi nomi
     if (typeof synonymWords === 'undefined' || synonymWords.length === 0) {
         alert("Sinonimlar bazasi topilmadi yoki bo'sh!");
         return;
@@ -359,7 +363,6 @@ function startSynonymTest() {
     showSynonymQuestion();
 }
 
-// 5. Savolni ekranga chiqarish
 function showSynonymQuestion() {
     if (currentSynonymIndex >= synonymQuestions.length) {
         alert(`Test tugadi! Natijangiz: ${synonymScore} / ${synonymQuestions.length}`);
@@ -403,7 +406,6 @@ function showSynonymQuestion() {
     });
 }
 
-// 6. Javobni tekshirish
 function checkSynonymAnswer(btn, chosen, correct, container) {
     Array.from(container.children).forEach(b => b.disabled = true);
 
@@ -427,7 +429,6 @@ function checkSynonymAnswer(btn, chosen, correct, container) {
     document.getElementById("nextSynonymQuestion").classList.remove("hidden");
 }
 
-// 7. Keyingi savolga o'tish
 const nextSynBtn = document.getElementById("nextSynonymQuestion");
 if (nextSynBtn) {
     nextSynBtn.addEventListener("click", () => {
@@ -436,7 +437,6 @@ if (nextSynBtn) {
     });
 }
 
-// 8. Orqaga qaytish
 const backSynBtn = document.getElementById("backToLevelsFromSynonym");
 if (backSynBtn) {
     backSynBtn.addEventListener("click", () => {
