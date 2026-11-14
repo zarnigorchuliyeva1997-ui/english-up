@@ -96,11 +96,12 @@ document.getElementById('levelList').innerHTML = levelsConfig.map(lvl => {
 
 // Sinonim tugmasini qo'shish
 const levelListContainer = document.getElementById('levelList');
+const synCount = (typeof synonymWords !== 'undefined') ? synonymWords.length : 0;
 const synonymBtnHTML = `
     <button class="level-card" onclick="openSynonymPlan()" style="border: 2px solid #1456a0;">
         <h3 style="color: #1456a0;">Sinonim va Antonim</h3>
         <p>So'z boyligini mustahkamlash</p>
-        <span>100 kunlik reja</span>
+        <span>${synCount} ta so'z mavjud</span>
     </button>
 `;
 if (levelListContainer) {
