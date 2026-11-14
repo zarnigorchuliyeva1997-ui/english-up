@@ -1,5 +1,4 @@
 window.beginnerWords = [
-    { en: "apple", uz: "olma", example: "I eat an apple.", exUz: "Men olma yeyman." },
     { en: "book", uz: "kitob", example: "This is a book.", exUz: "Bu kitob." },
     { en: "car", uz: "mashina", example: "My car is red.", exUz: "Mashinam qizil." },
     { en: "dog", uz: "it", example: "The dog is barking.", exUz: "It qichqirmoqda." },
