@@ -8,46 +8,26 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f7f6; color: #333; padding: 20px; }
         
-        .admin-container { 
-            max-width: 500px; margin: 0 auto; background: #fff; 
-            padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-        }
-        
+        .admin-container { max-width: 500px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         h1 { color: #6a1b9a; text-align: center; margin-bottom: 20px; font-size: 22px; }
         
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; font-size: 14px; }
-        select, input { 
-            width: 100%; padding: 12px; border: 1px solid #ccc; 
-            border-radius: 8px; font-size: 16px; outline: none;
-        }
-        select:focus, input:focus { border-color: #6a1b9a; }
+        select, input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; outline: none; }
         
-        .btn-generate { 
-            width: 100%; padding: 14px; background: #6a1b9a; color: white; 
-            border: none; border-radius: 8px; font-size: 16px; font-weight: bold; 
-            cursor: pointer; margin-top: 10px;
-        }
+        .btn-generate { width: 100%; padding: 14px; background: #6a1b9a; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
         .btn-generate:hover { background: #4a148c; }
         
-        .result-box { 
-            margin-top: 20px; padding: 20px; background: #e8f5e9; 
-            border: 2px dashed #388e3c; border-radius: 10px; text-align: center;
-        }
-        .code-text { 
-            font-size: 24px; font-weight: bold; color: #2e7d32; 
-            letter-spacing: 2px; margin: 10px 0; user-select: all;
-        }
+        .result-box { margin-top: 20px; padding: 20px; background: #e8f5e9; border: 2px dashed #388e3c; border-radius: 10px; text-align: center; }
+        .code-text { font-size: 24px; font-weight: bold; color: #2e7d32; letter-spacing: 2px; margin: 10px 0; user-select: all; }
         .info-text { font-size: 14px; color: #555; }
         
-        /* Maxfiy parol oynasi */
         #login-screen { text-align: center; }
         .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-    <!-- 1-OYNA: Maxfiy parol kiritish -->
     <div id="login-screen" class="admin-container">
         <h1>Admin Kirish</h1>
         <p class="info-text" style="margin-bottom: 15px;">Faqat o'qituvchi uchun!</p>
@@ -56,10 +36,8 @@
         <div id="passError" class="hidden" style="color: red; margin-top: 10px; font-size: 14px;">Parol xato!</div>
     </div>
 
-    <!-- 2-OYNA: Kod yaratish paneli -->
     <div id="admin-panel" class="admin-container hidden">
         <h1>Kod Yaratish Markazi</h1>
-        
         <div class="form-group">
             <label>Obuna muddatini tanlang:</label>
             <select id="duration">
@@ -70,7 +48,6 @@
                 <option value="365">1 yillik (365 kun)</option>
             </select>
         </div>
-        
         <button class="btn-generate" onclick="generateCode()">Yangi Kod Yaratish</button>
         
         <div id="result-box" class="result-box hidden">
@@ -81,15 +58,8 @@
     </div>
 
     <script>
-        // ==========================================
-        // 1. ADMIN MAXFIY PAROLI
-        // ==========================================
-        // O'zingizning maxfiy parolingizni shu yerga yozing
         const ADMIN_PASSWORD = "EnglishUp2024"; 
-
-        // ==========================================
-        // 2. KOD YARATISH FUNKSIYALARI
-        // ==========================================
+        
         function checkPass() {
             let pass = document.getElementById('adminPass').value;
             if (pass === ADMIN_PASSWORD) {
@@ -101,7 +71,6 @@
         }
 
         function generateCode() {
-            // Tasodifiy kod yaratish (masalan: UP-1M-A3F9)
             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             let randomPart = "";
             for (let i = 0; i < 4; i++) {
@@ -117,7 +86,11 @@
             
             let newCode = `UP-${monthStr}-${randomPart}`;
             
-            // Natijani ekranga chiqarish
+            // MANA SHU QATOR KODNI XOTIRAGA SAQLAYDI
+            let generatedCodes = JSON.parse(localStorage.getItem('englishUpGeneratedCodes')) || {};
+            generatedCodes[newCode] = parseInt(duration); // Kod va uning muddatini saqlaydi
+            localStorage.setItem('englishUpGeneratedCodes', JSON.stringify(generatedCodes));
+            
             document.getElementById('result-box').classList.remove('hidden');
             document.getElementById('newCode').innerText = newCode;
             document.getElementById('codeInfo').innerText = `Muddati: ${duration} kun`;
