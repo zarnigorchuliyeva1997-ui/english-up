@@ -362,8 +362,8 @@ window.elementaryWords = [
     { en: "door", uz: "eshik", example: "Close the door.", exUz: "Eshikni yoping." },
     { en: "drawer", uz: "tortma", example: "The keys are in the drawer.", exUz: "Kalitlar tortmada." },
     { en: "dress", uz: "ko'ylak", example: "The dress is beautiful.", exUz: "Ko'ylak chiroyli." },
-    { en: "driver", uz: "haydovchi", example: "The driver is here.", exUz: "Haydovchi shu yerda." }
-      { en: "entrance", uz: "kirish joyi", example: "Use the main entrance.", exUz: "Asosiy kirish joyidan foydalaning." },
+    { en: "driver", uz: "haydovchi", example: "The driver is here.", exUz: "Haydovchi shu yerda." },
+    { en: "entrance", uz: "kirish joyi", example: "Use the main entrance.", exUz: "Asosiy kirish joyidan foydalaning." },
     { en: "exit", uz: "chiqish joyi", example: "Where is the exit?", exUz: "Chiqish joyi qayerda?" },
     { en: "factory", uz: "fabrika", example: "He works in a factory.", exUz: "U fabrikada ishlaydi." },
     { en: "fan", uz: "ventilyator", example: "Turn on the fan.", exUz: "Ventilyatorni yoqing." },
@@ -598,7 +598,7 @@ window.elementaryWords = [
     { en: "parent", uz: "ota yoki ona", example: "My parents are kind.", exUz: "Ota-onam mehribon." },
     { en: "mother", uz: "ona", example: "My mother is kind.", exUz: "Onam mehribon." },
     { en: "father", uz: "ota", example: "My father works.", exUz: "Otam ishlaydi." },
-    { en: "son", uz: "o'g'il", example: "Their son is a student.", exUz: "Ularning o'g'illari o'quvchi." }
+    { en: "son", uz: "o'g'il", example: "Their son is a student.", exUz: "Ularning o'g'illari o'quvchi." },
     { en: "daughter", uz: "qiz", example: "Her daughter is small.", exUz: "Uning qizi kichik." },
     { en: "brother", uz: "aka yoki uka", example: "My brother is tall.", exUz: "Akam baland." },
     { en: "sister", uz: "opa yoki singil", example: "My sister is young.", exUz: "Singlim yosh." },
