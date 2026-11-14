@@ -1,8 +1,6 @@
 window.ieltsWords = [
     // ================= 1-KUN (1-25) =================
-    { day: 1, en: "achieve", uz: "erishmoq", example: "She worked hard to achieve her goals.", exUz: "U maqsadlariga erishish uchun ko'p ishladi." },
     { day: 1, en: "acquire", uz: "egallamoq", example: "He acquired new skills during the course.", exUz: "U kurs davomida yangi ko'nikmalarni egalladi." },
-    { day: 1, en: "adapt", uz: "moslashmoq", example: "It takes time to adapt to a new environment.", exUz: "Yangi muhitga moslashish vaqt oladi." },
     { day: 1, en: "affect", uz: "ta'sir qilmoq", example: "Climate change affects everyone.", exUz: "Iqlim o'zgarishi barchaga ta'sir qiladi." },
     { day: 1, en: "analyze", uz: "tahlil qilmoq", example: "We need to analyze the data carefully.", exUz: "Biz ma'lumotlarni diqqat bilan tahlil qilishimiz kerak." },
     { day: 1, en: "apply", uz: "qo'llamoq", example: "You should apply this theory to real life.", exUz: "Siz bu nazariyani real hayotga qo'llashingiz kerak." },
