@@ -28,6 +28,7 @@
 </head>
 <body>
 
+    <!-- 1-OYNA: Parol kiritish -->
     <div id="login-screen" class="admin-container">
         <h1>Admin Kirish</h1>
         <p class="info-text" style="margin-bottom: 15px;">Faqat o'qituvchi uchun!</p>
@@ -36,18 +37,21 @@
         <div id="passError" class="hidden" style="color: red; margin-top: 10px; font-size: 14px;">Parol xato!</div>
     </div>
 
+    <!-- 2-OYNA: Kod yaratish -->
     <div id="admin-panel" class="admin-container hidden">
         <h1>Kod Yaratish Markazi</h1>
+        
         <div class="form-group">
             <label>Obuna muddatini tanlang:</label>
             <select id="duration">
                 <option value="30">1 oylik (30 kun)</option>
+                <option value="60">2 oylik (60 kun)</option>
                 <option value="90">3 oylik (90 kun)</option>
                 <option value="150">5 oylik (150 kun)</option>
-                <option value="240">8 oylik (240 kun)</option>
                 <option value="365">1 yillik (365 kun)</option>
             </select>
         </div>
+        
         <button class="btn-generate" onclick="generateCode()">Yangi Kod Yaratish</button>
         
         <div id="result-box" class="result-box hidden">
@@ -58,8 +62,14 @@
     </div>
 
     <script>
+        // ==========================================
+        // 1. ADMIN MAXFIY PAROLI
+        // ==========================================
         const ADMIN_PASSWORD = "EnglishUp2024"; 
-        
+
+        // ==========================================
+        // 2. KOD YARATISH FUNKSIYALARI
+        // ==========================================
         function checkPass() {
             let pass = document.getElementById('adminPass').value;
             if (pass === ADMIN_PASSWORD) {
@@ -79,18 +89,21 @@
             
             let duration = document.getElementById('duration').value;
             let monthStr = "1M";
+            
+            // Muddatga qarab kodning boshini aniqlash
+            if(duration == 60) monthStr = "2M";
             if(duration == 90) monthStr = "3M";
             if(duration == 150) monthStr = "5M";
-            if(duration == 240) monthStr = "8M";
             if(duration == 365) monthStr = "1Y";
             
             let newCode = `UP-${monthStr}-${randomPart}`;
             
-            // MANA SHU QATOR KODNI XOTIRAGA SAQLAYDI
+            // Kodni va uning muddatini brauzer xotirasiga saqlash
             let generatedCodes = JSON.parse(localStorage.getItem('englishUpGeneratedCodes')) || {};
-            generatedCodes[newCode] = parseInt(duration); // Kod va uning muddatini saqlaydi
+            generatedCodes[newCode] = parseInt(duration); 
             localStorage.setItem('englishUpGeneratedCodes', JSON.stringify(generatedCodes));
             
+            // Natijani ekranga chiqarish
             document.getElementById('result-box').classList.remove('hidden');
             document.getElementById('newCode').innerText = newCode;
             document.getElementById('codeInfo').innerText = `Muddati: ${duration} kun`;
