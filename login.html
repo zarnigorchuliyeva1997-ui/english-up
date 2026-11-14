@@ -52,7 +52,7 @@
             <div class="logo">ENGLISH<span style="color:#9c27b0">UP</span></div>
             <div class="slogan">Sizning orzuyingiz kaliti!</div>
             
-            <!-- Telegram havolasi (Buni o'zingiznikiga o'zgartirasiz) -->
+            <!-- Telegram havolasi -->
             <a href="https://t.me/EnglishUpAdmin" target="_blank" class="btn btn-telegram">✈️ Obuna sotib olish</a>
             
             <p style="font-size: 13px; color: #555; margin-bottom: 10px;">To'lov qilib, kod olgan bo'lsangiz, uni kiriting:</p>
@@ -86,14 +86,21 @@
 
     <script>
         // ==========================================
-        // 1. ADMIN SOZLAMALARI
+        // 1. BAZA SOZLAMALARI
         // ==========================================
-        // Admin paneldagi kodlar bilan bir xil bo'lishi kerak
-        const validCodes = {
-            "UP-1M-X8F2": 30, // 1 oylik
-            "UP-3M-A1B2": 90, // 3 oylik
-            "UP-5M-C3D4": 150, // 5 oylik
-            "UP-8M-E5F6": 240  // 8 oylik
+        // Admin panelda yaratilgan kodlar avtomatik shu yerga tushadi.
+        // Agar admin panel boshqa brauzerda bo'lsa, kodni shu yerga qo'lda qo'shishingiz mumkin.
+        // "englishUpGeneratedCodes" - bu admin.html yaratgan kodlar xotirasi.
+        
+        let adminGeneratedCodes = JSON.parse(localStorage.getItem('englishUpGeneratedCodes')) || {};
+        
+        // Zaxira (test) kodlari (agar admin panel ishlamasa yoki yangi qurilmada bo'lsa)
+        const backupCodes = {
+            "UP-1M-X8F2": 30, 
+            "UP-3M-A1B2": 90,
+            "UP-5M-C3D4": 150,
+            "UP-8M-E5F6": 240,
+            "UP-1Y-TEST": 365
         };
 
         let userData = JSON.parse(localStorage.getItem('englishUpUser'));
@@ -105,7 +112,7 @@
             if (userData && userData.name && userData.expireDate) {
                 let now = new Date().getTime();
                 if (now < userData.expireDate) {
-                    showWelcome(); // Vaqti bor, eslab qolgan
+                    showWelcome(); // Vaqti bor
                 } else {
                     localStorage.removeItem('englishUpUser'); // Vaqti tugagan
                 }
@@ -116,8 +123,16 @@
             let input = document.getElementById('codeInput').value.trim().toUpperCase();
             let errorMsg = document.getElementById('errorMsg');
 
-            if (validCodes[input]) {
-                let days = validCodes[input];
+            // Kod admin panelda yaratilganmi yoki zaxira kodlardanmi tekshiramiz
+            let days = null;
+            
+            if (adminGeneratedCodes[input]) {
+                days = adminGeneratedCodes[input]; // Admin yaratgan kod
+            } else if (backupCodes[input]) {
+                days = backupCodes[input]; // Zaxira kod
+            }
+
+            if (days) {
                 let expireDate = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
                 
                 localStorage.setItem('tempExpire', expireDate);
