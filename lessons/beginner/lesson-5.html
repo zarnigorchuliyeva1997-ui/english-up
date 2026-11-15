@@ -1,1 +1,696 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 5-Dars: To Be (bo'lmoq) fe'li</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; font-size: 1.8em; }
+        .greeting {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: #EEF2FF;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info-box {
+            background: #FFFBEB;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info-box strong { color: #B45309; }
+        .grammar-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .num { font-weight: bold; width: 30px; color: var(--primary); }
+        .word { width: 200px; font-weight: 600; }
+        .transcription { width: 150px; color: #059669; font-family: monospace; font-size: 1.05em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        
+        .explanation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: #F9FAFB;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .explanation-table th, .explanation-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .explanation-table th { background: #E5E7EB; color: var(--primary); }
+        .explanation-table td { font-family: monospace; font-size: 1.1em; color: #059669; }
 
+        .repeat-section {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .repeat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #D1FAE5;
+        }
+        .repeat-item:last-child { border-bottom: none; }
+        .repeat-item span { font-weight: 600; font-size: 1.1em; }
+
+        .test-section, .interactive-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .question { margin-bottom: 20px; }
+        .question p { margin: 0 0 10px 0; font-weight: 600; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.2s;
+            background: white;
+            border: 1px solid var(--border);
+        }
+        .options label:hover { background: #E5E7EB; }
+        .options input { margin-right: 10px; }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1em; }
+        
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1em;
+            outline: none;
+        }
+        .input-group input:focus { border-color: var(--primary); }
+        .input-group input.correct { border-color: var(--success); background: #D1FAE5; }
+        .input-group input.incorrect { border-color: var(--error); background: #FEE2E2; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .back-btn:hover { background: #4B5563; }
+
+        .text-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .formula {
+            background: #1F2937;
+            color: #F9FAFB;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 15px 0;
+            letter-spacing: 1px;
+        }
+        .highlight { color: var(--warning); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>5-Dars: To Be (bo'lmoq) fe'li</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi darsimizda ingliz tilining eng asosiy fe'li bo'lgan <b>"To Be" (bo'lmoq)</b> fe'lini o'rganamiz. Bu fe'lni bilmasdan turib, ingliz tilida gapirishning iloji yo'q!</p>
+
+    <div class="info-box">
+        <strong>Qisqacha eslatma:</strong>
+        <p style="margin-top: 10px; margin-bottom: 0;"><b>To Be</b> fe'li o'zbek tilida <b>"bo'lmoq"</b> deb tarjima qilinadi. U gapda ikkita asosiy vazifani bajaradi: <b>1)</b> Kimningdir yoki nimaningdir qanday holatda ekanligini (holat), <b>2)</b> Ayni damda sodir bo'layotgan ish-harakatni (davomli ish harakat) ifodalaydi. O'zbek tilida bu fe'l ba'zan tushib qoladi (masalan: "Men talabaman" - "Men" va "talabaman" so'zlari orasida fe'l yo'q, lekin ingliz tilida "I am a student" deb aytiladi).</p>
+    </div>
+
+    <h2>Kishilik olmoshlari (Subject Pronouns)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="word">I</span><span class="transcription">/aɪ/</span><span class="translation">Men</span><button class="audio-btn" onclick="speak('I')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">You</span><span class="transcription">/juː/</span><span class="translation">Siz / Sen</span><button class="audio-btn" onclick="speak('You')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">He</span><span class="transcription">/hiː/</span><span class="translation">U (o'g'il bola)</span><button class="audio-btn" onclick="speak('He')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">She</span><span class="transcription">/ʃiː/</span><span class="translation">U (qiz bola)</span><button class="audio-btn" onclick="speak('She')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">It</span><span class="transcription">/ɪt/</span><span class="translation">U (narsa/hayvon)</span><button class="audio-btn" onclick="speak('It')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">We</span><span class="transcription">/wiː/</span><span class="translation">Biz</span><button class="audio-btn" onclick="speak('We')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">They</span><span class="transcription">/ðeɪ/</span><span class="translation">Ular</span><button class="audio-btn" onclick="speak('They')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>1-Bo'lim: To Be fe'li qoidasi va strukturasi</h2>
+    
+    <div class="grammar-box">
+        <p><b>To Be</b> fe'li ingliz tilida "bo'lmoq" degan ma'noni anglatadi. U quyidagi ikki holatda ishlatiladi:</p>
+        
+        <h4 style="color: var(--success); margin-top: 15px;">1. Holatni ifodalash (State)</h4>
+        <p>Kimningdir yoki nimaningdir qanday ahvolda, qanday ko'rinishda ekanligini bildiradi.</p>
+        <ul>
+            <li>I am a student. (Men talabaman) - <i>Kimligim (holatim)</i></li>
+            <li>She is beautiful. (U chiroyli) - <i>Qanday ko'rinishdaligi (holati)</i></li>
+            <li>They are at home. (Ular uyda) - <i>Qayerdaligi (holati)</i></li>
+        </ul>
+
+        <h4 style="color: var(--success); margin-top: 15px;">2. Davomli ish harakatni ifodalash (Continuous Actions)</h4>
+        <p>Ayni damda, hozirning o'zida sodir bo'layotgan ish-harakatni bildiradi. Bunda To Be yordamchi fe'l bo'lib xizmat qiladi.</p>
+        <ul>
+            <li>I am reading a book. (Men kitob o'qiyapman) - <i>Hozir o'qiyapman</i></li>
+            <li>He is playing football. (U futbol o'ynayapti) - <i>Hozir o'ynayapti</i></li>
+            <li>We are learning English. (Biz ingliz tili o'rganyapmiz) - <i>Hozir o'rganyapmiz</i></li>
+        </ul>
+    </div>
+
+    <h3>Am, Is, Are nima va qaysi olmosh bilan ishlatiladi?</h3>
+    <p>To Be fe'lining hozirgi zamondagi uchta shakli bor: <b>am, is, are</b>. Ular kishilik olmoshlariga qarab tanlanadi:</p>
+    
+    <table class="explanation-table">
+        <tr><th>Olmosh (Subject)</th><th>To Be fe'li</th><th>Qisqartma shakli</th><th>Tarjimasi</th></tr>
+        <tr><td><b>I</b> (Men)</td><td><b>am</b></td><td>I'm</td><td>Men ...man</td></tr>
+        <tr><td><b>He</b> (U - o'g'il)</td><td rowspan="3"><b>is</b></td><td>He's</td><td>U ...dir</td></tr>
+        <tr><td><b>She</b> (U - qiz)</td><td>She's</td><td>U ...dir</td></tr>
+        <tr><td><b>It</b> (U - narsa)</td><td>It's</td><td>U ...dir</td></tr>
+        <tr><td><b>You</b> (Siz/Sen)</td><td rowspan="3"><b>are</b></td><td>You're</td><td>Siz ...siz</td></tr>
+        <tr><td><b>We</b> (Biz)</td><td>We're</td><td>Biz ...miz</td></tr>
+        <tr><td><b>They</b> (Ular)</td><td>They're</td><td>Ular ...dirlar</td></tr>
+    </table>
+
+    <div class="info-box">
+        <strong>To Be qanday tarjima qilinadi?</strong>
+        <p>O'zbek tilida "To Be" fe'li alohida so'z sifatida tarjima qilinmaydi, balki gap oxiridagi qo'shimchalarga (-man, -san, -dir, -miz, -siz, -dirlar) aylanadi. Masalan: "I am a doctor" — "Men shifokor<b>man</b>". "He is a doctor" — "U shifokor<b>dir</b>" (yoki shunchaki "U shifokor").</p>
+    </div>
+
+    <h2>2-Bo'lim: Holatni ifodalovchi gaplar (14 ta)</h2>
+    <p>Quyidagi gaplarni ovoz chiqarib o'qing va qanday gap ekanligini tushunishga harakat qiling:</p>
+    
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">I am a student.</span><span class="translation">Men talabaman.</span><button class="audio-btn" onclick="speak('I am a student')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">I am tall.</span><span class="translation">Men novchaman.</span><button class="audio-btn" onclick="speak('I am tall')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">He is a teacher.</span><span class="translation">U o'qituvchi.</span><button class="audio-btn" onclick="speak('He is a teacher')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">He is at home.</span><span class="translation">U uyda.</span><button class="audio-btn" onclick="speak('He is at home')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">She is a doctor.</span><span class="translation">U shifokor.</span><button class="audio-btn" onclick="speak('She is a doctor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">She is beautiful.</span><span class="translation">U chiroyli.</span><button class="audio-btn" onclick="speak('She is beautiful')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">It is a cat.</span><span class="translation">U mushuk.</span><button class="audio-btn" onclick="speak('It is a cat')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">It is cold today.</span><span class="translation">Bugun sovuq.</span><button class="audio-btn" onclick="speak('It is cold today')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">You are a good friend.</span><span class="translation">Siz yaxshi do'stsiz.</span><button class="audio-btn" onclick="speak('You are a good friend')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">You are happy.</span><span class="translation">Siz baxtlisiz.</span><button class="audio-btn" onclick="speak('You are happy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">We are students.</span><span class="translation">Biz talabalar.</span><button class="audio-btn" onclick="speak('We are students')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">We are in the classroom.</span><span class="translation">Biz sinfdadamiz.</span><button class="audio-btn" onclick="speak('We are in the classroom')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">They are brothers.</span><span class="translation">Ular aka-uka.</span><button class="audio-btn" onclick="speak('They are brothers')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">They are very kind.</span><span class="translation">Ular juda mehribon.</span><button class="audio-btn" onclick="speak('They are very kind')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="info-box">
+        <strong>Qoida:</strong> Yuqoridagi gaplarga yaxshilab e'tibor bering. <b>To Be</b> fe'li aynan qanday hollarda va qay ko'rinishda ishlatilmoqda anglashga harakat qiling. Yuqoridagi 14 gapimiz hammasi aynan <b>holatga</b> bog'liq. <br><br>
+        <b>Holat nima?</b> Holat — sizning novchaligingiz yoki uyingizning kattaligi yoki ota-onangizning yoshi kattaligi, hullas, shaxsni yoki buyumni qanday ko'rinishda yoki qanday ahvolda ekanligidir. <br><br>
+        Agar tushunmasangiz, qoidani kamida 3 marotaba takrorlang.
+    </div>
+
+    <h2>3-Bo'lim: Davomli ish harakatni ifodalovchi gaplar (14 ta)</h2>
+    <p>Endi huddi yuqoridagi singari, har bir olmoshga ikkitadan gap tuzamiz, lekin bu gaplarning hammasi <b>davomli ish harakatda</b> bo'ladi. Gaplarni o'qing va ovoz chiqarib takrorlang:</p>
+    
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">I am reading a book.</span><span class="translation">Men kitob o'qiyapman.</span><button class="audio-btn" onclick="speak('I am reading a book')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">I am writing a letter.</span><span class="translation">Men xat yozyapman.</span><button class="audio-btn" onclick="speak('I am writing a letter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">He is playing football.</span><span class="translation">U futbol o'ynayapti.</span><button class="audio-btn" onclick="speak('He is playing football')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">He is sleeping.</span><span class="translation">U uxlayapti.</span><button class="audio-btn" onclick="speak('He is sleeping')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">She is cooking dinner.</span><span class="translation">U kechki ovqat pishiryapti.</span><button class="audio-btn" onclick="speak('She is cooking dinner')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">She is watching TV.</span><span class="translation">U televizor ko'ryapti.</span><button class="audio-btn" onclick="speak('She is watching TV')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">It is raining.</span><span class="translation">Yomg'ir yog'yapti.</span><button class="audio-btn" onclick="speak('It is raining')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">It is running.</span><span class="translation">U yuguryapti.</span><button class="audio-btn" onclick="speak('It is running')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">You are singing a song.</span><span class="translation">Siz qo'shiq aytayapsiz.</span><button class="audio-btn" onclick="speak('You are singing a song')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">You are smiling.</span><span class="translation">Siz kulimsiraysiz.</span><button class="audio-btn" onclick="speak('You are smiling')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">We are learning English.</span><span class="translation">Biz ingliz tili o'rganyapmiz.</span><button class="audio-btn" onclick="speak('We are learning English')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">We are working.</span><span class="translation">Biz ishlayapmiz.</span><button class="audio-btn" onclick="speak('We are working')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">They are dancing.</span><span class="translation">Ular raqsga tushyaptilar.</span><button class="audio-btn" onclick="speak('They are dancing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">They are laughing.</span><span class="translation">Ular kulyaptilar.</span><button class="audio-btn" onclick="speak('They are laughing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="info-box">
+        <strong>Eslatma:</strong> Tasavvur qiling siz hozir kitob o'qiyapsiz yoki ayni damda mana shu matinni o'qiyapsiz. <b>Davomli ish harakatni anglash shunday:</b> hozirning o'zida qanday ishlar sodir bo'lyapti? Ha, aynan hozirning o'zida atrofga qarang, qanday ish sodir bo'layotganiga e'tibor qiling. Sodir bo'lgan emas yoki endi sodir bo'ladigan ham emas, aynan <b>hozir sodir bo'layotgan</b> ishlar <b>continuous actions</b> (davomli ish harakat)dur. Biz bularni gapirishda, ya'ni davomli ish harakatini gapirishda albatta <b>To Be</b> yordamchi fe'lidan foydalanamiz!
+    </div>
+
+    <h3>Davomli ish harakat formulasi:</h3>
+    <div class="formula">
+        S + To Be + V+ing
+    </div>
+    <p style="text-align: center; color: var(--text-light);">
+        <b>S</b> - Ega (I, He, She, It, You, We, They)<br>
+        <b>To Be</b> - am, is, are<br>
+        <b>V+ing</b> - Fe'lning -ing qo'shimchasi bilan shakli (reading, playing, cooking...)
+    </p>
+
+    <h3>15 ta misol (Holat va Davomli ish harakat)</h3>
+    <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+        <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi gaplarni ovoz chiqarib 3 marotabadan takroriy o'qing va aynan qanday gap ekanligiga (holat yoki davomli ish harakat) e'tibor bering.
+    </div>
+
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">I am a teacher.</span><span class="translation">Men o'qituvchiman. (Holat)</span><button class="audio-btn" onclick="speak('I am a teacher')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">I am teaching English.</span><span class="translation">Men ingliz tili o'qityapman. (Davomli)</span><button class="audio-btn" onclick="speak('I am teaching English')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">He is a driver.</span><span class="translation">U haydovchi. (Holat)</span><button class="audio-btn" onclick="speak('He is a driver')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">He is driving a car.</span><span class="translation">U mashina haydayapti. (Davomli)</span><button class="audio-btn" onclick="speak('He is driving a car')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">She is a nurse.</span><span class="translation">U hamshira. (Holat)</span><button class="audio-btn" onclick="speak('She is a nurse')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">She is helping a patient.</span><span class="translation">U bemorga yordam beryapti. (Davomli)</span><button class="audio-btn" onclick="speak('She is helping a patient')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">It is a big house.</span><span class="translation">U katta uy. (Holat)</span><button class="audio-btn" onclick="speak('It is a big house')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">It is burning.</span><span class="translation">U yonyapti. (Davomli)</span><button class="audio-btn" onclick="speak('It is burning')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">We are happy.</span><span class="translation">Biz baxtlimiz. (Holat)</span><button class="audio-btn" onclick="speak('We are happy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">We are celebrating.</span><span class="translation">Biz nishonlayapmiz. (Davomli)</span><button class="audio-btn" onclick="speak('We are celebrating')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">They are at school.</span><span class="translation">Ular maktabda. (Holat)</span><button class="audio-btn" onclick="speak('They are at school')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">They are studying.</span><span class="translation">Ular o'qishyapti. (Davomli)</span><button class="audio-btn" onclick="speak('They are studying')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">You are a student.</span><span class="translation">Siz talabasiz. (Holat)</span><button class="audio-btn" onclick="speak('You are a student')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">You are listening to me.</span><span class="translation">Siz meni eshityapsiz. (Davomli)</span><button class="audio-btn" onclick="speak('You are listening to me')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">I am happy.</span><span class="translation">Men baxtliman. (Holat)</span><button class="audio-btn" onclick="speak('I am happy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="interactive-section">
+        <h2>1-Interaktiv test (10 ta savol)</h2>
+        <p>To Be fe'liga oid bo'sh o'rinlarni to'ldiring.</p>
+        <div class="interactive-grid" id="interactiveGrid">
+            <div class="input-group"><label>I ___ a student.</label><input type="text" id="inp1" placeholder="am/is/are"></div>
+            <div class="input-group"><label>He ___ a teacher.</label><input type="text" id="inp2" placeholder="am/is/are"></div>
+            <div class="input-group"><label>She ___ a doctor.</label><input type="text" id="inp3" placeholder="am/is/are"></div>
+            <div class="input-group"><label>It ___ a cat.</label><input type="text" id="inp4" placeholder="am/is/are"></div>
+            <div class="input-group"><label>We ___ students.</label><input type="text" id="inp5" placeholder="am/is/are"></div>
+            <div class="input-group"><label>They ___ brothers.</label><input type="text" id="inp6" placeholder="am/is/are"></div>
+            <div class="input-group"><label>You ___ a good friend.</label><input type="text" id="inp7" placeholder="am/is/are"></div>
+            <div class="input-group"><label>I ___ reading a book.</label><input type="text" id="inp8" placeholder="am/is/are"></div>
+            <div class="input-group"><label>She ___ cooking dinner.</label><input type="text" id="inp9" placeholder="am/is/are"></div>
+            <div class="input-group"><label>They ___ playing football.</label><input type="text" id="inp10" placeholder="am/is/are"></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult"></div>
+    </div>
+
+    <h2>4-Bo'lim: To Be ning savol shakli</h2>
+    <p>Formulaga e'tibor bering. Savol shaklini yasash uchun <b>To Be</b> fe'li ega (Subject) dan oldinga o'tadi:</p>
+    
+    <div class="formula">
+        S + To Be + Ving &nbsp;&nbsp;&nbsp;➔&nbsp;&nbsp;&nbsp; To Be + S + Ving?
+    </div>
+    
+    <div class="grammar-box">
+        <p><b>Oddiy gap:</b> I am reading a book. (Men kitob o'qiyapman.)</p>
+        <p><b>Savol gap:</b> Am I reading a book? (Men kitob o'qiyapmanmi?)</p>
+    </div>
+
+    <p>Endi misollarga e'tibor beramiz. Avval oddiy gap, keyin savol shakli:</p>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">This is a big house.</span><span class="translation">Bu katta uy.</span></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Is this a big house?</span><span class="translation">Bu katta uymi?</span><button class="audio-btn" onclick="speak('Is this a big house?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">He is a doctor.</span><span class="translation">U shifokor.</span></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Is he a doctor?</span><span class="translation">U shifokormi?</span><button class="audio-btn" onclick="speak('Is he a doctor?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">They are playing football.</span><span class="translation">Ular futbol o'ynashyapti.</span></div>
+        <div class="word-item"><span class="num">6</span><span class="word">Are they playing football?</span><span class="translation">Ular futbol o'ynashyaptimi?</span><button class="audio-btn" onclick="speak('Are they playing football?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">She is a nurse.</span><span class="translation">U hamshira.</span></div>
+        <div class="word-item"><span class="num">8</span><span class="word">Is she a nurse?</span><span class="translation">U hamshirami?</span><button class="audio-btn" onclick="speak('Is she a nurse?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">You are reading a book.</span><span class="translation">Siz kitob o'qiyapsiz.</span></div>
+        <div class="word-item"><span class="num">10</span><span class="word">Are you reading a book?</span><span class="translation">Siz kitob o'qiyapsizmi?</span><button class="audio-btn" onclick="speak('Are you reading a book?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="info-box">
+        <strong>Qoida:</strong> To Be yordamchi fe'li ishtirok etgan gaplarning hammasida savol so'rash uchun To Be yordamchi fe'lini egadan oldinga yoki gapning boshiga qo'yish orqali amalga oshiriladi. <br><br>
+        <b>To Be + S + Ving?</b>
+    </div>
+
+    <p>Misollarga e'tibor bering (yana 5 ta):</p>
+    <div class="word-list">
+        <div class="word-item"><span class="word">It is a cat.</span> <span class="translation">U mushuk.</span> ➔ <span class="word">Is it a cat?</span> <span class="translation">U mushukmi?</span><button class="audio-btn" onclick="speak('Is it a cat')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">We are happy.</span> <span class="translation">Biz baxtlimiz.</span> ➔ <span class="word">Are we happy?</span> <span class="translation">Biz baxtlimizmi?</span><button class="audio-btn" onclick="speak('Are we happy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">He is sleeping.</span> <span class="translation">U uxlayapti.</span> ➔ <span class="word">Is he sleeping?</span> <span class="translation">U uxlayaptimi?</span><button class="audio-btn" onclick="speak('Is he sleeping')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">They are students.</span> <span class="translation">Ular talabalar.</span> ➔ <span class="word">Are they students?</span> <span class="translation">Ular talabami?</span><button class="audio-btn" onclick="speak('Are they students')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">I am a teacher.</span> <span class="translation">Men o'qituvchiman.</span> ➔ <span class="word">Am I a teacher?</span> <span class="translation">Men o'qituvchimanmi?</span><button class="audio-btn" onclick="speak('Am I a teacher')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="homework-section" style="background: #F0FDF4; border-color: #BBF7D0;">
+        <h3>Daftaringizga bajaring:</h3>
+        <p>Quyidagi 7 gapni daftaringizga <b>savolga aylantirib yozing</b>:</p>
+        <ol style="line-height: 2;">
+            <li>She is a doctor.</li>
+            <li>They are playing tennis.</li>
+            <li>He is at home.</li>
+            <li>We are students.</li>
+            <li>It is a big house.</li>
+            <li>You are reading a book.</li>
+            <li>She is cooking dinner.</li>
+        </ol>
+    </div>
+
+    <h2>5-Bo'lim: To Be ning inkor shakli</h2>
+    <p>Savol bo'limini qanday tushuntirgan bo'lsak, inkor bo'limini ham huddi shunday qilib tushuntiramiz. Inkor gap yasash uchun <b>To Be</b> fe'lidan keyin <b>not</b> so'zini qo'shamiz:</p>
+    
+    <div class="formula">
+        S + To Be + not + Ving
+    </div>
+
+    <div class="grammar-box">
+        <p><b>Oddiy gap:</b> I am reading a book. (Men kitob o'qiyapman.)</p>
+        <p><b>Inkor gap:</b> I am <b>not</b> reading a book. (Men kitob o'qimayapman.)</p>
+        <br>
+        <p><b>Qisqartma shakllari:</b></p>
+        <ul>
+            <li>I am not ➔ I'm not</li>
+            <li>He is not ➔ He isn't</li>
+            <li>She is not ➔ She isn't</li>
+            <li>It is not ➔ It isn't</li>
+            <li>You are not ➔ You aren't</li>
+            <li>We are not ➔ We aren't</li>
+            <li>They are not ➔ They aren't</li>
+        </ul>
+    </div>
+
+    <p>Misollarga e'tibor bering (5 ta):</p>
+    <div class="word-list">
+        <div class="word-item"><span class="word">He is not a doctor.</span><span class="translation">U shifokor emas.</span><button class="audio-btn" onclick="speak('He is not a doctor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">They are not playing football.</span><span class="translation">Ular futbol o'ynashmayapti.</span><button class="audio-btn" onclick="speak('They are not playing football')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">I am not a student.</span><span class="translation">Men talaba emasman.</span><button class="audio-btn" onclick="speak('I am not a student')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">She is not cooking dinner.</span><span class="translation">U kechki ovqat pishirmayapti.</span><button class="audio-btn" onclick="speak('She is not cooking dinner')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">We are not happy.</span><span class="translation">Biz baxtli emasmiz.</span><button class="audio-btn" onclick="speak('We are not happy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="homework-section">
+        <h2>6-Bo'lim: Homework (Uyga vazifa)</h2>
+        
+        <h3>1-topshiriq: Daftaringizga yozing</h3>
+        <p>Quyidagi gaplarni inkor shaklida yozing (5 ta):</p>
+        <ol>
+            <li>She is a teacher.</li>
+            <li>They are reading books.</li>
+            <li>He is at home.</li>
+            <li>We are playing football.</li>
+            <li>It is a cat.</li>
+        </ol>
+
+        <h3>2-topshiriq: Savol shakli</h3>
+        <p>Quyidagi gaplarni savol shaklida yozing (5 ta):</p>
+        <ol>
+            <li>You are a student.</li>
+            <li>She is sleeping.</li>
+            <li>They are at school.</li>
+            <li>He is a doctor.</li>
+            <li>We are happy.</li>
+        </ol>
+
+        <h3>3-topshiriq: To Be ni qo'llang</h3>
+        <p>Quyidagi gaplardagi bo'sh joylarga <b>am, is</b> yoki <b>are</b> qo'ying (10 ta):</p>
+        <ol style="column-count: 2;">
+            <li>I ___ a student.</li>
+            <li>He ___ tall.</li>
+            <li>They ___ playing.</li>
+            <li>She ___ cooking.</li>
+            <li>It ___ cold.</li>
+            <li>We ___ happy.</li>
+            <li>You ___ a good friend.</li>
+            <li>I ___ reading.</li>
+            <li>He ___ a doctor.</li>
+            <li>They ___ at home.</li>
+        </ol>
+
+        <h3>Reading (O'qish) matni</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi matnni ovoz chiqarib o'qishga harakat qiling, o'z ovozingizni yozib oling va teacherga Telegram orqali yuboring.
+        </div>
+        <div class="text-box">
+            <p>Hello! My name is Aziz. I am a student. I am 15 years old. I am at school now. I am reading a book. My friend is next to me. He is writing a letter. My teacher is a woman. She is very kind. We are happy!</p>
+        </div>
+
+        <h3>Vocabulary (30 ta so'z)</h3>
+        <div class="word-list">
+            <div class="word-item"><span class="word">Be</span><span class="transcription">/biː/</span><span class="translation">Bo'lmoq</span><button class="audio-btn" onclick="speak('Be')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">I</span><span class="transcription">/aɪ/</span><span class="translation">Men</span><button class="audio-btn" onclick="speak('I')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">You</span><span class="transcription">/juː/</span><span class="translation">Siz / Sen</span><button class="audio-btn" onclick="speak('You')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">He</span><span class="transcription">/hiː/</span><span class="translation">U (o'g'il)</span><button class="audio-btn" onclick="speak('He')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">She</span><span class="transcription">/ʃiː/</span><span class="translation">U (qiz)</span><button class="audio-btn" onclick="speak('She')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">It</span><span class="transcription">/ɪt/</span><span class="translation">U (narsa)</span><button class="audio-btn" onclick="speak('It')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">We</span><span class="transcription">/wiː/</span><span class="translation">Biz</span><button class="audio-btn" onclick="speak('We')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">They</span><span class="transcription">/ðeɪ/</span><span class="translation">Ular</span><button class="audio-btn" onclick="speak('They')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Am</span><span class="transcription">/æm/</span><span class="translation">...man (I bilan)</span><button class="audio-btn" onclick="speak('Am')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Is</span><span class="transcription">/ɪz/</span><span class="translation">...dir (He/She/It bilan)</span><button class="audio-btn" onclick="speak('Is')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Are</span><span class="transcription">/ɑːr/</span><span class="translation">...siz/miz/dirlar (You/We/They)</span><button class="audio-btn" onclick="speak('Are')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Reading</span><span class="transcription">/ˈriː.dɪŋ/</span><span class="translation">O'qish (o'qiyotgan)</span><button class="audio-btn" onclick="speak('Reading')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Writing</span><span class="transcription">/ˈraɪ.tɪŋ/</span><span class="translation">Yozish (yozayotgan)</span><button class="audio-btn" onclick="speak('Writing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Playing</span><span class="transcription">/ˈpleɪ.ɪŋ/</span><span class="translation">O'ynash (o'ynayotgan)</span><button class="audio-btn" onclick="speak('Playing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Sleeping</span><span class="transcription">/ˈsliː.pɪŋ/</span><span class="translation">Uxlash (uxlayotgan)</span><button class="audio-btn" onclick="speak('Sleeping')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cooking</span><span class="transcription">/ˈkʊk.ɪŋ/</span><span class="translation">Ovqat pishirish</span><button class="audio-btn" onclick="speak('Cooking')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Watching</span><span class="transcription">/ˈwɒtʃ.ɪŋ/</span><span class="translation">Tomosha qilish</span><button class="audio-btn" onclick="speak('Watching')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Learning</span><span class="transcription">/ˈlɜː.nɪŋ/</span><span class="translation">O'rganish</span><button class="audio-btn" onclick="speak('Learning')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Working</span><span class="transcription">/ˈwɜː.kɪŋ/</span><span class="translation">Ishlash</span><button class="audio-btn" onclick="speak('Working')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Dancing</span><span class="transcription">/ˈdɑːn.sɪŋ/</span><span class="translation">Raqsga tushish</span><button class="audio-btn" onclick="speak('Dancing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Laughing</span><span class="transcription">/ˈlɑː.fɪŋ/</span><span class="translation">Kulish</span><button class="audio-btn" onclick="speak('Laughing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Smiling</span><span class="transcription">/ˈsmaɪ.lɪŋ/</span><span class="translation">Kulimsirash</span><button class="audio-btn" onclick="speak('Smiling')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Singing</span><span class="transcription">/ˈsɪŋ.ɪŋ/</span><span class="translation">Qo'shiq aytish</span><button class="audio-btn" onclick="speak('Singing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Listening</span><span class="transcription">/ˈlɪs.ən.ɪŋ/</span><span class="translation">Tinglash</span><button class="audio-btn" onclick="speak('Listening')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        </div>
+    </div>
+
+    <div class="interactive-section">
+        <h2>Yakuniy interaktiv test (30 ta savol)</h2>
+        <p>To Be fe'li bo'yicha barcha bilimlaringizni sinab ko'ring. Bo'sh o'rinlarga to'g'ri so'zni yozing.</p>
+        <div class="interactive-grid" id="interactiveGrid2">
+            <div class="input-group"><label>I ___ a student.</label><input type="text" id="t1" placeholder="am/is/are"></div>
+            <div class="input-group"><label>He ___ a teacher.</label><input type="text" id="t2" placeholder="am/is/are"></div>
+            <div class="input-group"><label>She ___ a doctor.</label><input type="text" id="t3" placeholder="am/is/are"></div>
+            <div class="input-group"><label>It ___ a cat.</label><input type="text" id="t4" placeholder="am/is/are"></div>
+            <div class="input-group"><label>We ___ students.</label><input type="text" id="t5" placeholder="am/is/are"></div>
+            <div class="input-group"><label>They ___ brothers.</label><input type="text" id="t6" placeholder="am/is/are"></div>
+            <div class="input-group"><label>You ___ a good friend.</label><input type="text" id="t7" placeholder="am/is/are"></div>
+            <div class="input-group"><label>I ___ reading a book.</label><input type="text" id="t8" placeholder="am/is/are"></div>
+            <div class="input-group"><label>She ___ cooking dinner.</label><input type="text" id="t9" placeholder="am/is/are"></div>
+            <div class="input-group"><label>They ___ playing football.</label><input type="text" id="t10" placeholder="am/is/are"></div>
+            <div class="input-group"><label>___ you a student? (Savol)</label><input type="text" id="t11" placeholder="am/is/are"></div>
+            <div class="input-group"><label>___ he a doctor? (Savol)</label><input type="text" id="t12" placeholder="am/is/are"></div>
+            <div class="input-group"><label>___ she a nurse? (Savol)</label><input type="text" id="t13" placeholder="am/is/are"></div>
+            <div class="input-group"><label>___ they at home? (Savol)</label><input type="text" id="t14" placeholder="am/is/are"></div>
+            <div class="input-group"><label>___ we happy? (Savol)</label><input type="text" id="t15" placeholder="am/is/are"></div>
+            <div class="input-group"><label>I ___ not a teacher. (Inkor)</label><input type="text" id="t16" placeholder="am/is/are"></div>
+            <div class="input-group"><label>He ___ not a driver. (Inkor)</label><input type="text" id="t17" placeholder="am/is/are"></div>
+            <div class="input-group"><label>She ___ not cooking. (Inkor)</label><input type="text" id="t18" placeholder="am/is/are"></div>
+            <div class="input-group"><label>They ___ not playing. (Inkor)</label><input type="text" id="t19" placeholder="am/is/are"></div>
+            <div class="input-group"><label>It ___ not cold. (Inkor)</label><input type="text" id="t20" placeholder="am/is/are"></div>
+            <div class="input-group"><label>Men (inglizcha)</label><input type="text" id="t21" placeholder="Olmosh"></div>
+            <div class="input-group"><label>Siz/Sen (inglizcha)</label><input type="text" id="t22" placeholder="Olmosh"></div>
+            <div class="input-group"><label>U (o'g'il bola)</label><input type="text" id="t23" placeholder="Olmosh"></div>
+            <div class="input-group"><label>U (qiz bola)</label><input type="text" id="t24" placeholder="Olmosh"></div>
+            <div class="input-group"><label>U (narsa/hayvon)</label><input type="text" id="t25" placeholder="Olmosh"></div>
+            <div class="input-group"><label>Biz (inglizcha)</label><input type="text" id="t26" placeholder="Olmosh"></div>
+            <div class="input-group"><label>Ular (inglizcha)</label><input type="text" id="t27" placeholder="Olmosh"></div>
+            <div class="input-group"><label>I am reading a ___. (kitob)</label><input type="text" id="t28" placeholder="So'z"></div>
+            <div class="input-group"><label>He is ___. (uxlayapti)</label><input type="text" id="t29" placeholder="So'z"></div>
+            <div class="input-group"><label>They are ___. (o'ynashyapti)</label><input type="text" id="t30" placeholder="So'z"></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive2()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult2"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
+    </div>
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // 10 talik interaktiv testni tekshirish
+    function checkInteractive() {
+        const answers = {
+            inp1: 'am', inp2: 'is', inp3: 'is', inp4: 'is', inp5: 'are',
+            inp6: 'are', inp7: 'are', inp8: 'am', inp9: 'is', inp10: 'are'
+        };
+        let score = 0;
+        let total = 10;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+
+    // 30 talik yakuniy interaktiv testni tekshirish
+    function checkInteractive2() {
+        const answers = {
+            t1: 'am', t2: 'is', t3: 'is', t4: 'is', t5: 'are',
+            t6: 'are', t7: 'are', t8: 'am', t9: 'is', t10: 'are',
+            t11: 'are', t12: 'is', t13: 'is', t14: 'are', t15: 'are',
+            t16: 'am', t17: 'is', t18: 'is', t19: 'are', t20: 'is',
+            t21: 'i', t22: 'you', t23: 'he', t24: 'she', t25: 'it',
+            t26: 'we', t27: 'they', t28: 'book', t29: 'sleeping', t30: 'playing'
+        };
+        let score = 0;
+        let total = 30;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult2');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+</script>
+
+</body>
+</html>
