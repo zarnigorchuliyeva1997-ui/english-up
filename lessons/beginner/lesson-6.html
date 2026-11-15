@@ -1,1 +1,434 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 6-Dars: Colors & Adjectives</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; font-size: 1.8em; }
+        .greeting {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: #EEF2FF;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info-box {
+            background: #FFFBEB;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info-box strong { color: #B45309; }
+        .grammar-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .num { font-weight: bold; width: 30px; color: var(--primary); }
+        .word { width: 150px; font-weight: 600; }
+        .transcription { width: 160px; color: #059669; font-family: monospace; font-size: 1.05em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        
+        .test-section, .interactive-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1em;
+            outline: none;
+        }
+        .input-group input:focus { border-color: var(--primary); }
+        .input-group input.correct { border-color: var(--success); background: #D1FAE5; }
+        .input-group input.incorrect { border-color: var(--error); background: #FEE2E2; }
 
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1em; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .back-btn:hover { background: #4B5563; }
+
+        .text-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>6-Dars: Colors & Adjectives</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi darsimizda biz ingliz tilida ranglarni (Colors) va sifatlarni (Adjectives) o'rganamiz. Bu bilimlar bizga atrofimizdagi dunyoni yanada chiroyliroq va aniqroq tasvirlashga yordam beradi.</p>
+
+    <div class="info-box">
+        <strong>Eslatma: Nima uchun ranglar va sifatlar kerak?</strong>
+        <p style="margin-top: 10px; margin-bottom: 0;">Tasavvur qiling, siz do'stingizga sovg'a olmoqchisiz, lekin uning qanday rangda ekanligini yoki qanday shaklda ekanligini ayta olmasangiz, qanday qiyin bo'lardi? Ranglar va sifatlar bizga narsalarni bir-biridan ajratish, ularni aniq tasvirlash va suhbatni qiziqarli qilish uchun kerak. Ingliz tilida esa sifatlar gapning eng muhim bezaklaridan biridir.</p>
+    </div>
+
+    <h2>1. Ranglar (Colors) - 15 ta</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Red</span><span class="transcription">/red/</span><span class="translation">Qizil</span><button class="audio-btn" onclick="speak('Red')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Blue</span><span class="transcription">/bluː/</span><span class="translation">Ko'k</span><button class="audio-btn" onclick="speak('Blue')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Green</span><span class="transcription">/ɡriːn/</span><span class="translation">Yashil</span><button class="audio-btn" onclick="speak('Green')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Yellow</span><span class="transcription">/ˈjel.əʊ/</span><span class="translation">Sariq</span><button class="audio-btn" onclick="speak('Yellow')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">Black</span><span class="transcription">/blæk/</span><span class="translation">Qora</span><button class="audio-btn" onclick="speak('Black')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">White</span><span class="transcription">/waɪt/</span><span class="translation">Oq</span><button class="audio-btn" onclick="speak('White')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">Orange</span><span class="transcription">/ˈɒr.ɪndʒ/</span><span class="translation">To'q sariq</span><button class="audio-btn" onclick="speak('Orange')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">Pink</span><span class="transcription">/pɪŋk/</span><span class="translation">Pushti</span><button class="audio-btn" onclick="speak('Pink')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">Brown</span><span class="transcription">/braʊn/</span><span class="translation">Jigarrang</span><button class="audio-btn" onclick="speak('Brown')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">Grey</span><span class="transcription">/ɡreɪ/</span><span class="translation">Kulrang</span><button class="audio-btn" onclick="speak('Grey')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">Purple</span><span class="transcription">/ˈpɜː.pəl/</span><span class="translation">Binafsha rang</span><button class="audio-btn" onclick="speak('Purple')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">Gold</span><span class="transcription">/ɡəʊld/</span><span class="translation">Oltin rang</span><button class="audio-btn" onclick="speak('Gold')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">Silver</span><span class="transcription">/ˈsɪl.vər/</span><span class="translation">Kumush rang</span><button class="audio-btn" onclick="speak('Silver')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">Light blue</span><span class="transcription">/laɪt bluː/</span><span class="translation">Och ko'k</span><button class="audio-btn" onclick="speak('Light blue')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">Dark green</span><span class="transcription">/dɑːk ɡriːn/</span><span class="translation">To'q yashil</span><button class="audio-btn" onclick="speak('Dark green')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>2. Sifatlar (Adjectives)</h2>
+    
+    <div class="grammar-box">
+        <h3>Sifat nima?</h3>
+        <p><b>Sifat (Adjective)</b> — bu otning (shaxs yoki narsaning) belgisini, xususiyatini, rangini, shaklini, hajmini yoki holatini bildiruvchi so'z turkumidir. Sifatlar o'zbek tilida <b>"Qanday?", "Qanaqa?", "Qaysi?"</b> kabi savollarga javob beradi.</p>
+        <p><b>Ingliz tilida sifatlarning o'rni:</b> Ingliz tilida sifat <b>har doim otning oldidan</b> keladi. (O'zbek tilida ham shunday: "Qizil olma" — "Red apple").</p>
+        <p><b>Misol:</b> <i>A <b>big</b> house</i> (Katta uy) — bu yerda "big" (katta) so'zi "house" (uy) otining oldidan kelib, uning qanday ekanligini bildirmoqda.</p>
+        <p><b>Muhim qoida:</b> Ingliz tilida sifatlar hech qachon ko'plikda o'zgarmaydi. Ya'ni "katta uylar" deb aytmoqchi bo'lsangiz, "bigs houses" emas, balki <b>"big houses"</b> deb aytasiz. Sifat o'zgarishsiz qoladi.</p>
+    </div>
+
+    <h3>20 ta eng kerakli sifat:</h3>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Big</span><span class="transcription">/bɪɡ/</span><span class="translation">Katta</span><button class="audio-btn" onclick="speak('Big')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Small</span><span class="transcription">/smɔːl/</span><span class="translation">Kichik</span><button class="audio-btn" onclick="speak('Small')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Tall</span><span class="transcription">/tɔːl/</span><span class="translation">Baland (novcha)</span><button class="audio-btn" onclick="speak('Tall')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Short</span><span class="transcription">/ʃɔːt/</span><span class="translation">Past (qisqa)</span><button class="audio-btn" onclick="speak('Short')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">Happy</span><span class="transcription">/ˈhæp.i/</span><span class="translation">Baxtli</span><button class="audio-btn" onclick="speak('Happy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">Sad</span><span class="transcription">/sæd/</span><span class="translation">Xafa</span><button class="audio-btn" onclick="speak('Sad')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">Good</span><span class="transcription">/ɡʊd/</span><span class="translation">Yaxshi</span><button class="audio-btn" onclick="speak('Good')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">Bad</span><span class="transcription">/bæd/</span><span class="translation">Yomon</span><button class="audio-btn" onclick="speak('Bad')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">Beautiful</span><span class="transcription">/ˈbjuː.tɪ.fəl/</span><span class="translation">Chiroyli</span><button class="audio-btn" onclick="speak('Beautiful')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">Ugly</span><span class="transcription">/ˈʌɡ.li/</span><span class="translation">Xunuk</span><button class="audio-btn" onclick="speak('Ugly')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">New</span><span class="transcription">/njuː/</span><span class="translation">Yangi</span><button class="audio-btn" onclick="speak('New')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">Old</span><span class="transcription">/əʊld/</span><span class="translation">Qari (eski)</span><button class="audio-btn" onclick="speak('Old')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">Fast</span><span class="transcription">/fɑːst/</span><span class="translation">Tez</span><button class="audio-btn" onclick="speak('Fast')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">Slow</span><span class="transcription">/sləʊ/</span><span class="translation">Sekin</span><button class="audio-btn" onclick="speak('Slow')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">Hot</span><span class="transcription">/hɒt/</span><span class="translation">Issiq</span><button class="audio-btn" onclick="speak('Hot')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">16</span><span class="word">Cold</span><span class="transcription">/kəʊld/</span><span class="translation">Sovuq</span><button class="audio-btn" onclick="speak('Cold')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">17</span><span class="word">Easy</span><span class="transcription">/ˈiː.zi/</span><span class="translation">Oson</span><button class="audio-btn" onclick="speak('Easy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">18</span><span class="word">Difficult</span><span class="transcription">/ˈdɪf.ɪ.kəlt/</span><span class="translation">Qiyin</span><button class="audio-btn" onclick="speak('Difficult')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">19</span><span class="word">Strong</span><span class="transcription">/strɒŋ/</span><span class="translation">Kuchli</span><button class="audio-btn" onclick="speak('Strong')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">20</span><span class="word">Weak</span><span class="transcription">/wiːk/</span><span class="translation">Kuchsiz</span><button class="audio-btn" onclick="speak('Weak')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>3. Sifat va Ranglarning gapda ishlatilishi (10 ta misol)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">I have a red car.</span><span class="translation">Mening qizil mashinam bor.</span><button class="audio-btn" onclick="speak('I have a red car')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">She is a good teacher.</span><span class="translation">U yaxshi o'qituvchi.</span><button class="audio-btn" onclick="speak('She is a good teacher')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">It is a big house.</span><span class="translation">Bu katta uy.</span><button class="audio-btn" onclick="speak('It is a big house')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">They are happy children.</span><span class="translation">Ular baxtli bolalar.</span><button class="audio-btn" onclick="speak('They are happy children')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">I have a small dog.</span><span class="translation">Mening kichkina itim bor.</span><button class="audio-btn" onclick="speak('I have a small dog')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">This is a new book.</span><span class="translation">Bu yangi kitob.</span><button class="audio-btn" onclick="speak('This is a new book')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">She has a blue dress.</span><span class="translation">Uning ko'k ko'ylagi bor.</span><button class="audio-btn" onclick="speak('She has a blue dress')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">My father is strong.</span><span class="translation">Mening dadam kuchli.</span><button class="audio-btn" onclick="speak('My father is strong')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">It is a cold day.</span><span class="translation">Bu sovuq kun.</span><button class="audio-btn" onclick="speak('It is a cold day')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">We are in a big room.</span><span class="translation">Biz katta xonadamiz.</span><button class="audio-btn" onclick="speak('We are in a big room')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>4. O'qish va talaffuz mashqi (15 ta gap)</h2>
+    <p>Quyidagi gaplarni kamida 3 marotaba ovoz chiqarib o'qing:</p>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">The apple is red.</span><span class="translation">Olma qizil.</span><button class="audio-btn" onclick="speak('The apple is red')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">The sky is blue.</span><span class="translation">Osmon ko'k.</span><button class="audio-btn" onclick="speak('The sky is blue')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">The grass is green.</span><span class="translation">O't yashil.</span><button class="audio-btn" onclick="speak('The grass is green')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">The sun is yellow.</span><span class="translation">Quyosh sariq.</span><button class="audio-btn" onclick="speak('The sun is yellow')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">The night is dark.</span><span class="translation">Tun qorong'i.</span><button class="audio-btn" onclick="speak('The night is dark')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">I have a black cat.</span><span class="translation">Mening qora mushugim bor.</span><button class="audio-btn" onclick="speak('I have a black cat')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">She has a white bag.</span><span class="translation">Uning oq sumkasi bor.</span><button class="audio-btn" onclick="speak('She has a white bag')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">He is a tall boy.</span><span class="translation">U baland bo'yli bola.</span><button class="audio-btn" onclick="speak('He is a tall boy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">She is a short girl.</span><span class="translation">U past bo'yli qiz.</span><button class="audio-btn" onclick="speak('She is a short girl')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">It is a beautiful flower.</span><span class="translation">Bu chiroyli gul.</span><button class="audio-btn" onclick="speak('It is a beautiful flower')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">This is an old house.</span><span class="translation">Bu eski uy.</span><button class="audio-btn" onclick="speak('This is an old house')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">I have a fast car.</span><span class="translation">Mening tez mashinam bor.</span><button class="audio-btn" onclick="speak('I have a fast car')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">The tea is hot.</span><span class="translation">Choy issiq.</span><button class="audio-btn" onclick="speak('The tea is hot')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">The water is cold.</span><span class="translation">Suv sovuq.</span><button class="audio-btn" onclick="speak('The water is cold')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">This is an easy test.</span><span class="translation">Bu oson test.</span><button class="audio-btn" onclick="speak('This is an easy test')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="interactive-section">
+        <h2>Interaktiv test (20 ta savol)</h2>
+        <p>1-10: Bo'sh o'rinlarni to'ldiring. 11-20: Tarjima qiling (inglizcha javob yozing).</p>
+        <div class="interactive-grid" id="interactiveGrid">
+            <div class="input-group"><label>1. The apple is ___. (qizil)</label><input type="text" id="inp1" placeholder="Javob..."></div>
+            <div class="input-group"><label>2. The sky is ___. (ko'k)</label><input type="text" id="inp2" placeholder="Javob..."></div>
+            <div class="input-group"><label>3. The grass is ___. (yashil)</label><input type="text" id="inp3" placeholder="Javob..."></div>
+            <div class="input-group"><label>4. The sun is ___. (sariq)</label><input type="text" id="inp4" placeholder="Javob..."></div>
+            <div class="input-group"><label>5. I have a ___ cat. (qora)</label><input type="text" id="inp5" placeholder="Javob..."></div>
+            <div class="input-group"><label>6. She has a ___ bag. (oq)</label><input type="text" id="inp6" placeholder="Javob..."></div>
+            <div class="input-group"><label>7. He is a ___ boy. (baland)</label><input type="text" id="inp7" placeholder="Javob..."></div>
+            <div class="input-group"><label>8. She is a ___ girl. (past)</label><input type="text" id="inp8" placeholder="Javob..."></div>
+            <div class="input-group"><label>9. It is a ___ flower. (chiroyli)</label><input type="text" id="inp9" placeholder="Javob..."></div>
+            <div class="input-group"><label>10. This is an ___ test. (oson)</label><input type="text" id="inp10" placeholder="Javob..."></div>
+            
+            <div class="input-group"><label>11. Men baxtliman.</label><input type="text" id="inp11" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>12. U (qiz) chiroyli.</label><input type="text" id="inp12" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>13. Biz talabalar.</label><input type="text" id="inp13" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>14. Bu katta uy.</label><input type="text" id="inp14" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>15. U (o'g'il) novcha.</label><input type="text" id="inp15" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>16. Mening qizil mashinam bor.</label><input type="text" id="inp16" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>17. Ular xafa.</label><input type="text" id="inp17" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>18. Bu sovuq kun.</label><input type="text" id="inp18" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>19. U (narsa) yangi.</label><input type="text" id="inp19" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>20. Siz yaxshi do'stsiz.</label><input type="text" id="inp20" placeholder="Inglizcha..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult"></div>
+    </div>
+
+    <div class="homework-section">
+        <h2>Homework (Uyga vazifa)</h2>
+        
+        <h3>1-topshiriq: 10 ta sodda gap</h3>
+        <p>Quyidagi sodda gaplarni daftaringizga yozing va o'qing:</p>
+        <ol style="column-count: 2;">
+            <li>The apple is red.</li>
+            <li>The sky is blue.</li>
+            <li>I am happy.</li>
+            <li>She is a good teacher.</li>
+            <li>It is a big house.</li>
+            <li>They are students.</li>
+            <li>He is tall.</li>
+            <li>We are in a big room.</li>
+            <li>The tea is hot.</li>
+            <li>This is a new book.</li>
+        </ol>
+
+        <h3>2-topshiriq: Tarjima</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi so'zlarni ingliz tiliga tarjima qiling va ovoz chiqarib 3 marotabadan takroriy o'qing.
+        </div>
+        <ol style="line-height: 2;">
+            <li>Men baxtliman.</li>
+            <li>U (qiz) chiroyli.</li>
+            <li>Bu katta uy.</li>
+            <li>Mening qizil mashinam bor.</li>
+            <li>Ular xafa.</li>
+            <li>Bu sovuq kun.</li>
+            <li>U (o'g'il) novcha.</li>
+            <li>Siz yaxshi do'stsiz.</li>
+            <li>Bu oson test.</li>
+            <li>U (narsa) yangi.</li>
+        </ol>
+
+        <h3>3-topshiriq: Reading (O'qish)</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi matnni ovoz chiqarib o'qishga harakat qiling, o'z ovozingizni yozib oling va teacherga Telegram orqali yuboring.
+        </div>
+        <div class="text-box">
+            <p>Hello! I am Aziz. I have a big family. My father is strong. My mother is beautiful. I have a small dog. It is white. My sister has a red bag. We live in a big house. The sky is blue today. I am very happy!</p>
+        </div>
+
+        <h3>Vocabulary (30 ta so'z)</h3>
+        <div class="word-list">
+            <div class="word-item"><span class="word">Red</span><span class="transcription">/red/</span><span class="translation">Qizil</span><button class="audio-btn" onclick="speak('Red')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Blue</span><span class="transcription">/bluː/</span><span class="translation">Ko'k</span><button class="audio-btn" onclick="speak('Blue')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Green</span><span class="transcription">/ɡriːn/</span><span class="translation">Yashil</span><button class="audio-btn" onclick="speak('Green')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Yellow</span><span class="transcription">/ˈjel.əʊ/</span><span class="translation">Sariq</span><button class="audio-btn" onclick="speak('Yellow')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Black</span><span class="transcription">/blæk/</span><span class="translation">Qora</span><button class="audio-btn" onclick="speak('Black')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">White</span><span class="transcription">/waɪt/</span><span class="translation">Oq</span><button class="audio-btn" onclick="speak('White')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Big</span><span class="transcription">/bɪɡ/</span><span class="translation">Katta</span><button class="audio-btn" onclick="speak('Big')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Small</span><span class="transcription">/smɔːl/</span><span class="translation">Kichik</span><button class="audio-btn" onclick="speak('Small')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Tall</span><span class="transcription">/tɔːl/</span><span class="translation">Baland</span><button class="audio-btn" onclick="speak('Tall')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Short</span><span class="transcription">/ʃɔːt/</span><span class="translation">Past</span><button class="audio-btn" onclick="speak('Short')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Happy</span><span class="transcription">/ˈhæp.i/</span><span class="translation">Baxtli</span><button class="audio-btn" onclick="speak('Happy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Sad</span><span class="transcription">/sæd/</span><span class="translation">Xafa</span><button class="audio-btn" onclick="speak('Sad')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Good</span><span class="transcription">/ɡʊd/</span><span class="translation">Yaxshi</span><button class="audio-btn" onclick="speak('Good')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Bad</span><span class="transcription">/bæd/</span><span class="translation">Yomon</span><button class="audio-btn" onclick="speak('Bad')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Beautiful</span><span class="transcription">/ˈbjuː.tɪ.fəl/</span><span class="translation">Chiroyli</span><button class="audio-btn" onclick="speak('Beautiful')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Ugly</span><span class="transcription">/ˈʌɡ.li/</span><span class="translation">Xunuk</span><button class="audio-btn" onclick="speak('Ugly')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">New</span><span class="transcription">/njuː/</span><span class="translation">Yangi</span><button class="audio-btn" onclick="speak('New')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Old</span><span class="transcription">/əʊld/</span><span class="translation">Qari (eski)</span><button class="audio-btn" onclick="speak('Old')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Fast</span><span class="transcription">/fɑːst/</span><span class="translation">Tez</span><button class="audio-btn" onclick="speak('Fast')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Slow</span><span class="transcription">/sləʊ/</span><span class="translation">Sekin</span><button class="audio-btn" onclick="speak('Slow')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Hot</span><span class="transcription">/hɒt/</span><span class="translation">Issiq</span><button class="audio-btn" onclick="speak('Hot')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cold</span><span class="transcription">/kəʊld/</span><span class="translation">Sovuq</span><button class="audio-btn" onclick="speak('Cold')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Easy</span><span class="transcription">/ˈiː.zi/</span><span class="translation">Oson</span><button class="audio-btn" onclick="speak('Easy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Difficult</span><span class="transcription">/ˈdɪf.ɪ.kəlt/</span><span class="translation">Qiyin</span><button class="audio-btn" onclick="speak('Difficult')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Strong</span><span class="transcription">/strɒŋ/</span><span class="translation">Kuchli</span><button class="audio-btn" onclick="speak('Strong')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Weak</span><span class="transcription">/wiːk/</span><span class="translation">Kuchsiz</span><button class="audio-btn" onclick="speak('Weak')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
+    </div>
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // 20 talik interaktiv testni tekshirish
+    function checkInteractive() {
+        const answers = {
+            inp1: 'red', inp2: 'blue', inp3: 'green', inp4: 'yellow', inp5: 'black',
+            inp6: 'white', inp7: 'tall', inp8: 'short', inp9: 'beautiful', inp10: 'easy',
+            inp11: 'i am happy', inp12: 'she is beautiful', inp13: 'we are students', inp14: 'this is a big house', inp15: 'he is tall',
+            inp16: 'i have a red car', inp17: 'they are sad', inp18: 'it is a cold day', inp19: 'it is new', inp20: 'you are a good friend'
+        };
+        let score = 0;
+        let total = 20;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?]/g, '');
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+</script>
+
+</body>
+</html>
