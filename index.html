@@ -17,8 +17,8 @@
 
     <nav class="main-nav" id="mainNav">
       <button class="nav-btn active" onclick="goHome()">Home</button>
-      <button class="nav-btn" onclick="openLessons()">Lessons</button>
-      <!-- VOCABULARY TUGMASI YANGI SAHIFAGA O'TADI -->
+      <!-- TUZATILDI: Lessons sahifasiga o'tadi -->
+      <button class="nav-btn" onclick="window.location.href='lessons/index.html'">Lessons</button>
       <button class="nav-btn" onclick="window.location.href='vocabulary.html'">Vocabulary</button>
       <button class="nav-btn" onclick="openTests()">Tests</button>
       <button class="nav-btn" onclick="openSpeaking()">Speaking</button>
@@ -37,7 +37,8 @@
           <span class="hero-label">WELCOME TO ENGLISH UP</span>
           <h1>Ingliz tilini noldan o‘rganing!</h1>
           <p>Oddiy so‘zlardan boshlab, erkin gapirish sari. Har kuni yangi bilim, yangi imkoniyat!</p>
-          <button class="primary-btn" onclick="openLessons()">Darslarni boshlash →</button>
+          <!-- TUZATILDI -->
+          <button class="primary-btn" onclick="window.location.href='lessons/index.html'">Darslarni boshlash →</button>
         </div>
       </div>
 
@@ -45,13 +46,13 @@
       <p class="subtitle">O‘zingizga kerakli bo‘limni tanlang.</p>
 
       <div class="features">
-        <div class="feature-card" onclick="openLessons()">
+        <!-- TUZATILDI -->
+        <div class="feature-card" onclick="window.location.href='lessons/index.html'">
           <div class="feature-icon">📚</div>
           <h3>Lessons</h3>
           <p>Bosqichma-bosqich ingliz tili darslari.</p>
         </div>
 
-        <!-- VOCABULARY KARTOCHKASI YANGI SAHIFAGA O'TADI -->
         <div class="feature-card" onclick="window.location.href='vocabulary.html'">
           <div class="feature-icon">📖</div>
           <h3>Vocabulary</h3>
@@ -76,7 +77,8 @@
           <p>O‘z natijalaringizni kuzating.</p>
         </div>
 
-        <div class="feature-card" onclick="openLessons()">
+        <!-- TUZATILDI -->
+        <div class="feature-card" onclick="window.location.href='lessons/index.html'">
           <div class="feature-icon">🚀</div>
           <h3>Start Learning</h3>
           <p>Bugunoq o‘rganishni boshlang.</p>
