@@ -1,1 +1,449 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 3-Dars: Countries and Nationalities</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --error: #EF4444;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; }
+        .greeting {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .word { width: 140px; font-weight: 600; color: var(--primary); }
+        .transcription { width: 150px; color: #059669; font-family: monospace; font-size: 1.1em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .info-box {
+            background: #EEF2FF;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .test-section, .interactive-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .question { margin-bottom: 15px; }
+        .question p { margin: 0 0 10px 0; font-weight: 600; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .options label:hover { background: #E5E7EB; }
+        .options input { margin-right: 10px; }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; }
+        
+        /* Interaktiv mashq uchun stillar */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        .input-group input {
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1em;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: var(--primary);
+        }
+        .input-group input.correct { border-color: var(--success); background: #D1FAE5; }
+        .input-group input.incorrect { border-color: var(--error); background: #FEE2E2; }
 
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .back-btn:hover { background: #4B5563; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>3-Dars: Countries and Nationalities</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi darsimizda biz ingliz tilida davlatlar va millatlarni nomlashni, shuningdek, o'zimiz qayerdan ekanligimizni aytishni o'rganamiz.</p>
+
+    <h2>Asosiy Davlatlar va Millatlar</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="word">Uzbekistan</span><span class="transcription">/ʊzˈbek.ɪ.stɑːn/</span><span class="translation">O'zbekiston - Uzbek (o'zbek)</span><button class="audio-btn" onclick="speak('Uzbekistan, Uzbek')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">USA</span><span class="transcription">/ˌjuː.esˈeɪ/</span><span class="translation">AQSH - American (amerikalik)</span><button class="audio-btn" onclick="speak('USA, American')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">UK</span><span class="transcription">/ˌjuːˈkeɪ/</span><span class="translation">Buyuk Britaniya - British (britaniyalik)</span><button class="audio-btn" onclick="speak('UK, British')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Russia</span><span class="transcription">/ˈrʌʃ.ə/</span><span class="translation">Rossiya - Russian (rus)</span><button class="audio-btn" onclick="speak('Russia, Russian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">France</span><span class="transcription">/frɑːns/</span><span class="translation">Fransiya - French (fransuz)</span><button class="audio-btn" onclick="speak('France, French')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Germany</span><span class="transcription">/ˈdʒɜː.mə.ni/</span><span class="translation">Germaniya - German (nemis)</span><button class="audio-btn" onclick="speak('Germany, German')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Italy</span><span class="transcription">/ˈɪt.əl.i/</span><span class="translation">Italiya - Italian (italyan)</span><button class="audio-btn" onclick="speak('Italy, Italian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Japan</span><span class="transcription">/dʒəˈpæn/</span><span class="translation">Yaponiya - Japanese (yapon)</span><button class="audio-btn" onclick="speak('Japan, Japanese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Turkey</span><span class="transcription">/ˈtɜː.ki/</span><span class="translation">Turkiya - Turkish (turk)</span><button class="audio-btn" onclick="speak('Turkey, Turkish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">China</span><span class="transcription">/ˈtʃaɪ.nə/</span><span class="translation">Xitoy - Chinese (xitoylik)</span><button class="audio-btn" onclick="speak('China, Chinese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Korea</span><span class="transcription">/kəˈriː.ə/</span><span class="translation">Koreya - Korean (koreys)</span><button class="audio-btn" onclick="speak('Korea, Korean')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Spain</span><span class="transcription">/speɪn/</span><span class="translation">Ispaniya - Spanish (ispan)</span><button class="audio-btn" onclick="speak('Spain, Spanish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Brazil</span><span class="transcription">/brəˈzɪl/</span><span class="translation">Braziliya - Brazilian (braziliyalik)</span><button class="audio-btn" onclick="speak('Brazil, Brazilian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Egypt</span><span class="transcription">/ˈiː.dʒɪpt/</span><span class="translation">Misr - Egyptian (misrlik)</span><button class="audio-btn" onclick="speak('Egypt, Egyptian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">India</span><span class="transcription">/ˈɪn.di.ə/</span><span class="translation">Hindiston - Indian (hindistonlik)</span><button class="audio-btn" onclick="speak('India, Indian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>Grammatika: Where are you from?</h2>
+    <div class="info-box">
+        <p>Kimdandir qayerdan ekanligini so'rash uchun <b>"Where are you from?"</b> (Qayerdansiz?) deb so'raymiz.</p>
+        <p>Javob berish uchun esa <b>"I am from..."</b> (Men ...danman) qolipidan foydalanamiz.</p>
+        <ul>
+            <li><b>Where are you from?</b> - I am from Uzbekistan. (Men O'zbekistondanman)</li>
+            <li><b>Where is he from?</b> - He is from the USA. (U AQSHdan)</li>
+            <li><b>Where is she from?</b> - She is from France. (U Fransiyadan)</li>
+        </ul>
+        <p><i>Eslatma: Millatni gapirganda "I am Uzbek" (Men o'zbekman) deb ham aytish mumkin.</i></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test (10 ta savol)</h2>
+        <p>To'g'ri javobni tanlang.</p>
+        
+        <div class="question">
+            <p>1. "France" davlatining millati qanday?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> a) France</label>
+                <label><input type="radio" name="q1" value="b"> b) French</label>
+                <label><input type="radio" name="q1" value="c"> c) Francish</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. "O'zbekiston" ingliz tilida qanday yoziladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> a) Uzbek</label>
+                <label><input type="radio" name="q2" value="b"> b) Uzbekistan</label>
+                <label><input type="radio" name="q2" value="c"> c) Uzbegistan</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. "Japan" davlatida yashovchi odam qanday ataladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> a) Japan</label>
+                <label><input type="radio" name="q3" value="b"> b) Japanish</label>
+                <label><input type="radio" name="q3" value="c"> c) Japanese</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. "Where are you from?" savoliga qanday javob beriladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a"> a) I am from USA.</label>
+                <label><input type="radio" name="q4" value="b"> b) I am 20 years old.</label>
+                <label><input type="radio" name="q4" value="c"> c) My name is Ali.</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. "Russian" so'zi qaysi davlatga tegishli?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> a) Russia</label>
+                <label><input type="radio" name="q5" value="b"> b) Germany</label>
+                <label><input type="radio" name="q5" value="c"> c) Italy</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. "Buyuk Britaniya" ingliz tilida qanday qisqartiriladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a"> a) USA</label>
+                <label><input type="radio" name="q6" value="b"> b) UK</label>
+                <label><input type="radio" name="q6" value="c"> c) GB</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. "Egypt" davlatining millati qanday?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a"> a) Egypt</label>
+                <label><input type="radio" name="q7" value="b"> b) Egyptian</label>
+                <label><input type="radio" name="q7" value="c"> c) Egypish</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. "She is from China." - U qayerdan?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="a"> a) Koreyadan</label>
+                <label><input type="radio" name="q8" value="b"> b) Yaponiyadan</label>
+                <label><input type="radio" name="q8" value="c"> c) Xitoydan</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. "Spanish" so'zi qaysi davlatning millati?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="a"> a) Spain</label>
+                <label><input type="radio" name="q9" value="b"> b) Brazil</label>
+                <label><input type="radio" name="q9" value="c"> c) Turkey</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. "Men amerikalikman" ingliz tilida qanday aytiladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="a"> a) I am from American.</label>
+                <label><input type="radio" name="q10" value="b"> b) I am American.</label>
+                <label><input type="radio" name="q10" value="c"> c) I am USA.</label>
+            </div>
+        </div>
+
+        <button class="check-btn" onclick="checkTest()">Natijani tekshirish</button>
+        <div class="result" id="testResult"></div>
+    </div>
+
+    <!-- Interaktiv Mashq -->
+    <div class="interactive-section">
+        <h2>Interaktiv Mashq: Millatlarni yozing</h2>
+        <p>Quyidagi davlatlar qatoriga ularning millatini ingliz tilida yozing.</p>
+        <div class="interactive-grid" id="interactiveGrid">
+            <div class="input-group"><label>Uzbekistan</label><input type="text" id="inp1" placeholder="Millat..."></div>
+            <div class="input-group"><label>USA</label><input type="text" id="inp2" placeholder="Millat..."></div>
+            <div class="input-group"><label>UK</label><input type="text" id="inp3" placeholder="Millat..."></div>
+            <div class="input-group"><label>Russia</label><input type="text" id="inp4" placeholder="Millat..."></div>
+            <div class="input-group"><label>France</label><input type="text" id="inp5" placeholder="Millat..."></div>
+            <div class="input-group"><label>Germany</label><input type="text" id="inp6" placeholder="Millat..."></div>
+            <div class="input-group"><label>Italy</label><input type="text" id="inp7" placeholder="Millat..."></div>
+            <div class="input-group"><label>Japan</label><input type="text" id="inp8" placeholder="Millat..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult"></div>
+    </div>
+
+    <div class="homework-section">
+        <h2>Uyga vazifa (Homework)</h2>
+        <p>Quyidagi topshiriqlarni daftaringizga yozma ravishda bajaring:</p>
+        <ol>
+            <li>Darsda o'tilgan 10 ta davlat va millatni yozing.</li>
+            <li>"Where are you from?" savoliga o'zingiz haqingizda javob yozing.</li>
+            <li>Oilangizdan 2 kishining qayerdan ekanligini yozing (Masalan: My father is from Uzbekistan).</li>
+            <li>5 ta davlat nomini va ularning millatini ingliz tilida yozing.</li>
+            <li>"I am from..." qolipidan foydalanib, 3 ta gap tuzing.</li>
+        </ol>
+
+        <h3 style="margin-top: 30px;">Qo'shimcha: Eng muhim 30 ta so'z (Lug'at)</h3>
+        <p>Dars davomida ishlatilgan eng kerakli so'zlar. Yozilishi, o'qilishi va tarjimasi bilan.</p>
+        <div class="word-list">
+            <div class="word-item"><span class="word">Country</span><span class="transcription">/ˈkʌn.tri/</span><span class="translation">Davlat</span><button class="audio-btn" onclick="speak('Country')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Nationality</span><span class="transcription">/ˌnæʃ.ənˈæl.ə.ti/</span><span class="translation">Millat</span><button class="audio-btn" onclick="speak('Nationality')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Uzbek</span><span class="transcription">/ˈʊz.bek/</span><span class="translation">O'zbek</span><button class="audio-btn" onclick="speak('Uzbek')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">American</span><span class="transcription">/əˈmer.ɪ.kən/</span><span class="translation">Amerikalik</span><button class="audio-btn" onclick="speak('American')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">British</span><span class="transcription">/ˈbrɪt.ɪʃ/</span><span class="translation">Britaniyalik</span><button class="audio-btn" onclick="speak('British')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Russian</span><span class="transcription">/ˈrʌʃ.ən/</span><span class="translation">Rus</span><button class="audio-btn" onclick="speak('Russian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">French</span><span class="transcription">/frentʃ/</span><span class="translation">Fransuz</span><button class="audio-btn" onclick="speak('French')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">German</span><span class="transcription">/ˈdʒɜː.mən/</span><span class="translation">Nemis</span><button class="audio-btn" onclick="speak('German')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Italian</span><span class="transcription">/ɪˈtæl.jən/</span><span class="translation">Italyan</span><button class="audio-btn" onclick="speak('Italian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Japanese</span><span class="transcription">/ˌdʒæp.ənˈiːz/</span><span class="translation">Yapon</span><button class="audio-btn" onclick="speak('Japanese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Turkish</span><span class="transcription">/ˈtɜː.kɪʃ/</span><span class="translation">Turk</span><button class="audio-btn" onclick="speak('Turkish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Chinese</span><span class="transcription">/tʃaɪˈniːz/</span><span class="translation">Xitoylik</span><button class="audio-btn" onclick="speak('Chinese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Korean</span><span class="transcription">/kəˈriː.ən/</span><span class="translation">Koreys</span><button class="audio-btn" onclick="speak('Korean')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Spanish</span><span class="transcription">/ˈspæn.ɪʃ/</span><span class="translation">Ispan</span><button class="audio-btn" onclick="speak('Spanish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Brazilian</span><span class="transcription">/brəˈzɪl.jən/</span><span class="translation">Braziliyalik</span><button class="audio-btn" onclick="speak('Brazilian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Egyptian</span><span class="transcription">/ɪˈdʒɪp.ʃən/</span><span class="translation">Misrlik</span><button class="audio-btn" onclick="speak('Egyptian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Indian</span><span class="transcription">/ˈɪn.di.ən/</span><span class="translation">Hindistonlik</span><button class="audio-btn" onclick="speak('Indian')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Where</span><span class="transcription">/weər/</span><span class="translation">Qayerda</span><button class="audio-btn" onclick="speak('Where')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">From</span><span class="transcription">/frɒm/</span><span class="translation">...dan</span><button class="audio-btn" onclick="speak('From')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">City</span><span class="transcription">/ˈsɪt.i/</span><span class="translation">Shahar</span><button class="audio-btn" onclick="speak('City')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Language</span><span class="transcription">/ˈlæŋ.ɡwɪdʒ/</span><span class="translation">Til</span><button class="audio-btn" onclick="speak('Language')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">World</span><span class="transcription">/wɜːld/</span><span class="translation">Dunyo</span><button class="audio-btn" onclick="speak('World')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">People</span><span class="transcription">/ˈpiː.pəl/</span><span class="translation">Odamlar</span><button class="audio-btn" onclick="speak('People')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Capital</span><span class="transcription">/ˈkæp.ɪ.təl/</span><span class="translation">Poytaxt</span><button class="audio-btn" onclick="speak('Capital')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Travel</span><span class="transcription">/ˈtræv.əl/</span><span class="translation">Sayohat qilmoq</span><button class="audio-btn" onclick="speak('Travel')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Live</span><span class="transcription">/lɪv/</span><span class="translation">Yashamoq</span><button class="audio-btn" onclick="speak('Live')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Speak</span><span class="transcription">/spiːk/</span><span class="translation">Gapirmoq</span><button class="audio-btn" onclick="speak('Speak')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Learn</span><span class="transcription">/lɜːn/</span><span class="translation">O'rganmoq</span><button class="audio-btn" onclick="speak('Learn')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">English</span><span class="transcription">/ˈɪŋ.ɡlɪʃ/</span><span class="translation">Ingliz tili</span><button class="audio-btn" onclick="speak('English')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Friend</span><span class="transcription">/frend/</span><span class="translation">Do'st</span><button class="audio-btn" onclick="speak('Friend')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Family</span><span class="transcription">/ˈfæm.əl.i/</span><span class="translation">Oila</span><button class="audio-btn" onclick="speak('Family')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
+    </div>
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // Testni tekshirish
+    function checkTest() {
+        const answers = {
+            q1: 'b', q2: 'b', q3: 'c', q4: 'a', q5: 'a',
+            q6: 'b', q7: 'b', q8: 'c', q9: 'a', q10: 'b'
+        };
+        let score = 0;
+        let total = 10;
+
+        for (let key in answers) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            if (selected && selected.value === answers[key]) {
+                score++;
+            }
+        }
+
+        const resultDiv = document.getElementById('testResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else if (score >= 6) {
+            resultDiv.style.color = 'orange';
+            resultDiv.innerHTML += " Yaxshi, lekin yana takrorlang. 👍";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Mavzuni yana bir bor o'qib chiqing. 📚";
+        }
+    }
+
+    // Interaktiv mashqni tekshirish
+    function checkInteractive() {
+        const answers = {
+            inp1: 'Uzbek', inp2: 'American', inp3: 'British', inp4: 'Russian',
+            inp5: 'French', inp6: 'German', inp7: 'Italian', inp8: 'Japanese'
+        };
+        let score = 0;
+        let total = 8;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+</script>
+
+</body>
+</html>
