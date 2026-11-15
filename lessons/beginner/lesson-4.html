@@ -1,1 +1,578 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 4-Dars: Family members & A/An</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; font-size: 1.8em; }
+        .greeting {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: #EEF2FF;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info-box {
+            background: #FFFBEB;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info-box strong { color: #B45309; }
+        .grammar-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .num { font-weight: bold; width: 30px; color: var(--primary); }
+        .word { width: 140px; font-weight: 600; }
+        .transcription { width: 160px; color: #059669; font-family: monospace; font-size: 1.05em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        
+        .explanation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: #F9FAFB;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .explanation-table th, .explanation-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .explanation-table th { background: #E5E7EB; color: var(--primary); }
+        .explanation-table td { font-family: monospace; font-size: 1.1em; color: #059669; }
 
+        .repeat-section {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .repeat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #D1FAE5;
+        }
+        .repeat-item:last-child { border-bottom: none; }
+        .repeat-item span { font-weight: 600; font-size: 1.1em; }
+
+        .test-section, .interactive-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .question { margin-bottom: 20px; }
+        .question p { margin: 0 0 10px 0; font-weight: 600; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.2s;
+            background: white;
+            border: 1px solid var(--border);
+        }
+        .options label:hover { background: #E5E7EB; }
+        .options input { margin-right: 10px; }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1em; }
+        
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1em;
+            outline: none;
+        }
+        .input-group input:focus { border-color: var(--primary); }
+        .input-group input.correct { border-color: var(--success); background: #D1FAE5; }
+        .input-group input.incorrect { border-color: var(--error); background: #FEE2E2; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .back-btn:hover { background: #4B5563; }
+
+        .text-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>4-Dars: Family members & A/An</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi darsimizda biz ingliz tilida oila a'zolarini nomlashni va "a/an" artikllari qanday ishlatilishini o'rganamiz.</p>
+
+    <div class="info-box">
+        <strong>Eslatma: Nima uchun bu mavzu bizga zarur?</strong>
+        <p style="margin-top: 10px; margin-bottom: 0;">Oila — bu har bir inson hayotining eng muhim qismidir. Ingliz tilida o'zingiz, yaqinlaringiz va ularning kasblari haqida gapira olish — bu oddiy muloqotning asosi. Shuningdek, "a" va "an" artikllari ingliz tilining eng ko'p ishlatiladigan so'zlaridir. Ularni to'g'ri qo'llashni o'rganish sizning gappingizni savodli va tabiiy eshitilishini ta'minlaydi.</p>
+    </div>
+
+    <h2>1. Oila a'zolari (Family members)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Father</span><span class="transcription">/ˈfɑː.ðər/</span><span class="translation">Ota</span><button class="audio-btn" onclick="speak('Father')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Mother</span><span class="transcription">/ˈmʌð.ər/</span><span class="translation">Ona</span><button class="audio-btn" onclick="speak('Mother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Brother</span><span class="transcription">/ˈbrʌð.ər/</span><span class="translation">Aka / Uka</span><button class="audio-btn" onclick="speak('Brother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Sister</span><span class="transcription">/ˈsɪs.tər/</span><span class="translation">Opa / Singil</span><button class="audio-btn" onclick="speak('Sister')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">Grandfather</span><span class="transcription">/ˈɡræn.fɑː.ðər/</span><span class="translation">Bobo</span><button class="audio-btn" onclick="speak('Grandfather')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">Grandmother</span><span class="transcription">/ˈɡræn.mʌð.ər/</span><span class="translation">Buvi</span><button class="audio-btn" onclick="speak('Grandmother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">Uncle</span><span class="transcription">/ˈʌŋ.kəl/</span><span class="translation">Amaki / Tog'a</span><button class="audio-btn" onclick="speak('Uncle')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">Aunt</span><span class="transcription">/ɑːnt/</span><span class="translation">Amma / Xola</span><button class="audio-btn" onclick="speak('Aunt')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">Cousin</span><span class="transcription">/ˈkʌz.ən/</span><span class="translation">Amakivachcha</span><button class="audio-btn" onclick="speak('Cousin')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">Son</span><span class="transcription">/sʌn/</span><span class="translation">O'g'il</span><button class="audio-btn" onclick="speak('Son')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">Daughter</span><span class="transcription">/ˈdɔː.tər/</span><span class="translation">Qiz</span><button class="audio-btn" onclick="speak('Daughter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">Parents</span><span class="transcription">/ˈpeə.rənts/</span><span class="translation">Ota-ona</span><button class="audio-btn" onclick="speak('Parents')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">Family</span><span class="transcription">/ˈfæm.əl.i/</span><span class="translation">Oila</span><button class="audio-btn" onclick="speak('Family')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>2. Gaplar (I have / He has)</h2>
+    <p>Quyidagi gaplarni o'qishiga e'tibor bering va siz ham to'g'ri talaffuz qilishni mashq qiling.</p>
+    <div class="word-list">
+        <div class="word-item"><span class="word">I have a father.</span><span class="translation">Mening dadam bor.</span><button class="audio-btn" onclick="speak('I have a father')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">I have a mother.</span><span class="translation">Mening onam bor.</span><button class="audio-btn" onclick="speak('I have a mother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">I have a brother.</span><span class="translation">Mening akam/ukam bor.</span><button class="audio-btn" onclick="speak('I have a brother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">I have a sister.</span><span class="translation">Mening opam/singlim bor.</span><button class="audio-btn" onclick="speak('I have a sister')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">He has two sisters.</span><span class="translation">Uning ikkita singlisi bor.</span><button class="audio-btn" onclick="speak('He has two sisters')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">She has a brother.</span><span class="translation">Uning bitta akasi/ukasi bor.</span><button class="audio-btn" onclick="speak('She has a brother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">I have grandparents.</span><span class="translation">Mening bobom va buvim bor.</span><button class="audio-btn" onclick="speak('I have grandparents')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">We have a big family.</span><span class="translation">Bizning katta oilamiz bor.</span><button class="audio-btn" onclick="speak('We have a big family')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">They have one son.</span><span class="translation">Ularning bitta o'g'li bor.</span><button class="audio-btn" onclick="speak('They have one son')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">My uncle has a daughter.</span><span class="translation">Mening amakimning qizi bor.</span><button class="audio-btn" onclick="speak('My uncle has a daughter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">My aunt has a son.</span><span class="translation">Mening xolamning o'g'li bor.</span><button class="audio-btn" onclick="speak('My aunt has a son')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">He has no brothers.</span><span class="translation">Uning akasi/ukasi yo'q.</span><button class="audio-btn" onclick="speak('He has no brothers')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">I have two cousins.</span><span class="translation">Mening ikkita amakivachcham bor.</span><button class="audio-btn" onclick="speak('I have two cousins')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">My parents are kind.</span><span class="translation">Mening ota-onam mehribon.</span><button class="audio-btn" onclick="speak('My parents are kind')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">My sister is beautiful.</span><span class="translation">Mening opam/singlim chiroyli.</span><button class="audio-btn" onclick="speak('My sister is beautiful')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>3. O'qish va Talaffuz Mashqi (5 marta o'qing)</h2>
+    <p>Quyidagi gaplarning har birini kamida 5 marotaba ovoz chiqarib o'qishni va talaffuz qilishni mashq qiling.</p>
+    
+    <div class="repeat-section">
+        <div class="repeat-item"><span>My father is a doctor.</span><button class="audio-btn" onclick="speak('My father is a doctor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My mother is a teacher.</span><button class="audio-btn" onclick="speak('My mother is a teacher')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My brother is a student.</span><button class="audio-btn" onclick="speak('My brother is a student')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My sister is a nurse.</span><button class="audio-btn" onclick="speak('My sister is a nurse')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My grandfather is an engineer.</span><button class="audio-btn" onclick="speak('My grandfather is an engineer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My grandmother is a housewife.</span><button class="audio-btn" onclick="speak('My grandmother is a housewife')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My uncle is a driver.</span><button class="audio-btn" onclick="speak('My uncle is a driver')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My aunt is a cook.</span><button class="audio-btn" onclick="speak('My aunt is a cook')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My cousin is a pupil.</span><button class="audio-btn" onclick="speak('My cousin is a pupil')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My father is a businessman.</span><button class="audio-btn" onclick="speak('My father is a businessman')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My mother is an artist.</span><button class="audio-btn" onclick="speak('My mother is an artist')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My brother is an actor.</span><button class="audio-btn" onclick="speak('My brother is an actor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My sister is an economist.</span><button class="audio-btn" onclick="speak('My sister is an economist')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My grandfather is a farmer.</span><button class="audio-btn" onclick="speak('My grandfather is a farmer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="repeat-item"><span>My grandmother is a tailor.</span><button class="audio-btn" onclick="speak('My grandmother is a tailor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>4. A va An artikllari</h2>
+    <div class="grammar-box">
+        <p><b>A (e) va An (en) — noaniq artikl.</b> Ular birlikdagi, sanaladigan otlar oldidan qo'llaniladi va "bitta" degan ma'noni bildiradi.</p>
+        <ul>
+            <li><b>A</b> — <b>undosh harf</b> bilan boshlanuvchi so'zlar oldidan ishlatiladi. (Masalan: <i>a pen, a book, a car, a university</i>).</li>
+            <li><b>An</b> — <b>unli harf</b> (a, e, i, o, u) bilan boshlanuvchi so'zlar oldidan ishlatiladi. (Masalan: <i>an apple, an egg, an orange, an umbrella</i>).</li>
+        </ul>
+    </div>
+
+    <h3>A va An ishtirok etgan 20 ta ot:</h3>
+    <div class="word-list">
+        <div class="word-item"><span class="word">A pen</span><span class="translation">Bitta ruchka</span><button class="audio-btn" onclick="speak('A pen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An arm</span><span class="translation">Bitta qo'l</span><button class="audio-btn" onclick="speak('An arm')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A book</span><span class="translation">Bitta kitob</span><button class="audio-btn" onclick="speak('A book')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An apple</span><span class="translation">Bitta olma</span><button class="audio-btn" onclick="speak('An apple')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A car</span><span class="translation">Bitta mashina</span><button class="audio-btn" onclick="speak('A car')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An egg</span><span class="translation">Bitta tuxum</span><button class="audio-btn" onclick="speak('An egg')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A dog</span><span class="translation">Bitta it</span><button class="audio-btn" onclick="speak('A dog')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An orange</span><span class="translation">Bitta apelsin</span><button class="audio-btn" onclick="speak('An orange')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A house</span><span class="translation">Bitta uy</span><button class="audio-btn" onclick="speak('A house')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An umbrella</span><span class="translation">Bitta soyabon</span><button class="audio-btn" onclick="speak('An umbrella')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A table</span><span class="translation">Bitta stol</span><button class="audio-btn" onclick="speak('A table')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An elephant</span><span class="translation">Bitta fil</span><button class="audio-btn" onclick="speak('An elephant')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A chair</span><span class="translation">Bitta stul</span><button class="audio-btn" onclick="speak('A chair')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An ice cream</span><span class="translation">Bitta muzqaymoq</span><button class="audio-btn" onclick="speak('An ice cream')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A window</span><span class="translation">Bitta deraza</span><button class="audio-btn" onclick="speak('A window')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An onion</span><span class="translation">Bitta piyoz</span><button class="audio-btn" onclick="speak('An onion')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A phone</span><span class="translation">Bitta telefon</span><button class="audio-btn" onclick="speak('A phone')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An hour</span><span class="translation">Bitta soat (vaqt)</span><button class="audio-btn" onclick="speak('An hour')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A bag</span><span class="translation">Bitta sumka</span><button class="audio-btn" onclick="speak('A bag')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An owl</span><span class="translation">Bitta boyqush</span><button class="audio-btn" onclick="speak('An owl')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>5. O'qish mashqi (Faqat ingliz tilida)</h2>
+    <p>Quyidagi so'zlarni ovoz chiqarib o'qishga harakat qiling:</p>
+    <div class="word-list">
+        <div class="word-item"><span class="word">A house</span><button class="audio-btn" onclick="speak('A house')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A dog</span><button class="audio-btn" onclick="speak('A dog')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An apple</span><button class="audio-btn" onclick="speak('An apple')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An egg</span><button class="audio-btn" onclick="speak('An egg')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A car</span><button class="audio-btn" onclick="speak('A car')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An orange</span><button class="audio-btn" onclick="speak('An orange')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A book</span><button class="audio-btn" onclick="speak('A book')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An umbrella</span><button class="audio-btn" onclick="speak('An umbrella')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A table</span><button class="audio-btn" onclick="speak('A table')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An elephant</span><button class="audio-btn" onclick="speak('An elephant')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A chair</span><button class="audio-btn" onclick="speak('A chair')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An ice cream</span><button class="audio-btn" onclick="speak('An ice cream')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A window</span><button class="audio-btn" onclick="speak('A window')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An onion</span><button class="audio-btn" onclick="speak('An onion')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A phone</span><button class="audio-btn" onclick="speak('A phone')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An hour</span><button class="audio-btn" onclick="speak('An hour')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A bag</span><button class="audio-btn" onclick="speak('A bag')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An owl</span><button class="audio-btn" onclick="speak('An owl')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">A university</span><button class="audio-btn" onclick="speak('A university')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">An hour</span><button class="audio-btn" onclick="speak('An hour')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="interactive-section">
+        <h2>6. Interaktiv test (20 ta savol)</h2>
+        <p>10 tasi oila a'zolariga, 10 tasi artikllarga oid. To'g'ri javobni yozing.</p>
+        <div class="interactive-grid" id="interactiveGrid">
+            <div class="input-group"><label>Ota (inglizcha)</label><input type="text" id="inp1" placeholder="Javob..."></div>
+            <div class="input-group"><label>Ona (inglizcha)</label><input type="text" id="inp2" placeholder="Javob..."></div>
+            <div class="input-group"><label>Aka/Uka (inglizcha)</label><input type="text" id="inp3" placeholder="Javob..."></div>
+            <div class="input-group"><label>Opa/Singil (inglizcha)</label><input type="text" id="inp4" placeholder="Javob..."></div>
+            <div class="input-group"><label>Bobo (inglizcha)</label><input type="text" id="inp5" placeholder="Javob..."></div>
+            <div class="input-group"><label>Buvi (inglizcha)</label><input type="text" id="inp6" placeholder="Javob..."></div>
+            <div class="input-group"><label>Amaki (inglizcha)</label><input type="text" id="inp7" placeholder="Javob..."></div>
+            <div class="input-group"><label>Amma/Xola (inglizcha)</label><input type="text" id="inp8" placeholder="Javob..."></div>
+            <div class="input-group"><label>O'g'il (inglizcha)</label><input type="text" id="inp9" placeholder="Javob..."></div>
+            <div class="input-group"><label>Qiz (inglizcha)</label><input type="text" id="inp10" placeholder="Javob..."></div>
+            <div class="input-group"><label>___ apple (a/an)</label><input type="text" id="inp11" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ pen (a/an)</label><input type="text" id="inp12" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ book (a/an)</label><input type="text" id="inp13" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ egg (a/an)</label><input type="text" id="inp14" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ car (a/an)</label><input type="text" id="inp15" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ orange (a/an)</label><input type="text" id="inp16" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ table (a/an)</label><input type="text" id="inp17" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ umbrella (a/an)</label><input type="text" id="inp18" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ dog (a/an)</label><input type="text" id="inp19" placeholder="a yoki an"></div>
+            <div class="input-group"><label>___ elephant (a/an)</label><input type="text" id="inp20" placeholder="a yoki an"></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult"></div>
+    </div>
+
+    <div class="homework-section">
+        <h2>7. Homework (Uyga vazifa)</h2>
+        
+        <h3>1-topshiriq: Artikllar bilan yozing</h3>
+        <p>Quyidagi so'zlarni daftaringizga kerakli artikl bilan yozing va o'qilishini mashq qiling (40 dona):</p>
+        <p style="font-size: 1.1em; line-height: 2; background: white; padding: 15px; border-radius: 8px;">
+            apple, pen, book, egg, car, orange, table, umbrella, dog, elephant, chair, ice cream, window, onion, phone, hour, bag, owl, university, house, cat, ant, ball, tree, fish, girl, boy, man, woman, child, key, lock, door, wall, floor, roof, garden, flower, grass, leaf.
+        </p>
+
+        <h3>2-topshiriq: Oila a'zolari lug'ati</h3>
+        <p>Quyidagi so'zlarni ustun qilib daftaringizga o'zbek va ingliz tilida yozib chiqing va o'qilishini talaffuz qiling:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: white; padding: 15px; border-radius: 8px; margin-top: 10px;">
+            <div><b>Ota -</b> Father</div>
+            <div><b>Ona -</b> Mother</div>
+            <div><b>Aka/Uka -</b> Brother</div>
+            <div><b>Opa/Singil -</b> Sister</div>
+            <div><b>Bobo -</b> Grandfather</div>
+            <div><b>Buvi -</b> Grandmother</div>
+            <div><b>Amaki -</b> Uncle</div>
+            <div><b>Amma/Xola -</b> Aunt</div>
+            <div><b>Amakivachcha -</b> Cousin</div>
+            <div><b>O'g'il -</b> Son</div>
+            <div><b>Qiz -</b> Daughter</div>
+            <div><b>Ota-ona -</b> Parents</div>
+            <div><b>Oila -</b> Family</div>
+        </div>
+
+        <h3>3-topshiriq: Reading (O'qish)</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi matinni ovoz chiqarib o'qishga harakat qiling, o'z ovozingizni yozib oling va teacherga Telegram orqali yuboring.
+        </div>
+        <div class="text-box">
+            <p>Hello! My name is Ali. I am 12 years old. I am a pupil. This is my family. I have a father, a mother, a brother and a sister. My father is a doctor. My mother is a teacher. My brother is a student. My sister is a pupil. I have a dog. It is a small dog. I love my family!</p>
+        </div>
+
+        <h3 style="margin-top: 30px;">8. Vocabulary (Mavzuga oid 30 ta so'z)</h3>
+        <div class="word-list">
+            <div class="word-item"><span class="word">Father</span><span class="transcription">/ˈfɑː.ðər/</span><span class="translation">Ota</span><button class="audio-btn" onclick="speak('Father')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Mother</span><span class="transcription">/ˈmʌð.ər/</span><span class="translation">Ona</span><button class="audio-btn" onclick="speak('Mother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Brother</span><span class="transcription">/ˈbrʌð.ər/</span><span class="translation">Aka/Uka</span><button class="audio-btn" onclick="speak('Brother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Sister</span><span class="transcription">/ˈsɪs.tər/</span><span class="translation">Opa/Singil</span><button class="audio-btn" onclick="speak('Sister')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Grandfather</span><span class="transcription">/ˈɡræn.fɑː.ðər/</span><span class="translation">Bobo</span><button class="audio-btn" onclick="speak('Grandfather')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Grandmother</span><span class="transcription">/ˈɡræn.mʌð.ər/</span><span class="translation">Buvi</span><button class="audio-btn" onclick="speak('Grandmother')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Uncle</span><span class="transcription">/ˈʌŋ.kəl/</span><span class="translation">Amaki</span><button class="audio-btn" onclick="speak('Uncle')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Aunt</span><span class="transcription">/ɑːnt/</span><span class="translation">Amma</span><button class="audio-btn" onclick="speak('Aunt')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cousin</span><span class="transcription">/ˈkʌz.ən/</span><span class="translation">Amakivachcha</span><button class="audio-btn" onclick="speak('Cousin')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Son</span><span class="transcription">/sʌn/</span><span class="translation">O'g'il</span><button class="audio-btn" onclick="speak('Son')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Daughter</span><span class="transcription">/ˈdɔː.tər/</span><span class="translation">Qiz</span><button class="audio-btn" onclick="speak('Daughter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Parents</span><span class="transcription">/ˈpeə.rənts/</span><span class="translation">Ota-ona</span><button class="audio-btn" onclick="speak('Parents')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Family</span><span class="transcription">/ˈfæm.əl.i/</span><span class="translation">Oila</span><button class="audio-btn" onclick="speak('Family')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Doctor</span><span class="transcription">/ˈdɒk.tər/</span><span class="translation">Shifokor</span><button class="audio-btn" onclick="speak('Doctor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Teacher</span><span class="transcription">/ˈtiː.tʃər/</span><span class="translation">O'qituvchi</span><button class="audio-btn" onclick="speak('Teacher')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Student</span><span class="transcription">/ˈstjuː.dənt/</span><span class="translation">Talaba</span><button class="audio-btn" onclick="speak('Student')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Pupil</span><span class="transcription">/ˈpjuː.pəl/</span><span class="translation">O'quvchi</span><button class="audio-btn" onclick="speak('Pupil')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Engineer</span><span class="transcription">/ˌen.dʒɪˈnɪər/</span><span class="translation">Muhandis</span><button class="audio-btn" onclick="speak('Engineer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Driver</span><span class="transcription">/ˈdraɪ.vər/</span><span class="translation">Haydovchi</span><button class="audio-btn" onclick="speak('Driver')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cook</span><span class="transcription">/kʊk/</span><span class="translation">Oshpaz</span><button class="audio-btn" onclick="speak('Cook')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Businessman</span><span class="transcription">/ˈbɪz.nɪs.mən/</span><span class="translation">Biznesmen</span><button class="audio-btn" onclick="speak('Businessman')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Artist</span><span class="transcription">/ˈɑː.tɪst/</span><span class="translation">Rassom</span><button class="audio-btn" onclick="speak('Artist')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Actor</span><span class="transcription">/ˈæk.tər/</span><span class="translation">Aktyor</span><button class="audio-btn" onclick="speak('Actor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Economist</span><span class="transcription">/iˈkɒn.ə.mɪst/</span><span class="translation">Iqtisodchi</span><button class="audio-btn" onclick="speak('Economist')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Farmer</span><span class="transcription">/ˈfɑː.mər/</span><span class="translation">Dehqon</span><button class="audio-btn" onclick="speak('Farmer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Tailor</span><span class="transcription">/ˈteɪ.lər/</span><span class="translation">Chevar</span><button class="audio-btn" onclick="speak('Tailor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Nurse</span><span class="transcription">/nɜːs/</span><span class="translation">Hamshira</span><button class="audio-btn" onclick="speak('Nurse')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Housewife</span><span class="transcription">/ˈhaʊs.waɪf/</span><span class="translation">Uy bekasi</span><button class="audio-btn" onclick="speak('Housewife')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        </div>
+    </div>
+
+    <div class="interactive-section">
+        <h2>9. Qo'shimcha interaktiv test (25 ta savol)</h2>
+        <p>O'tilgan mavzularni mustahkamlash uchun.</p>
+        <div class="interactive-grid" id="interactiveGrid2">
+            <div class="input-group"><label>This is ___ pen. (a/an)</label><input type="text" id="t1" placeholder="Javob..."></div>
+            <div class="input-group"><label>I have ___ apple. (a/an)</label><input type="text" id="t2" placeholder="Javob..."></div>
+            <div class="input-group"><label>He is ___ doctor. (a/an)</label><input type="text" id="t3" placeholder="Javob..."></div>
+            <div class="input-group"><label>She is ___ teacher. (a/an)</label><input type="text" id="t4" placeholder="Javob..."></div>
+            <div class="input-group"><label>It is ___ dog. (a/an)</label><input type="text" id="t5" placeholder="Javob..."></div>
+            <div class="input-group"><label>I see ___ elephant. (a/an)</label><input type="text" id="t6" placeholder="Javob..."></div>
+            <div class="input-group"><label>He has ___ brother. (a/an)</label><input type="text" id="t7" placeholder="Javob..."></div>
+            <div class="input-group"><label>She has ___ sister. (a/an)</label><input type="text" id="t8" placeholder="Javob..."></div>
+            <div class="input-group"><label>My father is ___ engineer. (a/an)</label><input type="text" id="t9" placeholder="Javob..."></div>
+            <div class="input-group"><label>My mother is ___ artist. (a/an)</label><input type="text" id="t10" placeholder="Javob..."></div>
+            <div class="input-group"><label>Ota (inglizcha)</label><input type="text" id="t11" placeholder="Javob..."></div>
+            <div class="input-group"><label>Ona (inglizcha)</label><input type="text" id="t12" placeholder="Javob..."></div>
+            <div class="input-group"><label>Aka/Uka (inglizcha)</label><input type="text" id="t13" placeholder="Javob..."></div>
+            <div class="input-group"><label>Opa/Singil (inglizcha)</label><input type="text" id="t14" placeholder="Javob..."></div>
+            <div class="input-group"><label>Bobo (inglizcha)</label><input type="text" id="t15" placeholder="Javob..."></div>
+            <div class="input-group"><label>Buvi (inglizcha)</label><input type="text" id="t16" placeholder="Javob..."></div>
+            <div class="input-group"><label>Amaki (inglizcha)</label><input type="text" id="t17" placeholder="Javob..."></div>
+            <div class="input-group"><label>Amma (inglizcha)</label><input type="text" id="t18" placeholder="Javob..."></div>
+            <div class="input-group"><label>O'g'il (inglizcha)</label><input type="text" id="t19" placeholder="Javob..."></div>
+            <div class="input-group"><label>Qiz (inglizcha)</label><input type="text" id="t20" placeholder="Javob..."></div>
+            <div class="input-group"><label>Oila (inglizcha)</label><input type="text" id="t21" placeholder="Javob..."></div>
+            <div class="input-group"><label>Ota-ona (inglizcha)</label><input type="text" id="t22" placeholder="Javob..."></div>
+            <div class="input-group"><label>Shifokor (inglizcha)</label><input type="text" id="t23" placeholder="Javob..."></div>
+            <div class="input-group"><label>O'qituvchi (inglizcha)</label><input type="text" id="t24" placeholder="Javob..."></div>
+            <div class="input-group"><label>O'quvchi (inglizcha)</label><input type="text" id="t25" placeholder="Javob..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive2()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult2"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
+    </div>
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // 20 talik interaktiv testni tekshirish (Oila va Artikllar)
+    function checkInteractive() {
+        const answers = {
+            inp1: 'father', inp2: 'mother', inp3: 'brother', inp4: 'sister',
+            inp5: 'grandfather', inp6: 'grandmother', inp7: 'uncle', inp8: 'aunt',
+            inp9: 'son', inp10: 'daughter',
+            inp11: 'an', inp12: 'a', inp13: 'a', inp14: 'an', inp15: 'a',
+            inp16: 'an', inp17: 'a', inp18: 'an', inp19: 'a', inp20: 'an'
+        };
+        let score = 0;
+        let total = 20;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+
+    // 25 talik qo'shimcha interaktiv testni tekshirish
+    function checkInteractive2() {
+        const answers = {
+            t1: 'a', t2: 'an', t3: 'a', t4: 'a', t5: 'a',
+            t6: 'an', t7: 'a', t8: 'a', t9: 'an', t10: 'an',
+            t11: 'father', t12: 'mother', t13: 'brother', t14: 'sister', t15: 'grandfather',
+            t16: 'grandmother', t17: 'uncle', t18: 'aunt', t19: 'son', t20: 'daughter',
+            t21: 'family', t22: 'parents', t23: 'doctor', t24: 'teacher', t25: 'pupil'
+        };
+        let score = 0;
+        let total = 25;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult2');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+</script>
+
+</body>
+</html>
