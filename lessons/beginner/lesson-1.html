@@ -55,6 +55,13 @@
         .letter-example-group ul { list-style: none; padding: 0; margin: 0; }
         .letter-example-group li { font-size: 14px; margin-bottom: 5px; color: #444; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 3px; }
 
+        /* Salomlashish */
+        .greeting-list { list-style: none; margin-left: 0 !important; }
+        .greeting-list li { background: #f9f9f9; padding: 10px; border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 3px solid #1565c0; }
+        .greeting-list li strong { color: #0d47a1; }
+        .greeting-pron { font-size: 13px; color: #777; font-style: italic; }
+        .greeting-voice { cursor: pointer; font-size: 16px; }
+
         /* Test qismi */
         .test-question { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 10px; border-left: 4px solid #6a1b9a; }
         .test-question p { font-weight: bold; margin-bottom: 10px; }
@@ -187,10 +194,11 @@
             </div>
         </div>
 
-        <!-- 4-QISM: OVOZ CHIQARIB O'QISH MASHQI -->
+        <!-- 4-QISM: OVOZ CHIQARIB O'QISH MASHQI (BU YERI O'ZGARDI) -->
         <div class="content-box">
             <h2>4. Ovoz chiqarib o'qish mashqi</h2>
-            <p>Quyidagi so'zlarni ovoz chiqarib o'qishga harakat qiling:</p>
+            <!-- MANA SHU YERDA BUYRUQ TO'G'RILANDI -->
+            <p><strong>Quyidagi so'zlarning har birini kamida 5 marotaba ovoz chiqarib o'qishga harakat qiling:</strong></p>
             <div class="word-list">
                 <div class="word-item"><span class="word">Pen</span> <span class="translation">/ pen /</span></div>
                 <div class="word-item"><span class="word">Box</span> <span class="translation">/ bɒks /</span></div>
@@ -203,7 +211,6 @@
                 <div class="word-item"><span class="word">Write</span> <span class="translation">/ raɪt /</span></div>
                 <div class="word-item"><span class="word">Open</span> <span class="translation">/ ˈəʊ.pən /</span></div>
             </div>
-            <p style="margin-top: 15px; font-weight: bold; color: #e65100;">Quyidagi mashqni 5 marotaba bajaring.</p>
         </div>
 
         <!-- 5-QISM: HARFLAR UCHUN MISOLLAR -->
@@ -213,28 +220,64 @@
             <div class="letter-examples" id="letter-examples"></div>
         </div>
 
-        <!-- 6-QISM: SALOMLASHISH (KENGROQ) -->
+        <!-- 6-QISM: SALOMLASHISH (TALAFFUZ QO'SHILDI) -->
         <div class="content-box">
             <h2>6. Salomlashish va Tanishish (Greetings & Introductions)</h2>
+            
             <p><strong>Norasmiy (Do'stlar orasida):</strong></p>
-            <ul>
-                <li><strong>Hi!</strong> — Salom!</li>
-                <li><strong>Hello!</strong> — Salom!</li>
-                <li><strong>What's up?</strong> — Nima gap? (Norasmiy)</li>
+            <ul class="greeting-list">
+                <li>
+                    <div><strong>Hi!</strong> — Salom! <br><span class="greeting-pron">/ hay /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('Hi')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>Hello!</strong> — Salom! <br><span class="greeting-pron">/ he-lou /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('Hello')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>What's up?</strong> — Nima gap? (Norasmiy) <br><span class="greeting-pron">/ vots ap /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('Whats up')">🔊</div>
+                </li>
             </ul>
+
             <p><strong>Rasmiy (Kattalar bilan):</strong></p>
-            <ul>
-                <li><strong>Good morning!</strong> — Xayrli tong! (Ertalab soat 12:00 gacha)</li>
-                <li><strong>Good afternoon!</strong> — Xayrli kun! (12:00 dan 18:00 gacha)</li>
-                <li><strong>Good evening!</strong> — Xayrli kech! (18:00 dan keyin)</li>
+            <ul class="greeting-list">
+                <li>
+                    <div><strong>Good morning!</strong> — Xayrli tong! (12:00 gacha) <br><span class="greeting-pron">/ gud mo:ning /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('Good morning')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>Good afternoon!</strong> — Xayrli kun! (12:00 - 18:00) <br><span class="greeting-pron">/ gud afte:nu:n /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('Good afternoon')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>Good evening!</strong> — Xayrli kech! (18:00 dan keyin) <br><span class="greeting-pron">/ gud ivning /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('Good evening')">🔊</div>
+                </li>
             </ul>
+
             <p><strong>Tanishish:</strong></p>
-            <ul>
-                <li><strong>What is your name?</strong> — Ismingiz nima?</li>
-                <li><strong>My name is Ali.</strong> — Mening ismim Ali.</li>
-                <li><strong>Nice to meet you!</strong> — Tanishganimdan xursandman!</li>
-                <li><strong>How are you?</strong> — Qalaysiz?</li>
-                <li><strong>I am fine, thank you.</strong> — Yaxshiman, rahmat.</li>
+            <ul class="greeting-list">
+                <li>
+                    <div><strong>What is your name?</strong> — Ismingiz nima? <br><span class="greeting-pron">/ vot iz yo: neym /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('What is your name')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>My name is Ali.</strong> — Mening ismim Ali. <br><span class="greeting-pron">/ may neym iz Ali /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('My name is Ali')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>Nice to meet you!</strong> — Tanishganimdan xursandman! <br><span class="greeting-pron">/ nays tu mi:t yu /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('Nice to meet you')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>How are you?</strong> — Qalaysiz? <br><span class="greeting-pron">/ hau a: yu /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('How are you')">🔊</div>
+                </li>
+                <li>
+                    <div><strong>I am fine, thank you.</strong> — Yaxshiman, rahmat. <br><span class="greeting-pron">/ ay em fayn, thenk yu /</span></div>
+                    <div class="greeting-voice" onclick="speakWord('I am fine thank you')">🔊</div>
+                </li>
             </ul>
         </div>
 
@@ -244,7 +287,6 @@
             <p>Quyida 78 ta chalkashtirilgan so'zlar berilgan. Ulardan har bir harfga oid 3 tadan so'zni toping va pastdagi harflar qatoriga yozing.</p>
             
             <div class="jumbled-words">
-                <!-- 78 ta so'z -->
                 <span class="jumbled-word">Apple</span><span class="jumbled-word">Ant</span><span class="jumbled-word">Arm</span>
                 <span class="jumbled-word">Ball</span><span class="jumbled-word">Bag</span><span class="jumbled-word">Boy</span>
                 <span class="jumbled-word">Cat</span><span class="jumbled-word">Car</span><span class="jumbled-word">Cup</span>
@@ -274,9 +316,7 @@
             </div>
 
             <p style="margin-top: 20px;">Har bir harf uchun so'zlarni yozing:</p>
-            <div class="homework-letters" id="homework-letters">
-                <!-- 26 ta harf uchun inputlar JavaScript orqali yaratiladi -->
-            </div>
+            <div class="homework-letters" id="homework-letters"></div>
 
             <button class="btn-upload" onclick="checkHomework()">Vazifani tekshirish</button>
             <div id="homework-result" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
@@ -357,10 +397,11 @@
         // ==========================================
         function speakWord(text) {
             if ('speechSynthesis' in window) {
-                let wordToSpeak = text.split(' ')[0]; 
+                // Matndagi qo'shtirnoq va nuqtalarni olib tashlaymiz
+                let wordToSpeak = text.replace(/[?!.,'"]/g, ''); 
                 let utterance = new SpeechSynthesisUtterance(wordToSpeak);
                 utterance.lang = 'en-US';
-                utterance.rate = 0.9;
+                utterance.rate = 0.85; // Talaffuz tushunarli bo'lishi uchun biroz sekin
                 window.speechSynthesis.speak(utterance);
             }
         }
@@ -381,8 +422,6 @@
         // 5. UYGA VAZIFANI TEKSHIRISH
         // ==========================================
         function checkHomework() {
-            // Hozircha bu yerda faqat tasdiqlash chiqadi.
-            // Haqiqiy tekshirish keyinroq to'liq yoziladi (78 ta so'zni tahlil qilish uchun).
             let resultDiv = document.getElementById('homework-result');
             resultDiv.style.color = "#2e7d32";
             resultDiv.innerText = "✅ Vazifangiz qabul qilindi! (O'qituvchi tekshiradi)";
