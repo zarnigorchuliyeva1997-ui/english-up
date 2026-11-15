@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Dars: Alifbo va Salomlashish | English Up</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; padding-bottom: 50px; }
+        
+        .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #fff; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100; }
+        .back-btn { text-decoration: none; color: #555; font-size: 16px; font-weight: 600; }
+        .logo { color: #6a1b9a; font-weight: bold; font-size: 18px; }
+        
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        
+        .lesson-header { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: center; }
+        .lesson-header h1 { color: #6a1b9a; font-size: 24px; margin-bottom: 10px; }
+        .lesson-header p { color: #666; font-size: 15px; }
 
+        .content-box { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .content-box h2 { color: #1565c0; font-size: 20px; margin-bottom: 15px; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px; }
+        .content-box p { font-size: 15px; line-height: 1.6; margin-bottom: 10px; color: #444; }
+        .content-box ul { margin-left: 20px; margin-bottom: 15px; font-size: 15px; line-height: 1.6; color: #444; }
+        
+        /* Gorizontal alifbo */
+        .alphabet-horizontal { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+        .letter-h-card { background: #e3f2fd; padding: 10px 15px; text-align: center; border-radius: 8px; font-weight: bold; color: #0d47a1; border: 1px solid #90caf9; }
+        .letter-h-card span { display: block; font-size: 12px; color: #555; font-weight: normal; margin-top: 3px; }
+        .letter-h-card.vowel { background: #fce4ec; border-color: #f48fb1; color: #880e4f; }
+
+        /* Ustun shaklidagi talaffuz (Voice bilan) */
+        .alphabet-vertical { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+        .letter-v-card { background: #f9f9f9; padding: 10px; text-align: center; border-radius: 8px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.2s; }
+        .letter-v-card:hover { background: #e0e0e0; }
+        .letter-v-card .letter-text { font-weight: bold; color: #333; font-size: 16px; }
+        .letter-v-card .pronunciation { font-size: 12px; color: #666; }
+        .voice-icon { font-size: 18px; color: #6a1b9a; }
+
+        /* 5 ta so'z */
+        .vocab-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .vocab-card { background: #f0f4c3; padding: 15px; border-radius: 8px; border: 1px solid #dce775; display: flex; justify-content: space-between; align-items: center; }
+        .vocab-card .word { font-weight: bold; font-size: 18px; color: #33691e; }
+        .vocab-card .translation { font-size: 14px; color: #555; }
+
+        /* Test qismi */
+        .test-question { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 10px; border-left: 4px solid #6a1b9a; }
+        .test-question p { font-weight: bold; margin-bottom: 10px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .options label { display: flex; align-items: center; cursor: pointer; font-size: 15px; padding: 8px; border-radius: 5px; transition: 0.2s; }
+        .options label:hover { background: #e0e0e0; }
+        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        
+        .btn-check { background: #6a1b9a; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-check:hover { background: #4a148c; }
+        
+        .result-box { margin-top: 15px; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; display: none; }
+        .result-success { background: #e8f5e9; color: #2e7d32; display: block; }
+        .result-error { background: #ffebee; color: #c62828; display: block; }
+
+        /* Uyga vazifa */
+        .homework-box { background: #fff3e0; border: 1px dashed #ff9800; }
+        .homework-box h2 { color: #e65100; border-bottom-color: #ffcc80; }
+        .file-upload { margin-top: 15px; }
+        .file-upload input { width: 100%; padding: 10px; background: #fff; border: 1px solid #ccc; border-radius: 5px; }
+        .btn-upload { background: #ff9800; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../beginner.html" class="back-btn">← Darslarga qaytish</a>
+        <div class="logo">ENGLISH<span style="color:#9c27b0">UP</span></div>
+    </div>
+
+    <div class="container">
+        
+        <div class="lesson-header">
+            <h1>1-Dars: Alifbo va Salomlashish</h1>
+            <p>The Alphabet & Greetings</p>
+        </div>
+
+        <!-- 1-QISM: GORIZONTAL ALIFBO -->
+        <div class="content-box">
+            <h2>1. Ingliz alifbosi (Gorizontal)</h2>
+            <p>Unli harflar (A, E, I, O, U) pushti rangda ajratilgan.</p>
+            <div class="alphabet-horizontal">
+                <div class="letter-h-card vowel">A a <span>ey</span></div>
+                <div class="letter-h-card">B b <span>bi</span></div>
+                <div class="letter-h-card">C c <span>si</span></div>
+                <div class="letter-h-card">D d <span>di</span></div>
+                <div class="letter-h-card vowel">E e <span>i</span></div>
+                <div class="letter-h-card">F f <span>ef</span></div>
+                <div class="letter-h-card">G g <span>ji</span></div>
+                <div class="letter-h-card">H h <span>eych</span></div>
+                <div class="letter-h-card vowel">I i <span>ay</span></div>
+                <div class="letter-h-card">J j <span>jey</span></div>
+                <div class="letter-h-card">K k <span>key</span></div>
+                <div class="letter-h-card">L l <span>el</span></div>
+                <div class="letter-h-card">M m <span>em</span></div>
+                <div class="letter-h-card">N n <span>en</span></div>
+                <div class="letter-h-card vowel">O o <span>ou</span></div>
+                <div class="letter-h-card">P p <span>pi</span></div>
+                <div class="letter-h-card">Q q <span>kyu</span></div>
+                <div class="letter-h-card">R r <span>ar</span></div>
+                <div class="letter-h-card">S s <span>es</span></div>
+                <div class="letter-h-card">T t <span>ti</span></div>
+                <div class="letter-h-card vowel">U u <span>yu</span></div>
+                <div class="letter-h-card">V v <span>vi</span></div>
+                <div class="letter-h-card">W w <span>dabl yu</span></div>
+                <div class="letter-h-card">X x <span>eks</span></div>
+                <div class="letter-h-card">Y y <span>vay</span></div>
+                <div class="letter-h-card">Z z <span>zed/zi</span></div>
+            </div>
+        </div>
+
+        <!-- 2-QISM: USTUN SHAKLIDA TALAFFUZ -->
+        <div class="content-box">
+            <h2>2. Harflarning talaffuzi (Voice bilan)</h2>
+            <p>Har bir harfni bosib, uning inglizcha talaffuzini eshitishingiz mumkin. 🔊</p>
+            <div class="alphabet-vertical" id="voice-alphabet">
+                <!-- JavaScript orqali to'ldiriladi -->
+            </div>
+        </div>
+
+        <!-- 3-QISM: 5 TA SO'Z -->
+        <div class="content-box">
+            <h2>3. Yangi so'zlar va talaffuz</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card" onclick="speakWord('Apple')">
+                    <div>
+                        <div class="word">Apple</div>
+                        <div class="translation">Olma</div>
+                    </div>
+                    <div class="voice-icon">🔊</div>
+                </div>
+                <div class="vocab-card" onclick="speakWord('Book')">
+                    <div>
+                        <div class="word">Book</div>
+                        <div class="translation">Kitob</div>
+                    </div>
+                    <div class="voice-icon">🔊</div>
+                </div>
+                <div class="vocab-card" onclick="speakWord('Cat')">
+                    <div>
+                        <div class="word">Cat</div>
+                        <div class="translation">Mushuk</div>
+                    </div>
+                    <div class="voice-icon">🔊</div>
+                </div>
+                <div class="vocab-card" onclick="speakWord('Dog')">
+                    <div>
+                        <div class="word">Dog</div>
+                        <div class="translation">It</div>
+                    </div>
+                    <div class="voice-icon">🔊</div>
+                </div>
+                <div class="vocab-card" onclick="speakWord('Egg')">
+                    <div>
+                        <div class="word">Egg</div>
+                        <div class="translation">Tuxum</div>
+                    </div>
+                    <div class="voice-icon">🔊</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4-QISM: SALOMLASHISH -->
+        <div class="content-box">
+            <h2>4. Salomlashish (Greetings)</h2>
+            <p>Ingliz tilida odamlar bilan quyidagicha salomlashamiz:</p>
+            <ul>
+                <li><strong>Hello / Hi</strong> — Salom</li>
+                <li><strong>Good morning</strong> — Xayrli tong (12:00 gacha)</li>
+                <li><strong>Good afternoon</strong> — Xayrli kun (12:00 - 18:00)</li>
+                <li><strong>Good evening</strong> — Xayrli kech (18:00 dan keyin)</li>
+                <li><strong>Good night</strong> — Xayrli tun (xayrlashganda)</li>
+            </ul>
+        </div>
+
+        <!-- TEST QISMI -->
+        <div class="content-box">
+            <h2>📝 Avtomatik Test</h2>
+            <p style="margin-bottom: 15px; color: #666; font-size: 14px;">Quyidagi savollarga to'g'ri javob tanlang.</p>
+
+            <div id="quiz-container">
+                <div class="test-question">
+                    <p>1. Ingliz alifbosida nechta unli harf bor?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="A"> A) 5 ta</label>
+                        <label><input type="radio" name="q1" value="B"> B) 21 ta</label>
+                        <label><input type="radio" name="q1" value="C"> C) 26 ta</label>
+                    </div>
+                </div>
+
+                <div class="test-question">
+                    <p>2. "Apple" so'zining tarjimasi nima?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="A"> A) Kitob</label>
+                        <label><input type="radio" name="q2" value="B"> B) Olma</label>
+                        <label><input type="radio" name="q2" value="C"> C) Mushuk</label>
+                    </div>
+                </div>
+
+                <div class="test-question">
+                    <p>3. Ertalab uchrashganda nima deymiz?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="A"> A) Good night</label>
+                        <label><input type="radio" name="q3" value="B"> B) Good morning</label>
+                        <label><input type="radio" name="q3" value="C"> C) Good evening</label>
+                    </div>
+                </div>
+
+                <button class="btn-check" onclick="checkQuiz()">Natijani ko'rish</button>
+                <div id="quiz-result" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- UYGA VAZIFA -->
+        <div class="content-box homework-box">
+            <h2>🏠 Uyga vazifa</h2>
+            <p>Daftaringizga ingliz alifbosini (A dan Z gacha) chiroyli qilib yozing va daftaringiz rasmini yuklang.</p>
+            
+            <div class="file-upload">
+                <input type="file" id="homeworkFile" accept="image/*">
+                <button class="btn-upload" onclick="uploadHomework()">Vazifani topshirish</button>
+                <div id="upload-status" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. USTUN SHAKLIDAGI ALIFBO VA VOICE
+        // ==========================================
+        const alphabetData = [
+            { letter: "A a", pron: "ey", vowel: true }, { letter: "B b", pron: "bi", vowel: false },
+            { letter: "C c", pron: "si", vowel: false }, { letter: "D d", pron: "di", vowel: false },
+            { letter: "E e", pron: "i", vowel: true }, { letter: "F f", pron: "ef", vowel: false },
+            { letter: "G g", pron: "ji", vowel: false }, { letter: "H h", pron: "eych", vowel: false },
+            { letter: "I i", pron: "ay", vowel: true }, { letter: "J j", pron: "jey", vowel: false },
+            { letter: "K k", pron: "key", vowel: false }, { letter: "L l", pron: "el", vowel: false },
+            { letter: "M m", pron: "em", vowel: false }, { letter: "N n", pron: "en", vowel: false },
+            { letter: "O o", pron: "ou", vowel: true }, { letter: "P p", pron: "pi", vowel: false },
+            { letter: "Q q", pron: "kyu", vowel: false }, { letter: "R r", pron: "ar", vowel: false },
+            { letter: "S s", pron: "es", vowel: false }, { letter: "T t", pron: "ti", vowel: false },
+            { letter: "U u", pron: "yu", vowel: true }, { letter: "V v", pron: "vi", vowel: false },
+            { letter: "W w", pron: "dabl yu", vowel: false }, { letter: "X x", pron: "eks", vowel: false },
+            { letter: "Y y", pron: "vay", vowel: false }, { letter: "Z z", pron: "zed/zi", vowel: false }
+        ];
+
+        const voiceAlphabetContainer = document.getElementById('voice-alphabet');
+        alphabetData.forEach(item => {
+            let card = document.createElement('div');
+            card.className = 'letter-v-card';
+            card.onclick = () => speakWord(item.letter.charAt(0));
+            card.innerHTML = `
+                <div>
+                    <div class="letter-text">${item.letter}</div>
+                    <div class="pronunciation">${item.pron}</div>
+                </div>
+                <div class="voice-icon">🔊</div>
+            `;
+            voiceAlphabetContainer.appendChild(card);
+        });
+
+        // ==========================================
+        // 2. OVOZ CHIQARISH FUNKSIYASI (TTS)
+        // ==========================================
+        function speakWord(text) {
+            if ('speechSynthesis' in window) {
+                // Matndagi birinchi harfni yoki so'zni ajratib olish
+                let wordToSpeak = text.split(' ')[0]; 
+                let utterance = new SpeechSynthesisUtterance(wordToSpeak);
+                utterance.lang = 'en-US'; // Ingliz tili talaffuzi
+                utterance.rate = 0.9; // Biroz sekinroq
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+            }
+        }
+
+        // ==========================================
+        // 3. TESTNI TEKSHIRISH
+        // ==========================================
+        function checkQuiz() {
+            let q1 = document.querySelector('input[name="q1"]:checked');
+            let q2 = document.querySelector('input[name="q2"]:checked');
+            let q3 = document.querySelector('input[name="q3"]:checked');
+            let resultBox = document.getElementById('quiz-result');
+
+            if (!q1 || !q2 || !q3) {
+                alert("Iltimos, barcha savollarga javob belgilang!");
+                return;
+            }
+
+            let score = 0;
+            if (q1.value === 'A') score++;
+            if (q2.value === 'B') score++;
+            if (q3.value === 'B') score++;
+
+            resultBox.classList.remove('result-success', 'result-error');
+            
+            if (score === 3) {
+                resultBox.innerText = `Ajoyib! Siz 3 ta savoldan ${score} tasiga to'g'ri javob berdingiz. 🌟`;
+                resultBox.classList.add('result-success');
+            } else {
+                resultBox.innerText = `Siz 3 ta savoldan ${score} tasiga to'g'ri javob berdingiz. Yana bir bor urinib ko'ring!`;
+                resultBox.classList.add('result-error');
+            }
+        }
+
+        // ==========================================
+        // 4. UYGA VAZIFANI YUKLASH
+        // ==========================================
+        function uploadHomework() {
+            let fileInput = document.getElementById('homeworkFile');
+            let statusDiv = document.getElementById('upload-status');
+
+            if (fileInput.files.length === 0) {
+                alert("Iltimos, avval daftaringiz rasmini tanlang!");
+                return;
+            }
+
+            statusDiv.style.color = "#2e7d32";
+            statusDiv.innerText = "✅ Vazifangiz muvaffaqiyatli qabul qilindi!";
+            fileInput.value = ""; 
+        }
+    </script>
+</body>
+</html>
