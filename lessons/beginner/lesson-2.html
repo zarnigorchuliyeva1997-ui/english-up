@@ -1,1 +1,453 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 2-Dars: Raqamlar va Shaxsiy Ma'lumotlar</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; }
+        .greeting {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .num { font-weight: bold; width: 40px; color: var(--primary); }
+        .word { width: 130px; font-weight: 600; }
+        .transcription { width: 130px; color: #059669; font-family: monospace; font-size: 1.1em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .info-box {
+            background: #EEF2FF;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .test-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .question { margin-bottom: 15px; }
+        .question p { margin: 0 0 10px 0; font-weight: 600; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .options label:hover { background: #E5E7EB; }
+        .options input { margin-right: 10px; }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .back-btn:hover { background: #4B5563; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>2-Dars: Numbers & Personal Information</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi darsimizda biz ingliz tilidagi raqamlarni o'rganamiz va o'zimiz haqimizda ma'lumot bera olamiz.</p>
+
+    <h2>1 dan 10 gacha</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">one</span><span class="transcription">/wʌn/</span><span class="translation">bir</span><button class="audio-btn" onclick="speak('one')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">two</span><span class="transcription">/tuː/</span><span class="translation">ikki</span><button class="audio-btn" onclick="speak('two')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">three</span><span class="transcription">/θriː/</span><span class="translation">uch</span><button class="audio-btn" onclick="speak('three')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">four</span><span class="transcription">/fɔːr/</span><span class="translation">to'rt</span><button class="audio-btn" onclick="speak('four')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">five</span><span class="transcription">/faɪv/</span><span class="translation">besh</span><button class="audio-btn" onclick="speak('five')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">six</span><span class="transcription">/sɪks/</span><span class="translation">olti</span><button class="audio-btn" onclick="speak('six')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">seven</span><span class="transcription">/ˈsev.ən/</span><span class="translation">yetti</span><button class="audio-btn" onclick="speak('seven')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">eight</span><span class="transcription">/eɪt/</span><span class="translation">sakkiz</span><button class="audio-btn" onclick="speak('eight')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">nine</span><span class="transcription">/naɪn/</span><span class="translation">to'qqiz</span><button class="audio-btn" onclick="speak('nine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">ten</span><span class="transcription">/ten/</span><span class="translation">o'n</span><button class="audio-btn" onclick="speak('ten')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>11 dan 20 gacha</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">11</span><span class="word">eleven</span><span class="transcription">/ɪˈlev.ən/</span><span class="translation">o'n bir</span><button class="audio-btn" onclick="speak('eleven')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">twelve</span><span class="transcription">/twelv/</span><span class="translation">o'n ikki</span><button class="audio-btn" onclick="speak('twelve')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">thirteen</span><span class="transcription">/ˌθɜːˈtiːn/</span><span class="translation">o'n uch</span><button class="audio-btn" onclick="speak('thirteen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">fourteen</span><span class="transcription">/ˌfɔːˈtiːn/</span><span class="translation">o'n to'rt</span><button class="audio-btn" onclick="speak('fourteen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">fifteen</span><span class="transcription">/ˌfɪfˈtiːn/</span><span class="translation">o'n besh</span><button class="audio-btn" onclick="speak('fifteen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">16</span><span class="word">sixteen</span><span class="transcription">/ˌsɪkˈstiːn/</span><span class="translation">o'n olti</span><button class="audio-btn" onclick="speak('sixteen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">17</span><span class="word">seventeen</span><span class="transcription">/ˌsev.ənˈtiːn/</span><span class="translation">o'n yetti</span><button class="audio-btn" onclick="speak('seventeen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">18</span><span class="word">eighteen</span><span class="transcription">/ˌeɪˈtiːn/</span><span class="translation">o'n sakkiz</span><button class="audio-btn" onclick="speak('eighteen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">19</span><span class="word">nineteen</span><span class="transcription">/ˌnaɪnˈtiːn/</span><span class="translation">o'n to'qqiz</span><button class="audio-btn" onclick="speak('nineteen')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">20</span><span class="word">twenty</span><span class="transcription">/ˈtwen.ti/</span><span class="translation">yigirma</span><button class="audio-btn" onclick="speak('twenty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>Siz uchun 20 dan 100 gacha bo'lgan raqamlar (O'nliklar)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">20</span><span class="word">twenty</span><span class="transcription">/ˈtwen.ti/</span><span class="translation">yigirma</span><button class="audio-btn" onclick="speak('twenty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">30</span><span class="word">thirty</span><span class="transcription">/ˈθɜː.ti/</span><span class="translation">o'ttiz</span><button class="audio-btn" onclick="speak('thirty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">40</span><span class="word">forty</span><span class="transcription">/ˈfɔː.ti/</span><span class="translation">qirq</span><button class="audio-btn" onclick="speak('forty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">50</span><span class="word">fifty</span><span class="transcription">/ˈfɪf.ti/</span><span class="translation">ellik</span><button class="audio-btn" onclick="speak('fifty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">60</span><span class="word">sixty</span><span class="transcription">/ˈsɪk.sti/</span><span class="translation">oltmish</span><button class="audio-btn" onclick="speak('sixty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">70</span><span class="word">seventy</span><span class="transcription">/ˈsev.ən.ti/</span><span class="translation">yetmish</span><button class="audio-btn" onclick="speak('seventy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">80</span><span class="word">eighty</span><span class="transcription">/ˈeɪ.ti/</span><span class="translation">sakson</span><button class="audio-btn" onclick="speak('eighty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">90</span><span class="word">ninety</span><span class="transcription">/ˈnaɪn.ti/</span><span class="translation">to'qson</span><button class="audio-btn" onclick="speak('ninety')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>Quyida siz uchun yuzliklar</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">100</span><span class="word">one hundred</span><span class="transcription">/wʌn ˈhʌn.drəd/</span><span class="translation">yuz</span><button class="audio-btn" onclick="speak('one hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">200</span><span class="word">two hundred</span><span class="transcription">/tuː ˈhʌn.drəd/</span><span class="translation">ikki yuz</span><button class="audio-btn" onclick="speak('two hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">300</span><span class="word">three hundred</span><span class="transcription">/θriː ˈhʌn.drəd/</span><span class="translation">uch yuz</span><button class="audio-btn" onclick="speak('three hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">400</span><span class="word">four hundred</span><span class="transcription">/fɔːr ˈhʌn.drəd/</span><span class="translation">to'rt yuz</span><button class="audio-btn" onclick="speak('four hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">500</span><span class="word">five hundred</span><span class="transcription">/faɪv ˈhʌn.drəd/</span><span class="translation">besh yuz</span><button class="audio-btn" onclick="speak('five hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">600</span><span class="word">six hundred</span><span class="transcription">/sɪks ˈhʌn.drəd/</span><span class="translation">olti yuz</span><button class="audio-btn" onclick="speak('six hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">700</span><span class="word">seven hundred</span><span class="transcription">/ˈsev.ən ˈhʌn.drəd/</span><span class="translation">yetti yuz</span><button class="audio-btn" onclick="speak('seven hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">800</span><span class="word">eight hundred</span><span class="transcription">/eɪt ˈhʌn.drəd/</span><span class="translation">sakkiz yuz</span><button class="audio-btn" onclick="speak('eight hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">900</span><span class="word">nine hundred</span><span class="transcription">/naɪn ˈhʌn.drəd/</span><span class="translation">to'qqiz yuz</span><button class="audio-btn" onclick="speak('nine hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>Katta raqamlar (Mingliklar va Millionlar)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1,000</span><span class="word">one thousand</span><span class="transcription">/wʌn ˈθaʊ.zənd/</span><span class="translation">ming</span><button class="audio-btn" onclick="speak('one thousand')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10,000</span><span class="word">ten thousand</span><span class="transcription">/ten ˈθaʊ.zənd/</span><span class="translation">o'n ming</span><button class="audio-btn" onclick="speak('ten thousand')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">100,000</span><span class="word">one hundred thousand</span><span class="transcription">/wʌn ˈhʌn.drəd ˈθaʊ.zənd/</span><span class="translation">yuz ming</span><button class="audio-btn" onclick="speak('one hundred thousand')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">1,000,000</span><span class="word">one million</span><span class="transcription">/wʌn ˈmɪl.jən/</span><span class="translation">bir million</span><button class="audio-btn" onclick="speak('one million')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="info-box">
+        <strong>Eslatma:</strong> Raqamlarni yodlashning eng oson yo'li — oilalarga ajratib yod olishdir. Oilalar: <b>birliklar</b> (1-9), <b>o'nliklar</b> (10-90), <b>yuzliklar</b> (100-900) va <b>mingliklar</b> (1000+).
+    </div>
+
+    <h2>Misollar (Turli xil raqamlar)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">23</span><span class="word">twenty-three</span><span class="transcription">/ˈtwen.ti θriː/</span><span class="translation">yigirma uch</span><button class="audio-btn" onclick="speak('twenty-three')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">45</span><span class="word">forty-five</span><span class="transcription">/ˈfɔː.ti faɪv/</span><span class="translation">qirq besh</span><button class="audio-btn" onclick="speak('forty-five')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">67</span><span class="word">sixty-seven</span><span class="transcription">/ˈsɪk.sti ˈsev.ən/</span><span class="translation">oltmish yetti</span><button class="audio-btn" onclick="speak('sixty-seven')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">89</span><span class="word">eighty-nine</span><span class="transcription">/ˈeɪ.ti naɪn/</span><span class="translation">sakson to'qqiz</span><button class="audio-btn" onclick="speak('eighty-nine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">105</span><span class="word">one hundred and five</span><span class="transcription">/wʌn ˈhʌn.drəd ænd faɪv/</span><span class="translation">yuz besh</span><button class="audio-btn" onclick="speak('one hundred and five')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">250</span><span class="word">two hundred and fifty</span><span class="transcription">/tuː ˈhʌn.drəd ænd ˈfɪf.ti/</span><span class="translation">ikki yuz ellik</span><button class="audio-btn" onclick="speak('two hundred and fifty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">342</span><span class="word">three hundred and forty-two</span><span class="transcription">/θriː ˈhʌn.drəd ænd ˈfɔː.ti tuː/</span><span class="translation">uch yuz qirq ikki</span><button class="audio-btn" onclick="speak('three hundred and forty-two')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">512</span><span class="word">five hundred and twelve</span><span class="transcription">/faɪv ˈhʌn.drəd ænd twelv/</span><span class="translation">besh yuz o'n ikki</span><button class="audio-btn" onclick="speak('five hundred and twelve')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">780</span><span class="word">seven hundred and eighty</span><span class="transcription">/ˈsev.ən ˈhʌn.drəd ænd ˈeɪ.ti/</span><span class="translation">yetti yuz sakson</span><button class="audio-btn" onclick="speak('seven hundred and eighty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">999</span><span class="word">nine hundred and ninety-nine</span><span class="transcription">/naɪn ˈhʌn.drəd ænd ˈnaɪn.ti naɪn/</span><span class="translation">to'qqiz yuz to'qson to'qqiz</span><button class="audio-btn" onclick="speak('nine hundred and ninety-nine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">1,500</span><span class="word">one thousand five hundred</span><span class="transcription">/wʌn ˈθaʊ.zənd faɪv ˈhʌn.drəd/</span><span class="translation">bir ming besh yuz</span><button class="audio-btn" onclick="speak('one thousand five hundred')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2,020</span><span class="word">two thousand and twenty</span><span class="transcription">/tuː ˈθaʊ.zənd ænd ˈtwen.ti/</span><span class="translation">ikki ming yigirma</span><button class="audio-btn" onclick="speak('two thousand and twenty')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3,456</span><span class="word">three thousand four hundred and fifty-six</span><span class="transcription">/θriː ˈθaʊ.zənd fɔːr ˈhʌn.drəd ænd ˈfɪf.ti sɪks/</span><span class="translation">uch ming to'rt yuz ellik olti</span><button class="audio-btn" onclick="speak('three thousand four hundred and fifty-six')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10,000</span><span class="word">ten thousand</span><span class="transcription">/ten ˈθaʊ.zənd/</span><span class="translation">o'n ming</span><button class="audio-btn" onclick="speak('ten thousand')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">1,000,000</span><span class="word">one million</span><span class="transcription">/wʌn ˈmɪl.jən/</span><span class="translation">bir million</span><button class="audio-btn" onclick="speak('one million')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>Yosh aytish (Personal Information)</h2>
+    <p>Ingliz tilida yoshni so'rash va aytish uchun <b>"To be" (bo'lmoq)</b> fe'lidan foydalanamiz.</p>
+    <div class="info-box">
+        <p><b>Savol:</b> How old are you? (Hau ould ar yu?) - Siz necha yoshdasiz?</p>
+        <p><b>Javob:</b> I am ... (Ay em) - Men ... yoshdaman.</p>
+        <ul>
+            <li>I am 10 (ten) years old. - Men 10 yoshdaman.</li>
+            <li>He is 25 (twenty-five) years old. - U (o'g'il bola) 25 yoshda.</li>
+            <li>She is 30 (thirty) years old. - U (qiz bola) 30 yoshda.</li>
+        </ul>
+    </div>
+
+    <h2>Sana va Tartib sonlar (Ordinal Numbers)</h2>
+    <p>Sanani aytishda qaysi kun ekanligini bildirish uchun tartib sonlardan foydalanamiz (birinchi, ikkinchi...).</p>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1st</span><span class="word">first</span><span class="transcription">/fɜːst/</span><span class="translation">birinchi</span><button class="audio-btn" onclick="speak('first')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2nd</span><span class="word">second</span><span class="transcription">/ˈsek.ənd/</span><span class="translation">ikkinchi</span><button class="audio-btn" onclick="speak('second')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3rd</span><span class="word">third</span><span class="transcription">/θɜːd/</span><span class="translation">uchinchi</span><button class="audio-btn" onclick="speak('third')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4th</span><span class="word">fourth</span><span class="transcription">/fɔːθ/</span><span class="translation">to'rtinchi</span><button class="audio-btn" onclick="speak('fourth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5th</span><span class="word">fifth</span><span class="transcription">/fɪfθ/</span><span class="translation">beshinchi</span><button class="audio-btn" onclick="speak('fifth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6th</span><span class="word">sixth</span><span class="transcription">/sɪksθ/</span><span class="translation">oltinchi</span><button class="audio-btn" onclick="speak('sixth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7th</span><span class="word">seventh</span><span class="transcription">/ˈsev.ənθ/</span><span class="translation">yettinchi</span><button class="audio-btn" onclick="speak('seventh')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8th</span><span class="word">eighth</span><span class="transcription">/eɪtθ/</span><span class="translation">sakkizinchi</span><button class="audio-btn" onclick="speak('eighth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9th</span><span class="word">ninth</span><span class="transcription">/naɪnθ/</span><span class="translation">to'qqizinchi</span><button class="audio-btn" onclick="speak('ninth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10th</span><span class="word">tenth</span><span class="transcription">/tenθ/</span><span class="translation">o'ninchi</span><button class="audio-btn" onclick="speak('tenth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test (15 ta savol)</h2>
+        <p>Daftaringizga javoblarni yozing va o'zingizni tekshiring.</p>
+        
+        <div class="question">
+            <p>1. 7 raqami ingliz tilida qanday yoziladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> a) five</label>
+                <label><input type="radio" name="q1" value="b"> b) seven</label>
+                <label><input type="radio" name="q1" value="c"> c) nine</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. "Twelve" qaysi raqam?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> a) 10</label>
+                <label><input type="radio" name="q2" value="b"> b) 11</label>
+                <label><input type="radio" name="q2" value="c"> c) 12</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. 20 raqamining yozilishi qanday?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> a) twelve</label>
+                <label><input type="radio" name="q3" value="b"> b) twenty</label>
+                <label><input type="radio" name="q3" value="c"> c) thirty</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. "Qirq" qaysi variantda to'g'ri?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a"> a) fourty</label>
+                <label><input type="radio" name="q4" value="b"> b) forty</label>
+                <label><input type="radio" name="q4" value="c"> c) fourty</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. 100 ingliz tilida qanday?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> a) one thousand</label>
+                <label><input type="radio" name="q5" value="b"> b) one hundred</label>
+                <label><input type="radio" name="q5" value="c"> c) ten hundred</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. "One thousand" bu qaysi raqam?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a"> a) 100</label>
+                <label><input type="radio" name="q6" value="b"> b) 1000</label>
+                <label><input type="radio" name="q6" value="c"> c) 10000</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. 23 raqami qanday o'qiladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a"> a) twenty-three</label>
+                <label><input type="radio" name="q7" value="b"> b) thirty-two</label>
+                <label><input type="radio" name="q7" value="c"> c) two-three</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. "Siz necha yoshdasiz?" qanday so'raladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="a"> a) What is your name?</label>
+                <label><input type="radio" name="q8" value="b"> b) How old are you?</label>
+                <label><input type="radio" name="q8" value="c"> c) Where are you from?</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. Men 15 yoshdaman (I ... 15 years old).</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="a"> a) is</label>
+                <label><input type="radio" name="q9" value="b"> b) are</label>
+                <label><input type="radio" name="q9" value="c"> c) am</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. 1st (birinchi) qaysi so'z?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="a"> a) first</label>
+                <label><input type="radio" name="q10" value="b"> b) second</label>
+                <label><input type="radio" name="q10" value="c"> c) third</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>11. 3rd (uchinchi) so'zi qanday yoziladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="a"> a) threeth</label>
+                <label><input type="radio" name="q11" value="b"> b) third</label>
+                <label><input type="radio" name="q11" value="c"> c) thirst</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>12. 250 raqami qanday o'qiladi?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="a"> a) two hundred and fifteen</label>
+                <label><input type="radio" name="q12" value="b"> b) two hundred and fifty</label>
+                <label><input type="radio" name="q12" value="c"> c) twenty-five hundred</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>13. "Ninety" nechchi?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="a"> a) 19</label>
+                <label><input type="radio" name="q13" value="b"> b) 90</label>
+                <label><input type="radio" name="q13" value="c"> c) 900</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>14. "One million" bu qanday raqam?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="a"> a) 100,000</label>
+                <label><input type="radio" name="q14" value="b"> b) 1,000,000</label>
+                <label><input type="radio" name="q14" value="c"> c) 10,000</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>15. U (qiz bola) 20 yoshda (She ... 20 years old).</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="a"> a) am</label>
+                <label><input type="radio" name="q15" value="b"> b) are</label>
+                <label><input type="radio" name="q15" value="c"> c) is</label>
+            </div>
+        </div>
+
+        <button class="check-btn" onclick="checkTest()">Natijani tekshirish</button>
+        <div class="result" id="testResult"></div>
+    </div>
+
+    <div class="homework-section">
+        <h2>Uyga vazifa (Homework)</h2>
+        <p>Quyidagi topshiriqlarni daftaringizga yozma ravishda bajaring:</p>
+        <ol>
+            <li>1 dan 20 gacha bo'lgan raqamlarni ingliz tilida yozing.</li>
+            <li>Quyidagi raqamlarni so'z bilan yozing: 30, 45, 60, 78, 90.</li>
+            <li>Quyidagi raqamlarni so'z bilan yozing: 100, 200, 500, 1000.</li>
+            <li>O'zingizning yoshingizni ingliz tilida yozing (Masalan: I am 20 years old).</li>
+            <li>Oilangiz a'zolarining yoshini ingliz tilida yozing (kamida 3 ta). Masalan: My father is 45 years old.</li>
+            <li>Quyidagi tartib sonlarni yozing: 1st, 2nd, 3rd, 4th, 5th.</li>
+            <li>Bugungi sanani ingliz tilida yozishga harakat qiling (Masalan: Today is the 15th of May).</li>
+            <li>Quyidagi misollarni ingliz tilida o'qing va javobini yozing: 10 + 5 = ?, 20 + 30 = ?, 100 - 40 = ?.</li>
+            <li>O'zingiz haqingizda 3 ta gap tuzing (ismingiz, yoshingiz va qayerdan ekanligingiz haqida).</li>
+            <li>10 dan 100 gacha bo'lgan o'nliklarni (10, 20, 30...) ovoz chiqarib o'qing va yozib chiqing.</li>
+        </ol>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
+    </div>
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Avvalgi ovozni to'xtatish
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // Ingliz tili (AQSH)
+            utterance.rate = 0.9; // O'qish tezligi (biroz sekinroq)
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // Testni tekshirish funksiyasi
+    function checkTest() {
+        const answers = {
+            q1: 'b', q2: 'c', q3: 'b', q4: 'b', q5: 'b',
+            q6: 'b', q7: 'a', q8: 'b', q9: 'c', q10: 'a',
+            q11: 'b', q12: 'b', q13: 'b', q14: 'b', q15: 'c'
+        };
+        let score = 0;
+        let total = 15;
+
+        for (let key in answers) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            if (selected && selected.value === answers[key]) {
+                score++;
+            }
+        }
+
+        const resultDiv = document.getElementById('testResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else if (score >= 10) {
+            resultDiv.style.color = 'orange';
+            resultDiv.innerHTML += " Yaxshi, lekin yana takrorlang. 👍";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Mavzuni yana bir bor o'qib chiqing. 📚";
+        }
+    }
+</script>
+
+</body>
+</html>
