@@ -1,1 +1,904 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 4 — Future Simple | English Up</title>
+
+<style>
+:root {
+  --purple:#7047eb;
+  --purple-dark:#5835c7;
+  --bg:#f6f4ff;
+  --card:#ffffff;
+  --text:#24213a;
+  --muted:#716d83;
+  --border:#e8e3f5;
+  --green:#16834a;
+  --red:#d43d50;
+  --soft:#f0ebff;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+body.dark {
+  --bg:#171522;
+  --card:#242132;
+  --text:#f4f1ff;
+  --muted:#b9b3cb;
+  --border:#393449;
+  --soft:#302747;
+}
+header {
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:12px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.brand {
+  color:var(--purple);
+  font-weight:900;
+  letter-spacing:1.5px;
+  font-size:19px;
+}
+.header-actions {display:flex;gap:8px;align-items:center}
+button,a.btn {
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:14px;
+  text-decoration:none;
+}
+.back-btn,.theme-btn {
+  color:var(--text);
+  background:var(--soft);
+}
+.container {max-width:950px;margin:auto;padding:22px 15px 50px}
+.hero {
+  background:linear-gradient(135deg,#7047eb,#9676f5);
+  color:white;
+  border-radius:20px;
+  padding:28px 22px;
+  margin-bottom:20px;
+}
+.hero small {font-weight:700;letter-spacing:1px}
+.hero h1 {font-size:clamp(27px,5vw,39px);margin:8px 0}
+.hero p {margin:0;opacity:.95}
+.progress-wrap {
+  height:8px;background:rgba(255,255,255,.3);
+  border-radius:20px;margin-top:20px;overflow:hidden;
+}
+.progress-bar {height:100%;width:0;background:white;transition:.3s}
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  margin:17px 0;
+}
+h2 {font-size:22px;margin:0 0 14px;color:var(--purple)}
+h3 {font-size:18px;margin:18px 0 8px}
+p {margin:8px 0}
+.muted {color:var(--muted)}
+.note {
+  background:var(--soft);
+  border-left:4px solid var(--purple);
+  border-radius:9px;
+  padding:13px 15px;
+  margin:13px 0;
+}
+.write-note {
+  background:#fff4d8;
+  color:#644500;
+  border-left:5px solid #e7a900;
+  padding:13px 15px;
+  border-radius:9px;
+  margin:14px 0;
+  font-weight:700;
+}
+body.dark .write-note {background:#493b20;color:#ffe3a0}
+.success {
+  background:#e7f8ed;color:#145c32;
+  padding:12px;border-radius:9px;margin:10px 0;
+}
+body.dark .success {background:#183c2a;color:#b9f0cb}
+.warning {
+  background:#fff0ef;color:#8c2830;
+  padding:12px;border-radius:9px;margin:10px 0;
+}
+body.dark .warning {background:#48252b;color:#ffc3c7}
+.formula {
+  background:var(--soft);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:13px;
+  text-align:center;
+  font-size:19px;
+  font-weight:800;
+  margin:10px 0;
+  overflow-wrap:anywhere;
+}
+table {width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td {border:1px solid var(--border);padding:10px;text-align:left}
+th {background:var(--soft)}
+ul,ol {padding-left:23px}
+li {margin:6px 0}
+.pill {
+  display:inline-block;background:var(--soft);
+  color:var(--purple);padding:4px 9px;
+  border-radius:20px;font-size:12px;font-weight:800;
+}
+.example {
+  border:1px solid var(--border);
+  border-radius:10px;padding:12px;margin:9px 0;
+}
+.example strong {color:var(--purple)}
+.word-grid {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.word {
+  border:1px solid var(--border);border-radius:10px;padding:11px;
+}
+.word b {color:var(--purple)}
+.word small {display:block;color:var(--muted)}
+.word button {margin-top:7px;background:var(--soft);color:var(--purple)}
+.action {
+  background:var(--purple);color:white;
+  padding:12px 18px;border-radius:10px;
+}
+.action:hover {background:var(--purple-dark)}
+.secondary {background:var(--soft);color:var(--purple)}
+.audio-row {display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.section-label {
+  display:flex;align-items:center;gap:9px;
+  margin-bottom:10px;
+}
+.section-label span {
+  background:var(--purple);color:white;
+  width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;font-weight:800;
+}
+.homework-task {
+  border:1px solid var(--border);
+  border-radius:12px;padding:14px;margin:12px 0;
+}
+.quiz-question {
+  border:1px solid var(--border);
+  border-radius:12px;padding:15px;margin:13px 0;
+}
+.quiz-question h3 {margin:0 0 10px;font-size:16px}
+.quiz-question input[type="text"] {
+  width:100%;padding:12px;border:1px solid var(--border);
+  background:var(--bg);color:var(--text);
+  border-radius:9px;font-size:15px;
+}
+.option {
+  display:block;padding:9px 11px;margin:7px 0;
+  border:1px solid var(--border);border-radius:9px;
+  cursor:pointer;
+}
+.option input {margin-right:8px}
+.feedback {font-size:14px;font-weight:700;margin-top:8px}
+.correct {color:var(--green)}
+.incorrect {color:var(--red)}
+.result-box {
+  display:none;text-align:center;
+  background:var(--soft);padding:20px;
+  border-radius:14px;margin-top:18px;
+}
+.score {font-size:38px;font-weight:900;color:var(--purple)}
+textarea {
+  width:100%;min-height:110px;padding:12px;
+  border:1px solid var(--border);border-radius:10px;
+  background:var(--bg);color:var(--text);
+  font:inherit;
+}
+footer {
+  text-align:center;padding:25px 10px;
+  color:var(--muted);
+}
+footer strong {color:var(--purple);letter-spacing:2px}
+@media(max-width:600px) {
+  .container {padding:14px 11px 35px}
+  .card {padding:15px}
+  .word-grid {grid-template-columns:1fr}
+  header {padding:10px 12px}
+  .brand {font-size:16px}
+  table {font-size:12px}
+  th,td {padding:7px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a class="btn back-btn" href="index.html">← Darslar</a>
+  <div class="brand">ENGLISH UP</div>
+  <div class="header-actions">
+    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <small>ELEMENTARY • LESSON 4</small>
+  <h1>FUTURE SIMPLE — WILL</h1>
+  <p>Kelajak haqida gapirishni o‘rganamiz!</p>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  <small id="progressText">Darsni boshlang</small>
+</section>
+
+<section class="card">
+  <h2>🎯 Dars maqsadi</h2>
+  <p>Ushbu dars oxirida siz:</p>
+  <ul>
+    <li>Future Simple nima ekanini tushunasiz.</li>
+    <li>Will yordamida darak, inkor va so‘roq gaplar tuzasiz.</li>
+    <li>WH-questions va qisqa javoblardan foydalanasiz.</li>
+    <li>Kelajak haqidagi taxmin, va’da va takliflarni ifodalay olasiz.</li>
+    <li>Will bilan bog‘liq keng tarqalgan xatolardan qochasiz.</li>
+  </ul>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Dars davomida sariq rangli barcha qoidalar, formulalar va belgilangan mashqlarni daftaringizga yozing.</div>
+</section>
+
+<!-- 1 -->
+<section class="card">
+  <div class="section-label"><span>1</span><h2>Mavzuga kirish</h2></div>
+  <h3>Future Simple nima?</h3>
+  <p><b>Future Simple</b> — ingliz tilida kelajakda sodir bo‘ladigan ish-harakatlar haqida gapirish uchun ishlatiladigan zamon.</p>
+  <p>O‘zbek tilida bu zamon ko‘pincha “boraman”, “keladi”, “o‘qiyman”, “yordam beraman” kabi ma’nolarni anglatadi.</p>
+
+  <div class="example">
+    <strong>I will study tomorrow.</strong><br>
+    Men ertaga o‘qiyman.
+  </div>
+  <div class="example">
+    <strong>She will call you.</strong><br>
+    U sizga qo‘ng‘iroq qiladi.
+  </div>
+  <div class="example">
+    <strong>They will travel next week.</strong><br>
+    Ular keyingi hafta sayohat qilishadi.
+  </div>
+
+  <h3>Will nima?</h3>
+  <p><b>Will</b> — kelajak ma’nosini ifodalashda ishlatiladigan yordamchi fe’l. U gapda asosiy fe’lga kelajak ma’nosini beradi.</p>
+  <div class="note">Muhim: Will dan keyin asosiy fe’l doimo V1 shaklida ishlatiladi.</div>
+
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Future Simple — kelajakdagi ish-harakatlar haqida gapirish uchun ishlatiladi. Uning asosiy yordamchi fe’li WILL hisoblanadi.</div>
+</section>
+
+<!-- 2 -->
+<section class="card">
+  <div class="section-label"><span>2</span><h2>Formulalar va grammatik strukturalar</h2></div>
+
+  <h3>Avval belgilarni tushunib olaylik</h3>
+  <table>
+    <tr><th>Belgi</th><th>Inglizcha nomi</th><th>Ma’nosi</th></tr>
+    <tr><td><b>S</b></td><td>Subject</td><td>Ega: I, you, he, she, it, we, they</td></tr>
+    <tr><td><b>Will</b></td><td>Auxiliary verb</td><td>Yordamchi fe’l</td></tr>
+    <tr><td><b>V1</b></td><td>Verb 1</td><td>Fe’lning birinchi shakli</td></tr>
+    <tr><td><b>O</b></td><td>Object</td><td>To‘ldiruvchi</td></tr>
+    <tr><td><b>WH</b></td><td>Question word</td><td>What, where, when, why, how kabi so‘roq so‘zlari</td></tr>
+  </table>
+
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: S = Subject, Will = yordamchi fe’l, V1 = fe’lning birinchi shakli, O = Object.</div>
+
+  <h3>A. Positive — darak gap</h3>
+  <p>Darak gap biror ish-harakat kelajakda sodir bo‘lishini tasdiqlaydi.</p>
+  <div class="formula">S + WILL + V1 + O</div>
+  <p>Misollar:</p>
+  <div class="example"><b>I will learn English.</b><br>Men ingliz tilini o‘rganaman.</div>
+  <div class="example"><b>He will play football.</b><br>U futbol o‘ynaydi.</div>
+  <div class="example"><b>We will visit our grandmother.</b><br>Biz buvimizni ziyorat qilamiz.</div>
+
+  <p><b>Gapni qismlarga ajratamiz:</b></p>
+  <div class="example">
+    <b>I</b> — S (ega)<br>
+    <b>will</b> — yordamchi fe’l<br>
+    <b>learn</b> — V1 (asosiy fe’l)<br>
+    <b>English</b> — O (to‘ldiruvchi)
+  </div>
+
+  <div class="note">Eslab qoling: I, you, he, she, it, we, they — barcha egalar bilan WILL ishlatiladi. He yoki she bilan will o‘zgarmaydi.</div>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: S + WILL + V1 + O. Ushbu formulani va uchta misolni yozing.</div>
+
+  <h3>B. Negative — inkor gap</h3>
+  <p>Inkor gap kelajakda biror ish-harakat sodir bo‘lmasligini bildiradi.</p>
+  <div class="formula">S + WILL NOT + V1 + O</div>
+  <p><b>Will not</b> qisqartirilganda <b>won’t</b> bo‘ladi.</p>
+
+  <div class="example"><b>I will not go there.</b><br>Men u yerga bormayman.</div>
+  <div class="example"><b>She won't work tomorrow.</b><br>U ertaga ishlamaydi.</div>
+  <div class="example"><b>They will not buy a new car.</b><br>Ular yangi mashina sotib olishmaydi.</div>
+
+  <table>
+    <tr><th>To‘liq shakl</th><th>Qisqa shakl</th></tr>
+    <tr><td>will not</td><td>won’t</td></tr>
+    <tr><td>I will not</td><td>I won’t</td></tr>
+    <tr><td>He will not</td><td>He won’t</td></tr>
+    <tr><td>We will not</td><td>We won’t</td></tr>
+  </table>
+
+  <div class="warning">Xato: I don't will go. <br>To‘g‘ri: I will not go. <br>Future Simple inkorida don't yoki doesn't ishlatilmaydi.</div>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: S + WILL NOT + V1 + O. Will not = won’t. Uchta inkor gap yozing.</div>
+
+  <h3>C. Question — umumiy so‘roq gap</h3>
+  <p>Ha yoki yo‘q deb javob beriladigan savollarda WILL gap boshiga chiqadi.</p>
+  <div class="formula">WILL + S + V1 + O?</div>
+
+  <div class="example"><b>Will you come tomorrow?</b><br>Siz ertaga kelasizmi?</div>
+  <div class="example"><b>Will she help us?</b><br>U bizga yordam beradimi?</div>
+  <div class="example"><b>Will they study English?</b><br>Ular ingliz tilini o‘rganishadimi?</div>
+
+  <p><b>Gapni qismlarga ajratamiz:</b></p>
+  <div class="example">
+    <b>Will</b> — yordamchi fe’l<br>
+    <b>you</b> — ega<br>
+    <b>come</b> — V1<br>
+    <b>tomorrow</b> — vaqt ko‘rsatkichi
+  </div>
+
+  <div class="note">So‘roq gapda WILL egadan oldin keladi. Asosiy fe’l esa WILL dan keyin V1 shaklida qoladi.</div>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: WILL + S + V1 + O? Uchta so‘roq gap yozing.</div>
+
+  <h3>D. WH-Questions — maxsus so‘roq gaplar</h3>
+  <p>Bu savollar shunchaki “ha” yoki “yo‘q” javobini emas, balki ma’lumotni so‘raydi.</p>
+  <div class="formula">WH-WORD + WILL + S + V1?</div>
+
+  <table>
+    <tr><th>So‘roq so‘zi</th><th>Ma’nosi</th><th>Misol</th></tr>
+    <tr><td>What</td><td>Nima?</td><td>What will you do?</td></tr>
+    <tr><td>Where</td><td>Qayerda/qayerga?</td><td>Where will he go?</td></tr>
+    <tr><td>When</td><td>Qachon?</td><td>When will she come?</td></tr>
+    <tr><td>Why</td><td>Nima uchun?</td><td>Why will they leave?</td></tr>
+    <tr><td>Who</td><td>Kim?</td><td>Who will help us?</td></tr>
+    <tr><td>How</td><td>Qanday/qanaqasiga?</td><td>How will you travel?</td></tr>
+    <tr><td>How long</td><td>Qancha vaqt?</td><td>How long will you stay?</td></tr>
+  </table>
+
+  <div class="example"><b>What will you study tomorrow?</b><br>Sen ertaga nimani o‘rganasan?</div>
+  <div class="example"><b>Where will they live?</b><br>Ular qayerda yashashadi?</div>
+
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: WH-WORD + WILL + S + V1? Kamida beshta WH-savol tuzing.</div>
+
+  <h3>E. Short Answers — qisqa javoblar</h3>
+  <p>Will bilan berilgan savollarga qisqa javob berish tartibi:</p>
+  <table>
+    <tr><th>Savol</th><th>Ijobiy javob</th><th>Salbiy javob</th></tr>
+    <tr><td>Will you come?</td><td>Yes, I will.</td><td>No, I won't.</td></tr>
+    <tr><td>Will he work?</td><td>Yes, he will.</td><td>No, he won't.</td></tr>
+    <tr><td>Will they study?</td><td>Yes, they will.</td><td>No, they won't.</td></tr>
+  </table>
+  <div class="warning">Xato: Yes, I will come. — bu to‘liq javob bo‘lishi mumkin, ammo qisqa javob so‘ralganda “Yes, I will” ishlatiladi. “Yes, I will” dan keyin asosiy fe’l takrorlanmaydi.</div>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Yes, S + will. / No, S + won't. Uchta savolga ikkita qisqa javob yozing.</div>
+</section>
+
+<!-- 3 -->
+<section class="card">
+  <div class="section-label"><span>3</span><h2>Will barcha shaxslar bilan</h2></div>
+  <p>Future Simple zamonida WILL barcha egalar bilan bir xil ishlatiladi.</p>
+  <table>
+    <tr><th>Ega</th><th>Formula</th><th>Misol</th></tr>
+    <tr><td>I</td><td>I will + V1</td><td>I will work.</td></tr>
+    <tr><td>You</td><td>You will + V1</td><td>You will work.</td></tr>
+    <tr><td>He</td><td>He will + V1</td><td>He will work.</td></tr>
+    <tr><td>She</td><td>She will + V1</td><td>She will work.</td></tr>
+    <tr><td>It</td><td>It will + V1</td><td>It will work.</td></tr>
+    <tr><td>We</td><td>We will + V1</td><td>We will work.</td></tr>
+    <tr><td>They</td><td>They will + V1</td><td>They will work.</td></tr>
+  </table>
+  <div class="success">Muhim: He will works emas, He will work. She will goes emas, She will go.</div>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Barcha shaxslar bilan WILL ishlatiladi. WILL dan keyin fe’lga -s yoki -es qo‘shilmaydi.</div>
+</section>
+
+<!-- 4 -->
+<section class="card">
+  <div class="section-label"><span>4</span><h2>Will qachon ishlatiladi?</h2></div>
+
+  <h3>1. Kelajak haqidagi taxmin va fikrlar</h3>
+  <p>Kelajakda nima sodir bo‘lishi haqida o‘z fikrimizni yoki taxminimizni aytganda.</p>
+  <div class="example"><b>I think it will rain tomorrow.</b><br>Menimcha, ertaga yomg‘ir yog‘adi.</div>
+  <div class="example"><b>She will be a good teacher.</b><br>U yaxshi o‘qituvchi bo‘ladi.</div>
+
+  <h3>2. Shu zahoti qabul qilingan qaror</h3>
+  <p>Gapirayotgan paytimizda qaror qabul qilsak, WILL ishlatishimiz mumkin.</p>
+  <div class="example"><b>The phone is ringing. I will answer it.</b><br>Telefon jiringlayapti. Men javob beraman.</div>
+  <div class="example"><b>I'm tired. I will take a rest.</b><br>Charchadim. Dam olaman.</div>
+
+  <h3>3. Va’da berish</h3>
+  <div class="example"><b>I will help you.</b><br>Men sizga yordam beraman.</div>
+  <div class="example"><b>I will never forget this.</b><br>Men buni hech qachon unutmayman.</div>
+
+  <h3>4. Taklif qilish</h3>
+  <div class="example"><b>I will carry your bag.</b><br>Sumkangizni ko‘tarib beraman.</div>
+  <div class="example"><b>We will help you with your homework.</b><br>Uy vazifangizga yordam beramiz.</div>
+
+  <h3>5. Kelajakdagi holat haqida fikr bildirish</h3>
+  <div class="example"><b>Life will be different in the future.</b><br>Kelajakda hayot boshqacha bo‘ladi.</div>
+  <div class="example"><b>People will use new technology.</b><br>Odamlar yangi texnologiyalardan foydalanishadi.</div>
+
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Will ning beshta qo‘llanish holatini va har biriga bittadan misolni yozing.</div>
+</section>
+
+<!-- 5 -->
+<section class="card">
+  <div class="section-label"><span>5</span><h2>Vaqt ko‘rsatkichlari</h2></div>
+  <p>Quyidagi so‘zlar Future Simple bilan ko‘p ishlatiladi:</p>
+  <table>
+    <tr><th>Inglizcha</th><th>O‘zbekcha</th></tr>
+    <tr><td>Tomorrow</td><td>Ertaga</td></tr>
+    <tr><td>Tomorrow morning</td><td>Ertaga ertalab</td></tr>
+    <tr><td>Tomorrow evening</td><td>Ertaga kechqurun</td></tr>
+    <tr><td>Next week</td><td>Keyingi hafta</td></tr>
+    <tr><td>Next month</td><td>Keyingi oy</td></tr>
+    <tr><td>Next year</td><td>Keyingi yil</td></tr>
+    <tr><td>Soon</td><td>Tez orada</td></tr>
+    <tr><td>Later</td><td>Keyinroq</td></tr>
+    <tr><td>In the future</td><td>Kelajakda</td></tr>
+    <tr><td>One day</td><td>Bir kuni</td></tr>
+  </table>
+  <div class="example"><b>I will see you tomorrow.</b><br>Men sizni ertaga ko‘raman.</div>
+  <div class="example"><b>They will move next year.</b><br>Ular keyingi yil ko‘chib o‘tishadi.</div>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Jadvaldagi vaqt ko‘rsatkichlarini tarjimasi bilan yozing va ulardan beshta gap tuzing.</div>
+</section>
+
+<!-- 6 -->
+<section class="card">
+  <div class="section-label"><span>6</span><h2>Eng ko‘p uchraydigan xatolar</h2></div>
+  <table>
+    <tr><th>Noto‘g‘ri</th><th>To‘g‘ri</th><th>Sababi</th></tr>
+    <tr><td>He will goes.</td><td>He will go.</td><td>Will dan keyin V1 keladi.</td></tr>
+    <tr><td>She wills come.</td><td>She will come.</td><td>Will ga -s qo‘shilmaydi.</td></tr>
+    <tr><td>I don't will work.</td><td>I won't work.</td><td>Don't ishlatilmaydi.</td></tr>
+    <tr><td>Will you to come?</td><td>Will you come?</td><td>Will dan keyin to kerak emas.</td></tr>
+    <tr><td>He will not comes.</td><td>He will not come.</td><td>Fe’l V1 bo‘ladi.</td></tr>
+    <tr><td>Will she goes?</td><td>Will she go?</td><td>So‘roq gapda ham V1.</td></tr>
+  </table>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Jadvaldagi noto‘g‘ri gaplarni va ularning to‘g‘ri shakllarini yozing.</div>
+</section>
+
+<!-- 7 Vocabulary -->
+<section class="card" id="vocabulary">
+  <div class="section-label"><span>7</span><h2>Vocabulary — 40 ta yangi so‘z</h2></div>
+  <p>Har bir so‘zni tarjimasi va talaffuzi bilan o‘rganing. Karnay tugmasini bosib, inglizcha talaffuzini tinglang.</p>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Quyidagi 40 ta so‘zni inglizchasi, o‘zbekcha tarjimasi va talaffuzi bilan Vocabulary daftaringizga yozing.</div>
+  <div class="word-grid" id="wordGrid"></div>
+</section>
+
+<!-- 8 Reading -->
+<section class="card">
+  <div class="section-label"><span>8</span><h2>Reading — My Future Plans</h2></div>
+  <p class="muted">Matnni avval mustaqil o‘qing. Keyin audio orqali tinglang.</p>
+  <div class="example" id="readingText">
+    My name is Adam. I am a student. I will finish school next year. I will study English every day. I think English will help me in the future. I will read books and watch educational videos. I will work hard and learn new things. My family will support me. I will try my best because I want to have a good future.
+  </div>
+  <button class="action" onclick="speakText(document.getElementById('readingText').innerText,0.85)">🔊 Matnni tinglash</button>
+  <h3>Reading questions</h3>
+  <ol>
+    <li>When will Adam finish school?</li>
+    <li>What will he study every day?</li>
+    <li>How will English help him?</li>
+    <li>Who will support Adam?</li>
+    <li>Why will he work hard?</li>
+  </ol>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Matnni o‘qing, tarjima qiling va savollarga ingliz tilida javob yozing.</div>
+</section>
+
+<!-- 9 Listening -->
+<section class="card">
+  <div class="section-label"><span>9</span><h2>Listening — A Busy Weekend</h2></div>
+  <p>Audio matnini tinglang. Birinchi marta odatiy tezlikda, ikkinchi marta sekinroq tinglang.</p>
+  <div class="audio-row">
+    <button class="action" onclick="speakText(listeningText,0.9)">▶ Normal audio</button>
+    <button class="action secondary" onclick="speakText(listeningText,0.65)">🐢 Slow audio</button>
+  </div>
+  <div class="note">Audio matni: <span id="listeningText">This weekend, I will visit my uncle. We will have lunch together. My cousins will play football. I will help my uncle in the garden. In the evening, we will watch a film. I think it will be a wonderful weekend.</span></div>
+  <h3>Listening questions</h3>
+  <ol>
+    <li>Who will the speaker visit?</li>
+    <li>What will they do together?</li>
+    <li>What will the cousins play?</li>
+    <li>Where will the speaker help his uncle?</li>
+    <li>What will they watch in the evening?</li>
+  </ol>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Audio matnini tinglab, savollarga javob yozing. Tushunmagan so‘zlaringizni belgilang.</div>
+</section>
+
+<!-- 10 Speaking -->
+<section class="card">
+  <div class="section-label"><span>10</span><h2>Speaking — Talk about your future</h2></div>
+  <p>Quyidagi savollarga ovoz chiqarib, to‘liq gaplar bilan javob bering.</p>
+  <ol>
+    <li>What will you do tomorrow?</li>
+    <li>What will you study next week?</li>
+    <li>Where will you go next year?</li>
+    <li>Will you learn another language?</li>
+    <li>How will you help your family?</li>
+    <li>What will your life be like in the future?</li>
+    <li>Will you read a book this month?</li>
+    <li>What will you do this evening?</li>
+  </ol>
+  <div class="note">Maslahat: Har bir savolga kamida 2 ta inglizcha gap bilan javob berishga harakat qiling.</div>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: Savollardan kamida beshtasiga yozma javob tayyorlang. Keyin javoblaringizni ovoz chiqarib ayting.</div>
+</section>
+
+<!-- 11 Writing -->
+<section class="card">
+  <div class="section-label"><span>11</span><h2>Writing — My Future</h2></div>
+  <p>“My Future” mavzusida 8–10 ta inglizcha gap yozing. Future Simple — WILL dan foydalaning.</p>
+  <p>Quyidagi fikrlardan foydalanishingiz mumkin:</p>
+  <ul>
+    <li>What will you study?</li>
+    <li>Where will you work?</li>
+    <li>How will you help your family?</li>
+    <li>What will you learn?</li>
+    <li>What will you do next year?</li>
+  </ul>
+  <textarea id="writingArea" placeholder="My future..."></textarea>
+  <div class="audio-row">
+    <button class="action secondary" onclick="copyWriting()">📋 Matnni nusxalash</button>
+    <button class="action secondary" onclick="countWords()">🔢 So‘zlarni sanash</button>
+  </div>
+  <p id="wordCount" class="muted">So‘zlar soni: 0</p>
+  <div class="write-note">📒 DAFTARGA YOZIB OLING: O‘zingiz yozgan matnni daftaringizga ko‘chiring.</div>
+</section>
+
+<!-- 12 Homework -->
+<section class="card">
+  <div class="section-label"><span>12</span><h2>Homework — Uy vazifasi</h2></div>
+  <p>Barcha topshiriqlarni daftarda bajaring. Shoshilmasdan, qoidalarga amal qilib ishlang.</p>
+
+  <div class="homework-task">
+    <span class="pill">TOPSHIRIQ 1 • GRAMMAR</span>
+    <h3>Quyidagi gaplarni Future Simple darak shaklida yozing.</h3>
+    <ol>
+      <li>I / visit / my friend / tomorrow.</li>
+      <li>She / cook / dinner / tonight.</li>
+      <li>They / play / football / next week.</li>
+      <li>We / learn / English.</li>
+      <li>He / buy / a new phone.</li>
+      <li>You / meet / your teacher.</li>
+      <li>My brother / work / tomorrow.</li>
+      <li>It / rain / soon.</li>
+      <li>My parents / travel / next month.</li>
+      <li>I / help / my mother.</li>
+    </ol>
+  </div>
+
+  <div class="homework-task">
+    <span class="pill">TOPSHIRIQ 2 • GRAMMAR</span>
+    <h3>Gaplarni ko‘rsatilgan shaklga o‘zgartiring.</h3>
+    <ol>
+      <li>I will go to school. (Negative)</li>
+      <li>She will read a book. (Question)</li>
+      <li>They will come tomorrow. (Negative)</li>
+      <li>He will help us. (Question)</li>
+      <li>We will travel next year. (Negative)</li>
+      <li>You will study English. (Question)</li>
+      <li>My father will work tomorrow. (Negative)</li>
+      <li>It will be cold. (Question)</li>
+      <li>She will call me. (Negative)</li>
+      <li>They will buy a house. (Question)</li>
+    </ol>
+  </div>
+
+  <div class="homework-task">
+    <span class="pill">TOPSHIRIQ 3 • VOCABULARY</span>
+    <h3>Vocabulary bilan ishlash</h3>
+    <ol>
+      <li>40 ta yangi so‘zni yodlang.</li>
+      <li>Har bir so‘zni ovoz chiqarib 3 martadan o‘qing.</li>
+      <li>Yangi so‘zlardan foydalanib 10 ta Future Simple gap tuzing.</li>
+      <li>10 ta so‘zning o‘zbekcha tarjimasini yopib, inglizchasini eslab yozing.</li>
+      <li>O‘zingiz uchun 5 ta yangi so‘zdan iborat kichik test tuzing.</li>
+    </ol>
+  </div>
+
+  <div class="homework-task">
+    <span class="pill">TOPSHIRIQ 4 • TRANSLATION</span>
+    <h3>Ingliz tilidan o‘zbek tiliga tarjima qiling.</h3>
+    <p>Tomorrow will be a busy day. I will wake up early and have breakfast. Then I will go to school. I will meet my friends and study English. After school, I will help my mother at home. In the evening, I will read a book and do my homework. I think tomorrow will be a good day.</p>
+  </div>
+
+  <div class="homework-task">
+    <span class="pill">TOPSHIRIQ 5 • TRANSLATION</span>
+    <h3>O‘zbek tilidan ingliz tiliga tarjima qiling.</h3>
+    <p>Ertaga men erta turaman. Men nonushta qilaman va ishga boraman. Ishdan keyin do‘stim bilan uchrashaman. Biz birga ingliz tilini o‘rganamiz. Kechqurun men uyga qaytaman va kitob o‘qiyman. Men kelajakda yaxshi mutaxassis bo‘laman. Men oilamga yordam beraman.</p>
+  </div>
+
+  <div class="write-note">📒 ESLATMA: Barcha topshiriqlarni daftarda bajaring. Grammatik qoidalarni va formulalarni qayta ko‘rib chiqing.</div>
+</section>
+
+<!-- 13 Interactive test -->
+<section class="card" id="finalTest">
+  <div class="section-label"><span>13</span><h2>Final Interactive Test — 30 Questions</h2></div>
+  <p>Bu darsning yakuniy sinovi. Savollar aralash shaklda beriladi. Javoblarni saytning o‘zida belgilang yoki yozing.</p>
+  <div class="note">Har bir savol 1 ball. Jami 30 ball. Testni tugatgach “Natijani tekshirish” tugmasini bosing.</div>
+  <div id="quizContainer"></div>
+  <button class="action" onclick="checkQuiz()">✅ Natijani tekshirish</button>
+  <button class="action secondary" onclick="resetQuiz()">🔄 Qayta ishlash</button>
+  <div class="result-box" id="resultBox">
+    <h2>Test natijasi</h2>
+    <div class="score" id="scoreText">0/30</div>
+    <h3 id="percentText">0%</h3>
+    <p id="resultMessage"></p>
+    <p id="wrongAnswers"></p>
+  </div>
+</section>
+
+<section class="card" style="text-align:center">
+  <h2>🌟 Dars yakuni</h2>
+  <p>Bugun siz Future Simple — WILL mavzusini o‘rgandingiz. Qoidalarni daftarga yozing, mashqlarni bajaring va test orqali bilimingizni tekshiring.</p>
+  <div class="success"><b>“Small steps every day lead to big success.”</b><br>Har kungi kichik qadamlar katta muvaffaqiyatga olib boradi.</div>
+  <h2 style="margin-top:22px">ENGLISH UP</h2>
+  <p class="muted">Learn today. Succeed tomorrow.</p>
+  <button class="action" onclick="completeLesson()">✓ Darsni tugatdim</button>
+  <p id="completedMessage" class="success" style="display:none">Tabriklaymiz! 4-dars tugallandi.</p>
+</section>
+
+</main>
+
+<footer>
+  <strong>ENGLISH UP</strong>
+  <p>Learn today. Succeed tomorrow.</p>
+</footer>
+
+<script>
+/* THEME */
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("euLessonTheme", document.body.classList.contains("dark") ? "dark" : "light");
+}
+if (localStorage.getItem("euLessonTheme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+/* SPEECH */
+function speakText(text, rate=0.85) {
+  if (!("speechSynthesis" in window)) {
+    alert("Audio funksiyasi ushbu brauzerda ishlamayapti.");
+    return;
+  }
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US";
+  utterance.rate = rate;
+  speechSynthesis.speak(utterance);
+}
+
+/* VOCABULARY */
+const words = [
+  ["tomorrow","ertaga","tə-MOR-ou","I will call you tomorrow."],
+  ["future","kelajak","FYU-chər","I will have a good future."],
+  ["plan","reja","plen","I will make a new plan."],
+  ["hope","umid qilmoq","houp","I hope you will come."],
+  ["believe","ishonmoq","bi-LIIV","I believe you will succeed."],
+  ["think","o‘ylamoq","thingk","I think it will rain."],
+  ["learn","o‘rganmoq","lर्न","I will learn English."],
+  ["travel","sayohat qilmoq","TRA-vəl","We will travel next year."],
+  ["visit","tashrif buyurmoq","VI-zit","I will visit my uncle."],
+  ["help","yordam bermoq","help","I will help my family."],
+  ["call","qo‘ng‘iroq qilmoq","kol","She will call me."],
+  ["meet","uchrashmoq","miit","I will meet my friend."],
+  ["arrive","yetib kelmoq","ə-RAYV","They will arrive soon."],
+  ["leave","ketmoq","liiv","He will leave tomorrow."],
+  ["stay","qolmoq","stey","We will stay at home."],
+  ["move","ko‘chmoq","muuv","They will move next month."],
+  ["start","boshlamoq","start","I will start a new course."],
+  ["finish","tugatmoq","FI-nish","She will finish her work."],
+  ["continue","davom ettirmoq","kən-TIN-yu","We will continue tomorrow."],
+  ["answer","javob bermoq","AN-sər","I will answer the question."],
+  ["promise","va’da bermoq","PRO-mis","I will keep my promise."],
+  ["decide","qaror qilmoq","di-SAYD","I will decide later."],
+  ["choose","tanlamoq","chuuz","You will choose a book."],
+  ["change","o‘zgartirmoq","cheynj","Things will change."],
+  ["improve","yaxshilamoq","im-PRUUV","My English will improve."],
+  ["succeed","muvaffaqiyatga erishmoq","sək-SIID","You will succeed."],
+  ["win","g‘alaba qozonmoq","win","Our team will win."],
+  ["rain","yomg‘ir yog‘moq","reyn","It will rain tomorrow."],
+  ["weather","ob-havo","WE-thər","The weather will be warm."],
+  ["probably","ehtimol","PRO-bə-bli","He will probably come."],
+  ["perhaps","balki","pər-HAPS","Perhaps they will visit us."],
+  ["soon","tez orada","suun","I will see you soon."],
+  ["later","keyinroq","LEY-tər","I will call you later."],
+  ["tonight","bugun kechqurun","tə-NAYT","We will watch a film tonight."],
+  ["next week","keyingi hafta","nekst wiik","I will study next week."],
+  ["next year","keyingi yil","nekst yir","She will travel next year."],
+  ["one day","bir kuni","wan dey","One day I will be a teacher."],
+  ["tomorrow morning","ertaga ertalab","tə-MOR-ou MOR-ning","I will work tomorrow morning."],
+  ["take a rest","dam olmoq","teyk ə rest","I will take a rest."],
+  ["make a decision","qaror qabul qilmoq","meyk ə di-SI-zhən","I will make a decision."]
+];
+
+const wordGrid = document.getElementById("wordGrid");
+words.forEach((w,i)=>{
+  const item=document.createElement("div");
+  item.className="word";
+  item.innerHTML=`
+    <b>${i+1}. ${w[0]}</b>
+    <div>${w[1]}</div>
+    <small>Talaffuz: ${w[2]}</small>
+    <small>Example: ${w[3]}</small>
+    <button onclick="speakText('${w[0].replace(/'/g,"")}')">🔊 Tinglash</button>
+  `;
+  wordGrid.appendChild(item);
+});
+
+/* WRITING TOOLS */
+function countWords() {
+  const value=document.getElementById("writingArea").value.trim();
+  const count=value ? value.split(/\s+/).length : 0;
+  document.getElementById("wordCount").textContent="So‘zlar soni: "+count;
+}
+function copyWriting() {
+  const text=document.getElementById("writingArea").value;
+  if (!text.trim()) {
+    alert("Avval matn yozing.");
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(()=>alert("Matn nusxalandi."));
+  } else {
+    document.getElementById("writingArea").select();
+    alert("Matn belgilandi. Nusxalash uchun Copy tugmasini tanlang.");
+  }
+}
+
+/* INTERACTIVE TEST */
+const questions = [
+  {q:"1. Will inkor shaklini yozing.",type:"text",a:["will not","won't","willnot"]},
+  {q:"2. To‘g‘ri gapni tanlang.",type:"choice",o:["She will goes home.","She will go home.","She wills go home."],a:1},
+  {q:"3. “Men ertaga ishlayman” gapining to‘g‘ri tarjimasini tanlang.",type:"choice",o:["I work yesterday.","I will work tomorrow.","I am work tomorrow."],a:1},
+  {q:"4. Future Simple darak gap formulasini yozing.",type:"text",a:["s + will + v1 + o","subject + will + v1 + object"]},
+  {q:"5. “Will you help me?” gapining tarjimasini tanlang.",type:"choice",o:["Sen menga yordam berdingmi?","Sen menga yordam berasanmi?","Sen menga yordam berayapsanmi?"],a:1},
+  {q:"6. Bo‘sh joyni to‘ldiring: He ___ visit us next week.",type:"choice",o:["will","wills","is"],a:0},
+  {q:"7. “Won’t” ning to‘liq shaklini yozing.",type:"text",a:["will not"]},
+  {q:"8. To‘g‘ri so‘roq gapni tanlang.",type:"choice",o:["You will come?","Will you come?","Do will you come?"],a:1},
+  {q:"9. “Tomorrow” so‘zining tarjimasini yozing.",type:"text",a:["ertaga"]},
+  {q:"10. Will dan keyin fe’l qaysi shaklda keladi?",type:"choice",o:["V1","V2","V3"],a:0},
+  {q:"11. “U ertaga kelmaydi” gapini ingliz tilida yozing.",type:"text",a:["he will not come tomorrow","he won't come tomorrow","she will not come tomorrow","she won't come tomorrow"]},
+  {q:"12. Qaysi gap to‘g‘ri?",type:"choice",o:["They will not plays.","They will not play.","They not will play."],a:1},
+  {q:"13. Future Simple so‘roq formulasini yozing.",type:"text",a:["will + s + v1 + o","will + subject + v1 + object"]},
+  {q:"14. “Next week” nimani anglatadi?",type:"choice",o:["O‘tgan hafta","Keyingi hafta","Har hafta"],a:1},
+  {q:"15. Bo‘sh joyni to‘ldiring: ___ she call me tomorrow?",type:"choice",o:["Does","Will","Is"],a:1},
+  {q:"16. “Men sizga yordam beraman” gapini ingliz tilida yozing.",type:"text",a:["i will help you"]},
+  {q:"17. Will qaysi egalar bilan ishlatiladi?",type:"choice",o:["Faqat I va You","Faqat He va She","Barcha shaxslar bilan"],a:2},
+  {q:"18. “I think it will rain” gapining ma’nosini tanlang.",type:"choice",o:["Menimcha yomg‘ir yog‘adi.","Kecha yomg‘ir yog‘di.","Yomg‘ir yog‘ayapti."],a:0},
+  {q:"19. “Men bormayman” gapini qisqa shaklda yozing.",type:"text",a:["i won't go"]},
+  {q:"20. Qaysi biri noto‘g‘ri?",type:"choice",o:["He will come.","She will study.","He will comes."],a:2},
+  {q:"21. “When will you arrive?” savolida WH so‘zi qaysi?",type:"choice",o:["When","Will","You"],a:0},
+  {q:"22. “Ular qayerga borishadi?” gapini ingliz tilida yozing.",type:"text",a:["where will they go"]},
+  {q:"23. Qisqa ijobiy javobni tanlang: Will you study?",type:"choice",o:["Yes, I do.","Yes, I will.","Yes, I am."],a:1},
+  {q:"24. “Va’da berish” ingliz tilida qaysi so‘z?",type:"choice",o:["Promise","Travel","Arrive"],a:0},
+  {q:"25. “She will not work” gapining qisqa shaklini yozing.",type:"text",a:["she won't work"]},
+  {q:"26. Bo‘sh joyni to‘ldiring: I will ___ English tomorrow.",type:"choice",o:["studies","studied","study"],a:2},
+  {q:"27. Will bilan taklif bildirilgan gapni tanlang.",type:"choice",o:["I will carry your bag.","I carried your bag.","I carry your bag every day."],a:0},
+  {q:"28. “Soon” so‘zining tarjimasini yozing.",type:"text",a:["tez orada","yaqinda"]},
+  {q:"29. “U ertaga nima qiladi?” gapini ingliz tilida yozing.",type:"text",a:["what will he do tomorrow","what will she do tomorrow"]},
+  {q:"30. Future Simple ning asosiy vazifasini tanlang.",type:"choice",o:["O‘tgan zamon haqida gapirish","Kelajak haqida gapirish","Hozir davom etayotgan ishni aytish"],a:1}
+];
+
+const quizContainer=document.getElementById("quizContainer");
+
+function renderQuiz() {
+  quizContainer.innerHTML="";
+  questions.forEach((q,i)=>{
+    const div=document.createElement("div");
+    div.className="quiz-question";
+    let content=`<h3>${q.q}</h3>`;
+    if(q.type==="choice") {
+      q.o.forEach((option,j)=>{
+        content+=`<label class="option"><input type="radio" name="q${i}" value="${j}"> ${option}</label>`;
+      });
+    } else {
+      content+=`<input type="text" id="q${i}" placeholder="Javobingizni yozing...">`;
+    }
+    content+=`<div class="feedback" id="feedback${i}"></div>`;
+    div.innerHTML=content;
+    quizContainer.appendChild(div);
+  });
+}
+renderQuiz();
+
+function normalize(value) {
+  return value.toLowerCase()
+    .trim()
+    .replace(/[?.!,]/g,"")
+    .replace(/\s+/g," ");
+}
+
+function checkQuiz() {
+  let score=0;
+  let unanswered=0;
+  const wrong=[];
+
+  questions.forEach((q,i)=>{
+    let isCorrect=false;
+    let answer="";
+
+    if(q.type==="choice") {
+      const selected=document.querySelector(`input[name="q${i}"]:checked`);
+      if(!selected) {
+        unanswered++;
+      } else {
+        answer=Number(selected.value);
+        isCorrect=answer===q.a;
+      }
+    } else {
+      answer=document.getElementById("q"+i).value;
+      if(!answer.trim()) {
+        unanswered++;
+      } else {
+        isCorrect=q.a.some(correct=>normalize(answer)===normalize(correct));
+      }
+    }
+
+    const feedback=document.getElementById("feedback"+i);
+    if(isCorrect) {
+      score++;
+      feedback.textContent="✓ To‘g‘ri javob";
+      feedback.className="feedback correct";
+    } else {
+      const correctAnswer=q.type==="choice" ? q.o[q.a] : q.a[0];
+      feedback.textContent="✗ To‘g‘ri javob: "+correctAnswer;
+      feedback.className="feedback incorrect";
+      wrong.push((i+1)+". "+correctAnswer);
+    }
+  });
+
+  const percent=Math.round(score/30*100);
+  document.getElementById("scoreText").textContent=score+"/30";
+  document.getElementById("percentText").textContent=percent+"%";
+  document.getElementById("wrongAnswers").textContent=
+    "Javob berilmagan savollar: "+unanswered+". Noto‘g‘ri javoblar: "+(30-score)+".";
+  document.getElementById("resultMessage").textContent=
+    percent>=90 ? "Ajoyib! Mavzuni juda yaxshi o‘zlashtirdingiz!" :
+    percent>=80 ? "Juda yaxshi! Yana bir marta takrorlasangiz, yanada mustahkam bo‘ladi." :
+    percent>=60 ? "Yaxshi harakat! Xatolarni ko‘rib chiqing va qoidalarni qayta o‘qing." :
+    "Mavzuni yana bir bor o‘rganing, formulalarni daftarga yozing va testni qayta bajaring.";
+
+  const resultBox=document.getElementById("resultBox");
+  resultBox.style.display="block";
+  resultBox.scrollIntoView({behavior:"smooth",block:"center"});
+  localStorage.setItem("euLesson4TestScore",score);
+}
+
+function resetQuiz() {
+  renderQuiz();
+  document.getElementById("resultBox").style.display="none";
+  document.getElementById("finalTest").scrollIntoView({behavior:"smooth"});
+}
+
+/* LESSON COMPLETION */
+function completeLesson() {
+  localStorage.setItem("euElementaryLesson4Completed","true");
+  document.getElementById("completedMessage").style.display="block";
+  document.getElementById("progressBar").style.width="100%";
+  document.getElementById("progressText").textContent="Dars tugallandi!";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+if(localStorage.getItem("euElementaryLesson4Completed")==="true") {
+  document.getElementById("completedMessage").style.display="block";
+  document.getElementById("progressBar").style.width="100%";
+  document.getElementById("progressText").textContent="Dars tugallangan";
+}
+</script>
+</body>
+</html>
+
