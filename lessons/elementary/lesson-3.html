@@ -1,1 +1,1221 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 3 | Present Continuous — English Up</title>
+
+<style>
+:root{
+--purple:#7047eb;--purple2:#987cff;--bg:#f5f3ff;
+--card:#fff;--text:#25213a;--muted:#716b83;
+--border:#e8e2fa;--soft:#f0ebff;--green:#168653;
+--red:#d04444;--shadow:0 5px 22px rgba(54,35,105,.08)
+}
+*{box-sizing:border-box}
+body{
+margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif;line-height:1.75
+}
+body.dark{
+--bg:#171426;--card:#231e36;--text:#f4f0ff;
+--muted:#c0b8d7;--border:#39304f;--soft:#302747;
+--shadow:0 5px 22px rgba(0,0,0,.2)
+}
+header{
+position:sticky;top:0;z-index:10;background:var(--card);
+border-bottom:1px solid var(--border);
+padding:12px 4%;display:flex;align-items:center;
+justify-content:space-between
+}
+.brand{font-weight:900;color:var(--purple);letter-spacing:1px}
+.header-actions{display:flex;gap:8px;align-items:center}
+.header-actions a,.header-actions button{
+text-decoration:none;border:1px solid var(--border);
+background:var(--soft);color:var(--text);
+padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer
+}
+main{max-width:950px;margin:24px auto;padding:0 14px 50px}
+.hero{
+background:linear-gradient(135deg,#7047eb,#9b7cff);
+color:white;border-radius:22px;padding:28px 22px;
+margin-bottom:20px;box-shadow:var(--shadow)
+}
+.hero h1{font-size:clamp(25px,5vw,38px);line-height:1.2;margin:8px 0}
+.hero p{margin:8px 0}
+.tag{
+display:inline-block;background:rgba(255,255,255,.18);
+padding:5px 11px;border-radius:20px;font-size:13px;font-weight:700
+}
+.progress-wrap{
+height:9px;background:rgba(255,255,255,.3);
+border-radius:20px;margin-top:18px;overflow:hidden
+}
+#progressBar{height:100%;width:0;background:white;transition:.3s}
+.section{
+background:var(--card);border:1px solid var(--border);
+border-radius:18px;padding:22px;margin:18px 0;box-shadow:var(--shadow)
+}
+h2{font-size:22px;color:var(--purple);margin:0 0 12px}
+h3{font-size:18px;margin:20px 0 8px}
+p{margin:9px 0}
+.muted,.small{color:var(--muted)}
+.small{font-size:13px}
+.note,.example,.warning,.success-box{
+padding:13px 15px;border-radius:12px;margin:12px 0
+}
+.note{background:var(--soft);border-left:4px solid var(--purple)}
+.example{background:var(--soft)}
+.warning{background:rgba(208,68,68,.09);border-left:4px solid var(--red)}
+.success-box{background:rgba(22,134,83,.1);border-left:4px solid var(--green)}
+.big-rule{
+font-size:18px;font-weight:800;text-align:center;
+padding:16px;background:var(--soft);border-radius:13px;margin:14px 0
+}
+.pill{
+display:inline-block;background:var(--soft);padding:3px 9px;
+border-radius:8px;font-weight:700;color:var(--purple)
+}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
+th,td{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:var(--soft)}
+.word-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px
+}
+.word{
+padding:12px;background:var(--soft);border-radius:11px;
+display:flex;justify-content:space-between;gap:8px;align-items:center
+}
+.word button,.audio-btn{
+border:0;background:var(--purple);color:white;
+border-radius:8px;padding:7px 10px;cursor:pointer;font-weight:700
+}
+.exercise{border:1px solid var(--border);padding:14px;border-radius:13px;margin:12px 0}
+input[type="text"],textarea,select{
+width:100%;padding:11px;border:1px solid var(--border);
+background:var(--bg);color:var(--text);border-radius:9px;
+font-size:16px;margin:6px 0
+}
+.answer{display:none;color:var(--green);font-weight:700;margin-top:8px}
+.btn{
+border:0;background:var(--purple);color:white;padding:11px 17px;
+border-radius:10px;font-weight:800;cursor:pointer;margin:6px 4px 6px 0
+}
+.btn.secondary{background:var(--soft);color:var(--text);border:1px solid var(--border)}
+.feedback{font-weight:700;margin-top:10px}
+.correct{color:var(--green)}
+.incorrect{color:var(--red)}
+.question{padding:13px 0;border-bottom:1px solid var(--border)}
+.question label{display:block;margin:5px 0;cursor:pointer}
+.question input{margin-right:7px}
+.lesson-end{text-align:center;background:var(--soft);padding:22px;border-radius:16px}
+.next-link{
+display:inline-block;text-decoration:none;background:var(--purple);
+color:white;padding:12px 20px;border-radius:11px;font-weight:800;margin-top:12px
+}
+.homework-item{
+padding:11px 13px;border-bottom:1px solid var(--border)
+}
+.homework-item b{color:var(--purple)}
+.word-count{font-weight:bold;color:var(--purple)}
+@media(max-width:600px){
+.section{padding:16px}
+header{padding:10px 12px}
+.header-actions a,.header-actions button{padding:7px 9px;font-size:13px}
+table{font-size:13px}
+th,td{padding:7px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<div class="brand">ENGLISH UP</div>
+<div class="header-actions">
+<a href="../elementary.html">← Darslar</a>
+<button onclick="toggleTheme()" id="themeBtn">🌙</button>
+</div>
+</header>
+
+<main>
+
+<div class="hero">
+<span class="tag">ELEMENTARY · LESSON 3</span>
+<h1>Present Continuous</h1>
+<p><b>Revision & Practice</b></p>
+<p>Hozirgi davomiy zamon: ayni paytda sodir bo‘layotgan va vaqtinchalik davom etayotgan harakatlar.</p>
+<p><b>Bugungi maqsad:</b> Present Continuous zamonida darak, inkor va so‘roq gaplarni to‘g‘ri tuzish, savollarga javob berish va kundalik suhbatda erkin foydalanish.</p>
+<div class="progress-wrap"><div id="progressBar"></div></div>
+<p class="small" style="color:white">Dars jarayoni: <span id="progressText">0%</span></p>
+</div>
+
+<!-- 1 -->
+<section class="section">
+<h2>1. Salomlashuv va darsga kirish</h2>
+<p>Hello, everyone! Welcome back to English Up!</p>
+<p>Bugun biz Elementary bosqichidagi muhim mavzulardan birini takrorlaymiz va chuqur o‘rganamiz: <b>Present Continuous</b>.</p>
+<p>Tasavvur qiling, siz do‘stingizga telefon qildingiz. U hozir nima qilayotganini so‘ramoqchisiz.</p>
+<div class="example">
+<b>What are you doing?</b> — Nima qilyapsan?<br>
+<b>I am studying English.</b> — Men ingliz tilini o‘rganyapman.<br><br>
+<b>What is your mother doing?</b> — Onangiz nima qilyapti?<br>
+<b>She is cooking dinner.</b> — U kechki ovqat tayyorlayapti.<br><br>
+<b>Are they playing football?</b> — Ular futbol o‘ynashyaptimi?<br>
+<b>Yes, they are.</b> — Ha.
+</div>
+<p>Bu gaplarda harakat ayni paytda sodir bo‘lyapti. Ingliz tilida bunday harakatlarni ifodalash uchun Present Continuous ishlatiladi.</p>
+<div class="note"><b>DAFTARGA YOZING:</b> Present Continuous — hozir sodir bo‘layotgan yoki hozirgi davrda vaqtincha davom etayotgan harakatni ifodalovchi zamon.</div>
+</section>
+
+<!-- 2 -->
+<section class="section">
+<h2>2. Present Continuous nima?</h2>
+<p><b>Present</b> — hozirgi, <b>Continuous</b> — davom etayotgan degan ma’noni anglatadi.</p>
+<div class="big-rule">PRESENT CONTINUOUS = HOZIR DAVOM ETAYOTGAN HARAKAT</div>
+<p>Bu zamon orqali biz biror ish ayni gapirilayotgan vaqtda sodir bo‘layotganini yoki hozirgi davrda vaqtincha davom etayotganini bildiramiz.</p>
+
+<h3>1. Ayni hozir sodir bo‘layotgan harakat</h3>
+<div class="example">
+I am reading a book now. — Men hozir kitob o‘qiyapman.<br>
+She is sleeping. — U uxlayapti.<br>
+They are watching TV. — Ular televizor ko‘rishyapti.<br>
+The baby is crying. — Chaqaloq yig‘layapti.
+</div>
+
+<h3>2. Hozirgi davrda vaqtincha davom etayotgan ish</h3>
+<p>Harakat aynan shu soniyada sodir bo‘lishi shart emas. U hozirgi davrda davom etayotgan bo‘lishi mumkin.</p>
+<div class="example">
+I am learning English this month. — Men bu oy ingliz tilini o‘rganyapman.<br>
+She is working in Moscow this year. — U bu yil Moskvada ishlayapti.<br>
+We are staying with our friends this week. — Biz bu hafta do‘stlarimiznikida turibmiz.
+</div>
+
+<h3>3. O‘zgarib borayotgan vaziyatlar</h3>
+<div class="example">
+The weather is getting colder. — Havo sovib boryapti.<br>
+Your English is improving. — Ingliz tilingiz yaxshilanib boryapti.<br>
+The city is growing. — Shahar kengayib boryapti.
+</div>
+
+<h3>4. Oldindan kelishilgan yaqin kelajak rejalari</h3>
+<div class="example">
+I am meeting my friend tomorrow. — Ertaga do‘stim bilan uchrashyapman.<br>
+We are visiting our grandparents on Sunday. — Yakshanba kuni buvi-buvamiznikiga boryapmiz.
+</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> Present Continuous quyidagi vaziyatlarda ishlatiladi:
+1. Ayni hozir sodir bo‘layotgan harakat.
+2. Hozirgi davrdagi vaqtinchalik harakat.
+3. O‘zgarib borayotgan vaziyat.
+4. Kelishilgan yaqin kelajak rejasi.</div>
+</section>
+
+<!-- 3 -->
+<section class="section">
+<h2>3. Formulani tushunamiz: S, V, O va boshqa belgilar</h2>
+<p>Endi formulalarni yodlashdan oldin ulardagi har bir belgining ma’nosini tushunib olamiz.</p>
+<table>
+<tr><th>Belgi</th><th>To‘liq nomi</th><th>Ma’nosi</th></tr>
+<tr><td><b>S</b></td><td>Subject</td><td>Ega — ish-harakatni bajaruvchi shaxs yoki narsa.</td></tr>
+<tr><td><b>V</b></td><td>Verb</td><td>Fe’l — harakatni bildiruvchi so‘z.</td></tr>
+<tr><td><b>O</b></td><td>Object</td><td>To‘ldiruvchi — harakat ta’sir qiladigan narsa yoki shaxs.</td></tr>
+<tr><td><b>Auxiliary verb</b></td><td>Yordamchi fe’l</td><td>Present Continuous da am, is, are.</td></tr>
+<tr><td><b>V-ing</b></td><td>Verb + ing</td><td>Fe’lga -ing qo‘shilgan shakl.</td></tr>
+<tr><td><b>Adv</b></td><td>Adverb</td><td>Ravish — harakat qachon yoki qanday sodir bo‘lishini bildirishi mumkin.</td></tr>
+<tr><td><b>WH-word</b></td><td>Question word</td><td>What, Where, Why, When, Who, How kabi savol so‘zlari.</td></tr>
+</table>
+
+<h3>Misolni tahlil qilamiz</h3>
+<div class="big-rule">She is reading a book now.</div>
+<table>
+<tr><th>Qism</th><th>So‘z</th><th>Vazifasi</th></tr>
+<tr><td>S</td><td>She</td><td>Ega</td></tr>
+<tr><td>Auxiliary</td><td>is</td><td>Yordamchi fe’l</td></tr>
+<tr><td>V-ing</td><td>reading</td><td>Asosiy fe’l</td></tr>
+<tr><td>O</td><td>a book</td><td>To‘ldiruvchi</td></tr>
+<tr><td>Adv</td><td>now</td><td>Vaqt ravishi</td></tr>
+</table>
+<p>Tarjimasi: U hozir kitob o‘qiyapti.</p>
+
+<div class="note"><b>DAFTARGA YOZING:</b> S = Subject, V = Verb, O = Object, Adv = Adverb, Auxiliary = yordamchi fe’l, V-ing = fe’lning -ing qo‘shilgan shakli. Yuqoridagi gapni ham qismlarga ajratib yozing.</div>
+</section>
+
+<!-- 4 -->
+<section class="section">
+<h2>4. Am / Is / Are — yordamchi fe'llar</h2>
+<p>Present Continuous zamonining eng muhim qismi — <b>am, is, are</b>. Bu zamonda oddiy fe’lning o‘zi yetarli emas. Bizga yordamchi fe’l ham kerak.</p>
+
+<div class="big-rule">AM / IS / ARE + V-ING</div>
+
+<table>
+<tr><th>Ega</th><th>Yordamchi fe’l</th><th>Misol</th></tr>
+<tr><td>I</td><td><b>am</b></td><td>I am working.</td></tr>
+<tr><td>He</td><td><b>is</b></td><td>He is working.</td></tr>
+<tr><td>She</td><td><b>is</b></td><td>She is working.</td></tr>
+<tr><td>It</td><td><b>is</b></td><td>It is working.</td></tr>
+<tr><td>You</td><td><b>are</b></td><td>You are working.</td></tr>
+<tr><td>We</td><td><b>are</b></td><td>We are working.</td></tr>
+<tr><td>They</td><td><b>are</b></td><td>They are working.</td></tr>
+</table>
+
+<h3>Nega uch xil yordamchi fe'l bor?</h3>
+<p>Ingliz tilida Present Continuous zamonida yordamchi fe'l ega bilan moslashadi:</p>
+<ul>
+<li><b>I</b> bilan faqat am.</li>
+<li><b>He, She, It</b> bilan is.</li>
+<li><b>You, We, They</b> bilan are.</li>
+</ul>
+<p>Bu qoida barcha oddiy ega so‘zlariga ham tegishli:</p>
+<div class="example">
+My father is working. — Dadam ishlayapti.<br>
+My parents are cooking. — Ota-onam ovqat tayyorlashyapti.<br>
+The dog is sleeping. — It uxlayapti.<br>
+The children are playing. — Bolalar o‘ynashyapti.
+</div>
+
+<div class="warning"><b>Eng ko‘p uchraydigan xato:</b><br>
+I is working. ❌<br>
+She are reading. ❌<br>
+They is playing. ❌<br>
+<br>
+I am working. ✅<br>
+She is reading. ✅<br>
+They are playing. ✅</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> I am; He/She/It is; You/We/They are. Har biriga o‘zingizdan bittadan misol yozing.</div>
+</section>
+
+<!-- 5 -->
+<section class="section">
+<h2>5. Positive — Darak gap</h2>
+<p>Darak gap orqali biror shaxs yoki narsa hozir nima qilayotganini aytamiz.</p>
+<div class="big-rule">S + AM / IS / ARE + V-ING + O</div>
+
+<h3>Formula qismlari</h3>
+<ul>
+<li><b>S:</b> Subject — ishni bajaruvchi.</li>
+<li><b>Am/Is/Are:</b> Ega bilan moslashadigan yordamchi fe’l.</li>
+<li><b>V-ing:</b> Asosiy fe’l + ing.</li>
+<li><b>O:</b> To‘ldiruvchi, agar gapda kerak bo‘lsa.</li>
+</ul>
+
+<h3>Misollar</h3>
+<div class="example">
+I am drinking water. — Men suv ichyapman.<br>
+You are learning English. — Sen ingliz tilini o‘rganyapsan.<br>
+He is playing football. — U futbol o‘ynayapti.<br>
+She is washing the dishes. — U idishlarni yuvyapti.<br>
+We are watching a film. — Biz film ko‘ryapmiz.<br>
+They are cleaning the room. — Ular xonani tozalashyapti.
+</div>
+
+<h3>Qisqartma shakllar — Contractions</h3>
+<table>
+<tr><th>To‘liq shakl</th><th>Qisqartma</th></tr>
+<tr><td>I am</td><td>I'm</td></tr>
+<tr><td>You are</td><td>You're</td></tr>
+<tr><td>He is</td><td>He's</td></tr>
+<tr><td>She is</td><td>She's</td></tr>
+<tr><td>It is</td><td>It's</td></tr>
+<tr><td>We are</td><td>We're</td></tr>
+<tr><td>They are</td><td>They're</td></tr>
+</table>
+<div class="example">
+I'm reading. = I am reading.<br>
+She's cooking. = She is cooking.<br>
+They're playing. = They are playing.
+</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> Positive formulasini va 7 ta qisqartma shaklni yozing. Keyin o‘zingiz haqingizda 5 ta darak gap tuzing.</div>
+</section>
+
+<!-- 6 -->
+<section class="section">
+<h2>6. Negative — Inkor gap</h2>
+<p>Biror harakat sodir bo‘lmayotganini aytish uchun yordamchi fe'ldan keyin <b>not</b> qo‘shamiz.</p>
+<div class="big-rule">S + AM / IS / ARE + NOT + V-ING + O</div>
+
+<table>
+<tr><th>Darak</th><th>Inkor</th><th>Tarjima</th></tr>
+<tr><td>I am working.</td><td>I am not working.</td><td>Men ishlamayapman.</td></tr>
+<tr><td>He is sleeping.</td><td>He is not sleeping.</td><td>U uxlamayapti.</td></tr>
+<tr><td>They are playing.</td><td>They are not playing.</td><td>Ular o‘ynamayapti.</td></tr>
+<tr><td>She is cooking.</td><td>She is not cooking.</td><td>U ovqat tayyorlamayapti.</td></tr>
+</table>
+
+<h3>Qisqartma shakllar</h3>
+<table>
+<tr><th>To‘liq</th><th>Qisqartma</th></tr>
+<tr><td>is not</td><td>isn't</td></tr>
+<tr><td>are not</td><td>aren't</td></tr>
+<tr><td>am not</td><td>am not (odatda qisqartirilmaydi)</td></tr>
+</table>
+
+<div class="example">
+He isn't studying. — U o‘qimayapti.<br>
+We aren't watching TV. — Biz televizor ko‘rmayapmiz.<br>
+I'm not sleeping. — Men uxlamayapman.
+</div>
+
+<div class="warning"><b>E'tibor bering:</b><br>
+She not working. ❌<br>
+She doesn't working. ❌<br>
+She isn't working. ✅<br>
+<br>
+Present Continuous inkorida don't yoki doesn't ishlatilmaydi. Inkor uchun am/is/are dan keyin not qo‘yiladi.</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> Inkor formulasini, qisqartmalarni va yuqoridagi noto‘g‘ri/to‘g‘ri misollarni yozing. So‘ng 5 ta darak gapni inkor gapga aylantiring.</div>
+</section>
+
+<!-- 7 -->
+<section class="section">
+<h2>7. Question — So‘roq gap</h2>
+<p>Biror kishidan hozir nima qilayotganini so‘rash uchun am/is/are gapning boshiga chiqadi.</p>
+<div class="big-rule">AM / IS / ARE + S + V-ING + O?</div>
+
+<h3>Qanday tuziladi?</h3>
+<p>Darak gapdagi ega va yordamchi fe'lning o‘rnini almashtiramiz.</p>
+<div class="example">
+You are studying. — Sen o‘qiyapsan.<br>
+<b>Are you studying?</b> — Sen o‘qiyapsanmi?<br><br>
+She is cooking. — U ovqat tayyorlayapti.<br>
+<b>Is she cooking?</b> — U ovqat tayyorlayaptimi?<br><br>
+They are playing. — Ular o‘ynashyapti.<br>
+<b>Are they playing?</b> — Ular o‘ynashyaptimi?
+</div>
+
+<h3>Short Answers — Qisqa javoblar</h3>
+<table>
+<tr><th>Savol</th><th>Ha</th><th>Yo‘q</th></tr>
+<tr><td>Are you working?</td><td>Yes, I am.</td><td>No, I'm not.</td></tr>
+<tr><td>Is he sleeping?</td><td>Yes, he is.</td><td>No, he isn't.</td></tr>
+<tr><td>Is she reading?</td><td>Yes, she is.</td><td>No, she isn't.</td></tr>
+<tr><td>Are they playing?</td><td>Yes, they are.</td><td>No, they aren't.</td></tr>
+<tr><td>Are we learning?</td><td>Yes, we are.</td><td>No, we aren't.</td></tr>
+</table>
+
+<div class="note">Qisqa javobda asosiy fe'l qayta aytilmaydi. Masalan: “Are you reading?” — “Yes, I am.” deb javob beramiz.</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> So‘roq formulasini va 5 ta short answer juftligini yozing. Darak gapni so‘roqqa aylantirish qoidasini alohida qayd eting.</div>
+</section>
+
+<!-- 8 -->
+<section class="section">
+<h2>8. WH-Questions — Maxsus savollar</h2>
+<p>WH-questions orqali faqat “ha yoki yo‘q” emas, balki harakat haqida batafsil ma'lumot olamiz.</p>
+<div class="big-rule">WH-WORD + AM / IS / ARE + S + V-ING?</div>
+
+<table>
+<tr><th>Savol so‘zi</th><th>Ma'nosi</th><th>Misol</th></tr>
+<tr><td>What</td><td>Nima?</td><td>What are you doing?</td></tr>
+<tr><td>Where</td><td>Qayerda?</td><td>Where is she going?</td></tr>
+<tr><td>Why</td><td>Nima uchun?</td><td>Why are you crying?</td></tr>
+<tr><td>When</td><td>Qachon?</td><td>When are they coming?</td></tr>
+<tr><td>Who</td><td>Kim?</td><td>Who is calling?</td></tr>
+<tr><td>How</td><td>Qanday?</td><td>How are you feeling?</td></tr>
+<tr><td>What time</td><td>Soat nechada?</td><td>What time are you leaving?</td></tr>
+</table>
+
+<h3>Savol va javoblar</h3>
+<div class="example">
+What are you doing? — Nima qilyapsan?<br>
+I am doing my homework. — Uy vazifamni bajaryapman.<br><br>
+Where is your father going? — Dadangiz qayerga ketyapti?<br>
+He is going to work. — U ishga ketyapti.<br><br>
+Why are they laughing? — Nega ular kulyapti?<br>
+They are watching a funny film. — Ular kulgili film ko‘rishyapti.<br><br>
+Who is talking? — Kim gapiryapti?<br>
+My teacher is talking. — O‘qituvchim gapiryapti.
+</div>
+
+<h3>WHO haqida muhim qoida</h3>
+<p>Agar <b>who</b> gapning egasi bo‘lsa, uning ortidan to‘g‘ridan-to‘g‘ri is/are kelishi mumkin:</p>
+<div class="example">
+Who is speaking? — Kim gapiryapti?<br>
+Who is cooking? — Kim ovqat tayyorlayapti?
+</div>
+<p>Agar savol boshqa shaxs haqida bo‘lsa, ega ham qo‘shiladi:</p>
+<div class="example">
+Who are you calling? — Kimga qo‘ng‘iroq qilyapsan?<br>
+Who is she waiting for? — U kimni kutyapti?
+</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> 7 ta WH-so‘zni tarjimasi bilan yozing. Har biri bilan bittadan savol va javob tuzing.</div>
+</section>
+
+<!-- 9 -->
+<section class="section">
+<h2>9. -ING qo‘shish qoidalari</h2>
+<p>Present Continuous da asosiy fe'lga odatda <b>-ing</b> qo‘shiladi. Ammo ayrim fe'llarda imlo o‘zgaradi.</p>
+
+<h3>1-qoida: Ko‘pchilik fe'llarga -ing qo‘shiladi</h3>
+<div class="example">
+work → working<br>
+read → reading<br>
+play → playing<br>
+watch → watching<br>
+eat → eating<br>
+cook → cooking
+</div>
+
+<h3>2-qoida: Oxirida -e bo‘lsa, e tushib qoladi</h3>
+<p>Fe'l oxiridagi talaffuz qilinmaydigan <b>e</b> odatda tushib, -ing qo‘shiladi.</p>
+<div class="example">
+make → making<br>
+write → writing<br>
+dance → dancing<br>
+come → coming<br>
+take → taking<br>
+drive → driving
+</div>
+<div class="warning">Lekin barcha -e bilan tugaydigan fe'llar bir xil emas. Masalan, see → seeing, be → being.</div>
+
+<h3>3-qoida: Qisqa unli + bitta undosh bilan tugasa, oxirgi undosh ikki marta yoziladi</h3>
+<div class="example">
+run → running<br>
+sit → sitting<br>
+swim → swimming<br>
+get → getting<br>
+stop → stopping<br>
+put → putting
+</div>
+<p>Bu qoida odatda bitta qisqa unli tovushdan keyin bitta undosh bilan tugaydigan qisqa fe'llarda qo‘llanadi.</p>
+
+<h3>4-qoida: -ie bilan tugasa, -ie o‘rniga y keladi</h3>
+<div class="example">
+lie → lying<br>
+die → dying<br>
+tie → tying
+</div>
+
+<h3>5-qoida: Oxirida -y bo‘lsa, y saqlanadi</h3>
+<div class="example">
+study → studying<br>
+cry → crying<br>
+play → playing<br>
+enjoy → enjoying
+</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> Barcha 5 ta qoidani va misollarni yozing. Keyin quyidagi fe'llarning -ing shaklini mustaqil yozing: sit, dance, study, swim, write, lie, get, make, play, run.</div>
+</section>
+
+<!-- 10 -->
+<section class="section">
+<h2>10. Present Continuous bilan ishlatiladigan vaqt so‘zlari</h2>
+<p>Quyidagi so‘zlar Present Continuous zamonida ko‘p ishlatiladi. Ular gapning hozirgi yoki vaqtinchalik holatini ko‘rsatishga yordam beradi.</p>
+
+<table>
+<tr><th>So‘z yoki birikma</th><th>Tarjimasi</th><th>Misol</th></tr>
+<tr><td>Now</td><td>Hozir</td><td>I am working now.</td></tr>
+<tr><td>Right now</td><td>Aynan hozir</td><td>She is sleeping right now.</td></tr>
+<tr><td>At the moment</td><td>Ayni paytda</td><td>We are studying at the moment.</td></tr>
+<tr><td>Today</td><td>Bugun</td><td>He is working today.</td></tr>
+<tr><td>This week</td><td>Bu hafta</td><td>They are staying here this week.</td></tr>
+<tr><td>This month</td><td>Bu oy</td><td>I am learning new words this month.</td></tr>
+<tr><td>These days</td><td>Shu kunlarda</td><td>She is reading a lot these days.</td></tr>
+<tr><td>Look!</td><td>Qara!</td><td>Look! It is raining.</td></tr>
+<tr><td>Listen!</td><td>Eshit!</td><td>Listen! Someone is singing.</td></tr>
+</table>
+
+<div class="note"><b>MUHIM:</b> Bu so‘zlar Present Continuous bilan ko‘p ishlatiladi, lekin ularning o‘zi zamonni aniqlamaydi. Gapning ma'nosi va tuzilishiga ham qarash kerak.</div>
+<div class="note"><b>DAFTARGA YOZING:</b> Jadvaldagi 9 ta vaqt ifodasini tarjimasi va misoli bilan ko‘chiring.</div>
+</section>
+
+<!-- 11 -->
+<section class="section">
+<h2>11. Present Simple va Present Continuous farqi</h2>
+<p>Bu ikki zamon ko‘pincha chalkashtiriladi. Ularning asosiy farqini tushunib oling.</p>
+
+<table>
+<tr><th>Present Simple</th><th>Present Continuous</th></tr>
+<tr><td>Odat, takroriy ish, umumiy haqiqat.</td><td>Hozir sodir bo‘layotgan yoki vaqtinchalik ish.</td></tr>
+<tr><td>I work every day.</td><td>I am working now.</td></tr>
+<tr><td>Men har kuni ishlayman.</td><td>Men hozir ishlayapman.</td></tr>
+<tr><td>She reads every evening.</td><td>She is reading now.</td></tr>
+<tr><td>U har oqshom kitob o‘qiydi.</td><td>U hozir kitob o‘qiyapti.</td></tr>
+</table>
+
+<h3>Yana misollar</h3>
+<div class="example">
+I usually drink tea. — Men odatda choy ichaman.<br>
+I am drinking tea now. — Men hozir choy ichyapman.<br><br>
+He works in a shop. — U do‘konda ishlaydi.<br>
+He is working now. — U hozir ishlayapti.<br><br>
+They play football every Sunday. — Ular har yakshanba futbol o‘ynashadi.<br>
+They are playing football now. — Ular hozir futbol o‘ynashyapti.
+</div>
+
+<h3>Signal words orqali farqlash</h3>
+<table>
+<tr><th>Present Simple</th><th>Present Continuous</th></tr>
+<tr><td>Always — doimo</td><td>Now — hozir</td></tr>
+<tr><td>Usually — odatda</td><td>Right now — aynan hozir</td></tr>
+<tr><td>Often — tez-tez</td><td>At the moment — ayni paytda</td></tr>
+<tr><td>Sometimes — ba'zan</td><td>These days — shu kunlarda</td></tr>
+<tr><td>Every day — har kuni</td><td>Today — bugun (vaqtinchalik holatlarda)</td></tr>
+</table>
+
+<div class="warning">Eslab qoling: “Today” har doim Present Continuous degani emas. Masalan, “I go to school every day” va “I am going to school today” gaplari vaziyatga qarab turli ma'nolar beradi.</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> Ikki zamonning farqini o‘z so‘zlaringiz bilan yozing. 5 ta Present Simple va 5 ta Present Continuous misol tuzing.</div>
+</section>
+
+<!-- 12 -->
+<section class="section">
+<h2>12. Stative Verbs — Odatda Continuous da ishlatilmaydigan fe'llar</h2>
+<p>Bu juda muhim qoida. Ingliz tilidagi barcha fe'llarni -ing shaklida ishlatib bo‘lmaydi.</p>
+<p>Ba'zi fe'llar harakatni emas, balki fikr, his, egalik, sezgi yoki holatni bildiradi. Ular odatda Present Continuous da emas, Present Simple da ishlatiladi.</p>
+
+<table>
+<tr><th>Fe'l</th><th>Ma'nosi</th><th>To‘g‘ri misol</th></tr>
+<tr><td>Know</td><td>Bilmoq</td><td>I know the answer.</td></tr>
+<tr><td>Understand</td><td>Tushunmoq</td><td>I understand you.</td></tr>
+<tr><td>Believe</td><td>Ishonmoq</td><td>She believes me.</td></tr>
+<tr><td>Want</td><td>Xohlamoq</td><td>I want some water.</td></tr>
+<tr><td>Need</td><td>Muhtoj bo‘lmoq</td><td>We need help.</td></tr>
+<tr><td>Like</td><td>Yoqtirmoq</td><td>He likes music.</td></tr>
+<tr><td>Love</td><td>Sevmoq</td><td>I love my family.</td></tr>
+<tr><td>Hate</td><td>Yomon ko‘rmoq</td><td>She hates noise.</td></tr>
+<tr><td>Remember</td><td>Eslamoq</td><td>I remember him.</td></tr>
+<tr><td>Own</td><td>Egalik qilmoq</td><td>He owns a house.</td></tr>
+</table>
+
+<h3>Noto‘g‘ri va to‘g‘ri shakllar</h3>
+<div class="example">
+I am knowing the answer. ❌<br>
+I know the answer. ✅<br><br>
+She is wanting a new phone. ❌<br>
+She wants a new phone. ✅<br><br>
+They are understanding English. ❌<br>
+They understand English. ✅
+</div>
+
+<h3>Bu fe'llar hech qachon -ing bo‘lmaydimi?</h3>
+<p>Yo‘q. Ayrim fe'llar ma'nosiga qarab Continuous shaklida ham ishlatilishi mumkin.</p>
+<div class="example">
+I think you are right. — Menimcha, siz haqsiz. (Fikr)<br>
+I am thinking about my future. — Men kelajagim haqida o‘ylayapman. (Jarayon)<br><br>
+This soup tastes good. — Bu sho‘rvaning ta'mi yaxshi. (Xususiyat)<br>
+The chef is tasting the soup. — Oshpaz sho‘rvaning ta'mini tatib ko‘ryapti. (Harakat)
+</div>
+<p><b>Think</b> fikr bildirish ma'nosida odatda Simple, o‘ylash jarayonida Continuous bo‘ladi. <b>Have</b> egalik ma'nosida Simple, ovqatlanish yoki vaqt o‘tkazish kabi faoliyatlarda Continuous bo‘lishi mumkin.</p>
+
+<div class="note"><b>DAFTARGA YOZING:</b> Jadvaldagi 10 ta stative verbni tarjimasi bilan yozing. 3 ta noto‘g‘ri va to‘g‘ri misolni ko‘chiring.</div>
+</section>
+
+<!-- 13 -->
+<section class="section">
+<h2>13. Present Continuous bilan bog‘liq boshqa muhim holatlar</h2>
+
+<h3>1. Bir nechta harakat bir vaqtda davom etishi</h3>
+<div class="example">
+My mother is cooking while my father is watching TV.<br>
+Onam ovqat tayyorlayapti, shu paytda dadam televizor ko‘ryapti.
+</div>
+
+<h3>2. Vaqtinchalik ish va doimiy ish farqi</h3>
+<div class="example">
+He works in a bank. — U bankda ishlaydi. (Doimiy ish)<br>
+He is working in a shop this month. — U bu oy do‘konda ishlayapti. (Vaqtinchalik)
+</div>
+
+<h3>3. Takroriy harakat va always</h3>
+<p>Present Continuous bilan <b>always</b> ishlatilsa, ba'zan takroriy va bezovta qiluvchi odatni ifodalaydi.</p>
+<div class="example">
+You are always losing your keys! — Sen kalitlaringni doim yo‘qotib yuribsan!<br>
+He is always talking in class. — U darsda doim gapirib o‘tiradi!
+</div>
+
+<h3>4. Kelajakdagi kelishilgan reja</h3>
+<div class="example">
+I am meeting my teacher tomorrow. — Ertaga o‘qituvchim bilan uchrashyapman.<br>
+We are travelling next week. — Keyingi hafta sayohatga ketyapmiz.
+</div>
+
+<h3>5. Buyruq va undov bilan kuzatilgan harakat</h3>
+<div class="example">
+Look! The children are dancing. — Qara! Bolalar raqsga tushishyapti.<br>
+Listen! The birds are singing. — Eshit! Qushlar sayrayapti.
+</div>
+
+<div class="note"><b>DAFTARGA YOZING:</b> Yuqoridagi 5 holatning har biriga bittadan o‘zingizning misolingizni yozing.</div>
+</section>
+
+<!-- 14 -->
+<section class="section">
+<h2>14. Eng ko‘p uchraydigan xatolar</h2>
+<table>
+<tr><th>Noto‘g‘ri</th><th>To‘g‘ri</th><th>Sabab</th></tr>
+<tr><td>I working now.</td><td><b>I am working now.</b></td><td>Yordamchi fe'l kerak.</td></tr>
+<tr><td>She are cooking.</td><td><b>She is cooking.</b></td><td>She bilan is.</td></tr>
+<tr><td>They is playing.</td><td><b>They are playing.</b></td><td>They bilan are.</td></tr>
+<tr><td>He is play football.</td><td><b>He is playing football.</b></td><td>Fe'lga -ing kerak.</td></tr>
+<tr><td>Are you study?</td><td><b>Are you studying?</b></td><td>V-ing ishlatiladi.</td></tr>
+<tr><td>She doesn't working.</td><td><b>She isn't working.</b></td><td>Inkor am/is/are + not bilan.</td></tr>
+<tr><td>I am knowing him.</td><td><b>I know him.</b></td><td>Know odatda stative verb.</td></tr>
+<tr><td>He is runing.</td><td><b>He is running.</b></td><td>n ikki marta yoziladi.</td></tr>
+<tr><td>She is makeing tea.</td><td><b>She is making tea.</b></td><td>Oxiridagi e tushadi.</td></tr>
+<tr><td>Is they coming?</td><td><b>Are they coming?</b></td><td>They bilan are.</td></tr>
+</table>
+<div class="note"><b>DAFTARGA YOZING:</b> Jadvaldagi barcha 10 ta noto‘g‘ri gapni to‘g‘ri shakli bilan birga yozing. Har bir xatoning sababini tushunib oling.</div>
+</section>
+
+<!-- 15 -->
+<section class="section">
+<h2>15. Vocabulary — 40 ta yangi so‘z</h2>
+<p class="muted">Har bir so‘zni o‘qing, tarjimasini yodlang, 🔊 tugmasi bilan talaffuzini tinglang. Misol gapni ham daftaringizga yozing.</p>
+<div id="vocab" class="word-grid"></div>
+<div class="note">Audio inglizcha talaffuzni brauzerning ovoz tizimi orqali chiqaradi. Talaffuz tezligini sekinlashtirish uchun Slow Audio tugmasidan foydalaning.</div>
+<button class="btn secondary" onclick="speakAll()">▶ Listen to all words</button>
+<button class="btn secondary" onclick="stopSpeech()">■ Stop audio</button>
+</section>
+
+<!-- 16 -->
+<section class="section">
+<h2>16. Reading — A Busy Day at Home</h2>
+<p>Matnni avval mustaqil o‘qing. Keyin audio orqali tinglang va savollarga javob bering.</p>
+<div class="example">
+<h3>A Busy Day at Home</h3>
+<p>It is Saturday morning. My family is spending time at home. My father is reading a newspaper in the living room. My mother is making breakfast in the kitchen. My younger brother is playing with his toys, and my sister is drawing a beautiful picture. I am sitting near the window and studying English.</p>
+<p>Our dog is sleeping under the table. The birds are singing outside, and the sun is shining. My mother is calling us because breakfast is ready. We are not watching television today. We are enjoying our time together.</p>
+<button class="audio-btn" onclick="speak(readingText)">🔊 Listen to the text</button>
+<button class="audio-btn" onclick="speak(readingText,.75)">🐢 Slow audio</button>
+</div>
+<div id="readingQuestions"></div>
+<button class="btn" onclick="checkReading()">Check Reading Answers</button>
+<div id="readingResult" class="feedback"></div>
+</section>
+
+<!-- 17 -->
+<section class="section">
+<h2>17. Listening — What Are They Doing?</h2>
+<p>Avval audio matnni tinglang. Birinchi tinglashda umumiy mazmunni tushuning. Ikkinchi tinglashda savollarga e'tibor bering.</p>
+<button class="btn" onclick="speak(listeningText)">▶ Play Listening</button>
+<button class="btn secondary" onclick="speak(listeningText,.75)">🐢 Slow Listening</button>
+<div id="listeningQuestions"></div>
+<button class="btn" onclick="checkListening()">Check Listening Answers</button>
+<div id="listeningResult" class="feedback"></div>
+</section>
+
+<!-- 18 -->
+<section class="section">
+<h2>18. Grammar Practice — Interactive Test</h2>
+<p>Har bir savolda bitta to‘g‘ri javobni tanlang. Barcha savollarga javob bergach, natijani tekshiring.</p>
+<div id="grammarQuestions"></div>
+<button class="btn" onclick="checkGrammar()">Check Grammar Test</button>
+<button class="btn secondary" onclick="resetGrammar()">Try Again</button>
+<div id="grammarResult" class="feedback"></div>
+</section>
+
+<!-- 19 -->
+<section class="section">
+<h2>19. Complete the Sentences</h2>
+<p>Bo‘sh joylarga mos yordamchi fe'l yoki fe'lning to‘g‘ri shaklini yozing.</p>
+<div id="fillQuestions"></div>
+<button class="btn" onclick="checkFill()">Check Answers</button>
+<div id="fillResult" class="feedback"></div>
+</section>
+
+<!-- 20 -->
+<section class="section">
+<h2>20. Translation Practice</h2>
+<p>Gaplarni ingliz tiliga tarjima qiling. Avval daftaringizda ishlang, keyin javobni tekshiring.</p>
+<div id="translationQuestions"></div>
+</section>
+
+<!-- 21 -->
+<section class="section">
+<h2>21. Speaking — Speak English!</h2>
+<p>Savollarga ovoz chiqarib, to‘liq gaplar bilan javob bering. Javobingizni imkon qadar kengaytiring.</p>
+<ol>
+<li>What are you doing right now?</li>
+<li>Are you studying English today?</li>
+<li>What is your mother doing now?</li>
+<li>What is your father doing at the moment?</li>
+<li>Are your friends working or studying?</li>
+<li>What are you wearing today?</li>
+<li>What are you learning this week?</li>
+<li>What is the weather doing today?</li>
+<li>Are you reading a book these days?</li>
+<li>What are you planning for tomorrow?</li>
+</ol>
+<div class="note">
+<b>Javob namunasi:</b><br>
+What are you doing right now?<br>
+I am studying English. I am learning Present Continuous because I want to improve my English.
+</div>
+<p><b>Speaking Challenge:</b> Hozirgi kuningiz haqida kamida 10 ta gap tuzing. Kamida 3 ta darak, 3 ta inkor va 4 ta so‘roq gap aytishga harakat qiling.</p>
+<div class="note"><b>DAFTARGA YOZING:</b> 10 ta speaking savoliga o‘z javoblaringizni yozing. Keyin ularni ovoz chiqarib o‘qing.</div>
+</section>
+
+<!-- 22 -->
+<section class="section">
+<h2>22. Writing — Describe What Is Happening</h2>
+<p>Quyidagi vaziyatni tasavvur qiling: siz katta bir bog‘dasiz. Odamlar turli ishlar bilan band.</p>
+<div class="example">
+A man is reading a newspaper.<br>
+Two children are playing football.<br>
+A woman is talking on the phone.<br>
+Some people are sitting on the grass.<br>
+A boy is riding a bicycle.
+</div>
+<p>Endi o‘zingiz tanlagan vaziyat haqida 100–120 so‘zdan iborat matn yozing.</p>
+<p>Matnda quyidagilar bo‘lishi kerak:</p>
+<ul>
+<li>Kamida 5 ta darak gap.</li>
+<li>Kamida 3 ta inkor gap.</li>
+<li>Kamida 3 ta so‘roq gap.</li>
+<li>Kamida 5 ta vaqt ifodasi yoki ravish.</li>
+<li>Kamida 5 ta yangi vocabulary so‘zi.</li>
+</ul>
+<textarea id="writingArea" rows="8" placeholder="It is a beautiful day. My family is..."></textarea>
+<p class="small">So‘zlar soni: <b id="wordCount">0</b></p>
+<button class="btn" onclick="copyWriting()">Copy My Writing</button>
+</section>
+
+<!-- 23 -->
+<section class="section">
+<h2>23. Dars yakuni — What Have We Learned?</h2>
+<ul>
+<li>Present Continuous hozirgi davomiy harakatni ifodalaydi.</li>
+<li>Positive: S + am/is/are + V-ing.</li>
+<li>Negative: S + am/is/are + not + V-ing.</li>
+<li>Question: Am/Is/Are + S + V-ing?</li>
+<li>WH-question: WH-word + am/is/are + S + V-ing?</li>
+<li>I bilan am ishlatiladi.</li>
+<li>He/She/It bilan is ishlatiladi.</li>
+<li>You/We/They bilan are ishlatiladi.</li>
+<li>Fe'lga -ing qo‘shish qoidalari mavjud.</li>
+<li>Stative verbs odatda Continuous da ishlatilmaydi.</li>
+<li>Present Simple odatlarni, Present Continuous esa hozirgi va vaqtinchalik harakatlarni ifodalaydi.</li>
+</ul>
+<div class="success-box">
+<b>Excellent work!</b><br>
+Bugun siz Present Continuous zamonining asosiy va muhim qoidalarini o‘rgandingiz. Endi formulalarni yodlash bilan cheklanib qolmang: ularni gapirishda va yozishda ishlating.
+</div>
+</section>
+
+<!-- HOMEWORK -->
+<section class="section">
+<h2>24. HOMEWORK — Uy vazifasi</h2>
+<p><b>Diqqat!</b> Uy vazifalarini albatta daftarda bajaring. Javoblarni shunchaki o‘qib chiqish yetarli emas. Har bir gapni o‘zingiz yozing va grammatik tuzilishiga e'tibor bering.</p>
+
+<div class="note">
+<b>Homework Rule:</b><br>
+1. Har bir topshiriqni daftarga yozing.<br>
+2. Javoblarni mustaqil bajaring.<br>
+3. Xatolarni aniqlab, to‘g‘rilang.<br>
+4. Yozgan gaplaringizni ovoz chiqarib o‘qing.
+</div>
+
+<h3>HOMEWORK 1 — Grammar Test (25 questions)</h3>
+<p>To‘g‘ri javobni tanlang. Har bir savolni va tanlagan javobingizni daftarga yozing.</p>
+<div id="homeworkOne"></div>
+
+<h3>HOMEWORK 2 — Sentence Transformation (25 tasks)</h3>
+<p>Har bir topshiriqni talabga muvofiq bajaring. Gaplarni daftarga to‘liq yozing.</p>
+<div id="homeworkTwo"></div>
+
+<h3>HOMEWORK 3 — Writing Challenge</h3>
+<p><b>My Life Today</b> mavzusida 120–150 so‘zli matn yozing.</p>
+<ul>
+<li>Kamida 8 ta Present Continuous darak gap.</li>
+<li>Kamida 4 ta inkor gap.</li>
+<li>Kamida 4 ta so‘roq gap.</li>
+<li>40 ta yangi so‘zdan kamida 10 tasini ishlating.</li>
+<li>Present Simple bilan farqini ko‘rsatadigan 3 ta gap yozing.</li>
+</ul>
+
+<h3>HOMEWORK 4 — Vocabulary Revision</h3>
+<p>Bugungi 40 ta so‘zni daftarga inglizcha, o‘zbekcha tarjimasi va misol gap bilan yozing. Keyin inglizcha so‘zlarni yopib, tarjimasiga qarab eslashga harakat qiling.</p>
+
+<h3>HOMEWORK 5 — Speaking Challenge</h3>
+<p>O‘zingiz haqingizda 2 daqiqalik nutq tayyorlang. Hozir nima qilayotganingiz, shu hafta nimalar bilan bandligingiz va ertangi rejalaringiz haqida gapiring.</p>
+
+<div class="warning"><b>MUHIM:</b> Keyingi darsga o‘tishdan oldin bugungi mavzuni takrorlang. Ayniqsa am/is/are, uchta asosiy formula va -ing qoidalarini yaxshi o‘zlashtiring.</div>
+</section>
+
+<!-- FINAL -->
+<section class="section">
+<h2>25. Lesson 3 — Completed?</h2>
+<div class="lesson-end">
+<h2>Keep Learning. Keep Growing!</h2>
+<p>Har kuni ozgina bilim — kelajakda katta natija!</p>
+<button class="btn" onclick="completeLesson()">✓ Mark Lesson as Completed</button>
+<p id="completionMessage" class="feedback"></p>
+<a class="next-link" href="lesson-4.html">Next Lesson →</a>
+<p style="margin-top:25px;font-size:22px;font-weight:900;color:var(--purple);letter-spacing:2px">ENGLISH UP</p>
+<p class="small">Learn today. Succeed tomorrow.</p>
+</div>
+</section>
+
+</main>
+
+<script>
+const vocab = [
+["happen","sodir bo‘lmoq","Something is happening outside."],
+["prepare","tayyorlamoq","My mother is preparing dinner."],
+["practice","mashq qilmoq","I am practicing English."],
+["improve","yaxshilanmoq","My English is improving."],
+["develop","rivojlanmoq","The city is developing."],
+["continue","davom ettirmoq","We are continuing our lesson."],
+["wait","kutmoq","She is waiting for her friend."],
+["arrive","yetib kelmoq","The bus is arriving now."],
+["leave","ketmoq","They are leaving the house."],
+["carry","ko‘tarmoq","He is carrying a heavy bag."],
+["repair","ta'mirlamoq","My father is repairing the bicycle."],
+["build","qurmoq","They are building a new house."],
+["choose","tanlamoq","She is choosing a dress."],
+["borrow","qarzga olmoq","I am borrowing a book."],
+["return","qaytarmoq","He is returning the keys."],
+["invite","taklif qilmoq","We are inviting our friends."],
+["discuss","muhokama qilmoq","They are discussing the problem."],
+["explain","tushuntirmoq","The teacher is explaining the rule."],
+["answer","javob bermoq","The student is answering the question."],
+["follow","ergashmoq","The children are following their teacher."],
+["search","qidirmoq","I am searching for my phone."],
+["discover","kashf qilmoq","Scientists are discovering new things."],
+["protect","himoya qilmoq","They are protecting the environment."],
+["share","bo‘lishmoq","She is sharing her ideas."],
+["collect","to‘plamoq","He is collecting old books."],
+["organize","tashkil qilmoq","We are organizing a meeting."],
+["compare","taqqoslamoq","I am comparing two pictures."],
+["travel","sayohat qilmoq","They are travelling this week."],
+["exercise","mashq qilmoq","He is exercising in the park."],
+["celebrate","nishonlamoq","We are celebrating a birthday."],
+["paint","bo‘yamoq","She is painting the wall."],
+["plant","ekmoq","They are planting flowers."],
+["feed","ovqat bermoq","He is feeding the cat."],
+["sweep","supurmoq","I am sweeping the floor."],
+["wash","yuvmoq","She is washing the dishes."],
+["shout","baqirmoq","The man is shouting."],
+["laugh","kulmoq","The children are laughing."],
+["smile","tabassum qilmoq","The baby is smiling."],
+["shine","nur sochmoq","The sun is shining."],
+["grow","o‘smoq","The plants are growing."]
+];
+
+const readingText = "It is Saturday morning. My family is spending time at home. My father is reading a newspaper in the living room. My mother is making breakfast in the kitchen. My younger brother is playing with his toys, and my sister is drawing a beautiful picture. I am sitting near the window and studying English. Our dog is sleeping under the table. The birds are singing outside, and the sun is shining. My mother is calling us because breakfast is ready. We are not watching television today. We are enjoying our time together.";
+
+const listeningText = "Hello! My name is Anna. Today I am staying at home because it is raining. My brother is playing a computer game. My father is reading a book, and my mother is talking on the phone. I am sitting near the window and writing a letter to my friend. My parents are not watching television. We are waiting for our grandmother. She is coming to visit us this afternoon. We are preparing a delicious lunch for her.";
+
+const grammarData = [
+["I ___ studying English now.",["am","is","are"],0],
+["She ___ cooking dinner.",["am","are","is"],2],
+["They ___ playing football.",["is","am","are"],2],
+["He is ___ a book.",["read","reads","reading"],2],
+["We ___ watching TV now.",["is","are","am"],1],
+["___ you listening to me?",["Is","Are","Am"],1],
+["___ she sleeping?",["Are","Am","Is"],2],
+["I am not ___ now.",["work","working","works"],1],
+["He ___ not running.",["are","is","am"],1],
+["They aren't ___ football.",["play","plays","playing"],2],
+["What ___ you doing?",["is","are","am"],1],
+["Where ___ your mother going?",["are","is","am"],1],
+["The baby is ___.",["crying","cry","crys"],0],
+["She is ___ a letter.",["writeing","writing","writting"],1],
+["He is ___ in the pool.",["swiming","swimming","swim"],1],
+["I ___ my homework at the moment.",["am doing","is doing","are doing"],0],
+["Look! It ___ raining.",["are","am","is"],2],
+["My friends ___ studying today.",["is","are","am"],1],
+["Which is correct?",["She doesn't working.","She isn't working.","She not working."],1],
+["Which is Present Continuous?",["I go every day.","I am going now.","I went yesterday."],1]
+];
+
+const readingData = [
+["Where is the family spending time?",["At school","At home","In a park"],1],
+["What is the father doing?",["Reading a newspaper","Cooking","Sleeping"],0],
+["What is the mother doing?",["Watching TV","Drawing","Making breakfast"],2],
+["What is the sister doing?",["Drawing a picture","Playing football","Reading"],0],
+["What is the dog doing?",["Eating","Sleeping","Running"],1],
+["What are the birds doing?",["Singing","Sleeping","Eating"],0],
+["Are they watching television?",["Yes, they are.","No, they aren't.","It doesn't say."],1]
+];
+
+const listeningData = [
+["Why is Anna staying at home?",["It is raining.","She is working.","She is sleeping."],0],
+["What is her brother doing?",["Reading","Playing a computer game","Cooking"],1],
+["What is her father doing?",["Reading a book","Watching TV","Writing"],0],
+["Who is talking on the phone?",["Anna","Her brother","Her mother"],2],
+["What is Anna writing?",["A story","A letter","A lesson"],1],
+["Who is coming to visit them?",["Their friend","Their grandmother","Their teacher"],1],
+["What are they preparing?",["Breakfast","Dinner","Lunch"],2]
+];
+
+const fillData = [
+["I ___ reading a book.","am"],
+["She ___ cooking dinner.","is"],
+["They ___ playing football.","are"],
+["He is ___ (run) in the park.","running"],
+["We are ___ (study) English.","studying"],
+["My father is ___ (drive) a car.","driving"],
+["The baby is ___ (cry).","crying"],
+["I ___ not sleeping.","am"],
+["She ___ not working.","is"],
+["___ you watching TV?","Are"],
+["___ he listening?","Is"],
+["They are ___ (swim).","swimming"],
+["She is ___ (write) a letter.","writing"],
+["We ___ learning new words.","are"],
+["The dog is ___ (sit) under the table.","sitting"]
+];
+
+const translationData = [
+["Men hozir ingliz tilini o‘rganyapman.","I am learning English now."],
+["U ovqat tayyorlayapti.","She is cooking."],
+["Ular futbol o‘ynashyapti.","They are playing football."],
+["Biz televizor ko‘rmayapmiz.","We are not watching TV."],
+["U hozir uxlamayapti.","He is not sleeping."],
+["Sen meni tinglayapsanmi?","Are you listening to me?"],
+["Onang qayerga ketyapti?","Where is your mother going?"],
+["Ular nima qilishyapti?","What are they doing?"],
+["Quyosh nur sochyapti.","The sun is shining."],
+["Men bugun ishlamayapman.","I am not working today."]
+];
+
+const homeworkOne = [
+["I ___ watching television now.",["am","is","are"],0],
+["My sister ___ reading a book.",["are","is","am"],1],
+["The children ___ playing outside.",["is","am","are"],2],
+["He is ___ his homework.",["do","doing","does"],1],
+["We ___ learning English.",["are","is","am"],0],
+["___ your father working?",["Are","Is","Am"],1],
+["___ they coming today?",["Is","Are","Am"],1],
+["She isn't ___ now.",["sleep","sleeping","sleeps"],1],
+["I am ___ a letter.",["write","writing","writes"],1],
+["The dog is ___ in the garden.",["runing","running","runs"],1],
+["Look! The baby ___.",["is crying","cry","cries"],0],
+["What ___ she doing?",["are","am","is"],2],
+["They ___ not studying.",["is","are","am"],1],
+["He is ___ a car.",["drive","driving","drives"],1],
+["She is ___ a picture.",["makeing","making","makes"],1],
+["Which sentence is correct?",["I am know him.","I know him.","I knowing him."],1],
+["We ___ staying here this week.",["are","is","am"],0],
+["___ you listening to music?",["Is","Are","Am"],1],
+["My mother is ___ the dishes.",["wash","washing","washes"],1],
+["The sun is ___.",["shineing","shining","shines"],1],
+["He ___ playing football now.",["isn't","don't","doesn't"],0],
+["Which is an affirmative sentence?",["She isn't reading.","Is she reading?","She is reading."],2],
+["The children are ___ in the park.",["sit","sitting","sits"],1],
+["I am ___ English this month.",["learn","learning","learns"],1],
+["Which sentence is correct?",["Are he working?","Is he working?","Am he working?"],1]
+];
+
+const homeworkTwo = [
+["I am reading a book. — Negative gapga aylantiring."],
+["She is cooking dinner. — Question gapga aylantiring."],
+["They are playing football. — Negative gapga aylantiring."],
+["He is sleeping. — Question gapga aylantiring."],
+["We are studying English. — Negative gapga aylantiring."],
+["You are working today. — Question gapga aylantiring."],
+["I am writing a letter. — WH-question (What) tuzing."],
+["She is going to school. — WH-question (Where) tuzing."],
+["They are laughing. — Why bilan savol tuzing."],
+["He is drinking water. — Short answer bilan savol tuzing."],
+["I / study / English / now — Darak gap tuzing."],
+["She / not / watch / TV — Inkor gap tuzing."],
+["They / play / football — So‘roq gap tuzing."],
+["My father / work / today — Darak gap tuzing."],
+["The baby / sleep — Inkor gap tuzing."],
+["We / travel / this week — Darak gap tuzing."],
+["He / run / in the park — So‘roq gap tuzing."],
+["The children / swim — Darak gap tuzing."],
+["I / not / understand / the question — To‘g‘ri zamonni tanlab gap tuzing."],
+["She / want / a new phone — Stative verb qoidasiga ko‘ra gap tuzing."],
+["Write the -ing form: make, run, study."],
+["Write the -ing form: swim, dance, lie."],
+["Translate: Men hozir ovqat tayyorlayapman."],
+["Translate: Ular hozir televizor ko‘rishmayapti."],
+["Translate: Sen nima qilyapsan?"]
+];
+
+function speak(text,rate=0.9){
+if(!("speechSynthesis" in window)){
+alert("Your browser does not support speech synthesis.");return;
+}
+speechSynthesis.cancel();
+const u=new SpeechSynthesisUtterance(text);
+u.lang="en-US";u.rate=rate;
+speechSynthesis.speak(u);
+}
+function stopSpeech(){
+if("speechSynthesis" in window)speechSynthesis.cancel();
+}
+function speakAll(){
+let i=0;
+function next(){
+if(i>=vocab.length)return;
+const u=new SpeechSynthesisUtterance(vocab[i][0]);
+u.lang="en-US";u.rate=.8;
+u.onend=()=>{i++;next()};
+speechSynthesis.speak(u);
+}
+stopSpeech();next();
+}
+
+function renderVocab(){
+document.getElementById("vocab").innerHTML=vocab.map((w,i)=>`
+<div class="word">
+<span><b>${i+1}. ${w[0]}</b><br>
+<small>${w[1]}</small><br>
+<small><i>${w[2]}</i></small></span>
+<button onclick="speak('${w[0]}')">🔊</button>
+</div>`).join("");
+}
+
+function renderChoiceQuestions(data,target,prefix){
+document.getElementById(target).innerHTML=data.map((q,i)=>`
+<div class="question">
+<b>${i+1}. ${q[0]}</b>
+${q[1].map((opt,j)=>`
+<label><input type="radio" name="${prefix}${i}" value="${j}"> ${opt}</label>
+`).join("")}
+</div>`).join("");
+}
+
+function renderAllChoices(){
+renderChoiceQuestions(grammarData,"grammarQuestions","g");
+renderChoiceQuestions(readingData,"readingQuestions","r");
+renderChoiceQuestions(listeningData,"listeningQuestions","l");
+renderChoiceQuestions(homeworkOne,"homeworkOne","h");
+}
+
+function renderFill(){
+document.getElementById("fillQuestions").innerHTML=fillData.map((q,i)=>`
+<div class="exercise"><b>${i+1}. ${q[0]}</b>
+<input type="text" id="fill${i}" placeholder="Your answer">
+</div>`).join("");
+}
+
+function renderTranslations(){
+document.getElementById("translationQuestions").innerHTML=translationData.map((q,i)=>`
+<div class="exercise"><b>${i+1}. ${q[0]}</b>
+<button class="btn secondary" onclick="showAnswer('trans${i}')">Show answer</button>
+<div class="answer" id="trans${i}">${q[1]}</div></div>`).join("");
+}
+
+function renderHomeworkTwo(){
+document.getElementById("homeworkTwo").innerHTML=homeworkTwo.map((q,i)=>`
+<div class="homework-item"><b>${i+1}.</b> ${q[0]}</div>`).join("");
+}
+
+function showAnswer(id){
+const el=document.getElementById(id);
+el.style.display=el.style.display==="block"?"none":"block";
+}
+
+function scoreChoices(data,prefix){
+let score=0;
+data.forEach((q,i)=>{
+const selected=document.querySelector(`input[name="${prefix}${i}"]:checked`);
+if(selected&&Number(selected.value)===q[2])score++;
+});
+return score;
+}
+
+function checkReading(){
+const score=scoreChoices(readingData,"r");
+const el=document.getElementById("readingResult");
+el.textContent=`Your score: ${score}/${readingData.length}`;
+el.className="feedback "+(score>=6?"correct":"incorrect");
+updateProgress(35);
+}
+function checkListening(){
+const score=scoreChoices(listeningData,"l");
+const el=document.getElementById("listeningResult");
+el.textContent=`Your score: ${score}/${listeningData.length}`;
+el.className="feedback "+(score>=6?"correct":"incorrect");
+updateProgress(45);
+}
+function checkGrammar(){
+const score=scoreChoices(grammarData,"g");
+const percent=Math.round(score/grammarData.length*100);
+const el=document.getElementById("grammarResult");
+el.textContent=`Your result: ${score}/${grammarData.length} — ${percent}%`;
+el.className="feedback "+(percent>=80?"correct":"incorrect");
+updateProgress(Math.max(60,percent));
+}
+function resetGrammar(){
+document.querySelectorAll('#grammarQuestions input[type="radio"]').forEach(x=>x.checked=false);
+document.getElementById("grammarResult").textContent="";
+}
+
+function checkFill(){
+let score=0;
+fillData.forEach((q,i)=>{
+const value=document.getElementById("fill"+i).value.trim().toLowerCase().replace(/\s+/g," ");
+const correct=q[1].toLowerCase();
+if(value===correct)score++;
+});
+const percent=Math.round(score/fillData.length*100);
+const el=document.getElementById("fillResult");
+el.textContent=`Your result: ${score}/${fillData.length} — ${percent}%`;
+el.className="feedback "+(percent>=80?"correct":"incorrect");
+updateProgress(Math.max(75,percent));
+}
+
+function copyWriting(){
+const area=document.getElementById("writingArea");
+if(!area.value.trim()){alert("Please write your text first.");return;}
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(area.value).then(()=>alert("Your writing has been copied."));
+}else{
+area.select();document.execCommand("copy");alert("Copied!");
+}
+}
+
+document.getElementById("writingArea").addEventListener("input",function(){
+const words=this.value.trim()?this.value.trim().split(/\s+/).length:0;
+document.getElementById("wordCount").textContent=words;
+});
+
+function updateProgress(value){
+const current=parseInt(localStorage.getItem("euElementaryLesson3Progress")||"0");
+const next=Math.max(current,Math.min(100,value));
+localStorage.setItem("euElementaryLesson3Progress",next);
+document.getElementById("progressBar").style.width=next+"%";
+document.getElementById("progressText").textContent=next+"%";
+}
+
+function completeLesson(){
+localStorage.setItem("euElementaryLesson3Completed","true");
+updateProgress(100);
+document.getElementById("completionMessage").textContent="Lesson 3 completed! Excellent work!";
+document.getElementById("completionMessage").className="feedback correct";
+}
+
+function toggleTheme(){
+document.body.classList.toggle("dark");
+const dark=document.body.classList.contains("dark");
+localStorage.setItem("euElementaryTheme",dark?"dark":"light");
+document.getElementById("themeBtn").textContent=dark?"☀️":"🌙";
+}
+
+function initTheme(){
+if(localStorage.getItem("euElementaryTheme")==="dark"){
+document.body.classList.add("dark");
+document.getElementById("themeBtn").textContent="☀️";
+}
+}
+
+renderVocab();
+renderAllChoices();
+renderFill();
+renderTranslations();
+renderHomeworkTwo();
+initTheme();
+
+const savedProgress=localStorage.getItem("euElementaryLesson3Progress")||"0";
+document.getElementById("progressBar").style.width=savedProgress+"%";
+document.getElementById("progressText").textContent=savedProgress+"%";
+
+if(localStorage.getItem("euElementaryLesson3Completed")==="true"){
+document.getElementById("completionMessage").textContent="Lesson 3 completed! Excellent work!";
+document.getElementById("completionMessage").className="feedback correct";
+}
+</script>
+</body>
+</html>
+
