@@ -1,1 +1,1299 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 9 — Comparatives & Superlatives | English Up</title>
+
+<style>
+:root{
+  --primary:#7047eb;--primary2:#9274ff;
+  --bg:#f5f3ff;--card:#fff;--text:#24213a;
+  --muted:#77738b;--border:#e8e3f5;--soft:#eee9ff;
+  --green:#16834b;--red:#d33c50;
+  --shadow:0 8px 28px rgba(62,40,120,.08);
+}
+body.dark{
+  --bg:#171426;--card:#211d33;--text:#f5f1ff;
+  --muted:#b6aecb;--border:#39314f;--soft:#30264c;
+  --shadow:0 8px 28px rgba(0,0,0,.2);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.75;
+}
+header{
+  background:linear-gradient(120deg,#5d35d4,#9875ff);
+  color:white;padding:22px 16px;
+}
+.header-inner{max-width:1080px;margin:auto}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{font-size:20px;font-weight:900;letter-spacing:1px}
+.header-actions{display:flex;gap:8px}
+.header-actions button{
+  background:#ffffff20;border:1px solid #ffffff66;
+  color:white;padding:8px 12px;border-radius:10px;cursor:pointer;
+}
+header h1{font-size:clamp(27px,5vw,42px);margin:25px 0 5px;line-height:1.2}
+header p{margin:0;color:#eee7ff}
+.container{max-width:1080px;margin:auto;padding:18px 14px 60px}
+.hero,section{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:18px;padding:20px;margin:16px 0;box-shadow:var(--shadow);
+}
+.hero{margin-top:18px}
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px}
+.stat{background:var(--soft);padding:12px;border-radius:12px;text-align:center}
+.stat strong{display:block;color:var(--primary);font-size:23px}
+.stat span{font-size:13px;color:var(--muted)}
+.progress-track{height:10px;background:var(--soft);border-radius:20px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#7047eb,#a58aff)}
+nav{
+  display:flex;gap:8px;overflow-x:auto;padding:14px 0;
+  position:sticky;top:0;background:var(--bg);z-index:5;
+}
+nav a{
+  white-space:nowrap;text-decoration:none;color:var(--text);
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:7px 13px;font-size:13px;
+}
+h2{font-size:23px;color:var(--primary);margin:0 0 12px;line-height:1.35}
+h3{font-size:18px;margin:24px 0 8px}
+h4{margin:12px 0 5px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.note,.copy{
+  padding:14px 16px;border-radius:11px;margin:13px 0;
+  background:var(--soft);
+}
+.note{border-left:4px solid var(--primary)}
+.copy{border:1px dashed var(--primary)}
+.copy strong{color:var(--primary)}
+.formula{
+  display:block;text-align:center;background:var(--soft);
+  border-radius:10px;padding:12px;margin:10px 0;
+  font-weight:bold;overflow-wrap:anywhere;
+}
+.example{
+  border:1px solid var(--border);padding:12px;border-radius:11px;
+  margin:9px 0;display:flex;justify-content:space-between;
+  gap:10px;align-items:center;
+}
+.example p{margin:0}
+.en{font-weight:bold}
+.uz{color:var(--muted);font-size:14px}
+.audio{
+  flex-shrink:0;border:0;background:var(--primary);
+  color:white;border-radius:9px;padding:8px 11px;cursor:pointer;
+}
+.secondary{
+  border:1px solid var(--border);background:var(--card);
+  color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer;
+}
+.main-btn{
+  border:0;background:var(--primary);color:white;
+  padding:11px 17px;border-radius:10px;cursor:pointer;font-weight:bold;
+}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:var(--soft)}
+.table-wrap{overflow-x:auto}
+.word-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.word{border:1px solid var(--border);border-radius:12px;padding:12px}
+.word-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.word small{color:var(--muted)}
+.word .meaning{font-weight:bold}
+.word .sentence{font-size:13px;color:var(--muted);margin:7px 0}
+.skill{background:var(--soft);padding:15px;border-radius:12px;margin:12px 0}
+textarea{
+  width:100%;padding:11px;border:1px solid var(--border);
+  border-radius:9px;background:var(--bg);color:var(--text);
+  font:inherit;margin:6px 0;
+}
+.quiz-question{
+  border:1px solid var(--border);border-radius:12px;
+  padding:14px;margin:13px 0;
+}
+.quiz-question h4{margin:0 0 8px}
+.option{
+  display:block;padding:8px 10px;border:1px solid var(--border);
+  border-radius:8px;margin:6px 0;cursor:pointer;
+}
+.option:has(input:checked){background:var(--soft);border-color:var(--primary)}
+.feedback{font-size:14px;margin-top:8px}
+.correct{color:var(--green);font-weight:bold}
+.incorrect{color:var(--red);font-weight:bold}
+#resultBox{display:none;padding:18px;background:var(--soft);border-radius:12px;margin-top:16px}
+.footer{text-align:center;color:var(--muted);padding:30px 10px}
+.footer strong{color:var(--primary);font-size:20px}
+@media(max-width:600px){
+  section,.hero{padding:15px}
+  .example{align-items:flex-start}
+  table{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+  <div class="topline">
+    <div class="brand">ENGLISH UP</div>
+    <div class="header-actions">
+      <button onclick="history.back()">← Back</button>
+      <button onclick="toggleTheme()">☀ / ☾</button>
+    </div>
+  </div>
+  <h1>LESSON 9: COMPARATIVES & SUPERLATIVES</h1>
+  <p>Comparative adjectives, Superlative adjectives, as...as, less...than va boshqa muhim tuzilmalar</p>
+</div>
+</header>
+
+<div class="container">
+
+<div class="hero">
+  <h2>Bugungi dars maqsadi</h2>
+  <p>Bugun ikki yoki undan ortiq inson, predmet, joy va hodisalarni ingliz tilida to‘g‘ri taqqoslashni o‘rganamiz.</p>
+  <div class="hero-grid">
+    <div class="stat"><strong>40</strong><span>Yangi vocabulary</span></div>
+    <div class="stat"><strong>15+</strong><span>Grammatik qoidalar</span></div>
+    <div class="stat"><strong>4</strong><span>Ko‘nikma</span></div>
+    <div class="stat"><strong>30</strong><span>Test savoli</span></div>
+  </div>
+  <p class="muted">Darsni o‘rganish jarayoni</p>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<nav>
+<a href="#intro">Kirish</a>
+<a href="#basic">Adjectives</a>
+<a href="#comparative">Comparative</a>
+<a href="#spelling">Imlo qoidalari</a>
+<a href="#superlative">Superlative</a>
+<a href="#irregular">Irregular</a>
+<a href="#advanced">Kengaytirilgan</a>
+<a href="#mistakes">Xatolar</a>
+<a href="#vocab">Vocabulary</a>
+<a href="#skills">4 Skills</a>
+<a href="#homework">Homework</a>
+<a href="#test">Test</a>
+</nav>
+
+<section id="intro">
+<h2>1. COMPARATIVES & SUPERLATIVES nima?</h2>
+
+<p>Kundalik hayotda biz doimo narsalarni taqqoslaymiz. Masalan:</p>
+<ul>
+<li>Bu uy uydan kattaroq.</li>
+<li>Akmal mendan balandroq.</li>
+<li>Bu kitob eng qiziqarli kitob.</li>
+<li>Bugun kechagidan sovuqroq.</li>
+<li>U oiladagi eng yosh bola.</li>
+</ul>
+
+<p>Ingliz tilida bunday taqqoslashlar uchun sifatlarning maxsus shakllari ishlatiladi.</p>
+
+<h3>1.1. Comparative — qiyosiy daraja</h3>
+<p>Comparative ikki inson, predmet, joy yoki hodisani taqqoslash uchun ishlatiladi. O‘zbek tilidagi <b>-roq</b> ma'nosiga yaqin.</p>
+
+<div class="example">
+<div><p class="en">Ali is taller than Vali.</p><p class="uz">Ali Validan balandroq.</p></div>
+<button class="audio" onclick="speak('Ali is taller than Vali.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">My house is bigger than your house.</p><p class="uz">Mening uyim sening uyingdan kattaroq.</p></div>
+<button class="audio" onclick="speak('My house is bigger than your house.')">🔊</button>
+</div>
+
+<h3>1.2. Superlative — orttirma daraja</h3>
+<p>Superlative uch yoki undan ortiq inson yoki predmet orasida eng yuqori yoki eng past darajani ko‘rsatadi. O‘zbek tilidagi <b>eng</b> ma'nosiga yaqin.</p>
+
+<div class="example">
+<div><p class="en">Ali is the tallest boy in the class.</p><p class="uz">Ali sinfdagi eng baland bola.</p></div>
+<button class="audio" onclick="speak('Ali is the tallest boy in the class.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">This is the most interesting book.</p><p class="uz">Bu eng qiziqarli kitob.</p></div>
+<button class="audio" onclick="speak('This is the most interesting book.')">🔊</button>
+</div>
+
+<h3>1.3. Uchta darajani tushunib oling</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Daraja</th><th>English</th><th>Uzbek</th></tr>
+<tr><td>Positive</td><td>tall</td><td>baland</td></tr>
+<tr><td>Comparative</td><td>taller</td><td>balandroq</td></tr>
+<tr><td>Superlative</td><td>the tallest</td><td>eng baland</td></tr>
+<tr><td>Positive</td><td>beautiful</td><td>chiroyli</td></tr>
+<tr><td>Comparative</td><td>more beautiful</td><td>chiroyliroq</td></tr>
+<tr><td>Superlative</td><td>the most beautiful</td><td>eng chiroyli</td></tr>
+</table>
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>Positive — sifatning oddiy shakli: tall.</p>
+<p>Comparative — ikki narsani taqqoslash: taller than.</p>
+<p>Superlative — guruh ichida eng yuqori daraja: the tallest.</p>
+<p>Comparative = -roq. Superlative = eng.</p>
+</div>
+</section>
+
+<section id="basic">
+<h2>2. ADJECTIVES — SIFATLARNI TAKRORLASH</h2>
+
+<p>Comparative va Superlative'ni tushunish uchun avval adjective nima ekanini bilishimiz kerak.</p>
+
+<p><b>Adjective</b> — predmet, inson, joy yoki hodisaning belgisini bildiradigan so‘z. O‘zbek tilida sifat deb ataladi.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>English</th><th>Uzbek</th><th>Example</th></tr>
+<tr><td>big</td><td>katta</td><td>a big house</td></tr>
+<tr><td>small</td><td>kichik</td><td>a small room</td></tr>
+<tr><td>beautiful</td><td>chiroyli</td><td>a beautiful girl</td></tr>
+<tr><td>expensive</td><td>qimmat</td><td>an expensive car</td></tr>
+<tr><td>cheap</td><td>arzon</td><td>a cheap phone</td></tr>
+<tr><td>interesting</td><td>qiziqarli</td><td>an interesting story</td></tr>
+</table>
+</div>
+
+<h3>2.1. Sifat gapda qayerda keladi?</h3>
+<p>Ingliz tilida sifat odatda otning oldidan keladi.</p>
+
+<span class="formula">Adjective + Noun</span>
+
+<div class="example">
+<div><p class="en">A beautiful house</p><p class="uz">Chiroyli uy</p></div>
+<button class="audio" onclick="speak('A beautiful house.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">An expensive phone</p><p class="uz">Qimmat telefon</p></div>
+<button class="audio" onclick="speak('An expensive phone.')">🔊</button>
+</div>
+
+<p>Sifat <b>be</b> fe'lidan keyin ham kelishi mumkin.</p>
+
+<span class="formula">Subject + am / is / are + Adjective</span>
+
+<div class="example">
+<div><p class="en">The house is beautiful.</p><p class="uz">Uy chiroyli.</p></div>
+<button class="audio" onclick="speak('The house is beautiful.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">These books are interesting.</p><p class="uz">Bu kitoblar qiziqarli.</p></div>
+<button class="audio" onclick="speak('These books are interesting.')">🔊</button>
+</div>
+
+<h3>2.2. Sifatlar o‘zgarmaydimi?</h3>
+<p>Oddiy ingliz tilida sifat otning birlik yoki ko‘plik ekaniga qarab o‘zgarmaydi.</p>
+
+<div class="example">
+<div><p class="en">A small room.</p><p class="uz">Kichik xona.</p></div>
+<button class="audio" onclick="speak('A small room.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">Two small rooms.</p><p class="uz">Ikkita kichik xona.</p></div>
+<button class="audio" onclick="speak('Two small rooms.')">🔊</button>
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>Adjective — sifat.</p>
+<p>Sifat odatda otning oldidan yoki be fe'lidan keyin keladi.</p>
+<p>Birlik va ko‘plik otlar bilan sifatning o‘zi o‘zgarmaydi: a small room / small rooms.</p>
+</div>
+</section>
+
+<section id="comparative">
+<h2>3. COMPARATIVE — QIYOSIY DARAJA</h2>
+
+<p>Comparative ikki narsani taqqoslash uchun ishlatiladi. Qisqa sifatlarning ko‘pchiligiga <b>-er</b> qo‘shiladi, uzunroq sifatlarning oldiga esa <b>more</b> qo‘yiladi.</p>
+
+<h3>3.1. Qisqa sifatlarga -ER qo‘shish</h3>
+<p>Ko‘p bir bo‘g‘inli sifatlarga -er qo‘shamiz.</p>
+
+<span class="formula">Adjective + er + than</span>
+
+<div class="table-wrap">
+<table>
+<tr><th>Oddiy sifat</th><th>Comparative</th><th>Tarjimasi</th></tr>
+<tr><td>tall</td><td>taller</td><td>balandroq</td></tr>
+<tr><td>short</td><td>shorter</td><td>qisqaroq</td></tr>
+<tr><td>long</td><td>longer</td><td>uzunroq</td></tr>
+<tr><td>old</td><td>older</td><td>kattaroq / yoshi ulug‘roq</td></tr>
+<tr><td>young</td><td>younger</td><td>yoshroq</td></tr>
+<tr><td>fast</td><td>faster</td><td>tezroq</td></tr>
+<tr><td>slow</td><td>slower</td><td>sekinroq</td></tr>
+<tr><td>cheap</td><td>cheaper</td><td>arzonroq</td></tr>
+<tr><td>small</td><td>smaller</td><td>kichikroq</td></tr>
+<tr><td>strong</td><td>stronger</td><td>kuchliroq</td></tr>
+</table>
+</div>
+
+<h4>Misollar</h4>
+<div class="example"><div><p class="en">My brother is taller than me.</p><p class="uz">Akam mendan balandroq.</p></div><button class="audio" onclick="speak('My brother is taller than me.')">🔊</button></div>
+<div class="example"><div><p class="en">A train is faster than a bus.</p><p class="uz">Poyezd avtobusdan tezroq.</p></div><button class="audio" onclick="speak('A train is faster than a bus.')">🔊</button></div>
+<div class="example"><div><p class="en">This bag is cheaper than that one.</p><p class="uz">Bu sumka anavisidan arzonroq.</p></div><button class="audio" onclick="speak('This bag is cheaper than that one.')">🔊</button></div>
+
+<h3>3.2. THAN — taqqoslash so‘zi</h3>
+<p><b>Than</b> Comparative bilan birga juda ko‘p ishlatiladi. U o‘zbek tilidagi <b>-dan</b> ma'nosini beradi.</p>
+
+<div class="example"><div><p class="en">Ali is taller than Vali.</p><p class="uz">Ali Validan balandroq.</p></div><button class="audio" onclick="speak('Ali is taller than Vali.')">🔊</button></div>
+<div class="example"><div><p class="en">English is easier than I expected.</p><p class="uz">Ingliz tili men kutganimdan osonroq.</p></div><button class="audio" onclick="speak('English is easier than I expected.')">🔊</button></div>
+
+<div class="note">
+<b>Diqqat:</b> Comparative shaklida than ko‘pincha taqqoslanayotgan ikkinchi narsani tanishtiradi. Than — then bilan bir xil emas. Than taqqoslash uchun, then esa keyin / undan so‘ng ma'nosida ishlatiladi.
+</div>
+
+<h3>3.3. -E bilan tugaydigan sifatlar</h3>
+<p>Agar sifat oxiri allaqachon <b>e</b> harfi bilan tugasa, yana -er qo‘shmaymiz. Faqat <b>-r</b> qo‘shiladi.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+<tr><td>nice</td><td>nicer</td><td>the nicest</td></tr>
+<tr><td>large</td><td>larger</td><td>the largest</td></tr>
+<tr><td>safe</td><td>safer</td><td>the safest</td></tr>
+<tr><td>wide</td><td>wider</td><td>the widest</td></tr>
+<tr><td>close</td><td>closer</td><td>the closest</td></tr>
+</table>
+</div>
+
+<div class="example"><div><p class="en">This room is larger than my room.</p><p class="uz">Bu xona mening xonamdan kattaroq.</p></div><button class="audio" onclick="speak('This room is larger than my room.')">🔊</button></div>
+<div class="example"><div><p class="en">This road is safer than that road.</p><p class="uz">Bu yo‘l anavi yo‘ldan xavfsizroq.</p></div><button class="audio" onclick="speak('This road is safer than that road.')">🔊</button></div>
+
+<h3>3.4. Undosh harfni ikki marta yozish</h3>
+<p>Ba'zi qisqa sifatlarga -er qo‘shilganda oxirgi undosh harf ikki marta yoziladi.</p>
+
+<p>Odatda bir bo‘g‘inli, oxiri <b>bitta unli + bitta undosh</b> bilan tugaydigan sifatlarga bu qoida tegishli.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+<tr><td>big</td><td>bigger</td><td>the biggest</td></tr>
+<tr><td>hot</td><td>hotter</td><td>the hottest</td></tr>
+<tr><td>thin</td><td>thinner</td><td>the thinnest</td></tr>
+<tr><td>fat</td><td>fatter</td><td>the fattest</td></tr>
+<tr><td>sad</td><td>sadder</td><td>the saddest</td></tr>
+<tr><td>wet</td><td>wetter</td><td>the wettest</td></tr>
+</table>
+</div>
+
+<p><b>Nega big → bigger?</b></p>
+<p>Big so‘zi bitta bo‘g‘inli va oxiri unli tovushdan keyin bitta undosh bilan tugaydi. -er qo‘shilganda oxirgi g harfi ikki marta yoziladi: big + er = bigger.</p>
+
+<div class="example"><div><p class="en">My house is bigger than yours.</p><p class="uz">Mening uyim senikidan kattaroq.</p></div><button class="audio" onclick="speak('My house is bigger than yours.')">🔊</button></div>
+<div class="example"><div><p class="en">Today is hotter than yesterday.</p><p class="uz">Bugun kechagidan issiqroq.</p></div><button class="audio" onclick="speak('Today is hotter than yesterday.')">🔊</button></div>
+
+<h3>3.5. -Y bilan tugaydigan sifatlar</h3>
+<p>Agar sifat undosh harf + y bilan tugasa, y harfi i ga o‘zgaradi va -er qo‘shiladi.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+<tr><td>easy</td><td>easier</td><td>the easiest</td></tr>
+<tr><td>happy</td><td>happier</td><td>the happiest</td></tr>
+<tr><td>busy</td><td>busier</td><td>the busiest</td></tr>
+<tr><td>funny</td><td>funnier</td><td>the funniest</td></tr>
+<tr><td>heavy</td><td>heavier</td><td>the heaviest</td></tr>
+<tr><td>pretty</td><td>prettier</td><td>the prettiest</td></tr>
+</table>
+</div>
+
+<div class="example"><div><p class="en">This exercise is easier than that one.</p><p class="uz">Bu mashq anavisidan osonroq.</p></div><button class="audio" onclick="speak('This exercise is easier than that one.')">🔊</button></div>
+<div class="example"><div><p class="en">She is happier today.</p><p class="uz">U bugun baxtliroq.</p></div><button class="audio" onclick="speak('She is happier today.')">🔊</button></div>
+
+<div class="note">
+Agar sifat oldidan unli + y kelsa, odatda y o‘zgarmaydi: <b>grey → greyer</b>. Biroq ayrim sifatlarda boshqa variantlar ham uchrashi mumkin.
+</div>
+
+<h3>3.6. Uzun sifatlarga MORE qo‘shish</h3>
+<p>Ko‘p ikki yoki undan ortiq bo‘g‘inli sifatlarga -er qo‘shilmaydi. Ularning oldiga <b>more</b> qo‘yiladi.</p>
+
+<span class="formula">more + adjective + than</span>
+
+<div class="table-wrap">
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Uzbek</th></tr>
+<tr><td>beautiful</td><td>more beautiful</td><td>chiroyliroq</td></tr>
+<tr><td>expensive</td><td>more expensive</td><td>qimmatroq</td></tr>
+<tr><td>important</td><td>more important</td><td>muhimroq</td></tr>
+<tr><td>interesting</td><td>more interesting</td><td>qiziqarliroq</td></tr>
+<tr><td>comfortable</td><td>more comfortable</td><td>qulayroq</td></tr>
+<tr><td>dangerous</td><td>more dangerous</td><td>xavfliroq</td></tr>
+<tr><td>popular</td><td>more popular</td><td>mashhurroq</td></tr>
+<tr><td>expensive</td><td>more expensive</td><td>qimmatroq</td></tr>
+</table>
+</div>
+
+<div class="example"><div><p class="en">This book is more interesting than that book.</p><p class="uz">Bu kitob anavi kitobdan qiziqarliroq.</p></div><button class="audio" onclick="speak('This book is more interesting than that book.')">🔊</button></div>
+<div class="example"><div><p class="en">A train ticket is more expensive than a bus ticket.</p><p class="uz">Poyezd chiptasi avtobus chiptasidan qimmatroq.</p></div><button class="audio" onclick="speak('A train ticket is more expensive than a bus ticket.')">🔊</button></div>
+<div class="example"><div><p class="en">Health is more important than money.</p><p class="uz">Sog‘liq puldan muhimroq.</p></div><button class="audio" onclick="speak('Health is more important than money.')">🔊</button></div>
+
+<h3>3.7. Qaysi sifatga -ER, qaysisiga MORE?</h3>
+<p>Eng asosiy qoida:</p>
+<ul>
+<li>Ko‘p bir bo‘g‘inli sifatlar: -er.</li>
+<li>Ko‘p uzun sifatlar: more + adjective.</li>
+<li>Ikki bo‘g‘inli sifatlarning ayrimlari -er oladi, ayrimlari more bilan ishlatiladi.</li>
+</ul>
+
+<div class="note">
+Ikki bo‘g‘inli sifatlarga doir qoida har doim bir xil emas. Masalan, <b>happy → happier</b>, ammo <b>careful → more careful</b>. Shuning uchun ko‘p ishlatiladigan shakllarni misollar bilan yodlash kerak.
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING — COMPARATIVE</strong>
+<p>Comparative ikki narsani taqqoslash uchun ishlatiladi.</p>
+<p>Qisqa sifat: adjective + er + than.</p>
+<p>Oxiri e: adjective + r.</p>
+<p>Undosh + y: y → i + er.</p>
+<p>Qisqa unli + undosh bilan tugaydigan ayrim sifatlarda oxirgi undosh ikki marta yoziladi.</p>
+<p>Uzun sifat: more + adjective + than.</p>
+<p>Than — taqqoslashda -dan ma'nosini beradi.</p>
+</div>
+</section>
+
+<section id="spelling">
+<h2>4. COMPARATIVE VA SUPERLATIVE IMLO QOIDALARI</h2>
+
+<p>Bu qism juda muhim. Chunki o‘quvchilar ko‘pincha sifatga qo‘shimchani noto‘g‘ri qo‘shadi.</p>
+
+<h3>4.1. Bir bo‘g‘inli sifatlar</h3>
+<p>Odatda -er va -est qo‘shiladi.</p>
+<p>old → older → the oldest</p>
+<p>fast → faster → the fastest</p>
+<p>small → smaller → the smallest</p>
+
+<h3>4.2. Oxiri -e bilan tugasa</h3>
+<p>Faqat -r va -st qo‘shiladi.</p>
+<p>nice → nicer → the nicest</p>
+<p>large → larger → the largest</p>
+
+<h3>4.3. Undosh + y bilan tugasa</h3>
+<p>y harfi i ga o‘zgaradi.</p>
+<p>easy → easier → the easiest</p>
+<p>happy → happier → the happiest</p>
+
+<h3>4.4. Oxirgi undosh ikki marta yozilsa</h3>
+<p>big → bigger → the biggest</p>
+<p>hot → hotter → the hottest</p>
+<p>thin → thinner → the thinnest</p>
+
+<h3>4.5. Uzun sifatlar</h3>
+<p>Comparative uchun more, superlative uchun most ishlatiladi.</p>
+<p>beautiful → more beautiful → the most beautiful</p>
+<p>expensive → more expensive → the most expensive</p>
+<p>comfortable → more comfortable → the most comfortable</p>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>Comparative va Superlative yasashda so‘zning oxirgi harflariga e'tibor bering. Har bir sifatga bir xil usulda qo‘shimcha qo‘shilmaydi.</p>
+</div>
+</section>
+
+<section id="superlative">
+<h2>5. SUPERLATIVE — ORTTIRMA DARAJA</h2>
+
+<p>Superlative uch yoki undan ortiq inson, predmet yoki joy ichidan eng yuqori yoki eng past darajani ko‘rsatadi.</p>
+
+<h3>5.1. Qisqa sifatlarga -EST qo‘shish</h3>
+<span class="formula">the + adjective + est</span>
+
+<div class="table-wrap">
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th><th>Uzbek</th></tr>
+<tr><td>tall</td><td>taller</td><td>the tallest</td><td>eng baland</td></tr>
+<tr><td>short</td><td>shorter</td><td>the shortest</td><td>eng qisqa</td></tr>
+<tr><td>small</td><td>smaller</td><td>the smallest</td><td>eng kichik</td></tr>
+<tr><td>fast</td><td>faster</td><td>the fastest</td><td>eng tez</td></tr>
+<tr><td>old</td><td>older</td><td>the oldest</td><td>eng keksa</td></tr>
+<tr><td>cheap</td><td>cheaper</td><td>the cheapest</td><td>eng arzon</td></tr>
+</table>
+</div>
+
+<div class="example"><div><p class="en">Ali is the tallest boy in the class.</p><p class="uz">Ali sinfdagi eng baland bola.</p></div><button class="audio" onclick="speak('Ali is the tallest boy in the class.')">🔊</button></div>
+<div class="example"><div><p class="en">This is the cheapest shop in our town.</p><p class="uz">Bu shaharchamizdagi eng arzon do‘kon.</p></div><button class="audio" onclick="speak('This is the cheapest shop in our town.')">🔊</button></div>
+
+<h3>5.2. Uzun sifatlarga MOST qo‘shish</h3>
+<p>Uzun sifatlarga -est qo‘shmaymiz. Ularning oldiga <b>the most</b> qo‘yiladi.</p>
+
+<span class="formula">the most + adjective</span>
+
+<div class="table-wrap">
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+<tr><td>beautiful</td><td>more beautiful</td><td>the most beautiful</td></tr>
+<tr><td>interesting</td><td>more interesting</td><td>the most interesting</td></tr>
+<tr><td>expensive</td><td>more expensive</td><td>the most expensive</td></tr>
+<tr><td>important</td><td>more important</td><td>the most important</td></tr>
+<tr><td>comfortable</td><td>more comfortable</td><td>the most comfortable</td></tr>
+<tr><td>dangerous</td><td>more dangerous</td><td>the most dangerous</td></tr>
+</table>
+</div>
+
+<div class="example"><div><p class="en">This is the most interesting lesson.</p><p class="uz">Bu eng qiziqarli dars.</p></div><button class="audio" onclick="speak('This is the most interesting lesson.')">🔊</button></div>
+<div class="example"><div><p class="en">She is the most careful student in the class.</p><p class="uz">U sinfdagi eng ehtiyotkor o‘quvchi.</p></div><button class="audio" onclick="speak('She is the most careful student in the class.')">🔊</button></div>
+
+<h3>5.3. Nega SUPERLATIVE oldidan THE keladi?</h3>
+<p>Superlative odatda bir guruh ichida yagona eng yuqori darajani ko‘rsatadi. Shu sababli u bilan ko‘pincha <b>the</b> ishlatiladi.</p>
+
+<div class="example"><div><p class="en">He is the oldest person in the family.</p><p class="uz">U oiladagi eng keksa inson.</p></div><button class="audio" onclick="speak('He is the oldest person in the family.')">🔊</button></div>
+<div class="example"><div><p class="en">This is the best day of my life.</p><p class="uz">Bu hayotimdagi eng yaxshi kun.</p></div><button class="audio" onclick="speak('This is the best day of my life.')">🔊</button></div>
+
+<p><b>Diqqat:</b> Superlative oldidan the ko‘pincha ishlatiladi, lekin gap tuzilishiga qarab ayrim istisnolar mavjud. Hozircha asosiy qoida sifatida the + superlative shaklini eslab qoling.</p>
+
+<h3>5.4. IN va OF bilan ishlatish</h3>
+<p>Superlative bilan guruhni ko‘rsatishda ko‘pincha <b>in</b> va <b>of</b> ishlatiladi.</p>
+
+<p><b>IN</b> — joy, hudud, tashkilot yoki guruh ichida.</p>
+<div class="example"><div><p class="en">She is the smartest student in the class.</p><p class="uz">U sinfdagi eng aqlli o‘quvchi.</p></div><button class="audio" onclick="speak('She is the smartest student in the class.')">🔊</button></div>
+<div class="example"><div><p class="en">This is the biggest city in the country.</p><p class="uz">Bu mamlakatdagi eng katta shahar.</p></div><button class="audio" onclick="speak('This is the biggest city in the country.')">🔊</button></div>
+
+<p><b>OF</b> — aniq guruh yoki bir nechta narsalar orasida.</p>
+<div class="example"><div><p class="en">He is the tallest of the three brothers.</p><p class="uz">U uch aka-ukaning eng balandi.</p></div><button class="audio" onclick="speak('He is the tallest of the three brothers.')">🔊</button></div>
+<div class="example"><div><p class="en">This is the best of all.</p><p class="uz">Bu hammasining ichida eng yaxshisi.</p></div><button class="audio" onclick="speak('This is the best of all.')">🔊</button></div>
+
+<h3>5.5. SUPERLATIVE bilan EVER</h3>
+<p>Ever so‘zi hayot davomida yoki hozirgacha bo‘lgan tajribani ta'kidlash uchun superlative bilan ishlatilishi mumkin.</p>
+
+<div class="example"><div><p class="en">This is the best film I have ever seen.</p><p class="uz">Bu men ko‘rgan filmlar ichidagi eng yaxshisi.</p></div><button class="audio" onclick="speak('This is the best film I have ever seen.')">🔊</button></div>
+<div class="example"><div><p class="en">It is the most beautiful place I have ever visited.</p><p class="uz">Bu men tashrif buyurgan eng chiroyli joy.</p></div><button class="audio" onclick="speak('It is the most beautiful place I have ever visited.')">🔊</button></div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING — SUPERLATIVE</strong>
+<p>Superlative — uch yoki undan ortiq narsalar orasida eng yuqori yoki eng past darajani bildiradi.</p>
+<p>Qisqa sifat: the + adjective + est.</p>
+<p>Uzun sifat: the most + adjective.</p>
+<p>Superlative bilan ko‘pincha the ishlatiladi.</p>
+<p>IN — guruh yoki joy ichida; OF — aniq guruh orasida.</p>
+</div>
+</section>
+
+<section id="irregular">
+<h2>6. IRREGULAR ADJECTIVES — NOTO‘G‘RI SHAKLLAR</h2>
+
+<p>Ba'zi sifatlar Comparative va Superlative darajalarida oddiy qoidalarga bo‘ysunmaydi. Ularni yodlab olish kerak.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th><th>Uzbek</th></tr>
+<tr><td>good</td><td>better</td><td>the best</td><td>yaxshi</td></tr>
+<tr><td>bad</td><td>worse</td><td>the worst</td><td>yomon</td></tr>
+<tr><td>far</td><td>farther / further</td><td>the farthest / furthest</td><td>uzoq</td></tr>
+<tr><td>little</td><td>less</td><td>the least</td><td>kam / oz</td></tr>
+<tr><td>much / many</td><td>more</td><td>the most</td><td>ko‘p</td></tr>
+</table>
+</div>
+
+<h3>6.1. GOOD → BETTER → THE BEST</h3>
+<p>Good — yaxshi. Better — yaxshiroq. The best — eng yaxshi.</p>
+
+<div class="example"><div><p class="en">Your English is better than before.</p><p class="uz">Ingliz tilingiz avvalgidan yaxshiroq.</p></div><button class="audio" onclick="speak('Your English is better than before.')">🔊</button></div>
+<div class="example"><div><p class="en">This is the best book for beginners.</p><p class="uz">Bu boshlovchilar uchun eng yaxshi kitob.</p></div><button class="audio" onclick="speak('This is the best book for beginners.')">🔊</button></div>
+
+<h3>6.2. BAD → WORSE → THE WORST</h3>
+<p>Bad — yomon. Worse — yomonroq. The worst — eng yomon.</p>
+
+<div class="example"><div><p class="en">The weather is worse today.</p><p class="uz">Bugun ob-havo yomonroq.</p></div><button class="audio" onclick="speak('The weather is worse today.')">🔊</button></div>
+<div class="example"><div><p class="en">That was the worst day of the week.</p><p class="uz">Bu haftaning eng yomon kuni edi.</p></div><button class="audio" onclick="speak('That was the worst day of the week.')">🔊</button></div>
+
+<h3>6.3. FAR → FARTHER / FURTHER</h3>
+<p>Farther ko‘proq jismoniy masofani bildiradi. Further esa masofa bilan birga qo‘shimcha, yanada yoki batafsil ma'nosida ham ishlatiladi. Ayrim vaziyatlarda ikkalasi ham masofa uchun ishlatilishi mumkin.</p>
+
+<div class="example"><div><p class="en">My school is farther than yours.</p><p class="uz">Mening maktabim senikidan uzoqroq.</p></div><button class="audio" onclick="speak('My school is farther than yours.')">🔊</button></div>
+<div class="example"><div><p class="en">For further information, contact us.</p><p class="uz">Qo‘shimcha ma'lumot uchun biz bilan bog‘laning.</p></div><button class="audio" onclick="speak('For further information, contact us.')">🔊</button></div>
+
+<h3>6.4. LITTLE → LESS → THE LEAST</h3>
+<p>Bu shakllar miqdor yoki darajaning kamligini bildiradi.</p>
+
+<div class="example"><div><p class="en">I have less free time than you.</p><p class="uz">Menda sendagidan kamroq bo‘sh vaqt bor.</p></div><button class="audio" onclick="speak('I have less free time than you.')">🔊</button></div>
+<div class="example"><div><p class="en">This is the least expensive option.</p><p class="uz">Bu eng kam xarajatli variant.</p></div><button class="audio" onclick="speak('This is the least expensive option.')">🔊</button></div>
+
+<h3>6.5. MUCH / MANY → MORE → THE MOST</h3>
+<p>Much va many ko‘p ma'nosini beradi. Ularning Comparative shakli more, Superlative shakli the most.</p>
+
+<div class="example"><div><p class="en">I have more books than my brother.</p><p class="uz">Menda akamnikidan ko‘proq kitob bor.</p></div><button class="audio" onclick="speak('I have more books than my brother.')">🔊</button></div>
+<div class="example"><div><p class="en">She has the most friends in our group.</p><p class="uz">U guruhimizda eng ko‘p do‘stga ega.</p></div><button class="audio" onclick="speak('She has the most friends in our group.')">🔊</button></div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>GOOD → BETTER → THE BEST.</p>
+<p>BAD → WORSE → THE WORST.</p>
+<p>FAR → FARTHER / FURTHER → THE FARTHEST / THE FURTHEST.</p>
+<p>LITTLE → LESS → THE LEAST.</p>
+<p>MUCH / MANY → MORE → THE MOST.</p>
+<p>Bu shakllar oddiy -er va -est qoidasi bilan yasalmasligini unutmang.</p>
+</div>
+</section>
+
+<section id="advanced">
+<h2>7. KENGAYTIRILGAN TAQQOSLASH TUZILMALARI</h2>
+
+<h3>7.1. AS ... AS — kabi / ...chalik</h3>
+<p>Ikki inson yoki predmetning bir xil darajada ekanini bildirish uchun <b>as + adjective + as</b> ishlatiladi.</p>
+
+<span class="formula">Subject + be + as + adjective + as + noun/pronoun</span>
+
+<div class="example"><div><p class="en">Ali is as tall as Vali.</p><p class="uz">Ali Vali kabi baland.</p></div><button class="audio" onclick="speak('Ali is as tall as Vali.')">🔊</button></div>
+<div class="example"><div><p class="en">This book is as interesting as that one.</p><p class="uz">Bu kitob anavisi kabi qiziqarli.</p></div><button class="audio" onclick="speak('This book is as interesting as that one.')">🔊</button></div>
+<div class="example"><div><p class="en">My room is as large as yours.</p><p class="uz">Mening xonam senikidek katta.</p></div><button class="audio" onclick="speak('My room is as large as yours.')">🔊</button></div>
+
+<p><b>As ... as</b> tuzilmasida sifat oddiy shaklda qoladi. Taller yoki more beautiful ishlatmaymiz.</p>
+
+<div class="note">
+❌ Ali is as taller as Vali.<br>
+✅ Ali is as tall as Vali.
+</div>
+
+<h3>7.2. NOT AS ... AS — ...chalik emas</h3>
+<p>Biror narsa boshqasiga teng darajada emasligini bildiramiz.</p>
+
+<span class="formula">Subject + be + not as + adjective + as</span>
+
+<div class="example"><div><p class="en">This car is not as fast as that car.</p><p class="uz">Bu mashina anavi mashinachalik tez emas.</p></div><button class="audio" onclick="speak('This car is not as fast as that car.')">🔊</button></div>
+<div class="example"><div><p class="en">English is not as difficult as I thought.</p><p class="uz">Ingliz tili men o‘ylaganchalik qiyin emas.</p></div><button class="audio" onclick="speak('English is not as difficult as I thought.')">🔊</button></div>
+
+<h3>7.3. LESS ... THAN — kamroq / unchalik emas</h3>
+<p>Biror sifatning darajasi boshqasiga nisbatan pastroq ekanini ko‘rsatadi.</p>
+
+<span class="formula">less + adjective + than</span>
+
+<div class="example"><div><p class="en">This exercise is less difficult than the last one.</p><p class="uz">Bu mashq avvalgisiga qaraganda kamroq qiyin.</p></div><button class="audio" onclick="speak('This exercise is less difficult than the last one.')">🔊</button></div>
+<div class="example"><div><p class="en">This hotel is less expensive than that one.</p><p class="uz">Bu mehmonxona anavisidan arzonroq.</p></div><button class="audio" onclick="speak('This hotel is less expensive than that one.')">🔊</button></div>
+
+<h3>7.4. THE SAME AS — bilan bir xil</h3>
+<p>Ikki narsaning bir xil ekanini yoki o‘xshashligini bildirish uchun ishlatiladi.</p>
+
+<div class="example"><div><p class="en">My phone is the same as yours.</p><p class="uz">Mening telefonim senikiga bir xil.</p></div><button class="audio" onclick="speak('My phone is the same as yours.')">🔊</button></div>
+<div class="example"><div><p class="en">We are the same age.</p><p class="uz">Biz teng yoshdamiz.</p></div><button class="audio" onclick="speak('We are the same age.')">🔊</button></div>
+
+<h3>7.5. DIFFERENT FROM — dan farqli</h3>
+<p>Ikki narsa bir xil emasligini ko‘rsatadi.</p>
+
+<div class="example"><div><p class="en">My opinion is different from yours.</p><p class="uz">Mening fikrim senikidan farq qiladi.</p></div><button class="audio" onclick="speak('My opinion is different from yours.')">🔊</button></div>
+<div class="example"><div><p class="en">This city is different from my hometown.</p><p class="uz">Bu shahar mening tug‘ilgan shahrimdan farq qiladi.</p></div><button class="audio" onclick="speak('This city is different from my hometown.')">🔊</button></div>
+
+<h3>7.6. MUCH / FAR / A LOT + COMPARATIVE</h3>
+<p>Comparative darajani yanada kuchaytirish uchun much, far yoki a lot ishlatiladi. Ular ko‘pincha <b>ancha, juda ham</b> ma'nosini beradi.</p>
+
+<span class="formula">much / far / a lot + comparative adjective</span>
+
+<div class="example"><div><p class="en">This house is much bigger than mine.</p><p class="uz">Bu uy menikidan ancha kattaroq.</p></div><button class="audio" onclick="speak('This house is much bigger than mine.')">🔊</button></div>
+<div class="example"><div><p class="en">English is far more interesting now.</p><p class="uz">Ingliz tili hozir ancha qiziqarliroq.</p></div><button class="audio" onclick="speak('English is far more interesting now.')">🔊</button></div>
+<div class="example"><div><p class="en">This phone is a lot cheaper.</p><p class="uz">Bu telefon ancha arzonroq.</p></div><button class="audio" onclick="speak('This phone is a lot cheaper.')">🔊</button></div>
+
+<h3>7.7. A LITTLE / SLIGHTLY + COMPARATIVE</h3>
+<p>Taqqoslashdagi farq kichikligini bildirish uchun a little yoki slightly ishlatiladi.</p>
+
+<div class="example"><div><p class="en">This room is a little bigger.</p><p class="uz">Bu xona biroz kattaroq.</p></div><button class="audio" onclick="speak('This room is a little bigger.')">🔊</button></div>
+<div class="example"><div><p class="en">Today is slightly colder.</p><p class="uz">Bugun biroz sovuqroq.</p></div><button class="audio" onclick="speak('Today is slightly colder.')">🔊</button></div>
+
+<h3>7.8. EVEN + COMPARATIVE</h3>
+<p>Even taqqoslashni kuchaytiradi va <b>hatto undan ham</b> ma'nosini beradi.</p>
+
+<div class="example"><div><p class="en">This book is even better than the first one.</p><p class="uz">Bu kitob birinchisidan hatto yaxshiroq.</p></div><button class="audio" onclick="speak('This book is even better than the first one.')">🔊</button></div>
+
+<h3>7.9. THE MORE..., THE MORE...</h3>
+<p>Bu tuzilma bir narsa ortishi bilan boshqa narsa ham ortishini bildiradi.</p>
+
+<span class="formula">The + comparative ..., the + comparative ...</span>
+
+<div class="example"><div><p class="en">The more you practise, the better you become.</p><p class="uz">Qancha ko‘p mashq qilsang, shuncha yaxshilanib borasan.</p></div><button class="audio" onclick="speak('The more you practise, the better you become.')">🔊</button></div>
+<div class="example"><div><p class="en">The older I get, the wiser I become.</p><p class="uz">Yoshim ulg‘aygan sari dono bo‘lib boraman.</p></div><button class="audio" onclick="speak('The older I get, the wiser I become.')">🔊</button></div>
+
+<h3>7.10. COMPARATIVE AND COMPARATIVE</h3>
+<p>Biror holat asta-sekin o‘zgarib borayotganini bildirish uchun comparative shaklni takrorlaymiz.</p>
+
+<span class="formula">Comparative + and + Comparative</span>
+
+<div class="example"><div><p class="en">It is getting colder and colder.</p><p class="uz">Havo tobora sovuqlashib bormoqda.</p></div><button class="audio" onclick="speak('It is getting colder and colder.')">🔊</button></div>
+<div class="example"><div><p class="en">English is becoming more and more interesting.</p><p class="uz">Ingliz tili tobora qiziqarli bo‘lib bormoqda.</p></div><button class="audio" onclick="speak('English is becoming more and more interesting.')">🔊</button></div>
+
+<h3>7.11. ONE OF THE + SUPERLATIVE + PLURAL NOUN</h3>
+<p>Biror kishi yoki narsa bir guruhdagi eng yaxshi yoki eng muhimlardan biri ekanini bildiradi.</p>
+
+<span class="formula">One of the + superlative + plural noun</span>
+
+<div class="example"><div><p class="en">London is one of the most famous cities in the world.</p><p class="uz">London dunyodagi eng mashhur shaharlardan biridir.</p></div><button class="audio" onclick="speak('London is one of the most famous cities in the world.')">🔊</button></div>
+<div class="example"><div><p class="en">She is one of the best students in our school.</p><p class="uz">U maktabimizdagi eng yaxshi o‘quvchilardan biri.</p></div><button class="audio" onclick="speak('She is one of the best students in our school.')">🔊</button></div>
+
+<div class="note">
+<b>Muhim:</b> One of the dan keyin ot ko‘plikda keladi: one of the best <b>students</b>, one of the biggest <b>cities</b>.
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING — KENGAYTIRILGAN TUZILMALAR</strong>
+<p>AS + adjective + AS — ... kabi / ...chalik.</p>
+<p>NOT AS + adjective + AS — ...chalik emas.</p>
+<p>LESS + adjective + THAN — kamroq.</p>
+<p>THE SAME AS — bir xil.</p>
+<p>DIFFERENT FROM — dan farqli.</p>
+<p>MUCH / FAR / A LOT + comparative — ancha ...roq.</p>
+<p>A LITTLE / SLIGHTLY + comparative — biroz ...roq.</p>
+<p>THE + comparative, THE + comparative — qancha ..., shuncha ...</p>
+<p>Comparative + and + comparative — tobora ...roq.</p>
+<p>ONE OF THE + superlative + plural noun — eng ...lardan biri.</p>
+</div>
+</section>
+
+<section>
+<h2>8. COMPARATIVE VA SUPERLATIVE GAP TUZILISHI</h2>
+
+<h3>8.1. BE FE'LI BILAN</h3>
+<p>Comparative va Superlative sifatlar ko‘pincha am/is/are/was/were fe'llaridan keyin keladi.</p>
+
+<span class="formula">Subject + am/is/are + comparative + than + object</span>
+<span class="formula">Subject + am/is/are + the + superlative + noun/group</span>
+
+<div class="example"><div><p class="en">My sister is younger than me.</p><p class="uz">Singlim mendan yoshroq.</p></div><button class="audio" onclick="speak('My sister is younger than me.')">🔊</button></div>
+<div class="example"><div><p class="en">My sister is the youngest in our family.</p><p class="uz">Singlim oilamizdagi eng yoshi kichigi.</p></div><button class="audio" onclick="speak('My sister is the youngest in our family.')">🔊</button></div>
+
+<h3>8.2. OTHER VERBS BILAN</h3>
+<p>Taqqoslash faqat be fe'li bilan cheklanmaydi. Boshqa fe'llar bilan ham ishlatiladi.</p>
+
+<div class="example"><div><p class="en">I work harder than my brother.</p><p class="uz">Men akamdan ko‘ra ko‘proq mehnat qilaman.</p></div><button class="audio" onclick="speak('I work harder than my brother.')">🔊</button></div>
+<div class="example"><div><p class="en">She speaks more clearly than me.</p><p class="uz">U mendan aniqroq gapiradi.</p></div><button class="audio" onclick="speak('She speaks more clearly than me.')">🔊</button></div>
+
+<h3>8.3. INKOR GAP</h3>
+<div class="example"><div><p class="en">This book isn't more expensive than that one.</p><p class="uz">Bu kitob anavisidan qimmatroq emas.</p></div><button class="audio" onclick="speak('This book is not more expensive than that one.')">🔊</button></div>
+<div class="example"><div><p class="en">He isn't the tallest student.</p><p class="uz">U eng baland o‘quvchi emas.</p></div><button class="audio" onclick="speak('He is not the tallest student.')">🔊</button></div>
+
+<h3>8.4. SAVOL GAP</h3>
+<div class="example"><div><p class="en">Is your house bigger than mine?</p><p class="uz">Uying menikidan kattaroqmi?</p></div><button class="audio" onclick="speak('Is your house bigger than mine?')">🔊</button></div>
+<div class="example"><div><p class="en">Who is the oldest in your family?</p><p class="uz">Oilangizda kim eng katta?</p></div><button class="audio" onclick="speak('Who is the oldest in your family?')">🔊</button></div>
+<div class="example"><div><p class="en">Which city is the most beautiful?</p><p class="uz">Qaysi shahar eng chiroyli?</p></div><button class="audio" onclick="speak('Which city is the most beautiful?')">🔊</button></div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>Comparative: Subject + be / verb + comparative + than + object.</p>
+<p>Superlative: Subject + be + the + superlative + group/place.</p>
+<p>Savol yasashda be fe'li egadan oldinga chiqadi: Is it bigger?</p>
+</div>
+</section>
+
+<section id="mistakes">
+<h2>9. ENG KO‘P UCHRAYDIGAN XATOLAR</h2>
+
+<div class="note">
+<b>1. MORE + -ER ni birga ishlatish</b><br>
+❌ more taller<br>
+✅ taller<br>
+❌ more cheaper<br>
+✅ cheaper
+</div>
+
+<div class="note">
+<b>2. MOST + -EST ni birga ishlatish</b><br>
+❌ the most tallest<br>
+✅ the tallest<br>
+❌ the most biggest<br>
+✅ the biggest
+</div>
+
+<div class="note">
+<b>3. Than o‘rniga then ishlatish</b><br>
+❌ Ali is taller then Vali.<br>
+✅ Ali is taller than Vali.
+</div>
+
+<div class="note">
+<b>4. Superlative oldidan the ni unutish</b><br>
+❌ She is tallest girl in the class.<br>
+✅ She is the tallest girl in the class.
+</div>
+
+<div class="note">
+<b>5. As...as bilan comparative ishlatish</b><br>
+❌ He is as taller as me.<br>
+✅ He is as tall as me.
+</div>
+
+<div class="note">
+<b>6. Irregular shakllarni noto‘g‘ri ishlatish</b><br>
+❌ gooder<br>
+✅ better<br>
+❌ badder<br>
+✅ worse
+</div>
+
+<div class="note">
+<b>7. One of the dan keyin birlik ot ishlatish</b><br>
+❌ one of the best student<br>
+✅ one of the best students
+</div>
+
+<div class="note">
+<b>8. Y harfini noto‘g‘ri o‘zgartirish</b><br>
+❌ happyer<br>
+✅ happier<br>
+❌ easyest<br>
+✅ easiest
+</div>
+
+<div class="note">
+<b>9. Big so‘zidagi undoshni ikki marta yozmaslik</b><br>
+❌ biger<br>
+✅ bigger<br>
+❌ bigest<br>
+✅ biggest
+</div>
+
+<div class="note">
+<b>10. Long adjective bilan -er ishlatish</b><br>
+❌ beautifuler<br>
+✅ more beautiful
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>Bir sifat bilan bir vaqtning o‘zida more va -er ishlatmang.</p>
+<p>Bir sifat bilan bir vaqtning o‘zida most va -est ishlatmang.</p>
+<p>Comparative bilan than, Superlative bilan ko‘pincha the ishlatiladi.</p>
+<p>As...as orasida sifatning oddiy shakli keladi.</p>
+</div>
+</section>
+
+<section>
+<h2>10. TAQQOSLASHNI O‘RGANISH UCHUN NAMUNAVIY MATNLAR</h2>
+
+<h3>10.1. Two Cities</h3>
+<p>My hometown is smaller than the capital city. The capital is more crowded and more expensive. However, my hometown is quieter and cleaner. The people in my town are very friendly. The capital has more shops, bigger buildings and better public transport. I think both cities are interesting, but I prefer my hometown because life is more peaceful there.</p>
+<button class="audio" onclick="speak('My hometown is smaller than the capital city. The capital is more crowded and more expensive. However, my hometown is quieter and cleaner. The people in my town are very friendly. The capital has more shops, bigger buildings and better public transport. I think both cities are interesting, but I prefer my hometown because life is more peaceful there.')">🔊 Listen</button>
+<button class="secondary" onclick="speakSlow('My hometown is smaller than the capital city. The capital is more crowded and more expensive. However, my hometown is quieter and cleaner. The people in my town are very friendly. The capital has more shops, bigger buildings and better public transport. I think both cities are interesting, but I prefer my hometown because life is more peaceful there.')">🐢 Slow</button>
+
+<h3>10.2. My Two Friends</h3>
+<p>Aziz and Jamshid are my friends. Aziz is taller than Jamshid, but Jamshid is younger. Aziz is more serious, while Jamshid is funnier. Both are hardworking and helpful. Jamshid is the fastest runner in our group. Aziz is the most careful student. They are different, but both are excellent friends.</p>
+<button class="audio" onclick="speak('Aziz and Jamshid are my friends. Aziz is taller than Jamshid, but Jamshid is younger. Aziz is more serious, while Jamshid is funnier. Both are hardworking and helpful. Jamshid is the fastest runner in our group. Aziz is the most careful student. They are different, but both are excellent friends.')">🔊 Listen</button>
+<button class="secondary" onclick="speakSlow('Aziz and Jamshid are my friends. Aziz is taller than Jamshid, but Jamshid is younger. Aziz is more serious, while Jamshid is funnier. Both are hardworking and helpful. Jamshid is the fastest runner in our group. Aziz is the most careful student. They are different, but both are excellent friends.')">🐢 Slow</button>
+
+<h3>10.3. O‘zingizni tekshiring</h3>
+<ol>
+<li>Which city is smaller?</li>
+<li>Why does the writer prefer the hometown?</li>
+<li>Who is taller, Aziz or Jamshid?</li>
+<li>Who is the fastest runner?</li>
+<li>Who is the most careful student?</li>
+</ol>
+</section>
+
+<section id="vocab">
+<h2>11. VOCABULARY — 40 TA YANGI SO‘Z</h2>
+<p>Har bir so‘zning talaffuziga e'tibor bering. Avval inglizcha so‘zni tinglang, keyin tarjimasini o‘qing va misol gapni ham eshiting.</p>
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>40 ta so‘zning barchasini lug‘at daftaringizga yozing. Inglizcha so‘z, talaffuz, o‘zbekcha tarjima va misol gapni birga o‘rganing.</p>
+</div>
+<div id="vocabularyList" class="word-list"></div>
+</section>
+
+<section id="skills">
+<h2>12. FOUR SKILLS — 4 KO‘NIKMA</h2>
+
+<div class="skill">
+<h3>12.1. READING — A Visit to the City</h3>
+<p>Last weekend, I visited two cities with my family. The first city was smaller and quieter than the second one. It had beautiful parks and clean streets. The second city was bigger, busier and more modern. It had the largest shopping centre in the region.</p>
+<p>We visited many interesting places. The most beautiful place was an old park near the river. The food in the second city was more expensive, but the restaurants were more comfortable. My brother thought the second city was better, but I preferred the first one.</p>
+<p>For me, a city does not have to be the biggest or the most modern to be a wonderful place. Sometimes, smaller towns are more peaceful and friendlier.</p>
+<button class="audio" onclick="speak('Last weekend, I visited two cities with my family. The first city was smaller and quieter than the second one. It had beautiful parks and clean streets. The second city was bigger, busier and more modern. It had the largest shopping centre in the region. We visited many interesting places. The most beautiful place was an old park near the river. The food in the second city was more expensive, but the restaurants were more comfortable. My brother thought the second city was better, but I preferred the first one. For me, a city does not have to be the biggest or the most modern to be a wonderful place. Sometimes, smaller towns are more peaceful and friendlier.')">🔊 Normal audio</button>
+<button class="secondary" onclick="speakSlow('Last weekend, I visited two cities with my family. The first city was smaller and quieter than the second one. It had beautiful parks and clean streets. The second city was bigger, busier and more modern. It had the largest shopping centre in the region. We visited many interesting places. The most beautiful place was an old park near the river. The food in the second city was more expensive, but the restaurants were more comfortable. My brother thought the second city was better, but I preferred the first one. For me, a city does not have to be the biggest or the most modern to be a wonderful place. Sometimes, smaller towns are more peaceful and friendlier.')">🐢 Slow audio</button>
+<h4>Reading questions</h4>
+<ol>
+<li>Which city was quieter?</li>
+<li>Which city was more modern?</li>
+<li>What was the most beautiful place?</li>
+<li>Which city had more expensive food?</li>
+<li>Which city did the writer prefer?</li>
+<li>Does the writer think the biggest city is always the best?</li>
+</ol>
+</div>
+
+<div class="skill">
+<h3>12.2. LISTENING — Choosing a New Phone</h3>
+<p><b>Dialogue:</b></p>
+<p><b>Tom:</b> I want to buy a new phone. This one is cheaper than that one.</p>
+<p><b>Anna:</b> Yes, but the other phone has a better camera.</p>
+<p><b>Tom:</b> Is it much more expensive?</p>
+<p><b>Anna:</b> A little. But it is also faster and has a bigger screen.</p>
+<p><b>Tom:</b> Which one is the best choice?</p>
+<p><b>Anna:</b> It depends on what you need. The cheaper phone is good, but the more expensive one is more powerful.</p>
+<button class="audio" onclick="speak('Tom: I want to buy a new phone. This one is cheaper than that one. Anna: Yes, but the other phone has a better camera. Tom: Is it much more expensive? Anna: A little. But it is also faster and has a bigger screen. Tom: Which one is the best choice? Anna: It depends on what you need. The cheaper phone is good, but the more expensive one is more powerful.')">🔊 Normal audio</button>
+<button class="secondary" onclick="speakSlow('Tom: I want to buy a new phone. This one is cheaper than that one. Anna: Yes, but the other phone has a better camera. Tom: Is it much more expensive? Anna: A little. But it is also faster and has a bigger screen. Tom: Which one is the best choice? Anna: It depends on what you need. The cheaper phone is good, but the more expensive one is more powerful.')">🐢 Slow audio</button>
+<h4>Listening questions</h4>
+<ol>
+<li>What does Tom want to buy?</li>
+<li>Which phone is cheaper?</li>
+<li>Which phone has a better camera?</li>
+<li>Which phone has a bigger screen?</li>
+<li>What does Anna say about the best choice?</li>
+</ol>
+</div>
+
+<div class="skill">
+<h3>12.3. SPEAKING — GAPIRISH MASHQI</h3>
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir javobda kamida 2 ta gap ishlatishga harakat qiling.</p>
+<ol>
+<li>Is your hometown bigger or smaller than the capital city?</li>
+<li>Who is the oldest person in your family?</li>
+<li>What is the most interesting book you have read?</li>
+<li>Is English easier or more difficult than you expected?</li>
+<li>Which is more comfortable, a car or a bus?</li>
+<li>What is the best day of the week for you?</li>
+<li>Are you more confident now than last year?</li>
+<li>What is the most important thing in your life?</li>
+<li>Which is better for learning: reading or listening?</li>
+<li>What is one of the most beautiful places you know?</li>
+</ol>
+<div class="note">
+<b>Namuna:</b><br>
+"My hometown is smaller than the capital city. It is quieter and less crowded. I think it is one of the most peaceful places."
+</div>
+</div>
+
+<div class="skill">
+<h3>12.4. WRITING — Compare Two Places</h3>
+<p><b>Mavzu:</b> Compare two cities, towns or places you know.</p>
+<p>100–150 so‘z yozing. Matningizda quyidagilardan foydalaning:</p>
+<ul>
+<li>kamida 4 ta Comparative;</li>
+<li>kamida 2 ta Superlative;</li>
+<li>as...as yoki not as...as;</li>
+<li>more yoki less;</li>
+<li>than, in yoki of.</li>
+</ul>
+<p><b>Yozishni boshlash uchun namuna:</b></p>
+<div class="example"><div><p class="en">My hometown is smaller than the capital, but it is quieter and more peaceful.</p><p class="uz">Mening shahrim poytaxtdan kichikroq, ammo tinchroq va osoyishtaroq.</p></div><button class="audio" onclick="speak('My hometown is smaller than the capital, but it is quieter and more peaceful.')">🔊</button></div>
+<textarea rows="8" placeholder="Write your 100–150 word text here..."></textarea>
+</div>
+</section>
+
+<section id="homework">
+<h2>13. HOMEWORK — UYGA VAZIFA</h2>
+<p>Uyga vazifa bitta bo‘limdan iborat. Unda 5 ta topshiriq bor. Barcha ishlarni daftarda bajaring.</p>
+
+<div class="copy">
+<strong>📒 1-TOPSHIRIQ — GRAMMAR</strong>
+<p>Qavs ichidagi sifatlarni Comparative shakliga o‘zgartirib, gaplarni to‘ldiring.</p>
+<ol>
+<li>My brother is ______ than me. (tall)</li>
+<li>This book is ______ than that one. (interesting)</li>
+<li>Today is ______ than yesterday. (hot)</li>
+<li>English is ______ than I expected. (easy)</li>
+<li>This bag is ______ than mine. (heavy)</li>
+<li>A train is ______ than a bus. (fast)</li>
+<li>My room is ______ than yours. (large)</li>
+<li>This phone is ______ than that one. (expensive)</li>
+<li>She is ______ than her sister. (happy)</li>
+<li>Health is ______ than money. (important)</li>
+</ol>
+</div>
+
+<div class="copy">
+<strong>📒 2-TOPSHIRIQ — GRAMMAR</strong>
+<p>Qavs ichidagi sifatlarni Superlative shakliga o‘zgartirib, gaplarni to‘ldiring.</p>
+<ol>
+<li>He is ______ boy in the class. (tall)</li>
+<li>This is ______ book in the shop. (cheap)</li>
+<li>She is ______ student in our group. (careful)</li>
+<li>It is ______ day of the year. (hot)</li>
+<li>This is ______ place in the city. (beautiful)</li>
+<li>He is ______ person in his family. (old)</li>
+<li>That was ______ film I have ever seen. (interesting)</li>
+<li>This is ______ question in the test. (easy)</li>
+<li>It is ______ building in the town. (big)</li>
+<li>She is one of ______ students in the school. (good)</li>
+</ol>
+</div>
+
+<div class="copy">
+<strong>📒 3-TOPSHIRIQ — VOCABULARY</strong>
+<p>Bugungi 40 ta so‘zni yodlang. Har bir so‘z bilan bittadan o‘z gaplaringizni tuzing. Jami 40 ta gap yozing.</p>
+<p>Kamida 10 ta gapda Comparative yoki Superlative shaklidan foydalaning.</p>
+</div>
+
+<div class="copy">
+<strong>📒 4-TOPSHIRIQ — TRANSLATION INTO ENGLISH</strong>
+<p>Quyidagi gaplarni ingliz tiliga tarjima qiling.</p>
+<ol>
+<li>Mening uyim sening uyingdan kattaroq.</li>
+<li>Bu shahardagi eng chiroyli park.</li>
+<li>Bugun kechagidan sovuqroq.</li>
+<li>Ingliz tili men o‘ylaganimdan osonroq.</li>
+<li>U oiladagi eng yosh bola.</li>
+<li>Bu telefon anavisidan qimmatroq.</li>
+<li>Men akam kabi baland emasman.</li>
+<li>Bu eng yaxshi kitoblardan biri.</li>
+<li>Qancha ko‘p mashq qilsang, shuncha yaxshi gapirasan.</li>
+<li>Bu xona menikidan biroz kattaroq.</li>
+</ol>
+</div>
+
+<div class="copy">
+<strong>📒 5-TOPSHIRIQ — TRANSLATION INTO UZBEK</strong>
+<p>Quyidagi gaplarni o‘zbek tiliga tarjima qiling.</p>
+<ol>
+<li>This is the most comfortable chair in the room.</li>
+<li>My new phone is much faster than my old phone.</li>
+<li>She is one of the smartest students in the class.</li>
+<li>Today is not as cold as yesterday.</li>
+<li>This road is less dangerous than that road.</li>
+<li>He is the best player in our team.</li>
+<li>The more you read, the more you learn.</li>
+<li>My English is getting better and better.</li>
+<li>This is the most expensive restaurant in the city.</li>
+<li>Which is more important: time or money?</li>
+</ol>
+</div>
+</section>
+
+<section id="test">
+<h2>14. FINAL TEST — 30 QUESTIONS</h2>
+<p>Testda 30 ta savol bor. Har bir to‘g‘ri javob 1 ball. Savollar turli qoidalardan tuzilgan.</p>
+<div class="note">
+<b>O‘tish mezoni: 80% — 24/30.</b><br>
+Testni tugatgach Submit Test tugmasini bosing. Natijangiz va har bir savolning izohi ko‘rsatiladi.
+</div>
+<div id="quizContainer"></div>
+<button class="main-btn" onclick="submitQuiz()">SUBMIT TEST</button>
+<button class="secondary" onclick="resetQuiz()">RESET TEST</button>
+<div id="resultBox"></div>
+</section>
+
+<section>
+<h2>15. DARS YAKUNI</h2>
+<p>Bugun siz sifatlarning qiyosiy va orttirma darajalarini o‘rgandingiz. Endi ikki narsani taqqoslash, biror narsani eng yaxshi yoki eng katta deb ta'riflash va tenglikni ifodalashni bilasiz.</p>
+
+<div class="copy">
+<strong>📒 O‘ZINGIZNI TEKSHIRING</strong>
+<ul>
+<li>Comparative nima ekanini tushuntira olamanmi?</li>
+<li>Superlative nima ekanini tushuntira olamanmi?</li>
+<li>-er va -est qoidalarini bilamanmi?</li>
+<li>More va most qachon ishlatilishini bilamanmi?</li>
+<li>Good, bad, far, little shakllarini yod oldimmi?</li>
+<li>Than va the ishlatilishini tushunamanmi?</li>
+<li>As...as va not as...as bilan gap tuza olamanmi?</li>
+<li>Much, far, a little bilan Comparative ishlata olamanmi?</li>
+<li>The more..., the more... tuzilmasini tushunamanmi?</li>
+</ul>
+</div>
+
+<h3>Motivatsiya</h3>
+<p>Ingliz tilini o‘rganish musobaqa emas. Eng muhimi — kechagi o‘zingizdan yaxshiroq bo‘lish. Har kuni yangi so‘z, yangi qoida va yangi gap o‘rganing. Xato qilishdan qo‘rqmang: xatolar ham o‘rganish jarayonining bir qismi.</p>
+
+<p><b>Every day, your English can become better and better!</b></p>
+<p>Har kuni ingliz tilingiz yaxshilanib borishi mumkin. Faqat muntazam davom eting!</p>
+</section>
+
+<div class="footer">
+<strong>ENGLISH UP</strong>
+<p>Learn today. Succeed tomorrow.</p>
+<p>Lesson 9 — Comparatives & Superlatives</p>
+</div>
+
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  localStorage.setItem("euLessonTheme",document.body.classList.contains("dark")?"dark":"light");
+}
+if(localStorage.getItem("euLessonTheme")==="dark"){
+  document.body.classList.add("dark");
+}
+
+function speak(text){
+  if(!("speechSynthesis" in window)){
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+  speechSynthesis.cancel();
+  const msg=new SpeechSynthesisUtterance(text);
+  msg.lang="en-US";
+  msg.rate=0.9;
+  speechSynthesis.speak(msg);
+}
+function speakSlow(text){
+  if(!("speechSynthesis" in window)){
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+  speechSynthesis.cancel();
+  const msg=new SpeechSynthesisUtterance(text);
+  msg.lang="en-US";
+  msg.rate=0.65;
+  speechSynthesis.speak(msg);
+}
+
+const vocabulary=[
+["adjective","sifat","AD-jek-tiv","Beautiful is an adjective."],
+["compare","taqqoslamoq","kəm-PEYR","We compare two cities."],
+["comparison","taqqoslash","kəm-PE-ri-sən","This comparison is useful."],
+["similar","o‘xshash","SI-mi-ler","Our houses are similar."],
+["different","farqli","DIF-rənt","The two cities are different."],
+["difference","farq","DIF-rəns","There is a big difference."],
+["equal","teng","II-kwəl","The two teams are equal."],
+["height","bo‘y, balandlik","HAYT","What is your height?"],
+["weight","vazn","WEYT","The weight of the box is important."],
+["size","o‘lcham","SAYZ","What size is your room?"],
+["distance","masofa","DIS-təns","The distance is very long."],
+["distance","masofa","DIS-təns","The distance between the towns is short."],
+["crowded","gavjum","KRAU-did","The city is crowded."],
+["quiet","tinch","KWAI-ət","Our street is quiet."],
+["peaceful","osoyishta","PIIS-fəl","This village is peaceful."],
+["modern","zamonaviy","MO-dern","This is a modern building."],
+["ancient","qadimiy","EYN-shənt","We visited an ancient city."],
+["comfortable","qulay","KAMF-tə-bəl","This chair is comfortable."],
+["convenient","qulay, mos","kən-VII-ni-ənt","The location is convenient."],
+["expensive","qimmat","ik-SPEN-siv","That car is expensive."],
+["affordable","hamyonbop","ə-FOR-də-bəl","This phone is affordable."],
+["valuable","qimmatli","VAL-yu-ə-bəl","Time is valuable."],
+["popular","mashhur","POP-yu-ler","Football is popular."],
+["famous","mashhur","FEY-məs","This place is famous."],
+["successful","muvaffaqiyatli","sək-SES-fəl","She is a successful student."],
+["intelligent","aqlli","in-TEL-i-jənt","He is an intelligent boy."],
+["careful","ehtiyotkor","KER-fəl","Be careful on the road."],
+["friendly","do‘stona","FREND-li","The people are friendly."],
+["healthy","sog‘lom","HEL-thi","Healthy food is important."],
+["dangerous","xavfli","DEYN-jə-rəs","This road is dangerous."],
+["safe","xavfsiz","SEYF","This place is safe."],
+["strong","kuchli","STRONG","He is strong."],
+["weak","kuchsiz","WIIK","The signal is weak."],
+["wide","keng","WAYD","This road is wide."],
+["narrow","tor","NER-ou","The street is narrow."],
+["bright","yorug‘","BRAYT","The room is bright."],
+["dark","qorong‘i","DARK","The room is dark."],
+["improve","yaxshilamoq","im-PRUUV","You can improve your English."],
+["prefer","afzal ko‘rmoq","pri-FER","I prefer the smaller city."],
+["average","o‘rtacha","AV-rij","The average price is low."]
+];
+
+const vocabBox=document.getElementById("vocabularyList");
+vocabulary.forEach((w,i)=>{
+  const card=document.createElement("div");
+  card.className="word";
+  card.innerHTML=`
+    <div class="word-top">
+      <b>${i+1}. ${w[0]}</b>
+      <button class="audio" aria-label="Play word" onclick="speak(${JSON.stringify(w[0])})">🔊</button>
+    </div>
+    <small>Pronunciation: ${w[2]}</small>
+    <div class="meaning">${w[1]}</div>
+    <div class="sentence">${w[3]}</div>
+    <button class="secondary" onclick="speak(${JSON.stringify(w[3])})">🔊 Example audio</button>
+  `;
+  vocabBox.appendChild(card);
+});
+
+const questions=[
+{q:"Comparative nima uchun ishlatiladi?",o:["Bitta narsani nomlash uchun","Ikki narsani taqqoslash uchun","Faqat o'tgan zamon uchun","Savol yasash uchun"],a:1,e:"Comparative ikki inson yoki narsani taqqoslaydi."},
+{q:"Tall so‘zining Comparative shakli qaysi?",o:["tallest","more tall","taller","the tall"],a:2,e:"Bir bo‘g‘inli tall sifatiga -er qo‘shiladi."},
+{q:"Big so‘zining Comparative shakli qaysi?",o:["biger","more big","bigger","biggest"],a:2,e:"Big so‘zida oxirgi undosh ikki marta yoziladi: bigger."},
+{q:"Beautiful so‘zining Comparative shakli qaysi?",o:["beautifuller","more beautiful","beautifullest","most beautiful"],a:1,e:"Beautiful uzun sifat. Comparative shakli more beautiful."},
+{q:"Happy so‘zining Comparative shakli qaysi?",o:["happyer","more happy","happier","happiest"],a:2,e:"Undosh + y bilan tugagan sifatda y → i bo‘ladi."},
+{q:"Nice so‘zining Comparative shakli qaysi?",o:["niceer","nicer","more nice","nicest"],a:1,e:"Nice e bilan tugaydi, shuning uchun faqat r qo‘shiladi."},
+{q:"Good so‘zining Comparative shakli qaysi?",o:["gooder","better","best","more good"],a:1,e:"Good → better → the best."},
+{q:"Bad so‘zining Superlative shakli qaysi?",o:["the baddest","the worst","the worse","the most bad"],a:1,e:"Bad → worse → the worst."},
+{q:"Superlative oldidan odatda qaysi artikl ishlatiladi?",o:["a","an","the","no article"],a:2,e:"Superlative bilan ko‘pincha the ishlatiladi."},
+{q:"Than nimani anglatadi?",o:["keyin","-dan (taqqoslashda)","eng","chunki"],a:1,e:"Than taqqoslashda -dan ma'nosini beradi."},
+{q:"My house is ___ than yours.",o:["big","bigger","biggest","the biggest"],a:1,e:"Ikki uy taqqoslanmoqda: bigger than."},
+{q:"She is ___ girl in the class.",o:["taller","the taller","the tallest","most tall"],a:2,e:"Sinfdagi eng baland qiz — the tallest."},
+{q:"As ___ as qaysi shakl bilan ishlatiladi?",o:["Comparative","Superlative","Oddiy sifat","Faqat fe'l"],a:2,e:"As...as orasida sifatning oddiy shakli keladi."},
+{q:"This car is not as ___ as that car.",o:["faster","fast","fastest","more fast"],a:1,e:"Not as...as tuzilmasida oddiy sifat ishlatiladi."},
+{q:"Qaysi shakl to‘g‘ri?",o:["more easier","easier","most easier","easyer"],a:1,e:"Easy → easier. More easier noto‘g‘ri."},
+{q:"Expensive so‘zining Superlative shakli qaysi?",o:["the expensivest","the most expensive","more expensive","the expensive"],a:1,e:"Uzun sifat: the most + adjective."},
+{q:"The ___ you practise, the better you become.",o:["most","more","much","many"],a:1,e:"The more..., the better... — qancha ko‘p..., shuncha yaxshi..." },
+{q:"One of the best ___ in the city.",o:["restaurant","restaurants","restaurant's","most restaurant"],a:1,e:"One of the dan keyin ko‘plik ot ishlatiladi."},
+{q:"Much bigger nimani anglatadi?",o:["Biroz kattaroq","Ancha kattaroq","Eng katta","Kattalik emas"],a:1,e:"Much + comparative taqqoslashni kuchaytiradi."},
+{q:"A little colder nimani anglatadi?",o:["Eng sovuq","Ancha sovuq","Biroz sovuqroq","Sovuq emas"],a:2,e:"A little + comparative kichik farqni bildiradi."},
+{q:"Little so‘zining Comparative shakli qaysi?",o:["littler","less","least","more little"],a:1,e:"Little → less → the least."},
+{q:"Far so‘zining Superlative shakllaridan biri qaysi?",o:["the farer","the farthest","the more far","the most far"],a:1,e:"Far → farther → the farthest."},
+{q:"Qaysi gap to‘g‘ri?",o:["Ali is more taller than Vali.","Ali is taller than Vali.","Ali is the taller than Vali.","Ali taller than Vali."],a:1,e:"Taller than — to‘g‘ri Comparative tuzilmasi."},
+{q:"The most beautiful nimani anglatadi?",o:["Chiroyliroq","Eng chiroyli","Chiroyli kabi","Chiroyli emas"],a:1,e:"The most beautiful — eng chiroyli."},
+{q:"Qaysi gapda imlo xatosi bor?",o:["bigger","happier","easier","biger"],a:3,e:"Big so‘zida g ikki marta yoziladi: bigger."},
+{q:"Qaysi gap to‘g‘ri?",o:["This is the most biggest house.","This is biggest house.","This is the biggest house.","This is more biggest house."],a:2,e:"Biggest oldidan the ishlatiladi. More biggest noto‘g‘ri."},
+{q:"Less expensive nimani anglatadi?",o:["Qimmatroq","Arzonroq / kamroq qimmat","Eng qimmat","Qimmat kabi"],a:1,e:"Less expensive — kamroq qimmat, ya'ni arzonroq."},
+{q:"The same as nimani anglatadi?",o:["dan farqli","bir xil","eng yaxshi","ko‘proq"],a:1,e:"The same as — bilan bir xil."},
+{q:"Which is ___, tea or coffee?",o:["good","better","best","the better"],a:1,e:"Ikki narsa taqqoslanmoqda: better."},
+{q:"This is one of ___ books I have read.",o:["interesting","more interesting","the most interesting","most interesting"],a:2,e:"One of the + superlative + plural noun tuzilmasi."}
+];
+
+const quizBox=document.getElementById("quizContainer");
+questions.forEach((q,i)=>{
+  const div=document.createElement("div");
+  div.className="quiz-question";
+  div.id="question"+i;
+  div.innerHTML=`<h4>${i+1}. ${q.q}</h4>`+
+    q.o.map((op,j)=>`
+      <label class="option">
+        <input type="radio" name="q${i}" value="${j}">
+        ${String.fromCharCode(65+j)}. ${op}
+      </label>`).join("")+
+    `<div class="feedback" id="feedback${i}"></div>`;
+  quizBox.appendChild(div);
+});
+
+function submitQuiz(){
+  let score=0,answered=0;
+  questions.forEach((q,i)=>{
+    const selected=document.querySelector(`input[name="q${i}"]:checked`);
+    const feedback=document.getElementById("feedback"+i);
+    const labels=document.querySelectorAll(`#question${i} .option`);
+    labels.forEach((label,j)=>{
+      label.style.borderColor="var(--border)";
+      if(j===q.a) label.style.borderColor="var(--green)";
+    });
+    if(selected){
+      answered++;
+      if(Number(selected.value)===q.a){
+        score++;
+        feedback.innerHTML=`<span class="correct">✓ To‘g‘ri!</span> ${q.e}`;
+      }else{
+        feedback.innerHTML=`<span class="incorrect">✗ Noto‘g‘ri.</span> To‘g‘ri javob: <b>${q.o[q.a]}</b>. ${q.e}`;
+      }
+    }else{
+      feedback.innerHTML=`<span class="incorrect">Javob berilmagan.</span> To‘g‘ri javob: <b>${q.o[q.a]}</b>. ${q.e}`;
+    }
+  });
+
+  const percent=Math.round(score/questions.length*100);
+  const passed=percent>=80;
+  const result=document.getElementById("resultBox");
+  result.style.display="block";
+  result.innerHTML=`
+    <h3>${passed?"🎉 Tabriklaymiz!":"📘 Yana bir bor takrorlang!"}</h3>
+    <h2>${score} / 30 — ${percent}%</h2>
+    <p>Javob berilgan: ${answered} / 30</p>
+    <p>To‘g‘ri javob: ${score}</p>
+    <p>Noto‘g‘ri yoki javobsiz: ${30-score}</p>
+    <p><b>${passed?"Siz testdan muvaffaqiyatli o‘tdingiz!":"O‘tish uchun kamida 24 ta to‘g‘ri javob kerak."}</b></p>
+    <p>${passed?"Keyingi darsga tayyorgarlik ko‘rishingiz mumkin.":"Xatolarni o‘rganib, testni qayta ishlang."}</p>
+  `;
+  result.scrollIntoView({behavior:"smooth",block:"center"});
+  localStorage.setItem("euLesson9Score",JSON.stringify({score,percent,passed}));
+  document.querySelectorAll("#quizContainer input").forEach(el=>el.disabled=true);
+}
+function resetQuiz(){
+  document.querySelectorAll("#quizContainer input").forEach(el=>{
+    el.disabled=false;el.checked=false;
+  });
+  document.querySelectorAll(".feedback").forEach(el=>el.innerHTML="");
+  document.querySelectorAll(".option").forEach(el=>el.style.borderColor="var(--border)");
+  document.getElementById("resultBox").style.display="none";
+}
+
+window.addEventListener("scroll",()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=max>0?Math.min(100,Math.round(window.scrollY/max*100)):0;
+  document.getElementById("progressFill").style.width=pct+"%";
+});
+</script>
+</body>
+</html>
+
