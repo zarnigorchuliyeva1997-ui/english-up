@@ -1,1 +1,715 @@
-lessons/
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Lesson 2 | Have Got / Has Got — English Up</title>
+  <style>
+    :root {
+      --purple:#7047eb;
+      --purple2:#8b6cf3;
+      --bg:#f5f3ff;
+      --card:#ffffff;
+      --text:#25213a;
+      --muted:#6e6882;
+      --border:#e8e2fa;
+      --soft:#f0ebff;
+      --green:#168653;
+      --red:#d04444;
+      --shadow:0 5px 22px rgba(54,35,105,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:Arial,Helvetica,sans-serif;line-height:1.7;
+    }
+    body.dark{
+      --bg:#171426;--card:#231e36;--text:#f4f0ff;
+      --muted:#c0b8d7;--border:#39304f;--soft:#302747;
+      --shadow:0 5px 22px rgba(0,0,0,.2);
+    }
+    header{
+      position:sticky;top:0;z-index:10;background:var(--card);
+      border-bottom:1px solid var(--border);padding:12px 4%;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .brand{font-weight:900;color:var(--purple);letter-spacing:1px}
+    .header-actions{display:flex;gap:8px;align-items:center}
+    .header-actions a,.header-actions button{
+      text-decoration:none;border:1px solid var(--border);
+      background:var(--soft);color:var(--text);padding:8px 12px;
+      border-radius:10px;font-weight:700;cursor:pointer;
+    }
+    main{max-width:950px;margin:24px auto;padding:0 14px 50px}
+    .hero{
+      background:linear-gradient(135deg,#7047eb,#9b7cff);
+      color:white;border-radius:22px;padding:28px 22px;margin-bottom:20px;
+      box-shadow:var(--shadow);
+    }
+    .hero h1{font-size:clamp(25px,5vw,38px);line-height:1.2;margin:8px 0}
+    .hero p{margin:8px 0}
+    .tag{
+      display:inline-block;background:rgba(255,255,255,.18);
+      padding:5px 11px;border-radius:20px;font-size:13px;font-weight:700;
+    }
+    .progress-wrap{height:9px;background:rgba(255,255,255,.3);border-radius:20px;margin-top:18px;overflow:hidden}
+    #progressBar{height:100%;width:0;background:white;transition:.3s}
+    .section{
+      background:var(--card);border:1px solid var(--border);
+      border-radius:18px;padding:22px;margin:18px 0;box-shadow:var(--shadow);
+    }
+    h2{font-size:22px;color:var(--purple);margin:0 0 12px}
+    h3{font-size:18px;margin:20px 0 8px}
+    p{margin:9px 0}
+    .muted{color:var(--muted)}
+    .note,.example,.warning,.success-box{
+      padding:13px 15px;border-radius:12px;margin:12px 0;
+    }
+    .note{background:var(--soft);border-left:4px solid var(--purple)}
+    .example{background:var(--soft)}
+    .warning{background:rgba(208,68,68,.09);border-left:4px solid var(--red)}
+    .success-box{background:rgba(22,134,83,.1);border-left:4px solid var(--green)}
+    .big-rule{
+      font-size:19px;font-weight:800;text-align:center;
+      padding:16px;background:var(--soft);border-radius:13px;margin:14px 0;
+    }
+    .pill{
+      display:inline-block;background:var(--soft);padding:3px 9px;
+      border-radius:8px;font-weight:700;color:var(--purple);
+    }
+    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
+    th,td{padding:10px;border:1px solid var(--border);text-align:left}
+    th{background:var(--soft)}
+    .word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}
+    .word{
+      padding:11px;background:var(--soft);border-radius:11px;
+      display:flex;justify-content:space-between;gap:8px;align-items:center;
+    }
+    .word button,.audio-btn{
+      border:0;background:var(--purple);color:white;border-radius:8px;
+      padding:6px 10px;cursor:pointer;font-weight:700;
+    }
+    .exercise{
+      border:1px solid var(--border);padding:14px;border-radius:13px;margin:12px 0;
+    }
+    input[type="text"],textarea,select{
+      width:100%;padding:11px;border:1px solid var(--border);
+      background:var(--bg);color:var(--text);border-radius:9px;
+      font-size:16px;margin:6px 0;
+    }
+    .answer{display:none;color:var(--green);font-weight:700;margin-top:6px}
+    .btn{
+      border:0;background:var(--purple);color:white;padding:11px 17px;
+      border-radius:10px;font-weight:800;cursor:pointer;margin:6px 4px 6px 0;
+    }
+    .btn.secondary{background:var(--soft);color:var(--text);border:1px solid var(--border)}
+    .feedback{font-weight:700;margin-top:10px}
+    .correct{color:var(--green)}
+    .incorrect{color:var(--red)}
+    .question{padding:13px 0;border-bottom:1px solid var(--border)}
+    .question label{display:block;margin:5px 0;cursor:pointer}
+    .small{font-size:13px;color:var(--muted)}
+    .lesson-end{text-align:center;background:var(--soft);padding:22px;border-radius:16px}
+    .next-link{
+      display:inline-block;text-decoration:none;background:var(--purple);
+      color:white;padding:12px 20px;border-radius:11px;font-weight:800;margin-top:12px;
+    }
+    @media(max-width:600px){
+      .section{padding:16px}
+      header{padding:10px 12px}
+      .header-actions a,.header-actions button{padding:7px 9px;font-size:13px}
+      table{font-size:13px}
+      th,td{padding:7px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="brand">ENGLISH UP</div>
+  <div class="header-actions">
+    <a href="../elementary.html">← Darslar</a>
+    <button onclick="toggleTheme()" id="themeBtn">🌙</button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <span class="tag">ELEMENTARY · LESSON 2</span>
+    <h1>Have Got / Has Got</h1>
+    <p>Biror narsaga ega bo‘lish, kimdadir nima borligini aytish va so‘rash.</p>
+    <p><b>Bugungi maqsad:</b> Have got va Has got shakllarini tushunish, to‘g‘ri gap tuzish va kundalik suhbatda ishlatish.</p>
+    <div class="progress-wrap"><div id="progressBar"></div></div>
+    <p class="small" style="color:white">Dars jarayoni: <span id="progressText">0%</span></p>
+  </div>
+
+  <section class="section">
+    <h2>1. Salomlashuv va darsga kirish</h2>
+    <p>Hello, everyone! Welcome back to English Up!</p>
+    <p>Bugun biz juda kerakli mavzuni o‘rganamiz. Tasavvur qiling: siz yangi do‘stingiz bilan tanishyapsiz. U sizdan oilangiz, telefoningiz, mashinangiz yoki uy hayvoningiz haqida so‘raydi.</p>
+    <p>Masalan, siz shunday demoqchisiz:</p>
+    <div class="example">
+      <b>I have got a phone.</b> — Menda telefon bor.<br>
+      <b>She has got a brother.</b> — Uning akasi yoki ukasi bor.<br>
+      <b>We have got a big house.</b> — Bizning katta uyimiz bor.
+    </div>
+    <p>Mana shu fikrlarni ingliz tilida ifodalash uchun <b>Have got</b> va <b>Has got</b> dan foydalanamiz.</p>
+    <div class="note">Dars davomida har bir qoidani misollar bilan ko‘rib chiqamiz. Shoshilmang: avval ma’noni tushuning, keyin gap tuzishni mashq qiling.</div>
+  </section>
+
+  <section class="section">
+    <h2>2. Have got / Has got nimani anglatadi?</h2>
+    <p><b>Have got</b> va <b>Has got</b> — ingliz tilida egalikni, ya’ni kimdadir biror narsa borligini bildirish uchun ishlatiladigan grammatik shakllar.</p>
+    <p>O‘zbek tilida biz odatda “Menda kitob bor”, “Unda mashina bor”, “Bizning oilamiz katta” deymiz. Ingliz tilida bu fikrni <b>have got</b> yoki <b>has got</b> bilan ifodalash mumkin.</p>
+
+    <div class="big-rule">HAVE GOT / HAS GOT = BOR, EGA</div>
+
+    <div class="example">
+      <b>I have got a book.</b><br>
+      Menda kitob bor.<br><br>
+      <b>He has got a car.</b><br>
+      Unda mashina bor.<br><br>
+      <b>They have got two children.</b><br>
+      Ularning ikkita farzandi bor.
+    </div>
+
+    <h3>Bu shakl qayerdan kelgan?</h3>
+    <p><b>Have</b> ingliz tilida “ega bo‘lmoq / bor bo‘lmoq” ma’nosini beradigan fe’l. <b>Got</b> esa <b>get</b> fe’lining uchinchi shakli bo‘lib, bu birikmada have bilan birga kelib, egalik ma’nosini ifodalaydi.</p>
+    <p>Shuning uchun <b>have got</b> ni alohida-alohida “have = bor, got = bor” deb tarjima qilmaymiz. Ular birgalikda bitta grammatik shakl hosil qiladi va o‘zbekchaga odatda “bor” yoki “ega” deb tarjima qilinadi.</p>
+
+    <div class="note">
+      <b>Muhim:</b> “I have got a pen” va “I have a pen” ko‘pincha bir xil ma’noni beradi: “Menda ruchka bor”. Ushbu darsda biz aynan <b>have got / has got</b> shakllarini o‘rganamiz.
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>3. Nega HAVE GOT va HAS GOT farq qiladi?</h2>
+    <p>Ingliz tilida hozirgi zamonda ayrim fe’llar ega (subject) ga qarab shaklini o‘zgartiradi. <b>Have</b> fe’li ham shunday fe’llardan biridir.</p>
+    <p>Present Simple mavzusida ham ko‘rganimizdek, <b>he, she, it</b> bilan fe’l shakli o‘zgarishi mumkin. Have fe’lining he/she/it bilan ishlatiladigan shakli — <b>has</b>.</p>
+
+    <div class="big-rule">HAVE → HAS (faqat HE / SHE / IT bilan)</div>
+
+    <table>
+      <tr><th>Subject — Ega</th><th>To‘g‘ri shakl</th><th>Misol</th></tr>
+      <tr><td>I</td><td><b>have got</b></td><td>I have got a bag.</td></tr>
+      <tr><td>You</td><td><b>have got</b></td><td>You have got a bag.</td></tr>
+      <tr><td>We</td><td><b>have got</b></td><td>We have got a bag.</td></tr>
+      <tr><td>They</td><td><b>have got</b></td><td>They have got a bag.</td></tr>
+      <tr><td>He</td><td><b>has got</b></td><td>He has got a bag.</td></tr>
+      <tr><td>She</td><td><b>has got</b></td><td>She has got a bag.</td></tr>
+      <tr><td>It</td><td><b>has got</b></td><td>It has got a tail.</td></tr>
+    </table>
+
+    <h3>Nega aynan shu olmoshlar?</h3>
+    <p><b>I, you, we, they</b> bilan <b>have</b> ishlatiladi. <b>He, she, it</b> bilan esa <b>has</b> ishlatiladi. Bu ingliz tilidagi fe’l tuslanish qoidasi: uchinchi shaxs birlikda <b>have</b> shakli <b>has</b> ga o‘zgaradi.</p>
+    <p>Bu qoida faqat olmoshlar bilan cheklanmaydi. Ega bitta erkak kishi, bitta ayol kishi yoki bitta narsa/hayvon bo‘lsa ham <b>has got</b> ishlatiladi.</p>
+    <div class="example">
+      <b>My father has got a car.</b> — Dadamning mashinasi bor.<br>
+      <b>My mother has got a phone.</b> — Onamning telefoni bor.<br>
+      <b>The dog has got a long tail.</b> — Itning uzun dumi bor.<br>
+      <b>My friends have got bicycles.</b> — Do‘stlarimning velosipedlari bor.
+    </div>
+    <div class="success-box"><b>Esda saqlang:</b> bitta odam yoki bitta narsa — he/she/it qoidasi bo‘yicha <b>has got</b>. I, you, we, they yoki ko‘plikdagi egalar bilan <b>have got</b>.</div>
+  </section>
+
+  <section class="section">
+    <h2>4. Darak gap — Positive</h2>
+    <p>Darak gapda biz kimdadir nima borligini aytamiz. Tuzilishi juda oddiy:</p>
+    <div class="big-rule">Subject + have / has + got + object</div>
+    <table>
+      <tr><th>Ega</th><th>Have/Has got</th><th>Tarjima</th></tr>
+      <tr><td>I</td><td>I have got a sister.</td><td>Mening singlim/opam bor.</td></tr>
+      <tr><td>You</td><td>You have got a new bag.</td><td>Sening yangi sumkang bor.</td></tr>
+      <tr><td>We</td><td>We have got a garden.</td><td>Bizning bog‘imiz bor.</td></tr>
+      <tr><td>They</td><td>They have got a big house.</td><td>Ularning katta uyi bor.</td></tr>
+      <tr><td>He</td><td>He has got a bicycle.</td><td>Uning velosipedi bor.</td></tr>
+      <tr><td>She</td><td>She has got blue eyes.</td><td>Uning ko‘zlari ko‘k.</td></tr>
+      <tr><td>It</td><td>It has got four legs.</td><td>Uning to‘rtta oyog‘i bor.</td></tr>
+    </table>
+
+    <h3>Qisqartma shakllar</h3>
+    <p>Kundalik suhbatda inglizlar qisqartma shakllardan juda ko‘p foydalanadilar:</p>
+    <table>
+      <tr><th>To‘liq shakl</th><th>Qisqartma</th></tr>
+      <tr><td>I have got</td><td>I've got</td></tr>
+      <tr><td>You have got</td><td>You've got</td></tr>
+      <tr><td>We have got</td><td>We've got</td></tr>
+      <tr><td>They have got</td><td>They've got</td></tr>
+      <tr><td>He has got</td><td>He's got</td></tr>
+      <tr><td>She has got</td><td>She's got</td></tr>
+      <tr><td>It has got</td><td>It's got</td></tr>
+    </table>
+    <div class="warning"><b>Ehtiyot bo‘ling:</b> He's got = He has got. Lekin He's happy = He is happy. Qisqartmaning ma’nosini gapdagi davomiga qarab aniqlaymiz.</div>
+  </section>
+
+  <section class="section">
+    <h2>5. Inkor gap — Negative</h2>
+    <p>Biror narsa yo‘qligini aytmoqchi bo‘lsak, <b>have not got</b> yoki <b>has not got</b> ishlatamiz.</p>
+    <div class="big-rule">Subject + have / has + not + got + object</div>
+    <table>
+      <tr><th>Darak</th><th>Inkor</th><th>Tarjima</th></tr>
+      <tr><td>I have got a car.</td><td>I have not got a car.</td><td>Menda mashina yo‘q.</td></tr>
+      <tr><td>She has got a dog.</td><td>She has not got a dog.</td><td>Unda it yo‘q.</td></tr>
+      <tr><td>They have got a garden.</td><td>They have not got a garden.</td><td>Ularda bog‘ yo‘q.</td></tr>
+    </table>
+    <h3>Qisqartma inkor shakllari</h3>
+    <ul>
+      <li>have not got → <b>haven't got</b></li>
+      <li>has not got → <b>hasn't got</b></li>
+    </ul>
+    <div class="example">
+      <b>I haven't got a brother.</b> — Mening akam/ukam yo‘q.<br>
+      <b>He hasn't got a computer.</b> — Unda kompyuter yo‘q.<br>
+      <b>We haven't got enough time.</b> — Bizda yetarli vaqt yo‘q.
+    </div>
+    <p><b>Yodda tuting:</b> inkor gapda <b>not</b> so‘zi have yoki has dan keyin, got dan oldin keladi.</p>
+  </section>
+
+  <section class="section">
+    <h2>6. So‘roq gap — Questions</h2>
+    <p>Biror kishida nima borligini so‘rash uchun have yoki has gapning boshiga chiqadi.</p>
+    <div class="big-rule">Have / Has + subject + got + object?</div>
+    <table>
+      <tr><th>Darak gap</th><th>So‘roq gap</th></tr>
+      <tr><td>You have got a pen.</td><td>Have you got a pen?</td></tr>
+      <tr><td>She has got a sister.</td><td>Has she got a sister?</td></tr>
+      <tr><td>They have got a car.</td><td>Have they got a car?</td></tr>
+      <tr><td>He has got a phone.</td><td>Has he got a phone?</td></tr>
+    </table>
+    <h3>Qisqa javoblar — Short Answers</h3>
+    <table>
+      <tr><th>Savol</th><th>Ha</th><th>Yo‘q</th></tr>
+      <tr><td>Have you got a pen?</td><td>Yes, I have.</td><td>No, I haven't.</td></tr>
+      <tr><td>Has he got a car?</td><td>Yes, he has.</td><td>No, he hasn't.</td></tr>
+      <tr><td>Have they got a dog?</td><td>Yes, they have.</td><td>No, they haven't.</td></tr>
+      <tr><td>Has she got a phone?</td><td>Yes, she has.</td><td>No, she hasn't.</td></tr>
+    </table>
+    <div class="note">Qisqa javobda <b>got</b> qayta aytilmaydi. “Yes, I have got” deyish o‘rniga odatda “Yes, I have” deb javob beramiz.</div>
+  </section>
+
+  <section class="section">
+    <h2>7. WH-questions — batafsil savollar</h2>
+    <p>Faqat “bor yoki yo‘q?” deb so‘rash bilan cheklanmaymiz. Nima, kim, nechta kabi savollarni ham berishimiz mumkin.</p>
+    <div class="big-rule">Question word + have / has + subject + got ...?</div>
+    <div class="example">
+      <b>What have you got?</b> — Senda nima bor?<br>
+      <b>What has she got?</b> — Unda nima bor?<br>
+      <b>How many brothers have you got?</b> — Nechta aka-ukang bor?<br>
+      <b>How many children have they got?</b> — Ularning nechta farzandi bor?<br>
+      <b>Who has got my book?</b> — Mening kitobim kimda?
+    </div>
+    <p><b>How many</b> sanaladigan narsalar ko‘pligi haqida so‘raydi: brothers, sisters, books, cars, children.</p>
+    <p><b>What</b> narsa yoki buyum haqida so‘raydi. <b>Who</b> esa odam haqida so‘raydi.</p>
+  </section>
+
+  <section class="section">
+    <h2>8. Have got va Has got qayerlarda ishlatiladi?</h2>
+    <p>Bu shakl faqat buyumlar haqida emas. U turli vaziyatlarda ishlatiladi:</p>
+    <h3>1) Oila va qarindoshlar</h3>
+    <div class="example">
+      I've got two sisters. — Mening ikkita singlim/opam bor.<br>
+      My father has got a brother. — Dadamning akasi/ukasi bor.
+    </div>
+    <h3>2) Buyumlar va egalik</h3>
+    <div class="example">
+      We have got a new television. — Bizda yangi televizor bor.<br>
+      She has got a beautiful dress. — Unda chiroyli ko‘ylak bor.
+    </div>
+    <h3>3) Tashqi ko‘rinish va tana a’zolari</h3>
+    <div class="example">
+      He has got brown eyes. — Uning ko‘zlari jigarrang.<br>
+      The cat has got a long tail. — Mushukning uzun dumi bor.
+    </div>
+    <h3>4) Uy va xonalar</h3>
+    <div class="example">
+      Our house has got three bedrooms. — Uyimizda uchta yotoqxona bor.<br>
+      They have got a big kitchen. — Ularning katta oshxonasi bor.
+    </div>
+    <h3>5) Kasallik yoki holatni ifodalash</h3>
+    <div class="example">
+      I've got a headache. — Boshim og‘riyapti.<br>
+      She has got a cold. — U shamollagan.
+    </div>
+    <div class="note">Bu misollarda ham asosiy ma’no — odamda yoki narsada biror xususiyat, narsa yoki holat mavjudligi.</div>
+  </section>
+
+  <section class="section">
+    <h2>9. Have got va Have ning farqi</h2>
+    <p><b>Have got</b> va <b>have</b> egalik ma’nosida ko‘pincha bir-birining o‘rnida ishlatiladi:</p>
+    <div class="example">
+      I have got a car. = I have a car.<br>
+      She has got a sister. = She has a sister.<br>
+      They have got a house. = They have a house.
+    </div>
+    <p>Ammo <b>have</b> fe’li boshqa ma’nolarda ham ishlatiladi: ovqatlanmoq, ichmoq, vaqt o‘tkazmoq va boshqalar.</p>
+    <div class="example">
+      I have breakfast at 7. — Men soat 7 da nonushta qilaman.<br>
+      We have lunch together. — Biz birga tushlik qilamiz.<br>
+      She has a shower every morning. — U har kuni ertalab dush qabul qiladi.
+    </div>
+    <div class="warning">Bunday harakatlarda odatda <b>have got</b> ishlatilmaydi. Masalan, “I have got breakfast at 7” deb “Men soat 7 da nonushta qilaman” ma’nosida aytmaymiz.</div>
+  </section>
+
+  <section class="section">
+    <h2>10. Eng ko‘p uchraydigan xatolar</h2>
+    <table>
+      <tr><th>Noto‘g‘ri</th><th>To‘g‘ri</th><th>Sabab</th></tr>
+      <tr><td>He have got a car.</td><td><b>He has got a car.</b></td><td>He bilan has.</td></tr>
+      <tr><td>She have got a bag.</td><td><b>She has got a bag.</b></td><td>She bilan has.</td></tr>
+      <tr><td>I has got a book.</td><td><b>I have got a book.</b></td><td>I bilan have.</td></tr>
+      <tr><td>He hasn't a car.</td><td><b>He hasn't got a car.</b></td><td>Ushbu shaklda got kerak.</td></tr>
+      <tr><td>Have she got a pen?</td><td><b>Has she got a pen?</b></td><td>She bilan has.</td></tr>
+      <tr><td>Does he has got a dog?</td><td><b>Has he got a dog?</b></td><td>Have got savolida do/does qo‘shilmaydi.</td></tr>
+      <tr><td>He doesn't has got a car.</td><td><b>He hasn't got a car.</b></td><td>Have got inkori haven't/hasn't bilan yasaladi.</td></tr>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2>11. Bugungi lug‘at — Vocabulary</h2>
+    <p class="muted">So‘zlarni o‘qing va 🔊 tugmasi orqali talaffuzini tinglang.</p>
+    <div class="word-grid" id="vocab"></div>
+  </section>
+
+  <section class="section">
+    <h2>12. Reading — My Family and My Home</h2>
+    <p>Matnni avval mustaqil o‘qing. Keyin savollarga javob bering.</p>
+    <div class="example">
+      <h3>My Family and My Home</h3>
+      Hello! My name is Daniel. I have got a small family. I have got a mother, a father and one sister. My father has got a car, and my mother has got a beautiful garden. My sister has got a little cat. It has got green eyes and a long tail. We have got a comfortable house. Our house has got three bedrooms, a kitchen and a living room. I have got my own room. It is not very big, but I like it. We haven't got a swimming pool, but we have got a nice garden. I love my family and my home.
+      <p><button class="audio-btn" onclick="speak(document.getElementById('readingText').innerText)">🔊 Listen to the text</button></p>
+      <span id="readingText" style="display:none">Hello! My name is Daniel. I have got a small family. I have got a mother, a father and one sister. My father has got a car, and my mother has got a beautiful garden. My sister has got a little cat. It has got green eyes and a long tail. We have got a comfortable house. Our house has got three bedrooms, a kitchen and a living room. I have got my own room. It is not very big, but I like it. We haven't got a swimming pool, but we have got a nice garden. I love my family and my home.</span>
+    </div>
+    <div id="readingQuestions"></div>
+    <button class="btn" onclick="checkReading()">Check Reading Answers</button>
+    <div id="readingResult" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h2>13. Listening — Listen and Understand</h2>
+    <p>Audio matnni tinglang. Birinchi marta umumiy mazmunni tushunishga harakat qiling. Ikkinchi marta tinglab, savollarga javob bering.</p>
+    <button class="btn" onclick="speak(listeningText)">▶ Play Listening</button>
+    <button class="btn secondary" onclick="speak(listeningText,0.8)">🐢 Slow Listening</button>
+    <div class="note" id="listeningTextBox" style="display:none"></div>
+    <div id="listeningQuestions"></div>
+    <button class="btn" onclick="checkListening()">Check Listening Answers</button>
+    <div id="listeningResult" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h2>14. Grammar Practice — Choose the correct answer</h2>
+    <p>Har bir savol uchun bitta to‘g‘ri javobni belgilang.</p>
+    <div id="grammarQuestions"></div>
+    <button class="btn" onclick="checkGrammar()">Check Grammar Test</button>
+    <button class="btn secondary" onclick="resetGrammar()">Try Again</button>
+    <div id="grammarResult" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h2>15. Complete the sentences</h2>
+    <p>Bo‘sh joylarga <b>have got, has got, haven't got</b> yoki <b>hasn't got</b> dan mosini yozing.</p>
+    <div id="fillQuestions"></div>
+    <button class="btn" onclick="checkFill()">Check Answers</button>
+    <div id="fillResult" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h2>16. Translation Practice — Tarjima mashqi</h2>
+    <p>Quyidagi gaplarni ingliz tiliga tarjima qiling. Avval o‘zingiz yozing, keyin javobni ko‘ring.</p>
+    <div id="translationQuestions"></div>
+  </section>
+
+  <section class="section">
+    <h2>17. Speaking — Speak English!</h2>
+    <p>Quyidagi savollarga ovoz chiqarib, to‘liq gaplar bilan javob bering. Javoblaringizni imkon qadar ingliz tilida ayting.</p>
+    <ol>
+      <li>Have you got a big family?</li>
+      <li>Have you got any brothers or sisters?</li>
+      <li>Have you got a pet?</li>
+      <li>Have you got your own room?</li>
+      <li>Has your best friend got a bicycle?</li>
+      <li>Has your mother got a phone?</li>
+      <li>What have you got in your school bag?</li>
+      <li>What has your house got?</li>
+    </ol>
+    <div class="note">
+      <b>Javob namunasi:</b><br>
+      Have you got a pet?<br>
+      Yes, I have. I've got a cat. Its name is Milo.
+    </div>
+    <p><b>Challenge:</b> O‘zingiz va oilangiz haqida kamida 8 ta gap tuzing. Kamida 4 ta have got va 4 ta has got ishlating.</p>
+  </section>
+
+  <section class="section">
+    <h2>18. Writing — Write about yourself</h2>
+    <p>O‘zingiz, oilangiz, uyingiz va buyumlaringiz haqida 80–100 so‘zdan iborat kichik matn yozing.</p>
+    <p>Matnda quyidagilar bo‘lishi kerak:</p>
+    <ul>
+      <li>Oilangiz haqida kamida 2 ta gap.</li>
+      <li>Uyingiz haqida kamida 2 ta gap.</li>
+      <li>O‘zingizda bor narsalar haqida kamida 2 ta gap.</li>
+      <li>Kamida 2 ta inkor gap.</li>
+      <li>Have got va has got shakllaridan foydalaning.</li>
+    </ul>
+    <textarea id="writingArea" rows="7" placeholder="My name is ... I have got ..."></textarea>
+    <p class="small">So‘zlar soni: <b id="wordCount">0</b></p>
+    <button class="btn" onclick="copyWriting()">Copy My Writing</button>
+  </section>
+
+  <section class="section">
+    <h2>19. Dars yakuni — What have we learned?</h2>
+    <ul>
+      <li>Have got va has got egalikni ifodalaydi.</li>
+      <li>I / You / We / They bilan have got ishlatiladi.</li>
+      <li>He / She / It bilan has got ishlatiladi.</li>
+      <li>Inkor: haven't got / hasn't got.</li>
+      <li>Savol: Have / Has gap boshiga chiqadi.</li>
+      <li>Qisqa javob: Yes, I have. / No, she hasn't.</li>
+      <li>WH-savollar: What have you got? / How many ... have they got?</li>
+    </ul>
+    <div class="success-box">
+      <b>Excellent work!</b><br>
+      Bugun siz ingliz tilida egalikni ifodalashni, savol berishni va inkor gap tuzishni o‘rgandingiz. Endi bu shakllarni kundalik suhbatlarda ishlatishga harakat qiling.
+    </div>
+    <div class="lesson-end">
+      <h2>Lesson 2 completed?</h2>
+      <p>Quyidagi tugmani bosing. Keyingi darsga o‘tishdan oldin mashqlarni bajarib, mavzuni takrorlang.</p>
+      <button class="btn" onclick="completeLesson()">✓ Mark Lesson as Completed</button>
+      <p id="completionMessage" class="feedback"></p>
+      <a class="next-link" href="lesson-3.html">Next Lesson →</a>
+    </div>
+  </section>
+</main>
+
+<script>
+  const vocab = [
+    ["family","oila"],["parents","ota-ona"],["father","ota"],["mother","ona"],
+    ["brother","aka / uka"],["sister","opa / singil"],["children","bolalar / farzandlar"],
+    ["cousin","amakivachcha / xolavachcha"],["uncle","amaki / tog‘a"],["aunt","amma / xola"],
+    ["pet","uy hayvoni"],["cat","mushuk"],["dog","it"],["tail","dum"],
+    ["eyes","ko‘zlar"],["hair","soch"],["garden","bog‘"],["bedroom","yotoqxona"],
+    ["kitchen","oshxona"],["living room","mehmonxona"],["bicycle","velosiped"],
+    ["computer","kompyuter"],["phone","telefon"],["camera","kamera"],
+    ["comfortable","qulay"]
+  ];
+
+  const grammarData = [
+    ["I ___ got a new phone.",["have","has","having"],0],
+    ["She ___ got two brothers.",["have","has","haves"],1],
+    ["They ___ got a big house.",["has","having","have"],2],
+    ["My father ___ got a car.",["have","has","having"],1],
+    ["We ___ got a garden.",["has","have","haves"],1],
+    ["It ___ got four legs.",["have","has","having"],1],
+    ["___ you got a sister?",["Has","Have","Are"],1],
+    ["___ he got a computer?",["Have","Do","Has"],2],
+    ["I ___ got a bicycle.",["hasn't","haven't","don't"],1],
+    ["She ___ got blue eyes.",["haven't","don't","hasn't"],2],
+    ["Have they got a dog? Yes, they ___.",["have","has","are"],0],
+    ["Has your brother got a car? No, he ___.",["haven't","hasn't","isn't"],1],
+    ["My friends ___ got new books.",["has","have","is"],1],
+    ["The house ___ got three rooms.",["have","has","are"],1],
+    ["How many sisters ___ you got?",["has","do","have"],2]
+  ];
+
+  const readingData = [
+    ["How many sisters has Daniel got?",["One","Two","Three"],0],
+    ["What has his father got?",["A bicycle","A car","A cat"],1],
+    ["What colour are the cat's eyes?",["Blue","Brown","Green"],2],
+    ["How many bedrooms has the house got?",["Two","Three","Four"],1],
+    ["Have they got a swimming pool?",["Yes, they have.","No, they haven't.","It doesn't say."],1]
+  ];
+
+  const listeningText = "Hello. My name is Emma. I have got a small family. I have got one brother and one sister. My brother has got a bicycle. My sister has got a new phone. We have got a dog. It has got black ears and a short tail. Our house has got two bedrooms and a big kitchen. We haven't got a garden, but we have got a small balcony. I love my family.";
+  const listeningData = [
+    ["How many brothers has Emma got?",["One","Two","Three"],0],
+    ["What has her brother got?",["A phone","A bicycle","A computer"],1],
+    ["What has the dog got?",["Black ears","Blue eyes","Long legs"],0],
+    ["Have they got a garden?",["Yes, they have.","No, they haven't.","It doesn't say."],1]
+  ];
+
+  const fillData = [
+    ["I ___ ___ a new bag.","have got"],
+    ["He ___ ___ a sister.","has got"],
+    ["We ___ ___ a car.","haven't got"],
+    ["My mother ___ ___ a computer.","hasn't got"],
+    ["___ you ___ a pet?","Have you got"],
+    ["___ she ___ blue eyes?","Has she got"],
+    ["They ___ ___ two children.","have got"],
+    ["The cat ___ ___ a long tail.","has got"]
+  ];
+
+  const translationData = [
+    ["Menda yangi telefon bor.","I have got a new phone."],
+    ["Uning ikkita singlisi bor.","She has got two sisters."],
+    ["Bizda mashina yo‘q.","We haven't got a car."],
+    ["Uning kompyuteri yo‘q.","He hasn't got a computer."],
+    ["Senda velosiped bormi?","Have you got a bicycle?"],
+    ["Uning mushugi bormi?","Has she got a cat?"],
+    ["Ularning nechta farzandi bor?","How many children have they got?"],
+    ["Uyingizda bog‘ bormi?","Has your house got a garden?"]
+  ];
+
+  function renderVocab(){
+    document.getElementById("vocab").innerHTML = vocab.map(w =>
+      `<div class="word"><span><b>${w[0]}</b><br><small>${w[1]}</small></span>
+      <button onclick="speak('${w[0].replace(/'/g,"")}')">🔊</button></div>`
+    ).join("");
+  }
+
+  function renderChoiceQuestions(data, target, prefix){
+    document.getElementById(target).innerHTML = data.map((q,i)=>`
+      <div class="question">
+        <b>${i+1}. ${q[0]}</b>
+        ${q[1].map((opt,j)=>`<label><input type="radio" name="${prefix}${i}" value="${j}"> ${opt}</label>`).join("")}
+      </div>`).join("");
+  }
+
+  function renderGrammar(){
+    renderChoiceQuestions(grammarData,"grammarQuestions","g");
+    renderChoiceQuestions(readingData,"readingQuestions","r");
+    renderChoiceQuestions(listeningData,"listeningQuestions","l");
+  }
+
+  function renderFill(){
+    document.getElementById("fillQuestions").innerHTML = fillData.map((q,i)=>`
+      <div class="exercise"><b>${i+1}. ${q[0]}</b>
+      <input type="text" id="fill${i}" placeholder="Your answer"></div>`).join("");
+  }
+
+  function renderTranslations(){
+    document.getElementById("translationQuestions").innerHTML = translationData.map((q,i)=>`
+      <div class="exercise"><b>${i+1}. ${q[0]}</b>
+      <button class="btn secondary" onclick="showAnswer('trans${i}')">Show answer</button>
+      <div class="answer" id="trans${i}">${q[1]}</div></div>`).join("");
+  }
+
+  function showAnswer(id){
+    const el=document.getElementById(id);
+    el.style.display=el.style.display==="block"?"none":"block";
+  }
+
+  function speak(text,rate=0.9){
+    if(!("speechSynthesis" in window)){
+      alert("Your browser does not support speech synthesis.");
+      return;
+    }
+    speechSynthesis.cancel();
+    const utterance=new SpeechSynthesisUtterance(text);
+    utterance.lang="en-US";
+    utterance.rate=rate;
+    speechSynthesis.speak(utterance);
+  }
+
+  function scoreChoices(data,prefix){
+    let score=0;
+    data.forEach((q,i)=>{
+      const selected=document.querySelector(`input[name="${prefix}${i}"]:checked`);
+      if(selected && Number(selected.value)===q[2]) score++;
+    });
+    return score;
+  }
+
+  function checkReading(){
+    const score=scoreChoices(readingData,"r");
+    document.getElementById("readingResult").textContent=`Your score: ${score}/${readingData.length}`;
+    document.getElementById("readingResult").className="feedback "+(score>=4?"correct":"incorrect");
+    updateProgress(25);
+  }
+
+  function checkListening(){
+    const score=scoreChoices(listeningData,"l");
+    document.getElementById("listeningResult").textContent=`Your score: ${score}/${listeningData.length}`;
+    document.getElementById("listeningResult").className="feedback "+(score>=3?"correct":"incorrect");
+    updateProgress(40);
+  }
+
+  function checkGrammar(){
+    const score=scoreChoices(grammarData,"g");
+    const percent=Math.round(score/grammarData.length*100);
+    document.getElementById("grammarResult").textContent=`Your result: ${score}/${grammarData.length} — ${percent}%`;
+    document.getElementById("grammarResult").className="feedback "+(percent>=80?"correct":"incorrect");
+    updateProgress(Math.max(60,percent));
+  }
+
+  function resetGrammar(){
+    document.querySelectorAll('#grammarQuestions input[type="radio"]').forEach(x=>x.checked=false);
+    document.getElementById("grammarResult").textContent="";
+  }
+
+  function checkFill(){
+    let score=0;
+    fillData.forEach((q,i)=>{
+      const value=document.getElementById("fill"+i).value.trim().toLowerCase().replace(/\s+/g," ");
+      const correct=q[1].toLowerCase();
+      if(value===correct) score++;
+    });
+    const percent=Math.round(score/fillData.length*100);
+    document.getElementById("fillResult").textContent=`Your result: ${score}/${fillData.length} — ${percent}%`;
+    document.getElementById("fillResult").className="feedback "+(percent>=80?"correct":"incorrect");
+    updateProgress(Math.max(75,percent));
+  }
+
+  function copyWriting(){
+    const text=document.getElementById("writingArea").value;
+    if(!text.trim()){alert("Please write your text first.");return;}
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(()=>alert("Your writing has been copied."));
+    }else{
+      const area=document.getElementById("writingArea");
+      area.select();
+      document.execCommand("copy");
+      alert("Your writing has been copied.");
+    }
+  }
+
+  document.getElementById("writingArea").addEventListener("input",function(){
+    const words=this.value.trim()?this.value.trim().split(/\s+/).length:0;
+    document.getElementById("wordCount").textContent=words;
+  });
+
+  function updateProgress(value){
+    const current=parseInt(localStorage.getItem("euElementaryLesson2Progress")||"0");
+    const next=Math.max(current,Math.min(100,value));
+    localStorage.setItem("euElementaryLesson2Progress",next);
+    document.getElementById("progressBar").style.width=next+"%";
+    document.getElementById("progressText").textContent=next+"%";
+  }
+
+  function completeLesson(){
+    localStorage.setItem("euElementaryLesson2Completed","true");
+    updateProgress(100);
+    document.getElementById("completionMessage").textContent="Lesson 2 completed! Excellent work!";
+    document.getElementById("completionMessage").className="feedback correct";
+  }
+
+  function toggleTheme(){
+    document.body.classList.toggle("dark");
+    const dark=document.body.classList.contains("dark");
+    localStorage.setItem("euElementaryTheme",dark?"dark":"light");
+    document.getElementById("themeBtn").textContent=dark?"☀️":"🌙";
+  }
+
+  function initTheme(){
+    if(localStorage.getItem("euElementaryTheme")==="dark"){
+      document.body.classList.add("dark");
+      document.getElementById("themeBtn").textContent="☀️";
+    }
+  }
+
+  renderVocab();
+  renderGrammar();
+  renderFill();
+  renderTranslations();
+  initTheme();
+
+  const savedProgress=localStorage.getItem("euElementaryLesson2Progress")||"0";
+  document.getElementById("progressBar").style.width=savedProgress+"%";
+  document.getElementById("progressText").textContent=savedProgress+"%";
+  if(localStorage.getItem("euElementaryLesson2Completed")==="true"){
+    document.getElementById("completionMessage").textContent="Lesson 2 completed! Excellent work!";
+    document.getElementById("completionMessage").className="feedback correct";
+  }
+</script>
+</body>
+</html>
+
