@@ -1,1 +1,289 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementary Darslari | English Up</title>
 
+    <style>
+        :root {
+            --primary: #7C3AED;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header .logo {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .lesson-card {
+            display: block;
+            background: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 5px solid var(--primary);
+            position: relative;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .lesson-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .lesson-desc {
+            color: var(--text-light);
+            font-size: 0.95em;
+            padding-right: 15px;
+        }
+
+        .arrow {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D1D5DB;
+            font-size: 1.2em;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.5em;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <a href="../index.html">⬅ Back</a>
+
+        <div class="logo">ENGLISHUP</div>
+
+        <div class="theme-toggle" onclick="toggleTheme()">☀️</div>
+    </div>
+
+    <!-- ELEMENTARY LESSONS -->
+    <div class="container" id="lessonContainer">
+
+        <!-- 1-DARS -->
+        <a href="elementary/lesson-1.html" class="lesson-card">
+            <div class="lesson-title">1-Dars</div>
+            <div class="lesson-desc">Present Simple — Deep Revision</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 2-DARS -->
+        <a href="elementary/lesson-2.html" class="lesson-card">
+            <div class="lesson-title">2-Dars</div>
+            <div class="lesson-desc">Have Got / Has Got</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 3-DARS -->
+        <a href="elementary/lesson-3.html" class="lesson-card">
+            <div class="lesson-title">3-Dars</div>
+            <div class="lesson-desc">Present Continuous — Revision and Practice</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 4-DARS -->
+        <a href="elementary/lesson-4.html" class="lesson-card">
+            <div class="lesson-title">4-Dars</div>
+            <div class="lesson-desc">Future Simple — Will</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 5-DARS -->
+        <a href="elementary/lesson-5.html" class="lesson-card">
+            <div class="lesson-title">5-Dars</div>
+            <div class="lesson-desc">Be Going To — Future Plans</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 6-DARS -->
+        <a href="elementary/lesson-6.html" class="lesson-card">
+            <div class="lesson-title">6-Dars</div>
+            <div class="lesson-desc">Countable and Uncountable Nouns</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 7-DARS -->
+        <a href="elementary/lesson-7.html" class="lesson-card">
+            <div class="lesson-title">7-Dars</div>
+            <div class="lesson-desc">Articles — A, An and The</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 8-DARS -->
+        <a href="elementary/lesson-8.html" class="lesson-card">
+            <div class="lesson-title">8-Dars</div>
+            <div class="lesson-desc">Modal Verbs — Can, Could, Must and Should</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 9-DARS -->
+        <a href="elementary/lesson-9.html" class="lesson-card">
+            <div class="lesson-title">9-Dars</div>
+            <div class="lesson-desc">Comparatives and Superlatives</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 10-DARS -->
+        <a href="elementary/lesson-10.html" class="lesson-card">
+            <div class="lesson-title">10-Dars</div>
+            <div class="lesson-desc">Prepositions of Time and Place</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 11-DARS -->
+        <a href="elementary/lesson-11.html" class="lesson-card">
+            <div class="lesson-title">11-Dars</div>
+            <div class="lesson-desc">Pronouns and Possessives</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 12-DARS -->
+        <a href="elementary/lesson-12.html" class="lesson-card">
+            <div class="lesson-title">12-Dars</div>
+            <div class="lesson-desc">There Is / There Are — Revision and Practice</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 13-DARS -->
+        <a href="elementary/lesson-13.html" class="lesson-card">
+            <div class="lesson-title">13-Dars</div>
+            <div class="lesson-desc">Gerunds and Infinitives</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 14-DARS -->
+        <a href="elementary/lesson-14.html" class="lesson-card">
+            <div class="lesson-title">14-Dars</div>
+            <div class="lesson-desc">Adjectives and Adverbs</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 15-DARS -->
+        <a href="elementary/lesson-15.html" class="lesson-card">
+            <div class="lesson-title">15-Dars</div>
+            <div class="lesson-desc">Past Simple — Deep Revision</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 16-DARS -->
+        <a href="elementary/lesson-16.html" class="lesson-card">
+            <div class="lesson-title">16-Dars</div>
+            <div class="lesson-desc">Questions and Sentence Structure</div>
+            <div class="arrow">›</div>
+        </a>
+
+        <!-- 17-DARS -->
+        <a href="elementary/lesson-17.html" class="lesson-card">
+            <div class="lesson-title">17-Dars</div>
+            <div class="lesson-desc">Everyday English and Communication</div>
+            <div class="arrow">›</div>
+        </a>
+
+    </div>
+
+    <!-- DARK MODE -->
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const cards = document.querySelectorAll('.lesson-card');
+            const icon = document.querySelector('.theme-toggle');
+
+            if (body.style.backgroundColor === 'rgb(17, 24, 39)') {
+
+                // LIGHT MODE
+                body.style.backgroundColor = '#F3F4F6';
+                body.style.color = '#1F2937';
+
+                document.querySelector('.header').style.backgroundColor = '#FFFFFF';
+
+                cards.forEach(card => {
+                    card.style.backgroundColor = '#FFFFFF';
+                    card.style.color = '#1F2937';
+
+                    card.querySelector('.lesson-desc').style.color = '#6B7280';
+                });
+
+                icon.innerText = '☀️';
+
+            } else {
+
+                // DARK MODE
+                body.style.backgroundColor = '#111827';
+                body.style.color = '#F9FAFB';
+
+                document.querySelector('.header').style.backgroundColor = '#1F2937';
+
+                cards.forEach(card => {
+                    card.style.backgroundColor = '#1F2937';
+                    card.style.color = '#F9FAFB';
+
+                    card.querySelector('.lesson-desc').style.color = '#9CA3AF';
+                });
+
+                icon.innerText = '🌙';
+            }
+        }
+    </script>
+
+</body>
+</html>
