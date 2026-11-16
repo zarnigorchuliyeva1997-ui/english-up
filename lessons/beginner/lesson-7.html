@@ -1,1 +1,568 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 7-Dars: Days, Months, Seasons</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; font-size: 1.8em; }
+        .greeting {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: #EEF2FF;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info-box {
+            background: #FFFBEB;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info-box strong { color: #B45309; }
+        .grammar-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .num { font-weight: bold; width: 30px; color: var(--primary); }
+        .word { width: 150px; font-weight: 600; }
+        .transcription { width: 160px; color: #059669; font-family: monospace; font-size: 1.05em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        
+        .test-section, .interactive-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1em;
+            outline: none;
+        }
+        .input-group input:focus { border-color: var(--primary); }
+        .input-group input.correct { border-color: var(--success); background: #D1FAE5; }
+        .input-group input.incorrect { border-color: var(--error); background: #FEE2E2; }
 
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1em; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .back-btn:hover { background: #4B5563; }
+
+        .text-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .dialog-container {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .dialog-line {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dialog-line .speaker {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* Motivatsion Jumla Dizayni (Eng oxirida) */
+        .motivation-box {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .motivation-box h2 {
+            color: white;
+            border-bottom: none;
+            margin-top: 0;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        .motivation-box p {
+            font-size: 1.2em;
+            margin-bottom: 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>7-Dars: Days, Months, Seasons</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi darsimizda biz ingliz tilida hafta kunlari, oylar va fasllarni o'rganamiz. Shuningdek, sanani, vaqtni, yilni va oyni qanday so'rash va aytishni bilib olamiz.</p>
+
+    <div class="info-box">
+        <strong>Eslatma: Nima uchun kun, oy va fasllarni bilish kerak?</strong>
+        <p style="margin-top: 10px; margin-bottom: 0;">Kundalik hayotimizda biz doimo vaqt, sana va rejalar haqida gaplashamiz. "Qachon uchrashamiz?", "Bugun qaysi kun?", "Tug'ilgan kuning qachon?" — bu savollarga ingliz tilida javob bera olish, chet ellik do'stlar bilan muloqot qilishda va ish rejalarini tuzishda juda muhimdir.</p>
+    </div>
+
+    <h2>1. Hafta kunlari (Days of the week)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Monday</span><span class="transcription">/ˈmʌn.deɪ/</span><span class="translation">Dushanba</span><button class="audio-btn" onclick="speak('Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Tuesday</span><span class="transcription">/ˈtjuːz.deɪ/</span><span class="translation">Seshanba</span><button class="audio-btn" onclick="speak('Tuesday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Wednesday</span><span class="transcription">/ˈwenz.deɪ/</span><span class="translation">Chorshanba</span><button class="audio-btn" onclick="speak('Wednesday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Thursday</span><span class="transcription">/ˈθɜːz.deɪ/</span><span class="translation">Payshanba</span><button class="audio-btn" onclick="speak('Thursday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">Friday</span><span class="transcription">/ˈfraɪ.deɪ/</span><span class="translation">Juma</span><button class="audio-btn" onclick="speak('Friday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">Saturday</span><span class="transcription">/ˈsæt.ə.deɪ/</span><span class="translation">Shanba</span><button class="audio-btn" onclick="speak('Saturday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">Sunday</span><span class="transcription">/ˈsʌn.deɪ/</span><span class="translation">Yakshanba</span><button class="audio-btn" onclick="speak('Sunday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>2. Oylar (Months)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">January</span><span class="transcription">/ˈdʒæn.ju.ə.ri/</span><span class="translation">Yanvar</span><button class="audio-btn" onclick="speak('January')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">February</span><span class="transcription">/ˈfeb.ru.ə.ri/</span><span class="translation">Fevral</span><button class="audio-btn" onclick="speak('February')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">March</span><span class="transcription">/mɑːtʃ/</span><span class="translation">Mart</span><button class="audio-btn" onclick="speak('March')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">April</span><span class="transcription">/ˈeɪ.prəl/</span><span class="translation">Aprel</span><button class="audio-btn" onclick="speak('April')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">May</span><span class="transcription">/meɪ/</span><span class="translation">May</span><button class="audio-btn" onclick="speak('May')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">June</span><span class="transcription">/dʒuːn/</span><span class="translation">Iyun</span><button class="audio-btn" onclick="speak('June')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">July</span><span class="transcription">/dʒuˈlaɪ/</span><span class="translation">Iyul</span><button class="audio-btn" onclick="speak('July')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">August</span><span class="transcription">/ˈɔː.ɡəst/</span><span class="translation">Avgust</span><button class="audio-btn" onclick="speak('August')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">September</span><span class="transcription">/sepˈtem.bər/</span><span class="translation">Sentabr</span><button class="audio-btn" onclick="speak('September')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">October</span><span class="transcription">/ɒkˈtəʊ.bər/</span><span class="translation">Oktabr</span><button class="audio-btn" onclick="speak('October')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">November</span><span class="transcription">/nəʊˈvem.bər/</span><span class="translation">Noyabr</span><button class="audio-btn" onclick="speak('November')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">December</span><span class="transcription">/dɪˈsem.bər/</span><span class="translation">Dekabr</span><button class="audio-btn" onclick="speak('December')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>3. Fasllar (Seasons)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Spring</span><span class="transcription">/sprɪŋ/</span><span class="translation">Bahor</span><button class="audio-btn" onclick="speak('Spring')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Summer</span><span class="transcription">/ˈsʌm.ər/</span><span class="translation">Yoz</span><button class="audio-btn" onclick="speak('Summer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Autumn</span><span class="transcription">/ˈɔː.təm/</span><span class="translation">Kuz</span><button class="audio-btn" onclick="speak('Autumn')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Winter</span><span class="transcription">/ˈwɪn.tər/</span><span class="translation">Qish</span><button class="audio-btn" onclick="speak('Winter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>4. Sana aytish qoidasi</h2>
+    <div class="grammar-box">
+        <p>Sana aytish uchun ingliz tilida quyidagi qoidalarga e'tibor bering:</p>
+        <ul>
+            <li><b>In + oy/yil</b> (In January, In 2024).</li>
+            <li><b>On + kun/sana</b> (On Monday, On 5th May).</li>
+            <li>Sanani aytishda tartib sonlardan foydalanamiz (1st, 2nd, 3rd).</li>
+        </ul>
+        <p><b>Misollar:</b></p>
+        <ul>
+            <li>Today is Wednesday. (Bugun chorshanba.)</li>
+            <li>It is 2002. (Bu 2002-yil.)</li>
+            <li>My birthday is in May. (Mening tug'ilgan kunim may oyida.)</li>
+            <li>We have a lesson on Monday. (Biz dushanba kuni darsimiz bor.)</li>
+            <li>It is the 5th of May. (Bu 5-may.)</li>
+        </ul>
+    </div>
+    
+    <h3>10 ta yodlash uchun gap (Faqat tarjimasi bilan):</h3>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Today is Wednesday.</span><span class="translation">Bugun chorshanba.</span><button class="audio-btn" onclick="speak('Today is Wednesday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">It is 2002.</span><span class="translation">Bu 2002-yil.</span><button class="audio-btn" onclick="speak('It is 2002')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Today is Monday.</span><span class="translation">Bugun dushanba.</span><button class="audio-btn" onclick="speak('Today is Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">It is 2024.</span><span class="translation">Bu 2024-yil.</span><button class="audio-btn" onclick="speak('It is 2024')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">My birthday is in May.</span><span class="translation">Mening tug'ilgan kunim may oyida.</span><button class="audio-btn" onclick="speak('My birthday is in May')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">We have a lesson on Monday.</span><span class="translation">Biz dushanba kuni darsimiz bor.</span><button class="audio-btn" onclick="speak('We have a lesson on Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">Today is Sunday.</span><span class="translation">Bugun yakshanba.</span><button class="audio-btn" onclick="speak('Today is Sunday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">It is 1999.</span><span class="translation">Bu 1999-yil.</span><button class="audio-btn" onclick="speak('It is 1999')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">It is the 5th of May.</span><span class="translation">Bu 5-may.</span><button class="audio-btn" onclick="speak('It is the 5th of May')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">It is the 1st of January.</span><span class="translation">Bu 1-yanvar.</span><button class="audio-btn" onclick="speak('It is the 1st of January')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>5. Dialog: Savol va Javoblar</h2>
+    <p>Quyidagi savol-javoblarni o'rganib chiqing:</p>
+    <div class="dialog-container">
+        <div class="dialog-line"><span><span class="speaker">Vaqt so'rash:</span> What time is it? (Soat necha?)</span><span class="translation">It is 5 o'clock. (Soat 5.)</span><button class="audio-btn" onclick="speak('What time is it? It is 5 oclock')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="dialog-line"><span><span class="speaker">Kun so'rash:</span> What day is it today? (Bugun qaysi kun?)</span><span class="translation">Today is Monday. (Bugun dushanba.)</span><button class="audio-btn" onclick="speak('What day is it today? Today is Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="dialog-line"><span><span class="speaker">Yil so'rash:</span> What year is it? (Qaysi yil?)</span><span class="translation">It is 2024. (2024-yil.)</span><button class="audio-btn" onclick="speak('What year is it? It is 2024')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="dialog-line"><span><span class="speaker">Oy so'rash:</span> What month is it? (Qaysi oy?)</span><span class="translation">It is May. (May oyi.)</span><button class="audio-btn" onclick="speak('What month is it? It is May')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h2>6. O'qish va talaffuz mashqi</h2>
+    <p>Quyidagi gaplarni kamida 3 marotaba ovoz chiqarib o'qing:</p>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Today is Monday.</span><span class="translation">Bugun dushanba.</span><button class="audio-btn" onclick="speak('Today is Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">It is Tuesday.</span><span class="translation">Bu seshanba.</span><button class="audio-btn" onclick="speak('It is Tuesday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">January is cold.</span><span class="translation">Yanvar sovuq.</span><button class="audio-btn" onclick="speak('January is cold')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Summer is hot.</span><span class="translation">Yoz issiq.</span><button class="audio-btn" onclick="speak('Summer is hot')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">Spring is beautiful.</span><span class="translation">Bahor chiroyli.</span><button class="audio-btn" onclick="speak('Spring is beautiful')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">Winter is cold.</span><span class="translation">Qish sovuq.</span><button class="audio-btn" onclick="speak('Winter is cold')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">My birthday is in May.</span><span class="translation">Mening tug'ilgan kunim may oyida.</span><button class="audio-btn" onclick="speak('My birthday is in May')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">We have a lesson on Monday.</span><span class="translation">Biz dushanba kuni darsimiz bor.</span><button class="audio-btn" onclick="speak('We have a lesson on Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">It is 2024.</span><span class="translation">Bu 2024-yil.</span><button class="audio-btn" onclick="speak('It is 2024')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">Today is Friday.</span><span class="translation">Bugun juma.</span><button class="audio-btn" onclick="speak('Today is Friday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">Monday is a working day.</span><span class="translation">Dushanba ish kuni.</span><button class="audio-btn" onclick="speak('Monday is a working day')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">Sunday is a holiday.</span><span class="translation">Yakshanba dam olish kuni.</span><button class="audio-btn" onclick="speak('Sunday is a holiday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">It is the 5th of May.</span><span class="translation">Bu 5-may.</span><button class="audio-btn" onclick="speak('It is the 5th of May')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">It is 10 o'clock.</span><span class="translation">Soat 10.</span><button class="audio-btn" onclick="speak('It is 10 oclock')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">Autumn is beautiful.</span><span class="translation">Kuz chiroyli.</span><button class="audio-btn" onclick="speak('Autumn is beautiful')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <div class="interactive-section">
+        <h2>6.1. Interaktiv test (20 ta savol)</h2>
+        <p>Quyidagi so'zlarni raqam, so'z yoki kun/oy nomida yozing:</p>
+        <div class="interactive-grid" id="interactiveGrid">
+            <div class="input-group"><label>1. Three -</label><input type="text" id="inp1" placeholder="Raqam..."></div>
+            <div class="input-group"><label>2. 32 -</label><input type="text" id="inp2" placeholder="So'z..."></div>
+            <div class="input-group"><label>3. Dushanba -</label><input type="text" id="inp3" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>4. July -</label><input type="text" id="inp4" placeholder="O'zbekcha..."></div>
+            <div class="input-group"><label>5. Friday -</label><input type="text" id="inp5" placeholder="O'zbekcha..."></div>
+            <div class="input-group"><label>6. Five -</label><input type="text" id="inp6" placeholder="Raqam..."></div>
+            <div class="input-group"><label>7. 10 -</label><input type="text" id="inp7" placeholder="So'z..."></div>
+            <div class="input-group"><label>8. Yanvar -</label><input type="text" id="inp8" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>9. Summer -</label><input type="text" id="inp9" placeholder="O'zbekcha..."></div>
+            <div class="input-group"><label>10. Yakshanba -</label><input type="text" id="inp10" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>11. Twelve -</label><input type="text" id="inp11" placeholder="Raqam..."></div>
+            <div class="input-group"><label>12. 50 -</label><input type="text" id="inp12" placeholder="So'z..."></div>
+            <div class="input-group"><label>13. Mart -</label><input type="text" id="inp13" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>14. Winter -</label><input type="text" id="inp14" placeholder="O'zbekcha..."></div>
+            <div class="input-group"><label>15. Seshanba -</label><input type="text" id="inp15" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>16. Eight -</label><input type="text" id="inp16" placeholder="Raqam..."></div>
+            <div class="input-group"><label>17. 100 -</label><input type="text" id="inp17" placeholder="So'z..."></div>
+            <div class="input-group"><label>18. Aprel -</label><input type="text" id="inp18" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>19. Autumn -</label><input type="text" id="inp19" placeholder="O'zbekcha..."></div>
+            <div class="input-group"><label>20. Payshanba -</label><input type="text" id="inp20" placeholder="Inglizcha..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult"></div>
+    </div>
+
+    <div class="homework-section">
+        <h2>Homework (Uyga vazifa)</h2>
+        
+        <h3>1-topshiriq: 10 ta sodda gap</h3>
+        <p>Quyidagi sodda gaplarni daftaringizga yozing va o'qing:</p>
+        <ol style="column-count: 2;">
+            <li>Today is Monday.</li>
+            <li>It is Tuesday.</li>
+            <li>January is cold.</li>
+            <li>Summer is hot.</li>
+            <li>Spring is beautiful.</li>
+            <li>Winter is cold.</li>
+            <li>My birthday is in May.</li>
+            <li>We have a lesson on Monday.</li>
+            <li>It is 2024.</li>
+            <li>Today is Friday.</li>
+        </ol>
+
+        <h3>2-topshiriq: Tarjima</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi so'zlarni ingliz tiliga tarjima qiling va ovoz chiqarib 3 marotabadan takroriy o'qing.
+        </div>
+        <ol style="line-height: 2;">
+            <li>Bugun chorshanba.</li>
+            <li>Bu 2024-yil.</li>
+            <li>Mening tug'ilgan kunim may oyida.</li>
+            <li>Dushanba - ish kuni.</li>
+            <li>Yakshanba - dam olish kuni.</li>
+            <li>Yoz issiq.</li>
+            <li>Qish sovuq.</li>
+            <li>Bu 5-may.</li>
+            <li>Soat 10.</li>
+            <li>Kuz chiroyli.</li>
+        </ol>
+
+        <h3>3-topshiriq: Reading (O'qish)</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi matnni ovoz chiqarib o'qishga harakat qiling, o'z ovozingizni yozib oling va teacherga Telegram orqali yuboring.
+        </div>
+        <div class="text-box">
+            <p>Hello! Today is Monday. It is a working day. I go to school on Monday. My favorite day is Friday. On Friday, I play football with my friends. In summer, it is very hot. I like summer. My birthday is in July. My mother's birthday is in January. I love all seasons!</p>
+        </div>
+
+        <h3>Vocabulary (30 ta so'z)</h3>
+        <div class="word-list">
+            <div class="word-item"><span class="word">Monday</span><span class="transcription">/ˈmʌn.deɪ/</span><span class="translation">Dushanba</span><button class="audio-btn" onclick="speak('Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Tuesday</span><span class="transcription">/ˈtjuːz.deɪ/</span><span class="translation">Seshanba</span><button class="audio-btn" onclick="speak('Tuesday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Wednesday</span><span class="transcription">/ˈwenz.deɪ/</span><span class="translation">Chorshanba</span><button class="audio-btn" onclick="speak('Wednesday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Thursday</span><span class="transcription">/ˈθɜːz.deɪ/</span><span class="translation">Payshanba</span><button class="audio-btn" onclick="speak('Thursday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Friday</span><span class="transcription">/ˈfraɪ.deɪ/</span><span class="translation">Juma</span><button class="audio-btn" onclick="speak('Friday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Saturday</span><span class="transcription">/ˈsæt.ə.deɪ/</span><span class="translation">Shanba</span><button class="audio-btn" onclick="speak('Saturday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Sunday</span><span class="transcription">/ˈsʌn.deɪ/</span><span class="translation">Yakshanba</span><button class="audio-btn" onclick="speak('Sunday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">January</span><span class="transcription">/ˈdʒæn.ju.ə.ri/</span><span class="translation">Yanvar</span><button class="audio-btn" onclick="speak('January')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">February</span><span class="transcription">/ˈfeb.ru.ə.ri/</span><span class="translation">Fevral</span><button class="audio-btn" onclick="speak('February')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">March</span><span class="transcription">/mɑːtʃ/</span><span class="translation">Mart</span><button class="audio-btn" onclick="speak('March')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">April</span><span class="transcription">/ˈeɪ.prəl/</span><span class="translation">Aprel</span><button class="audio-btn" onclick="speak('April')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">May</span><span class="transcription">/meɪ/</span><span class="translation">May</span><button class="audio-btn" onclick="speak('May')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">June</span><span class="transcription">/dʒuːn/</span><span class="translation">Iyun</span><button class="audio-btn" onclick="speak('June')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">July</span><span class="transcription">/dʒuˈlaɪ/</span><span class="translation">Iyul</span><button class="audio-btn" onclick="speak('July')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">August</span><span class="transcription">/ˈɔː.ɡəst/</span><span class="translation">Avgust</span><button class="audio-btn" onclick="speak('August')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">September</span><span class="transcription">/sepˈtem.bər/</span><span class="translation">Sentabr</span><button class="audio-btn" onclick="speak('September')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">October</span><span class="transcription">/ɒkˈtəʊ.bər/</span><span class="translation">Oktabr</span><button class="audio-btn" onclick="speak('October')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">November</span><span class="transcription">/nəʊˈvem.bər/</span><span class="translation">Noyabr</span><button class="audio-btn" onclick="speak('November')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">December</span><span class="transcription">/dɪˈsem.bər/</span><span class="translation">Dekabr</span><button class="audio-btn" onclick="speak('December')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Spring</span><span class="transcription">/sprɪŋ/</span><span class="translation">Bahor</span><button class="audio-btn" onclick="speak('Spring')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Summer</span><span class="transcription">/ˈsʌm.ər/</span><span class="translation">Yoz</span><button class="audio-btn" onclick="speak('Summer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Autumn</span><span class="transcription">/ˈɔː.təm/</span><span class="translation">Kuz</span><button class="audio-btn" onclick="speak('Autumn')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Winter</span><span class="transcription">/ˈwɪn.tər/</span><span class="translation">Qish</span><button class="audio-btn" onclick="speak('Winter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Year</span><span class="transcription">/jɪər/</span><span class="translation">Yil</span><button class="audio-btn" onclick="speak('Year')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Month</span><span class="transcription">/mʌnθ/</span><span class="translation">Oy</span><button class="audio-btn" onclick="speak('Month')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        </div>
+    </div>
+
+    <div class="interactive-section">
+        <h2>Yakuniy interaktiv test (25 ta savol)</h2>
+        <p>O'tilgan mavzularni mustahkamlash uchun.</p>
+        <div class="interactive-grid" id="interactiveGrid2">
+            <div class="input-group"><label>1. Today is ___. (chorshanba)</label><input type="text" id="t1" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>2. It is ___. (2024)</label><input type="text" id="t2" placeholder="Raqam..."></div>
+            <div class="input-group"><label>3. January is a ___. (oy)</label><input type="text" id="t3" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>4. Summer is ___. (issiq)</label><input type="text" id="t4" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>5. Winter is ___. (sovuq)</label><input type="text" id="t5" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>6. My birthday is in ___. (may)</label><input type="text" id="t6" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>7. We have a lesson on ___. (dushanba)</label><input type="text" id="t7" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>8. It is the 5th of ___. (may)</label><input type="text" id="t8" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>9. It is 10 ___. (soat)</label><input type="text" id="t9" placeholder="So'z..."></div>
+            <div class="input-group"><label>10. Autumn is ___. (chiroyli)</label><input type="text" id="t10" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>11. Yakshanba (inglizcha)</label><input type="text" id="t11" placeholder="Javob..."></div>
+            <div class="input-group"><label>12. Fevral (inglizcha)</label><input type="text" id="t12" placeholder="Javob..."></div>
+            <div class="input-group"><label>13. Bahor (inglizcha)</label><input type="text" id="t13" placeholder="Javob..."></div>
+            <div class="input-group"><label>14. Qish (inglizcha)</label><input type="text" id="t14" placeholder="Javob..."></div>
+            <div class="input-group"><label>15. Payshanba (inglizcha)</label><input type="text" id="t15" placeholder="Javob..."></div>
+            <div class="input-group"><label>16. Iyun (inglizcha)</label><input type="text" id="t16" placeholder="Javob..."></div>
+            <div class="input-group"><label>17. Kuz (inglizcha)</label><input type="text" id="t17" placeholder="Javob..."></div>
+            <div class="input-group"><label>18. Dushanba (inglizcha)</label><input type="text" id="t18" placeholder="Javob..."></div>
+            <div class="input-group"><label>19. Dekabr (inglizcha)</label><input type="text" id="t19" placeholder="Javob..."></div>
+            <div class="input-group"><label>20. Yoz (inglizcha)</label><input type="text" id="t20" placeholder="Javob..."></div>
+            <div class="input-group"><label>21. Seshanba (inglizcha)</label><input type="text" id="t21" placeholder="Javob..."></div>
+            <div class="input-group"><label>22. Aprel (inglizcha)</label><input type="text" id="t22" placeholder="Javob..."></div>
+            <div class="input-group"><label>23. Juma (inglizcha)</label><input type="text" id="t23" placeholder="Javob..."></div>
+            <div class="input-group"><label>24. Noyabr (inglizcha)</label><input type="text" id="t24" placeholder="Javob..."></div>
+            <div class="input-group"><label>25. Shanba (inglizcha)</label><input type="text" id="t25" placeholder="Javob..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive2()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult2"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
+    </div>
+    
+    <!-- Motivatsion Jumla (YANGI QO'SHILDI) -->
+    <div class="motivation-box">
+        <h2>Motivatsiya!</h2>
+        <p>"Har bir yangi so'z — bu yangi dunyo. English Up bilan har kuni bir qadam oldinga intiling va o'z maqsadlaringizga erishing!"</p>
+    </div>
+
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // 6.1-bo'lim 20 talik interaktiv testni tekshirish
+    function checkInteractive() {
+        const answers = {
+            inp1: '3', inp2: 'thirty-two', inp3: 'monday', inp4: 'iyul', inp5: 'juma',
+            inp6: '5', inp7: 'ten', inp8: 'january', inp9: 'yoz', inp10: 'sunday',
+            inp11: '12', inp12: 'fifty', inp13: 'march', inp14: 'qish', inp15: 'tuesday',
+            inp16: '8', inp17: 'one hundred', inp18: 'april', inp19: 'kuz', inp20: 'thursday'
+        };
+        let score = 0;
+        let total = 20;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?]/g, '');
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+
+    // Yakuniy 25 talik interaktiv testni tekshirish
+    function checkInteractive2() {
+        const answers = {
+            t1: 'wednesday', t2: '2024', t3: 'month', t4: 'hot', t5: 'cold',
+            t6: 'may', t7: 'monday', t8: 'may', t9: "o'clock", t10: 'beautiful',
+            t11: 'sunday', t12: 'february', t13: 'spring', t14: 'winter', t15: 'thursday',
+            t16: 'june', t17: 'autumn', t18: 'monday', t19: 'december', t20: 'summer',
+            t21: 'tuesday', t22: 'april', t23: 'friday', t24: 'november', t25: 'saturday'
+        };
+        let score = 0;
+        let total = 25;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?]/g, '');
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult2');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+</script>
+
+</body>
+</html>
