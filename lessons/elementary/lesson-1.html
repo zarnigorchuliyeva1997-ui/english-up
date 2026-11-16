@@ -1,1 +1,1160 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1 - Present Simple | English Up</title>
+
+<style>
+:root {
+    --primary:#7C3AED;
+    --bg:#F3F4F6;
+    --card:#FFFFFF;
+    --text:#1F2937;
+    --muted:#6B7280;
+    --border:#E5E7EB;
+    --green:#16A34A;
+    --red:#DC2626;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+body {
+    margin:0;
+    font-family:'Segoe UI',Tahoma,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+}
+
+.header {
+    background:var(--card);
+    padding:13px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 5px #00000010;
+}
+
+.header a {
+    text-decoration:none;
+    color:var(--text);
+    font-weight:600;
+}
+
+.logo {
+    color:var(--primary);
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.theme-toggle {
+    cursor:pointer;
+    font-size:22px;
+}
+
+.container {
+    max-width:800px;
+    margin:20px auto;
+    padding:0 14px 40px;
+}
+
+.hero {
+    background:linear-gradient(135deg,#7C3AED,#4F46E5);
+    color:white;
+    padding:25px 20px;
+    border-radius:16px;
+    margin-bottom:20px;
+}
+
+.hero h1 {
+    margin:5px 0;
+    font-size:25px;
+}
+
+.hero p {
+    margin:5px 0;
+}
+
+.badge {
+    display:inline-block;
+    background:#FFFFFF25;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.progress-box {
+    background:#FFFFFF30;
+    height:8px;
+    border-radius:10px;
+    margin-top:16px;
+    overflow:hidden;
+}
+
+.progress-fill {
+    height:100%;
+    width:0;
+    background:#FFFFFF;
+    transition:.3s;
+}
+
+.section {
+    background:var(--card);
+    padding:20px;
+    border-radius:13px;
+    margin-bottom:17px;
+    box-shadow:0 2px 7px #00000008;
+}
+
+.section h2 {
+    color:var(--primary);
+    font-size:20px;
+    margin-top:0;
+    border-bottom:1px solid var(--border);
+    padding-bottom:9px;
+}
+
+.section h3 {
+    margin-bottom:8px;
+}
+
+.note {
+    background:#F5F3FF;
+    border-left:4px solid var(--primary);
+    padding:12px;
+    border-radius:6px;
+    margin:12px 0;
+}
+
+.example {
+    background:#F9FAFB;
+    padding:12px;
+    border-radius:8px;
+    margin:9px 0;
+}
+
+.en {
+    font-weight:600;
+    color:var(--primary);
+}
+
+.uz {
+    color:var(--muted);
+    font-size:14px;
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0;
+    font-size:14px;
+}
+
+td,th {
+    padding:10px;
+    border:1px solid var(--border);
+    text-align:left;
+}
+
+th {
+    background:#F5F3FF;
+    color:#6D28D9;
+}
+
+.btn {
+    background:var(--primary);
+    color:white;
+    border:0;
+    padding:11px 17px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    margin:5px 3px;
+}
+
+.btn:hover {
+    opacity:.9;
+}
+
+.btn.secondary {
+    background:#EDE9FE;
+    color:#6D28D9;
+}
+
+.question {
+    border:1px solid var(--border);
+    padding:14px;
+    border-radius:9px;
+    margin:12px 0;
+}
+
+.question label {
+    display:block;
+    padding:5px 0;
+    cursor:pointer;
+}
+
+input[type="radio"] {
+    margin-right:8px;
+    accent-color:var(--primary);
+}
+
+input[type="text"], textarea {
+    width:100%;
+    padding:11px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font:inherit;
+    background:var(--card);
+    color:var(--text);
+}
+
+textarea {
+    min-height:110px;
+    resize:vertical;
+}
+
+.result {
+    padding:13px;
+    border-radius:8px;
+    margin-top:12px;
+    display:none;
+}
+
+.correct {
+    color:var(--green);
+    font-weight:bold;
+}
+
+.wrong {
+    color:var(--red);
+    font-weight:bold;
+}
+
+.answer {
+    display:none;
+    background:#ECFDF5;
+    padding:10px;
+    border-radius:8px;
+    margin-top:8px;
+    color:#166534;
+}
+
+.vocab {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--border);
+    padding:9px 0;
+    gap:8px;
+}
+
+.vocab button {
+    border:0;
+    background:#EDE9FE;
+    color:#6D28D9;
+    border-radius:7px;
+    padding:7px 10px;
+    cursor:pointer;
+}
+
+.footer {
+    text-align:center;
+    padding:20px;
+    color:var(--muted);
+}
+
+@media(max-width:480px) {
+    .section {
+        padding:15px;
+    }
+    .hero h1 {
+        font-size:21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="../elementary.html">⬅ Back</a>
+    <div class="logo">ENGLISHUP</div>
+    <div class="theme-toggle" onclick="toggleTheme()">☀️</div>
+</header>
+
+<main class="container">
+
+<div class="hero">
+    <span class="badge">ELEMENTARY • LESSON 01</span>
+    <h1>Present Simple</h1>
+    <p>Deep Revision — Present, Habits and Daily Routines</p>
+    <p>Grammar • Vocabulary • Reading • Listening • Speaking • Writing</p>
+    <div class="progress-box">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <small id="progressText">Dars jarayoni: 0%</small>
+</div>
+
+<!-- OBJECTIVES -->
+
+<section class="section">
+<h2>🎯 1. Lesson Objectives</h2>
+
+<p>Ushbu dars yakunida siz:</p>
+
+<ul>
+<li>Present Simple zamonini to'liq tushunasiz.</li>
+<li>Darak, inkor va so'roq gaplarni tuzasiz.</li>
+<li>Do va Does yordamchi fe'llarini ishlatasiz.</li>
+<li>He, She, It bilan fe'l o'zgarishini bilasiz.</li>
+<li>Kundalik odatlaringiz haqida gapira olasiz.</li>
+<li>Frequency adverbs yordamida gaplaringizni boyitasiz.</li>
+</ul>
+</section>
+
+<!-- GRAMMAR -->
+
+<section class="section">
+<h2>📘 2. What is Present Simple?</h2>
+
+<p>Present Simple — hozirgi oddiy zamon. U asosan muntazam takrorlanadigan ishlar, kundalik odatlar, umumiy haqiqatlar va doimiy holatlar uchun ishlatiladi.</p>
+
+<h3>Asosiy ishlatilish holatlari</h3>
+
+<div class="example">
+<strong>1. Daily routines — Kundalik ishlar</strong>
+<p class="en">I wake up at 6 o'clock every day.</p>
+<p class="uz">Men har kuni soat 6 da uyg'onaman.</p>
+</div>
+
+<div class="example">
+<strong>2. Habits — Odatlar</strong>
+<p class="en">She drinks tea every morning.</p>
+<p class="uz">U har kuni ertalab choy ichadi.</p>
+</div>
+
+<div class="example">
+<strong>3. General truths — Umumiy haqiqatlar</strong>
+<p class="en">The sun rises in the east.</p>
+<p class="uz">Quyosh sharqdan chiqadi.</p>
+</div>
+
+<div class="example">
+<strong>4. Permanent situations — Doimiy holatlar</strong>
+<p class="en">He lives in Uzbekistan.</p>
+<p class="uz">U O'zbekistonda yashaydi.</p>
+</div>
+
+<div class="example">
+<strong>5. Feelings and opinions — His-tuyg'ular va fikrlar</strong>
+<p class="en">I like English.</p>
+<p class="uz">Men ingliz tilini yoqtiraman.</p>
+</div>
+</section>
+
+<!-- POSITIVE -->
+
+<section class="section">
+<h2>📗 3. Positive Sentences</h2>
+
+<p>Darak gaplarda fe'l odatda o'zining asosiy shaklida ishlatiladi. Lekin He, She, It bilan fe'lga -s yoki boshqa mos qo'shimcha qo'shiladi.</p>
+
+<div class="note">
+<strong>Formula:</strong><br>
+I / You / We / They + V1<br>
+He / She / It + V-s/es/ies
+</div>
+
+<h3>Misollar</h3>
+
+<table>
+<tr><th>Subject</th><th>Sentence</th><th>Tarjima</th></tr>
+<tr><td>I</td><td>I work.</td><td>Men ishlayman.</td></tr>
+<tr><td>You</td><td>You study.</td><td>Sen o'qiysan.</td></tr>
+<tr><td>We</td><td>We play football.</td><td>Biz futbol o'ynaymiz.</td></tr>
+<tr><td>They</td><td>They live here.</td><td>Ular shu yerda yashaydi.</td></tr>
+<tr><td>He</td><td>He works.</td><td>U ishlaydi.</td></tr>
+<tr><td>She</td><td>She studies.</td><td>U o'qiydi.</td></tr>
+<tr><td>It</td><td>It works.</td><td>U ishlaydi.</td></tr>
+</table>
+</section>
+
+<!-- S RULES -->
+
+<section class="section">
+<h2>📙 4. Spelling Rules: S / ES / IES</h2>
+
+<h3>1-qoida: Odatda -s qo'shiladi</h3>
+
+<table>
+<tr><th>Verb</th><th>He / She / It</th></tr>
+<tr><td>work</td><td>works</td></tr>
+<tr><td>read</td><td>reads</td></tr>
+<tr><td>play</td><td>plays</td></tr>
+<tr><td>eat</td><td>eats</td></tr>
+<tr><td>drink</td><td>drinks</td></tr>
+</table>
+
+<h3>2-qoida: -s, -ss, -sh, -ch, -x, -z, -o bilan tugasa, odatda -es qo'shiladi</h3>
+
+<table>
+<tr><th>Verb</th><th>He / She / It</th></tr>
+<tr><td>watch</td><td>watches</td></tr>
+<tr><td>wash</td><td>washes</td></tr>
+<tr><td>go</td><td>goes</td></tr>
+<tr><td>do</td><td>does</td></tr>
+<tr><td>fix</td><td>fixes</td></tr>
+<tr><td>pass</td><td>passes</td></tr>
+</table>
+
+<h3>3-qoida: Undosh + y = ies</h3>
+
+<table>
+<tr><th>Verb</th><th>He / She / It</th></tr>
+<tr><td>study</td><td>studies</td></tr>
+<tr><td>try</td><td>tries</td></tr>
+<tr><td>cry</td><td>cries</td></tr>
+</table>
+
+<div class="note">
+<strong>Muhim istisno:</strong><br>
+play → plays<br>
+buy → buys<br>
+Chunki bu fe'llarda y dan oldin unli harf kelgan.
+</div>
+
+<h3>Maxsus fe'l: HAVE</h3>
+<p>He / She / It bilan have → has bo'ladi.</p>
+<p class="en">She has a new phone.</p>
+<p class="uz">Uning yangi telefoni bor.</p>
+</section>
+
+<!-- NEGATIVE -->
+
+<section class="section">
+<h2>📕 5. Negative Sentences</h2>
+
+<p>Inkor gaplarda do not yoki does not ishlatiladi.</p>
+
+<div class="note">
+<strong>Formula:</strong><br>
+I / You / We / They + do not + V1<br>
+He / She / It + does not + V1
+</div>
+
+<table>
+<tr><th>Full form</th><th>Short form</th></tr>
+<tr><td>do not</td><td>don't</td></tr>
+<tr><td>does not</td><td>doesn't</td></tr>
+</table>
+
+<div class="example">
+<p class="en">I don't drink coffee.</p>
+<p class="uz">Men qahva ichmayman.</p>
+</div>
+
+<div class="example">
+<p class="en">She doesn't work on Sundays.</p>
+<p class="uz">U yakshanba kunlari ishlamaydi.</p>
+</div>
+
+<div class="example">
+<p class="en">They don't live here.</p>
+<p class="uz">Ular bu yerda yashamaydi.</p>
+</div>
+
+<div class="note">
+<strong>Eng muhim qoida!</strong><br>
+Doesn't ishlatilganda asosiy fe'lga -s qo'shilmaydi.
+<br><br>
+❌ She doesn't likes tea.<br>
+✅ She doesn't like tea.
+</div>
+</section>
+
+<!-- QUESTIONS -->
+
+<section class="section">
+<h2>📘 6. Questions</h2>
+
+<p>So'roq gap tuzishda Do yoki Does gap boshiga chiqadi.</p>
+
+<div class="note">
+<strong>Formula:</strong><br>
+Do + I / you / we / they + V1?<br>
+Does + he / she / it + V1?
+</div>
+
+<div class="example">
+<p class="en">Do you speak English?</p>
+<p class="uz">Siz ingliz tilida gapirasizmi?</p>
+</div>
+
+<div class="example">
+<p class="en">Does she work here?</p>
+<p class="uz">U shu yerda ishlaydimi?</p>
+</div>
+
+<h3>Short Answers — Qisqa javoblar</h3>
+
+<table>
+<tr><th>Question</th><th>Positive</th><th>Negative</th></tr>
+<tr><td>Do you work?</td><td>Yes, I do.</td><td>No, I don't.</td></tr>
+<tr><td>Does he study?</td><td>Yes, he does.</td><td>No, he doesn't.</td></tr>
+<tr><td>Do they play?</td><td>Yes, they do.</td><td>No, they don't.</td></tr>
+</table>
+
+<div class="note">
+<strong>Eslab qoling:</strong><br>
+Does she likes? ❌<br>
+Does she like? ✅
+</div>
+</section>
+
+<!-- WH QUESTIONS -->
+
+<section class="section">
+<h2>📗 7. Wh-Questions</h2>
+
+<p>Ma'lumot olish uchun maxsus so'roq so'zlaridan foydalanamiz.</p>
+
+<table>
+<tr><th>Question word</th><th>Ma'nosi</th></tr>
+<tr><td>What</td><td>Nima?</td></tr>
+<tr><td>Where</td><td>Qayerda?</td></tr>
+<tr><td>When</td><td>Qachon?</td></tr>
+<tr><td>Why</td><td>Nima uchun?</td></tr>
+<tr><td>Who</td><td>Kim?</td></tr>
+<tr><td>How</td><td>Qanday?</td></tr>
+<tr><td>How often</td><td>Qanchalik tez-tez?</td></tr>
+</table>
+
+<div class="example">
+<p class="en">Where do you live?</p>
+<p class="uz">Qayerda yashaysiz?</p>
+</div>
+
+<div class="example">
+<p class="en">What does she do?</p>
+<p class="uz">U nima ish qiladi?</p>
+</div>
+
+<div class="example">
+<p class="en">How often do you read?</p>
+<p class="uz">Qanchalik tez-tez kitob o'qiysiz?</p>
+</div>
+
+<div class="example">
+<p class="en">Why does he learn English?</p>
+<p class="uz">U nima uchun ingliz tilini o'rganadi?</p>
+</div>
+</section>
+
+<!-- FREQUENCY -->
+
+<section class="section">
+<h2>📙 8. Adverbs of Frequency</h2>
+
+<p>Bu ravishlar ish-harakat qanchalik tez-tez sodir bo'lishini bildiradi.</p>
+
+<table>
+<tr><th>Adverb</th><th>Ma'nosi</th><th>Taxminiy chastota</th></tr>
+<tr><td>Always</td><td>Har doim</td><td>100%</td></tr>
+<tr><td>Usually</td><td>Odatda</td><td>80–90%</td></tr>
+<tr><td>Often</td><td>Tez-tez</td><td>60–70%</td></tr>
+<tr><td>Sometimes</td><td>Ba'zan</td><td>40–50%</td></tr>
+<tr><td>Rarely</td><td>Kamdan-kam</td><td>10–20%</td></tr>
+<tr><td>Hardly ever</td><td>Deyarli hech qachon</td><td>5–10%</td></tr>
+<tr><td>Never</td><td>Hech qachon</td><td>0%</td></tr>
+</table>
+
+<h3>Gapda joylashishi</h3>
+
+<div class="example">
+<p class="en">I always wake up early.</p>
+<p class="uz">Men har doim erta uyg'onaman.</p>
+</div>
+
+<div class="example">
+<p class="en">She usually walks to school.</p>
+<p class="uz">U odatda maktabga piyoda boradi.</p>
+</div>
+
+<div class="example">
+<p class="en">They never smoke.</p>
+<p class="uz">Ular hech qachon chekmaydi.</p>
+</div>
+
+<div class="note">
+<strong>To be bilan:</strong><br>
+Frequency adverb odatda am/is/are dan keyin keladi.
+<br><br>
+He is always happy.<br>
+They are usually busy.
+</div>
+</section>
+
+<!-- SIGNAL WORDS -->
+
+<section class="section">
+<h2>📕 9. Signal Words</h2>
+
+<p>Present Simple bilan ko'p ishlatiladigan vaqt iboralari:</p>
+
+<ul>
+<li>Every day — Har kuni</li>
+<li>Every morning — Har tong</li>
+<li>Every week — Har hafta</li>
+<li>Every month — Har oy</li>
+<li>Once a week — Haftada bir marta</li>
+<li>Twice a week — Haftada ikki marta</li>
+<li>Three times a month — Oyda uch marta</li>
+<li>On Mondays — Dushanba kunlari</li>
+<li>At weekends — Dam olish kunlari</li>
+<li>In the morning — Ertalab</li>
+<li>At night — Tunda</li>
+</ul>
+
+<div class="example">
+<p class="en">I go to the gym three times a week.</p>
+<p class="uz">Men haftada uch marta sport zaliga boraman.</p>
+</div>
+</section>
+
+<!-- TO BE -->
+
+<section class="section">
+<h2>📘 10. Present Simple: To Be vs Do/Does</h2>
+
+<p>Bu ikki tuzilmani adashtirmaslik juda muhim.</p>
+
+<table>
+<tr><th>To Be</th><th>Action verbs</th></tr>
+<tr><td>I am happy.</td><td>I work every day.</td></tr>
+<tr><td>She is a teacher.</td><td>She teaches English.</td></tr>
+<tr><td>Are you tired?</td><td>Do you work?</td></tr>
+<tr><td>He isn't busy.</td><td>He doesn't work.</td></tr>
+</table>
+
+<div class="note">
+<strong>Qoida:</strong><br>
+Am / Is / Are bilan odatda Do / Does qo'shilmaydi.
+<br><br>
+❌ Do you are happy?<br>
+✅ Are you happy?
+</div>
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+<h2>⚠️ 11. Common Mistakes</h2>
+
+<div class="example">
+❌ He go to school.<br>
+<span class="correct">✅ He goes to school.</span>
+</div>
+
+<div class="example">
+❌ She don't like coffee.<br>
+<span class="correct">✅ She doesn't like coffee.</span>
+</div>
+
+<div class="example">
+❌ Does he works here?<br>
+<span class="correct">✅ Does he work here?</span>
+</div>
+
+<div class="example">
+❌ I am go to work every day.<br>
+<span class="correct">✅ I go to work every day.</span>
+</div>
+
+<div class="example">
+❌ She is always go to school.<br>
+<span class="correct">✅ She always goes to school.</span>
+</div>
+</section>
+
+<!-- VOCABULARY -->
+
+<section class="section">
+<h2>📚 12. Vocabulary</h2>
+<p>Quyidagi fe'llarni o'rganing. Karnay tugmasi orqali talaffuzni tinglashingiz mumkin.</p>
+
+<div id="vocabulary"></div>
+</section>
+
+<!-- READING -->
+
+<section class="section">
+<h2>📖 13. Reading Practice</h2>
+
+<h3>My Daily Routine</h3>
+
+<p class="en">
+My name is Daniel. I live in a small town with my family.
+I usually wake up at six o'clock in the morning.
+I wash my face and have breakfast.
+I go to work at eight o'clock.
+I work in a shop and meet many people every day.
+I have lunch at one o'clock.
+After work, I usually come home and spend time with my family.
+In the evening, I study English for thirty minutes.
+I sometimes watch TV, but I never go to bed late.
+I usually sleep at eleven o'clock.
+</p>
+
+<h3>Tarjimasi</h3>
+
+<p>
+Mening ismim Daniel. Men oilam bilan kichik shaharchada yashayman.
+Men odatda ertalab soat oltida uyg'onaman.
+Yuzimni yuvaman va nonushta qilaman.
+Soat sakkizda ishga boraman.
+Men do'konda ishlayman va har kuni ko'plab insonlar bilan uchrashaman.
+Soat birda tushlik qilaman.
+Ishdan keyin odatda uyga qaytaman va oilam bilan vaqt o'tkazaman.
+Kechqurun o'ttiz daqiqa ingliz tilini o'rganaman.
+Ba'zan televizor ko'raman, lekin hech qachon kech uxlamayman.
+Odatda soat o'n birda uxlayman.
+</p>
+
+<h3>Reading Questions</h3>
+
+<div id="readingQuestions"></div>
+<button class="btn" onclick="checkReading()">Check Reading</button>
+<div id="readingResult" class="result"></div>
+</section>
+
+<!-- LISTENING -->
+
+<section class="section">
+<h2>🎧 14. Listening Practice</h2>
+
+<p>Quyidagi matnni avval tinglang, keyin savollarga javob bering.</p>
+
+<div class="note">
+Listening matni Danielning kundalik hayoti haqida. Matnni bir necha marta tinglashingiz mumkin.
+</div>
+
+<button class="btn" onclick="speakText()">▶ Listen</button>
+<button class="btn secondary" onclick="stopSpeech()">■ Stop</button>
+
+<div id="listeningQuestions"></div>
+
+<button class="btn" onclick="checkListening()">Check Listening</button>
+<div id="listeningResult" class="result"></div>
+</section>
+
+<!-- SPEAKING -->
+
+<section class="section">
+<h2>🗣️ 15. Speaking Practice</h2>
+
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering.</p>
+
+<ol>
+<li>What time do you wake up every day?</li>
+<li>What do you usually eat for breakfast?</li>
+<li>Where do you work or study?</li>
+<li>How often do you study English?</li>
+<li>What do you do in the evening?</li>
+<li>Do you watch TV every day?</li>
+<li>What time do you usually go to bed?</li>
+<li>What do you do at weekends?</li>
+</ol>
+
+<div class="note">
+<strong>Speaking Challenge:</strong><br>
+O'zingizning kundalik hayotingiz haqida kamida 10 ta gap tuzing. Always, usually, sometimes va never so'zlaridan foydalaning.
+</div>
+
+<button class="btn" onclick="speakText('Tell me about your daily routine. What do you do every day?')">
+▶ Listen to Speaking Question
+</button>
+</section>
+
+<!-- WRITING -->
+
+<section class="section">
+<h2>✍️ 16. Writing Practice</h2>
+
+<p><strong>Topic: My Daily Routine</strong></p>
+
+<p>O'zingizning kundalik hayotingiz haqida 100–120 ta so'zdan iborat matn yozing.</p>
+
+<p>Quyidagi iboralardan foydalaning:</p>
+
+<ul>
+<li>I usually wake up...</li>
+<li>After breakfast...</li>
+<li>I go to...</li>
+<li>I always...</li>
+<li>Sometimes I...</li>
+<li>In the evening...</li>
+<li>Before I go to bed...</li>
+</ul>
+
+<textarea id="writingText" placeholder="Write your paragraph here..."></textarea>
+<p id="wordCount">Words: 0</p>
+
+<div class="note">
+Matningizni yozib bo'lgach, uni nusxalab saqlang. Bu mashq avtomatik ravishda grammatik xatolarni tekshirmaydi.
+</div>
+
+<button class="btn secondary" onclick="copyWriting()">Copy My Writing</button>
+</section>
+
+<!-- GRAMMAR TEST -->
+
+<section class="section">
+<h2>📝 17. Grammar Test</h2>
+
+<p>15 ta savol. Har bir to'g'ri javob 1 ball.</p>
+
+<div id="grammarQuestions"></div>
+
+<button class="btn" onclick="checkGrammar()">Submit Test</button>
+<button class="btn secondary" onclick="resetGrammar()">Try Again</button>
+
+<div id="grammarResult" class="result"></div>
+</section>
+
+<!-- TRANSLATION -->
+
+<section class="section">
+<h2>🔄 18. Translation Practice</h2>
+
+<p>Quyidagi gaplarni ingliz tiliga tarjima qiling. Javobni ko'rish uchun tugmani bosing.</p>
+
+<div id="translationTasks"></div>
+</section>
+
+<!-- FINAL REVIEW -->
+
+<section class="section">
+<h2>🏆 19. Lesson Review</h2>
+
+<ul>
+<li>Present Simple qachon ishlatiladi?</li>
+<li>He / She / It bilan fe'l qanday o'zgaradi?</li>
+<li>Doesn't dan keyin fe'l qanday shaklda keladi?</li>
+<li>So'roq gaplarda Do va Does qayerda turadi?</li>
+<li>Frequency adverbs gapda qayerda ishlatiladi?</li>
+<li>To Be bilan Do/Does ishlatiladimi?</li>
+</ul>
+
+<div class="note">
+<strong>Final Challenge:</strong><br>
+Present Simple zamonida 5 ta darak, 5 ta inkor va 5 ta so'roq gap tuzing.
+</div>
+
+</section>
+
+<section class="section">
+<h2>✅ Lesson Completion</h2>
+<p>Darsni o'rganib, barcha mashqlarni bajarganingizdan keyin belgilang.</p>
+<label>
+<input type="checkbox" id="completed">
+I have completed Elementary Lesson 1.
+</label>
+<br><br>
+<button class="btn" onclick="completeLesson()">Save Progress</button>
+<div id="completionResult" class="result"></div>
+<br>
+<a href="lesson-2.html" class="btn" style="display:inline-block;text-decoration:none">Next Lesson →</a>
+</section>
+
+<div class="footer">
+ENGLISH UP<br>
+Learn today. Succeed tomorrow.
+</div>
+
+</main>
+
+<script>
+// THEME
+function toggleTheme() {
+    const dark = document.body.dataset.theme !== 'dark';
+    document.body.dataset.theme = dark ? 'dark' : 'light';
+
+    document.body.style.background = dark ? '#111827' : '#F3F4F6';
+    document.body.style.color = dark ? '#F9FAFB' : '#1F2937';
+
+    document.querySelectorAll('.section').forEach(el => {
+        el.style.background = dark ? '#1F2937' : '#FFFFFF';
+    });
+
+    document.querySelectorAll('.example').forEach(el => {
+        el.style.background = dark ? '#374151' : '#F9FAFB';
+    });
+
+    document.querySelector('.header').style.background =
+        dark ? '#1F2937' : '#FFFFFF';
+
+    document.querySelector('.theme-toggle').textContent =
+        dark ? '🌙' : '☀️';
+}
+
+// VOCABULARY
+const words = [
+    ['Wake up','Uyg‘onmoq','weɪk ʌp'],
+    ['Get up','O‘rindan turmoq','ɡet ʌp'],
+    ['Wash','Yuvmoq','wɒʃ'],
+    ['Brush','Tozalamoq','brʌʃ'],
+    ['Have breakfast','Nonushta qilmoq','hæv brekfəst'],
+    ['Go to work','Ishga bormoq','ɡəʊ tə wɜːk'],
+    ['Study','O‘qimoq','stʌdi'],
+    ['Learn','O‘rganmoq','lɜːn'],
+    ['Teach','O‘qitmoq','tiːtʃ'],
+    ['Work','Ishlamoq','wɜːk'],
+    ['Cook','Ovqat pishirmoq','kʊk'],
+    ['Clean','Tozalamoq','kliːn'],
+    ['Read','O‘qimoq','riːd'],
+    ['Write','Yozmoq','raɪt'],
+    ['Listen','Tinglamoq','lɪsən'],
+    ['Speak','Gapirmoq','spiːk'],
+    ['Watch','Tomosha qilmoq','wɒtʃ'],
+    ['Play','O‘ynamoq','pleɪ'],
+    ['Walk','Piyoda yurmoq','wɔːk'],
+    ['Sleep','Uxlamoq','sliːp'],
+    ['Relax','Dam olmoq','rɪlæks'],
+    ['Spend time','Vaqt o‘tkazmoq','spend taɪm'],
+    ['Visit','Tashrif buyurmoq','vɪzɪt'],
+    ['Help','Yordam bermoq','help'],
+    ['Exercise','Mashq qilmoq','eksəsaɪz']
+];
+
+document.getElementById('vocabulary').innerHTML = words.map(w => `
+<div class="vocab">
+<div><strong>${w[0]}</strong><br>
+<span class="uz">${w[1]} • ${w[2]}</span></div>
+<button onclick="speakText('${w[0].replace(/'/g,"\\'")}')">🔊</button>
+</div>
+`).join('');
+
+// SPEECH
+function speakText(text = '') {
+    if (!('speechSynthesis' in window)) {
+        alert('Your browser does not support speech.');
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const content = text || `My name is Daniel. I live in a small town with my family.
+    I usually wake up at six o'clock in the morning.
+    I wash my face and have breakfast.
+    I go to work at eight o'clock.
+    I work in a shop and meet many people every day.
+    I have lunch at one o'clock.
+    After work, I usually come home and spend time with my family.
+    In the evening, I study English for thirty minutes.
+    I sometimes watch TV, but I never go to bed late.
+    I usually sleep at eleven o'clock.`;
+
+    const utterance = new SpeechSynthesisUtterance(content);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8;
+    speechSynthesis.speak(utterance);
+}
+
+function stopSpeech() {
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+}
+
+// QUESTION BUILDER
+const readingData = [
+    ['What is the boy’s name?',['Daniel','David','John'],0],
+    ['Where does he live?',['In a big city','In a small town','In London'],1],
+    ['What time does he wake up?',['At five','At six','At seven'],1],
+    ['Where does he work?',['In a shop','In a school','In a bank'],0],
+    ['What does he do in the evening?',['He plays football','He studies English','He goes shopping'],1]
+];
+
+const listeningData = [
+    ['What time does Daniel go to work?',['At 7','At 8','At 9'],1],
+    ['When does he have lunch?',['At 12','At 1','At 2'],1],
+    ['How long does he study English?',['20 minutes','30 minutes','1 hour'],1],
+    ['Does he watch TV sometimes?',['Yes','No'],0]
+];
+
+function renderQuestions(data,id) {
+    document.getElementById(id).innerHTML = data.map((q,i) => `
+    <div class="question">
+    <strong>${i+1}. ${q[0]}</strong>
+    ${q[1].map((option,j) => `
+    <label><input type="radio" name="${id}${i}" value="${j}">${option}</label>
+    `).join('')}
+    </div>`).join('');
+}
+
+renderQuestions(readingData,'readingQuestions');
+renderQuestions(listeningData,'listeningQuestions');
+
+function grade(data,id,resultId) {
+    let score = 0;
+    data.forEach((q,i) => {
+        const selected = document.querySelector(`input[name="${id}${i}"]:checked`);
+        if(selected && Number(selected.value) === q[2]) score++;
+    });
+
+    const el = document.getElementById(resultId);
+    el.style.display = 'block';
+    el.innerHTML = `Natija: <strong>${score}/${data.length}</strong> (${Math.round(score/data.length*100)}%)`;
+    return score;
+}
+
+function checkReading() {
+    grade(readingData,'readingQuestions','readingResult');
+}
+
+function checkListening() {
+    grade(listeningData,'listeningQuestions','listeningResult');
+}
+
+// GRAMMAR TEST
+const grammarData = [
+['She _____ to school every day.',['go','goes','going'],1],
+['I _____ coffee in the morning.',['drink','drinks','drinking'],0],
+['He _____ like milk.',['don’t','doesn’t','isn’t'],1],
+['_____ you speak English?',['Does','Are','Do'],2],
+['Does she _____ here?',['works','work','working'],1],
+['My father _____ in a shop.',['work','working','works'],2],
+['They _____ play football on Mondays.',['doesn’t','don’t','isn’t'],1],
+['She always _____ her homework.',['do','does','doing'],1],
+['He _____ TV every evening.',['watch','watches','watching'],1],
+['I _____ get up late.',['never','am never','does never'],0],
+['_____ your brother study English?',['Do','Does','Is'],1],
+['The sun _____ in the east.',['rise','rises','rising'],1],
+['She _____ a teacher.',['is','do','does'],0],
+['We _____ to work every day.',['goes','going','go'],2],
+['How often _____ you read books?',['does','do','are'],1]
+];
+
+function renderGrammar() {
+    document.getElementById('grammarQuestions').innerHTML =
+    grammarData.map((q,i) => `
+    <div class="question">
+    <strong>${i+1}. ${q[0]}</strong>
+    ${q[1].map((o,j) => `
+    <label><input type="radio" name="grammar${i}" value="${j}">${o}</label>
+    `).join('')}
+    </div>`).join('');
+}
+
+renderGrammar();
+
+function checkGrammar() {
+    let score = 0;
+    grammarData.forEach((q,i) => {
+        const answer = document.querySelector(`input[name="grammar${i}"]:checked`);
+        if(answer && Number(answer.value) === q[2]) score++;
+    });
+
+    const percent = Math.round(score/grammarData.length*100);
+    const result = document.getElementById('grammarResult');
+    result.style.display = 'block';
+
+    result.innerHTML = `
+    <h3>Test natijasi: ${score}/15</h3>
+    <p>${percent}%</p>
+    <p>${percent >= 80 ? 'Excellent! Juda yaxshi natija!' :
+    percent >= 60 ? 'Good! Yana bir marta takrorlang.' :
+    'Mavzuni qayta o‘rganib, yana urinib ko‘ring.'}</p>
+    `;
+
+    updateProgress(percent >= 80 ? 100 : Math.round(percent));
+}
+
+function resetGrammar() {
+    document.querySelectorAll('#grammarQuestions input').forEach(i => i.checked = false);
+    document.getElementById('grammarResult').style.display = 'none';
+}
+
+// TRANSLATION
+const translations = [
+['Men har kuni ingliz tilini o‘rganaman.','I learn English every day.'],
+['U ertalab qahva ichmaydi.','She does not drink coffee in the morning.'],
+['Siz qayerda ishlaysiz?','Where do you work?'],
+['U har doim erta uyg‘onadi.','He always wakes up early.'],
+['Ular yakshanba kunlari ishlamaydilar.','They do not work on Sundays.'],
+['Akam futbol o‘ynaydimi?','Does my brother play football?'],
+['Men hech qachon kech qolmayman.','I am never late.'],
+['U qanchalik tez-tez kitob o‘qiydi?','How often does she read books?']
+];
+
+document.getElementById('translationTasks').innerHTML =
+translations.map((t,i) => `
+<div class="question">
+<strong>${i+1}. ${t[0]}</strong>
+<div class="answer" id="translation${i}">${t[1]}</div>
+<button class="btn secondary" onclick="showTranslation(${i})">Show Answer</button>
+</div>`).join('');
+
+function showTranslation(i) {
+    const el = document.getElementById('translation'+i);
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+// WRITING
+document.getElementById('writingText').addEventListener('input',function() {
+    const count = this.value.trim() ? this.value.trim().split(/\s+/).length : 0;
+    document.getElementById('wordCount').textContent = 'Words: '+count;
+});
+
+function copyWriting() {
+    const text = document.getElementById('writingText').value;
+    if(!text.trim()) {
+        alert('Please write your paragraph first.');
+        return;
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+        .then(() => alert('Writing copied!'))
+        .catch(() => alert('Copy failed. Please select and copy manually.'));
+    } else {
+        alert('Please select and copy your text manually.');
+    }
+}
+
+// PROGRESS
+function updateProgress(value) {
+    const fill = document.getElementById('progressFill');
+    fill.style.width = value + '%';
+    document.getElementById('progressText').textContent = 'Test natijasi: '+value+'%';
+}
+
+function completeLesson() {
+    if(!document.getElementById('completed').checked) {
+        alert('Avval darsni tugatganingizni belgilang.');
+        return;
+    }
+
+    localStorage.setItem('englishUpElementaryLesson1','completed');
+
+    const result = document.getElementById('completionResult');
+    result.style.display = 'block';
+    result.innerHTML = '🎉 Lesson 1 completed! Progress saved.';
+    updateProgress(100);
+}
+
+if(localStorage.getItem('englishUpElementaryLesson1') === 'completed') {
+    document.getElementById('completed').checked = true;
+    updateProgress(100);
+}
+</script>
+
+</body>
+</html>
+
