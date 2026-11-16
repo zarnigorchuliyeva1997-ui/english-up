@@ -1,1 +1,728 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 10-Dars: Food and Drinks</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; font-size: 1.8em; }
+        .greeting {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: #EEF2FF;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info-box {
+            background: #FFFBEB;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info-box strong { color: #B45309; }
+        .grammar-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .rule-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .strict-rule-box {
+            background: #FEE2E2;
+            border: 2px solid #EF4444;
+            color: #991B1B;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: bold;
+            text-align: center;
+        }
 
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .num { font-weight: bold; width: 30px; color: var(--primary); }
+        .word { width: 150px; font-weight: 600; }
+        .transcription { width: 160px; color: #059669; font-family: monospace; font-size: 1.05em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .interactive-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1em;
+            outline: none;
+        }
+        .input-group input:focus { border-color: var(--primary); }
+        .input-group input.correct { border-color: var(--success); background: #D1FAE5; }
+        .input-group input.incorrect { border-color: var(--error); background: #FEE2E2; }
+
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1em; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .back-btn:hover { background: #4B5563; }
+
+        .text-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .motivation-box {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .motivation-box h2 {
+            color: white;
+            border-bottom: none;
+            margin-top: 0;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        .motivation-box p {
+            font-size: 1.2em;
+            margin-bottom: 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .question-item {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .question-item .original { font-weight: bold; margin-bottom: 8px; font-size: 1.05em; }
+        .question-item .answer { color: var(--primary); font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>10-Dars: Food and Drinks</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi darsimizda biz ingliz tilida ovqat va ichimliklar nomlarini, shuningdek, o'z xohish-istaklarimizni (I like / I don't like) qanday ifodalashni o'rganamiz. Bu mavzu kundalik hayotda, sayohatda va restoranda juda asqotadi!</p>
+
+    <div class="info-box">
+        <strong>Eslatma: Nima uchun ovqat va ichimliklarni bilish kerak?</strong>
+        <p style="margin-top: 10px; margin-bottom: 0;">Ovqatlanish — bu inson hayotining ajralmas qismi. Chet elda sayohat qilganingizda, restoranda ovqat buyurtma qilish, do'stlaringizni mehmonga taklif qilish yoki shunchaki o'z didingiz haqida gapirish uchun ushbu so'zlarni bilish juda muhim. Shuningdek, "I like" va "I don't like" iboralari orqali siz o'z his-tuyg'ularingizni va afzalliklaringizni ifodalashni o'rganasiz, bu esa muloqotning asosidir.</p>
+    </div>
+
+    <!-- 1-BO'LIM: OVQATLAR -->
+    <h2>1. Ovqatlar (Food) - 30 ta</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Bread</span><span class="transcription">/bred/</span><span class="translation">Non</span><button class="audio-btn" onclick="speak('Bread')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Meat</span><span class="transcription">/miːt/</span><span class="translation">Go'sht</span><button class="audio-btn" onclick="speak('Meat')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Rice</span><span class="transcription">/raɪs/</span><span class="translation">Guruch</span><button class="audio-btn" onclick="speak('Rice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Apple</span><span class="transcription">/ˈæp.əl/</span><span class="translation">Olma</span><button class="audio-btn" onclick="speak('Apple')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">Banana</span><span class="transcription">/bəˈnɑː.nə/</span><span class="translation">Banan</span><button class="audio-btn" onclick="speak('Banana')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">Orange</span><span class="transcription">/ˈɒr.ɪndʒ/</span><span class="translation">Apelsin</span><button class="audio-btn" onclick="speak('Orange')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">Egg</span><span class="transcription">/eɡ/</span><span class="translation">Tuxum</span><button class="audio-btn" onclick="speak('Egg')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">Fish</span><span class="transcription">/fɪʃ/</span><span class="translation">Baliq</span><button class="audio-btn" onclick="speak('Fish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">Chicken</span><span class="transcription">/ˈtʃɪk.ɪn/</span><span class="translation">Tovuq go'shti</span><button class="audio-btn" onclick="speak('Chicken')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">Potato</span><span class="transcription">/pəˈteɪ.təʊ/</span><span class="translation">Kartoshka</span><button class="audio-btn" onclick="speak('Potato')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">Tomato</span><span class="transcription">/təˈmɑː.təʊ/</span><span class="translation">Pomidor</span><button class="audio-btn" onclick="speak('Tomato')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">Onion</span><span class="transcription">/ˈʌn.jən/</span><span class="translation">Piyoz</span><button class="audio-btn" onclick="speak('Onion')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">Carrot</span><span class="transcription">/ˈkær.ət/</span><span class="translation">Sabzi</span><button class="audio-btn" onclick="speak('Carrot')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">Cheese</span><span class="transcription">/tʃiːz/</span><span class="translation">Pishloq</span><button class="audio-btn" onclick="speak('Cheese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">Butter</span><span class="transcription">/ˈbʌt.ər/</span><span class="translation">Sariyog'</span><button class="audio-btn" onclick="speak('Butter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">16</span><span class="word">Sugar</span><span class="transcription">/ˈʃʊɡ.ər/</span><span class="translation">Shakar</span><button class="audio-btn" onclick="speak('Sugar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">17</span><span class="word">Salt</span><span class="transcription">/sɒlt/</span><span class="translation">Tuz</span><button class="audio-btn" onclick="speak('Salt')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">18</span><span class="word">Soup</span><span class="transcription">/suːp/</span><span class="translation">Sho'rva</span><button class="audio-btn" onclick="speak('Soup')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">19</span><span class="word">Salad</span><span class="transcription">/ˈsæl.əd/</span><span class="translation">Salat</span><button class="audio-btn" onclick="speak('Salad')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">20</span><span class="word">Pasta</span><span class="transcription">/ˈpæs.tə/</span><span class="translation">Makaron</span><button class="audio-btn" onclick="speak('Pasta')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">21</span><span class="word">Cake</span><span class="transcription">/keɪk/</span><span class="translation">Tort</span><button class="audio-btn" onclick="speak('Cake')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">22</span><span class="word">Chocolate</span><span class="transcription">/ˈtʃɒk.lət/</span><span class="translation">Shokolad</span><button class="audio-btn" onclick="speak('Chocolate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">23</span><span class="word">Ice cream</span><span class="transcription">/ˌaɪs ˈkriːm/</span><span class="translation">Muzqaymoq</span><button class="audio-btn" onclick="speak('Ice cream')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">24</span><span class="word">Pizza</span><span class="transcription">/ˈpiːt.sə/</span><span class="translation">Pitsa</span><button class="audio-btn" onclick="speak('Pizza')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">25</span><span class="word">Sandwich</span><span class="transcription">/ˈsæn.wɪdʒ/</span><span class="translation">Sendvich</span><button class="audio-btn" onclick="speak('Sandwich')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">26</span><span class="word">Strawberry</span><span class="transcription">/ˈstrɔː.bər.i/</span><span class="translation">Qulupnay</span><button class="audio-btn" onclick="speak('Strawberry')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">27</span><span class="word">Watermelon</span><span class="transcription">/ˈwɔː.təˌmel.ən/</span><span class="translation">Tarvuz</span><button class="audio-btn" onclick="speak('Watermelon')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">28</span><span class="word">Grape</span><span class="transcription">/ɡreɪp/</span><span class="translation">Uzum</span><button class="audio-btn" onclick="speak('Grape')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">29</span><span class="word">Lemon</span><span class="transcription">/ˈlem.ən/</span><span class="translation">Limon</span><button class="audio-btn" onclick="speak('Lemon')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">30</span><span class="word">Cherry</span><span class="transcription">/ˈtʃer.i/</span><span class="translation">Olcha</span><button class="audio-btn" onclick="speak('Cherry')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <!-- 2-BO'LIM: ICHIMLIKLAR -->
+    <h2>2. Ichimliklar (Drinks) - 15 ta</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word">Water</span><span class="transcription">/ˈwɔː.tər/</span><span class="translation">Suv</span><button class="audio-btn" onclick="speak('Water')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word">Tea</span><span class="transcription">/tiː/</span><span class="translation">Choy</span><button class="audio-btn" onclick="speak('Tea')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word">Coffee</span><span class="transcription">/ˈkɒf.i/</span><span class="translation">Qahva</span><button class="audio-btn" onclick="speak('Coffee')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word">Milk</span><span class="transcription">/mɪlk/</span><span class="translation">Sut</span><button class="audio-btn" onclick="speak('Milk')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word">Juice</span><span class="transcription">/dʒuːs/</span><span class="translation">Sharbat</span><button class="audio-btn" onclick="speak('Juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word">Cola</span><span class="transcription">/ˈkəʊ.lə/</span><span class="translation">Kola</span><button class="audio-btn" onclick="speak('Cola')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word">Lemonade</span><span class="transcription">/ˌlem.əˈneɪd/</span><span class="translation">Limonad</span><button class="audio-btn" onclick="speak('Lemonade')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word">Hot chocolate</span><span class="transcription">/hɒt ˈtʃɒk.lət/</span><span class="translation">Issiq shokolad</span><button class="audio-btn" onclick="speak('Hot chocolate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word">Orange juice</span><span class="transcription">/ˈɒr.ɪndʒ dʒuːs/</span><span class="translation">Apelsin sharbati</span><button class="audio-btn" onclick="speak('Orange juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word">Apple juice</span><span class="transcription">/ˈæp.əl dʒuːs/</span><span class="translation">Olma sharbati</span><button class="audio-btn" onclick="speak('Apple juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word">Mineral water</span><span class="transcription">/ˈmɪn.ər.əl ˈwɔː.tər/</span><span class="translation">Mineral suv</span><button class="audio-btn" onclick="speak('Mineral water')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word">Green tea</span><span class="transcription">/ɡriːn tiː/</span><span class="translation">Ko'k choy</span><button class="audio-btn" onclick="speak('Green tea')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word">Black tea</span><span class="transcription">/blæk tiː/</span><span class="translation">Qora choy</span><button class="audio-btn" onclick="speak('Black tea')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word">Milkshake</span><span class="transcription">/ˈmɪlk.ʃeɪk/</span><span class="translation">Sut kokteyli</span><button class="audio-btn" onclick="speak('Milkshake')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word">Smoothie</span><span class="transcription">/ˈsmuː.ði/</span><span class="translation">Silliq ichimlik</span><button class="audio-btn" onclick="speak('Smoothie')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <!-- 3-BO'LIM: GRAMMATIKA -->
+    <h2>3. I like / I don't like qoidasi</h2>
+    <div class="rule-box">
+        <h3 style="color: var(--primary); margin-top: 0;">O'z xohish-istaklarimizni ifodalash</h3>
+        <p>Ovqat va ichimliklar haqida gapirganda, biz ko'pincha <b>"yaxshi ko'raman"</b> yoki <b>"yaxshi ko'rmayman"</b> deb aytamiz. Ingliz tilida bu quyidagicha ifodalanadi:</p>
+        <ul>
+            <li><b>I like + ot</b> — Men ...ni yaxshi ko'raman. <br><i>I like apples. (Men olmalarni yaxshi ko'raman.)</i></li>
+            <li><b>I don't like + ot</b> — Men ...ni yaxshi ko'rmayman. <br><i>I don't like coffee. (Men qahvani yaxshi ko'rmayman.)</i></li>
+            <li><b>Do you like + ot?</b> — Siz ...ni yaxshi ko'rasizmi? <br><i>Do you like tea? (Siz choyni yaxshi ko'rasizmi?)</i></li>
+        </ul>
+        <p style="color: var(--error);"><b>Diqqat!</b> Agar ot ko'plikda bo'lsa (apples, bananas), fe'l o'zgarmaydi. "I like apple" emas, "I like apples" deyish to'g'ri.</p>
+    </div>
+
+    <h3>10 ta misol (I like):</h3>
+    <div class="question-item">
+        <div class="original">I like apples. (Men olmalarni yaxshi ko'raman.)</div>
+        <div class="answer">I like apples. <button class="audio-btn" onclick="speak('I like apples')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like bananas. (Men bananlarni yaxshi ko'raman.)</div>
+        <div class="answer">I like bananas. <button class="audio-btn" onclick="speak('I like bananas')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like pizza. (Men pitsani yaxshi ko'raman.)</div>
+        <div class="answer">I like pizza. <button class="audio-btn" onclick="speak('I like pizza')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like chocolate. (Men shokoladni yaxshi ko'raman.)</div>
+        <div class="answer">I like chocolate. <button class="audio-btn" onclick="speak('I like chocolate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like ice cream. (Men muzqaymoqni yaxshi ko'raman.)</div>
+        <div class="answer">I like ice cream. <button class="audio-btn" onclick="speak('I like ice cream')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like tea. (Men choyni yaxshi ko'raman.)</div>
+        <div class="answer">I like tea. <button class="audio-btn" onclick="speak('I like tea')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like juice. (Men sharbatni yaxshi ko'raman.)</div>
+        <div class="answer">I like juice. <button class="audio-btn" onclick="speak('I like juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like water. (Men suvni yaxshi ko'raman.)</div>
+        <div class="answer">I like water. <button class="audio-btn" onclick="speak('I like water')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like milk. (Men sutni yaxshi ko'raman.)</div>
+        <div class="answer">I like milk. <button class="audio-btn" onclick="speak('I like milk')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I like soup. (Men sho'rvani yaxshi ko'raman.)</div>
+        <div class="answer">I like soup. <button class="audio-btn" onclick="speak('I like soup')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h3>10 ta misol (I don't like):</h3>
+    <div class="question-item">
+        <div class="original">I don't like coffee. (Men qahvani yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like coffee. <button class="audio-btn" onclick="speak('I dont like coffee')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like fish. (Men baliqni yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like fish. <button class="audio-btn" onclick="speak('I dont like fish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like onions. (Men piyozni yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like onions. <button class="audio-btn" onclick="speak('I dont like onions')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like tomatoes. (Men pomidorni yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like tomatoes. <button class="audio-btn" onclick="speak('I dont like tomatoes')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like carrots. (Men sabzini yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like carrots. <button class="audio-btn" onclick="speak('I dont like carrots')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like cheese. (Men pishloqni yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like cheese. <button class="audio-btn" onclick="speak('I dont like cheese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like butter. (Men sariyog'ni yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like butter. <button class="audio-btn" onclick="speak('I dont like butter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like cola. (Men kolani yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like cola. <button class="audio-btn" onclick="speak('I dont like cola')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like lemonade. (Men limonadni yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like lemonade. <button class="audio-btn" onclick="speak('I dont like lemonade')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">I don't like milkshake. (Men sut kokteylini yaxshi ko'rmayman.)</div>
+        <div class="answer">I don't like milkshake. <button class="audio-btn" onclick="speak('I dont like milkshake')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <h3>10 ta misol (Do you like...?):</h3>
+    <div class="question-item">
+        <div class="original">Do you like apples? (Siz olmalarni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like apples? <button class="audio-btn" onclick="speak('Do you like apples?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like tea? (Siz choyni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like tea? <button class="audio-btn" onclick="speak('Do you like tea?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like coffee? (Siz qahvani yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like coffee? <button class="audio-btn" onclick="speak('Do you like coffee?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like pizza? (Siz pitsani yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like pizza? <button class="audio-btn" onclick="speak('Do you like pizza?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like chocolate? (Siz shokoladni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like chocolate? <button class="audio-btn" onclick="speak('Do you like chocolate?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like milk? (Siz sutni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like milk? <button class="audio-btn" onclick="speak('Do you like milk?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like fish? (Siz baliqni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like fish? <button class="audio-btn" onclick="speak('Do you like fish?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like ice cream? (Siz muzqaymoqni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like ice cream? <button class="audio-btn" onclick="speak('Do you like ice cream?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like juice? (Siz sharbatni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like juice? <button class="audio-btn" onclick="speak('Do you like juice?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+    <div class="question-item">
+        <div class="original">Do you like water? (Siz suvni yaxshi ko'rasizmi?)</div>
+        <div class="answer">Do you like water? <button class="audio-btn" onclick="speak('Do you like water?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <!-- 4-BO'LIM: AMALIYOT -->
+    <h2>4. Amaliyot (20 ta gap)</h2>
+    <p>Quyidagi gaplarni ovoz chiqarib o'qing. Har bir gap alohida dinamikaga ega:</p>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word" style="width: auto; flex-grow: 1;">I like apples and bananas.</span><span class="translation">Men olma va bananlarni yaxshi ko'raman.</span><button class="audio-btn" onclick="speak('I like apples and bananas')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word" style="width: auto; flex-grow: 1;">I don't like coffee.</span><span class="translation">Men qahvani yaxshi ko'rmayman.</span><button class="audio-btn" onclick="speak('I dont like coffee')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word" style="width: auto; flex-grow: 1;">Do you like tea?</span><span class="translation">Siz choyni yaxshi ko'rasizmi?</span><button class="audio-btn" onclick="speak('Do you like tea?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word" style="width: auto; flex-grow: 1;">I like pizza and salad.</span><span class="translation">Men pitsa va salatni yaxshi ko'raman.</span><button class="audio-btn" onclick="speak('I like pizza and salad')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word" style="width: auto; flex-grow: 1;">I don't like onions.</span><span class="translation">Men piyozni yaxshi ko'rmayman.</span><button class="audio-btn" onclick="speak('I dont like onions')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word" style="width: auto; flex-grow: 1;">Do you like chocolate?</span><span class="translation">Siz shokoladni yaxshi ko'rasizmi?</span><button class="audio-btn" onclick="speak('Do you like chocolate?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word" style="width: auto; flex-grow: 1;">I like milk.</span><span class="translation">Men sutni yaxshi ko'raman.</span><button class="audio-btn" onclick="speak('I like milk')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word" style="width: auto; flex-grow: 1;">I don't like fish.</span><span class="translation">Men baliqni yaxshi ko'rmayman.</span><button class="audio-btn" onclick="speak('I dont like fish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word" style="width: auto; flex-grow: 1;">Do you like ice cream?</span><span class="translation">Siz muzqaymoqni yaxshi ko'rasizmi?</span><button class="audio-btn" onclick="speak('Do you like ice cream?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word" style="width: auto; flex-grow: 1;">I like juice.</span><span class="translation">Men sharbatni yaxshi ko'raman.</span><button class="audio-btn" onclick="speak('I like juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word" style="width: auto; flex-grow: 1;">I don't like tomatoes.</span><span class="translation">Men pomidorni yaxshi ko'rmayman.</span><button class="audio-btn" onclick="speak('I dont like tomatoes')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word" style="width: auto; flex-grow: 1;">Do you like pizza?</span><span class="translation">Siz pitsani yaxshi ko'rasizmi?</span><button class="audio-btn" onclick="speak('Do you like pizza?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word" style="width: auto; flex-grow: 1;">I like water.</span><span class="translation">Men suvni yaxshi ko'raman.</span><button class="audio-btn" onclick="speak('I like water')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word" style="width: auto; flex-grow: 1;">I don't like cheese.</span><span class="translation">Men pishloqni yaxshi ko'rmayman.</span><button class="audio-btn" onclick="speak('I dont like cheese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word" style="width: auto; flex-grow: 1;">Do you like soup?</span><span class="translation">Siz sho'rvani yaxshi ko'rasizmi?</span><button class="audio-btn" onclick="speak('Do you like soup?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">16</span><span class="word" style="width: auto; flex-grow: 1;">I like bananas.</span><span class="translation">Men bananlarni yaxshi ko'raman.</span><button class="audio-btn" onclick="speak('I like bananas')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">17</span><span class="word" style="width: auto; flex-grow: 1;">I don't like carrots.</span><span class="translation">Men sabzini yaxshi ko'rmayman.</span><button class="audio-btn" onclick="speak('I dont like carrots')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">18</span><span class="word" style="width: auto; flex-grow: 1;">Do you like apples?</span><span class="translation">Siz olmalarni yaxshi ko'rasizmi?</span><button class="audio-btn" onclick="speak('Do you like apples?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">19</span><span class="word" style="width: auto; flex-grow: 1;">I like chocolate.</span><span class="translation">Men shokoladni yaxshi ko'raman.</span><button class="audio-btn" onclick="speak('I like chocolate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">20</span><span class="word" style="width: auto; flex-grow: 1;">I don't like cola.</span><span class="translation">Men kolani yaxshi ko'rmayman.</span><button class="audio-btn" onclick="speak('I dont like cola')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <!-- 5-BO'LIM: INTERAKTIV TEST -->
+    <div class="interactive-section">
+        <h2>5. Interaktiv test (25 ta)</h2>
+        <p>Quyidagi testda ovqat/ichimlik, like/don't like va savol shakllariga oid savollar berilgan. To'g'ri javobni yozing.</p>
+        <div class="interactive-grid" id="interactiveGrid">
+            <div class="input-group"><label>1. Non (inglizcha)</label><input type="text" id="inp1" placeholder="Javob..."></div>
+            <div class="input-group"><label>2. Suv (inglizcha)</label><input type="text" id="inp2" placeholder="Javob..."></div>
+            <div class="input-group"><label>3. Olma (inglizcha)</label><input type="text" id="inp3" placeholder="Javob..."></div>
+            <div class="input-group"><label>4. Choy (inglizcha)</label><input type="text" id="inp4" placeholder="Javob..."></div>
+            <div class="input-group"><label>5. Go'sht (inglizcha)</label><input type="text" id="inp5" placeholder="Javob..."></div>
+            <div class="input-group"><label>6. Qahva (inglizcha)</label><input type="text" id="inp6" placeholder="Javob..."></div>
+            <div class="input-group"><label>7. Guruch (inglizcha)</label><input type="text" id="inp7" placeholder="Javob..."></div>
+            <div class="input-group"><label>8. Sut (inglizcha)</label><input type="text" id="inp8" placeholder="Javob..."></div>
+            <div class="input-group"><label>9. Pishloq (inglizcha)</label><input type="text" id="inp9" placeholder="Javob..."></div>
+            <div class="input-group"><label>10. Sharbat (inglizcha)</label><input type="text" id="inp10" placeholder="Javob..."></div>
+            <div class="input-group"><label>11. Men olmalarni yaxshi ko'raman (inglizcha)</label><input type="text" id="inp11" placeholder="Javob..."></div>
+            <div class="input-group"><label>12. Men qahvani yaxshi ko'rmayman (inglizcha)</label><input type="text" id="inp12" placeholder="Javob..."></div>
+            <div class="input-group"><label>13. Siz choyni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="inp13" placeholder="Javob..."></div>
+            <div class="input-group"><label>14. Men pitsani yaxshi ko'raman (inglizcha)</label><input type="text" id="inp14" placeholder="Javob..."></div>
+            <div class="input-group"><label>15. Men baliqni yaxshi ko'rmayman (inglizcha)</label><input type="text" id="inp15" placeholder="Javob..."></div>
+            <div class="input-group"><label>16. Siz shokoladni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="inp16" placeholder="Javob..."></div>
+            <div class="input-group"><label>17. Men sutni yaxshi ko'raman (inglizcha)</label><input type="text" id="inp17" placeholder="Javob..."></div>
+            <div class="input-group"><label>18. Men piyozni yaxshi ko'rmayman (inglizcha)</label><input type="text" id="inp18" placeholder="Javob..."></div>
+            <div class="input-group"><label>19. Siz muzqaymoqni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="inp19" placeholder="Javob..."></div>
+            <div class="input-group"><label>20. Men suvni yaxshi ko'raman (inglizcha)</label><input type="text" id="inp20" placeholder="Javob..."></div>
+            <div class="input-group"><label>21. Men sho'rvani yaxshi ko'raman (inglizcha)</label><input type="text" id="inp21" placeholder="Javob..."></div>
+            <div class="input-group"><label>22. Men pomidorni yaxshi ko'rmayman (inglizcha)</label><input type="text" id="inp22" placeholder="Javob..."></div>
+            <div class="input-group"><label>23. Siz bananlarni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="inp23" placeholder="Javob..."></div>
+            <div class="input-group"><label>24. Men sabzini yaxshi ko'rmayman (inglizcha)</label><input type="text" id="inp24" placeholder="Javob..."></div>
+            <div class="input-group"><label>25. Siz qahvani yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="inp25" placeholder="Javob..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult"></div>
+    </div>
+
+    <!-- HOMEWORK -->
+    <div class="homework-section">
+        <h2>Homework (Uyga vazifa)</h2>
+        
+        <h3>1-topshiriq: I like / I don't like</h3>
+        <p>Quyidagi 15 ta gapni daftaringizga yozing va ularni ingliz tiliga tarjima qiling:</p>
+        <ol style="line-height: 2;">
+            <li>Men olmalarni yaxshi ko'raman.</li>
+            <li>Men qahvani yaxshi ko'rmayman.</li>
+            <li>Siz choyni yaxshi ko'rasizmi?</li>
+            <li>Men pitsani yaxshi ko'raman.</li>
+            <li>Men baliqni yaxshi ko'rmayman.</li>
+            <li>Siz shokoladni yaxshi ko'rasizmi?</li>
+            <li>Men sutni yaxshi ko'raman.</li>
+            <li>Men piyozni yaxshi ko'rmayman.</li>
+            <li>Siz muzqaymoqni yaxshi ko'rasizmi?</li>
+            <li>Men suvni yaxshi ko'raman.</li>
+            <li>Men sho'rvani yaxshi ko'raman.</li>
+            <li>Men pomidorni yaxshi ko'rmayman.</li>
+            <li>Siz bananlarni yaxshi ko'rasizmi?</li>
+            <li>Men sabzini yaxshi ko'rmayman.</li>
+            <li>Siz qahvani yaxshi ko'rasizmi?</li>
+        </ol>
+
+        <h3>2-topshiriq: Reading (Matn va Savollar)</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi hikoyani ovoz chiqarib o'qing, so'ngra savollarga javob bering.
+        </div>
+        <div class="text-box">
+            <p>Hello! My name is Malika. I have a big family. We like different food. I like apples, bananas and oranges. I don't like fish. My father likes meat and rice. He doesn't like onions. My mother likes vegetables and salad. She doesn't like fast food. My brother likes pizza and chocolate. He doesn't like soup. We all like ice cream! We usually have breakfast at 8 AM. We have lunch at 1 PM. We have dinner at 7 PM. What about you? Do you like ice cream?</p>
+        </div>
+        
+        <p><b>Savollarga javob bering:</b></p>
+        <ol>
+            <li>Malika qanday ovqatlarni yaxshi ko'radi?</li>
+            <li>Uning otasi qanday ovqatlarni yaxshi ko'radi?</li>
+            <li>Uning onasi nimalarni yaxshi ko'rmaydi?</li>
+            <li>Uning akasi nimalarni yaxshi ko'radi?</li>
+            <li>Ular soat nechada tushlik qilishadi?</li>
+        </ol>
+
+        <h3>Vocabulary (40 ta so'z)</h3>
+        <div class="word-list">
+            <div class="word-item"><span class="word">Bread</span><span class="transcription">/bred/</span><span class="translation">Non</span><button class="audio-btn" onclick="speak('Bread')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Meat</span><span class="transcription">/miːt/</span><span class="translation">Go'sht</span><button class="audio-btn" onclick="speak('Meat')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Rice</span><span class="transcription">/raɪs/</span><span class="translation">Guruch</span><button class="audio-btn" onclick="speak('Rice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Apple</span><span class="transcription">/ˈæp.əl/</span><span class="translation">Olma</span><button class="audio-btn" onclick="speak('Apple')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Banana</span><span class="transcription">/bəˈnɑː.nə/</span><span class="translation">Banan</span><button class="audio-btn" onclick="speak('Banana')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Orange</span><span class="transcription">/ˈɒr.ɪndʒ/</span><span class="translation">Apelsin</span><button class="audio-btn" onclick="speak('Orange')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Egg</span><span class="transcription">/eɡ/</span><span class="translation">Tuxum</span><button class="audio-btn" onclick="speak('Egg')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Fish</span><span class="transcription">/fɪʃ/</span><span class="translation">Baliq</span><button class="audio-btn" onclick="speak('Fish')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Chicken</span><span class="transcription">/ˈtʃɪk.ɪn/</span><span class="translation">Tovuq go'shti</span><button class="audio-btn" onclick="speak('Chicken')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Potato</span><span class="transcription">/pəˈteɪ.təʊ/</span><span class="translation">Kartoshka</span><button class="audio-btn" onclick="speak('Potato')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Tomato</span><span class="transcription">/təˈmɑː.təʊ/</span><span class="translation">Pomidor</span><button class="audio-btn" onclick="speak('Tomato')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Onion</span><span class="transcription">/ˈʌn.jən/</span><span class="translation">Piyoz</span><button class="audio-btn" onclick="speak('Onion')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Carrot</span><span class="transcription">/ˈkær.ət/</span><span class="translation">Sabzi</span><button class="audio-btn" onclick="speak('Carrot')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cheese</span><span class="transcription">/tʃiːz/</span><span class="translation">Pishloq</span><button class="audio-btn" onclick="speak('Cheese')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Butter</span><span class="transcription">/ˈbʌt.ər/</span><span class="translation">Sariyog'</span><button class="audio-btn" onclick="speak('Butter')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Sugar</span><span class="transcription">/ˈʃʊɡ.ər/</span><span class="translation">Shakar</span><button class="audio-btn" onclick="speak('Sugar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Salt</span><span class="transcription">/sɒlt/</span><span class="translation">Tuz</span><button class="audio-btn" onclick="speak('Salt')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Soup</span><span class="transcription">/suːp/</span><span class="translation">Sho'rva</span><button class="audio-btn" onclick="speak('Soup')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Salad</span><span class="transcription">/ˈsæl.əd/</span><span class="translation">Salat</span><button class="audio-btn" onclick="speak('Salad')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Pasta</span><span class="transcription">/ˈpæs.tə/</span><span class="translation">Makaron</span><button class="audio-btn" onclick="speak('Pasta')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cake</span><span class="transcription">/keɪk/</span><span class="translation">Tort</span><button class="audio-btn" onclick="speak('Cake')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Chocolate</span><span class="transcription">/ˈtʃɒk.lət/</span><span class="translation">Shokolad</span><button class="audio-btn" onclick="speak('Chocolate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Ice cream</span><span class="transcription">/ˌaɪs ˈkriːm/</span><span class="translation">Muzqaymoq</span><button class="audio-btn" onclick="speak('Ice cream')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Pizza</span><span class="transcription">/ˈpiːt.sə/</span><span class="translation">Pitsa</span><button class="audio-btn" onclick="speak('Pizza')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Sandwich</span><span class="transcription">/ˈsæn.wɪdʒ/</span><span class="translation">Sendvich</span><button class="audio-btn" onclick="speak('Sandwich')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Strawberry</span><span class="transcription">/ˈstrɔː.bər.i/</span><span class="translation">Qulupnay</span><button class="audio-btn" onclick="speak('Strawberry')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Watermelon</span><span class="transcription">/ˈwɔː.təˌmel.ən/</span><span class="translation">Tarvuz</span><button class="audio-btn" onclick="speak('Watermelon')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Grape</span><span class="transcription">/ɡreɪp/</span><span class="translation">Uzum</span><button class="audio-btn" onclick="speak('Grape')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Lemon</span><span class="transcription">/ˈlem.ən/</span><span class="translation">Limon</span><button class="audio-btn" onclick="speak('Lemon')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cherry</span><span class="transcription">/ˈtʃer.i/</span><span class="translation">Olcha</span><button class="audio-btn" onclick="speak('Cherry')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Water</span><span class="transcription">/ˈwɔː.tər/</span><span class="translation">Suv</span><button class="audio-btn" onclick="speak('Water')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Tea</span><span class="transcription">/tiː/</span><span class="translation">Choy</span><button class="audio-btn" onclick="speak('Tea')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Coffee</span><span class="transcription">/ˈkɒf.i/</span><span class="translation">Qahva</span><button class="audio-btn" onclick="speak('Coffee')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Milk</span><span class="transcription">/mɪlk/</span><span class="translation">Sut</span><button class="audio-btn" onclick="speak('Milk')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Juice</span><span class="transcription">/dʒuːs/</span><span class="translation">Sharbat</span><button class="audio-btn" onclick="speak('Juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cola</span><span class="transcription">/ˈkəʊ.lə/</span><span class="translation">Kola</span><button class="audio-btn" onclick="speak('Cola')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Lemonade</span><span class="transcription">/ˌlem.əˈneɪd/</span><span class="translation">Limonad</span><button class="audio-btn" onclick="speak('Lemonade')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Hot chocolate</span><span class="transcription">/hɒt ˈtʃɒk.lət/</span><span class="translation">Issiq shokolad</span><button class="audio-btn" onclick="speak('Hot chocolate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Orange juice</span><span class="transcription">/ˈɒr.ɪndʒ dʒuːs/</span><span class="translation">Apelsin sharbati</span><button class="audio-btn" onclick="speak('Orange juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Apple juice</span><span class="transcription">/ˈæp.əl dʒuːs/</span><span class="translation">Olma sharbati</span><button class="audio-btn" onclick="speak('Apple juice')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Mineral water</span><span class="transcription">/ˈmɪn.ər.əl ˈwɔː.tər/</span><span class="translation">Mineral suv</span><button class="audio-btn" onclick="speak('Mineral water')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Green tea</span><span class="transcription">/ɡriːn tiː/</span><span class="translation">Ko'k choy</span><button class="audio-btn" onclick="speak('Green tea')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Black tea</span><span class="transcription">/blæk tiː/</span><span class="translation">Qora choy</span><button class="audio-btn" onclick="speak('Black tea')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Milkshake</span><span class="transcription">/ˈmɪlk.ʃeɪk/</span><span class="translation">Sut kokteyli</span><button class="audio-btn" onclick="speak('Milkshake')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Smoothie</span><span class="transcription">/ˈsmuː.ði/</span><span class="translation">Silliq ichimlik</span><button class="audio-btn" onclick="speak('Smoothie')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        </div>
+
+        <h3>4-topshiriq: 40 ta so'zga 2 tadan gap tuzish</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Yuqoridagi 40 ta yangi so'zning har biriga kamida 2 tadan gap yozing.
+        </div>
+    </div>
+
+    <!-- Yakuniy Interaktiv Test -->
+    <div class="interactive-section" style="margin-top: 50px; border: 3px dashed var(--primary);">
+        <h2>Yakuniy Interaktiv Test (25 ta)</h2>
+        <p>O'tilgan mavzularni mustahkamlash uchun.</p>
+        <div class="interactive-grid" id="interactiveGrid2">
+            <div class="input-group"><label>1. Non (inglizcha)</label><input type="text" id="t1" placeholder="Javob..."></div>
+            <div class="input-group"><label>2. Suv (inglizcha)</label><input type="text" id="t2" placeholder="Javob..."></div>
+            <div class="input-group"><label>3. Olma (inglizcha)</label><input type="text" id="t3" placeholder="Javob..."></div>
+            <div class="input-group"><label>4. Choy (inglizcha)</label><input type="text" id="t4" placeholder="Javob..."></div>
+            <div class="input-group"><label>5. Go'sht (inglizcha)</label><input type="text" id="t5" placeholder="Javob..."></div>
+            <div class="input-group"><label>6. Qahva (inglizcha)</label><input type="text" id="t6" placeholder="Javob..."></div>
+            <div class="input-group"><label>7. Guruch (inglizcha)</label><input type="text" id="t7" placeholder="Javob..."></div>
+            <div class="input-group"><label>8. Sut (inglizcha)</label><input type="text" id="t8" placeholder="Javob..."></div>
+            <div class="input-group"><label>9. Pishloq (inglizcha)</label><input type="text" id="t9" placeholder="Javob..."></div>
+            <div class="input-group"><label>10. Sharbat (inglizcha)</label><input type="text" id="t10" placeholder="Javob..."></div>
+            <div class="input-group"><label>11. Men olmalarni yaxshi ko'raman (inglizcha)</label><input type="text" id="t11" placeholder="Javob..."></div>
+            <div class="input-group"><label>12. Men qahvani yaxshi ko'rmayman (inglizcha)</label><input type="text" id="t12" placeholder="Javob..."></div>
+            <div class="input-group"><label>13. Siz choyni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="t13" placeholder="Javob..."></div>
+            <div class="input-group"><label>14. Men pitsani yaxshi ko'raman (inglizcha)</label><input type="text" id="t14" placeholder="Javob..."></div>
+            <div class="input-group"><label>15. Men baliqni yaxshi ko'rmayman (inglizcha)</label><input type="text" id="t15" placeholder="Javob..."></div>
+            <div class="input-group"><label>16. Siz shokoladni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="t16" placeholder="Javob..."></div>
+            <div class="input-group"><label>17. Men sutni yaxshi ko'raman (inglizcha)</label><input type="text" id="t17" placeholder="Javob..."></div>
+            <div class="input-group"><label>18. Men piyozni yaxshi ko'rmayman (inglizcha)</label><input type="text" id="t18" placeholder="Javob..."></div>
+            <div class="input-group"><label>19. Siz muzqaymoqni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="t19" placeholder="Javob..."></div>
+            <div class="input-group"><label>20. Men suvni yaxshi ko'raman (inglizcha)</label><input type="text" id="t20" placeholder="Javob..."></div>
+            <div class="input-group"><label>21. Men sho'rvani yaxshi ko'raman (inglizcha)</label><input type="text" id="t21" placeholder="Javob..."></div>
+            <div class="input-group"><label>22. Men pomidorni yaxshi ko'rmayman (inglizcha)</label><input type="text" id="t22" placeholder="Javob..."></div>
+            <div class="input-group"><label>23. Siz bananlarni yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="t23" placeholder="Javob..."></div>
+            <div class="input-group"><label>24. Men sabzini yaxshi ko'rmayman (inglizcha)</label><input type="text" id="t24" placeholder="Javob..."></div>
+            <div class="input-group"><label>25. Siz qahvani yaxshi ko'rasizmi? (inglizcha)</label><input type="text" id="t25" placeholder="Javob..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive2()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult2"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
+    </div>
+
+    <!-- Motivatsion Jumla -->
+    <div class="motivation-box">
+        <h2>Motivatsiya!</h2>
+        <p>"Har bir yangi so'z — bu yangi imkoniyat. English Up bilan har kuni o'z bilimingizni oshiring va dunyo bilan erkin muloqot qiling!"</p>
+    </div>
+
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // 5-bo'lim interaktiv testni tekshirish
+    function checkInteractive() {
+        const answers = {
+            inp1: 'bread', inp2: 'water', inp3: 'apple', inp4: 'tea', inp5: 'meat',
+            inp6: 'coffee', inp7: 'rice', inp8: 'milk', inp9: 'cheese', inp10: 'juice',
+            inp11: 'i like apples', inp12: 'i dont like coffee', inp13: 'do you like tea', inp14: 'i like pizza', inp15: 'i dont like fish',
+            inp16: 'do you like chocolate', inp17: 'i like milk', inp18: 'i dont like onions', inp19: 'do you like ice cream', inp20: 'i like water',
+            inp21: 'i like soup', inp22: 'i dont like tomatoes', inp23: 'do you like bananas', inp24: 'i dont like carrots', inp25: 'do you like coffee'
+        };
+        let score = 0;
+        let total = 25;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?']/g, '');
+            const correctAnswer = answers[key].toLowerCase().replace(/[.,!?']/g, '');
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+
+    // Yakuniy interaktiv testni tekshirish
+    function checkInteractive2() {
+        const answers = {
+            t1: 'bread', t2: 'water', t3: 'apple', t4: 'tea', t5: 'meat',
+            t6: 'coffee', t7: 'rice', t8: 'milk', t9: 'cheese', t10: 'juice',
+            t11: 'i like apples', t12: 'i dont like coffee', t13: 'do you like tea', t14: 'i like pizza', t15: 'i dont like fish',
+            t16: 'do you like chocolate', t17: 'i like milk', t18: 'i dont like onions', t19: 'do you like ice cream', t20: 'i like water',
+            t21: 'i like soup', t22: 'i dont like tomatoes', t23: 'do you like bananas', t24: 'i dont like carrots', t25: 'do you like coffee'
+        };
+        let score = 0;
+        let total = 25;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?']/g, '');
+            const correctAnswer = answers[key].toLowerCase().replace(/[.,!?']/g, '');
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult2');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+</script>
+
+</body>
+</html>
