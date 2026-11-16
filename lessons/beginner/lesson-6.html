@@ -168,6 +168,27 @@
             font-size: 1.1em;
             line-height: 1.8;
         }
+
+        .motivation-box {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .motivation-box h2 {
+            color: white;
+            border-bottom: none;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        .motivation-box p {
+            font-size: 1.1em;
+            margin-bottom: 0;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -372,6 +393,52 @@
         </div>
     </div>
 
+    <!-- Qo'shilgan 30 talik Interaktiv test -->
+    <div class="interactive-section">
+        <h2>Yakuniy interaktiv test (30 ta savol)</h2>
+        <p>Quyidagi bo'sh o'rinlarga to'g'ri so'zni yozing.</p>
+        <div class="interactive-grid" id="interactiveGrid2">
+            <div class="input-group"><label>1. The apple is ___. (qizil)</label><input type="text" id="t1" placeholder="Javob..."></div>
+            <div class="input-group"><label>2. The sky is ___. (ko'k)</label><input type="text" id="t2" placeholder="Javob..."></div>
+            <div class="input-group"><label>3. The grass is ___. (yashil)</label><input type="text" id="t3" placeholder="Javob..."></div>
+            <div class="input-group"><label>4. The sun is ___. (sariq)</label><input type="text" id="t4" placeholder="Javob..."></div>
+            <div class="input-group"><label>5. I have a ___ cat. (qora)</label><input type="text" id="t5" placeholder="Javob..."></div>
+            <div class="input-group"><label>6. She has a ___ bag. (oq)</label><input type="text" id="t6" placeholder="Javob..."></div>
+            <div class="input-group"><label>7. He is a ___ boy. (baland)</label><input type="text" id="t7" placeholder="Javob..."></div>
+            <div class="input-group"><label>8. She is a ___ girl. (past)</label><input type="text" id="t8" placeholder="Javob..."></div>
+            <div class="input-group"><label>9. It is a ___ flower. (chiroyli)</label><input type="text" id="t9" placeholder="Javob..."></div>
+            <div class="input-group"><label>10. This is an ___ test. (oson)</label><input type="text" id="t10" placeholder="Javob..."></div>
+            <div class="input-group"><label>11. Men baxtliman.</label><input type="text" id="t11" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>12. U (qiz) chiroyli.</label><input type="text" id="t12" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>13. Biz talabalar.</label><input type="text" id="t13" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>14. Bu katta uy.</label><input type="text" id="t14" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>15. U (o'g'il) novcha.</label><input type="text" id="t15" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>16. Mening qizil mashinam bor.</label><input type="text" id="t16" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>17. Ular xafa.</label><input type="text" id="t17" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>18. Bu sovuq kun.</label><input type="text" id="t18" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>19. U (narsa) yangi.</label><input type="text" id="t19" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>20. Siz yaxshi do'stsiz.</label><input type="text" id="t20" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>21. Bu qizil olma.</label><input type="text" id="t21" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>22. U (o'g'il) kuchli.</label><input type="text" id="t22" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>23. Men kichkina itim bor.</label><input type="text" id="t23" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>24. Ular baxtli bolalar.</label><input type="text" id="t24" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>25. Bu yangi kitob.</label><input type="text" id="t25" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>26. Uning ko'k ko'ylagi bor.</label><input type="text" id="t26" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>27. Mening dadam kuchli.</label><input type="text" id="t27" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>28. Choy issiq.</label><input type="text" id="t28" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>29. Suv sovuq.</label><input type="text" id="t29" placeholder="Inglizcha..."></div>
+            <div class="input-group"><label>30. Bu eski uy.</label><input type="text" id="t30" placeholder="Inglizcha..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive2()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult2"></div>
+    </div>
+
+    <!-- Motivatsion Jumla (YANGI QO'SHILDI) -->
+    <div class="motivation-box">
+        <h2>Motivatsiya!</h2>
+        <p>"Til o'rganish — bu bir kunlik ish emas, lekin har kuni qilingan kichik qadam sizni katta muvaffaqiyatga olib boradi. English Up bilan davom eting va chegaralarni zabt eting!"</p>
+    </div>
+
     <div style="text-align: center;">
         <a href="../beginner.html" class="back-btn">⬅ Darslar ro'yxatiga qaytish</a>
     </div>
@@ -418,6 +485,46 @@
         }
 
         const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+
+    // 30 talik yakuniy interaktiv testni tekshirish
+    function checkInteractive2() {
+        const answers = {
+            t1: 'red', t2: 'blue', t3: 'green', t4: 'yellow', t5: 'black',
+            t6: 'white', t7: 'tall', t8: 'short', t9: 'beautiful', t10: 'easy',
+            t11: 'i am happy', t12: 'she is beautiful', t13: 'we are students', t14: 'this is a big house', t15: 'he is tall',
+            t16: 'i have a red car', t17: 'they are sad', t18: 'it is a cold day', t19: 'it is new', t20: 'you are a good friend',
+            t21: 'this is a red apple', t22: 'he is strong', t23: 'i have a small dog', t24: 'they are happy children', t25: 'this is a new book',
+            t26: 'she has a blue dress', t27: 'my father is strong', t28: 'the tea is hot', t29: 'the water is cold', t30: 'this is an old house'
+        };
+        let score = 0;
+        let total = 30;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?]/g, '');
+            const correctAnswer = answers[key].toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult2');
         resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
         
         if (score === total) {
