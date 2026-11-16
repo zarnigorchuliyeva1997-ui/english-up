@@ -1,1 +1,896 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 7 | Articles — English Up</title>
+<style>
+:root{
+--p:#7047eb;--p2:#9878f5;--bg:#f5f3ff;--card:#fff;
+--text:#26213b;--muted:#716d83;--border:#e7e1f3;
+--green:#159b69;--red:#dc4b5b
+}
+body.dark{--bg:#171522;--card:#242132;--text:#f4f1ff;--muted:#b8b2cb;--border:#39344d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.75}
+header{background:linear-gradient(120deg,#7047eb,#9b70f5);color:white;padding:18px}
+.header{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:21px;font-weight:900;letter-spacing:1px}
+header button{background:#ffffff25;color:white;border:1px solid #ffffff55;border-radius:10px;padding:9px 13px;margin-left:5px}
+.container{max-width:1000px;margin:22px auto;padding:0 14px}
+.hero{background:linear-gradient(135deg,#7047eb,#a17cf5);color:white;padding:27px;border-radius:20px}
+.hero h1{font-size:clamp(27px,5vw,40px);line-height:1.2;margin:12px 0}
+.tag{display:inline-block;background:#ffffff25;padding:5px 12px;border-radius:20px;font-size:12px}
+.progress{height:9px;background:#ffffff55;border-radius:20px;margin-top:18px;overflow:hidden}
+.progress>div{height:100%;width:0;background:white;transition:.3s}
+nav{display:flex;gap:8px;overflow-x:auto;padding:14px 0}
+nav a{white-space:nowrap;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--border);padding:9px 13px;border-radius:11px;font-size:13px}
+section{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:22px;margin:17px 0}
+h2{color:var(--p);font-size:23px;margin:0 0 15px}
+h3{font-size:18px;margin:22px 0 8px}
+h4{margin:12px 0 6px}
+p{margin:9px 0}
+.muted,.uz{color:var(--muted)}
+.note{background:#f0ebff;color:#49328d;border-left:5px solid var(--p);padding:13px 15px;border-radius:9px;margin:14px 0}
+body.dark .note{background:#352b51;color:#e7dcff}
+.write{background:#fff0d8;color:#80500a;border-left:5px solid #e8a334;padding:13px 15px;border-radius:9px;margin:14px 0;font-weight:800}
+body.dark .write{background:#493921;color:#ffe2a6}
+.example{background:var(--bg);border:1px solid var(--border);padding:12px 14px;border-radius:10px;margin:10px 0}
+.en{font-weight:700}
+.uz{font-size:14px}
+.voice{background:var(--p);color:white;border:0;border-radius:8px;padding:5px 9px;font-size:12px;margin:4px}
+.slow{background:#7661a7}
+.formula{color:var(--p);font-weight:800;font-size:17px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td{border:1px solid var(--border);padding:10px;text-align:left}
+th{background:var(--bg)}
+button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--p);color:white;font-weight:700}
+button.secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.word{border:1px solid var(--border);padding:12px;border-radius:12px}
+.word strong{color:var(--p)}
+.word small{display:block;color:var(--muted)}
+.skill,.question{border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0}
+.question label{display:block;padding:6px;cursor:pointer}
+.question input{accent-color:var(--p);margin-right:7px}
+.feedback{font-size:13px;font-weight:700;margin-top:7px}
+.correct{color:var(--green)}.incorrect{color:var(--red)}
+.result{display:none;background:var(--bg);padding:18px;border-radius:12px;margin-top:16px}
+.footer{text-align:center;padding:30px 10px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:22px 0}
+@media(max-width:600px){section{padding:16px}.hero{padding:21px}h2{font-size:20px}table{font-size:12px}th,td{padding:7px}}
+</style>
+</head>
+<body>
+<header>
+<div class="header">
+<div class="brand">ENGLISH UP</div>
+<div>
+<button onclick="location.href='index.html'">← Back</button>
+<button onclick="toggleTheme()">☾</button>
+</div>
+</div>
+</header>
+
+<main class="container">
+<div class="hero">
+<span class="tag">ELEMENTARY COURSE · LESSON 7</span>
+<h1>ARTICLES<br>A / AN / THE</h1>
+<p>Ingliz tilida artikllar: noaniq, aniq va artiklsiz ishlatiladigan otlar.</p>
+<p>Bugun qachon A, qachon AN, qachon THE va qachon hech qanday artikl ishlatmaslikni o‘rganamiz.</p>
+<div class="progress"><div id="progressBar"></div></div>
+<small id="progressText">Dars holati: 0%</small>
+</div>
+
+<nav>
+<a href="#intro">Introduction</a><a href="#basics">Basics</a><a href="#a">A / AN</a>
+<a href="#the">THE</a><a href="#zero">Zero Article</a><a href="#special">Special Rules</a>
+<a href="#vocabulary">Vocabulary</a><a href="#reading">Reading</a>
+<a href="#listening">Listening</a><a href="#speaking">Speaking</a>
+<a href="#writing">Writing</a><a href="#homework">Homework</a><a href="#test">Test</a>
+</nav>
+
+<section id="intro">
+<h2>1. LESSON INTRODUCTION</h2>
+<p>Assalomu alaykum! Bugungi darsimiz ingliz tilidagi eng muhim grammatik mavzulardan biri — <b>ARTICLES</b>.</p>
+<p>O‘zbek tilida ko‘pincha “kitob”, “bir kitob”, “o‘sha kitob” deb aytamiz. Ingliz tilida esa ot oldidan kichik so‘zlar — artikllar ishlatiladi.</p>
+
+<div class="example">
+<div class="en">I have a book.</div>
+<div class="uz">Menda bir kitob bor.</div>
+</div>
+<div class="example">
+<div class="en">The book is interesting.</div>
+<div class="uz">O‘sha kitob qiziqarli.</div>
+</div>
+<div class="example">
+<div class="en">Books are useful.</div>
+<div class="uz">Kitoblar foydali.</div>
+</div>
+
+<p>Uchta misolni taqqoslang:</p>
+<ul>
+<li><b>a book</b> — qandaydir bitta kitob, hali aniq emas;</li>
+<li><b>the book</b> — ma’lum, aniq kitob;</li>
+<li><b>books</b> — umumiy kitoblar, artiklsiz.</li>
+</ul>
+<div class="write">DAFTARGA YOZIB OLING: Ingliz tilida uch xil holat bor: A/AN — noaniq artikl; THE — aniq artikl; ZERO ARTICLE — artikl ishlatilmaydi.</div>
+</section>
+
+<section id="basics">
+<h2>2. ARTICLES NIMA?</h2>
+<p><b>Article</b> — ot oldidan kelib, biz gapirayotgan narsa aniqmi yoki noaniqmi ekanini ko‘rsatadigan grammatik vosita.</p>
+<p>Ingliz tilida uchta asosiy holatni o‘rganamiz:</p>
+<table>
+<tr><th>Article</th><th>Vazifasi</th><th>Misol</th></tr>
+<tr><td>A</td><td>Noaniq, birlikdagi sanaladigan ot</td><td>a car</td></tr>
+<tr><td>AN</td><td>Noaniq, birlikdagi sanaladigan ot</td><td>an apple</td></tr>
+<tr><td>THE</td><td>Aniq, ma’lum ot</td><td>the car</td></tr>
+<tr><td>ZERO ARTICLE</td><td>Artiklsiz ishlatish</td><td>Cars are useful.</td></tr>
+</table>
+
+<h3>2.1. Nega artikl kerak?</h3>
+<p>Chunki artikl gapning ma’nosini o‘zgartirishi mumkin.</p>
+<div class="example">
+<div class="en">I saw a dog.</div><div class="uz">Men bir itni ko‘rdim. (Qaysi itligi hali noma’lum.)</div>
+</div>
+<div class="example">
+<div class="en">The dog was black.</div><div class="uz">O‘sha it qora edi. (Endi qaysi it haqida gap ketayotgani ma’lum.)</div>
+</div>
+<p>Birinchi gapda it haqida ilk bor gapiryapmiz. Ikkinchi gapda esa o‘sha itni nazarda tutyapmiz.</p>
+
+<h3>2.2. Articles qaysi so‘z bilan bog‘lanadi?</h3>
+<p>Artikllar asosan otlar (nouns) bilan bog‘lanadi. Ba’zan sifat bilan ot orasida keladi.</p>
+<div class="example">
+<div class="en">a car</div><div class="uz">mashina</div>
+</div>
+<div class="example">
+<div class="en">a beautiful car</div><div class="uz">chiroyli mashina</div>
+</div>
+<div class="example">
+<div class="en">an interesting book</div><div class="uz">qiziqarli kitob</div>
+</div>
+<div class="example">
+<div class="en">the beautiful house</div><div class="uz">o‘sha chiroyli uy</div>
+</div>
+<div class="write">DAFTARGA YOZIB OLING: Article ot oldidan keladi. Agar sifat ot oldidan kelsa, article sifatning oldiga qo‘yiladi: a beautiful house, an interesting story.</div>
+
+<h3>2.3. Eng muhim cheklov</h3>
+<p><b>A/AN</b> faqat birlikdagi sanaladigan ot bilan ishlatiladi.</p>
+<table>
+<tr><th>To‘g‘ri</th><th>Noto‘g‘ri</th></tr>
+<tr><td>a book</td><td>a books</td></tr>
+<tr><td>an apple</td><td>an apples</td></tr>
+<tr><td>some water</td><td>a water (oddiy ma’noda)</td></tr>
+<tr><td>some information</td><td>an information</td></tr>
+</table>
+<p>THE esa birlik, ko‘plik va sanalmaydigan otlar bilan ishlatilishi mumkin:</p>
+<div class="example"><div class="en">the book</div><div class="uz">o‘sha kitob</div></div>
+<div class="example"><div class="en">the books</div><div class="uz">o‘sha kitoblar</div></div>
+<div class="example"><div class="en">the water</div><div class="uz">o‘sha suv</div></div>
+<div class="write">DAFTARGA YOZIB OLING: A/AN — faqat birlikdagi sanaladigan ot bilan. THE — birlik, ko‘plik va sanalmaydigan ot bilan ishlatilishi mumkin.</div>
+</section>
+
+<section id="a">
+<h2>3. A — NOANIQ ARTIKL</h2>
+<p><b>A</b> “bir” degan ma’noga yaqin. Biz biror narsani birinchi marta tilga olayotganimizda yoki aynan qaysi narsa ekanligi muhim bo‘lmaganda ishlatamiz.</p>
+
+<h3>3.1. A qachon ishlatiladi?</h3>
+<p>Otning talaffuzdagi birinchi tovushi undosh bo‘lsa, birlikdagi sanaladigan ot oldidan <b>a</b> qo‘yamiz.</p>
+<div class="example"><div class="en">a book — bir kitob</div></div>
+<div class="example"><div class="en">a car — bir mashina</div></div>
+<div class="example"><div class="en">a teacher — bir o‘qituvchi</div></div>
+<div class="example"><div class="en">a house — bir uy</div></div>
+<div class="example"><div class="en">a student — bir o‘quvchi</div></div>
+<div class="example"><div class="en">a phone — bir telefon</div></div>
+
+<h3>3.2. Birinchi marta tilga olingan narsa</h3>
+<div class="example"><div class="en">I saw a bird in the garden.</div><div class="uz">Men bog‘da bir qushni ko‘rdim.</div></div>
+<div class="example"><div class="en">She bought a dress.</div><div class="uz">U bir ko‘ylak sotib oldi.</div></div>
+<div class="example"><div class="en">He has a new job.</div><div class="uz">Uning yangi ishi bor.</div></div>
+<p>Bu misollarda qaysi qush, qaysi ko‘ylak yoki qaysi ish ekani hali aniqlashtirilmagan.</p>
+
+<h3>3.3. Kasb va lavozimlar</h3>
+<p>Biror kishining kasbini aytganda birlikdagi kasb nomi oldidan odatda a/an ishlatiladi.</p>
+<div class="example"><div class="en">I am a teacher.</div><div class="uz">Men o‘qituvchiman.</div></div>
+<div class="example"><div class="en">She is a doctor.</div><div class="uz">U shifokor.</div></div>
+<div class="example"><div class="en">He is an engineer.</div><div class="uz">U muhandis.</div></div>
+<div class="example"><div class="en">My father is a driver.</div><div class="uz">Mening otam haydovchi.</div></div>
+
+<h3>3.4. Biror narsaning turi yoki guruhiga mansublik</h3>
+<div class="example"><div class="en">A whale is a mammal.</div><div class="uz">Kit sutemizuvchi hayvondir.</div></div>
+<div class="example"><div class="en">A rose is a flower.</div><div class="uz">Atirgul gul hisoblanadi.</div></div>
+
+<h3>3.5. Bir dona yoki bir birlik ma’nosida</h3>
+<div class="example"><div class="en">I need a pen.</div><div class="uz">Menga bitta ruchka kerak.</div></div>
+<div class="example"><div class="en">Can I have a ticket?</div><div class="uz">Bitta chipta olsam bo‘ladimi?</div></div>
+
+<h3>3.6. A bilan ishlatiladigan vaqt va miqdor ifodalari</h3>
+<div class="example"><div class="en">twice a week</div><div class="uz">haftasiga ikki marta</div></div>
+<div class="example"><div class="en">once a day</div><div class="uz">kuniga bir marta</div></div>
+<div class="example"><div class="en">60 kilometres an hour</div><div class="uz">soatiga 60 kilometr</div></div>
+<div class="example"><div class="en">three times a month</div><div class="uz">oyiga uch marta</div></div>
+
+<div class="write">DAFTARGA YOZIB OLING: A ishlatiladi: 1) birlik sanaladigan ot bilan; 2) birinchi marta tilga olingan noaniq narsa bilan; 3) kasbni aytganda; 4) tur yoki guruhni ifodalaganda; 5) once a day, twice a week kabi ifodalarda.</div>
+
+<h3>3.7. A qachon ishlatilmaydi?</h3>
+<ul>
+<li>Ko‘plikdagi ot bilan: a books — noto‘g‘ri.</li>
+<li>Uncountable ot bilan: a milk — oddiy ma’noda noto‘g‘ri.</li>
+<li>Ism oldidan: a John — odatda noto‘g‘ri.</li>
+<li>Ko‘plikdagi umumiy ma’noda: Dogs are friendly.</li>
+</ul>
+<div class="note">Lekin “a coffee” kabi ifodalar buyurtma yoki bir finjon qahva ma’nosida ishlatilishi mumkin. Bu yerda ichimlikning bir porsiyasi nazarda tutiladi.</div>
+</section>
+
+<section id="an">
+<h2>4. AN — NOANIQ ARTIKL</h2>
+<p><b>AN</b> ham A kabi noaniq artikl. Ma’nosi deyarli bir xil. Farqi — keyingi so‘zning birinchi TOVUSHIDA.</p>
+<h3>4.1. AN qachon ishlatiladi?</h3>
+<p>Keyingi so‘z unli tovush bilan boshlansa, an ishlatiladi.</p>
+<table>
+<tr><th>Unli harflar</th><th>Misollar</th></tr>
+<tr><td>A</td><td>an apple</td></tr>
+<tr><td>E</td><td>an egg</td></tr>
+<tr><td>I</td><td>an idea</td></tr>
+<tr><td>O</td><td>an orange</td></tr>
+<tr><td>U</td><td>an umbrella</td></tr>
+</table>
+<div class="example"><div class="en">I ate an apple.</div><div class="uz">Men bitta olma yedim.</div></div>
+<div class="example"><div class="en">She has an umbrella.</div><div class="uz">Unda soyabon bor.</div></div>
+<div class="example"><div class="en">He is an actor.</div><div class="uz">U aktyor.</div></div>
+<div class="example"><div class="en">This is an interesting book.</div><div class="uz">Bu qiziqarli kitob.</div></div>
+
+<h3>4.2. Nega A UNIVERSITY, lekin AN UMBRELLA?</h3>
+<p>Bu juda muhim qoida. Biz harfga emas, tovushga qaraymiz.</p>
+<p><b>University</b> so‘zi yozuvda U harfi bilan boshlanadi, ammo talaffuzda boshida /j/ tovushi bor. Bu tovush “yes” so‘zining boshidagi tovushga o‘xshaydi. Shuning uchun undosh tovush hisoblanadi.</p>
+<div class="example"><div class="en">a university</div><div class="uz">bir universitet</div></div>
+<p><b>Umbrella</b> esa /ʌ/ unli tovushi bilan boshlanadi.</p>
+<div class="example"><div class="en">an umbrella</div><div class="uz">bir soyabon</div></div>
+
+<h3>4.3. H harfi bilan boshlanadigan so‘zlar</h3>
+<p>Ba’zi H bilan boshlanadigan so‘zlarda H talaffuz qilinmaydi. Shuning uchun an ishlatiladi.</p>
+<div class="example"><div class="en">an hour</div><div class="uz">bir soat</div></div>
+<div class="example"><div class="en">an honest person</div><div class="uz">halol inson</div></div>
+<p>Ammo H talaffuz qilinadigan so‘zlarda a ishlatiladi:</p>
+<div class="example"><div class="en">a house</div><div class="uz">bir uy</div></div>
+<div class="example"><div class="en">a hotel</div><div class="uz">bir mehmonxona</div></div>
+<div class="example"><div class="en">a happy child</div><div class="uz">baxtli bola</div></div>
+
+<h3>4.4. Qisqartmalar va harflar</h3>
+<p>Qisqartma qanday talaffuz qilinishiga qarab A yoki AN ishlatiladi.</p>
+<div class="example"><div class="en">an FBI agent</div><div class="uz">FBI agenti (F harfi “ef” deb boshlanadi)</div></div>
+<div class="example"><div class="en">a USB cable</div><div class="uz">USB kabeli (U bu yerda “yu” tovushi bilan boshlanadi)</div></div>
+
+<div class="write">DAFTARGA YOZIB OLING: A yoki AN tanlashda yozuvdagi harfga emas, talaffuzdagi birinchi tovushga qaraymiz. Unli tovush — AN; undosh tovush — A.</div>
+
+<h3>4.5. A va AN taqqoslash</h3>
+<table>
+<tr><th>A</th><th>AN</th></tr>
+<tr><td>a book</td><td>an apple</td></tr>
+<tr><td>a car</td><td>an orange</td></tr>
+<tr><td>a university</td><td>an umbrella</td></tr>
+<tr><td>a house</td><td>an hour</td></tr>
+<tr><td>a hotel</td><td>an honest man</td></tr>
+<tr><td>a European country</td><td>an English lesson</td></tr>
+</table>
+</section>
+
+<section id="the">
+<h2>5. THE — ANIQ ARTIKL</h2>
+<p><b>THE</b> — aniq artikl. Gapiruvchi va tinglovchi qaysi narsa yoki shaxs haqida gap ketayotganini bilsa, the ishlatiladi.</p>
+<p>THE birlik, ko‘plik va sanalmaydigan otlar bilan ishlatilishi mumkin.</p>
+
+<h3>5.1. Oldin tilga olingan narsa</h3>
+<p>Bu eng muhim qoida: birinchi marta a/an, keyingi safar the.</p>
+<div class="example"><div class="en">I saw a dog.</div><div class="uz">Men bir itni ko‘rdim.</div></div>
+<div class="example"><div class="en">The dog was very big.</div><div class="uz">O‘sha it juda katta edi.</div></div>
+<div class="example"><div class="en">She bought a book. The book is expensive.</div><div class="uz">U bir kitob sotib oldi. O‘sha kitob qimmat.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: Biror narsani birinchi marta noaniq tilga olsak A/AN, keyin o‘sha narsani yana eslasak THE ishlatamiz.</div>
+
+<h3>5.2. Vaziyatdan ma’lum bo‘lgan narsa</h3>
+<p>Ba’zan narsa oldin aytilmagan bo‘lsa ham, vaziyatdan qaysi narsa ekani ma’lum bo‘ladi.</p>
+<div class="example"><div class="en">Close the door, please.</div><div class="uz">Iltimos, eshikni yoping. (Qaysi eshikligi vaziyatdan ma’lum.)</div></div>
+<div class="example"><div class="en">Turn off the light.</div><div class="uz">Chiroqni o‘chiring.</div></div>
+<div class="example"><div class="en">Where is the bathroom?</div><div class="uz">Hojatxona qayerda?</div></div>
+
+<h3>5.3. Dunyoda yagona bo‘lgan narsalar</h3>
+<p>Odatda yagona yoki hammaga ma’lum bo‘lgan obyektlar bilan THE ishlatiladi.</p>
+<div class="example"><div class="en">the sun</div><div class="uz">quyosh</div></div>
+<div class="example"><div class="en">the moon</div><div class="uz">oy</div></div>
+<div class="example"><div class="en">the sky</div><div class="uz">osmon</div></div>
+<div class="example"><div class="en">the Earth</div><div class="uz">Yer sayyorasi</div></div>
+<div class="example"><div class="en">The sun is very hot.</div><div class="uz">Quyosh juda issiq.</div></div>
+
+<h3>5.4. Aniqlovchi bilan kelgan otlar</h3>
+<p>Ot qaysi ekanligi qo‘shimcha ma’lumot bilan aniq ko‘rsatilsa, THE ishlatilishi mumkin.</p>
+<div class="example"><div class="en">The book on the table is mine.</div><div class="uz">Stol ustidagi kitob meniki.</div></div>
+<div class="example"><div class="en">The man in the blue shirt is my father.</div><div class="uz">Ko‘k ko‘ylakdagi erkak mening otam.</div></div>
+<div class="example"><div class="en">The girl who lives next door is a student.</div><div class="uz">Qo‘shni uyda yashaydigan qiz o‘quvchi.</div></div>
+
+<h3>5.5. Eng yuqori daraja — Superlatives</h3>
+<p>“Eng katta”, “eng yaxshi”, “eng chiroyli” kabi superlative sifatlar oldidan odatda THE ishlatiladi.</p>
+<div class="example"><div class="en">the biggest house</div><div class="uz">eng katta uy</div></div>
+<div class="example"><div class="en">the best student</div><div class="uz">eng yaxshi o‘quvchi</div></div>
+<div class="example"><div class="en">the most beautiful city</div><div class="uz">eng chiroyli shahar</div></div>
+<div class="example"><div class="en">She is the best student in our class.</div><div class="uz">U sinfimizdagi eng yaxshi o‘quvchi.</div></div>
+
+<h3>5.6. Tartib sonlari bilan</h3>
+<p>First, second, third kabi tartib sonlar oldidan odatda THE ishlatiladi.</p>
+<div class="example"><div class="en">the first lesson</div><div class="uz">birinchi dars</div></div>
+<div class="example"><div class="en">the second floor</div><div class="uz">ikkinchi qavat</div></div>
+<div class="example"><div class="en">the third question</div><div class="uz">uchinchi savol</div></div>
+
+<h3>5.7. THE bilan birlik, ko‘plik va uncountable</h3>
+<div class="example"><div class="en">The apple is red.</div><div class="uz">O‘sha olma qizil.</div></div>
+<div class="example"><div class="en">The apples are red.</div><div class="uz">O‘sha olmalar qizil.</div></div>
+<div class="example"><div class="en">The water is cold.</div><div class="uz">O‘sha suv sovuq.</div></div>
+
+<div class="write">DAFTARGA YOZIB OLING: THE ishlatiladi: 1) oldin aytilgan narsa bilan; 2) vaziyatdan aniq bo‘lgan narsa bilan; 3) yagona obyektlar bilan; 4) aniqlovchi bilan aniq ko‘rsatilgan ot bilan; 5) superlative va tartib sonlari oldidan.</div>
+
+<h3>5.8. THE talaffuzi</h3>
+<p>THE ikki xil talaffuz qilinadi. Keyingi so‘zning birinchi tovushiga qaraymiz.</p>
+<table>
+<tr><th>Holat</th><th>Talaffuz</th><th>Misol</th></tr>
+<tr><td>Undosh tovush oldidan</td><td>/ðə/</td><td>the book</td></tr>
+<tr><td>Unli tovush oldidan</td><td>/ðiː/</td><td>the apple</td></tr>
+</table>
+<p>Tez nutqda talaffuz biroz o‘zgarishi mumkin. Muhimi, THE so‘zidagi bosh tovush /ð/ bo‘lib, til uchi tishlar orasiga yaqin qo‘yiladi va ovoz bilan aytiladi.</p>
+<div class="example"><div class="en">the book</div><div class="uz">undosh tovush oldidan</div></div>
+<div class="example"><div class="en">the egg</div><div class="uz">unli tovush oldidan</div></div>
+</section>
+
+<section id="zero">
+<h2>6. ZERO ARTICLE — ARTIKL ISHLATILMAYDIGAN HOLATLAR</h2>
+<p>Ingliz tilida har bir ot oldidan artikl qo‘yilavermaydi. Ba’zan A, AN yoki THE ishlatmaslik kerak. Bu holat <b>Zero Article</b> deyiladi.</p>
+
+<h3>6.1. Ko‘plikdagi otlar umumiy ma’noda</h3>
+<p>Biror guruh yoki tur haqida umumiy gapirsak, artikl ishlatmaymiz.</p>
+<div class="example"><div class="en">Dogs are friendly animals.</div><div class="uz">Itlar do‘stona hayvonlardir.</div></div>
+<div class="example"><div class="en">Books are important.</div><div class="uz">Kitoblar muhim.</div></div>
+<div class="example"><div class="en">Teachers help students.</div><div class="uz">O‘qituvchilar o‘quvchilarga yordam beradilar.</div></div>
+
+<h3>6.2. Uncountable otlar umumiy ma’noda</h3>
+<div class="example"><div class="en">Water is important for life.</div><div class="uz">Suv hayot uchun muhim.</div></div>
+<div class="example"><div class="en">Milk contains calcium.</div><div class="uz">Sut tarkibida kalsiy bor.</div></div>
+<div class="example"><div class="en">Money cannot buy happiness.</div><div class="uz">Pul baxtni sotib ololmaydi.</div></div>
+<p>Agar aniq suv yoki aniq pul haqida gapirsak, THE ishlatamiz:</p>
+<div class="example"><div class="en">The water in this bottle is cold.</div><div class="uz">Bu shishadagi suv sovuq.</div></div>
+
+<h3>6.3. Shaxs ismlari</h3>
+<p>Odatda odamlarning ismlari oldidan artikl qo‘yilmaydi.</p>
+<div class="example"><div class="en">John is my friend.</div><div class="uz">John mening do‘stim.</div></div>
+<div class="example"><div class="en">Mary lives in London.</div><div class="uz">Mary Londonda yashaydi.</div></div>
+
+<h3>6.4. Ko‘pchilik mamlakat va shahar nomlari</h3>
+<div class="example"><div class="en">I live in Uzbekistan.</div><div class="uz">Men O‘zbekistonda yashayman.</div></div>
+<div class="example"><div class="en">Paris is a beautiful city.</div><div class="uz">Parij chiroyli shahar.</div></div>
+<div class="example"><div class="en">She visited Germany.</div><div class="uz">U Germaniyaga tashrif buyurdi.</div></div>
+
+<h3>6.5. Fanlar, tillar va sport turlari</h3>
+<div class="example"><div class="en">I study English.</div><div class="uz">Men ingliz tilini o‘rganaman.</div></div>
+<div class="example"><div class="en">Mathematics is difficult.</div><div class="uz">Matematika qiyin.</div></div>
+<div class="example"><div class="en">He plays football.</div><div class="uz">U futbol o‘ynaydi.</div></div>
+<div class="example"><div class="en">She likes music.</div><div class="uz">U musiqani yoqtiradi.</div></div>
+
+<h3>6.6. Ovqatlanish vaqtlari</h3>
+<p>Breakfast, lunch, dinner umumiy ma’noda kelganda ko‘pincha artiklsiz ishlatiladi.</p>
+<div class="example"><div class="en">I have breakfast at seven.</div><div class="uz">Men soat yettida nonushta qilaman.</div></div>
+<div class="example"><div class="en">We have lunch at school.</div><div class="uz">Biz maktabda tushlik qilamiz.</div></div>
+<div class="example"><div class="en">Dinner is ready.</div><div class="uz">Kechki ovqat tayyor.</div></div>
+<p>Agar aniq bir ovqatlanish tadbirini nazarda tutsak, artikl kelishi mumkin:</p>
+<div class="example"><div class="en">The dinner we had yesterday was delicious.</div><div class="uz">Kecha yegan kechki ovqatimiz mazali edi.</div></div>
+
+<h3>6.7. Kunlar, oylar va bayramlar</h3>
+<div class="example"><div class="en">I work on Monday.</div><div class="uz">Men dushanba kuni ishlayman.</div></div>
+<div class="example"><div class="en">My birthday is in July.</div><div class="uz">Tug‘ilgan kunim iyul oyida.</div></div>
+<div class="example"><div class="en">We celebrate New Year.</div><div class="uz">Biz Yangi yilni nishonlaymiz.</div></div>
+
+<div class="write">DAFTARGA YOZIB OLING: Umumiy ma’nodagi ko‘plik otlar, uncountable otlar, ko‘pchilik ism, shahar va mamlakat nomlari, tillar, fanlar, sport turlari va odatiy ovqatlanish nomlari oldidan odatda artikl ishlatilmaydi.</div>
+</section>
+
+<section id="special">
+<h2>7. MAXSUS HOLATLAR VA MUHIM FARQLAR</h2>
+
+<h3>7.1. SCHOOL, WORK, HOME, BED</h3>
+<p>Ba’zi joy nomlari o‘zining asosiy vazifasi ma’nosida ishlatilganda artiklsiz kelishi mumkin.</p>
+<div class="example"><div class="en">Children go to school.</div><div class="uz">Bolalar maktabga boradilar. (O‘qish uchun.)</div></div>
+<div class="example"><div class="en">My father is at work.</div><div class="uz">Otam ishda.</div></div>
+<div class="example"><div class="en">I go home at six.</div><div class="uz">Men soat oltida uyga boraman.</div></div>
+<div class="example"><div class="en">The child is in bed.</div><div class="uz">Bola yotoqda.</div></div>
+<p>Ammo joy binosi yoki aniq bir joyning o‘zi nazarda tutilsa, THE yoki A/AN ishlatilishi mumkin.</p>
+<div class="example"><div class="en">I went to the school to meet the teacher.</div><div class="uz">O‘qituvchi bilan uchrashish uchun maktab binosiga bordim.</div></div>
+<div class="example"><div class="en">The school is very old.</div><div class="uz">O‘sha maktab juda eski.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: School/work/home/bed kabi so‘zlar asosiy vazifa ma’nosida ishlatilganda artiklsiz kelishi mumkin. Bino yoki aniq joy nazarda tutilganda artikl ishlatilishi mumkin.</div>
+
+<h3>7.2. PLACE NAMES — geografik nomlar</h3>
+<p>Ko‘pchilik davlat, shahar, ko‘l va tog‘ nomlari artiklsiz ishlatiladi. Ammo ayrim geografik nomlar THE bilan keladi.</p>
+<table>
+<tr><th>Odatda artiklsiz</th><th>THE bilan</th></tr>
+<tr><td>Uzbekistan</td><td>the United States</td></tr>
+<tr><td>France</td><td>the United Kingdom</td></tr>
+<tr><td>London</td><td>the Netherlands</td></tr>
+<tr><td>Mount Everest</td><td>the Alps</td></tr>
+<tr><td>Lake Baikal</td><td>the Pacific Ocean</td></tr>
+</table>
+<p>Ko‘pincha ko‘plik shaklidagi yoki “States, Kingdom, Republic” kabi so‘zli davlat nomlari THE bilan ishlatiladi. Biroq bu qoidaning istisnolari bor, shuning uchun nomlarni alohida o‘rganish foydali.</p>
+
+<h3>7.3. MUSICAL INSTRUMENTS</h3>
+<p>Musiqa asboblarini chalish haqida umumiy gapirganda odatda THE ishlatiladi.</p>
+<div class="example"><div class="en">She plays the piano.</div><div class="uz">U pianino chaladi.</div></div>
+<div class="example"><div class="en">He plays the guitar.</div><div class="uz">U gitara chaladi.</div></div>
+<div class="example"><div class="en">I play the violin.</div><div class="uz">Men skripka chalaman.</div></div>
+
+<h3>7.4. GO TO THE CINEMA / GO TO SCHOOL</h3>
+<p>Bu ifodalarni farqlash kerak:</p>
+<div class="example"><div class="en">I go to school.</div><div class="uz">Men maktabga o‘qiyman / maktabga boraman.</div></div>
+<div class="example"><div class="en">I go to the cinema.</div><div class="uz">Men kinoteatrga boraman.</div></div>
+<div class="example"><div class="en">She goes to work.</div><div class="uz">U ishga boradi.</div></div>
+<div class="example"><div class="en">We went to the hospital to visit him.</div><div class="uz">Biz uni ko‘rgani shifoxonaga bordik.</div></div>
+
+<h3>7.5. A/AN va THE — ma’no farqi</h3>
+<table>
+<tr><th>Gap</th><th>Ma’nosi</th></tr>
+<tr><td>I need a phone.</td><td>Menga qandaydir bitta telefon kerak.</td></tr>
+<tr><td>I need the phone.</td><td>Menga o‘sha aniq telefon kerak.</td></tr>
+<tr><td>She is a teacher.</td><td>U o‘qituvchi.</td></tr>
+<tr><td>She is the teacher.</td><td>U o‘sha (biz bilgan) o‘qituvchi.</td></tr>
+<tr><td>I like music.</td><td>Men musiqani umuman yoqtiraman.</td></tr>
+<tr><td>I like the music.</td><td>Men o‘sha musiqani yoqtiraman.</td></tr>
+</table>
+
+<h3>7.6. A/AN va ONE farqi</h3>
+<p>A/AN noaniq bitta narsani bildiradi, lekin aniq sonni ta’kidlamaydi. ONE esa aynan bitta ekanini ta’kidlaydi.</p>
+<div class="example"><div class="en">I need a pen.</div><div class="uz">Menga ruchka kerak.</div></div>
+<div class="example"><div class="en">I need one pen, not two.</div><div class="uz">Menga ikkita emas, aynan bitta ruchka kerak.</div></div>
+
+<h3>7.7. THE bilan umumiy guruh</h3>
+<p>Ba’zan THE + sifat butun bir guruhni anglatadi.</p>
+<div class="example"><div class="en">the rich</div><div class="uz">boylar</div></div>
+<div class="example"><div class="en">the poor</div><div class="uz">kambag‘allar</div></div>
+<div class="example"><div class="en">the elderly</div><div class="uz">keksalar</div></div>
+<p>Bu tuzilma ko‘pincha ko‘plik ma’nosida ishlatiladi.</p>
+
+<h3>7.8. Eng ko‘p uchraydigan xatolar</h3>
+<table>
+<tr><th>Noto‘g‘ri</th><th>To‘g‘ri</th></tr>
+<tr><td>I am teacher.</td><td>I am a teacher.</td></tr>
+<tr><td>She is an university student.</td><td>She is a university student.</td></tr>
+<tr><td>I like the music. (umumiy ma’noda)</td><td>I like music.</td></tr>
+<tr><td>He plays piano.</td><td>He plays the piano.</td></tr>
+<tr><td>The Uzbekistan</td><td>Uzbekistan</td></tr>
+<tr><td>I have a books.</td><td>I have books.</td></tr>
+<tr><td>Sun is hot.</td><td>The sun is hot.</td></tr>
+<tr><td>She goes to the school. (o‘qish uchun)</td><td>She goes to school.</td></tr>
+</table>
+<div class="write">DAFTARGA YOZIB OLING: Har bir noto‘g‘ri gapni to‘g‘ri shaklda qayta yozing. Artikllar kichik so‘z bo‘lsa ham, gapning grammatik to‘g‘riligiga katta ta’sir qiladi.</div>
+
+<h3>7.9. Artikllarni tanlash algoritmi</h3>
+<ol>
+<li>Ot birlikdagi sanaladigan otmi?</li>
+<li>Agar ha bo‘lsa, noaniq ma’noda A yoki AN kerakmi?</li>
+<li>Keyingi tovush undoshmi yoki unlimi?</li>
+<li>Agar narsa aniq va ma’lum bo‘lsa, THE kerakmi?</li>
+<li>Agar umumiy ko‘plik yoki uncountable ma’no bo‘lsa, artikl kerak emasmi?</li>
+</ol>
+<div class="note"><b>Misol:</b> I saw ___ elephant. Elephant unli tovush bilan boshlanadi, birlikdagi sanaladigan ot va birinchi marta aytilmoqda. Javob: AN.</div>
+<div class="note"><b>Misol:</b> ___ elephant was very big. Endi o‘sha fil haqida gapiryapmiz. Javob: THE.</div>
+<div class="write">DAFTARGA YOZIB OLING: Artikllarni tanlashdan oldin otning sanaladigan yoki sanalmaydigan ekanini, birlik yoki ko‘plikda ekanini va aniq yoki noaniqligini tekshiring.</div>
+</section>
+
+<section id="vocabulary">
+<h2>8. VOCABULARY — 40 TA SO‘Z</h2>
+<p>Har bir so‘zning tarjimasi, talaffuz ko‘rsatmasi, misol gapi va audio tugmasi bor.</p>
+<div class="write">DAFTARGA YOZIB OLING: 40 ta so‘zning barchasini inglizchasi, o‘zbekcha tarjimasi va talaffuzi bilan lug‘at daftaringizga yozing. Misol gaplarini ham ko‘chiring.</div>
+<div class="word-grid" id="wordGrid"></div>
+</section>
+
+<section id="reading">
+<h2>9. READING — A VISIT TO A NEW CITY</h2>
+<div class="skill">
+<h3>A Day in London</h3>
+<p>Last summer, Daniel visited London for the first time. He stayed in a small hotel near the city centre. On the first morning, he had breakfast at the hotel and then went to the British Museum.</p>
+<p>He saw an interesting exhibition about history. After that, he walked to a beautiful park. The park was full of people, and the weather was sunny.</p>
+<p>Daniel took a photo of the famous clock tower and visited a small bookshop. He bought a book about English history. In the evening, he had dinner at a restaurant near the river.</p>
+<p>Daniel enjoyed the trip. He wants to visit the city again because London has many interesting places.</p>
+<hr>
+<h4>Reading questions</h4>
+<div class="question"><p>1. Where did Daniel stay?</p>
+<label><input type="radio" name="r1" value="a"> In a big house</label>
+<label><input type="radio" name="r1" value="b"> In a small hotel</label>
+<label><input type="radio" name="r1" value="c"> At a school</label></div>
+<div class="question"><p>2. What did he visit first?</p>
+<label><input type="radio" name="r2" value="a"> The British Museum</label>
+<label><input type="radio" name="r2" value="b"> A restaurant</label>
+<label><input type="radio" name="r2" value="c"> A bookshop</label></div>
+<div class="question"><p>3. What did he buy?</p>
+<label><input type="radio" name="r3" value="a"> A phone</label>
+<label><input type="radio" name="r3" value="b"> A ticket</label>
+<label><input type="radio" name="r3" value="c"> A book</label></div>
+<div class="question"><p>4. Why does he want to visit London again?</p>
+<label><input type="radio" name="r4" value="a"> Because it has many interesting places</label>
+<label><input type="radio" name="r4" value="b"> Because he works there</label>
+<label><input type="radio" name="r4" value="c"> Because his school is there</label></div>
+<button onclick="checkReading()">Check Reading</button>
+<div id="readingResult" class="feedback"></div>
+</div>
+</section>
+
+<section id="listening">
+<h2>10. LISTENING — AT A HOTEL</h2>
+<p>Avval matnni tinglang. Keyin sekin tezlikda qayta eshiting. Oxirida transcript bilan tekshiring.</p>
+<div class="skill">
+<button onclick="playListen(1)">▶ Normal Voice</button>
+<button class="secondary" onclick="playListen(.72)">▶ Slow Voice</button>
+<button class="secondary" onclick="speechSynthesis.cancel()">■ Stop</button>
+<h3>Listening transcript</h3>
+<p>Receptionist: Good evening. Welcome to the hotel.</p>
+<p>Guest: Good evening. I have a reservation.</p>
+<p>Receptionist: What is your name, please?</p>
+<p>Guest: My name is David Brown.</p>
+<p>Receptionist: Yes, I have your reservation. Here is the key to your room.</p>
+<p>Guest: Thank you. Where is the restaurant?</p>
+<p>Receptionist: The restaurant is on the first floor.</p>
+<p>Guest: Great. Is there a supermarket near the hotel?</p>
+<p>Receptionist: Yes, there is a supermarket next to the bank.</p>
+</div>
+<div class="question"><p>1. What is the guest's name?</p>
+<label><input type="radio" name="l1" value="a"> David Brown</label>
+<label><input type="radio" name="l1" value="b"> Daniel Green</label>
+<label><input type="radio" name="l1" value="c"> John Brown</label></div>
+<div class="question"><p>2. Where is the restaurant?</p>
+<label><input type="radio" name="l2" value="a"> On the second floor</label>
+<label><input type="radio" name="l2" value="b"> On the first floor</label>
+<label><input type="radio" name="l2" value="c"> Near the bank</label></div>
+<div class="question"><p>3. What is next to the bank?</p>
+<label><input type="radio" name="l3" value="a"> A school</label>
+<label><input type="radio" name="l3" value="b"> A restaurant</label>
+<label><input type="radio" name="l3" value="c"> A supermarket</label></div>
+<button onclick="checkListening()">Check Listening</button>
+<div id="listeningResult" class="feedback"></div>
+</section>
+
+<section id="speaking">
+<h2>11. SPEAKING — TALK ABOUT YOUR LIFE</h2>
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir javobda artikllardan to‘g‘ri foydalaning.</p>
+<div class="skill">
+<ol>
+<li>Are you a student or a worker?</li>
+<li>Do you live in a house or an apartment?</li>
+<li>What is the most interesting place in your city?</li>
+<li>Do you play a musical instrument?</li>
+<li>What is your favourite book?</li>
+<li>What do you usually have for breakfast?</li>
+<li>Can you describe a person you admire?</li>
+<li>What is the best place you have visited?</li>
+<li>Do you like music or films?</li>
+<li>What is an important goal in your life?</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Kamida 6 ta savolga 2–3 gapdan javob yozing. Keyin javoblaringizni ovoz chiqarib o‘qing.</div>
+</div>
+<div class="skill">
+<h3>Speaking patterns</h3>
+<div class="example"><div class="en">I am a...</div><div class="uz">Men ...man.</div></div>
+<div class="example"><div class="en">I live in a...</div><div class="uz">Men ...da yashayman.</div></div>
+<div class="example"><div class="en">The most interesting place is...</div><div class="uz">Eng qiziqarli joy — ...</div></div>
+<div class="example"><div class="en">I like music because...</div><div class="uz">Men musiqani yoqtiraman, chunki...</div></div>
+</div>
+</section>
+
+<section id="writing">
+<h2>12. WRITING — A PERSON I ADMIRE</h2>
+<p><b>Topic:</b> A Person I Admire — Men hurmat qiladigan inson.</p>
+<p>80–120 so‘zli matn yozing. Matningizda quyidagilarga javob bering:</p>
+<ul>
+<li>Who is this person?</li>
+<li>Is he/she a teacher, a doctor, a worker or something else?</li>
+<li>What does this person do?</li>
+<li>Why do you admire this person?</li>
+<li>What is the most important thing you have learned from him/her?</li>
+</ul>
+<p>Matnda kamida 3 ta A/AN, 3 ta THE va 3 ta artiklsiz ishlatilgan misol bo‘lsin.</p>
+<div class="write">DAFTARGA YOZIB OLING: 80–120 so‘zli matnni daftaringizda yozing. A/AN, THE va ZERO ARTICLE ishlatilgan joylarni alohida belgilang.</div>
+</section>
+
+<section id="homework">
+<h2>13. HOMEWORK — UYGA VAZIFA</h2>
+<p>Bitta homework bo‘limi. Quyidagi 5 ta topshiriqning barchasini bajaring.</p>
+
+<div class="skill">
+<h3>Task 1 — Choose A, AN, THE or —</h3>
+<p>Bo‘sh joyga mos artiklni yozing. Artiklsiz holatda “—” yozing.</p>
+<ol>
+<li>I am ___ teacher.</li>
+<li>She has ___ orange.</li>
+<li>___ sun is very hot.</li>
+<li>He lives in ___ Uzbekistan.</li>
+<li>I like ___ music.</li>
+<li>We saw ___ elephant at the zoo.</li>
+<li>___ elephant was very big.</li>
+<li>She plays ___ piano.</li>
+<li>He goes to ___ school every day.</li>
+<li>This is ___ interesting story.</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: 10 ta gapning to‘liq to‘g‘ri variantini yozing. Har bir tanlov sababini tushuntiring.</div>
+</div>
+
+<div class="skill">
+<h3>Task 2 — Correct the mistakes</h3>
+<p>Quyidagi gaplardagi xatolarni toping va to‘g‘rilang.</p>
+<ol>
+<li>She is an doctor.</li>
+<li>I have a books.</li>
+<li>The water is important for life. (Umumiy ma’noda)</li>
+<li>He is a honest man.</li>
+<li>I live in the France.</li>
+<li>My brother plays guitar.</li>
+<li>Sun is bright today.</li>
+<li>She goes to the school every day. (O‘qish uchun)</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Har bir xato gapni tuzating va qoida bilan izohlang.</div>
+</div>
+
+<div class="skill">
+<h3>Task 3 — Vocabulary</h3>
+<p>Bugungi 40 ta yangi so‘zni yodlang. Ulardan 15 tasidan foydalanib o‘zingiz mustaqil gaplar tuzing.</p>
+<div class="write">DAFTARGA YOZIB OLING: 40 ta so‘z, tarjimasi va talaffuzini yozing. 15 ta yangi gap tuzing va ovoz chiqarib o‘qing.</div>
+</div>
+
+<div class="skill">
+<h3>Task 4 — Translate into English</h3>
+<ol>
+<li>Men o‘qituvchiman.</li>
+<li>U bir olma sotib oldi.</li>
+<li>O‘sha olma juda mazali edi.</li>
+<li>Men O‘zbekistonda yashayman.</li>
+<li>Quyosh juda yorqin.</li>
+<li>U pianino chaladi.</li>
+<li>Men kitoblarni yaxshi ko‘raman.</li>
+<li>Bu eng yaxshi kun.</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Gaplarni ingliz tiliga tarjima qiling. Har bir artiklning sababini yozing.</div>
+</div>
+
+<div class="skill">
+<h3>Task 5 — Translate into Uzbek</h3>
+<ol>
+<li>I saw a man near the station.</li>
+<li>The man was wearing a black jacket.</li>
+<li>My sister is an engineer.</li>
+<li>Children need love and care.</li>
+<li>The book on the table is mine.</li>
+<li>We have breakfast at seven.</li>
+<li>She is the best student in the class.</li>
+<li>Water is necessary for life.</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Gaplarni o‘zbekchaga tarjima qiling. A/AN, THE va ZERO ARTICLE ishlatilgan joylarni aniqlang.</div>
+</div>
+</section>
+
+<section id="test">
+<h2>14. FINAL TEST — 30 QUESTIONS</h2>
+<p>Test darsning barcha muhim qoidalarini tekshiradi. Har bir savolga javob bering.</p>
+<div class="note"><b>PASS MARK: 80% — 24/30.</b> Kamida 24 ta to‘g‘ri javob kerak.</div>
+<div id="quiz"></div>
+<button onclick="checkTest()">CHECK MY TEST</button>
+<button class="secondary" onclick="resetTest()">Reset</button>
+<div id="testResult" class="result"></div>
+</section>
+
+<section id="motivation">
+<h2>15. A MESSAGE FOR YOU</h2>
+<div class="note">
+<h3>YOU ARE GETTING CLOSER TO YOUR GOAL!</h3>
+<p>Bugun siz ingliz tilidagi kichik ko‘ringan, ammo juda muhim mavzuni o‘rgandingiz. Artikllarni to‘g‘ri ishlatish uchun vaqt va ko‘p mashq kerak. Xato qilishdan qo‘rqmang — har bir xato sizga nimanidir o‘rgatadi.</p>
+<p>Faqat qoidalarni o‘qib qo‘ymang. Ularni daftaringizga yozing, misollarni ovoz chiqarib o‘qing, tinglang va o‘zingiz yangi gaplar tuzing.</p>
+<p><b>Small steps every day lead to big results.</b></p>
+<p>Har kuni kichik qadamlar katta natijalarga olib keladi.</p>
+<p><b>Believe in your progress. Keep learning. Never give up!</b></p>
+</div>
+<div class="write">DAFTARGA YOZIB OLING: “I can learn English. I improve every day. I will reach my goal.” Ushbu uchta gapni yozing va ovoz chiqarib 5 marta o‘qing.</div>
+</section>
+
+<div class="footer">
+<h2>ENGLISH UP</h2>
+<p>Learn today. Succeed tomorrow.</p>
+<p>LESSON 7 — ARTICLES</p>
+<p>Keep learning. Keep growing!</p>
+</div>
+</main>
+
+<script>
+function toggleTheme(){
+ document.body.classList.toggle('dark');
+ localStorage.setItem('euLessonTheme',document.body.classList.contains('dark')?'dark':'light');
+}
+if(localStorage.getItem('euLessonTheme')==='dark')document.body.classList.add('dark');
+
+function speak(text,rate=0.9){
+ if(!('speechSynthesis' in window)){alert('Audio is not supported in this browser.');return;}
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(text);
+ u.lang='en-US';u.rate=rate;
+ speechSynthesis.speak(u);
+}
+function playListen(rate){
+ const text="Receptionist: Good evening. Welcome to the hotel. Guest: Good evening. I have a reservation. Receptionist: What is your name, please? Guest: My name is David Brown. Receptionist: Yes, I have your reservation. Here is the key to your room. Guest: Thank you. Where is the restaurant? Receptionist: The restaurant is on the first floor. Guest: Great. Is there a supermarket near the hotel? Receptionist: Yes, there is a supermarket next to the bank.";
+ speak(text,rate);
+}
+
+/* Add normal and slow voice buttons to every English example */
+document.querySelectorAll('.example .en').forEach(el=>{
+ const text=el.textContent.trim();
+ if(!text)return;
+ const normal=document.createElement('button');
+ normal.className='voice';normal.textContent='▶ Voice';
+ normal.onclick=()=>speak(text,.9);
+ const slow=document.createElement('button');
+ slow.className='voice slow';slow.textContent='🐢 Slow';
+ slow.onclick=()=>speak(text,.65);
+ el.appendChild(document.createTextNode(' '));
+ el.appendChild(normal);el.appendChild(slow);
+});
+
+const words=[
+["article","artikl","AR-ti-kəl","An article comes before a noun."],
+["noun","ot","naun","A noun names a person or thing."],
+["book","kitob","buk","I have a book."],
+["apple","olma","EP-əl","She eats an apple."],
+["orange","apelsin","OR-inj","I want an orange."],
+["umbrella","soyabon","am-BREL-ə","He has an umbrella."],
+["university","universitet","yu-ni-VƏR-si-ti","She studies at a university."],
+["hour","soat","AU-ər","Wait for an hour."],
+["honest","halol","ON-ist","He is an honest man."],
+["European","yevropalik","yu-rə-PI-ən","France is a European country."],
+["teacher","o‘qituvchi","TII-chər","My mother is a teacher."],
+["engineer","muhandis","en-jə-NIR","He is an engineer."],
+["doctor","shifokor","DOK-tər","The doctor is busy."],
+["student","o‘quvchi","STYUU-dənt","I am a student."],
+["city","shahar","SI-ti","This is a beautiful city."],
+["country","mamlakat","KAN-tri","Uzbekistan is a country."],
+["museum","muzey","myu-ZI-əm","We visited a museum."],
+["hotel","mehmonxona","hou-TEL","The hotel is near the station."],
+["restaurant","restoran","RES-tə-ront","We ate at a restaurant."],
+["station","bekat","STEY-shən","The station is very busy."],
+["garden","bog‘","GAR-dən","There is a garden behind the house."],
+["park","bog‘, park","park","The children play in the park."],
+["river","daryo","RIV-ər","The river is long."],
+["mountain","tog‘","MAUN-tən","We can see a mountain."],
+["island","orol","AI-lənd","They live on an island."],
+["ocean","okean","OU-shən","The ocean is deep."],
+["language","til","LANG-gwij","English is an international language."],
+["instrument","asbob","IN-strə-mənt","A piano is a musical instrument."],
+["guitar","gitara","gi-TAR","He plays the guitar."],
+["piano","pianino","pi-A-nou","She plays the piano."],
+["breakfast","nonushta","BREK-fəst","I have breakfast at seven."],
+["lunch","tushlik","lanch","We have lunch at school."],
+["dinner","kechki ovqat","DIN-ər","Dinner is ready."],
+["weather","ob-havo","WE-dhər","The weather is sunny."],
+["history","tarix","HIS-tə-ri","I like history."],
+["exhibition","ko‘rgazma","ek-si-BI-shən","We saw an exhibition."],
+["famous","mashhur","FEY-məs","London is a famous city."],
+["interesting","qiziqarli","IN-trəs-ting","This is an interesting story."],
+["important","muhim","im-POR-tənt","Education is important."],
+["reservation","band qilish","rez-ər-VEY-shən","I have a hotel reservation."]
+];
+
+const wordGrid=document.getElementById('wordGrid');
+words.forEach((w,i)=>{
+ const d=document.createElement('div');d.className='word';
+ const title=document.createElement('strong');title.textContent=(i+1)+'. '+w[0];
+ const btn=document.createElement('button');btn.className='voice';btn.textContent='▶ Voice';
+ btn.onclick=()=>speak(w[0],.85);
+ const slow=document.createElement('button');slow.className='voice slow';slow.textContent='🐢 Slow';
+ slow.onclick=()=>speak(w[0],.62);
+ const meaning=document.createElement('small');meaning.textContent='🇺🇿 '+w[1];
+ const pron=document.createElement('small');pron.textContent='🔊 '+w[2];
+ const example=document.createElement('p');example.className='uz';example.textContent=w[3];
+ const exBtn=document.createElement('button');exBtn.className='voice';exBtn.textContent='▶ Example Voice';
+ exBtn.onclick=()=>speak(w[3],.85);
+ d.append(title,btn,slow,meaning,pron,example,exBtn);
+ wordGrid.appendChild(d);
+});
+
+function checkReading(){
+ const ans={r1:'b',r2:'a',r3:'c',r4:'a'};let n=0;
+ Object.keys(ans).forEach(k=>{
+ if(document.querySelector(`input[name="${k}"]:checked`)?.value===ans[k])n++;
+ });
+ document.getElementById('readingResult').textContent='Natija: '+n+'/4';
+}
+function checkListening(){
+ const ans={l1:'a',l2:'b',l3:'c'};let n=0;
+ Object.keys(ans).forEach(k=>{
+ if(document.querySelector(`input[name="${k}"]:checked`)?.value===ans[k])n++;
+ });
+ document.getElementById('listeningResult').textContent='Natija: '+n+'/3';
+}
+
+const questions=[
+{q:"I am ___ teacher.",o:["a","an","the","—"],a:0,e:"Teacher undosh tovush bilan boshlanadigan birlik sanaladigan ot."},
+{q:"She ate ___ apple.",o:["a","an","the","—"],a:1,e:"Apple unli tovush bilan boshlanadi."},
+{q:"___ sun is very hot.",o:["A","An","The","—"],a:2,e:"Quyosh yagona obyekt sifatida THE bilan keladi."},
+{q:"I live in ___ Uzbekistan.",o:["a","an","the","—"],a:3,e:"Uzbekistan oldidan odatda artikl qo‘yilmaydi."},
+{q:"I like ___ music.",o:["a","an","the","—"],a:3,e:"Umumiy ma'nodagi music — uncountable."},
+{q:"He is ___ honest man.",o:["a","an","the","—"],a:1,e:"Honest so‘zida h talaffuz qilinmaydi."},
+{q:"She studies at ___ university.",o:["a","an","the","—"],a:0,e:"University /j/ undosh tovushi bilan boshlanadi."},
+{q:"I saw a cat. ___ cat was black.",o:["A","An","The","—"],a:2,e:"Ikkinchi marta tilga olingan mushuk aniq."},
+{q:"He plays ___ guitar.",o:["a","an","the","—"],a:2,e:"Musiqa asboblarini chalish haqida gapirganda THE ishlatiladi."},
+{q:"___ dogs are friendly animals.",o:["A","An","The","—"],a:3,e:"Umumiy ma'nodagi ko‘plik ot oldidan artikl kerak emas."},
+{q:"This is ___ interesting book.",o:["a","an","the","—"],a:1,e:"Interesting unli tovush bilan boshlanadi."},
+{q:"I need ___ pen, not two.",o:["a","an","the","—"],a:0,e:"Noaniq bitta ruchka."},
+{q:"She goes to ___ school every day.",o:["a","an","the","—"],a:3,e:"O‘qish ma'nosida school artiklsiz."},
+{q:"We visited ___ United Kingdom.",o:["a","an","the","—"],a:2,e:"United Kingdom THE bilan ishlatiladi."},
+{q:"He is ___ engineer.",o:["a","an","the","—"],a:1,e:"Engineer unli tovush bilan boshlanadi."},
+{q:"I have breakfast at ___ seven.",o:["a","an","the","—"],a:3,e:"Soat bilan bu tuzilmada artikl kerak emas."},
+{q:"This is ___ best film.",o:["a","an","the","—"],a:2,e:"Best — superlative, odatda THE bilan."},
+{q:"She bought ___ dress yesterday.",o:["a","an","the","—"],a:0,e:"Birinchi marta aytilayotgan noaniq birlik ot."},
+{q:"___ dress was very expensive.",o:["A","An","The","—"],a:2,e:"Oldin aytilgan ko‘ylak."},
+{q:"___ water is important for life.",o:["A","An","The","—"],a:3,e:"Umumiy ma'nodagi uncountable ot."},
+{q:"The water in this glass is cold. — Why THE?",o:["It is plural","It is specific","It is a name","It is a job"],a:1,e:"Stakandagi aniq suv nazarda tutilgan."},
+{q:"Choose the correct phrase.",o:["an house","a house","the house (always)","a houses"],a:1,e:"House undosh tovush bilan boshlanadi."},
+{q:"Choose the correct phrase.",o:["a hour","an hour","the hour (always)","an hours"],a:1,e:"Hour so‘zida h talaffuz qilinmaydi."},
+{q:"___ books are useful.",o:["A","An","The","—"],a:3,e:"Umumiy ma'nodagi ko‘plik ot."},
+{q:"He is ___ first student.",o:["a","an","the","—"],a:2,e:"Tartib son oldidan odatda THE."},
+{q:"We saw ___ elephant. ___ elephant was huge.",o:["a / a","an / the","the / an","— / the"],a:1,e:"Birinchi marta an, keyingi safar the."},
+{q:"She is ___ European student.",o:["a","an","the","—"],a:0,e:"European /j/ undosh tovushi bilan boshlanadi."},
+{q:"I study ___ English.",o:["a","an","the","—"],a:3,e:"Til nomlari odatda artiklsiz."},
+{q:"Which sentence is correct?",o:["She is doctor.","She is a doctor.","She is an doctor.","She is the doctor (always)."],a:1,e:"Kasb nomi birlikda A bilan keladi."},
+{q:"Which sentence means general books?",o:["The books are useful.","A books are useful.","Books are useful.","An books are useful."],a:2,e:"Umumiy ko‘plik ma'nosida ZERO ARTICLE."}
+];
+
+const quiz=document.getElementById('quiz');
+questions.forEach((q,i)=>{
+ const box=document.createElement('div');box.className='question';box.id='q'+i;
+ let html=`<p>${i+1}. ${q.q}</p>`;
+ q.o.forEach((o,j)=>html+=`<label><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`);
+ html+=`<div class="feedback" id="f${i}"></div>`;
+ box.innerHTML=html;quiz.appendChild(box);
+});
+
+function checkTest(){
+ let score=0,answered=0;
+ questions.forEach((q,i)=>{
+ const selected=document.querySelector(`input[name="q${i}"]:checked`);
+ const fb=document.getElementById('f'+i);
+ if(selected)answered++;
+ if(selected&&Number(selected.value)===q.a){
+ score++;fb.className='feedback correct';fb.textContent='✓ Correct! '+q.e;
+ }else{
+ fb.className='feedback incorrect';
+ fb.textContent=(selected?'✗ Incorrect. ':'○ Unanswered. ')+'Correct answer: '+q.o[q.a]+'. '+q.e;
+ }
+ });
+ const pct=Math.round(score/30*100);
+ const passed=pct>=80;
+ const result=document.getElementById('testResult');
+ result.style.display='block';
+ result.innerHTML=`<h3>${passed?'🎉 EXCELLENT WORK!':'📘 KEEP PRACTISING!'}</h3>
+ <h2>${score}/30 — ${pct}%</h2>
+ <p>Answered: ${answered}/30</p>
+ <p>Correct: ${score} | Incorrect or unanswered: ${30-score}</p>
+ <p><b>${passed?'You passed Lesson 7!':'You need at least 24 correct answers to pass.'}</b></p>
+ <p>${passed?'Keyingi darsga tayyorsiz!':'Qoidalarni qayta o‘rganing va testni yana bajaring.'}</p>`;
+ localStorage.setItem('euLesson7Test',JSON.stringify({score,pct,passed,date:new Date().toISOString()}));
+ updateProgress();
+ result.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetTest(){
+ document.querySelectorAll('#quiz input').forEach(x=>x.checked=false);
+ document.querySelectorAll('#quiz .feedback').forEach(x=>{x.textContent='';x.className='feedback';});
+ document.getElementById('testResult').style.display='none';
+}
+function updateProgress(){
+ const saved=JSON.parse(localStorage.getItem('euLesson7Test')||'null');
+ const pct=saved&&saved.passed?100:0;
+ document.getElementById('progressBar').style.width=pct+'%';
+ document.getElementById('progressText').textContent=pct?'Test passed — 100%':'Testni topshirish kutilmoqda';
+}
+updateProgress();
+</script>
+</body>
+</html>
+
