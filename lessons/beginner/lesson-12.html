@@ -1,1 +1,853 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Up - 12-Dars: Places in the city & Directions</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h1 { margin-top: 0; border-bottom: none; text-align: center; font-size: 1.8em; }
+        .greeting {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: #EEF2FF;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info-box {
+            background: #FFFBEB;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info-box strong { color: #B45309; }
+        .grammar-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .rule-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .strict-rule-box {
+            background: #FEE2E2;
+            border: 2px solid #EF4444;
+            color: #991B1B;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: bold;
+            text-align: center;
+        }
 
+        .word-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .word-item {
+            display: flex;
+            align-items: center;
+            background: #F9FAFB;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            flex-wrap: wrap;
+        }
+        .word-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        }
+        .num { font-weight: bold; width: 30px; color: var(--primary); }
+        .word { width: 150px; font-weight: 600; }
+        .transcription { width: 160px; color: #059669; font-family: monospace; font-size: 1.05em; }
+        .translation { flex-grow: 1; color: var(--text-light); }
+        .example-sentence {
+            width: 100%;
+            margin-top: 8px;
+            padding-left: 30px;
+            font-size: 0.9em;
+            color: var(--primary);
+            font-style: italic;
+            border-top: 1px dashed var(--border);
+            padding-top: 8px;
+        }
+        
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .audio-btn:hover { background: var(--primary-hover); }
+        .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .dialog-container {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .dialog-line {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dialog-line .speaker {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .interactive-section, .homework-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1em;
+            outline: none;
+        }
+        .input-group input:focus { border-color: var(--primary); }
+        .input-group input.correct { border-color: var(--success); background: #D1FAE5; }
+        .input-group input.incorrect { border-color: var(--error); background: #FEE2E2; }
+
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+        .check-btn:hover { background: var(--primary-hover); }
+        .result { margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1em; }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: #6B7280;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .back-btn:hover { background: #4B5563; }
+
+        .text-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .motivation-box {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .motivation-box h2 {
+            color: white;
+            border-bottom: none;
+            margin-top: 0;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        .motivation-box p {
+            font-size: 1.2em;
+            margin-bottom: 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .writing-test {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .writing-test ol { line-height: 2; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>12-Dars: Places in the city & Directions</h1>
+    <p class="greeting">Assalomu alaykum! Bugungi, ya'ni <b>yakuniy 12-darsimizda</b> biz shahardagi eng muhim joylarni (Places in the city) va qayerdadir adashib qolsak, yo'l so'rashni (Directions) o'rganamiz. Bu mavzu chet elda sayohat qilganingizda, yangi shaharga borganingizda yoki shunchaki chet ellik do'stingizga yo'l ko'rsatishda sizga juda katta yordam beradi!</p>
+
+    <div class="info-box">
+        <strong style="font-size: 1.1em;">Eslatma: Nima uchun shahardagi joylarni va yo'nalishni bilish juda muhim?</strong>
+        <p style="margin-top: 10px; margin-bottom: 0; font-size: 1.05em;">Tasavvur qiling, siz Londonda yoki Nyu-Yorkdasiz. Sizga eng yaqin kasalxona, bank yoki eng mazali pitsa pishiradigan restoran qayerdaligini bilishingiz kerak. Atrofdagi odamlardan <b>"Kechirasiz, qayerda...?"</b> deb so'rash va ularning javobini tushunish (masalan, "O'ngga buriling", "To'g'riga yuring") sizni vaqt va asablarni tejaydi. Shahar infrastuzilmasi va yo'nalish so'zlari ingliz tilining eng amaliy va hayotiy qismidir.</p>
+    </div>
+
+    <!-- 1-BO'LIM: SHAHARDAGI JOYLAR -->
+    <h2>1. Shahardagi joylar (Places in the city) - 30 ta</h2>
+    <p>Quyida har bir joy nomi, uning tarjimasi, talaffuzi, dinamikasi va <b>misol gapi</b> keltirilgan. Misol gaplar orqali so'zni qanday ishlatishni o'rganib olasiz.</p>
+    
+    <div class="word-list">
+        <div class="word-item">
+            <span class="num">1</span><span class="word">Bank</span><span class="transcription">/bæŋk/</span><span class="translation">Bank</span>
+            <button class="audio-btn" onclick="speak('Bank. I need to go to the bank.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The bank is next to the post office. (Bank pochta bo'limi yonida.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">2</span><span class="word">Hospital</span><span class="transcription">/ˈhɒs.pɪ.təl/</span><span class="translation">Kasalxona</span>
+            <button class="audio-btn" onclick="speak('Hospital. The hospital is very big.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: I need to go to the hospital. (Men kasalxonaga borishim kerak.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">3</span><span class="word">School</span><span class="transcription">/skuːl/</span><span class="translation">Maktab</span>
+            <button class="audio-btn" onclick="speak('School. My school is here.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The children go to school every day. (Bolalar har kuni maktabga borishadi.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">4</span><span class="word">Park</span><span class="transcription">/pɑːk/</span><span class="translation">Bog'</span>
+            <button class="audio-btn" onclick="speak('Park. Let us go to the park.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: We play in the park on Sundays. (Biz yakshanba kunlari bog'da o'ynaymiz.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">5</span><span class="word">Restaurant</span><span class="transcription">/ˈres.tər.ɒnt/</span><span class="translation">Restoran</span>
+            <button class="audio-btn" onclick="speak('Restaurant. This is a nice restaurant.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: Let's eat at the restaurant. (Keling, restoranda ovqatlanamiz.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">6</span><span class="word">Cafe</span><span class="transcription">/ˈkæf.eɪ/</span><span class="translation">Kafe</span>
+            <button class="audio-btn" onclick="speak('Cafe. We drink coffee at the cafe.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The cafe is open now. (Kafe hozir ochiq.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">7</span><span class="word">Supermarket</span><span class="transcription">/ˈsuː.pəˌmɑː.kɪt/</span><span class="translation">Supermarket</span>
+            <button class="audio-btn" onclick="speak('Supermarket. I buy food at the supermarket.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The supermarket is very big. (Supermarket juda katta.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">8</span><span class="word">Market</span><span class="transcription">/ˈmɑː.kɪt/</span><span class="translation">Bozor</span>
+            <button class="audio-btn" onclick="speak('Market. We buy fruit at the market.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The market is open on Mondays. (Bozor dushanba kunlari ochiq.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">9</span><span class="word">Museum</span><span class="transcription">/mjuˈziː.əm/</span><span class="translation">Muzey</span>
+            <button class="audio-btn" onclick="speak('Museum. Let us visit the museum.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The museum is very old. (Muzey juda qadimiy.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">10</span><span class="word">Cinema</span><span class="transcription">/ˈsɪn.ə.mə/</span><span class="translation">Kinoteatr</span>
+            <button class="audio-btn" onclick="speak('Cinema. We watch films at the cinema.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: Let's go to the cinema tonight. (Keling, bugun kechqurun kinoga boramiz.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">11</span><span class="word">Theatre</span><span class="transcription">/ˈθɪə.tər/</span><span class="translation">Teatr</span>
+            <button class="audio-btn" onclick="speak('Theatre. The theatre is beautiful.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The theatre is next to the park. (Teatr bog'ning yonida.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">12</span><span class="word">Library</span><span class="transcription">/ˈlaɪ.brər.i/</span><span class="translation">Kutubxona</span>
+            <button class="audio-btn" onclick="speak('Library. I read books at the library.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The library is very quiet. (Kutubxona juda sokin.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">13</span><span class="word">Post office</span><span class="transcription">/ˈpəʊst ˌɒf.ɪs/</span><span class="translation">Pochta bo'limi</span>
+            <button class="audio-btn" onclick="speak('Post office. I send letters at the post office.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The post office is near the bank. (Pochta bo'limi bankning yonida.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">14</span><span class="word">Pharmacy</span><span class="transcription">/ˈfɑː.mə.si/</span><span class="translation">Dorixona</span>
+            <button class="audio-btn" onclick="speak('Pharmacy. I buy medicine at the pharmacy.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The pharmacy is open 24 hours. (Dorixona 24 soat ochiq.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">15</span><span class="word">Police station</span><span class="transcription">/pəˈliːs ˌsteɪ.ʃən/</span><span class="translation">Politsiya bo'limi</span>
+            <button class="audio-btn" onclick="speak('Police station. The police station is there.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The police station is on the left. (Politsiya bo'limi chap tomonda.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">16</span><span class="word">Hotel</span><span class="transcription">/həʊˈtel/</span><span class="translation">Mehmonxona</span>
+            <button class="audio-btn" onclick="speak('Hotel. I sleep at the hotel.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The hotel is very expensive. (Mehmonxona juda qimmat.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">17</span><span class="word">Airport</span><span class="transcription">/ˈeə.pɔːt/</span><span class="translation">Aeroport</span>
+            <button class="audio-btn" onclick="speak('Airport. The airport is far.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The airport is 20 km away. (Aeroport 20 km uzoqlikda.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">18</span><span class="word">Train station</span><span class="transcription">/treɪn ˈsteɪ.ʃən/</span><span class="translation">Vokzal</span>
+            <button class="audio-btn" onclick="speak('Train station. The train station is here.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The train station is near the city center. (Vokzal shahar markaziga yaqin.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">19</span><span class="word">Bus stop</span><span class="transcription">/bʌs stɒp/</span><span class="translation">Avtobus bekati</span>
+            <button class="audio-btn" onclick="speak('Bus stop. I wait at the bus stop.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The bus stop is over there. (Avtobus bekati u yerda.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">20</span><span class="word">Zoo</span><span class="transcription">/zuː/</span><span class="translation">Zoologiya bog'i</span>
+            <button class="audio-btn" onclick="speak('Zoo. We see animals at the zoo.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The zoo is big and beautiful. (Zoologiya bog'i katta va chiroyli.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">21</span><span class="word">Stadium</span><span class="transcription">/ˈsteɪ.di.əm/</span><span class="translation">Stadion</span>
+            <button class="audio-btn" onclick="speak('Stadium. We watch football at the stadium.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The stadium is full of people. (Stadion odamlarga to'la.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">22</span><span class="word">Swimming pool</span><span class="transcription">/ˈswɪm.ɪŋ puːl/</span><span class="translation">Suzish havzasi</span>
+            <button class="audio-btn" onclick="speak('Swimming pool. I swim at the swimming pool.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The swimming pool is very clean. (Suzish havzasi juda toza.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">23</span><span class="word">Gym</span><span class="transcription">/dʒɪm/</span><span class="translation">Sport zali</span>
+            <button class="audio-btn" onclick="speak('Gym. I exercise at the gym.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The gym is near my house. (Sport zali uyimga yaqin.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">24</span><span class="word">Bakery</span><span class="transcription">/ˈbeɪ.kər.i/</span><span class="translation">Nonvoyxona</span>
+            <button class="audio-btn" onclick="speak('Bakery. I buy bread at the bakery.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The bakery smells good. (Nonvoyxona yoqimli hid taratyapti.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">25</span><span class="word">Bookshop</span><span class="transcription">/ˈbʊk.ʃɒp/</span><span class="translation">Kitob do'koni</span>
+            <button class="audio-btn" onclick="speak('Bookshop. I buy books at the bookshop.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The bookshop is next to the school. (Kitob do'koni maktabning yonida.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">26</span><span class="word">Clothes shop</span><span class="transcription">/kləʊðz ʃɒp/</span><span class="translation">Kiyim do'koni</span>
+            <button class="audio-btn" onclick="speak('Clothes shop. I buy clothes at the clothes shop.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The clothes shop is very big. (Kiyim do'koni juda katta.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">27</span><span class="word">Toy shop</span><span class="transcription">/tɔɪ ʃɒp/</span><span class="translation">O'yinchoq do'koni</span>
+            <button class="audio-btn" onclick="speak('Toy shop. I buy toys at the toy shop.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The toy shop is near the park. (O'yinchoq do'koni bog'ning yonida.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">28</span><span class="word">Coffee shop</span><span class="transcription">/ˈkɒf.i ʃɒp/</span><span class="translation">Qahvaxona</span>
+            <button class="audio-btn" onclick="speak('Coffee shop. I drink coffee at the coffee shop.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The coffee shop is very nice. (Qahvaxona juda yaxshi.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">29</span><span class="word">City center</span><span class="transcription">/ˈsɪt.i ˈsen.tər/</span><span class="translation">Shahar markazi</span>
+            <button class="audio-btn" onclick="speak('City center. The city center is busy.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: The city center is always full of people. (Shahar markazi doim odamlarga to'la.)</div>
+        </div>
+        <div class="word-item">
+            <span class="num">30</span><span class="word">Street</span><span class="transcription">/striːt/</span><span class="translation">Ko'cha</span>
+            <button class="audio-btn" onclick="speak('Street. The street is very long.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+            <div class="example-sentence">Misol: My house is on this street. (Mening uyim shu ko'chada.)</div>
+        </div>
+    </div>
+
+    <!-- 2-BO'LIM: YO'NALISH DIALOGLARI -->
+    <h2>2. Yo'nalish so'rash (Directions) - Savol va Javob</h2>
+    <p>Quyida yo'l so'rash va unga javob berishning 10 ta asosiy dialoglari keltirilgan. Har bir dialog dinamikaga ega, uni eshitib, takrorlang.</p>
+    
+    <div class="dialog-container">
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Excuse me, where is the bank? (Kechirasiz, bank qayerda?)<br>
+                <span class="speaker">B:</span> Go straight and turn left. (To'g'riga yuring va chapga buriling.)
+            </div>
+            <button class="audio-btn" onclick="speak('Excuse me, where is the bank? Go straight and turn left.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Where is the hospital? (Kasalxona qayerda?)<br>
+                <span class="speaker">B:</span> It is next to the pharmacy. (U dorixonaning yonida.)
+            </div>
+            <button class="audio-btn" onclick="speak('Where is the hospital? It is next to the pharmacy.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> How do I get to the park? (Bog'ga qanday borsam bo'ladi?)<br>
+                <span class="speaker">B:</span> Turn right at the traffic lights. (Svetoforda o'ngga buriling.)
+            </div>
+            <button class="audio-btn" onclick="speak('How do I get to the park? Turn right at the traffic lights.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Is the supermarket near here? (Supermarket bu yerga yaqinmi?)<br>
+                <span class="speaker">B:</span> Yes, it is on the left. (Ha, u chap tomonda.)
+            </div>
+            <button class="audio-btn" onclick="speak('Is the supermarket near here? Yes, it is on the left.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Where is the nearest bus stop? (Eng yaqin avtobus bekati qayerda?)<br>
+                <span class="speaker">B:</span> It is behind the cafe. (U kafening orqasida.)
+            </div>
+            <button class="audio-btn" onclick="speak('Where is the nearest bus stop? It is behind the cafe.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> How can I get to the museum? (Muzeyga qanday borishim mumkin?)<br>
+                <span class="speaker">B:</span> Go along this street. (Shu ko'cha bo'ylab yuring.)
+            </div>
+            <button class="audio-btn" onclick="speak('How can I get to the museum? Go along this street.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Excuse me, where is the train station? (Kechirasiz, vokzal qayerda?)<br>
+                <span class="speaker">B:</span> It is opposite the hotel. (U mehmonxonaning ro'parasida.)
+            </div>
+            <button class="audio-btn" onclick="speak('Excuse me, where is the train station? It is opposite the hotel.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Where is the post office? (Pochta bo'limi qayerda?)<br>
+                <span class="speaker">B:</span> Turn left at the bank. (Bankda chapga buriling.)
+            </div>
+            <button class="audio-btn" onclick="speak('Where is the post office? Turn left at the bank.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Is there a pharmacy near here? (Bu yerga yaqin dorixona bormi?)<br>
+                <span class="speaker">B:</span> Yes, it is on the corner. (Ha, u burchakda.)
+            </div>
+            <button class="audio-btn" onclick="speak('Is there a pharmacy near here? Yes, it is on the corner.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="dialog-line">
+            <div>
+                <span class="speaker">A:</span> Where is the zoo? (Zoologiya bog'i qayerda?)<br>
+                <span class="speaker">B:</span> Go past the school. (Maktabdan o'tib yuring.)
+            </div>
+            <button class="audio-btn" onclick="speak('Where is the zoo? Go past the school.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+    </div>
+
+    <!-- 3-BO'LIM: AMALIYOT VA XARITA (O'ZIM QO'SHGAN) -->
+    <h2>3. Amaliyot: Yo'nalish xaritasi</h2>
+    <div class="info-box">
+        <p>Tasavvur qiling, siz quyidagi xaritada turibsiz. Sizning uyingiz (Home) eng pastda. Atrofingizda turli joylar bor. Quyidagi gaplarni o'qib, qaysi joyga qanday borishni o'rganing.</p>
+    </div>
+    
+    <div class="rule-box" style="text-align: center; font-family: monospace; font-size: 1.1em;">
+        [Home] --- (Go straight) ---> [Park] --- (Turn left) ---> [Bank] <br>
+        |<br>
+        (Turn right)<br>
+        |<br>
+        [Pharmacy] --- (Go past) ---> [Hospital]
+    </div>
+
+    <div class="word-list">
+        <div class="word-item"><span class="word" style="width: auto; flex-grow: 1;">From Home, go straight to the park.</span><span class="translation">Uydan to'g'riga bog'ga boring.</span><button class="audio-btn" onclick="speak('From Home, go straight to the park')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word" style="width: auto; flex-grow: 1;">From the park, turn left to the bank.</span><span class="translation">Bog'dan bankka buriling.</span><button class="audio-btn" onclick="speak('From the park, turn left to the bank')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word" style="width: auto; flex-grow: 1;">From Home, turn right to the pharmacy.</span><span class="translation">Uydan o'ngga dorixonaga buriling.</span><button class="audio-btn" onclick="speak('From Home, turn right to the pharmacy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word" style="width: auto; flex-grow: 1;">From the pharmacy, go past the hospital.</span><span class="translation">Dorixonadan kasalxonadan o'tib yuring.</span><button class="audio-btn" onclick="speak('From the pharmacy, go past the hospital')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <!-- 4-BO'LIM: AMALIYOT GAPLAR -->
+    <h2>4. Amaliyot gaplari (25 ta)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="num">1</span><span class="word" style="width: auto; flex-grow: 1;">The bank is next to the post office.</span><span class="translation">Bank pochta bo'limi yonida.</span><button class="audio-btn" onclick="speak('The bank is next to the post office')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">2</span><span class="word" style="width: auto; flex-grow: 1;">The hospital is opposite the park.</span><span class="translation">Kasalxona bog'ning ro'parasida.</span><button class="audio-btn" onclick="speak('The hospital is opposite the park')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">3</span><span class="word" style="width: auto; flex-grow: 1;">Turn left at the traffic lights.</span><span class="translation">Svetoforda chapga buriling.</span><button class="audio-btn" onclick="speak('Turn left at the traffic lights')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">4</span><span class="word" style="width: auto; flex-grow: 1;">Go straight for 100 meters.</span><span class="translation">100 metr to'g'riga yuring.</span><button class="audio-btn" onclick="speak('Go straight for 100 meters')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">5</span><span class="word" style="width: auto; flex-grow: 1;">The supermarket is on the right.</span><span class="translation">Supermarket o'ng tomonda.</span><button class="audio-btn" onclick="speak('The supermarket is on the right')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">6</span><span class="word" style="width: auto; flex-grow: 1;">The bus stop is in front of the school.</span><span class="translation">Avtobus bekati maktabning oldida.</span><button class="audio-btn" onclick="speak('The bus stop is in front of the school')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">7</span><span class="word" style="width: auto; flex-grow: 1;">The museum is behind the theatre.</span><span class="translation">Muzey teatrning orqasida.</span><button class="audio-btn" onclick="speak('The museum is behind the theatre')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">8</span><span class="word" style="width: auto; flex-grow: 1;">Where is the nearest cafe?</span><span class="translation">Eng yaqin kafe qayerda?</span><button class="audio-btn" onclick="speak('Where is the nearest cafe?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">9</span><span class="word" style="width: auto; flex-grow: 1;">How do I get to the train station?</span><span class="translation">Vokzalga qanday borsam bo'ladi?</span><button class="audio-btn" onclick="speak('How do I get to the train station?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">10</span><span class="word" style="width: auto; flex-grow: 1;">Turn right at the corner.</span><span class="translation">Burchakda o'ngga buriling.</span><button class="audio-btn" onclick="speak('Turn right at the corner')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">11</span><span class="word" style="width: auto; flex-grow: 1;">The zoo is far from here.</span><span class="translation">Zoologiya bog'i bu yerdan uzoqda.</span><button class="audio-btn" onclick="speak('The zoo is far from here')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">12</span><span class="word" style="width: auto; flex-grow: 1;">Go past the bank.</span><span class="translation">Bankdan o'tib yuring.</span><button class="audio-btn" onclick="speak('Go past the bank')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">13</span><span class="word" style="width: auto; flex-grow: 1;">The police station is near the post office.</span><span class="translation">Politsiya bo'limi pochta bo'limiga yaqin.</span><button class="audio-btn" onclick="speak('The police station is near the post office')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">14</span><span class="word" style="width: auto; flex-grow: 1;">Is there a pharmacy near here?</span><span class="translation">Bu yerga yaqin dorixona bormi?</span><button class="audio-btn" onclick="speak('Is there a pharmacy near here?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">15</span><span class="word" style="width: auto; flex-grow: 1;">It is on the left side of the street.</span><span class="translation">U ko'chaning chap tomonida.</span><button class="audio-btn" onclick="speak('It is on the left side of the street')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">16</span><span class="word" style="width: auto; flex-grow: 1;">Let's go to the restaurant.</span><span class="translation">Keling, restoranga boramiz.</span><button class="audio-btn" onclick="speak('Let us go to the restaurant')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">17</span><span class="word" style="width: auto; flex-grow: 1;">The library is very quiet.</span><span class="translation">Kutubxona juda sokin.</span><button class="audio-btn" onclick="speak('The library is very quiet')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">18</span><span class="word" style="width: auto; flex-grow: 1;">I buy bread at the bakery.</span><span class="translation">Men nonni nonvoyxonadan sotib olaman.</span><button class="audio-btn" onclick="speak('I buy bread at the bakery')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">19</span><span class="word" style="width: auto; flex-grow: 1;">The bank is on the right.</span><span class="translation">Bank o'ng tomonda.</span><button class="audio-btn" onclick="speak('The bank is on the right')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">20</span><span class="word" style="width: auto; flex-grow: 1;">Go straight and then turn left.</span><span class="translation">To'g'riga yuring va keyin chapga buriling.</span><button class="audio-btn" onclick="speak('Go straight and then turn left')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">21</span><span class="word" style="width: auto; flex-grow: 1;">The hotel is next to the airport.</span><span class="translation">Mehmonxona aeroportning yonida.</span><button class="audio-btn" onclick="speak('The hotel is next to the airport')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">22</span><span class="word" style="width: auto; flex-grow: 1;">I exercise at the gym.</span><span class="translation">Men sport zalida mashq qilaman.</span><button class="audio-btn" onclick="speak('I exercise at the gym')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">23</span><span class="word" style="width: auto; flex-grow: 1;">The park is very beautiful in spring.</span><span class="translation">Bog' bahorda juda chiroyli.</span><button class="audio-btn" onclick="speak('The park is very beautiful in spring')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">24</span><span class="word" style="width: auto; flex-grow: 1;">Turn right at the traffic lights.</span><span class="translation">Svetoforda o'ngga buriling.</span><button class="audio-btn" onclick="speak('Turn right at the traffic lights')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="num">25</span><span class="word" style="width: auto; flex-grow: 1;">Excuse me, where is the museum?</span><span class="translation">Kechirasiz, muzey qayerda?</span><button class="audio-btn" onclick="speak('Excuse me, where is the museum?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <!-- 5-BO'LIM: YANGI SO'ZLAR -->
+    <h2>5. Yangi so'zlar va gaplar (yo'nalish uchun)</h2>
+    <div class="word-list">
+        <div class="word-item"><span class="word">Turn left</span><span class="transcription">/tɜːn left/</span><span class="translation">Chapga buriling</span><button class="audio-btn" onclick="speak('Turn left. Turn left at the corner.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Turn right</span><span class="transcription">/tɜːn raɪt/</span><span class="translation">O'ngga buriling</span><button class="audio-btn" onclick="speak('Turn right. Turn right at the bank.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Go straight</span><span class="transcription">/ɡəʊ streɪt/</span><span class="translation">To'g'riga yuring</span><button class="audio-btn" onclick="speak('Go straight. Go straight for 2 minutes.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Next to</span><span class="transcription">/nekst tuː/</span><span class="translation">Yonida</span><button class="audio-btn" onclick="speak('Next to. The bank is next to the park.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Opposite</span><span class="transcription">/ˈɒp.ə.zɪt/</span><span class="translation">Ro'parasida</span><button class="audio-btn" onclick="speak('Opposite. The hospital is opposite the park.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Behind</span><span class="transcription">/bɪˈhaɪnd/</span><span class="translation">Orqasida</span><button class="audio-btn" onclick="speak('Behind. The bus stop is behind the cafe.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">In front of</span><span class="transcription">/ɪn frʌnt ɒv/</span><span class="translation">Oldida</span><button class="audio-btn" onclick="speak('In front of. The bus stop is in front of the school.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Corner</span><span class="transcription">/ˈkɔː.nər/</span><span class="translation">Burchak</span><button class="audio-btn" onclick="speak('Corner. The shop is on the corner.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Traffic lights</span><span class="transcription">/ˈtræf.ɪk laɪts/</span><span class="translation">Svetofor</span><button class="audio-btn" onclick="speak('Traffic lights. Stop at the traffic lights.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Go past</span><span class="transcription">/ɡəʊ pɑːst/</span><span class="translation">O'tib yuring</span><button class="audio-btn" onclick="speak('Go past. Go past the bank.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Along</span><span class="transcription">/əˈlɒŋ/</span><span class="translation">Bo'ylab</span><button class="audio-btn" onclick="speak('Along. Go along this street.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Near</span><span class="transcription">/nɪər/</span><span class="translation">Yaqin</span><button class="audio-btn" onclick="speak('Near. The bank is near here.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        <div class="word-item"><span class="word">Far</span><span class="transcription">/fɑːr/</span><span class="translation">Uzoq</span><button class="audio-btn" onclick="speak('Far. The airport is far.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    </div>
+
+    <!-- 6-BO'LIM: TESTLAR -->
+    <h2>6. Testlar</h2>
+    
+    <div class="interactive-section">
+        <h3>6.1. Interaktiv test (25 ta)</h3>
+        <p>Bo'sh o'rinlarni to'ldiring.</p>
+        <div class="interactive-grid" id="interactiveGrid">
+            <div class="input-group"><label>1. Kechirasiz, bank qayerda? (inglizcha)</label><input type="text" id="inp1" placeholder="Javob..."></div>
+            <div class="input-group"><label>2. Chapga buriling (inglizcha)</label><input type="text" id="inp2" placeholder="Javob..."></div>
+            <div class="input-group"><label>3. To'g'riga yuring (inglizcha)</label><input type="text" id="inp3" placeholder="Javob..."></div>
+            <div class="input-group"><label>4. O'ngga buriling (inglizcha)</label><input type="text" id="inp4" placeholder="Javob..."></div>
+            <div class="input-group"><label>5. Kasalxona (inglizcha)</label><input type="text" id="inp5" placeholder="Javob..."></div>
+            <div class="input-group"><label>6. Muzey (inglizcha)</label><input type="text" id="inp6" placeholder="Javob..."></div>
+            <div class="input-group"><label>7. Kutubxona (inglizcha)</label><input type="text" id="inp7" placeholder="Javob..."></div>
+            <div class="input-group"><label>8. Yonida (inglizcha)</label><input type="text" id="inp8" placeholder="Javob..."></div>
+            <div class="input-group"><label>9. Ro'parasida (inglizcha)</label><input type="text" id="inp9" placeholder="Javob..."></div>
+            <div class="input-group"><label>10. Orqasida (inglizcha)</label><input type="text" id="inp10" placeholder="Javob..."></div>
+            <div class="input-group"><label>11. Supermarket qayerda? (inglizcha)</label><input type="text" id="inp11" placeholder="Javob..."></div>
+            <div class="input-group"><label>12. Vokzal qayerda? (inglizcha)</label><input type="text" id="inp12" placeholder="Javob..."></div>
+            <div class="input-group"><label>13. Chap tomonda (inglizcha)</label><input type="text" id="inp13" placeholder="Javob..."></div>
+            <div class="input-group"><label>14. O'ng tomonda (inglizcha)</label><input type="text" id="inp14" placeholder="Javob..."></div>
+            <div class="input-group"><label>15. Bank pochta bo'limi yonida (inglizcha)</label><input type="text" id="inp15" placeholder="Javob..."></div>
+            <div class="input-group"><label>16. Svetofor (inglizcha)</label><input type="text" id="inp16" placeholder="Javob..."></div>
+            <div class="input-group"><label>17. Burchak (inglizcha)</label><input type="text" id="inp17" placeholder="Javob..."></div>
+            <div class="input-group"><label>18. Bo'ylab (inglizcha)</label><input type="text" id="inp18" placeholder="Javob..."></div>
+            <div class="input-group"><label>19. O'tib yuring (inglizcha)</label><input type="text" id="inp19" placeholder="Javob..."></div>
+            <div class="input-group"><label>20. Yaqin (inglizcha)</label><input type="text" id="inp20" placeholder="Javob..."></div>
+            <div class="input-group"><label>21. Uzoq (inglizcha)</label><input type="text" id="inp21" placeholder="Javob..."></div>
+            <div class="input-group"><label>22. Restoran (inglizcha)</label><input type="text" id="inp22" placeholder="Javob..."></div>
+            <div class="input-group"><label>23. Dorixona (inglizcha)</label><input type="text" id="inp23" placeholder="Javob..."></div>
+            <div class="input-group"><label>24. Politsiya (inglizcha)</label><input type="text" id="inp24" placeholder="Javob..."></div>
+            <div class="input-group"><label>25. Mehmonxona (inglizcha)</label><input type="text" id="inp25" placeholder="Javob..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult"></div>
+    </div>
+
+    <div class="writing-test">
+        <h3>6.2. Yozma test (20 ta)</h3>
+        <p>Quyidagi gaplarni daftaringizga yozing va ingliz tiliga tarjima qiling:</p>
+        <ol>
+            <li>Kechirasiz, eng yaqin bank qayerda?</li>
+            <li>To'g'riga yuring va chapga buriling.</li>
+            <li>Kasalxona dorixonaning ro'parasida.</li>
+            <li>Supermarket o'ng tomonda.</li>
+            <li>Men har kuni bog'ga boraman.</li>
+            <li>Muzey teatrning orqasida.</li>
+            <li>Avtobus bekati maktabning oldida.</li>
+            <li>Vokzalga qanday borsam bo'ladi?</li>
+            <li>Svetoforda o'ngga buriling.</li>
+            <li>Bu yerga yaqin dorixona bormi?</li>
+            <li>Bank pochta bo'limi yonida.</li>
+            <li>Men nonni nonvoyxonadan sotib olaman.</li>
+            <li>Kutubxona juda sokin.</li>
+            <li>Restoran juda qimmat.</li>
+            <li>Mehmonxona aeroportning yonida.</li>
+            <li>Men sport zalida mashq qilaman.</li>
+            <li>Bog' bahorda juda chiroyli.</li>
+            <li>Ko'cha bo'ylab yuring.</li>
+            <li>Eng yaqin kafe qayerda?</li>
+            <li>U ko'chaning chap tomonida.</li>
+        </ol>
+    </div>
+
+    <!-- 7-BO'LIM: READING -->
+    <h2>7. Reading (Matn va Savollar)</h2>
+    <div class="info-box">
+        <strong>Topshiriq:</strong> Quyidagi matnni ovoz chiqarib o'qing, so'ngra savollarga javob bering.
+    </div>
+    <div class="text-box">
+        <p>Hello! My name is Sardor. I live in Tashkent. My city is very big and beautiful. There are many places in my city. There is a big park near my house. I go to the park every Sunday. The park is next to the library. I like reading books, so I often go to the library. The library is very quiet. There is a supermarket opposite the park. My mother buys food there. The hospital is behind the supermarket. My father works in the hospital. He is a doctor. The bank is next to the post office. The bus stop is in front of the bank. I usually go to school by bus. The school is far from my house. The train station is in the city center. It is very busy. I love my city!</p>
+    </div>
+    
+    <p><b>Savollarga javob bering:</b></p>
+    <ol>
+        <li>Sardor qayerda yashaydi?</li>
+        <li>U qaysi kuni bog'ga boradi?</li>
+        <li>Bog' nimaning yonida?</li>
+        <li>Supermarket qayerda?</li>
+        <li>Uning otasi qayerda ishlaydi?</li>
+        <li>Bank nimaning yonida?</li>
+        <li>Avtobus bekati qayerda?</li>
+        <li>Maktab uyiga yaqinmi?</li>
+        <li>Vokzal qayerda?</li>
+        <li>Sardor maktabga qanday boradi?</li>
+    </ol>
+
+    <!-- 8-BO'LIM: YAKUNIY INTERAKTIV TEST -->
+    <div class="interactive-section" style="margin-top: 50px; border: 3px dashed var(--primary);">
+        <h2>8. Yakuniy Interaktiv Test (25 ta)</h2>
+        <p>O'tilgan mavzularni mustahkamlash uchun.</p>
+        <div class="interactive-grid" id="interactiveGrid2">
+            <div class="input-group"><label>1. Bank (inglizcha)</label><input type="text" id="t1" placeholder="Javob..."></div>
+            <div class="input-group"><label>2. Hospital (o'zbekcha)</label><input type="text" id="t2" placeholder="Javob..."></div>
+            <div class="input-group"><label>3. School (o'zbekcha)</label><input type="text" id="t3" placeholder="Javob..."></div>
+            <div class="input-group"><label>4. Park (o'zbekcha)</label><input type="text" id="t4" placeholder="Javob..."></div>
+            <div class="input-group"><label>5. Restaurant (o'zbekcha)</label><input type="text" id="t5" placeholder="Javob..."></div>
+            <div class="input-group"><label>6. Svetofor (inglizcha)</label><input type="text" id="t6" placeholder="Javob..."></div>
+            <div class="input-group"><label>7. Burchak (inglizcha)</label><input type="text" id="t7" placeholder="Javob..."></div>
+            <div class="input-group"><label>8. Chapga buriling (inglizcha)</label><input type="text" id="t8" placeholder="Javob..."></div>
+            <div class="input-group"><label>9. O'ngga buriling (inglizcha)</label><input type="text" id="t9" placeholder="Javob..."></div>
+            <div class="input-group"><label>10. To'g'riga yuring (inglizcha)</label><input type="text" id="t10" placeholder="Javob..."></div>
+            <div class="input-group"><label>11. Yonida (inglizcha)</label><input type="text" id="t11" placeholder="Javob..."></div>
+            <div class="input-group"><label>12. Ro'parasida (inglizcha)</label><input type="text" id="t12" placeholder="Javob..."></div>
+            <div class="input-group"><label>13. Orqasida (inglizcha)</label><input type="text" id="t13" placeholder="Javob..."></div>
+            <div class="input-group"><label>14. Oldida (inglizcha)</label><input type="text" id="t14" placeholder="Javob..."></div>
+            <div class="input-group"><label>15. Bo'ylab (inglizcha)</label><input type="text" id="t15" placeholder="Javob..."></div>
+            <div class="input-group"><label>16. O'tib yuring (inglizcha)</label><input type="text" id="t16" placeholder="Javob..."></div>
+            <div class="input-group"><label>17. Kechirasiz, bank qayerda? (inglizcha)</label><input type="text" id="t17" placeholder="Javob..."></div>
+            <div class="input-group"><label>18. Vokzal qayerda? (inglizcha)</label><input type="text" id="t18" placeholder="Javob..."></div>
+            <div class="input-group"><label>19. Supermarket qayerda? (inglizcha)</label><input type="text" id="t19" placeholder="Javob..."></div>
+            <div class="input-group"><label>20. Eng yaqin kafe qayerda? (inglizcha)</label><input type="text" id="t20" placeholder="Javob..."></div>
+            <div class="input-group"><label>21. Dorixona (inglizcha)</label><input type="text" id="t21" placeholder="Javob..."></div>
+            <div class="input-group"><label>22. Politsiya (inglizcha)</label><input type="text" id="t22" placeholder="Javob..."></div>
+            <div class="input-group"><label>23. Mehmonxona (inglizcha)</label><input type="text" id="t23" placeholder="Javob..."></div>
+            <div class="input-group"><label>24. Muzey (inglizcha)</label><input type="text" id="t24" placeholder="Javob..."></div>
+            <div class="input-group"><label>25. Kutubxona (inglizcha)</label><input type="text" id="t25" placeholder="Javob..."></div>
+        </div>
+        <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive2()">Vazifani tekshirish</button>
+        <div class="result" id="interactiveResult2"></div>
+    </div>
+
+    <!-- 9-BO'LIM: HOMEWORK -->
+    <div class="homework-section">
+        <h2>9. Homework (Uyga vazifa)</h2>
+        
+        <h3>1-topshiriq: Gaplar tuzish</h3>
+        <p>Quyidagi so'zlar ishtirokida 15 ta gap tuzing (yo'nalish va joylar):</p>
+        <p style="background: white; padding: 10px; border-radius: 8px;">
+            bank, hospital, park, restaurant, turn left, turn right, go straight, next to, opposite, behind, in front of, near, far, corner, traffic lights.
+        </p>
+
+        <h3>2-topshiriq: Vocabulary (50 ta so'z)</h3>
+        <div class="word-list">
+            <div class="word-item"><span class="word">Bank</span><span class="transcription">/bæŋk/</span><span class="translation">Bank</span><button class="audio-btn" onclick="speak('Bank')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Hospital</span><span class="transcription">/ˈhɒs.pɪ.təl/</span><span class="translation">Kasalxona</span><button class="audio-btn" onclick="speak('Hospital')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">School</span><span class="transcription">/skuːl/</span><span class="translation">Maktab</span><button class="audio-btn" onclick="speak('School')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Park</span><span class="transcription">/pɑːk/</span><span class="translation">Bog'</span><button class="audio-btn" onclick="speak('Park')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Restaurant</span><span class="transcription">/ˈres.tər.ɒnt/</span><span class="translation">Restoran</span><button class="audio-btn" onclick="speak('Restaurant')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cafe</span><span class="transcription">/ˈkæf.eɪ/</span><span class="translation">Kafe</span><button class="audio-btn" onclick="speak('Cafe')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Supermarket</span><span class="transcription">/ˈsuː.pəˌmɑː.kɪt/</span><span class="translation">Supermarket</span><button class="audio-btn" onclick="speak('Supermarket')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Market</span><span class="transcription">/ˈmɑː.kɪt/</span><span class="translation">Bozor</span><button class="audio-btn" onclick="speak('Market')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Museum</span><span class="transcription">/mjuˈziː.əm/</span><span class="translation">Muzey</span><button class="audio-btn" onclick="speak('Museum')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Cinema</span><span class="transcription">/ˈsɪn.ə.mə/</span><span class="translation">Kinoteatr</span><button class="audio-btn" onclick="speak('Cinema')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Theatre</span><span class="transcription">/ˈθɪə.tər/</span><span class="translation">Teatr</span><button class="audio-btn" onclick="speak('Theatre')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Library</span><span class="transcription">/ˈlaɪ.brər.i/</span><span class="translation">Kutubxona</span><button class="audio-btn" onclick="speak('Library')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Post office</span><span class="transcription">/ˈpəʊst ˌɒf.ɪs/</span><span class="translation">Pochta</span><button class="audio-btn" onclick="speak('Post office')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Pharmacy</span><span class="transcription">/ˈfɑː.mə.si/</span><span class="translation">Dorixona</span><button class="audio-btn" onclick="speak('Pharmacy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Police station</span><span class="transcription">/pəˈliːs ˌsteɪ.ʃən/</span><span class="translation">Politsiya</span><button class="audio-btn" onclick="speak('Police station')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Hotel</span><span class="transcription">/həʊˈtel/</span><span class="translation">Mehmonxona</span><button class="audio-btn" onclick="speak('Hotel')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Airport</span><span class="transcription">/ˈeə.pɔːt/</span><span class="translation">Aeroport</span><button class="audio-btn" onclick="speak('Airport')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Train station</span><span class="transcription">/treɪn ˈsteɪ.ʃən/</span><span class="translation">Vokzal</span><button class="audio-btn" onclick="speak('Train station')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Bus stop</span><span class="transcription">/bʌs stɒp/</span><span class="translation">Avtobus bekati</span><button class="audio-btn" onclick="speak('Bus stop')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Zoo</span><span class="transcription">/zuː/</span><span class="translation">Zoologiya bog'i</span><button class="audio-btn" onclick="speak('Zoo')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Stadium</span><span class="transcription">/ˈsteɪ.di.əm/</span><span class="translation">Stadion</span><button class="audio-btn" onclick="speak('Stadium')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Swimming pool</span><span class="transcription">/ˈswɪm.ɪŋ puːl/</span><span class="translation">Suzish havzasi</span><button class="audio-btn" onclick="speak('Swimming pool')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Gym</span><span class="transcription">/dʒɪm/</span><span class="translation">Sport zali</span><button class="audio-btn" onclick="speak('Gym')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Bakery</span><span class="transcription">/ˈbeɪ.kər.i/</span><span class="translation">Nonvoyxona</span><button class="audio-btn" onclick="speak('Bakery')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Bookshop</span><span class="transcription">/ˈbʊk.ʃɒp/</span><span class="translation">Kitob do'koni</span><button class="audio-btn" onclick="speak('Bookshop')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Clothes shop</span><span class="transcription">/kləʊðz ʃɒp/</span><span class="translation">Kiyim do'koni</span><button class="audio-btn" onclick="speak('Clothes shop')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Toy shop</span><span class="transcription">/tɔɪ ʃɒp/</span><span class="translation">O'yinchoq do'koni</span><button class="audio-btn" onclick="speak('Toy shop')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Coffee shop</span><span class="transcription">/ˈkɒf.i ʃɒp/</span><span class="translation">Qahvaxona</span><button class="audio-btn" onclick="speak('Coffee shop')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">City center</span><span class="transcription">/ˈsɪt.i ˈsen.tər/</span><span class="translation">Shahar markazi</span><button class="audio-btn" onclick="speak('City center')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Street</span><span class="transcription">/striːt/</span><span class="translation">Ko'cha</span><button class="audio-btn" onclick="speak('Street')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Turn left</span><span class="transcription">/tɜːn left/</span><span class="translation">Chapga buriling</span><button class="audio-btn" onclick="speak('Turn left')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Turn right</span><span class="transcription">/tɜːn raɪt/</span><span class="translation">O'ngga buriling</span><button class="audio-btn" onclick="speak('Turn right')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Go straight</span><span class="transcription">/ɡəʊ streɪt/</span><span class="translation">To'g'riga yuring</span><button class="audio-btn" onclick="speak('Go straight')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Next to</span><span class="transcription">/nekst tuː/</span><span class="translation">Yonida</span><button class="audio-btn" onclick="speak('Next to')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Opposite</span><span class="transcription">/ˈɒp.ə.zɪt/</span><span class="translation">Ro'parasida</span><button class="audio-btn" onclick="speak('Opposite')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Behind</span><span class="transcription">/bɪˈhaɪnd/</span><span class="translation">Orqasida</span><button class="audio-btn" onclick="speak('Behind')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">In front of</span><span class="transcription">/ɪn frʌnt ɒv/</span><span class="translation">Oldida</span><button class="audio-btn" onclick="speak('In front of')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Corner</span><span class="transcription">/ˈkɔː.nər/</span><span class="translation">Burchak</span><button class="audio-btn" onclick="speak('Corner')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Traffic lights</span><span class="transcription">/ˈtræf.ɪk laɪts/</span><span class="translation">Svetofor</span><button class="audio-btn" onclick="speak('Traffic lights')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Go past</span><span class="transcription">/ɡəʊ pɑːst/</span><span class="translation">O'tib yuring</span><button class="audio-btn" onclick="speak('Go past')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Along</span><span class="transcription">/əˈlɒŋ/</span><span class="translation">Bo'ylab</span><button class="audio-btn" onclick="speak('Along')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Near</span><span class="transcription">/nɪər/</span><span class="translation">Yaqin</span><button class="audio-btn" onclick="speak('Near')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+            <div class="word-item"><span class="word">Far</span><span class="transcription">/fɑːr/</span><span class="translation">Uzoq</span><button class="audio-btn" onclick="speak('Far')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+        </div>
+
+        <h3>Qo'shimcha yozma topshiriq</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> 50 ta so'zning har biriga kamida 1 tadan gap yozing.
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Ovoz chiqarish funksiyasi
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Kechirasiz, brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        }
+    }
+
+    // 6.1 Interaktiv testni tekshirish
+    function checkInteractive() {
+        const answers = {
+            inp1: 'excuse me, where is the bank', inp2: 'turn left', inp3: 'go straight', inp4: 'turn right', inp5: 'hospital',
+            inp6: 'museum', inp7: 'library', inp8: 'next to', inp9: 'opposite', inp10: 'behind',
+            inp11: 'where is the supermarket', inp12: 'where is the train station', inp13: 'on the left', inp14: 'on the right', inp15: 'the bank is next to the post office',
+            inp16: 'traffic lights', inp17: 'corner', inp18: 'along', inp19: 'go past', inp20: 'near',
+            inp21: 'far', inp22: 'restaurant', inp23: 'pharmacy', inp24: 'police station', inp25: 'hotel'
+        };
+        let score = 0;
+        let total = 25;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?']/g, '');
+            const correctAnswer = answers[key].toLowerCase().replace(/[.,!?']/g, '');
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+
+    // 8-bo'lim Yakuniy interaktiv testni tekshirish
+    function checkInteractive2() {
+        const answers = {
+            t1: 'bank', t2: 'kasalxona', t3: 'maktab', t4: 'bog', t5: 'restoran',
+            t6: 'traffic lights', t7: 'corner', t8: 'turn left', t9: 'turn right', t10: 'go straight',
+            t11: 'next to', t12: 'opposite', t13: 'behind', t14: 'in front of', t15: 'along',
+            t16: 'go past', t17: 'excuse me, where is the bank', t18: 'where is the train station', t19: 'where is the supermarket', t20: 'where is the nearest cafe',
+            t21: 'pharmacy', t22: 'police station', t23: 'hotel', t24: 'museum', t25: 'library'
+        };
+        let score = 0;
+        let total = 25;
+
+        for (let key in answers) {
+            const input = document.getElementById(key);
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.,!?']/g, '');
+            const correctAnswer = answers[key].toLowerCase().replace(/[.,!?']/g, '');
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                score++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        }
+
+        const resultDiv = document.getElementById('interactiveResult2');
+        resultDiv.innerHTML = `Siz ${total} ta savoldan ${score} tasiga to'g'ri javob berdingiz.`;
+        
+        if (score === total) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerHTML += " Ajoyib! 🎉";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerHTML += " Xato qilganlaringizni qayta yozing.";
+        }
+    }
+</script>
+
+</body>
+</html>
