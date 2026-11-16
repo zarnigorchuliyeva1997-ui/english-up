@@ -1,1 +1,1132 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 8 — Modal Verbs | English Up</title>
+
+<style>
+:root{
+  --primary:#7047eb;
+  --primary2:#8d6bff;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --text:#24213a;
+  --muted:#77738b;
+  --border:#e8e3f5;
+  --soft:#eee9ff;
+  --green:#16834b;
+  --red:#d33c50;
+  --shadow:0 8px 28px rgba(62,40,120,.08);
+}
+body.dark{
+  --bg:#171426;
+  --card:#211d33;
+  --text:#f5f1ff;
+  --muted:#b6aecb;
+  --border:#39314f;
+  --soft:#30264c;
+  --shadow:0 8px 28px rgba(0,0,0,.2);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.7;
+  transition:.2s;
+}
+header{
+  background:linear-gradient(120deg,#5d35d4,#8c65ff);
+  color:white;padding:22px 16px;
+}
+.header-inner{max-width:1050px;margin:auto}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-size:20px;font-weight:900;letter-spacing:1px}
+.header-actions{display:flex;gap:8px}
+.header-actions button{
+  border:1px solid #ffffff66;background:#ffffff20;color:white;
+  padding:8px 12px;border-radius:10px;cursor:pointer;font-size:14px;
+}
+header h1{font-size:clamp(26px,5vw,40px);margin:25px 0 5px}
+header p{margin:0;color:#eee7ff}
+.container{max-width:1050px;margin:auto;padding:18px 14px 60px}
+.hero{
+  background:var(--card);border:1px solid var(--border);
+  padding:20px;border-radius:18px;box-shadow:var(--shadow);margin-top:18px;
+}
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{background:var(--soft);padding:12px;border-radius:12px;text-align:center}
+.stat strong{display:block;color:var(--primary);font-size:22px}
+.stat span{font-size:13px;color:var(--muted)}
+.progress-wrap{margin-top:15px}
+.progress-track{height:10px;background:var(--soft);border-radius:20px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#7047eb,#a58aff);transition:.3s}
+nav{
+  display:flex;gap:8px;overflow-x:auto;padding:14px 0;
+  position:sticky;top:0;background:var(--bg);z-index:5;
+}
+nav a{
+  white-space:nowrap;text-decoration:none;color:var(--text);
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:7px 13px;font-size:13px;
+}
+section{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:18px;padding:20px;margin:16px 0;box-shadow:var(--shadow);
+}
+h2{font-size:23px;margin:0 0 12px;color:var(--primary)}
+h3{font-size:18px;margin:22px 0 8px}
+h4{margin:12px 0 5px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.note{
+  border-left:4px solid var(--primary);background:var(--soft);
+  padding:13px 15px;border-radius:9px;margin:13px 0;
+}
+.copy{
+  border:1px dashed var(--primary);background:var(--soft);
+  padding:13px 15px;border-radius:10px;margin:12px 0;
+}
+.copy strong{color:var(--primary)}
+.formula{
+  display:block;background:var(--soft);padding:12px;
+  border-radius:9px;margin:9px 0;font-weight:bold;
+  text-align:center;overflow-wrap:anywhere;
+}
+.example{
+  border:1px solid var(--border);padding:12px;border-radius:11px;
+  margin:9px 0;display:flex;justify-content:space-between;gap:10px;align-items:center;
+}
+.example p{margin:0}
+.en{font-weight:bold}
+.uz{color:var(--muted);font-size:14px}
+.audio{
+  flex-shrink:0;border:0;background:var(--primary);color:white;
+  border-radius:9px;padding:8px 11px;cursor:pointer;
+}
+.audio:hover,.main-btn:hover{filter:brightness(1.08)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:var(--soft)}
+.table-wrap{overflow-x:auto}
+.word-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.word{
+  border:1px solid var(--border);border-radius:12px;padding:12px;
+}
+.word-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.word small{color:var(--muted)}
+.word .meaning{font-weight:bold}
+.word .sentence{font-size:13px;color:var(--muted);margin-top:6px}
+.skill{
+  background:var(--soft);padding:15px;border-radius:12px;margin:12px 0;
+}
+.main-btn{
+  border:0;background:var(--primary);color:white;padding:11px 17px;
+  border-radius:10px;cursor:pointer;font-weight:bold;margin:5px 4px 5px 0;
+}
+.secondary{
+  border:1px solid var(--border);background:var(--card);
+  color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer;
+}
+textarea,.answer-input{
+  width:100%;padding:11px;border:1px solid var(--border);
+  border-radius:9px;background:var(--bg);color:var(--text);
+  font:inherit;margin:6px 0;
+}
+.quiz-question{
+  border:1px solid var(--border);border-radius:12px;
+  padding:14px;margin:13px 0;
+}
+.quiz-question h4{margin:0 0 8px}
+.option{
+  display:block;padding:8px 10px;border:1px solid var(--border);
+  border-radius:8px;margin:6px 0;cursor:pointer;
+}
+.option:has(input:checked){background:var(--soft);border-color:var(--primary)}
+.feedback{font-size:14px;margin-top:8px}
+.correct{color:var(--green);font-weight:bold}
+.incorrect{color:var(--red);font-weight:bold}
+#resultBox{
+  display:none;padding:18px;background:var(--soft);
+  border-radius:12px;margin-top:16px;
+}
+.footer{
+  text-align:center;color:var(--muted);padding:30px 10px;
+}
+.footer strong{color:var(--primary);font-size:20px}
+@media(max-width:600px){
+  section{padding:15px}
+  .example{align-items:flex-start}
+  table{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="topline">
+      <div class="brand">ENGLISH UP</div>
+      <div class="header-actions">
+        <button onclick="history.back()">← Back</button>
+        <button onclick="toggleTheme()">☀ / ☾</button>
+      </div>
+    </div>
+    <h1>LESSON 8: MODAL VERBS</h1>
+    <p>Can, Could, May, Might, Must, Have to, Should, Would va boshqa modal fe'llar</p>
+  </div>
+</header>
+
+<div class="container">
+
+<div class="hero">
+  <h2>Bugungi dars maqsadi</h2>
+  <p>Bugun ingliz tilida qobiliyat, ruxsat, maslahat, majburiyat, ehtimollik va iltimos bildirishni o‘rganamiz.</p>
+  <div class="hero-grid">
+    <div class="stat"><strong>40</strong><span>Yangi so‘z</span></div>
+    <div class="stat"><strong>4</strong><span>Ko‘nikma</span></div>
+    <div class="stat"><strong>5</strong><span>Homework topshirig‘i</span></div>
+    <div class="stat"><strong>30</strong><span>Test savoli</span></div>
+  </div>
+  <div class="progress-wrap">
+    <div class="muted">Dars bo‘yicha o‘rganish jarayoni</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+</div>
+
+<nav>
+  <a href="#intro">Kirish</a>
+  <a href="#rules">Asosiy qoidalar</a>
+  <a href="#can">Can / Could</a>
+  <a href="#may">May / Might</a>
+  <a href="#must">Must / Have to</a>
+  <a href="#should">Should</a>
+  <a href="#other">Boshqalar</a>
+  <a href="#vocab">Vocabulary</a>
+  <a href="#skills">4 Skills</a>
+  <a href="#homework">Homework</a>
+  <a href="#test">Test</a>
+</nav>
+
+<section id="intro">
+<h2>1. Modal Verbs nima?</h2>
+
+<p>Ingliz tilida <b>Modal Verbs</b> — bu asosiy fe'lga qo‘shimcha ma'no beradigan yordamchi fe'llardir. Ular biror ishni qila olish, qilish kerakligi, ruxsat, maslahat, ehtimollik yoki istakni ifodalaydi.</p>
+
+<p>O‘zbek tilida bu ma'nolarni ko‘pincha quyidagi so‘zlar orqali beramiz:</p>
+
+<ul>
+<li>qila olmoq;</li>
+<li>mumkin;</li>
+<li>kerak;</li>
+<li>shart;</li>
+<li>lozim;</li>
+<li>balki;</li>
+<li>maslahat bermoq;</li>
+<li>xohlamoq yoki iltimos qilmoq.</li>
+</ul>
+
+<div class="example">
+<div><p class="en">I can swim.</p><p class="uz">Men suza olaman.</p></div>
+<button class="audio" onclick="speak('I can swim.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">You should study.</p><p class="uz">Sen o‘qishing kerak / o‘qishing ma'qul.</p></div>
+<button class="audio" onclick="speak('You should study.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">You must be careful.</p><p class="uz">Sen ehtiyot bo‘lishing shart.</p></div>
+<button class="audio" onclick="speak('You must be careful.')">🔊</button>
+</div>
+
+<div class="note">
+<b>MUHIM:</b> Modal fe'lning o‘zi odatda harakatni bildirmaydi. U asosiy fe'lga qo‘shimcha ma'no beradi. Masalan, <b>swim</b> — suzmoq, <b>can swim</b> — suza olmoq.
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>Modal verbs — asosiy fe'lga qobiliyat, ruxsat, majburiyat, maslahat, ehtimollik yoki istak ma'nosini qo‘shadigan yordamchi fe'llar.</p>
+</div>
+</section>
+
+<section id="rules">
+<h2>2. Modal Verbs'ning eng muhim grammatik qoidalari</h2>
+
+<h3>2.1. Modal fe'ldan keyin V1 keladi</h3>
+<p>Modal fe'llarning aksariyatidan keyin asosiy fe'lning birinchi shakli — V1 ishlatiladi. V1 — fe'lning oddiy, lug‘atdagi shakli.</p>
+
+<span class="formula">Subject + Modal Verb + V1 + Object</span>
+
+<p>Subject — ega; Modal Verb — modal fe'l; V1 — fe'lning birinchi shakli; Object — to‘ldiruvchi.</p>
+
+<div class="example">
+<div><p class="en">She can speak English.</p><p class="uz">U ingliz tilida gapira oladi.</p></div>
+<button class="audio" onclick="speak('She can speak English.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">He must work today.</p><p class="uz">U bugun ishlashi shart.</p></div>
+<button class="audio" onclick="speak('He must work today.')">🔊</button>
+</div>
+
+<p><b>Nega speak, speaks emas?</b></p>
+<p>Chunki <b>can</b> modal fe'lidan keyin asosiy fe'l doimo V1 shaklida keladi. Ega he, she yoki it bo‘lsa ham, modal fe'ldan keyin -s qo‘shilmaydi.</p>
+
+<div class="note">
+❌ She can speaks English.<br>
+✅ She can speak English.
+</div>
+
+<h3>2.2. Modal fe'llarga -s qo‘shilmaydi</h3>
+<p>Present Simple'da odatiy fe'llar he/she/it bilan -s oladi. Ammo modal fe'llar bunday o‘zgarmaydi.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Ega</th><th>To‘g‘ri shakl</th></tr>
+<tr><td>I</td><td>I can swim.</td></tr>
+<tr><td>You</td><td>You can swim.</td></tr>
+<tr><td>He</td><td>He can swim.</td></tr>
+<tr><td>She</td><td>She can swim.</td></tr>
+<tr><td>It</td><td>It can work.</td></tr>
+<tr><td>We</td><td>We can swim.</td></tr>
+<tr><td>They</td><td>They can swim.</td></tr>
+</table>
+</div>
+
+<h3>2.3. Modal fe'llardan keyin odatda TO ishlatilmaydi</h3>
+<p>Can, could, may, might, must, should, will va would kabi modal fe'llardan keyin asosiy fe'l oldidan <b>to</b> qo‘yilmaydi.</p>
+
+<div class="note">
+❌ I can to swim.<br>
+✅ I can swim.<br><br>
+❌ You should to study.<br>
+✅ You should study.
+</div>
+
+<p><b>Ammo istisno:</b> <b>have to</b> va <b>ought to</b> shakllarida to mavjud. Ular alohida o‘rganiladi.</p>
+
+<h3>2.4. Inkor shakli</h3>
+<p>Modal fe'ldan keyin <b>not</b> qo‘shiladi.</p>
+<span class="formula">Subject + Modal + not + V1</span>
+
+<div class="example">
+<div><p class="en">I cannot drive.</p><p class="uz">Men mashina hayday olmayman.</p></div>
+<button class="audio" onclick="speak('I cannot drive.')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">You should not worry.</p><p class="uz">Sen xavotir olmasliging kerak.</p></div>
+<button class="audio" onclick="speak('You should not worry.')">🔊</button>
+</div>
+
+<h3>2.5. Savol shakli</h3>
+<p>Modal fe'l savolda egadan oldinga chiqadi. Odatda do/does yordamchi fe'li kerak bo‘lmaydi.</p>
+<span class="formula">Modal + Subject + V1 + Object + ?</span>
+
+<div class="example">
+<div><p class="en">Can you help me?</p><p class="uz">Menga yordam bera olasanmi?</p></div>
+<button class="audio" onclick="speak('Can you help me?')">🔊</button>
+</div>
+<div class="example">
+<div><p class="en">Should I call him?</p><p class="uz">Men unga qo‘ng‘iroq qilishim kerakmi?</p></div>
+<button class="audio" onclick="speak('Should I call him?')">🔊</button>
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING — UMUMIY QOIDALAR</strong>
+<p>1. Modal + V1.</p>
+<p>2. He / She / It bilan modal fe'lga -s qo‘shilmaydi.</p>
+<p>3. Can, could, may, might, must, should, will, would dan keyin odatda to ishlatilmaydi.</p>
+<p>4. Inkor: Modal + not + V1.</p>
+<p>5. Savol: Modal + Subject + V1?</p>
+<p>6. Modal savollarda odatda do/does ishlatilmaydi.</p>
+</div>
+</section>
+
+<section id="can">
+<h2>3. CAN va COULD</h2>
+
+<h3>3.1. CAN — qila olmoq</h3>
+<p><b>Can</b> hozirgi zamonda qobiliyat yoki imkoniyatni bildirish uchun ishlatiladi. Biror ishni bajarishga kuchimiz, bilimimiz yoki imkonimiz borligini ko‘rsatadi.</p>
+
+<span class="formula">Positive: Subject + can + V1</span>
+<span class="formula">Negative: Subject + cannot / can't + V1</span>
+<span class="formula">Question: Can + Subject + V1?</span>
+
+<h4>Misollar</h4>
+<div class="example"><div><p class="en">I can cook.</p><p class="uz">Men ovqat pishira olaman.</p></div><button class="audio" onclick="speak('I can cook.')">🔊</button></div>
+<div class="example"><div><p class="en">She can drive a car.</p><p class="uz">U mashina hayday oladi.</p></div><button class="audio" onclick="speak('She can drive a car.')">🔊</button></div>
+<div class="example"><div><p class="en">They can speak Uzbek.</p><p class="uz">Ular o‘zbek tilida gapira oladilar.</p></div><button class="audio" onclick="speak('They can speak Uzbek.')">🔊</button></div>
+<div class="example"><div><p class="en">He can't swim.</p><p class="uz">U suza olmaydi.</p></div><button class="audio" onclick="speak('He cannot swim.')">🔊</button></div>
+
+<h3>3.2. CAN — ruxsat so‘rash va berish</h3>
+<p>Can kundalik suhbatda ruxsat so‘rash yoki ruxsat berishda ham ishlatiladi.</p>
+
+<div class="example"><div><p class="en">Can I come in?</p><p class="uz">Kirsam maylimi?</p></div><button class="audio" onclick="speak('Can I come in?')">🔊</button></div>
+<div class="example"><div><p class="en">You can use my phone.</p><p class="uz">Telefonimdan foydalanishing mumkin.</p></div><button class="audio" onclick="speak('You can use my phone.')">🔊</button></div>
+<div class="example"><div><p class="en">Can I ask a question?</p><p class="uz">Savol bersam bo‘ladimi?</p></div><button class="audio" onclick="speak('Can I ask a question?')">🔊</button></div>
+
+<h3>3.3. CAN — iltimos</h3>
+<p>Can you...? orqali birovdan biror ishni bajarishni so‘rashimiz mumkin.</p>
+
+<div class="example"><div><p class="en">Can you open the door?</p><p class="uz">Eshikni ochib bera olasanmi?</p></div><button class="audio" onclick="speak('Can you open the door?')">🔊</button></div>
+<div class="example"><div><p class="en">Can you help me, please?</p><p class="uz">Iltimos, menga yordam bera olasizmi?</p></div><button class="audio" onclick="speak('Can you help me, please?')">🔊</button></div>
+
+<h3>3.4. COULD — o'tgan zamondagi qobiliyat</h3>
+<p><b>Could</b> ko‘pincha can fe'lining o'tgan zamondagi shakli hisoblanadi. U o'tmishda umumiy qobiliyatimiz bo‘lganini bildiradi.</p>
+
+<div class="example"><div><p class="en">I could swim when I was five.</p><p class="uz">Men besh yoshimda suza olardim.</p></div><button class="audio" onclick="speak('I could swim when I was five.')">🔊</button></div>
+<div class="example"><div><p class="en">My grandfather could speak Russian.</p><p class="uz">Bobom rus tilida gapira olardi.</p></div><button class="audio" onclick="speak('My grandfather could speak Russian.')">🔊</button></div>
+<div class="example"><div><p class="en">She couldn't read at the age of four.</p><p class="uz">U to‘rt yoshida o‘qiy olmasdi.</p></div><button class="audio" onclick="speak('She could not read at the age of four.')">🔊</button></div>
+
+<h3>3.5. COULD — muloyim iltimos</h3>
+<p>Could you...? Can you...? shakliga qaraganda ko‘pincha muloyimroq va odobliroq eshitiladi.</p>
+
+<div class="example"><div><p class="en">Could you help me?</p><p class="uz">Menga yordam bera olasizmi?</p></div><button class="audio" onclick="speak('Could you help me?')">🔊</button></div>
+<div class="example"><div><p class="en">Could you speak slowly, please?</p><p class="uz">Iltimos, sekinroq gapira olasizmi?</p></div><button class="audio" onclick="speak('Could you speak slowly, please?')">🔊</button></div>
+
+<h3>3.6. CAN va COULD farqi</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Can</th><th>Could</th></tr>
+<tr><td>Hozirgi qobiliyat</td><td>O‘tmishdagi umumiy qobiliyat</td></tr>
+<tr><td>Can you help me?</td><td>Could you help me?</td></tr>
+<tr><td>Oddiy iltimos</td><td>Ko‘pincha muloyimroq iltimos</td></tr>
+<tr><td>Can I come in?</td><td>Could I come in?</td></tr>
+</table>
+</div>
+
+<div class="note">
+<b>Eslab qoling:</b> Could har doim faqat o'tgan zamon degani emas. U hozirgi suhbatda ham muloyim iltimos yoki ruxsat so‘rash uchun ishlatiladi.
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>CAN — qila olmoq, ruxsat, iltimos.</p>
+<p>COULD — o'tmishdagi qobiliyat, muloyim iltimos yoki ruxsat so‘rash.</p>
+<p>Can + V1; Could + V1.</p>
+<p>Inkor: can't / couldn't.</p>
+<p>Savol: Can/Could + subject + V1?</p>
+</div>
+</section>
+
+<section id="may">
+<h2>4. MAY va MIGHT</h2>
+
+<h3>4.1. MAY — ruxsat</h3>
+<p>May ruxsat so‘rashda ishlatiladi. U ko‘pincha can'dan rasmiyroq yoki odobliroq eshitiladi.</p>
+
+<div class="example"><div><p class="en">May I come in?</p><p class="uz">Kirsam maylimi?</p></div><button class="audio" onclick="speak('May I come in?')">🔊</button></div>
+<div class="example"><div><p class="en">May I use your pen?</p><p class="uz">Ruchkangizdan foydalansam maylimi?</p></div><button class="audio" onclick="speak('May I use your pen?')">🔊</button></div>
+<div class="example"><div><p class="en">You may sit here.</p><p class="uz">Bu yerga o‘tirishingiz mumkin.</p></div><button class="audio" onclick="speak('You may sit here.')">🔊</button></div>
+
+<h3>4.2. MAY — ehtimollik</h3>
+<p>May biror voqea sodir bo‘lishi mumkinligini, lekin bunga to‘liq ishonch yo‘qligini bildiradi.</p>
+
+<div class="example"><div><p class="en">It may rain today.</p><p class="uz">Bugun yomg‘ir yog‘ishi mumkin.</p></div><button class="audio" onclick="speak('It may rain today.')">🔊</button></div>
+<div class="example"><div><p class="en">He may come tomorrow.</p><p class="uz">U ertaga kelishi mumkin.</p></div><button class="audio" onclick="speak('He may come tomorrow.')">🔊</button></div>
+<div class="example"><div><p class="en">She may be at home.</p><p class="uz">U uyda bo‘lishi mumkin.</p></div><button class="audio" onclick="speak('She may be at home.')">🔊</button></div>
+
+<h3>4.3. MIGHT — ehtimol</h3>
+<p>Might ham ehtimollikni bildiradi. Ko‘p vaziyatlarda may bilan ma'nosi juda yaqin. Might ba'zan ehtimollikni biroz kuchsizroq ko‘rsatadi, lekin bu farq qat'iy foiz bilan o‘lchanmaydi.</p>
+
+<div class="example"><div><p class="en">I might visit my friend.</p><p class="uz">Balki do‘stimnikiga borarman.</p></div><button class="audio" onclick="speak('I might visit my friend.')">🔊</button></div>
+<div class="example"><div><p class="en">They might be busy.</p><p class="uz">Ular band bo‘lishi mumkin.</p></div><button class="audio" onclick="speak('They might be busy.')">🔊</button></div>
+<div class="example"><div><p class="en">We might go out tonight.</p><p class="uz">Balki bugun kechqurun tashqariga chiqarmiz.</p></div><button class="audio" onclick="speak('We might go out tonight.')">🔊</button></div>
+
+<h3>4.4. MAY va MIGHT inkor shakli</h3>
+<span class="formula">may not + V1</span>
+<span class="formula">might not + V1</span>
+
+<div class="example"><div><p class="en">He may not come.</p><p class="uz">U kelmasligi mumkin.</p></div><button class="audio" onclick="speak('He may not come.')">🔊</button></div>
+<div class="example"><div><p class="en">It might not work.</p><p class="uz">Bu ishlamasligi mumkin.</p></div><button class="audio" onclick="speak('It might not work.')">🔊</button></div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>MAY — ruxsat va ehtimollik.</p>
+<p>MIGHT — ehtimollik, balki.</p>
+<p>May/Might + V1.</p>
+<p>Inkor: may not / might not + V1.</p>
+<p>May I...? — ruxsat so‘rashning odobli shakli.</p>
+</div>
+</section>
+
+<section id="must">
+<h2>5. MUST va HAVE TO</h2>
+
+<h3>5.1. MUST — qat'iy zarurat yoki majburiyat</h3>
+<p>Must biror ishni bajarish juda zarur yoki shart ekanini bildiradi. Ko‘pincha gapiruvchi bu majburiyatni kuchli ta'kidlaydi.</p>
+
+<span class="formula">Subject + must + V1</span>
+
+<div class="example"><div><p class="en">I must study English.</p><p class="uz">Men ingliz tilini o‘rganishim shart.</p></div><button class="audio" onclick="speak('I must study English.')">🔊</button></div>
+<div class="example"><div><p class="en">You must be careful.</p><p class="uz">Sen ehtiyot bo‘lishing shart.</p></div><button class="audio" onclick="speak('You must be careful.')">🔊</button></div>
+<div class="example"><div><p class="en">We must finish this work.</p><p class="uz">Biz bu ishni tugatishimiz shart.</p></div><button class="audio" onclick="speak('We must finish this work.')">🔊</button></div>
+
+<h3>5.2. MUST — kuchli qoida va ko‘rsatma</h3>
+<div class="example"><div><p class="en">You must wear a seat belt.</p><p class="uz">Xavfsizlik kamarini taqishingiz shart.</p></div><button class="audio" onclick="speak('You must wear a seat belt.')">🔊</button></div>
+<div class="example"><div><p class="en">Students must follow the rules.</p><p class="uz">O‘quvchilar qoidalarga amal qilishlari shart.</p></div><button class="audio" onclick="speak('Students must follow the rules.')">🔊</button></div>
+
+<h3>5.3. HAVE TO — majbur bo‘lmoq / qilishga to‘g‘ri kelmoq</h3>
+<p>Have to ham majburiyatni bildiradi. Ko‘pincha tashqi qoida, vaziyat, ish yoki sharoit sababli biror ishni bajarish kerakligini ifodalaydi.</p>
+
+<p><b>Eng muhim farq:</b></p>
+<ul>
+<li><b>Must:</b> gapiruvchi majburiyatni kuchli ta'kidlaydi yoki uni zarur deb hisoblaydi.</li>
+<li><b>Have to:</b> vaziyat, qoida yoki tashqi talab sababli majburiyat borligini bildiradi.</li>
+</ul>
+
+<p>Bu farq har doim qat'iy emas. Kundalik ingliz tilida ular ko‘p vaziyatlarda bir-birining o‘rnida ham ishlatilishi mumkin.</p>
+
+<h3>5.4. HAVE TO qanday o‘zgaradi?</h3>
+<p>Have to oddiy modal fe'l kabi o‘zgarmaydi. U Present Simple'da he/she/it bilan <b>has to</b> bo‘ladi.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Subject</th><th>Shakl</th><th>Misol</th></tr>
+<tr><td>I</td><td>have to</td><td>I have to work.</td></tr>
+<tr><td>You</td><td>have to</td><td>You have to study.</td></tr>
+<tr><td>We</td><td>have to</td><td>We have to leave.</td></tr>
+<tr><td>They</td><td>have to</td><td>They have to wait.</td></tr>
+<tr><td>He</td><td>has to</td><td>He has to work.</td></tr>
+<tr><td>She</td><td>has to</td><td>She has to cook.</td></tr>
+<tr><td>It</td><td>has to</td><td>It has to stop.</td></tr>
+</table>
+</div>
+
+<p><b>Nega has to?</b></p>
+<p>Chunki have to oddiy fe'l kabi grammatik o‘zgaradi. Present Simple'da he, she, it bilan have → has bo‘ladi. Bu o‘zgarish must kabi haqiqiy modal fe'llarga tegishli emas.</p>
+
+<div class="example"><div><p class="en">She has to get up early.</p><p class="uz">U erta turishi kerak.</p></div><button class="audio" onclick="speak('She has to get up early.')">🔊</button></div>
+<div class="example"><div><p class="en">I have to go to work.</p><p class="uz">Men ishga borishim kerak.</p></div><button class="audio" onclick="speak('I have to go to work.')">🔊</button></div>
+
+<h3>5.5. HAVE TO — inkor shakli</h3>
+<p>Have to bilan inkor yasashda do not yoki does not ishlatiladi.</p>
+
+<span class="formula">I / You / We / They + don't have to + V1</span>
+<span class="formula">He / She / It + doesn't have to + V1</span>
+
+<div class="example"><div><p class="en">I don't have to work today.</p><p class="uz">Bugun ishlashim shart emas.</p></div><button class="audio" onclick="speak('I do not have to work today.')">🔊</button></div>
+<div class="example"><div><p class="en">She doesn't have to cook.</p><p class="uz">U ovqat pishirishi shart emas.</p></div><button class="audio" onclick="speak('She does not have to cook.')">🔊</button></div>
+
+<h3>5.6. HAVE TO — savol shakli</h3>
+<span class="formula">Do + I/you/we/they + have to + V1?</span>
+<span class="formula">Does + he/she/it + have to + V1?</span>
+
+<div class="example"><div><p class="en">Do you have to work tomorrow?</p><p class="uz">Ertaga ishlashing kerakmi?</p></div><button class="audio" onclick="speak('Do you have to work tomorrow?')">🔊</button></div>
+<div class="example"><div><p class="en">Does he have to wear a uniform?</p><p class="uz">U forma kiyishi shartmi?</p></div><button class="audio" onclick="speak('Does he have to wear a uniform?')">🔊</button></div>
+
+<p><b>Diqqat:</b> Does ishlatilganda has emas, have keladi. Chunki does tarkibida -s grammatik belgisi allaqachon mavjud.</p>
+
+<div class="note">
+❌ Does she has to work?<br>
+✅ Does she have to work?
+</div>
+
+<h3>5.7. MUSTN'T va DON'T HAVE TO — juda muhim farq!</h3>
+<p>Bu ikkisini aralashtirmang. Ularning ma'nosi butunlay boshqa.</p>
+
+<div class="skill">
+<h4>MUSTN'T = QILISH TAQIQLANGAN</h4>
+<p>Biror ishni bajarish mumkin emas, bunga ruxsat yo‘q.</p>
+<div class="example"><div><p class="en">You mustn't smoke here.</p><p class="uz">Bu yerda chekish taqiqlangan.</p></div><button class="audio" onclick="speak('You must not smoke here.')">🔊</button></div>
+<div class="example"><div><p class="en">You mustn't touch this.</p><p class="uz">Bunga tegish mumkin emas.</p></div><button class="audio" onclick="speak('You must not touch this.')">🔊</button></div>
+</div>
+
+<div class="skill">
+<h4>DON'T HAVE TO = QILISH SHART EMAS</h4>
+<p>Biror ishni bajarish majburiy emas. Xohlasangiz qilishingiz mumkin, lekin majbur emassiz.</p>
+<div class="example"><div><p class="en">You don't have to come early.</p><p class="uz">Erta kelishing shart emas.</p></div><button class="audio" onclick="speak('You do not have to come early.')">🔊</button></div>
+<div class="example"><div><p class="en">She doesn't have to work on Sunday.</p><p class="uz">U yakshanba kuni ishlashi shart emas.</p></div><button class="audio" onclick="speak('She does not have to work on Sunday.')">🔊</button></div>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Mustn't</th><th>Don't have to</th></tr>
+<tr><td>Ta'qiqlangan</td><td>Majburiy emas</td></tr>
+<tr><td>You mustn't park here.</td><td>You don't have to park here.</td></tr>
+<tr><td>Bu yerda mashina qo‘yish mumkin emas.</td><td>Bu yerga mashina qo‘yishingiz shart emas.</td></tr>
+</table>
+</div>
+
+<h3>5.8. MUST va HAVE TO taqqoslash</h3>
+<div class="example"><div><p class="en">I must call my mother.</p><p class="uz">Onamga qo‘ng‘iroq qilishim shart. (Men buni muhim deb bilaman.)</p></div><button class="audio" onclick="speak('I must call my mother.')">🔊</button></div>
+<div class="example"><div><p class="en">I have to wear a uniform at work.</p><p class="uz">Ishda forma kiyishim kerak. (Ish joyimning talabi.)</p></div><button class="audio" onclick="speak('I have to wear a uniform at work.')">🔊</button></div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>MUST — shart, kuchli zarurat.</p>
+<p>HAVE TO — majbur bo‘lmoq, vaziyat yoki qoida sababli kerak bo‘lmoq.</p>
+<p>He / She / It + HAS TO.</p>
+<p>Inkor: don't have to / doesn't have to.</p>
+<p>Savol: Do / Does + subject + have to + V1?</p>
+<p>MUSTN'T — taqiqlangan.</p>
+<p>DON'T HAVE TO — qilish shart emas.</p>
+</div>
+</section>
+
+<section id="should">
+<h2>6. SHOULD va OUGHT TO</h2>
+
+<h3>6.1. SHOULD — maslahat</h3>
+<p>Should biror ishni bajarish yaxshi yoki foydali ekanini bildiradi. Maslahat berish, tavsiya qilish yoki to‘g‘ri deb hisoblangan ishni aytishda ishlatiladi.</p>
+
+<span class="formula">Subject + should + V1</span>
+<span class="formula">Subject + should not / shouldn't + V1</span>
+<span class="formula">Should + Subject + V1?</span>
+
+<div class="example"><div><p class="en">You should drink more water.</p><p class="uz">Ko‘proq suv ichishing kerak.</p></div><button class="audio" onclick="speak('You should drink more water.')">🔊</button></div>
+<div class="example"><div><p class="en">You should learn new words every day.</p><p class="uz">Har kuni yangi so‘zlar o‘rganishing kerak.</p></div><button class="audio" onclick="speak('You should learn new words every day.')">🔊</button></div>
+<div class="example"><div><p class="en">He should see a doctor.</p><p class="uz">U shifokorga ko‘rinishi kerak.</p></div><button class="audio" onclick="speak('He should see a doctor.')">🔊</button></div>
+<div class="example"><div><p class="en">You shouldn't eat too much sugar.</p><p class="uz">Juda ko‘p shakar yemasliging kerak.</p></div><button class="audio" onclick="speak('You should not eat too much sugar.')">🔊</button></div>
+
+<h3>6.2. SHOULD — savol orqali maslahat so‘rash</h3>
+<div class="example"><div><p class="en">What should I do?</p><p class="uz">Men nima qilishim kerak?</p></div><button class="audio" onclick="speak('What should I do?')">🔊</button></div>
+<div class="example"><div><p class="en">Should we wait here?</p><p class="uz">Biz shu yerda kutishimiz kerakmi?</p></div><button class="audio" onclick="speak('Should we wait here?')">🔊</button></div>
+<div class="example"><div><p class="en">Should I buy this book?</p><p class="uz">Men bu kitobni sotib olishim kerakmi?</p></div><button class="audio" onclick="speak('Should I buy this book?')">🔊</button></div>
+
+<h3>6.3. MUST va SHOULD farqi</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Must</th><th>Should</th></tr>
+<tr><td>Kuchli majburiyat yoki zarurat</td><td>Maslahat yoki tavsiya</td></tr>
+<tr><td>You must stop.</td><td>You should rest.</td></tr>
+<tr><td>To‘xtashing shart.</td><td>Dam olishing ma'qul.</td></tr>
+</table>
+</div>
+
+<h3>6.4. OUGHT TO — lozim, kerak</h3>
+<p>Ought to ham maslahat yoki axloqiy jihatdan to‘g‘ri deb hisoblangan ishni bildirish uchun ishlatiladi. Ma'nosi should'ga juda yaqin. Kundalik suhbatda should ko‘proq ishlatiladi.</p>
+
+<span class="formula">Subject + ought to + V1</span>
+
+<div class="example"><div><p class="en">You ought to respect your parents.</p><p class="uz">Ota-onangni hurmat qilishing lozim.</p></div><button class="audio" onclick="speak('You ought to respect your parents.')">🔊</button></div>
+<div class="example"><div><p class="en">We ought to help each other.</p><p class="uz">Biz bir-birimizga yordam berishimiz lozim.</p></div><button class="audio" onclick="speak('We ought to help each other.')">🔊</button></div>
+
+<p>Ought to inkor shakli: <b>ought not to</b>. Savol shakli esa mumkin, lekin kundalik suhbatda kamroq ishlatiladi.</p>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>SHOULD — maslahat, tavsiya.</p>
+<p>Should + V1.</p>
+<p>Shouldn't + V1 — qilmaslik ma'qul.</p>
+<p>OUGHT TO — lozim, kerak; should'ga yaqin ma'no.</p>
+<p>Ought to + V1.</p>
+</div>
+</section>
+
+<section id="other">
+<h2>7. WILL, WOULD, SHALL va NEED</h2>
+
+<h3>7.1. WILL — kelajak, va'da va tezkor qaror</h3>
+<p>Will Future Simple mavzusida o‘rganilgan. Bu yerda uning modal fe'l sifatidagi ishlatilishini eslab olamiz.</p>
+
+<div class="example"><div><p class="en">I will help you.</p><p class="uz">Men senga yordam beraman.</p></div><button class="audio" onclick="speak('I will help you.')">🔊</button></div>
+<div class="example"><div><p class="en">She will call you later.</p><p class="uz">U senga keyinroq qo‘ng‘iroq qiladi.</p></div><button class="audio" onclick="speak('She will call you later.')">🔊</button></div>
+<div class="example"><div><p class="en">I will not forget this.</p><p class="uz">Men buni unutmayman.</p></div><button class="audio" onclick="speak('I will not forget this.')">🔊</button></div>
+
+<h3>7.2. WILL — taklif va yordam</h3>
+<div class="example"><div><p class="en">I will carry your bag.</p><p class="uz">Sumkangizni ko‘tarib beraman.</p></div><button class="audio" onclick="speak('I will carry your bag.')">🔊</button></div>
+<div class="example"><div><p class="en">I will open the window.</p><p class="uz">Derazani ochib beraman.</p></div><button class="audio" onclick="speak('I will open the window.')">🔊</button></div>
+
+<h3>7.3. WOULD — muloyim iltimos va xohish</h3>
+<p>Would ko‘pincha muloyim so‘rov, taklif yoki xohishni ifodalaydi.</p>
+
+<div class="example"><div><p class="en">Would you help me?</p><p class="uz">Menga yordam bera olasizmi?</p></div><button class="audio" onclick="speak('Would you help me?')">🔊</button></div>
+<div class="example"><div><p class="en">Would you like some tea?</p><p class="uz">Biroz choy xohlaysizmi?</p></div><button class="audio" onclick="speak('Would you like some tea?')">🔊</button></div>
+<div class="example"><div><p class="en">I would like a cup of coffee.</p><p class="uz">Men bir finjon qahva xohlardim.</p></div><button class="audio" onclick="speak('I would like a cup of coffee.')">🔊</button></div>
+
+<p><b>Would like</b> — xohlamoqning muloyim shakli. <b>Want</b> ham xohlamoq degani, lekin would like odatda odobliroq eshitiladi.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Want</th><th>Would like</th></tr>
+<tr><td>I want tea.</td><td>I would like tea.</td></tr>
+<tr><td>Men choy xohlayman.</td><td>Men choy istardim.</td></tr>
+</table>
+</div>
+
+<h3>7.4. SHALL — taklif va maslahatlashish</h3>
+<p>Shall ko‘pincha I va we bilan taklif yoki birgalikda qaror qilishda ishlatiladi. Kundalik ingliz tilida, ayniqsa Britaniya inglizchasida uchraydi.</p>
+
+<div class="example"><div><p class="en">Shall we go?</p><p class="uz">Ketamizmi?</p></div><button class="audio" onclick="speak('Shall we go?')">🔊</button></div>
+<div class="example"><div><p class="en">Shall I open the door?</p><p class="uz">Eshikni ochaymi?</p></div><button class="audio" onclick="speak('Shall I open the door?')">🔊</button></div>
+<div class="example"><div><p class="en">Shall we start now?</p><p class="uz">Hozir boshlaymizmi?</p></div><button class="audio" onclick="speak('Shall we start now?')">🔊</button></div>
+
+<h3>7.5. NEED — zarurat</h3>
+<p>Need asosiy fe'l sifatida ham, ayrim vaziyatlarda modal fe'l sifatida ham ishlatiladi. Elementary darajada eng ko‘p uchraydigan shaklini o‘rganamiz:</p>
+
+<span class="formula">Subject + need to + V1</span>
+
+<div class="example"><div><p class="en">I need to study.</p><p class="uz">Men o‘qishim kerak.</p></div><button class="audio" onclick="speak('I need to study.')">🔊</button></div>
+<div class="example"><div><p class="en">She needs to sleep.</p><p class="uz">U uxlashi kerak.</p></div><button class="audio" onclick="speak('She needs to sleep.')">🔊</button></div>
+
+<p>Need to oddiy fe'l kabi o‘zgaradi: he/she/it bilan needs to.</p>
+
+<div class="example"><div><p class="en">You don't need to hurry.</p><p class="uz">Shoshilishing shart emas.</p></div><button class="audio" onclick="speak('You do not need to hurry.')">🔊</button></div>
+<div class="example"><div><p class="en">Does he need to come?</p><p class="uz">U kelishi kerakmi?</p></div><button class="audio" onclick="speak('Does he need to come?')">🔊</button></div>
+
+<h3>7.6. Modal fe'llar jadvali</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Modal / shakl</th><th>Asosiy ma'nosi</th><th>Misol</th></tr>
+<tr><td>Can</td><td>Qila olmoq</td><td>I can swim.</td></tr>
+<tr><td>Could</td><td>Qila olardi / muloyim iltimos</td><td>Could you help?</td></tr>
+<tr><td>May</td><td>Ruxsat / ehtimol</td><td>May I come in?</td></tr>
+<tr><td>Might</td><td>Balki, ehtimol</td><td>It might rain.</td></tr>
+<tr><td>Must</td><td>Shart, majburiyat</td><td>You must study.</td></tr>
+<tr><td>Have to</td><td>Majbur bo‘lmoq</td><td>I have to work.</td></tr>
+<tr><td>Should</td><td>Maslahat</td><td>You should rest.</td></tr>
+<tr><td>Ought to</td><td>Lozim</td><td>You ought to help.</td></tr>
+<tr><td>Will</td><td>Kelajak / va'da</td><td>I will call.</td></tr>
+<tr><td>Would</td><td>Muloyim so‘rov / xohish</td><td>Would you like tea?</td></tr>
+<tr><td>Shall</td><td>Taklif</td><td>Shall we go?</td></tr>
+<tr><td>Need to</td><td>Zarurat</td><td>I need to study.</td></tr>
+</table>
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>WILL — kelajak, va'da, tezkor qaror.</p>
+<p>WOULD — muloyim iltimos, xohish, taklif.</p>
+<p>SHALL — I / we bilan taklif va maslahatlashish.</p>
+<p>NEED TO — zarurat; he/she/it bilan needs to.</p>
+</div>
+</section>
+
+<section>
+<h2>8. Modal fe'llarda eng ko‘p uchraydigan xatolar</h2>
+
+<div class="note">
+<b>1. Modal + to ishlatish</b><br>
+❌ I can to speak.<br>
+✅ I can speak.
+</div>
+<div class="note">
+<b>2. Modal fe'lga -s qo‘shish</b><br>
+❌ He cans swim.<br>
+✅ He can swim.
+</div>
+<div class="note">
+<b>3. Modal bilan do/does ishlatish</b><br>
+❌ Do you can swim?<br>
+✅ Can you swim?
+</div>
+<div class="note">
+<b>4. Modal fe'ldan keyin V2 ishlatish</b><br>
+❌ She can went home.<br>
+✅ She can go home.
+</div>
+<div class="note">
+<b>5. Has to savolida have o‘rniga has ishlatish</b><br>
+❌ Does he has to work?<br>
+✅ Does he have to work?
+</div>
+<div class="note">
+<b>6. Mustn't va don't have to ni adashtirish</b><br>
+Mustn't — taqiqlangan.<br>
+Don't have to — majburiy emas.
+</div>
+<div class="note">
+<b>7. Should'dan keyin to qo‘shish</b><br>
+❌ You should to sleep.<br>
+✅ You should sleep.
+</div>
+
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>Modal fe'llardan keyin V1 ishlatiladi. Modal fe'llarga he/she/it bilan -s qo‘shilmaydi. Modal savollarda do/does ishlatilmaydi. Have to va need to esa oddiy fe'l qoidalariga ko‘ra o‘zgaradi.</p>
+</div>
+</section>
+
+<section id="vocab">
+<h2>9. VOCABULARY — 40 ta yangi so‘z</h2>
+<p>Quyidagi 40 ta so‘zni o‘rganing. Har birida inglizcha talaffuzga yordam beruvchi yozuv, o‘zbekcha tarjima, misol va audio mavjud.</p>
+<div class="copy">
+<strong>📒 DAFTARGA YOZIB OLING</strong>
+<p>40 ta so‘zning barchasini lug‘at daftaringizga yozing. Inglizcha so‘z, talaffuz, tarjima va misol gapni birga o‘rganing.</p>
+</div>
+<div id="vocabularyList" class="word-list"></div>
+</section>
+
+<section id="skills">
+<h2>10. FOUR SKILLS — 4 KO‘NIKMA</h2>
+
+<div class="skill">
+<h3>10.1. READING — A Helpful Friend</h3>
+<p>Ali is a helpful student. He can speak English and he can use a computer. Every day, he has to study after school. He must finish his homework before dinner. Sometimes, his friends ask him for help.</p>
+<p>One day, his friend Tom says, "Could you help me with English?" Ali says, "Of course! We can study together." Tom is happy. Ali tells him, "You should practise every day. You don't have to learn everything in one day. You just need to work regularly."</p>
+<p>After the lesson, Tom says, "I might become a good English speaker one day." Ali answers, "You can do it if you keep practising!"</p>
+<button class="audio" onclick="speak('Ali is a helpful student. He can speak English and he can use a computer. Every day, he has to study after school. He must finish his homework before dinner. Sometimes, his friends ask him for help. One day, his friend Tom says, Could you help me with English? Ali says, Of course! We can study together. Tom is happy. Ali tells him, You should practise every day. You do not have to learn everything in one day. You just need to work regularly. After the lesson, Tom says, I might become a good English speaker one day. Ali answers, You can do it if you keep practising!')">🔊 Read audio</button>
+<button class="secondary" onclick="speakSlow('Ali is a helpful student. He can speak English and he can use a computer. Every day, he has to study after school. He must finish his homework before dinner. Sometimes, his friends ask him for help. One day, his friend Tom says, Could you help me with English? Ali says, Of course! We can study together. Tom is happy. Ali tells him, You should practise every day. You do not have to learn everything in one day. You just need to work regularly. After the lesson, Tom says, I might become a good English speaker one day. Ali answers, You can do it if you keep practising!')">🐢 Slow audio</button>
+<h4>Reading questions</h4>
+<ol>
+<li>What can Ali do?</li>
+<li>When does Ali study?</li>
+<li>What does Tom ask Ali?</li>
+<li>What advice does Ali give Tom?</li>
+<li>Does Tom have to learn everything in one day?</li>
+</ol>
+</div>
+
+<div class="skill">
+<h3>10.2. LISTENING — A Conversation</h3>
+<p><b>Vazifa:</b> Avval matnni ko‘rmasdan audioni tinglang. Keyin yana bir marta sekin tinglang va savollarga javob bering.</p>
+<p><b>Anna:</b> Can you help me with this exercise?</p>
+<p><b>Ben:</b> Of course. What do you have to do?</p>
+<p><b>Anna:</b> I must finish it today, but I don't understand question three.</p>
+<p><b>Ben:</b> You should read the instructions again. I can explain it to you.</p>
+<p><b>Anna:</b> Thank you! Could you speak slowly, please?</p>
+<p><b>Ben:</b> Sure. We can do it together.</p>
+<button class="audio" onclick="speak('Anna: Can you help me with this exercise? Ben: Of course. What do you have to do? Anna: I must finish it today, but I do not understand question three. Ben: You should read the instructions again. I can explain it to you. Anna: Thank you! Could you speak slowly, please? Ben: Sure. We can do it together.')">🔊 Normal audio</button>
+<button class="secondary" onclick="speakSlow('Anna: Can you help me with this exercise? Ben: Of course. What do you have to do? Anna: I must finish it today, but I do not understand question three. Ben: You should read the instructions again. I can explain it to you. Anna: Thank you! Could you speak slowly, please? Ben: Sure. We can do it together.')">🐢 Slow audio</button>
+<h4>Listening questions</h4>
+<ol>
+<li>What does Anna need help with?</li>
+<li>When must she finish the exercise?</li>
+<li>Which question does she not understand?</li>
+<li>What should she read again?</li>
+<li>How does she ask Ben to speak?</li>
+</ol>
+</div>
+
+<div class="skill">
+<h3>10.3. SPEAKING — Gapirish mashqi</h3>
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Javoblaringizni kamida 2–3 ta gap bilan kengaytirishga harakat qiling.</p>
+<ol>
+<li>What can you do well?</li>
+<li>What couldn't you do when you were a child?</li>
+<li>What do you have to do every day?</li>
+<li>What should people do to learn English?</li>
+<li>What must people do to stay safe?</li>
+<li>What might you do next weekend?</li>
+<li>Would you like to learn another language?</li>
+<li>Could you help a friend with English?</li>
+</ol>
+<div class="note">Masalan: "I can speak Uzbek. I can also understand some English. I want to improve my speaking."</div>
+</div>
+
+<div class="skill">
+<h3>10.4. WRITING — My Responsibilities and Abilities</h3>
+<p><b>Vazifa:</b> "My Responsibilities and Abilities" mavzusida 100–120 so‘zli kichik matn yozing.</p>
+<p>Matningizda quyidagi modal fe'llardan foydalaning:</p>
+<ul>
+<li>can — qobiliyat;</li>
+<li>can't — qila olmaslik;</li>
+<li>have to — kundalik majburiyat;</li>
+<li>must — muhim zarurat;</li>
+<li>should — maslahat;</li>
+<li>might — ehtimollik;</li>
+<li>would like — istak.</li>
+</ul>
+<p><b>Boshlash uchun namuna:</b></p>
+<div class="example"><div><p class="en">I can do many things, but I still have a lot to learn.</p><p class="uz">Men ko‘p narsalarni qila olaman, ammo hali ko‘p narsalarni o‘rganishim kerak.</p></div><button class="audio" onclick="speak('I can do many things, but I still have a lot to learn.')">🔊</button></div>
+<textarea rows="6" placeholder="Write your 100–120 word text here..."></textarea>
+</div>
+</section>
+
+<section id="homework">
+<h2>11. HOMEWORK — Uyga vazifa</h2>
+<p>Uyga vazifa bitta bo‘limdan iborat. Unda 5 ta topshiriq bor. Barcha topshiriqlarni daftarda bajaring.</p>
+
+<div class="copy">
+<strong>📒 1-TOPSHIRIQ — GRAMMAR</strong>
+<p>Quyidagi gaplarni ingliz tiliga tarjima qiling. Kerakli modal fe'lni tanlang.</p>
+<ol>
+<li>Men suza olaman.</li>
+<li>U ingliz tilida gapira oladi.</li>
+<li>Sen ko‘proq mashq qilishing kerak.</li>
+<li>Biz ertaga ishlashimiz shart.</li>
+<li>Bu yerda mashina qo‘yish taqiqlangan.</li>
+<li>Bugun erta turishing shart emas.</li>
+<li>Balki u ertaga kelar.</li>
+<li>Menga yordam bera olasizmi?</li>
+</ol>
+</div>
+
+<div class="copy">
+<strong>📒 2-TOPSHIRIQ — GRAMMAR</strong>
+<p>Qavs ichidagi fe'l va modal fe'llardan foydalanib, gaplarni to‘g‘ri shaklda yozing.</p>
+<ol>
+<li>She (can / speak) English.</li>
+<li>He (have to / work) every day.</li>
+<li>They (should / study) more.</li>
+<li>We (must / finish) this work.</li>
+<li>She (not / have to / come) today.</li>
+<li>You (mustn't / touch) this.</li>
+<li>(Can / you / help) me?</li>
+<li>(Does / he / have to / work) tomorrow?</li>
+</ol>
+</div>
+
+<div class="copy">
+<strong>📒 3-TOPSHIRIQ — VOCABULARY</strong>
+<p>Bugungi 40 ta yangi so‘zni yodlang. Har biridan bittadan o‘zingizning misol gapingizni tuzing. Jami 40 ta gap yozing.</p>
+</div>
+
+<div class="copy">
+<strong>📒 4-TOPSHIRIQ — TRANSLATION</strong>
+<p>Quyidagi matnni ingliz tiliga tarjima qiling.</p>
+<p>Men har kuni ingliz tilini o‘rganishim kerak. Men ingliz tilida yaxshi gapira olishni xohlayman. Buning uchun har kuni mashq qilishim kerak. Men ko‘proq kitob o‘qishim va yangi so‘zlarni yodlashim kerak. Men xato qilishdan qo‘rqmasligim kerak. Balki kelajakda ingliz tilida erkin gapira olarman.</p>
+</div>
+
+<div class="copy">
+<strong>📒 5-TOPSHIRIQ — TRANSLATION</strong>
+<p>Quyidagi gaplarni o‘zbek tiliga tarjima qiling.</p>
+<ol>
+<li>You should practise English every day.</li>
+<li>Could you open the window, please?</li>
+<li>We don't have to leave now.</li>
+<li>Students must follow the school rules.</li>
+<li>She might visit us tomorrow.</li>
+<li>Would you like a cup of tea?</li>
+<li>He has to get up early.</li>
+<li>You mustn't use your phone here.</li>
+</ol>
+</div>
+
+<p><b>Vazifa:</b> Homework topshiriqlarini tugatgach, testga o‘ting. Test darsni qanchalik tushunganingizni tekshiradi.</p>
+</section>
+
+<section id="test">
+<h2>12. FINAL TEST — 30 QUESTIONS</h2>
+<p>Test 30 ta savoldan iborat. Har bir savol 1 ball. Testni oxirigacha bajaring va <b>Submit Test</b> tugmasini bosing.</p>
+<div class="note">
+<b>O‘tish mezoni: 80% — 24/30.</b><br>
+Testni topshirgandan so‘ng natija, to‘g‘ri va noto‘g‘ri javoblar hamda izohlar ko‘rsatiladi.
+</div>
+<div id="quizContainer"></div>
+<button class="main-btn" onclick="submitQuiz()">SUBMIT TEST</button>
+<button class="secondary" onclick="resetQuiz()">Reset test</button>
+<div id="resultBox"></div>
+</section>
+
+<section>
+<h2>13. DARS YAKUNI</h2>
+<p>Bugun siz ingliz tilidagi muhim modal fe'llarni o‘rgandingiz. Endi siz qobiliyat, ruxsat, maslahat, majburiyat, taqiq, ehtimollik va muloyim iltimosni ifodalashni bilasiz.</p>
+<div class="copy">
+<strong>📒 O‘ZINGIZNI TEKSHIRING</strong>
+<ul>
+<li>Can va could farqini tushuntira olamanmi?</li>
+<li>May va might yordamida ehtimollik bildira olamanmi?</li>
+<li>Must va have to farqini bilamanmi?</li>
+<li>Mustn't va don't have to farqini tushunamanmi?</li>
+<li>Should yordamida maslahat bera olamanmi?</li>
+<li>Would you like...? bilan muloyim taklif qila olamanmi?</li>
+<li>Modal fe'llardan keyin V1 ishlatishni bilamanmi?</li>
+</ul>
+</div>
+<p><b>Eng muhim qoida:</b> Qoidalarni shunchaki o‘qib chiqish bilan cheklanib qolmang. Ularni daftarga yozing, ovoz chiqarib misollarni takrorlang va o‘zingiz yangi gaplar tuzing.</p>
+<h3>Motivatsiya</h3>
+<p>Har kuni ozgina bo‘lsa ham oldinga yuring. Bugun bilmagan narsangiz ertaga sizning kuchli tomoningizga aylanishi mumkin. Ingliz tilini o‘rganishda eng katta kuch — muntazamlik, sabr va amaliyot.</p>
+<p><b>Don't stop learning. Every lesson takes you one step closer to your goal!</b></p>
+<p>O‘rganishdan to‘xtamang. Har bir dars sizni maqsadingizga bir qadam yaqinlashtiradi!</p>
+</section>
+
+<div class="footer">
+<strong>ENGLISH UP</strong>
+<p>Learn today. Succeed tomorrow.</p>
+<p>Lesson 8 — Modal Verbs</p>
+</div>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  localStorage.setItem("euLessonTheme",document.body.classList.contains("dark")?"dark":"light");
+}
+if(localStorage.getItem("euLessonTheme")==="dark"){
+  document.body.classList.add("dark");
+}
+
+function speak(text){
+  if(!("speechSynthesis" in window)){
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+  speechSynthesis.cancel();
+  const msg=new SpeechSynthesisUtterance(text);
+  msg.lang="en-US";
+  msg.rate=0.9;
+  speechSynthesis.speak(msg);
+}
+function speakSlow(text){
+  if(!("speechSynthesis" in window)){
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+  speechSynthesis.cancel();
+  const msg=new SpeechSynthesisUtterance(text);
+  msg.lang="en-US";
+  msg.rate=0.65;
+  speechSynthesis.speak(msg);
+}
+
+const vocabulary=[
+["ability","qobiliyat","ə-BIL-ə-ti","She has the ability to learn quickly."],
+["advice","maslahat","əd-VAIS","My teacher gives me good advice."],
+["allow","ruxsat bermoq","ə-LAU","My parents allow me to play."],
+["answer","javob bermoq","AN-ser","You can answer this question."],
+["ask","so‘ramoq","ASK","Can I ask you something?"],
+["careful","ehtiyotkor","KER-fəl","You must be careful."],
+["choice","tanlov","CHOYS","You can make your own choice."],
+["choose","tanlamoq","CHUUZ","You should choose a good book."],
+["decide","qaror qilmoq","di-SAYD","We must decide today."],
+["drive","mashina haydamoq","DRAYV","Can you drive a car?"],
+["explain","tushuntirmoq","ik-SPLAYN","Could you explain this rule?"],
+["follow","amal qilmoq, ergashmoq","FOL-ou","You must follow the rules."],
+["forget","unutmoq","fer-GET","I must not forget my homework."],
+["help","yordam bermoq","HELP","Can you help me?"],
+["hope","umid qilmoq","HOUP","I hope you can come."],
+["improve","yaxshilamoq","im-PRUUV","You should improve your English."],
+["invite","taklif qilmoq","in-VAYT","I might invite my friend."],
+["learn","o‘rganmoq","LERN","We can learn together."],
+["leave","ketmoq","LIIV","Do we have to leave now?"],
+["listen","tinglamoq","LIS-ən","You should listen carefully."],
+["mistake","xato","mis-TEYK","You can learn from a mistake."],
+["necessary","zarur","NES-ə-seri","It is necessary to practise."],
+["permission","ruxsat","per-MI-shən","May I have permission to leave?"],
+["polite","odobli","pə-LAYT","You should be polite."],
+["possible","mumkin","POS-ə-bəl","It might be possible."],
+["practice","mashq qilmoq","PRAK-tis","You must practise every day."],
+["prepare","tayyorlanmoq","pri-PEYR","We have to prepare for the test."],
+["promise","va'da bermoq","PROM-is","I will keep my promise."],
+["protect","himoya qilmoq","prə-TEKT","We must protect nature."],
+["recommend","tavsiya qilmoq","rek-ə-MEND","I recommend this book."],
+["remember","eslamoq","ri-MEM-ber","You should remember this rule."],
+["respect","hurmat qilmoq","ri-SPEKT","We must respect other people."],
+["rule","qoida","RUUL","You have to follow this rule."],
+["safe","xavfsiz","SEYF","You must stay safe."],
+["suggest","taklif qilmoq","sə-JEST","I suggest taking a break."],
+["try","harakat qilmoq","TRAY","You should try again."],
+["understand","tushunmoq","an-der-STAND","I can understand this lesson."],
+["useful","foydali","YUUS-fəl","This is a useful lesson."],
+["visit","tashrif buyurmoq","VI-zit","We might visit our friends."],
+["wait","kutmoq","WEYT","You may wait here."]
+];
+
+const vocabBox=document.getElementById("vocabularyList");
+vocabulary.forEach((w,i)=>{
+  const card=document.createElement("div");
+  card.className="word";
+  card.innerHTML=`
+    <div class="word-top">
+      <b>${i+1}. ${w[0]}</b>
+      <button class="audio" aria-label="Play word" onclick="speak(${JSON.stringify(w[0])})">🔊</button>
+    </div>
+    <small>Pronunciation: ${w[2]}</small>
+    <div class="meaning">${w[1]}</div>
+    <div class="sentence">${w[3]}</div>
+    <button class="secondary" onclick="speak(${JSON.stringify(w[3])})">🔊 Example</button>
+  `;
+  vocabBox.appendChild(card);
+});
+
+const questions=[
+{q:"Modal fe'ldan keyin odatda qaysi fe'l shakli keladi?",o:["V1","V2","V3","V-ing"],a:0,e:"Modal fe'llardan keyin odatda fe'lning birinchi shakli — V1 keladi."},
+{q:"She ___ speak English.",o:["can","cans","can to","does can"],a:0,e:"Can modal fe'li he/she/it bilan ham o'zgarmaydi."},
+{q:"I ___ swim when I was five.",o:["can","could","must","should"],a:1,e:"Could o'tmishdagi umumiy qobiliyatni ifodalaydi."},
+{q:"Qaysi gap to‘g‘ri?",o:["He can drives.","He cans drive.","He can drive.","He can to drive."],a:2,e:"Modal + V1. Modalga -s qo‘shilmaydi va undan keyin to ishlatilmaydi."},
+{q:"___ I come in, please?",o:["Must","May","Should to","Have"],a:1,e:"May I...? odobli ruxsat so‘rash shakli."},
+{q:"It ___ rain tomorrow. (Ehtimol)",o:["might","mustn't","shouldn't","has"],a:0,e:"Might ehtimollikni bildiradi."},
+{q:"You ___ study harder. (Maslahat)",o:["should","mustn't","might not","can to"],a:0,e:"Should maslahat yoki tavsiyani bildiradi."},
+{q:"You ___ wear a seat belt. (Shart)",o:["must","might","couldn't","would"],a:0,e:"Must kuchli zarurat yoki majburiyatni bildiradi."},
+{q:"You ___ smoke here. (Taqiqlangan)",o:["don't have to","mustn't","should","might"],a:1,e:"Mustn't — biror ishni bajarish taqiqlangan."},
+{q:"You ___ come early. (Erta kelishing shart emas)",o:["mustn't","don't have to","must","should"],a:1,e:"Don't have to — majburiyat yo‘q, qilish shart emas."},
+{q:"She ___ to work every day.",o:["have","has","must","can"],a:1,e:"She bilan have to emas, has to ishlatiladi."},
+{q:"Does he ___ to study today?",o:["has","have","having","had"],a:1,e:"Does bilan have to ishlatiladi, has emas."},
+{q:"___ you help me, please? (Muloyim iltimos)",o:["Could","Mustn't","Has","Does"],a:0,e:"Could you...? muloyim iltimos shakli."},
+{q:"I ___ like a cup of tea.",o:["would","mustn't","has","does"],a:0,e:"Would like — xohlamoqning muloyim shakli."},
+{q:"___ we go now? (Taklif)",o:["Shall","Mustn't","Has","Does"],a:0,e:"Shall we...? taklif bildirishda ishlatiladi."},
+{q:"Qaysi gapda modal fe'l noto‘g‘ri ishlatilgan?",o:["I can swim.","She should study.","He must goes.","They might come."],a:2,e:"Must'dan keyin goes emas, go ishlatiladi."},
+{q:"I ___ finish this work today. (Majburman)",o:["have to","can to","should to","might to"],a:0,e:"Have to majburiyatni bildiradi."},
+{q:"She ___ cook today. (Unga shart emas)",o:["doesn't have to","don't has to","mustn't to","not have"],a:0,e:"She bilan doesn't have to ishlatiladi."},
+{q:"Can savolining to‘g‘ri shaklini tanlang.",o:["Do you can swim?","Can you swim?","Does can you swim?","You can swim?"],a:1,e:"Modal savolda can egadan oldinga chiqadi."},
+{q:"Might so‘zining ma'nosi qaysi?",o:["Albatta","Balki, ehtimol","Taqiqlangan","Majbur"],a:1,e:"Might ehtimollikni bildiradi."},
+{q:"'You should rest.' tarjimasi qaysi?",o:["Sen dam olishing ma'qul.","Sen dam olishing taqiqlangan.","Sen dam ololmaysan.","Sen dam olding."],a:0,e:"Should maslahat beradi."},
+{q:"'Mustn't' nimani bildiradi?",o:["Shart emas","Taqiqlangan","Balki","Qila oladi"],a:1,e:"Mustn't — taqiq."},
+{q:"'Don't have to' nimani bildiradi?",o:["Taqiqlangan","Qilish shart emas","Qilish shart","Qila olmaydi"],a:1,e:"Don't have to — majburiyat mavjud emas."},
+{q:"Qaysi gap to‘g‘ri?",o:["She cans help.","She can helps.","She can help.","She can to help."],a:2,e:"She can help — to‘g‘ri tuzilma."},
+{q:"'I could read when I was six.' tarjimasi qaysi?",o:["Men hozir o‘qiy olaman.","Men olti yoshimda o‘qiy olardim.","Men o‘qishim shart.","Men o‘qishni xohlayman."],a:1,e:"Could o'tmishdagi qobiliyatni bildiradi."},
+{q:"'Would you like some tea?' qanday ma'noda?",o:["Choy ichishingiz taqiqlanganmi?","Biroz choy xohlaysizmi?","Choy ichishingiz shartmi?","Choy icha olasizmi?"],a:1,e:"Would you like...? muloyim taklif."},
+{q:"'I need to study.' tarjimasi qaysi?",o:["Men o‘qishim kerak.","Men o‘qiy olaman.","Men o‘qimasligim kerak.","Men o‘qishni taqiqlayman."],a:0,e:"Need to zaruratni bildiradi."},
+{q:"'May' qaysi ma'noda ishlatilishi mumkin?",o:["Faqat o'tgan zamon","Ruxsat va ehtimollik","Faqat taqiq","Faqat qobiliyat"],a:1,e:"May ruxsat va ehtimollik uchun ishlatiladi."},
+{q:"Modal fe'llar bilan savol yasashda odatda qaysi yordamchi fe'l kerak emas?",o:["Do / Does","Can","Should","Will"],a:0,e:"Can, should, will kabi modal fe'llar savolda egadan oldinga chiqadi. Do/does kerak emas."},
+{q:"Qaysi gap 'U ertaga kelishi mumkin' degani?",o:["He mustn't come tomorrow.","He might come tomorrow.","He has to come yesterday.","He should came tomorrow."],a:1,e:"Might come — kelishi mumkin."}
+];
+
+const quizBox=document.getElementById("quizContainer");
+questions.forEach((q,i)=>{
+  const div=document.createElement("div");
+  div.className="quiz-question";
+  div.id="question"+i;
+  div.innerHTML=`<h4>${i+1}. ${q.q}</h4>`+
+    q.o.map((op,j)=>`
+      <label class="option">
+        <input type="radio" name="q${i}" value="${j}">
+        ${String.fromCharCode(65+j)}. ${op}
+      </label>`).join("")+
+    `<div class="feedback" id="feedback${i}"></div>`;
+  quizBox.appendChild(div);
+});
+
+function submitQuiz(){
+  let score=0,answered=0;
+  questions.forEach((q,i)=>{
+    const selected=document.querySelector(`input[name="q${i}"]:checked`);
+    const feedback=document.getElementById("feedback"+i);
+    const labels=document.querySelectorAll(`#question${i} .option`);
+    labels.forEach((label,j)=>{
+      label.style.borderColor="var(--border)";
+      if(j===q.a) label.style.borderColor="var(--green)";
+    });
+    if(selected){
+      answered++;
+      if(Number(selected.value)===q.a){
+        score++;
+        feedback.innerHTML=`<span class="correct">✓ To‘g‘ri!</span> ${q.e}`;
+      }else{
+        feedback.innerHTML=`<span class="incorrect">✗ Noto‘g‘ri.</span> To‘g‘ri javob: <b>${q.o[q.a]}</b>. ${q.e}`;
+      }
+    }else{
+      feedback.innerHTML=`<span class="incorrect">Javob berilmagan.</span> To‘g‘ri javob: <b>${q.o[q.a]}</b>. ${q.e}`;
+    }
+  });
+  const percent=Math.round(score/questions.length*100);
+  const passed=percent>=80;
+  const result=document.getElementById("resultBox");
+  result.style.display="block";
+  result.innerHTML=`
+    <h3>${passed?"🎉 Tabriklaymiz!":"📘 Yana bir bor takrorlang!"}</h3>
+    <h2>${score} / 30 — ${percent}%</h2>
+    <p>Javob berilgan: ${answered} / 30</p>
+    <p>To‘g‘ri javob: ${score}</p>
+    <p>Noto‘g‘ri yoki javobsiz: ${30-score}</p>
+    <p><b>${passed?"Siz testdan muvaffaqiyatli o‘tdingiz!":"O‘tish uchun kamida 24 ta to‘g‘ri javob kerak."}</b></p>
+    <p>${passed?"Keyingi darsga tayyorgarlik ko‘rishingiz mumkin.":"Xatolarni o‘rganib, testni qayta ishlang."}</p>
+  `;
+  result.scrollIntoView({behavior:"smooth",block:"center"});
+  localStorage.setItem("euLesson8Score",JSON.stringify({score,percent,passed}));
+  document.querySelectorAll("#quizContainer input").forEach(el=>el.disabled=true);
+}
+function resetQuiz(){
+  document.querySelectorAll("#quizContainer input").forEach(el=>{
+    el.disabled=false;
+    el.checked=false;
+  });
+  document.querySelectorAll(".feedback").forEach(el=>el.innerHTML="");
+  document.querySelectorAll(".option").forEach(el=>el.style.borderColor="var(--border)");
+  document.getElementById("resultBox").style.display="none";
+}
+
+const progressSections=["intro","rules","can","may","must","should","other","vocab","skills","homework","test"];
+window.addEventListener("scroll",()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=max>0?Math.min(100,Math.round(window.scrollY/max*100)):0;
+  document.getElementById("progressFill").style.width=pct+"%";
+});
+</script>
+</body>
+</html>
+
