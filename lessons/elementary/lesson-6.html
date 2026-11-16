@@ -1,1 +1,756 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 6 | Countable & Uncountable Nouns — English Up</title>
+<style>
+:root{
+ --primary:#7047eb;--primary2:#8b6cf2;--bg:#f5f3ff;
+ --surface:#fff;--text:#24213a;--muted:#716d83;
+ --border:#e8e3f5;--green:#159b69;--red:#dc4b5b;
+ --shadow:0 8px 28px rgba(65,43,130,.08)
+}
+body.dark{
+ --bg:#171522;--surface:#242132;--text:#f4f1ff;
+ --muted:#b8b2cb;--border:#39344d;--shadow:0 8px 28px rgba(0,0,0,.2)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;line-height:1.7}
+header{background:linear-gradient(120deg,#7047eb,#9b70f5);
+ color:white;padding:22px 16px}
+.header-inner{max-width:1000px;margin:auto;display:flex;
+ justify-content:space-between;align-items:center;gap:12px}
+.brand{font-size:21px;font-weight:900;letter-spacing:1px}
+.header-actions{display:flex;gap:8px}
+.header-actions button{background:#ffffff22;color:white;
+ border:1px solid #ffffff55;border-radius:10px;padding:9px 12px}
+.container{max-width:1000px;margin:22px auto;padding:0 14px}
+.hero{background:linear-gradient(135deg,#7047eb,#a17cf5);
+ color:white;padding:27px;border-radius:20px;box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(25px,5vw,38px);line-height:1.2;margin:8px 0}
+.hero p{margin:8px 0}
+.tag{display:inline-block;background:#ffffff25;padding:5px 11px;
+ border-radius:20px;font-size:12px;font-weight:bold}
+.progress-wrap{height:9px;background:#ffffff55;border-radius:20px;
+ margin-top:18px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:#fff;transition:.3s}
+.progress-label{font-size:12px;margin-top:5px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:14px 0}
+nav a{white-space:nowrap;text-decoration:none;color:var(--text);
+ background:var(--surface);border:1px solid var(--border);
+ padding:9px 13px;border-radius:12px;font-size:13px}
+section{background:var(--surface);border:1px solid var(--border);
+ border-radius:17px;padding:22px;margin:17px 0;box-shadow:var(--shadow)}
+h2{font-size:23px;margin:0 0 14px;color:var(--primary)}
+h3{font-size:18px;margin:22px 0 8px}
+h4{margin:12px 0 5px}
+p{margin:9px 0}
+.muted{color:var(--muted)}
+.note{background:#f0ebff;color:#49328d;border-left:5px solid var(--primary);
+ padding:13px 15px;border-radius:9px;margin:13px 0;font-weight:600}
+body.dark .note{background:#352b51;color:#e7dcff}
+.write{background:#fff0d8;color:#80500a;border-left:5px solid #e8a334;
+ padding:13px 15px;border-radius:9px;margin:13px 0;font-weight:800}
+body.dark .write{background:#493921;color:#ffe2a6}
+.example{background:var(--bg);padding:12px 14px;border-radius:10px;
+ margin:9px 0;border:1px solid var(--border)}
+.en{font-weight:700}
+.uz{color:var(--muted);font-size:14px}
+.formula{font-family:Arial,sans-serif;font-weight:800;
+ color:var(--primary);font-size:17px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td{border:1px solid var(--border);padding:10px;text-align:left}
+th{background:var(--bg)}
+button,.btn{cursor:pointer;border:0;border-radius:10px;
+ padding:10px 14px;background:var(--primary);color:white;font-weight:700}
+button:hover,.btn:hover{filter:brightness(1.08)}
+button.secondary{background:var(--bg);color:var(--text);
+ border:1px solid var(--border)}
+button.audio{padding:6px 10px;font-size:12px;margin-left:5px}
+.word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.word{border:1px solid var(--border);padding:12px;border-radius:12px}
+.word strong{color:var(--primary)}
+.word small{display:block;color:var(--muted)}
+.skill{border:1px solid var(--border);border-radius:13px;padding:15px;margin:12px 0}
+.question{padding:15px;border:1px solid var(--border);
+ border-radius:12px;margin:12px 0}
+.question p{font-weight:700;margin-top:0}
+.question label{display:block;padding:6px 8px;cursor:pointer}
+.question input{margin-right:7px;accent-color:var(--primary)}
+.answer-input{width:100%;padding:11px;border:1px solid var(--border);
+ border-radius:9px;background:var(--bg);color:var(--text);margin-top:6px}
+.feedback{font-size:13px;margin-top:8px;font-weight:700}
+.correct{color:var(--green)}.incorrect{color:var(--red)}
+.result{display:none;background:var(--bg);padding:18px;
+ border-radius:13px;margin-top:16px}
+.footer{text-align:center;padding:30px 10px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:20px 0}
+@media(max-width:600px){
+ section{padding:16px}.hero{padding:21px}
+ h2{font-size:20px}table{font-size:12px}
+ th,td{padding:7px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <div class="brand">ENGLISH UP</div>
+  <div class="header-actions">
+   <button onclick="location.href='index.html'">← Back</button>
+   <button onclick="toggleTheme()">☾</button>
+  </div>
+ </div>
+</header>
+
+<main class="container">
+<div class="hero">
+ <span class="tag">ELEMENTARY COURSE · LESSON 6</span>
+ <h1>COUNTABLE &<br>UNCOUNTABLE NOUNS</h1>
+ <p>Sanash mumkin bo‘lgan va sanalmaydigan otlar</p>
+ <p>Bugun ingliz tilida narsalarni qanday sanash, miqdorini qanday ifodalash va savol berishni o‘rganamiz.</p>
+ <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
+ <div class="progress-label" id="progressLabel">Dars jarayoni: 0%</div>
+</div>
+
+<nav>
+ <a href="#theory">Grammar</a><a href="#vocabulary">Vocabulary</a>
+ <a href="#reading">Reading</a><a href="#listening">Listening</a>
+ <a href="#speaking">Speaking</a><a href="#writing">Writing</a>
+ <a href="#homework">Homework</a><a href="#test">Final Test</a>
+</nav>
+
+<section id="theory">
+<h2>1. DARSNI BOSHLAYMIZ</h2>
+<p>Assalomu alaykum! Bugungi darsimizda ingliz tilining juda muhim mavzularidan birini o‘rganamiz: <b>Countable and Uncountable Nouns</b>.</p>
+<p>Masalan, biz bitta olma, ikkita olma, uchta olma deb sanay olamiz. Lekin suvni odatda bitta suv, ikkita suv deb sanamaymiz. Suvning miqdorini litr, stakan yoki shisha orqali ifodalaymiz.</p>
+<div class="example"><div class="en">I have three apples.</div><div class="uz">Menda uchta olma bor.</div></div>
+<div class="example"><div class="en">I need some water.</div><div class="uz">Menga biroz suv kerak.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: Countable — sanaladigan otlar. Uncountable — odatda alohida dona sifatida sanalmaydigan otlar.</div>
+
+<h2>2. NOUN NIMA?</h2>
+<p><b>Noun</b> — shaxs, joy, narsa, hayvon yoki tushuncha nomini bildiradigan so‘z. O‘zbek tilida ot deb ataladi.</p>
+<table>
+<tr><th>Tur</th><th>Misollar</th><th>Tarjimasi</th></tr>
+<tr><td>People</td><td>teacher, mother, student</td><td>o‘qituvchi, ona, talaba</td></tr>
+<tr><td>Places</td><td>school, house, city</td><td>maktab, uy, shahar</td></tr>
+<tr><td>Things</td><td>book, phone, table</td><td>kitob, telefon, stol</td></tr>
+<tr><td>Animals</td><td>cat, dog, bird</td><td>mushuk, it, qush</td></tr>
+<tr><td>Ideas</td><td>love, happiness, knowledge</td><td>sevgi, baxt, bilim</td></tr>
+</table>
+<div class="write">DAFTARGA YOZIB OLING: Noun — odam, joy, narsa, hayvon yoki tushuncha nomini bildiradi.</div>
+
+<h2>3. COUNTABLE NOUNS — SANALADIGAN OTLAR</h2>
+<p>Countable nouns — alohida dona sifatida sanash mumkin bo‘lgan otlar. Ularning birlik va ko‘plik shakli mavjud.</p>
+<h3>3.1. Singular — birlik</h3>
+<p>Bitta narsa haqida gapirganda birlik shaklidan foydalanamiz.</p>
+<div class="example"><div class="en">a book — bitta kitob</div><div class="en">an apple — bitta olma</div><div class="en">a chair — bitta stul</div></div>
+<p>Birlikdagi sanaladigan ot oldidan ko‘pincha <b>a/an</b> ishlatiladi. Bu haqda quyida batafsil o‘rganamiz.</p>
+<h3>3.2. Plural — ko‘plik</h3>
+<p>Ikki yoki undan ortiq dona bo‘lsa, ko‘plik shaklidan foydalanamiz.</p>
+<div class="example"><div class="en">one book → two books</div><div class="en">one apple → three apples</div><div class="en">one chair → four chairs</div></div>
+<h3>3.3. Ko‘plik yasash qoidalari</h3>
+<table>
+<tr><th>Qoida</th><th>Birlik</th><th>Ko‘plik</th></tr>
+<tr><td>Ko‘pincha -s</td><td>book</td><td>books</td></tr>
+<tr><td>-s, -ss, -sh, -ch, -x, -z → -es</td><td>box, bus</td><td>boxes, buses</td></tr>
+<tr><td>Undosh + y → ies</td><td>city, baby</td><td>cities, babies</td></tr>
+<tr><td>Unli + y → -s</td><td>boy, toy</td><td>boys, toys</td></tr>
+<tr><td>Ko‘p -f/-fe → -ves</td><td>wife, leaf</td><td>wives, leaves</td></tr>
+</table>
+<p><b>Eslatma:</b> -f/-fe bilan tugagan barcha so‘zlar -ves bo‘lavermaydi. Masalan: roof → roofs, belief → beliefs.</p>
+<h3>3.4. Noto‘g‘ri ko‘plik shakllari</h3>
+<table>
+<tr><th>Birlik</th><th>Ko‘plik</th><th>Tarjima</th></tr>
+<tr><td>man</td><td>men</td><td>erkaklar</td></tr>
+<tr><td>woman</td><td>women</td><td>ayollar</td></tr>
+<tr><td>child</td><td>children</td><td>bolalar</td></tr>
+<tr><td>person</td><td>people</td><td>odamlar</td></tr>
+<tr><td>foot</td><td>feet</td><td>oyoqlar</td></tr>
+<tr><td>tooth</td><td>teeth</td><td>tishlar</td></tr>
+<tr><td>mouse</td><td>mice</td><td>sichqonlar</td></tr>
+</table>
+<p>Ba’zi otlarning birlik va ko‘plik shakli bir xil: sheep → sheep, deer → deer, fish → fish (odatdagi umumiy ma’noda).</p>
+<div class="write">DAFTARGA YOZIB OLING: Countable nouns birlik va ko‘plik shakliga ega. Ko‘plik odatda -s yoki -es bilan yasaladi, ammo irregular plurals alohida yodlanadi.</div>
+<h3>3.5. Countable bilan ishlatiladigan ifodalar</h3>
+<ul>
+<li><b>a / an</b> — bitta: a pen, an egg.</li>
+<li><b>one, two, three...</b> — sonlar: two books, five students.</li>
+<li><b>many</b> — ko‘p: many cars.</li>
+<li><b>a few / few</b> — bir nechta / juda kam: a few friends.</li>
+<li><b>How many?</b> — nechta?: How many books?</li>
+</ul>
+<div class="example"><div class="en">There are five students in the room.</div><div class="uz">Xonada beshta o‘quvchi bor.</div></div>
+<div class="example"><div class="en">How many brothers do you have?</div><div class="uz">Nechta aka-ukangiz bor?</div></div>
+
+<hr>
+<h2>4. UNCOUNTABLE NOUNS — SANALMAYDIGAN OTLAR</h2>
+<p>Uncountable nouns — odatda alohida dona sifatida sanalmaydigan moddalar, materiallar, suyuqliklar yoki mavhum tushunchalardir.</p>
+<p>Masalan, water, milk, rice, sugar, information, advice. Ularni odatda to‘g‘ridan-to‘g‘ri 1, 2, 3 deb sanamaymiz.</p>
+<div class="example"><div class="en">I drink water every day.</div><div class="uz">Men har kuni suv ichaman.</div></div>
+<div class="example"><div class="en">She needs some information.</div><div class="uz">Unga biroz ma’lumot kerak.</div></div>
+<h3>4.1. Uncountable otlarning asosiy xususiyatlari</h3>
+<ol>
+<li>Odatdagi ma’noda ko‘plik -s qo‘shimchasini olmaydi.</li>
+<li>Odatda a/an bilan ishlatilmaydi.</li>
+<li>Miqdori some, much, a little kabi so‘zlar bilan ifodalanadi.</li>
+<li>Birlikdagi fe’l bilan ishlatiladi: The water is cold.</li>
+<li>Alohida dona sanash kerak bo‘lsa, o‘lchov yoki idish so‘zlaridan foydalanamiz.</li>
+</ol>
+<div class="example"><div class="en">The milk is cold.</div><div class="uz">Sut sovuq.</div></div>
+<div class="example"><div class="en">This information is useful.</div><div class="uz">Bu ma’lumot foydali.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: Uncountable nouns odatda -s olmaydi, a/an bilan ishlatilmaydi va birlikdagi fe’l bilan keladi.</div>
+
+<h3>4.2. Eng ko‘p uchraydigan Uncountable nouns</h3>
+<table>
+<tr><th>Inglizcha</th><th>O‘zbekcha</th></tr>
+<tr><td>water</td><td>suv</td></tr><tr><td>milk</td><td>sut</td></tr>
+<tr><td>rice</td><td>guruch</td></tr><tr><td>sugar</td><td>shakar</td></tr>
+<tr><td>salt</td><td>tuz</td></tr><tr><td>bread</td><td>non</td></tr>
+<tr><td>money</td><td>pul</td></tr><tr><td>information</td><td>ma’lumot</td></tr>
+<tr><td>advice</td><td>maslahat</td></tr><tr><td>furniture</td><td>mebel</td></tr>
+<tr><td>homework</td><td>uy vazifasi</td></tr><tr><td>luggage</td><td>yuk</td></tr>
+<tr><td>equipment</td><td>jihozlar</td></tr><tr><td>traffic</td><td>transport qatnovi</td></tr>
+<tr><td>knowledge</td><td>bilim</td></tr><tr><td>news</td><td>yangilik</td></tr>
+</table>
+<p><b>Muhim:</b> “news” oxirida -s bo‘lsa ham, odatda sanalmaydigan birlik ot hisoblanadi.</p>
+<div class="example"><div class="en">The news is interesting.</div><div class="uz">Yangilik qiziqarli.</div></div>
+<p><b>Furniture</b> ham odatda uncountable. “Furnitures” demaymiz. Alohida buyumlarni aytish uchun “pieces of furniture” deymiz.</p>
+<div class="write">DAFTARGA YOZIB OLING: information, advice, furniture, homework, money, luggage, equipment, news — odatda uncountable. Ularni ko‘plikka -s qo‘shib ishlatmang.</div>
+
+<h3>4.3. Uncountable narsalarni qanday sanaymiz?</h3>
+<p>Biror narsani sanash uchun uning idishi, o‘lchovi yoki bo‘lagini aytamiz. Bu usul <b>unit/container expressions</b> deb ataladi.</p>
+<table>
+<tr><th>Birlik ifodasi</th><th>Ma’nosi</th><th>Misol</th></tr>
+<tr><td>a bottle of</td><td>bir shisha</td><td>a bottle of water</td></tr>
+<tr><td>a glass of</td><td>bir stakan</td><td>a glass of milk</td></tr>
+<tr><td>a cup of</td><td>bir piyola</td><td>a cup of tea</td></tr>
+<tr><td>a piece of</td><td>bir bo‘lak/dona</td><td>a piece of advice</td></tr>
+<tr><td>a loaf of</td><td>bir buxanka</td><td>a loaf of bread</td></tr>
+<tr><td>a bowl of</td><td>bir kosa</td><td>a bowl of rice</td></tr>
+<tr><td>a slice of</td><td>bir tilim</td><td>a slice of bread</td></tr>
+<tr><td>a kilo of</td><td>bir kilogramm</td><td>a kilo of sugar</td></tr>
+</table>
+<div class="example"><div class="en">I bought two bottles of water.</div><div class="uz">Men ikki shisha suv sotib oldim.</div></div>
+<div class="example"><div class="en">She gave me three pieces of advice.</div><div class="uz">U menga uchta maslahat berdi.</div></div>
+<div class="example"><div class="en">We need a loaf of bread.</div><div class="uz">Bizga bir buxanka non kerak.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: a bottle of water, a glass of milk, a cup of tea, a piece of advice, a loaf of bread, a bowl of rice. Uncountable otni sanash uchun o‘lchov yoki idish so‘zidan foydalanamiz.</div>
+
+<h3>4.4. Countable va Uncountable taqqoslash</h3>
+<table>
+<tr><th>Countable</th><th>Uncountable</th></tr>
+<tr><td>an apple</td><td>some water</td></tr>
+<tr><td>two books</td><td>some information</td></tr>
+<tr><td>many chairs</td><td>much milk</td></tr>
+<tr><td>a few students</td><td>a little sugar</td></tr>
+<tr><td>How many eggs?</td><td>How much rice?</td></tr>
+<tr><td>The apples are fresh.</td><td>The milk is fresh.</td></tr>
+</table>
+<div class="write">DAFTARGA YOZIB OLING: Countable — many, a few, how many. Uncountable — much, a little, how much.</div>
+
+<hr>
+<h2>5. A / AN — BIRLIKDAGI SANALADIGAN OTLAR</h2>
+<p>A va an ikkalasi ham “bir” ma’nosini beradi. Ular faqat birlikdagi sanaladigan ot oldidan ishlatiladi.</p>
+<h3>5.1. A qachon ishlatiladi?</h3>
+<p>So‘z undosh tovush bilan boshlansa, odatda <b>a</b> ishlatamiz.</p>
+<div class="example"><div class="en">a book — bir kitob</div><div class="en">a car — bir mashina</div><div class="en">a university — bir universitet</div></div>
+<h3>5.2. An qachon ishlatiladi?</h3>
+<p>So‘z unli tovush bilan boshlansa, odatda <b>an</b> ishlatamiz.</p>
+<div class="example"><div class="en">an apple — bir olma</div><div class="en">an egg — bir tuxum</div><div class="en">an hour — bir soat</div></div>
+<p><b>E’tibor:</b> A yoki an tanlashda harfga emas, talaffuzdagi birinchi tovushga qaraymiz. “University” /juː/ tovushi bilan boshlanadi, shuning uchun “a university”. “Hour” so‘zida h talaffuz qilinmaydi, shuning uchun “an hour”.</p>
+<h3>5.3. A/An qayerda ishlatilmaydi?</h3>
+<ul>
+<li>Ko‘plik ot bilan: a books — noto‘g‘ri.</li>
+<li>Uncountable ot bilan: an information — noto‘g‘ri.</li>
+<li>To‘g‘risi: a book, books, some information.</li>
+</ul>
+<div class="write">DAFTARGA YOZIB OLING: A + undosh tovush bilan boshlanadigan birlik sanaladigan ot. An + unli tovush bilan boshlanadigan birlik sanaladigan ot. A/An ko‘plik va uncountable ot bilan ishlatilmaydi.</div>
+
+<hr>
+<h2>6. SOME / ANY</h2>
+<p>Some va any miqdori aniq ko‘rsatilmagan narsalar haqida gapirganda ishlatiladi. Ikkalasi ham countable plural va uncountable otlar bilan kelishi mumkin.</p>
+<h3>6.1. SOME — odatda darak gaplarda</h3>
+<p>Some — bir nechta, biroz, ma’lum miqdorda degan ma’noni beradi.</p>
+<div class="example"><div class="en">I have some friends.</div><div class="uz">Mening bir nechta do‘stim bor.</div></div>
+<div class="example"><div class="en">There is some milk in the fridge.</div><div class="uz">Muzlatkichda biroz sut bor.</div></div>
+<h3>6.2. ANY — odatda inkor va so‘roq gaplarda</h3>
+<div class="example"><div class="en">I don't have any money.</div><div class="uz">Menda umuman pul yo‘q.</div></div>
+<div class="example"><div class="en">Do you have any questions?</div><div class="uz">Savollaringiz bormi?</div></div>
+<h3>6.3. Some bilan savol berish mumkinmi?</h3>
+<p>Ha! Taklif yoki iltimos qilganda, ijobiy javob kutayotganimizda some ishlatishimiz mumkin.</p>
+<div class="example"><div class="en">Would you like some tea?</div><div class="uz">Biroz choy xohlaysizmi?</div></div>
+<div class="example"><div class="en">Can I have some water, please?</div><div class="uz">Iltimos, biroz suv olsam bo‘ladimi?</div></div>
+<h3>6.4. Any darak gapda ham ishlatilishi mumkin</h3>
+<p>Any “istalgan” ma’nosida darak gapda ham ishlatiladi.</p>
+<div class="example"><div class="en">You can choose any book.</div><div class="uz">Istalgan kitobni tanlashingiz mumkin.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: Some — odatda darak gapda. Any — odatda so‘roq va inkor gapda. Some taklif va iltimoslarda ham ishlatiladi. Any “istalgan” ma’nosida darak gapda kelishi mumkin.</div>
+
+<hr>
+<h2>7. MUCH / MANY</h2>
+<p>Much va many “ko‘p” degan ma’noni anglatadi. Ularning farqi qaysi ot bilan ishlatilishida.</p>
+<h3>7.1. MANY — sanaladigan ko‘plik otlar bilan</h3>
+<div class="example"><div class="en">many books — ko‘p kitoblar</div><div class="en">many students — ko‘p o‘quvchilar</div><div class="en">many apples — ko‘p olmalar</div></div>
+<h3>7.2. MUCH — sanalmaydigan otlar bilan</h3>
+<div class="example"><div class="en">much water — ko‘p suv</div><div class="en">much money — ko‘p pul</div><div class="en">much time — ko‘p vaqt</div></div>
+<h3>7.3. Much/Many qaysi gaplarda ishlatiladi?</h3>
+<p>Ular ayniqsa so‘roq va inkor gaplarda juda ko‘p ishlatiladi.</p>
+<div class="example"><div class="en">How many students are there?</div><div class="uz">U yerda nechta o‘quvchi bor?</div></div>
+<div class="example"><div class="en">How much water do you drink?</div><div class="uz">Qancha suv ichasiz?</div></div>
+<div class="example"><div class="en">I don't have much time.</div><div class="uz">Menda ko‘p vaqt yo‘q.</div></div>
+<div class="example"><div class="en">There aren't many people here.</div><div class="uz">Bu yerda ko‘p odam yo‘q.</div></div>
+<p>Darak gapda ham much/many ishlatish mumkin, lekin kundalik suhbatda ko‘pincha <b>a lot of</b> tabiiyroq eshitiladi.</p>
+<div class="example"><div class="en">I have a lot of friends.</div><div class="uz">Mening ko‘p do‘stlarim bor.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: MANY + ko‘plikdagi countable noun. MUCH + uncountable noun. Much/Many ayniqsa so‘roq va inkor gaplarda ishlatiladi.</div>
+
+<hr>
+<h2>8. A LOT OF / LOTS OF</h2>
+<p>A lot of va lots of “ko‘p” degan ma’noni beradi. Ular countable plural hamda uncountable otlar bilan ishlatiladi.</p>
+<div class="example"><div class="en">a lot of books</div><div class="uz">ko‘p kitoblar</div></div>
+<div class="example"><div class="en">a lot of water</div><div class="uz">ko‘p suv</div></div>
+<div class="example"><div class="en">She has lots of friends.</div><div class="uz">Uning ko‘p do‘stlari bor.</div></div>
+<div class="example"><div class="en">We have a lot of work today.</div><div class="uz">Bugun ishimiz ko‘p.</div></div>
+<p>A lot of va lots of kundalik nutqda keng ishlatiladi. “Lots of” biroz norasmiyroq ohangga ega.</p>
+<div class="write">DAFTARGA YOZIB OLING: A LOT OF / LOTS OF + countable plural yoki uncountable noun. Ikkalasi ham “ko‘p” degani.</div>
+
+<hr>
+<h2>9. FEW / A FEW / LITTLE / A LITTLE</h2>
+<p>Bu to‘rtta so‘z oz miqdorni bildiradi. Lekin ularning qaysi ot bilan kelishi va ma’nosi farq qiladi.</p>
+<h3>9.1. FEW — sanaladigan ko‘plik otlar bilan</h3>
+<p>Few — juda kam, deyarli yetarli emas degan salbiy ma’noni beradi.</p>
+<div class="example"><div class="en">I have few friends here.</div><div class="uz">Bu yerda do‘stlarim juda kam.</div></div>
+<h3>9.2. A FEW — sanaladigan ko‘plik otlar bilan</h3>
+<p>A few — bir nechta, oz bo‘lsa ham bor degan ijobiyroq ma’noni beradi.</p>
+<div class="example"><div class="en">I have a few friends here.</div><div class="uz">Bu yerda bir nechta do‘stim bor.</div></div>
+<h3>9.3. LITTLE — uncountable otlar bilan</h3>
+<p>Little — juda oz, deyarli yetarli emas.</p>
+<div class="example"><div class="en">We have little time.</div><div class="uz">Bizda vaqt juda kam.</div></div>
+<h3>9.4. A LITTLE — uncountable otlar bilan</h3>
+<p>A little — biroz, ozgina bo‘lsa ham bor.</p>
+<div class="example"><div class="en">We have a little time.</div><div class="uz">Bizda biroz vaqt bor.</div></div>
+<table>
+<tr><th>So‘z</th><th>Qaysi ot bilan?</th><th>Ma’nosi</th></tr>
+<tr><td>few</td><td>Countable plural</td><td>juda kam</td></tr>
+<tr><td>a few</td><td>Countable plural</td><td>bir nechta</td></tr>
+<tr><td>little</td><td>Uncountable</td><td>juda oz</td></tr>
+<tr><td>a little</td><td>Uncountable</td><td>biroz</td></tr>
+</table>
+<div class="write">DAFTARGA YOZIB OLING: FEW/A FEW — countable plural bilan. LITTLE/A LITTLE — uncountable bilan. “A” qo‘shilishi ma’noni “oz bo‘lsa ham bor” tomonga o‘zgartiradi.</div>
+
+<hr>
+<h2>10. HOW MANY / HOW MUCH</h2>
+<p>Biror narsaning soni yoki miqdorini so‘rash uchun ishlatiladi.</p>
+<h3>10.1. HOW MANY — nechta?</h3>
+<p>Ko‘plikdagi sanaladigan ot bilan ishlatiladi.</p>
+<div class="example"><div class="en">How many apples do you have?</div><div class="uz">Nechta olmangiz bor?</div></div>
+<div class="example"><div class="en">How many children are there?</div><div class="uz">Nechta bola bor?</div></div>
+<h3>10.2. HOW MUCH — qancha?</h3>
+<p>Uncountable ot bilan ishlatiladi. Shuningdek, narxni so‘rashda ham qo‘llanadi.</p>
+<div class="example"><div class="en">How much milk do we need?</div><div class="uz">Bizga qancha sut kerak?</div></div>
+<div class="example"><div class="en">How much is this bag?</div><div class="uz">Bu sumka qancha turadi?</div></div>
+<h3>10.3. Savol tuzilishi</h3>
+<p>Do/Does bilan:</p>
+<div class="formula">How many + plural noun + do/does + S + V1?</div>
+<div class="example"><div class="en">How many books do you read?</div><div class="uz">Siz nechta kitob o‘qiysiz?</div></div>
+<div class="formula">How much + uncountable noun + do/does + S + V1?</div>
+<div class="example"><div class="en">How much water does he drink?</div><div class="uz">U qancha suv ichadi?</div></div>
+<p>Bu yerda S — Subject (ega), V1 — fe’lning asosiy shakli. Be fe’li bilan esa “How many students are there?” kabi tuzilma ishlatiladi.</p>
+<div class="write">DAFTARGA YOZIB OLING: HOW MANY + ko‘plikdagi sanaladigan ot. HOW MUCH + sanalmaydigan ot. Narxni so‘rashda ham HOW MUCH ishlatiladi.</div>
+
+<hr>
+<h2>11. MUHIM ISTISNOLAR VA MA’NO O‘ZGARISHI</h2>
+<p>Ingliz tilida ayrim otlar vaziyatga qarab countable yoki uncountable bo‘lishi mumkin. Shuning uchun har doim faqat so‘zning o‘ziga qarab hukm qilmaymiz — uning ma’nosiga ham qaraymiz.</p>
+<table>
+<tr><th>Uncountable ma’nosi</th><th>Countable ma’nosi</th></tr>
+<tr><td>chicken — tovuq go‘shti</td><td>a chicken — bitta tovuq</td></tr>
+<tr><td>paper — qog‘oz materiali</td><td>a paper — maqola/hujjat</td></tr>
+<tr><td>coffee — qahva ichimligi</td><td>two coffees — ikki finjon qahva (buyurtmada)</td></tr>
+<tr><td>experience — tajriba</td><td>an experience — boshdan kechirilgan voqea</td></tr>
+<tr><td>glass — shisha materiali</td><td>a glass — stakan</td></tr>
+<tr><td>time — vaqt</td><td>three times — uch marta</td></tr>
+</table>
+<div class="example"><div class="en">I like chicken.</div><div class="uz">Men tovuq go‘shtini yoqtiraman.</div></div>
+<div class="example"><div class="en">There are three chickens in the garden.</div><div class="uz">Bog‘da uchta tovuq bor.</div></div>
+<div class="example"><div class="en">I need some paper.</div><div class="uz">Menga biroz qog‘oz kerak.</div></div>
+<div class="example"><div class="en">I read a paper about education.</div><div class="uz">Men ta’lim haqida bir maqola o‘qidim.</div></div>
+<div class="write">DAFTARGA YOZIB OLING: Ayrim otlar ma’nosiga qarab countable yoki uncountable bo‘lishi mumkin. Masalan: chicken, paper, coffee, experience, glass, time.</div>
+
+<hr>
+<h2>12. ENG KO‘P UCHRAYDIGAN XATOLAR</h2>
+<table>
+<tr><th>Noto‘g‘ri</th><th>To‘g‘ri</th><th>Sabab</th></tr>
+<tr><td>an advice</td><td>some advice / a piece of advice</td><td>advice — uncountable</td></tr>
+<tr><td>informations</td><td>information</td><td>information odatda -s olmaydi</td></tr>
+<tr><td>furnitures</td><td>furniture</td><td>furniture — uncountable</td></tr>
+<tr><td>many water</td><td>much water</td><td>water — uncountable</td></tr>
+<tr><td>much books</td><td>many books</td><td>books — countable plural</td></tr>
+<tr><td>a apples</td><td>an apple / apples</td><td>a/an birlik bilan</td></tr>
+<tr><td>two bread</td><td>two loaves of bread</td><td>bread — uncountable</td></tr>
+<tr><td>little friends</td><td>few friends</td><td>friends — countable plural</td></tr>
+</table>
+<div class="write">DAFTARGA YOZIB OLING: advice, information, furniture, homework kabi otlarni odatda -s bilan ko‘plikka aylantirmaymiz. Many sanaladigan ko‘plik bilan, much sanalmaydigan ot bilan ishlatiladi.</div>
+
+<h2>13. QISQA UMUMLASHTIRISH</h2>
+<table>
+<tr><th>Vazifa</th><th>Countable</th><th>Uncountable</th></tr>
+<tr><td>Bitta</td><td>a/an apple</td><td>some water</td></tr>
+<tr><td>Ko‘p</td><td>many books</td><td>much water</td></tr>
+<tr><td>Ko‘p (umumiy)</td><td>a lot of books</td><td>a lot of water</td></tr>
+<tr><td>Bir nechta / biroz</td><td>a few apples</td><td>a little water</td></tr>
+<tr><td>Nechta / qancha</td><td>How many?</td><td>How much?</td></tr>
+<tr><td>O‘lchov</td><td>two apples</td><td>two bottles of water</td></tr>
+</table>
+<div class="write">DAFTARGA YOZIB OLING: Ushbu jadvalni to‘liq ko‘chirib oling. Bu darsning eng muhim xulosasi hisoblanadi.</div>
+</section>
+
+<section id="vocabulary">
+<h2>14. VOCABULARY — 40 TA YANGI SO‘Z</h2>
+<p>Quyidagi 40 ta so‘zni o‘rganing. Har bir so‘zning inglizchasi, o‘zbekcha tarjimasi, talaffuzi va misoli berilgan.</p>
+<div class="write">DAFTARGA YOZIB OLING: 40 ta so‘zning barchasini lug‘at daftaringizga inglizcha, tarjimasi va talaffuzi bilan ko‘chiring. Har birining misol gapini ham yozing.</div>
+<div class="word-grid" id="wordGrid"></div>
+</section>
+
+<section id="reading">
+<h2>15. READING — SHOPPING FOR FOOD</h2>
+<div class="skill">
+<h3>A Day at the Supermarket</h3>
+<p>Anna goes to the supermarket every Saturday. She usually buys some bread, milk, rice and fruit. Today, she needs a lot of food because her family is coming for dinner.</p>
+<p>She buys six apples, four oranges and two bottles of water. She also buys a kilo of rice and a loaf of bread. There isn't much sugar at home, so she buys a small bag of sugar.</p>
+<p>At the supermarket, Anna sees her friend Tom. He asks, “How many eggs do you need?” Anna says, “I need ten eggs.” Tom also asks, “How much milk do you drink every week?” Anna answers, “We drink a lot of milk.”</p>
+<p>After shopping, Anna goes home and puts the food in the kitchen. She is happy because she has everything she needs.</p>
+<hr>
+<h4>Reading vocabulary</h4>
+<ul>
+<li>supermarket — supermarket</li><li>usually — odatda</li>
+<li>coming for dinner — kechki ovqatga kelayotgan</li>
+<li>a kilo of — bir kilogramm</li><li>everything — hamma narsa</li>
+</ul>
+<h4>Reading questions</h4>
+<div class="question"><p>1. When does Anna go shopping?</p>
+<label><input type="radio" name="r1" value="a"> Every Monday</label>
+<label><input type="radio" name="r1" value="b"> Every Saturday</label>
+<label><input type="radio" name="r1" value="c"> Every Sunday</label></div>
+<div class="question"><p>2. How many apples does she buy?</p>
+<label><input type="radio" name="r2" value="a"> Four</label>
+<label><input type="radio" name="r2" value="b"> Ten</label>
+<label><input type="radio" name="r2" value="c"> Six</label></div>
+<div class="question"><p>3. What does she buy in bottles?</p>
+<label><input type="radio" name="r3" value="a"> Water</label>
+<label><input type="radio" name="r3" value="b"> Rice</label>
+<label><input type="radio" name="r3" value="c"> Bread</label></div>
+<button onclick="checkReading()">Check Reading</button>
+<div id="readingResult" class="feedback"></div>
+</div>
+</section>
+
+<section id="listening">
+<h2>16. LISTENING — AT THE SUPERMARKET</h2>
+<p>Matnni avval odatiy tezlikda, keyin sekin tinglang. Tinglashdan oldin matnni o‘qishga shoshilmang.</p>
+<div class="skill">
+<h3>Listening audio</h3>
+<button onclick="playListening(1)">▶ Normal speed</button>
+<button class="secondary" onclick="playListening(0.72)">▶ Slow speed</button>
+<button class="secondary" onclick="speechSynthesis.cancel()">■ Stop</button>
+<p class="muted">Audio brauzeringizning inglizcha ovozidan foydalanadi.</p>
+<hr>
+<p><b>Transcript — tinglaganingizdan keyin tekshiring:</b></p>
+<p>Customer: Good morning. I need some apples and a bottle of milk.</p>
+<p>Shop assistant: Of course. How many apples would you like?</p>
+<p>Customer: Six apples, please. And I need two loaves of bread.</p>
+<p>Shop assistant: Anything else?</p>
+<p>Customer: Yes, some rice and a little sugar, please.</p>
+<p>Shop assistant: Here you are. That is everything.</p>
+</div>
+<div class="question"><p>1. How many apples does the customer want?</p>
+<label><input type="radio" name="l1" value="a"> Four</label>
+<label><input type="radio" name="l1" value="b"> Six</label>
+<label><input type="radio" name="l1" value="c"> Eight</label></div>
+<div class="question"><p>2. How many loaves of bread does the customer need?</p>
+<label><input type="radio" name="l2" value="a"> One</label>
+<label><input type="radio" name="l2" value="b"> Three</label>
+<label><input type="radio" name="l2" value="c"> Two</label></div>
+<button onclick="checkListening()">Check Listening</button>
+<div id="listeningResult" class="feedback"></div>
+</section>
+
+<section id="speaking">
+<h2>17. SPEAKING — LET'S TALK</h2>
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir savolga kamida 2 ta gap bilan javob berishga harakat qiling.</p>
+<div class="skill">
+<h3>Speaking questions</h3>
+<ol>
+<li>What food do you usually buy?</li>
+<li>How much water do you drink every day?</li>
+<li>How many people are there in your family?</li>
+<li>Do you have a lot of books at home?</li>
+<li>How much time do you spend learning English?</li>
+<li>What do you need to buy this week?</li>
+<li>Do you eat a lot of fruit?</li>
+<li>What is in your fridge?</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Kamida 5 ta savolga bergan javobingizni yozing. Keyin ularni ovoz chiqarib 3 martadan takrorlang.</div>
+</div>
+<div class="skill">
+<h3>Useful speaking patterns</h3>
+<div class="example"><div class="en">I usually buy some...</div><div class="uz">Men odatda biroz ... sotib olaman.</div></div>
+<div class="example"><div class="en">There are a few...</div><div class="uz">Bir nechta ... bor.</div></div>
+<div class="example"><div class="en">I don't have much...</div><div class="uz">Menda ko‘p ... yo‘q.</div></div>
+<div class="example"><div class="en">I need a bottle of...</div><div class="uz">Menga bir shisha ... kerak.</div></div>
+</div>
+</section>
+
+<section id="writing">
+<h2>18. WRITING — MY SHOPPING LIST</h2>
+<p>Quyidagi mavzu bo‘yicha 80–100 so‘zli kichik matn yozing.</p>
+<div class="note">Topic: My Shopping List — Mening xaridlar ro‘yxatim</div>
+<p>Matningizda quyidagilar bo‘lishi kerak:</p>
+<ul>
+<li>What food do you usually buy?</li>
+<li>How many apples, eggs or other countable things do you need?</li>
+<li>How much milk, water or rice do you need?</li>
+<li>Use some, any, much, many and a lot of.</li>
+<li>Explain why you buy these things.</li>
+</ul>
+<div class="write">DAFTARGA YOZIB OLING: 80–100 so‘zli matnni avval daftaringizda yozing. Kamida 5 ta countable va 5 ta uncountable ot ishlating.</div>
+</section>
+
+<section id="homework">
+<h2>19. HOMEWORK — UYGA VAZIFA</h2>
+<p>Uyga vazifa bitta bo‘limdan iborat. Quyidagi 5 ta topshiriqning barchasini bajaring.</p>
+<div class="skill">
+<h3>Task 1 — Grammar: Countable or Uncountable?</h3>
+<p>Quyidagi otlarni ikki guruhga ajrating: countable va uncountable.</p>
+<p>apple, water, book, rice, advice, chair, money, student, bread, information, egg, furniture, milk, child, homework</p>
+<div class="write">DAFTARGA YOZIB OLING: Har bir so‘zni tegishli guruhga joylashtiring va 5 ta gap tuzing.</div>
+</div>
+<div class="skill">
+<h3>Task 2 — Grammar: Complete the sentences</h3>
+<p>Bo‘sh joylarni much, many, some, any, a few yoki a little bilan to‘ldiring.</p>
+<ol>
+<li>There are ______ apples in the kitchen.</li>
+<li>We don't have ______ milk.</li>
+<li>How ______ students are in your class?</li>
+<li>I need ______ sugar for my tea.</li>
+<li>Do you have ______ questions?</li>
+<li>She has ______ close friends.</li>
+<li>How ______ money do you need?</li>
+<li>There is ______ water in the bottle.</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Har bir javobni yozing va nima uchun shu so‘zni tanlaganingizni tushuntiring.</div>
+</div>
+<div class="skill">
+<h3>Task 3 — Vocabulary</h3>
+<p>Bugungi 40 ta so‘zni yodlang. Ulardan kamida 15 tasidan foydalanib inglizcha gaplar tuzing.</p>
+<div class="write">DAFTARGA YOZIB OLING: 40 ta so‘zni tarjimasi va talaffuzi bilan yozing. 15 ta mustaqil gap tuzing.</div>
+</div>
+<div class="skill">
+<h3>Task 4 — Translation: Uzbek to English</h3>
+<p>Quyidagi gaplarni ingliz tiliga tarjima qiling.</p>
+<ol>
+<li>Menda ko‘p kitoblar bor.</li>
+<li>Bizga biroz suv kerak.</li>
+<li>Uning do‘stlari juda kam.</li>
+<li>Siz qancha sut ichasiz?</li>
+<li>Men ikkita shisha suv sotib oldim.</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Har bir gapni ingliz tiliga tarjima qiling. Countable va uncountable qoidalariga e’tibor bering.</div>
+</div>
+<div class="skill">
+<h3>Task 5 — Translation: English to Uzbek</h3>
+<p>Quyidagi gaplarni o‘zbek tiliga tarjima qiling.</p>
+<ol>
+<li>There isn't much sugar in the kitchen.</li>
+<li>How many children are there?</li>
+<li>She gave me a piece of advice.</li>
+<li>We have a few apples and a little milk.</li>
+<li>Would you like some tea?</li>
+</ol>
+<div class="write">DAFTARGA YOZIB OLING: Har bir gapni o‘zbekchaga tarjima qiling. So‘ng countable va uncountable otlarni belgilang.</div>
+</div>
+</section>
+
+<section id="test">
+<h2>20. FINAL TEST — 30 QUESTIONS</h2>
+<p>Bu test darsning barcha muhim qoidalarini tekshiradi. Har bir savolga javob bering. Testni yakunlash uchun “Check My Test” tugmasini bosing.</p>
+<div class="note">O‘tish mezoni: 80% — kamida 24 ta to‘g‘ri javob.</div>
+<div id="quiz"></div>
+<button onclick="checkTest()">CHECK MY TEST</button>
+<button class="secondary" onclick="resetTest()">Reset</button>
+<div id="testResult" class="result"></div>
+</section>
+
+<div class="footer">
+ <h2>ENGLISH UP</h2>
+ <p>Learn today. Succeed tomorrow.</p>
+ <p>Lesson 6 — Countable & Uncountable Nouns</p>
+ <p>Keep learning. Keep growing!</p>
+</div>
+</main>
+
+<script>
+function toggleTheme(){
+ document.body.classList.toggle('dark');
+ localStorage.setItem('euLessonTheme',document.body.classList.contains('dark')?'dark':'light');
+}
+if(localStorage.getItem('euLessonTheme')==='dark')document.body.classList.add('dark');
+
+function speak(text,rate=0.9){
+ if(!('speechSynthesis'in window)){alert('Audio is not supported in this browser.');return;}
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(text);
+ u.lang='en-US';u.rate=rate;speechSynthesis.speak(u);
+}
+function playListening(rate){
+ const t="Customer: Good morning. I need some apples and a bottle of milk. Shop assistant: Of course. How many apples would you like? Customer: Six apples, please. And I need two loaves of bread. Shop assistant: Anything else? Customer: Yes, some rice and a little sugar, please. Shop assistant: Here you are. That is everything.";
+ speak(t,rate);
+}
+
+const words=[
+["apple","olma","EP-əl","I eat an apple every day."],
+["banana","banan","bə-NA-nə","She eats a banana."],
+["bread","non","bred","We need some bread."],
+["water","suv","WO-tər","I drink water every day."],
+["milk","sut","milk","There is some milk in the fridge."],
+["rice","guruch","rais","We cook rice for dinner."],
+["sugar","shakar","SHU-gər","I need a little sugar."],
+["salt","tuz","solt","Add some salt, please."],
+["money","pul","MA-ni","I don't have much money."],
+["information","ma'lumot","in-fər-MEY-shən","This information is useful."],
+["advice","maslahat","əd-VAIS","Thank you for your advice."],
+["furniture","mebel","FƏR-ni-chər","The furniture is new."],
+["homework","uy vazifasi","HOUM-wərk","My homework is easy."],
+["luggage","yuk","LAG-ij","My luggage is heavy."],
+["equipment","jihoz","i-KWIP-mənt","The equipment is expensive."],
+["bottle","shisha","BOT-əl","I need a bottle of water."],
+["glass","stakan","glas","Can I have a glass of milk?"],
+["cup","piyola","kap","She drinks a cup of tea."],
+["piece","bo'lak, dona","piis","I want a piece of bread."],
+["loaf","buxanka non","ləuf","He buys a loaf of bread."],
+["bowl","kosa","boul","There is rice in the bowl."],
+["slice","tilim","slais","I eat a slice of bread."],
+["kilo","kilogramm","KII-lou","I need a kilo of apples."],
+["egg","tuxum","eg","We need six eggs."],
+["carrot","sabzi","KER-ət","She buys three carrots."],
+["potato","kartoshka","pə-TEY-tou","I need some potatoes."],
+["tomato","pomidor","tə-MEY-tou","There are five tomatoes."],
+["cheese","pishloq","chiiz","I like cheese."],
+["meat","go'sht","miit","We don't eat much meat."],
+["fruit","meva","fruut","Fruit is good for you."],
+["vegetable","sabzavot","VEJ-tə-bəl","A carrot is a vegetable."],
+["customer","mijoz","KAS-tə-mər","The customer is waiting."],
+["shop assistant","sotuvchi","shop ə-SIS-tənt","The shop assistant is helpful."],
+["price","narx","prais","What is the price?"],
+["cheap","arzon","chiip","This bread is cheap."],
+["expensive","qimmat","ik-SPEN-siv","That bag is expensive."],
+["enough","yetarli","i-NAF","We have enough food."],
+["empty","bo'sh","EMP-ti","The bottle is empty."],
+["full","to'la","ful","The glass is full."],
+["fresh","yangi, barra","fresh","These apples are fresh."]
+];
+const wordGrid=document.getElementById('wordGrid');
+words.forEach((w,i)=>{
+ const d=document.createElement('div');d.className='word';
+ d.innerHTML=`<strong>${i+1}. ${w[0]}</strong> <button class="audio" onclick="speak('${w[0].replace(/'/g,"\\'")}')">▶ Audio</button><small>🇺🇿 ${w[1]}</small><small>🔊 ${w[2]}</small><p class="uz">${w[3]}</p>`;
+ wordGrid.appendChild(d);
+});
+
+function checkReading(){
+ const ans={r1:'b',r2:'c',r3:'a'};let n=0;
+ Object.keys(ans).forEach(k=>{if(document.querySelector(`input[name="${k}"]:checked`)?.value===ans[k])n++;});
+ document.getElementById('readingResult').textContent=`Natija: ${n}/3`;
+}
+function checkListening(){
+ const ans={l1:'b',l2:'c'};let n=0;
+ Object.keys(ans).forEach(k=>{if(document.querySelector(`input[name="${k}"]:checked`)?.value===ans[k])n++;});
+ document.getElementById('listeningResult').textContent=`Natija: ${n}/2`;
+}
+
+const questions=[
+{q:"Which noun is countable?",o:["water","apple","rice","money"],a:1,e:"Apple sanaladigan ot."},
+{q:"Which noun is uncountable?",o:["chair","book","milk","egg"],a:2,e:"Milk odatda sanalmaydi."},
+{q:"Choose the correct plural: one child, two ...",o:["childs","children","childes","child"],a:1,e:"Child → children."},
+{q:"Choose the correct form.",o:["an book","a apple","an orange","a eggs"],a:2,e:"Orange unli tovush bilan boshlanadi."},
+{q:"Which is correct?",o:["an advice","some advice","advices","many advice"],a:1,e:"Advice odatda uncountable."},
+{q:"Choose the correct word: How ___ apples?",o:["much","many","little","any"],a:1,e:"Apples — countable plural."},
+{q:"Choose the correct word: How ___ water?",o:["many","few","much","a few"],a:2,e:"Water — uncountable."},
+{q:"There isn't ___ milk.",o:["many","some","any","a few"],a:2,e:"Inkor gapda odatda any."},
+{q:"I have ___ friends. (bir nechta)",o:["a few","a little","much","any"],a:0,e:"Friends — countable plural."},
+{q:"We have ___ time. (biroz)",o:["a few","many","a little","few"],a:2,e:"Time bu ma'noda uncountable."},
+{q:"Choose the correct sentence.",o:["I have many money.","I have much books.","I have a lot of money.","I have an information."],a:2,e:"A lot of money — to‘g‘ri."},
+{q:"Which is correct?",o:["two breads","two loaves of bread","two bread","two breads of"],a:1,e:"Breadni loaf orqali sanash mumkin."},
+{q:"Choose the correct plural of city.",o:["citys","cities","cityes","citis"],a:1,e:"Undosh + y → ies."},
+{q:"Choose the correct plural of box.",o:["boxs","boxies","boxes","box"],a:2,e:"Box → boxes."},
+{q:"The news ___ interesting.",o:["are","is","be","were"],a:1,e:"News odatda birlik fe’l bilan keladi."},
+{q:"Choose the correct word: There are ___ students.",o:["much","a little","many","little"],a:2,e:"Students — countable plural."},
+{q:"Would you like ___ tea?",o:["any","some","many","few"],a:1,e:"Taklifda some ishlatilishi mumkin."},
+{q:"Choose the correct meaning of 'few'.",o:["juda kam","biroz","juda ko‘p","yetarli"],a:0,e:"Few — juda kam, yetarli emas ma'nosida."},
+{q:"Choose the correct meaning of 'a few'.",o:["umuman yo‘q","bir nechta","juda ko‘p","hech qachon"],a:1,e:"A few — bir nechta."},
+{q:"Which phrase is correct?",o:["a information","a piece of information","two informations","many information"],a:1,e:"A piece of information."},
+{q:"Choose the correct sentence.",o:["She has a furniture.","She has many furniture.","She has some furniture.","She has furnitures."],a:2,e:"Furniture uncountable."},
+{q:"Which noun can be countable in a different meaning?",o:["water","paper","sugar","rice"],a:1,e:"A paper — maqola yoki hujjat."},
+{q:"Choose the correct question.",o:["How much eggs do you need?","How many eggs do you need?","How many milk do you need?","How much books do you need?"],a:1,e:"Eggs — countable plural."},
+{q:"Choose the correct sentence.",o:["There are some water.","There is some water.","There is many water.","There are much water."],a:1,e:"Water bilan is ishlatiladi."},
+{q:"Which is uncountable?",o:["person","child","equipment","tomato"],a:2,e:"Equipment odatda uncountable."},
+{q:"Choose the correct word: I don't have ___ books.",o:["much","many","little","a little"],a:1,e:"Books — countable plural."},
+{q:"Choose the correct word: There is ___ sugar left.",o:["a few","many","a little","few"],a:2,e:"Sugar — uncountable."},
+{q:"Complete: Two ___ of water.",o:["bottle","bottles","waters","much"],a:1,e:"Two bottles of water."},
+{q:"Which sentence is correct?",o:["An university","A university","An hour? no article","A hour"],a:1,e:"University /juː/ undosh tovush bilan boshlanadi."},
+{q:"Translate: 'Menga bir nechta olma kerak.'",o:["I need a little apples.","I need a few apples.","I need much apples.","I need an apples."],a:1,e:"A few apples — bir nechta olma."}
+];
+
+const quiz=document.getElementById('quiz');
+questions.forEach((q,i)=>{
+ const box=document.createElement('div');box.className='question';box.id='q'+i;
+ let html=`<p>${i+1}. ${q.q}</p>`;
+ q.o.forEach((o,j)=>html+=`<label><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`);
+ html+=`<div class="feedback" id="f${i}"></div>`;
+ box.innerHTML=html;quiz.appendChild(box);
+});
+function checkTest(){
+ let score=0,answered=0;
+ questions.forEach((q,i)=>{
+ const selected=document.querySelector(`input[name="q${i}"]:checked`);
+ const fb=document.getElementById('f'+i);
+ if(selected)answered++;
+ if(selected&&Number(selected.value)===q.a){
+  score++;fb.className='feedback correct';fb.textContent='✓ Correct! '+q.e;
+ }else{
+  fb.className='feedback incorrect';
+  fb.textContent=(selected?'✗ Incorrect. ':'○ Unanswered. ')+
+  'Correct answer: '+q.o[q.a]+'. '+q.e;
+ }
+ });
+ const pct=Math.round(score/questions.length*100);
+ const passed=pct>=80;
+ const result=document.getElementById('testResult');
+ result.style.display='block';
+ result.innerHTML=`<h3>${passed?'🎉 Excellent work!':'📘 Keep practising!'}</h3>
+ <h2>${score} / 30 — ${pct}%</h2>
+ <p>Answered: ${answered}/30</p>
+ <p>Correct: ${score} | Incorrect or unanswered: ${30-score}</p>
+ <p><b>${passed?'You passed the lesson test!':'You need at least 24 correct answers to pass.'}</b></p>
+ <p>${passed?'Keyingi darsga tayyorsiz!':'Qoidalarni yana bir bor takrorlang va testni qayta ishlang.'}</p>`;
+ localStorage.setItem('euLesson6Test',JSON.stringify({score,pct,passed,date:new Date().toISOString()}));
+ result.scrollIntoView({behavior:'smooth',block:'center'});
+ updateProgress();
+}
+function resetTest(){
+ document.querySelectorAll('#quiz input').forEach(x=>x.checked=false);
+ document.querySelectorAll('#quiz .feedback').forEach(x=>{x.textContent='';x.className='feedback';});
+ document.getElementById('testResult').style.display='none';
+}
+function updateProgress(){
+ const passed=JSON.parse(localStorage.getItem('euLesson6Test')||'null');
+ const pct=passed&&passed.passed?100:0;
+ document.getElementById('progressFill').style.width=pct+'%';
+ document.getElementById('progressLabel').textContent='Test holati: '+(pct?'100% — Passed':'Testni topshirish kutilmoqda');
+}
+updateProgress();
+</script>
+</body>
+</html>
+
