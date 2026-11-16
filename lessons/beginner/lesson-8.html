@@ -64,29 +64,42 @@
             border-radius: 4px;
             margin: 20px 0;
         }
-        .word-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
+        
+        /* Fe'llar ro'yxati uchun maxsus dizayn */
+        .verb-container {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
         }
-        .word-item {
+        .verb-header {
             display: flex;
             align-items: center;
-            background: #F9FAFB;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
+            padding: 12px 15px;
+            background: white;
+            border-bottom: 1px solid var(--border);
         }
-        .word-item:hover {
-            border-color: var(--primary);
-            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+        .verb-details {
+            padding: 15px;
+            background: #EEF2FF;
+            font-size: 0.95em;
         }
+        .verb-details .example {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .verb-details .rule {
+            color: var(--error);
+            font-weight: bold;
+        }
+
         .num { font-weight: bold; width: 30px; color: var(--primary); }
-        .word { width: 150px; font-weight: 600; }
-        .transcription { width: 150px; color: #059669; font-family: monospace; font-size: 1.05em; }
+        .word { width: 140px; font-weight: 600; }
+        .transcription { width: 140px; color: #059669; font-family: monospace; font-size: 1.05em; }
         .translation { flex-grow: 1; color: var(--text-light); }
+        
         .audio-btn {
             background: var(--primary);
             color: white;
@@ -103,7 +116,7 @@
         }
         .audio-btn:hover { background: var(--primary-hover); }
         .audio-btn svg { width: 18px; height: 18px; fill: currentColor; }
-        
+
         .time-item {
             display: flex;
             align-items: center;
@@ -212,7 +225,6 @@
             color: var(--text-light);
         }
 
-        /* Motivatsion Jumla Dizayni */
         .motivation-box {
             margin-top: 50px;
             padding: 30px;
@@ -236,15 +248,16 @@
             line-height: 1.8;
         }
         
-        .strict-rule {
+        .strict-rule-box {
             background: #FEE2E2;
             border: 2px solid #EF4444;
             color: #991B1B;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
             font-weight: bold;
             text-align: center;
+            font-size: 0.95em;
         }
     </style>
 </head>
@@ -326,47 +339,339 @@
     <h2>2. Kundalik ish-harakatlar (Daily Routine)</h2>
     <p>Endi kundalik ish-harakatlarni ifodalashni o'rganamiz. Quyida 30 ta eng kerakli fe'l keltirilgan. Ularning 15 tasi harakat fe'llari (wake up, go to...), qolgan 15 tasi esa oddiy fe'llar (read, see, write...).</p>
     <p>Har bir fe'lning tarjimasi, dinamikasi va <b>beginner darajasidagi misol gapi</b> (vaqt, kun yoki oyga bog'langan holda) berilgan.</p>
-    
-    <div class="strict-rule">
-        Qat'iy buyruq: Yuqoridagi har bir gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!
-    </div>
 
     <h3>15 ta harakat fe'llari (Action Verbs):</h3>
-    <div class="word-list">
-        <div class="word-item"><span class="num">1</span><span class="word">Wake up</span><span class="transcription">/weɪk ʌp/</span><span class="translation">Uyg'onmoq</span><button class="audio-btn" onclick="speak('Wake up. I wake up at 7 oclock on Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">2</span><span class="word">Get up</span><span class="transcription">/ɡet ʌp/</span><span class="translation">O'rindan turmoq</span><button class="audio-btn" onclick="speak('Get up. I get up at 7:10 on Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">3</span><span class="word">Brush teeth</span><span class="transcription">/brʌʃ tiːθ/</span><span class="translation">Tish yuvmoq</span><button class="audio-btn" onclick="speak('Brush teeth. I brush teeth in the morning')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">4</span><span class="word">Have breakfast</span><span class="transcription">/hæv ˈbrek.fəst/</span><span class="translation">Nonushta qilmoq</span><button class="audio-btn" onclick="speak('Have breakfast. I have breakfast at 8 oclock')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">5</span><span class="word">Go to school</span><span class="transcription">/ɡəʊ tuː skuːl/</span><span class="translation">Maktabga bormoq</span><button class="audio-btn" onclick="speak('Go to school. I go to school at 8:30')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">6</span><span class="word">Have lunch</span><span class="transcription">/hæv lʌntʃ/</span><span class="translation">Tushlik qilmoq</span><button class="audio-btn" onclick="speak('Have lunch. I have lunch at 1 PM')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">7</span><span class="word">Do homework</span><span class="transcription">/duː ˈhəʊm.wɜːk/</span><span class="translation">Uyga vazifa qilmoq</span><button class="audio-btn" onclick="speak('Do homework. I do homework in the afternoon')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">8</span><span class="word">Play football</span><span class="transcription">/pleɪ ˈfʊt.bɔːl/</span><span class="translation">Futbol o'ynamoq</span><button class="audio-btn" onclick="speak('Play football. I play football on Friday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">9</span><span class="word">Have dinner</span><span class="transcription">/hæv ˈdɪn.ər/</span><span class="translation">Kechki ovqat yemoq</span><button class="audio-btn" onclick="speak('Have dinner. I have dinner at 7 PM')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">10</span><span class="word">Watch TV</span><span class="transcription">/wɒtʃ tiː viː/</span><span class="translation">Televizor ko'rmoq</span><button class="audio-btn" onclick="speak('Watch TV. I watch TV in the evening')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">11</span><span class="word">Go to bed</span><span class="transcription">/ɡəʊ tuː bed/</span><span class="translation">Yotmoq (uxlashga)</span><button class="audio-btn" onclick="speak('Go to bed. I go to bed at 10 PM')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">12</span><span class="word">Sleep</span><span class="transcription">/sliːp/</span><span class="translation">Uxlamoq</span><button class="audio-btn" onclick="speak('Sleep. I sleep at night')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">13</span><span class="word">Cook</span><span class="transcription">/kʊk/</span><span class="translation">Ovqat pishirmoq</span><button class="audio-btn" onclick="speak('Cook. I cook dinner on Sunday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">14</span><span class="word">Clean</span><span class="transcription">/kliːn/</span><span class="translation">Tozalamoq</span><button class="audio-btn" onclick="speak('Clean. I clean my room on Saturday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">15</span><span class="word">Wash</span><span class="transcription">/wɒʃ/</span><span class="translation">Yuvmoq</span><button class="audio-btn" onclick="speak('Wash. I wash my hands before lunch')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+    
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">1</span><span class="word">Wake up</span><span class="transcription">/weɪk ʌp/</span><span class="translation">Uyg'onmoq</span>
+            <button class="audio-btn" onclick="speak('Wake up. I wake up at 7 oclock on Monday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I wake up at 7 o'clock on Monday. (Men dushanba kuni soat 7 da uyg'onaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">2</span><span class="word">Get up</span><span class="transcription">/ɡet ʌp/</span><span class="translation">O'rindan turmoq</span>
+            <button class="audio-btn" onclick="speak('Get up. I get up at 7:10 on Monday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I get up at 7:10 on Monday. (Men dushanba kuni soat 7:10 da o'rindan turaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">3</span><span class="word">Brush teeth</span><span class="transcription">/brʌʃ tiːθ/</span><span class="translation">Tish yuvmoq</span>
+            <button class="audio-btn" onclick="speak('Brush teeth. I brush my teeth in the morning.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I brush my teeth in the morning. (Men ertalab tishimni yuvaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">4</span><span class="word">Have breakfast</span><span class="transcription">/hæv ˈbrek.fəst/</span><span class="translation">Nonushta qilmoq</span>
+            <button class="audio-btn" onclick="speak('Have breakfast. I have breakfast at 8 oclock.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I have breakfast at 8 o'clock. (Men soat 8 da nonushta qilaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">5</span><span class="word">Go to school</span><span class="transcription">/ɡəʊ tuː skuːl/</span><span class="translation">Maktabga bormoq</span>
+            <button class="audio-btn" onclick="speak('Go to school. I go to school at 8:30.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I go to school at 8:30. (Men soat 8:30 da maktabga boraman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">6</span><span class="word">Have lunch</span><span class="transcription">/hæv lʌntʃ/</span><span class="translation">Tushlik qilmoq</span>
+            <button class="audio-btn" onclick="speak('Have lunch. I have lunch at 1 PM.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I have lunch at 1 PM. (Men tushlikni soat 1 da qilaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">7</span><span class="word">Do homework</span><span class="transcription">/duː ˈhəʊm.wɜːk/</span><span class="translation">Uyga vazifa qilmoq</span>
+            <button class="audio-btn" onclick="speak('Do homework. I do homework in the afternoon.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I do homework in the afternoon. (Men tushdan keyin uyga vazifa qilaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">8</span><span class="word">Play football</span><span class="transcription">/pleɪ ˈfʊt.bɔːl/</span><span class="translation">Futbol o'ynamoq</span>
+            <button class="audio-btn" onclick="speak('Play football. I play football on Friday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I play football on Friday. (Men juma kuni futbol o'ynayman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">9</span><span class="word">Have dinner</span><span class="transcription">/hæv ˈdɪn.ər/</span><span class="translation">Kechki ovqat yemoq</span>
+            <button class="audio-btn" onclick="speak('Have dinner. I have dinner at 7 PM.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I have dinner at 7 PM. (Men kechki ovqatni soat 7 da yeyman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">10</span><span class="word">Watch TV</span><span class="transcription">/wɒtʃ tiː viː/</span><span class="translation">Televizor ko'rmoq</span>
+            <button class="audio-btn" onclick="speak('Watch TV. I watch TV in the evening.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I watch TV in the evening. (Men kechqurun televizor ko'raman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">11</span><span class="word">Go to bed</span><span class="transcription">/ɡəʊ tuː bed/</span><span class="translation">Yotmoq (uxlashga)</span>
+            <button class="audio-btn" onclick="speak('Go to bed. I go to bed at 10 PM.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I go to bed at 10 PM. (Men kechqurun soat 10 da yotaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">12</span><span class="word">Sleep</span><span class="transcription">/sliːp/</span><span class="translation">Uxlamoq</span>
+            <button class="audio-btn" onclick="speak('Sleep. I sleep at night.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I sleep at night. (Men kechasi uxlayman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">13</span><span class="word">Cook</span><span class="transcription">/kʊk/</span><span class="translation">Ovqat pishirmoq</span>
+            <button class="audio-btn" onclick="speak('Cook. I cook dinner on Sunday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I cook dinner on Sunday. (Men yakshanba kuni kechki ovqat pishiraman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">14</span><span class="word">Clean</span><span class="transcription">/kliːn/</span><span class="translation">Tozalamoq</span>
+            <button class="audio-btn" onclick="speak('Clean. I clean my room on Saturday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I clean my room on Saturday. (Men shanba kuni xonamni tozalayman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">15</span><span class="word">Wash</span><span class="transcription">/wɒʃ/</span><span class="translation">Yuvmoq</span>
+            <button class="audio-btn" onclick="speak('Wash. I wash my hands before lunch.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I wash my hands before lunch. (Men tushlikdan oldin qo'llarimni yuvaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
     </div>
 
     <h3>15 ta oddiy fe'llar (Simple Verbs):</h3>
-    <div class="word-list">
-        <div class="word-item"><span class="num">16</span><span class="word">Read</span><span class="transcription">/riːd/</span><span class="translation">O'qimoq</span><button class="audio-btn" onclick="speak('Read. I read a book in the evening')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">17</span><span class="word">See</span><span class="transcription">/siː/</span><span class="translation">Ko'rmoq</span><button class="audio-btn" onclick="speak('See. I see my friends on Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">18</span><span class="word">Write</span><span class="transcription">/raɪt/</span><span class="translation">Yozmoq</span><button class="audio-btn" onclick="speak('Write. I write a letter on Sunday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">19</span><span class="word">Listen</span><span class="transcription">/ˈlɪs.ən/</span><span class="translation">Tinglamoq</span><button class="audio-btn" onclick="speak('Listen. I listen to music in the morning')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">20</span><span class="word">Speak</span><span class="transcription">/spiːk/</span><span class="translation">Gapirmoq</span><button class="audio-btn" onclick="speak('Speak. I speak English on Tuesday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">21</span><span class="word">Learn</span><span class="transcription">/lɜːn/</span><span class="translation">O'rganmoq</span><button class="audio-btn" onclick="speak('Learn. I learn English in January')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">22</span><span class="word">Work</span><span class="transcription">/wɜːk/</span><span class="translation">Ishlamoq</span><button class="audio-btn" onclick="speak('Work. I work on Monday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">23</span><span class="word">Run</span><span class="transcription">/rʌn/</span><span class="translation">Yugurmoq</span><button class="audio-btn" onclick="speak('Run. I run in the morning')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">24</span><span class="word">Walk</span><span class="transcription">/wɔːk/</span><span class="translation">Yurmoq</span><button class="audio-btn" onclick="speak('Walk. I walk in the park on Sunday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">25</span><span class="word">Draw</span><span class="transcription">/drɔː/</span><span class="translation">Rasm chizmoq</span><button class="audio-btn" onclick="speak('Draw. I draw pictures on Saturday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">26</span><span class="word">Sing</span><span class="transcription">/sɪŋ/</span><span class="translation">Qo'shiq aytmoq</span><button class="audio-btn" onclick="speak('Sing. I sing a song in the evening')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">27</span><span class="word">Dance</span><span class="transcription">/dɑːns/</span><span class="translation">Raqsga tushmoq</span><button class="audio-btn" onclick="speak('Dance. I dance on Friday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">28</span><span class="word">Eat</span><span class="transcription">/iːt/</span><span class="translation">Yemoq</span><button class="audio-btn" onclick="speak('Eat. I eat lunch at 1 PM')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">29</span><span class="word">Drink</span><span class="transcription">/drɪŋk/</span><span class="translation">Ichmoq</span><button class="audio-btn" onclick="speak('Drink. I drink water in the morning')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
-        <div class="word-item"><span class="num">30</span><span class="word">Play</span><span class="transcription">/pleɪ/</span><span class="translation">O'ynamoq</span><button class="audio-btn" onclick="speak('Play. I play with my friends on Sunday')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">16</span><span class="word">Read</span><span class="transcription">/riːd/</span><span class="translation">O'qimoq</span>
+            <button class="audio-btn" onclick="speak('Read. I read a book in the evening.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I read a book in the evening. (Men kechqurun kitob o'qiyman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">17</span><span class="word">See</span><span class="transcription">/siː/</span><span class="translation">Ko'rmoq</span>
+            <button class="audio-btn" onclick="speak('See. I see my friends on Monday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I see my friends on Monday. (Men dushanba kuni do'stlarimni ko'raman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">18</span><span class="word">Write</span><span class="transcription">/raɪt/</span><span class="translation">Yozmoq</span>
+            <button class="audio-btn" onclick="speak('Write. I write a letter on Sunday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I write a letter on Sunday. (Men yakshanba kuni xat yozaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">19</span><span class="word">Listen</span><span class="transcription">/ˈlɪs.ən/</span><span class="translation">Tinglamoq</span>
+            <button class="audio-btn" onclick="speak('Listen. I listen to music in the morning.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I listen to music in the morning. (Men ertalab musiqa tinglayman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">20</span><span class="word">Speak</span><span class="transcription">/spiːk/</span><span class="translation">Gapirmoq</span>
+            <button class="audio-btn" onclick="speak('Speak. I speak English on Tuesday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I speak English on Tuesday. (Men seshanba kuni ingliz tilida gapiraman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">21</span><span class="word">Learn</span><span class="transcription">/lɜːn/</span><span class="translation">O'rganmoq</span>
+            <button class="audio-btn" onclick="speak('Learn. I learn English in January.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I learn English in January. (Men yanvar oyida ingliz tilini o'rganaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">22</span><span class="word">Work</span><span class="transcription">/wɜːk/</span><span class="translation">Ishlamoq</span>
+            <button class="audio-btn" onclick="speak('Work. I work on Monday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I work on Monday. (Men dushanba kuni ishlayman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">23</span><span class="word">Run</span><span class="transcription">/rʌn/</span><span class="translation">Yugurmoq</span>
+            <button class="audio-btn" onclick="speak('Run. I run in the morning.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I run in the morning. (Men ertalab yuguraman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">24</span><span class="word">Walk</span><span class="transcription">/wɔːk/</span><span class="translation">Yurmoq</span>
+            <button class="audio-btn" onclick="speak('Walk. I walk in the park on Sunday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I walk in the park on Sunday. (Men yakshanba kuni bog'da yuraman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">25</span><span class="word">Draw</span><span class="transcription">/drɔː/</span><span class="translation">Rasm chizmoq</span>
+            <button class="audio-btn" onclick="speak('Draw. I draw pictures on Saturday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I draw pictures on Saturday. (Men shanba kuni rasm chizaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">26</span><span class="word">Sing</span><span class="transcription">/sɪŋ/</span><span class="translation">Qo'shiq aytmoq</span>
+            <button class="audio-btn" onclick="speak('Sing. I sing a song in the evening.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I sing a song in the evening. (Men kechqurun qo'shiq aytaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">27</span><span class="word">Dance</span><span class="transcription">/dɑːns/</span><span class="translation">Raqsga tushmoq</span>
+            <button class="audio-btn" onclick="speak('Dance. I dance on Friday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I dance on Friday. (Men juma kuni raqsga tushaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">28</span><span class="word">Eat</span><span class="transcription">/iːt/</span><span class="translation">Yemoq</span>
+            <button class="audio-btn" onclick="speak('Eat. I eat lunch at 1 PM.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I eat lunch at 1 PM. (Men tushlikni soat 1 da yeyman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">29</span><span class="word">Drink</span><span class="transcription">/drɪŋk/</span><span class="translation">Ichmoq</span>
+            <button class="audio-btn" onclick="speak('Drink. I drink water in the morning.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I drink water in the morning. (Men ertalab suv ichaman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
+    </div>
+
+    <div class="verb-container">
+        <div class="verb-header">
+            <span class="num">30</span><span class="word">Play</span><span class="transcription">/pleɪ/</span><span class="translation">O'ynamoq</span>
+            <button class="audio-btn" onclick="speak('Play. I play with my friends on Sunday.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+        </div>
+        <div class="verb-details">
+            <div class="example">Misol: I play with my friends on Sunday. (Men yakshanba kuni do'stlarim bilan o'ynayman.)</div>
+            <div class="strict-rule-box">Qat'iy buyruq: Yuqoridagi gapni ovoz chiqarib 5 marotabadan o'qing va talaffuzingizni dinamika bilan solishtiring!</div>
+        </div>
     </div>
 
     <h2>3. Double Questions (Qo'sh savollar)</h2>
@@ -375,7 +680,6 @@
     <div class="dialog-container">
         <div class="dialog-line">
             <span><span class="speaker">What time</span> (Soat nechada?)</span>
-            <span class="translation">Vaqtni so'rash uchun</span>
             <button class="audio-btn" onclick="speak('What time')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
             <div class="example">Misol: <b>What time</b> do you wake up? (Soat nechada uyg'onasiz?)</div>
             <div class="example">Misol: <b>What time</b> is it? (Soat necha?)</div>
@@ -383,7 +687,6 @@
         </div>
         <div class="dialog-line">
             <span><span class="speaker">What day</span> (Qaysi kun?)</span>
-            <span class="translation">Kunni so'rash uchun</span>
             <button class="audio-btn" onclick="speak('What day')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
             <div class="example">Misol: <b>What day</b> is it today? (Bugun qaysi kun?)</div>
             <div class="example">Misol: <b>What day</b> do you play football? (Qaysi kun futbol o'ynaysiz?)</div>
@@ -391,7 +694,6 @@
         </div>
         <div class="dialog-line">
             <span><span class="speaker">What month</span> (Qaysi oy?)</span>
-            <span class="translation">Oyni so'rash uchun</span>
             <button class="audio-btn" onclick="speak('What month')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
             <div class="example">Misol: <b>What month</b> is it? (Qaysi oy?)</div>
             <div class="example">Misol: <b>What month</b> is your birthday? (Tug'ilgan kuningiz qaysi oyda?)</div>
@@ -399,7 +701,6 @@
         </div>
         <div class="dialog-line">
             <span><span class="speaker">What year</span> (Qaysi yil?)</span>
-            <span class="translation">Yilni so'rash uchun</span>
             <button class="audio-btn" onclick="speak('What year')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
             <div class="example">Misol: <b>What year</b> is it? (Qaysi yil?)</div>
             <div class="example">Misol: <b>What year</b> did you start school? (Maktabni qaysi yili boshlagansiz?)</div>
@@ -433,21 +734,12 @@
             <div class="input-group"><label>20. Yozmoq (inglizcha)</label><input type="text" id="inp20" placeholder="Javob..."></div>
             <div class="input-group"><label>21. Yakshanba (inglizcha)</label><input type="text" id="inp21" placeholder="Javob..."></div>
             <div class="input-group"><label>22. Dekabr (inglizcha)</label><input type="text" id="inp22" placeholder="Javob..."></div>
-            <div class="input-group"><label>23. Uyg'onmoq (inglizcha)</label><input type="text" id="inp23" placeholder="Javob..."></button></div>
+            <div class="input-group"><label>23. Uyg'onmoq (inglizcha)</label><input type="text" id="inp23" placeholder="Javob..."></div>
             <div class="input-group"><label>24. Nonushta qilmoq (inglizcha)</label><input type="text" id="inp24" placeholder="Javob..."></div>
             <div class="input-group"><label>25. Men har kuni kitob o'qiyman (inglizcha)</label><input type="text" id="inp25" placeholder="Javob..."></div>
         </div>
         <button class="check-btn" style="background: #F59E0B;" onclick="checkInteractive()">Vazifani tekshirish</button>
         <div class="result" id="interactiveResult"></div>
-    </div>
-
-    <h2>5. Matn va Tarjima</h2>
-    <div class="info-box">
-        <strong>Buyruq:</strong> Quyidagi matnni avval daftaringizga yozib oling va tagidan tarjima qilib yozing hamda to'liq rasmga olib istasangiz teacherga Telegram orqali yuboring.
-    </div>
-    
-    <div class="text-box">
-        <p>Hello! My name is Aziz. I am a student. I have a daily routine. I wake up at 7 o'clock in the morning. I get up at 7:10. I brush my teeth and wash my face. I have breakfast at 8 o'clock. I go to school at 8:30. I have lunch at 1 PM. I do my homework in the afternoon. On Monday, I play football with my friends. I have dinner at 7 PM. I watch TV in the evening. I go to bed at 10 PM. I sleep at night. This is my daily routine.</p>
     </div>
 
     <div class="homework-section">
@@ -481,8 +773,22 @@
             <li>Men yakshanba kuni do'stlarim bilan o'ynayman.</li>
         </ol>
 
-        <h3>3-topshiriq: Reading (O'qish mashqi)</h3>
-        <p>Yuqoridagi 5-bo'limdagi matnni o'qib, tushunganingizni tekshiring.</p>
+        <h3>3-topshiriq: Reading (O'qish va Savollar)</h3>
+        <div class="info-box" style="background: #EEF2FF; border-left-color: var(--primary);">
+            <strong style="color: var(--primary);">Topshiriq:</strong> Quyidagi hikoyani ovoz chiqarib o'qing, so'ngra savollarga javob bering.
+        </div>
+        <div class="text-box">
+            <p>Hello! My name is Aziz. I am a student. I have a very busy daily routine. I wake up at 7 o'clock in the morning. I get up at 7:10 and brush my teeth. I have breakfast at 8 o'clock. I usually eat bread and drink tea. I go to school at 8:30. I study English and math at school. I have lunch at 1 PM in the school canteen. After school, I do my homework in the afternoon. On Monday, I play football with my friends. We play in the park. I have dinner with my family at 7 PM. I watch TV for one hour in the evening. Finally, I go to bed at 10 PM and sleep at night. This is my daily routine.</p>
+        </div>
+        
+        <p><b>Savollarga javob bering:</b></p>
+        <ol>
+            <li>Aziz soat nechada uyg'onadi?</li>
+            <li>U maktabga soat nechada boradi?</li>
+            <li>U qaysi kuni futbol o'ynaydi?</li>
+            <li>U kechki ovqatni kim bilan yeydi?</li>
+            <li>U kechqurun nima qiladi?</li>
+        </ol>
 
         <h3>Vocabulary (30 ta so'z)</h3>
         <div class="word-list">
