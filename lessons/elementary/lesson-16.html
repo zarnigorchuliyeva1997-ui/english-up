@@ -1,137 +1,161 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#7047eb">
-<title>Lesson 16 — Questions and Sentence Structure | English Up</title>
+<title>Lesson 16 — Questions & Sentence Structure | English Up</title>
 
 <style>
 :root{
-  --p:#7047eb;
-  --p2:#9274ff;
-  --bg:#f5f3ff;
-  --card:#ffffff;
-  --text:#241b3b;
-  --muted:#716987;
-  --border:#e7e0fa;
-  --green:#159b69;
-  --red:#df4960;
-  --shadow:0 8px 28px rgba(66,39,120,.09);
+--primary:#7047eb;
+--primary2:#9274ff;
+--bg:#f5f3ff;
+--card:#ffffff;
+--text:#25213a;
+--muted:#77718c;
+--border:#e8e2fa;
+--green:#16a36a;
+--red:#e34e64;
+--shadow:0 8px 28px rgba(75,48,145,.09);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
- margin:0;background:var(--bg);color:var(--text);
- font-family:Arial,Helvetica,sans-serif;
- line-height:1.7;
+margin:0;
+font-family:Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
 }
-button,input{font:inherit}
 header{
- background:linear-gradient(135deg,#542bc9,#9274ff);
- color:white;padding:24px 16px 30px;
- border-radius:0 0 28px 28px;
+background:linear-gradient(135deg,#5630c7,#9274ff);
+color:white;
+padding:25px 18px;
+text-align:center;
 }
-.header-inner{max-width:1050px;margin:auto}
-.top{
- display:flex;justify-content:space-between;
- align-items:center;gap:12px;flex-wrap:wrap;
-}
-.brand{font-size:19px;font-weight:900;letter-spacing:2px}
-.back{
- color:white;text-decoration:none;
- border:1px solid #ffffff66;padding:7px 13px;
- border-radius:12px;font-size:13px;
-}
-.hero{text-align:center;padding:30px 0 12px}
-.hero small{letter-spacing:3px;font-weight:bold}
-.hero h1{font-size:clamp(27px,6vw,43px);line-height:1.2}
-.hero p{color:#eee8ff}
-.progress-wrap{
- height:9px;background:#ffffff55;border-radius:20px;
- overflow:hidden;margin-top:20px
-}
-#progressBar{
- height:100%;width:0;background:#fff;
- transition:.3s
-}
-.container{max-width:1000px;margin:24px auto;padding:0 14px}
+header h1{margin:5px 0;font-size:27px}
+header p{margin:5px 0}
+.container{max-width:900px;margin:auto;padding:16px}
 .card{
- background:var(--card);border:1px solid var(--border);
- border-radius:19px;padding:21px;margin-bottom:19px;
- box-shadow:var(--shadow)
+background:var(--card);
+padding:20px;
+margin:16px 0;
+border-radius:18px;
+box-shadow:var(--shadow);
 }
-.card h2{color:var(--p);margin-top:0;font-size:23px}
-.card h3{color:#5433ae}
-.tag{
- display:inline-block;background:#eee8ff;color:#6139ca;
- padding:5px 11px;border-radius:20px;
- font-size:12px;font-weight:bold
-}
-.note{
- background:#f1edff;border-left:4px solid var(--p);
- padding:13px;border-radius:9px;margin:14px 0
+h2{color:var(--primary);font-size:22px}
+h3{color:#6544c2}
+.rule{
+background:#f0ebff;
+padding:14px;
+border-left:5px solid var(--primary);
+border-radius:10px;
+margin:12px 0;
 }
 .example{
- background:#faf8ff;padding:12px 14px;
- border:1px solid var(--border);border-radius:12px;
- margin:10px 0
+background:#f8f7fc;
+padding:12px;
+border-radius:10px;
+margin:9px 0;
 }
-.en{font-weight:bold;color:#4e2ab2}
 .uz{color:var(--muted);font-size:14px}
 .formula{
- background:#30204f;color:white;padding:13px;
- border-radius:12px;text-align:center;
- font-weight:bold;margin:13px 0
+text-align:center;
+font-size:19px;
+font-weight:bold;
+color:#6841d0;
+padding:14px;
+background:#f0ebff;
+border-radius:12px;
+margin:12px 0;
 }
-table{width:100%;border-collapse:collapse;margin:12px 0}
-th,td{padding:10px;border:1px solid var(--border);text-align:left}
-th{background:#eee8ff;color:#5530b8}
 button{
- border:0;border-radius:11px;padding:11px 16px;
- background:var(--p);color:white;font-weight:bold;
- cursor:pointer;margin:5px 3px;
+border:0;
+background:var(--primary);
+color:white;
+padding:11px 17px;
+border-radius:10px;
+font-size:15px;
+cursor:pointer;
+margin:5px 3px;
 }
-button:hover{filter:brightness(.94)}
-button.secondary{background:#eee8ff;color:#5733b5}
-button:disabled{opacity:.5;cursor:not-allowed}
-.speak{padding:6px 10px;font-size:13px}
-.quiz-question{
- padding:15px;background:#faf9ff;
- border:1px solid var(--border);
- border-radius:13px;margin:14px 0
+button:active{transform:scale(.97)}
+button.secondary{background:#eee9ff;color:#5630b5}
+input,select{
+width:100%;
+padding:12px;
+border:1px solid var(--border);
+border-radius:9px;
+font-size:16px;
+margin:7px 0;
+}
+.question{
+padding:15px;
+background:#faf9ff;
+border:1px solid var(--border);
+border-radius:12px;
+margin:12px 0;
 }
 .option{
- display:block;width:100%;text-align:left;
- background:white;color:var(--text);
- border:1px solid var(--border);margin:8px 0;
+display:block;
+padding:10px;
+background:white;
+border:1px solid var(--border);
+border-radius:9px;
+margin:7px 0;
+cursor:pointer;
 }
-.option.selected{background:#eee8ff;border-color:var(--p)}
-.option.correct{background:#e5f8ef;border-color:var(--green)}
-.option.wrong{background:#fff0f1;border-color:var(--red)}
-.feedback{font-weight:bold;margin-top:8px}
-input[type=text]{
- width:100%;padding:12px;border:1px solid var(--border);
- border-radius:10px;background:white;color:var(--text);
- margin:7px 0
+.option input{width:auto}
+.correct{background:#e4f8ee!important;border-color:#16a36a}
+.wrong{background:#ffe9ec!important;border-color:#e34e64}
+.progress{
+height:12px;
+background:#e8e2fa;
+border-radius:20px;
+overflow:hidden;
 }
-.answer{display:none;color:var(--green);font-weight:bold}
-.footer{
- background:#30204f;color:white;text-align:center;
- padding:27px 15px;margin-top:35px
+.progress div{
+height:100%;
+background:linear-gradient(90deg,#7047eb,#a58aff);
+width:0%;
 }
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.stat{
- background:#f4f0ff;padding:15px;border-radius:13px;
- text-align:center
+.badge{
+display:inline-block;
+background:#eee8ff;
+color:#6239c5;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
 }
-.stat strong{display:block;font-size:25px;color:var(--p)}
-hr{border:0;border-top:1px solid var(--border);margin:20px 0}
-@media(max-width:600px){
- .card{padding:16px}
- table{font-size:13px}
- th,td{padding:7px}
+.word{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+padding:10px;
+border-bottom:1px solid var(--border);
+}
+.word strong{color:var(--primary)}
+footer{
+background:#5630c7;
+color:white;
+text-align:center;
+padding:28px 15px;
+margin-top:30px;
+}
+.small{font-size:13px;color:var(--muted)}
+textarea{
+width:100%;
+min-height:100px;
+padding:12px;
+border:1px solid var(--border);
+border-radius:10px;
+font-size:15px;
+}
+@media(max-width:500px){
+.container{padding:10px}
+.card{padding:15px}
+h2{font-size:20px}
+.word{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -139,575 +163,896 @@ hr{border:0;border-top:1px solid var(--border);margin:20px 0}
 <body>
 
 <header>
-<div class="header-inner">
-<div class="top">
-<div class="brand">ENGLISH UP</div>
-<a class="back" href="index.html">← Back to Lessons</a>
-</div>
-<div class="hero">
-<small>ELEMENTARY COURSE • LESSON 16</small>
-<h1>QUESTIONS AND<br>SENTENCE STRUCTURE</h1>
-<p>Ingliz tilida to'g'ri gap tuzish va savol berishni mukammal o'rganamiz.</p>
-</div>
-<div class="progress-wrap"><div id="progressBar"></div></div>
-</div>
+<div class="badge">ENGLISH UP • LESSON 16</div>
+<h1>QUESTIONS & SENTENCE STRUCTURE</h1>
+<p>Savol tuzish va inglizcha gap tuzilishi</p>
+<p>Grammar • Vocabulary • Speaking • Listening • Writing</p>
 </header>
 
 <main class="container">
 
 <section class="card">
-<span class="tag">WELCOME TO LESSON 16</span>
-<h2>Assalomu alaykum!</h2>
-<p>Bugungi darsimiz ingliz tilidagi eng muhim mavzulardan biri. Ingliz tilida gap tuzishni bilishning o'zi yetarli emas. Biz savol berishni, inkor gap tuzishni va so'zlarni to'g'ri tartibda joylashtirishni ham bilishimiz kerak.</p>
-<p>Ushbu darsdan so'ng siz kundalik hayotda savollarni mustaqil tuza olasiz.</p>
-<div class="note"><b>Bugungi maqsad:</b> Ingliz tilida fikr bildirish, savol berish va suhbatni davom ettirish.</div>
+<h2>📚 1. BUGUNGI DARS MAQSADI</h2>
+<p>Bugungi darsda ingliz tilida to‘g‘ri gap tuzish, savol berish va savollarga javob qaytarishni o‘rganamiz.</p>
+<ul>
+<li>Inglizcha gapning asosiy tartibi.</li>
+<li>Positive va Negative sentences.</li>
+<li>Yes/No Questions.</li>
+<li>WH-Questions.</li>
+<li>Do / Does yordamchi fe'llari.</li>
+<li>Am / Is / Are bilan savol tuzish.</li>
+<li>Speaking va Listening mashqlari.</li>
+<li>40 ta yangi lug‘at.</li>
+</ul>
+<div class="rule">
+<strong>MUHIM:</strong> Dars davomida berilgan qoidalar, formulalar va misollarni daftaringizga yozib boring. Faqat o‘qish bilan cheklanib qolmang.
+</div>
 </section>
 
 <section class="card">
-<h2>1. English Sentence Structure</h2>
+<h2>✍️ 2. ENGLISH SENTENCE STRUCTURE</h2>
 <p>Ingliz tilida oddiy darak gapning asosiy tartibi quyidagicha:</p>
 <div class="formula">SUBJECT + VERB + OBJECT</div>
-<ul>
-<li><b>Subject</b> — ega, ya'ni ish-harakatni bajaruvchi.</li>
-<li><b>Verb</b> — fe'l, ya'ni ish-harakat.</li>
-<li><b>Object</b> — to'ldiruvchi, ya'ni harakat ta'sir qilayotgan narsa yoki shaxs.</li>
-</ul>
-<h3>Misollar</h3>
-<div class="example"><div class="en">I read a book.</div><div class="uz">Men kitob o'qiyman.</div></div>
-<div class="example"><div class="en">She drinks water.</div><div class="uz">U suv ichadi.</div></div>
-<div class="example"><div class="en">They play football.</div><div class="uz">Ular futbol o'ynashadi.</div></div>
-<div class="example"><div class="en">My father drives a car.</div><div class="uz">Mening otam mashina haydaydi.</div></div>
+<p><strong>Subject:</strong> Ega — ish-harakatni bajaruvchi.</p>
+<p><strong>Verb:</strong> Fe'l — bajarilayotgan harakat.</p>
+<p><strong>Object:</strong> To‘ldiruvchi — harakat ta'sir qilayotgan narsa yoki shaxs.</p>
 
-<div class="note"><b>Eslab qoling!</b> O'zbek tilida so'z tartibi ingliz tilidagidan farq qilishi mumkin. Ingliz tilida ega odatda fe'ldan oldin keladi.</div>
+<div class="example">
+<strong>I read books.</strong>
+<div class="uz">Men kitoblar o‘qiyman.</div>
+</div>
+<div class="example">
+<strong>She drinks water.</strong>
+<div class="uz">U suv ichadi.</div>
+</div>
+<div class="example">
+<strong>They play football.</strong>
+<div class="uz">Ular futbol o‘ynashadi.</div>
+</div>
+
+<h3>Gap qismlarini tushunamiz</h3>
+<div class="rule">
+I = Subject<br>
+read = Verb<br>
+books = Object
+</div>
+
+<p>Ingliz tilida odatda ega fe'ldan oldin keladi. O‘zbek tilidagi gap tartibini to‘g‘ridan-to‘g‘ri ingliz tiliga ko‘chirmang.</p>
+
+<h3>Daftarga yozing</h3>
+<div class="rule">
+1. Subject — Ega.<br>
+2. Verb — Fe'l.<br>
+3. Object — To‘ldiruvchi.<br>
+4. Formula: Subject + Verb + Object.<br>
+5. I read books. — Men kitob o‘qiyman.<br>
+6. She likes tea. — U choyni yoqtiradi.
+</div>
 </section>
 
 <section class="card">
-<h2>2. Word Order — So'zlar tartibi</h2>
-<p>Ingliz tilida so'zlarning joylashuvi juda muhim. So'zlarni noto'g'ri tartibda joylashtirsak, gap grammatik jihatdan xato bo'lishi mumkin.</p>
-<table>
-<tr><th>To'g'ri</th><th>Noto'g'ri</th></tr>
-<tr><td>I like apples.</td><td>Like I apples.</td></tr>
-<tr><td>She speaks English.</td><td>Speaks she English.</td></tr>
-<tr><td>We live here.</td><td>Live we here.</td></tr>
-<tr><td>He works every day.</td><td>Works he every day.</td></tr>
-</table>
-<h3>Gapda vaqt va joy</h3>
-<div class="formula">SUBJECT + VERB + OBJECT + PLACE + TIME</div>
-<div class="example"><div class="en">I study English at home every evening.</div><div class="uz">Men har oqshom uyda ingliz tilini o'rganaman.</div></div>
-<div class="example"><div class="en">She plays tennis at school on Mondays.</div><div class="uz">U dushanba kunlari maktabda tennis o'ynaydi.</div></div>
+<h2>📖 3. POSITIVE SENTENCES</h2>
+<p>Positive sentence — darak gap. Biror ish-harakat sodir bo‘lishini yoki holatni tasdiqlaydi.</p>
+
+<div class="formula">Subject + Verb + Object</div>
+
+<div class="example">
+I speak English.<br>
+<span class="uz">Men inglizcha gapiraman.</span>
+</div>
+<div class="example">
+He works every day.<br>
+<span class="uz">U har kuni ishlaydi.</span>
+</div>
+<div class="example">
+We learn English.<br>
+<span class="uz">Biz ingliz tilini o‘rganamiz.</span>
+</div>
+
+<h3>He / She / It qoidasi</h3>
+<p>Present Simple zamonida He, She, It bilan asosiy fe'lga odatda -s yoki -es qo‘shiladi.</p>
+<div class="formula">He / She / It + Verb(s/es)</div>
+
+<div class="example">He plays football. <span class="uz">U futbol o‘ynaydi.</span></div>
+<div class="example">She watches TV. <span class="uz">U televizor ko‘radi.</span></div>
+<div class="example">It works well. <span class="uz">U yaxshi ishlaydi.</span></div>
+
+<h3>Daftarga yozing</h3>
+<div class="rule">
+I work.<br>
+You work.<br>
+We work.<br>
+They work.<br>
+He works.<br>
+She works.<br>
+It works.
+</div>
 </section>
 
 <section class="card">
-<h2>3. Yes / No Questions</h2>
-<p>Yes/No Questions — javobi odatda Yes yoki No bo'ladigan savollar.</p>
-<p>Bu savollarda yordamchi fe'l odatda egadan oldinga o'tadi.</p>
-<h3>DO bilan savollar</h3>
-<div class="formula">DO + I / YOU / WE / THEY + VERB?</div>
-<div class="example"><div class="en">Do you speak English?</div><div class="uz">Siz ingliz tilida gapirasizmi?</div></div>
-<div class="example"><div class="en">Do they live here?</div><div class="uz">Ular shu yerda yashaydimi?</div></div>
-<h3>DOES bilan savollar</h3>
-<div class="formula">DOES + HE / SHE / IT + VERB?</div>
-<div class="example"><div class="en">Does she work here?</div><div class="uz">U shu yerda ishlaydimi?</div></div>
-<div class="example"><div class="en">Does he like coffee?</div><div class="uz">U qahvani yoqtiradimi?</div></div>
-<div class="note"><b>Muhim qoida:</b> Does ishlatilganda asosiy fe'lga -s yoki -es qo'shilmaydi. Does she likes? — xato. Does she like? — to'g'ri.</div>
+<h2>📖 4. NEGATIVE SENTENCES</h2>
+<p>Negative sentence — inkor gap. Biror ish-harakat bajarilmasligini bildiradi.</p>
+
+<div class="formula">Subject + do/does + not + Verb</div>
+
+<h3>Do not (don't)</h3>
+<p>I, You, We, They bilan ishlatiladi.</p>
+<div class="example">
+I do not drink coffee.<br>
+<span class="uz">Men qahva ichmayman.</span>
+</div>
+<div class="example">
+They don't work here.<br>
+<span class="uz">Ular bu yerda ishlashmaydi.</span>
+</div>
+
+<h3>Does not (doesn't)</h3>
+<p>He, She, It bilan ishlatiladi.</p>
+<div class="example">
+He does not play football.<br>
+<span class="uz">U futbol o‘ynamaydi.</span>
+</div>
+<div class="example">
+She doesn't like milk.<br>
+<span class="uz">U sutni yoqtirmaydi.</span>
+</div>
+
+<div class="rule">
+<strong>MUHIM QOIDA!</strong><br>
+Doesn't ishlatilganda asosiy fe'lga -s qo‘shilmaydi.<br><br>
+He doesn't plays. ❌<br>
+He doesn't play. ✅
+</div>
+
+<h3>Daftarga yozing</h3>
+<div class="rule">
+I don't work.<br>
+You don't work.<br>
+We don't work.<br>
+They don't work.<br>
+He doesn't work.<br>
+She doesn't work.<br>
+It doesn't work.
+</div>
+</section>
+
+<section class="card">
+<h2>❓ 5. YES / NO QUESTIONS</h2>
+<p>Yes/No Questions — javobi Yes yoki No bilan boshlanadigan savollar.</p>
+
+<div class="formula">Do / Does + Subject + Verb?</div>
+
+<h3>DO bilan savol</h3>
+<div class="example">
+Do you speak English?<br>
+<span class="uz">Siz inglizcha gapirasizmi?</span>
+</div>
+<div class="example">
+Do they live here?<br>
+<span class="uz">Ular shu yerda yashaydilarmi?</span>
+</div>
+<div class="example">
+Do we need water?<br>
+<span class="uz">Bizga suv kerakmi?</span>
+</div>
+
+<h3>DOES bilan savol</h3>
+<div class="example">
+Does he work here?<br>
+<span class="uz">U shu yerda ishlaydimi?</span>
+</div>
+<div class="example">
+Does she speak English?<br>
+<span class="uz">U inglizcha gapiradimi?</span>
+</div>
+
+<div class="rule">
+<strong>YODDA TUTING:</strong><br>
+Does + he/she/it + Verb (oddiy shakl)?<br>
+Does she likes tea? ❌<br>
+Does she like tea? ✅
+</div>
 
 <h3>Qisqa javoblar</h3>
-<table>
-<tr><th>Savol</th><th>Yes</th><th>No</th></tr>
-<tr><td>Do you work?</td><td>Yes, I do.</td><td>No, I don't.</td></tr>
-<tr><td>Does he play?</td><td>Yes, he does.</td><td>No, he doesn't.</td></tr>
-<tr><td>Do they study?</td><td>Yes, they do.</td><td>No, they don't.</td></tr>
-</table>
+<div class="example">
+Do you work? — Yes, I do.<br>
+<span class="uz">Ishlaysizmi? — Ha.</span>
+</div>
+<div class="example">
+Do you work? — No, I don't.<br>
+<span class="uz">Ishlaysizmi? — Yo‘q.</span>
+</div>
+<div class="example">
+Does he study? — Yes, he does.
+</div>
+<div class="example">
+Does she cook? — No, she doesn't.
+</div>
+
+<h3>Daftarga yozing</h3>
+<div class="rule">
+Do you speak English?<br>
+Does he work?<br>
+Does she study?<br>
+Do they live here?<br>
+Yes, I do.<br>
+No, I don't.<br>
+Yes, he does.<br>
+No, she doesn't.
+</div>
 </section>
 
 <section class="card">
-<h2>4. Questions with AM / IS / ARE</h2>
-<p>To be fe'li bilan savol tuzishda am, is, are egadan oldinga o'tadi.</p>
-<div class="formula">AM / IS / ARE + SUBJECT + ... ?</div>
-<div class="example"><div class="en">Are you a student?</div><div class="uz">Siz talabamisiz?</div></div>
-<div class="example"><div class="en">Is she happy?</div><div class="uz">U xursandmi?</div></div>
-<div class="example"><div class="en">Are they at home?</div><div class="uz">Ular uydami?</div></div>
-<div class="example"><div class="en">Am I late?</div><div class="uz">Men kech qoldimmi?</div></div>
-<table>
-<tr><th>Subject</th><th>Question</th></tr>
-<tr><td>I</td><td>Am I ...?</td></tr>
-<tr><td>He / She / It</td><td>Is he / she / it ...?</td></tr>
-<tr><td>You / We / They</td><td>Are you / we / they ...?</td></tr>
-</table>
-<div class="note">Am, is, are bilan savol tuzishda do yoki does qo'shilmaydi. Are you happy? — to'g'ri. Do you are happy? — xato.</div>
+<h2>❓ 6. AM / IS / ARE BILAN SAVOL</h2>
+<p>To be fe'li bilan savol tuzishda am, is yoki are gap boshiga chiqadi.</p>
+<div class="formula">Am / Is / Are + Subject + ...?</div>
+
+<div class="example">Are you a student? <span class="uz">Siz talabamisiz?</span></div>
+<div class="example">Is he your brother? <span class="uz">U sizning akangizmi?</span></div>
+<div class="example">Is she happy? <span class="uz">U xursandmi?</span></div>
+<div class="example">Are they at home? <span class="uz">Ular uydami?</span></div>
+<div class="example">Am I late? <span class="uz">Men kech qoldimmi?</span></div>
+
+<h3>Inkor shakli</h3>
+<div class="formula">Subject + am/is/are + not</div>
+<div class="example">I am not tired. <span class="uz">Men charchamaganman.</span></div>
+<div class="example">He is not busy. <span class="uz">U band emas.</span></div>
+<div class="example">They are not ready. <span class="uz">Ular tayyor emas.</span></div>
+
+<div class="rule">
+<strong>MUHIM FARQ:</strong><br>
+Are you happy? ✅<br>
+Do you happy? ❌<br><br>
+Do you work? ✅<br>
+Are you work? ❌
+</div>
+<p>Happy — sifat, shuning uchun to be kerak. Work — harakat fe'li, shuning uchun Present Simple savolida do kerak.</p>
+
+<h3>Daftarga yozing</h3>
+<div class="rule">
+Am I...?<br>
+Are you...?<br>
+Is he...?<br>
+Is she...?<br>
+Is it...?<br>
+Are we...?<br>
+Are they...?
+</div>
 </section>
 
 <section class="card">
-<h2>5. WH-Questions</h2>
-<p>WH-Questions — ma'lumot olish uchun beriladigan savollar. Ular faqat Yes yoki No javobini talab qilmaydi.</p>
-<table>
-<tr><th>Question word</th><th>Ma'nosi</th><th>Misol</th></tr>
-<tr><td>What</td><td>Nima?</td><td>What is this?</td></tr>
-<tr><td>Where</td><td>Qayerda?</td><td>Where do you live?</td></tr>
-<tr><td>When</td><td>Qachon?</td><td>When do you work?</td></tr>
-<tr><td>Why</td><td>Nima uchun?</td><td>Why are you sad?</td></tr>
-<tr><td>Who</td><td>Kim?</td><td>Who is he?</td></tr>
-<tr><td>Which</td><td>Qaysi?</td><td>Which one do you like?</td></tr>
-<tr><td>Whose</td><td>Kimning?</td><td>Whose bag is this?</td></tr>
-<tr><td>How</td><td>Qanday?</td><td>How are you?</td></tr>
-</table>
+<h2>❓ 7. WH-QUESTIONS</h2>
+<p>WH-Questions — ma'lumot olish uchun beriladigan savollar.</p>
+
+<div class="word"><strong>What</strong><span>Nima?</span></div>
+<div class="word"><strong>Where</strong><span>Qayerda? Qayerga?</span></div>
+<div class="word"><strong>When</strong><span>Qachon?</span></div>
+<div class="word"><strong>Who</strong><span>Kim?</span></div>
+<div class="word"><strong>Why</strong><span>Nima uchun?</span></div>
+<div class="word"><strong>Which</strong><span>Qaysi?</span></div>
+<div class="word"><strong>Whose</strong><span>Kimning?</span></div>
+<div class="word"><strong>How</strong><span>Qanday? Qanaqa?</span></div>
+<div class="word"><strong>How many</strong><span>Nechta?</span></div>
+<div class="word"><strong>How much</strong><span>Qancha?</span></div>
+<div class="word"><strong>How old</strong><span>Necha yosh?</span></div>
+<div class="word"><strong>How often</strong><span>Qanchalik tez-tez?</span></div>
+
 <h3>WH + DO / DOES</h3>
-<div class="formula">WH-WORD + DO / DOES + SUBJECT + VERB?</div>
-<div class="example"><div class="en">Where do you live?</div><div class="uz">Qayerda yashaysiz?</div></div>
-<div class="example"><div class="en">What does she want?</div><div class="uz">U nimani xohlaydi?</div></div>
-<div class="example"><div class="en">Why do they study English?</div><div class="uz">Ular nima uchun ingliz tilini o'rganishadi?</div></div>
-<h3>WH + TO BE</h3>
-<div class="formula">WH-WORD + AM / IS / ARE + SUBJECT?</div>
-<div class="example"><div class="en">Where are you?</div><div class="uz">Siz qayerdasiz?</div></div>
-<div class="example"><div class="en">Why is he angry?</div><div class="uz">U nima uchun jahli chiqqan?</div></div>
-</section>
+<div class="formula">WH-word + do/does + Subject + Verb?</div>
 
-<section class="card">
-<h2>6. HOW bilan keladigan savollar</h2>
-<p>How so'zi boshqa so'zlar bilan birikib turli ma'nolarni beradi.</p>
-<table>
-<tr><th>Birlik</th><th>Ma'nosi</th><th>Misol</th></tr>
-<tr><td>How old</td><td>Necha yosh?</td><td>How old are you?</td></tr>
-<tr><td>How many</td><td>Nechta? (sanaladigan)</td><td>How many books?</td></tr>
-<tr><td>How much</td><td>Qancha? (sanalmaydigan/narx)</td><td>How much water?</td></tr>
-<tr><td>How often</td><td>Qanchalik tez-tez?</td><td>How often do you exercise?</td></tr>
-<tr><td>How long</td><td>Qancha vaqt?</td><td>How long is the lesson?</td></tr>
-<tr><td>How far</td><td>Qancha masofa?</td><td>How far is the school?</td></tr>
-<tr><td>How well</td><td>Qanchalik yaxshi?</td><td>How well can you swim?</td></tr>
-</table>
-<div class="example"><div class="en">How many brothers do you have?</div><div class="uz">Nechta aka-ukangiz bor?</div></div>
-<div class="example"><div class="en">How much is this phone?</div><div class="uz">Bu telefon qancha turadi?</div></div>
-<div class="example"><div class="en">How often do you read?</div><div class="uz">Qanchalik tez-tez kitob o'qiysiz?</div></div>
-</section>
+<div class="example">
+Where do you live?<br>
+<span class="uz">Qayerda yashaysiz?</span>
+</div>
+<div class="example">
+What do you eat?<br>
+<span class="uz">Nima yeysiz?</span>
+</div>
+<div class="example">
+When does he work?<br>
+<span class="uz">U qachon ishlaydi?</span>
+</div>
+<div class="example">
+Why does she study English?<br>
+<span class="uz">U nima uchun ingliz tilini o‘rganadi?</span>
+</div>
 
-<section class="card">
-<h2>7. DID — Past Simple Questions</h2>
-<p>O'tgan zamonda savol tuzishda DID ishlatiladi. DID barcha egalar bilan bir xil ishlatiladi.</p>
-<div class="formula">DID + SUBJECT + VERB (V1)?</div>
-<div class="example"><div class="en">Did you go to school yesterday?</div><div class="uz">Kecha maktabga bordingizmi?</div></div>
-<div class="example"><div class="en">Did she call you?</div><div class="uz">U sizga qo'ng'iroq qildimi?</div></div>
-<div class="example"><div class="en">Did they watch the film?</div><div class="uz">Ular filmni tomosha qilishdimi?</div></div>
-<div class="note"><b>Juda muhim!</b> Did ishlatilganda fe'lning birinchi shakli ishlatiladi. Did you went? — xato. Did you go? — to'g'ri.</div>
-<h3>WH + DID</h3>
-<div class="formula">WH-WORD + DID + SUBJECT + VERB?</div>
-<div class="example"><div class="en">Where did you go?</div><div class="uz">Qayerga bordingiz?</div></div>
-<div class="example"><div class="en">What did he buy?</div><div class="uz">U nima sotib oldi?</div></div>
-</section>
+<h3>WH + AM / IS / ARE</h3>
+<div class="formula">WH-word + am/is/are + Subject?</div>
+<div class="example">
+Where are you?<br>
+<span class="uz">Siz qayerdasiz?</span>
+</div>
+<div class="example">
+Who is he?<br>
+<span class="uz">U kim?</span>
+</div>
+<div class="example">
+Why are they happy?<br>
+<span class="uz">Ular nima uchun xursand?</span>
+</div>
 
-<section class="card">
-<h2>8. Negative Sentences — Inkor gaplar</h2>
-<p>Ingliz tilida inkor gap tuzish uchun zamonga mos yordamchi fe'l va not ishlatiladi.</p>
-<table>
-<tr><th>Yordamchi fe'l</th><th>Inkor shakli</th></tr>
-<tr><td>Do</td><td>Do not / Don't</td></tr>
-<tr><td>Does</td><td>Does not / Doesn't</td></tr>
-<tr><td>Did</td><td>Did not / Didn't</td></tr>
-<tr><td>Is</td><td>Is not / Isn't</td></tr>
-<tr><td>Are</td><td>Are not / Aren't</td></tr>
-</table>
-<div class="example"><div class="en">I don't drink coffee.</div><div class="uz">Men qahva ichmayman.</div></div>
-<div class="example"><div class="en">She doesn't work here.</div><div class="uz">U bu yerda ishlamaydi.</div></div>
-<div class="example"><div class="en">We didn't go yesterday.</div><div class="uz">Biz kecha bormadik.</div></div>
-<div class="example"><div class="en">They aren't ready.</div><div class="uz">Ular tayyor emas.</div></div>
-</section>
-
-<section class="card">
-<h2>9. Subject Questions vs Object Questions</h2>
-<p>Bu ikki turdagi savolni farqlash juda muhim.</p>
-<h3>Subject Question — Kim ishni bajardi?</h3>
-<p>Bu savolda Who yoki What gapning egasi bo'ladi. Present Simple'da odatda do/does ishlatilmaydi.</p>
-<div class="example"><div class="en">Who called you?</div><div class="uz">Sizga kim qo'ng'iroq qildi?</div></div>
-<div class="example"><div class="en">Who lives here?</div><div class="uz">Bu yerda kim yashaydi?</div></div>
-<h3>Object Question — Kimni yoki nimani?</h3>
-<p>Bu savolda harakatni bajaruvchi boshqa shaxs bo'ladi. Yordamchi fe'l ishlatiladi.</p>
-<div class="example"><div class="en">Who do you call?</div><div class="uz">Siz kimga qo'ng'iroq qilasiz?</div></div>
-<div class="example"><div class="en">What does she want?</div><div class="uz">U nimani xohlaydi?</div></div>
-<div class="note">Who called you? — Kim qo'ng'iroq qildi? Who do you call? — Siz kimga qo'ng'iroq qilasiz? Ma'nolari va grammatik tuzilishi farq qiladi.</div>
-</section>
-
-<section class="card">
-<h2>10. Question Tags — Qisqa qo'shimcha savollar</h2>
-<p>Question tags suhbatda tasdiq olish yoki fikrni tekshirish uchun ishlatiladi.</p>
-<p>Darak gap ijobiy bo'lsa, odatda qisqa savol inkor bo'ladi. Darak gap inkor bo'lsa, qisqa savol ijobiy bo'ladi.</p>
-<div class="example"><div class="en">You are a student, aren't you?</div><div class="uz">Siz talabasisiz, shunday emasmi?</div></div>
-<div class="example"><div class="en">She isn't busy, is she?</div><div class="uz">U band emas, shundaymi?</div></div>
-<div class="example"><div class="en">He works here, doesn't he?</div><div class="uz">U bu yerda ishlaydi, shunday emasmi?</div></div>
-<div class="example"><div class="en">They don't live here, do they?</div><div class="uz">Ular bu yerda yashamaydi, shundaymi?</div></div>
-</section>
-
-<section class="card">
-<h2>11. Common Mistakes — Ko'p uchraydigan xatolar</h2>
-<table>
-<tr><th>Noto'g'ri</th><th>To'g'ri</th></tr>
-<tr><td>Does she likes tea?</td><td>Does she like tea?</td></tr>
-<tr><td>Did you went home?</td><td>Did you go home?</td></tr>
-<tr><td>Where you live?</td><td>Where do you live?</td></tr>
-<tr><td>Do you are happy?</td><td>Are you happy?</td></tr>
-<tr><td>What she wants?</td><td>What does she want?</td></tr>
-<tr><td>He don't work.</td><td>He doesn't work.</td></tr>
-<tr><td>Are she ready?</td><td>Is she ready?</td></tr>
-<tr><td>Where does he lives?</td><td>Where does he live?</td></tr>
-</table>
-</section>
-
-<section class="card">
-<h2>12. Speaking Practice</h2>
-<p>Quyidagi savollarni ovoz chiqarib o'qing. Keyin o'zingiz haqingizda ingliz tilida javob bering.</p>
-<div id="speakingList"></div>
-<button onclick="speakAll()">🔊 Savollarni tinglash</button>
-</section>
-
-<section class="card">
-<h2>13. Vocabulary for Questions</h2>
-<p>Savol tuzishda ko'p ishlatiladigan so'zlar.</p>
-<div class="grid">
-<div class="stat"><strong>What</strong>Nima?</div>
-<div class="stat"><strong>Where</strong>Qayerda?</div>
-<div class="stat"><strong>When</strong>Qachon?</div>
-<div class="stat"><strong>Why</strong>Nima uchun?</div>
-<div class="stat"><strong>Who</strong>Kim?</div>
-<div class="stat"><strong>Which</strong>Qaysi?</div>
-<div class="stat"><strong>Whose</strong>Kimning?</div>
-<div class="stat"><strong>How</strong>Qanday?</div>
-<div class="stat"><strong>How often</strong>Qanchalik tez-tez?</div>
-<div class="stat"><strong>How long</strong>Qancha vaqt?</div>
-<div class="stat"><strong>How many</strong>Nechta?</div>
-<div class="stat"><strong>How much</strong>Qancha?</div>
+<h3>Daftarga yozing</h3>
+<div class="rule">
+What do you do?<br>
+Where do you live?<br>
+When do you study?<br>
+Why do you learn English?<br>
+Who is your teacher?<br>
+How old are you?<br>
+How often do you read?
 </div>
 </section>
 
 <section class="card">
-<h2>14. Interactive Test — Grammar</h2>
-<p>Har bir savol uchun bitta to'g'ri javobni tanlang. Javob tanlangandan so'ng natijangiz ko'rsatiladi.</p>
-<div id="quiz1"></div>
-<button onclick="gradeQuiz('quiz1')">Natijani tekshirish</button>
-<button class="secondary" onclick="resetQuiz('quiz1')">Qayta ishlash</button>
-<div id="result1" class="feedback"></div>
+<h2>📚 8. 40 TA YANGI LUG‘AT</h2>
+<p>Har bir so‘zni daftaringizga inglizchasi, o‘zbekcha tarjimasi va talaffuzi bilan yozing. Ovoz tugmasi mavjud so‘zlarni tinglang.</p>
+
+<div id="vocabulary"></div>
 </section>
 
 <section class="card">
-<h2>15. Fill in the Blanks</h2>
-<p>Bo'sh joyga mos yordamchi fe'lni yozing.</p>
-<div id="fillQuiz"></div>
-<button onclick="gradeFill()">Javoblarni tekshirish</button>
-<div id="fillResult" class="feedback"></div>
+<h2>🗣️ 9. SPEAKING PRACTICE</h2>
+<p>Quyidagi gaplarni ovoz chiqarib takrorlang. Har bir gapni kamida 3 marta ayting.</p>
+
+<div id="speaking"></div>
+<button onclick="speakAll()">🔊 Barcha gaplarni tinglash</button>
 </section>
 
 <section class="card">
-<h2>16. Sentence Building</h2>
-<p>Berilgan so'zlardan to'g'ri savol tuzing. So'zlarni to'g'ri tartibda yozing.</p>
-<div id="buildQuiz"></div>
-<button onclick="gradeBuild()">Tekshirish</button>
-<div id="buildResult" class="feedback"></div>
-</section>
+<h2>🎭 10. DIALOG 1 — MEETING A NEW FRIEND</h2>
+<p class="small">Yangi do‘st bilan tanishish</p>
 
-<section class="card">
-<h2>17. Translation Challenge</h2>
-<p>O'zbekcha gaplarni ingliz tiliga tarjima qiling.</p>
-<div id="translateQuiz"></div>
-<button onclick="showTranslations()">Namunaviy javoblarni ko'rsatish</button>
-</section>
-
-<section class="card">
-<h2>18. Final Test — 30 Questions</h2>
-<p>Bu test dars bo'yicha bilimlaringizni tekshiradi. Har bir savol 1 ball.</p>
-<div id="finalQuiz"></div>
-<button onclick="gradeQuiz('finalQuiz')">Final testni yakunlash</button>
-<button class="secondary" onclick="resetQuiz('finalQuiz')">Testni qayta boshlash</button>
-<div id="finalResult" class="feedback"></div>
-</section>
-
-<section class="card">
-<h2>19. Homework — Uyga vazifa</h2>
-<p>Bugungi darsni mustahkamlash uchun quyidagi to'rtta topshiriqni bajaring.</p>
-<h3>Task 1 — Sentence Writing</h3>
-<p>10 ta darak gap, 10 ta inkor gap va 10 ta savol yozing.</p>
-<h3>Task 2 — WH Questions</h3>
-<p>What, Where, When, Why, Who, Which, Whose va How yordamida 16 ta savol tuzing.</p>
-<h3>Task 3 — Translation</h3>
-<p>Quyidagi gaplarni ingliz tiliga tarjima qiling:</p>
-<ol>
-<li>Siz qayerda yashaysiz?</li>
-<li>U ingliz tilida gapiradimi?</li>
-<li>Kecha nima sotib oldingiz?</li>
-<li>Ular nima uchun maktabga bormadi?</li>
-<li>Opangiz necha yoshda?</li>
-<li>Siz qanchalik tez-tez kitob o'qiysiz?</li>
-<li>Bu kimning telefoni?</li>
-<li>U hozir uyda emasmi?</li>
-<li>Kim sizga yordam berdi?</li>
-<li>U qaysi kitobni yoqtiradi?</li>
-</ol>
-<h3>Task 4 — Speaking</h3>
-<p>Quyidagi savollarga ovoz chiqarib javob bering. Har bir javob kamida 2 ta gapdan iborat bo'lsin.</p>
-<ol>
-<li>Where do you live?</li>
-<li>What do you do every day?</li>
-<li>Why are you learning English?</li>
-<li>What did you do yesterday?</li>
-<li>How often do you practise English?</li>
-</ol>
-<div class="note"><b>Daftarga yozish:</b> barcha topshiriqlarni daftaringizda bajaring. Har bir qoida uchun kamida 2 ta o'zingiz tuzgan misol yozing.</div>
-</section>
-
-<section class="card">
-<h2>20. Lesson Summary</h2>
-<div class="grid">
-<div class="stat"><strong>S + V + O</strong>Gap tartibi</div>
-<div class="stat"><strong>Do / Does</strong>Present Simple</div>
-<div class="stat"><strong>Am / Is / Are</strong>To be savollari</div>
-<div class="stat"><strong>Did</strong>Past Simple</div>
-<div class="stat"><strong>WH</strong>Ma'lumot savollari</div>
-<div class="stat"><strong>Not</strong>Inkor shakli</div>
+<div class="example">
+<strong>Ali:</strong> Hello! What is your name?<br>
+<span class="uz">Salom! Ismingiz nima?</span>
 </div>
-<div class="note">
-Bugungi mavzuni qayta ko'rib chiqing. Savol tuzishni yaxshi o'zlashtirsangiz, ingliz tilida suhbatlashish ancha osonlashadi.
+<div class="example">
+<strong>John:</strong> My name is John. What is your name?<br>
+<span class="uz">Mening ismim John. Sizning ismingiz nima?</span>
+</div>
+<div class="example">
+<strong>Ali:</strong> My name is Ali. Where are you from?<br>
+<span class="uz">Mening ismim Ali. Siz qayerdansiz?</span>
+</div>
+<div class="example">
+<strong>John:</strong> I am from England. Where do you live?<br>
+<span class="uz">Men Angliyadanman. Siz qayerda yashaysiz?</span>
+</div>
+<div class="example">
+<strong>Ali:</strong> I live in Uzbekistan. Do you speak Uzbek?<br>
+<span class="uz">Men O‘zbekistonda yashayman. Siz o‘zbekcha gapirasizmi?</span>
+</div>
+<div class="example">
+<strong>John:</strong> No, I don't. But I speak English.<br>
+<span class="uz">Yo‘q. Lekin men inglizcha gapiraman.</span>
+</div>
+<div class="example">
+<strong>Ali:</strong> Nice to meet you!<br>
+<span class="uz">Tanishganimdan xursandman!</span>
+</div>
+<div class="example">
+<strong>John:</strong> Nice to meet you too!<br>
+<span class="uz">Men ham tanishganimdan xursandman!</span>
+</div>
+
+<button onclick="speakText(dialog1)">🔊 Dialogni tinglash</button>
+</section>
+
+<section class="card">
+<h2>🎭 11. DIALOG 2 — DAILY LIFE</h2>
+<p class="small">Kundalik hayot haqida suhbat</p>
+
+<div class="example">
+<strong>Anna:</strong> What do you do every day?<br>
+<span class="uz">Siz har kuni nima qilasiz?</span>
+</div>
+<div class="example">
+<strong>Tom:</strong> I work in a shop. What about you?<br>
+<span class="uz">Men do‘konda ishlayman. Siz-chi?</span>
+</div>
+<div class="example">
+<strong>Anna:</strong> I am a student. When do you wake up?<br>
+<span class="uz">Men talabaman. Siz qachon uyg‘onasiz?</span>
+</div>
+<div class="example">
+<strong>Tom:</strong> I wake up at six o'clock.<br>
+<span class="uz">Men soat oltida uyg‘onaman.</span>
+</div>
+<div class="example">
+<strong>Anna:</strong> Do you study English?<br>
+<span class="uz">Siz ingliz tilini o‘rganasizmi?</span>
+</div>
+<div class="example">
+<strong>Tom:</strong> Yes, I do. I study every morning.<br>
+<span class="uz">Ha. Men har kuni ertalab o‘qiyman.</span>
+</div>
+<div class="example">
+<strong>Anna:</strong> Why do you learn English?<br>
+<span class="uz">Nima uchun ingliz tilini o‘rganyapsiz?</span>
+</div>
+<div class="example">
+<strong>Tom:</strong> Because I want to speak English well.<br>
+<span class="uz">Chunki men ingliz tilida yaxshi gapirishni xohlayman.</span>
+</div>
+
+<button onclick="speakText(dialog2)">🔊 Dialogni tinglash</button>
+</section>
+
+<section class="card">
+<h2>🎧 12. LISTENING PRACTICE 1</h2>
+<p>Matnni avval tarjimasiz tinglang. Keyin yana tinglab, tushungan ma'lumotlaringizni tekshiring.</p>
+
+<div class="rule">
+<strong>Listening: My Daily Routine</strong><br>
+Hello! My name is David. I am twenty years old. I live in London. I wake up at seven o'clock. I eat breakfast and drink tea. I go to work at eight. I work in a small shop. I like my job. In the evening, I study English. I want to speak English very well.
+</div>
+<button onclick="speakText(listening1)">🔊 Listening 1 ni tinglash</button>
+
+<h3>Matn tarjimasi</h3>
+<p class="uz">Salom! Mening ismim David. Men yigirma yoshdaman. Men Londonda yashayman. Soat yettida uyg‘onaman. Nonushta qilaman va choy ichaman. Soat sakkizda ishga boraman. Men kichik do‘konda ishlayman. Ishimni yoqtiraman. Kechqurun ingliz tilini o‘rganaman. Men ingliz tilida juda yaxshi gapirishni xohlayman.</p>
+
+<h3>Listening savollari</h3>
+<div id="listen1"></div>
+<button onclick="checkListening(1)">Javoblarni tekshirish</button>
+<div id="listenResult1"></div>
+</section>
+
+<section class="card">
+<h2>🎧 13. LISTENING PRACTICE 2</h2>
+<div class="rule">
+<strong>Listening: A New Student</strong><br>
+Sarah is a new student. She studies English every day. Her teacher is Mr Brown. She has two friends in her class. They speak English together. Sarah likes reading books. She also watches English videos. She wants to improve her English.
+</div>
+<button onclick="speakText(listening2)">🔊 Listening 2 ni tinglash</button>
+
+<h3>Tarjimasi</h3>
+<p class="uz">Sarah yangi o‘quvchi. U har kuni ingliz tilini o‘rganadi. Uning o‘qituvchisi Mr Brown. Uning sinfida ikkita do‘sti bor. Ular birgalikda inglizcha gaplashishadi. Sarah kitob o‘qishni yoqtiradi. Shuningdek, inglizcha videolar ko‘radi. U ingliz tilini yaxshilashni xohlaydi.</p>
+
+<div id="listen2"></div>
+<button onclick="checkListening(2)">Javoblarni tekshirish</button>
+<div id="listenResult2"></div>
+</section>
+
+<section class="card">
+<h2>📝 14. GRAMMAR PRACTICE</h2>
+<p>To‘g‘ri javobni tanlang.</p>
+<div id="grammar"></div>
+<button onclick="checkGrammar()">TESTNI TEKSHIRISH</button>
+<div id="grammarResult"></div>
+</section>
+
+<section class="card">
+<h2>🔄 15. SENTENCE BUILDING</h2>
+<p>So‘zlarni to‘g‘ri tartibga keltiring.</p>
+<div id="building"></div>
+<button onclick="checkBuilding()">TEKSHIRISH</button>
+<div id="buildingResult"></div>
+</section>
+
+<section class="card">
+<h2>✍️ 16. TRANSLATION PRACTICE</h2>
+<p>Gaplarni ingliz tiliga tarjima qiling. Javoblaringizni daftaringizga yozing.</p>
+<div id="translation"></div>
+</section>
+
+<section class="card">
+<h2>📓 17. DAFTARGA YOZISH — MAJBURIY</h2>
+<div class="rule">
+Bugungi darsni to‘liq o‘zlashtirish uchun quyidagilarni daftarga yozish shart.
+</div>
+<ol>
+<li>Sentence Structure formulasini yozing.</li>
+<li>Positive sentence qoidasini yozing.</li>
+<li>Negative sentence qoidasini yozing.</li>
+<li>Do va Does ishlatilishini yozing.</li>
+<li>Yes/No Questions formulasini yozing.</li>
+<li>Am / Is / Are bilan savol tuzishni yozing.</li>
+<li>12 ta WH-question so‘zini tarjimasi bilan yozing.</li>
+<li>40 ta yangi lug‘atni yozing va yodlang.</li>
+<li>Dialog 1 va Dialog 2 ni ko‘chirib yozing.</li>
+<li>Listening matnlarini daftarga yozing.</li>
+<li>O‘zingiz 15 ta savol tuzing.</li>
+<li>O‘zingiz 15 ta darak gap yozing.</li>
+<li>O‘zingiz 10 ta inkor gap yozing.</li>
+</ol>
+<p><strong>Daftar topshirig‘i:</strong> Har bir inglizcha gapning tagiga o‘zbekcha tarjimasini yozing.</p>
+</section>
+
+<section class="card">
+<h2>🏠 18. HOMEWORK — UYGA VAZIFA</h2>
+<p>Uy vazifasi darsning eng muhim qismidir. Barcha topshiriqlarni bajarish talab etiladi.</p>
+
+<h3>1-topshiriq: Vocabulary</h3>
+<p>Bugungi 40 ta so‘zni daftarga yozing. Har birini 5 martadan yozib, talaffuzini mashq qiling va yodlang.</p>
+
+<h3>2-topshiriq: 40 ta gap</h3>
+<p>Bugungi lug‘atlardan foydalanib 40 ta inglizcha gap tuzing. Har bir gapning tarjimasini ham yozing.</p>
+
+<h3>3-topshiriq: Questions</h3>
+<p>Do, Does, Am, Is, Are va WH-words yordamida 20 ta savol tuzing.</p>
+
+<h3>4-topshiriq: Negative sentences</h3>
+<p>20 ta inkor gap yozing.</p>
+
+<h3>5-topshiriq: Speaking</h3>
+<p>Har ikkala dialogni ovoz chiqarib o‘qing. O‘zingizni suhbatdosh o‘rniga qo‘yib, javoblarni mustaqil ayting.</p>
+
+<h3>6-topshiriq: Writing</h3>
+<p>Quyidagi mavzuda 100–120 so‘zli matn yozing:</p>
+<div class="formula">MY DAILY LIFE</div>
+<p>Matnda kamida 5 ta savol, 5 ta inkor gap va 10 ta darak gapdan foydalaning.</p>
+
+<h3>7-topshiriq: Listening</h3>
+<p>Har ikkala listening matnini kamida 3 marta tinglang va mazmunini ingliz tilida qayta aytib bering.</p>
+
+<h3>8-topshiriq: Daftar nazorati</h3>
+<p>Daftardagi barcha qoidalar, 40 ta lug‘at va yozma topshiriqlarni qayta tekshiring.</p>
+</section>
+
+<section class="card">
+<h2>🏆 19. FINAL TEST — 30 QUESTIONS</h2>
+<p>Keyingi darsga tayyor ekaningizni aniqlash uchun testni bajaring. O‘tish bali: 80% (24/30).</p>
+<div class="progress"><div id="testProgress"></div></div>
+<p id="testCount">0 / 30 javob</p>
+<div id="finalTest"></div>
+<button onclick="finishTest()">YAKUNIY NATIJANI KO‘RISH</button>
+<div id="finalResult"></div>
+</section>
+
+<section class="card">
+<h2>🌟 20. BUGUNGI DARS XULOSASI</h2>
+<ul>
+<li>Ingliz tilida gap tuzilishini o‘rgandingiz.</li>
+<li>Darak va inkor gaplarni o‘rgandingiz.</li>
+<li>Do va Does bilan savol tuzdingiz.</li>
+<li>Am, Is, Are bilan savol tuzdingiz.</li>
+<li>WH-Questions bilan tanishdingiz.</li>
+<li>40 ta yangi so‘z o‘rgandingiz.</li>
+<li>Speaking va Listening mashqlarini bajardingiz.</li>
+</ul>
+<div class="rule">
+<strong>ESDA TUTING:</strong><br>
+Ingliz tilini faqat o‘qib o‘rganib bo‘lmaydi. Yozing, tinglang, takrorlang va gapiring. Har kuni oz-ozdan mashq qilish katta natija beradi.
 </div>
 </section>
 
 </main>
 
-<footer class="footer">
-<h2>ENGLISH UP 💜</h2>
+<footer>
+<h2 style="color:white">ENGLISH UP</h2>
 <p>Learn today. Succeed tomorrow.</p>
-<p>Every question brings you closer to fluency!</p>
+<p>Dream Big • Work Hard • Speak English</p>
+<strong>YOUR FUTURE STARTS TODAY!</strong>
 </footer>
 
 <script>
-const speak = text => {
- if(!('speechSynthesis' in window)){
-  alert("Brauzeringiz ovozli o'qishni qo'llab-quvvatlamaydi.");
-  return;
- }
- speechSynthesis.cancel();
- const u=new SpeechSynthesisUtterance(text);
- u.lang="en-US";
- u.rate=.85;
- speechSynthesis.speak(u);
-};
+const vocabulary=[
+["Question","Savol","kves-chən"],
+["Answer","Javob","an-ser"],
+["Ask","So‘ramoq","ask"],
+["Reply","Javob bermoq","ri-plai"],
+["Speak","Gapirmoq","spiik"],
+["Listen","Tinglamoq","lis-ən"],
+["Understand","Tushunmoq","an-der-stand"],
+["Explain","Tushuntirmoq","ik-splein"],
+["Learn","O‘rganmoq","lern"],
+["Teach","O‘qitmoq","tiich"],
+["Study","O‘qimoq","sta-di"],
+["Work","Ishlamoq","werk"],
+["Live","Yashamoq","liv"],
+["Stay","Qolmoq","stey"],
+["Want","Xohlamoq","wont"],
+["Need","Kerak bo‘lmoq","niid"],
+["Like","Yoqtirmoq","laik"],
+["Love","Sevmoq","lav"],
+["Know","Bilmoq","nou"],
+["Think","O‘ylamoq","think"],
+["Remember","Eslamoq","ri-mem-ber"],
+["Forget","Unutmoq","fer-get"],
+["Understand","Tushunmoq","an-der-stand"],
+["Believe","Ishonmoq","bi-liiv"],
+["Choose","Tanlamoq","chuuz"],
+["Find","Topmoq","faind"],
+["Help","Yordam bermoq","help"],
+["Start","Boshlamoq","start"],
+["Finish","Tugatmoq","fi-nish"],
+["Wait","Kutmoq","weit"],
+["Visit","Tashrif buyurmoq","vi-zit"],
+["Travel","Sayohat qilmoq","tra-vəl"],
+["Remember","Eslamoq","ri-mem-ber"],
+["Questionnaire","So‘rovnoma","kves-chə-ner"],
+["Reason","Sabab","rii-zən"],
+["Place","Joy","pleys"],
+["People","Odamlar","pii-pəl"],
+["Everywhere","Hamma joyda","ev-ri-wer"],
+["Sometimes","Ba'zan","sam-taimz"],
+["Together","Birgalikda","tu-ge-ther"]
+];
 
 const speaking=[
+"I speak English.",
+"Do you speak English?",
 "Where do you live?",
-"What do you do every day?",
-"Do you like learning English?",
-"Why are you learning English?",
-"When do you study English?",
-"How often do you practise speaking?",
-"What did you do yesterday?",
-"Where did you go last weekend?",
-"Who is your best friend?",
-"How old are you?"
+"What is your name?",
+"How old are you?",
+"I study every day.",
+"She doesn't work here.",
+"Does he like coffee?",
+"Are you ready?",
+"Why do you learn English?",
+"Where is your family?",
+"When do you wake up?",
+"I want to improve my English.",
+"Can you help me?",
+"Thank you for your help."
 ];
 
-document.getElementById("speakingList").innerHTML=speaking.map((s,i)=>`
-<div class="example">
-<b>${i+1}. ${s}</b>
-<button class="speak" onclick="speak('${s}')">🔊 Listen</button>
-</div>`).join("");
+const dialog1="Hello! What is your name? My name is John. What is your name? My name is Ali. Where are you from? I am from England. Where do you live? I live in Uzbekistan. Do you speak Uzbek? No, I don't. But I speak English. Nice to meet you! Nice to meet you too!";
+
+const dialog2="What do you do every day? I work in a shop. What about you? I am a student. When do you wake up? I wake up at six o'clock. Do you study English? Yes, I do. I study every morning. Why do you learn English? Because I want to speak English well.";
+
+const listening1="Hello! My name is David. I am twenty years old. I live in London. I wake up at seven o'clock. I eat breakfast and drink tea. I go to work at eight. I work in a small shop. I like my job. In the evening, I study English. I want to speak English very well.";
+
+const listening2="Sarah is a new student. She studies English every day. Her teacher is Mr Brown. She has two friends in her class. They speak English together. Sarah likes reading books. She also watches English videos. She wants to improve her English.";
+
+function speakText(text){
+if(!("speechSynthesis" in window)){
+alert("Brauzeringiz ovozli funksiyani qo‘llab-quvvatlamaydi.");
+return;
+}
+speechSynthesis.cancel();
+let u=new SpeechSynthesisUtterance(text);
+u.lang="en-US";
+u.rate=.78;
+speechSynthesis.speak(u);
+}
 
 function speakAll(){
- let i=0;
- function next(){
-  if(i>=speaking.length)return;
-  const u=new SpeechSynthesisUtterance(speaking[i++]);
-  u.lang="en-US";u.rate=.8;
-  u.onend=next;
-  speechSynthesis.speak(u);
- }
- speechSynthesis.cancel();next();
+speakText(speaking.join(". "));
 }
 
-const questions=[
-["She ___ English every day.",["study","studies","studying","studied"],1],
-["___ you like coffee?",["Does","Are","Do","Is"],2],
-["___ he work here?",["Do","Does","Is","Are"],1],
-["Where ___ you live?",["are","does","do","is"],2],
-["___ they at home?",["Do","Does","Are","Is"],2],
-["___ she happy?",["Does","Do","Are","Is"],3],
-["Did you ___ yesterday?",["went","go","going","goes"],1],
-["What ___ he want?",["do","is","does","are"],2],
-["Why ___ you late?",["do","are","does","did"],1],
-["Who ___ you yesterday?",["called","call","calling","calls"],0],
-["He ___ like tea.",["don't","doesn't","isn't","aren't"],1],
-["They ___ go yesterday.",["doesn't","don't","didn't","aren't"],2],
-["___ old are you?",["What","How","When","Where"],1],
-["___ many books do you have?",["How","What","Where","Who"],0],
-["___ is your birthday?",["Why","Who","When","How"],2],
-["___ bag is this?",["Who","Whose","Where","When"],1],
-["___ do you study English?",["Why","Who","Whose","Which"],0],
-["Are you a student? — Yes, I ___.",["am","do","is","are"],0],
-["Does she ___ here?",["works","working","work","worked"],2],
-["Where did they ___?",["went","go","goes","going"],1],
-["My brother ___ football.",["play","plays","playing","do play"],1],
-["___ your parents work?",["Does","Is","Do","Are"],2],
-["What ___ this?",["are","do","is","does"],2],
-["How often ___ you read?",["does","are","do","is"],2],
-["He is busy, ___ he?",["isn't","doesn't","is","aren't"],0],
-["She isn't tired, ___ she?",["is","does","isn't","do"],0],
-["Which one ___ you prefer?",["do","does","are","is"],0],
-["___ called you?",["Who did","Who","Whom do","What does"],1],
-["I ___ at school yesterday.",["am","is","was","are"],2],
-["___ you watch the film last night?",["Do","Does","Did","Are"],2]
-];
-
-function renderQuiz(id,data){
- const root=document.getElementById(id);
- root.innerHTML=data.map((q,i)=>`
- <div class="quiz-question" data-answer="${q[2]}">
- <b>${i+1}. ${q[0]}</b>
- ${q[1].map((o,j)=>`
- <button class="option" data-index="${j}" onclick="choose(this,'${id}')">${String.fromCharCode(65+j)}. ${o}</button>
- `).join("")}
- <div class="feedback"></div>
- </div>`).join("");
-}
-
-function choose(btn,id){
- const parent=btn.parentElement;
- if(parent.dataset.locked==="1")return;
- parent.querySelectorAll(".option").forEach(b=>b.classList.remove("selected"));
- btn.classList.add("selected");
-}
-
-function gradeQuiz(id){
- const root=document.getElementById(id);
- const blocks=[...root.querySelectorAll(".quiz-question")];
- let score=0,answered=0;
- blocks.forEach(q=>{
-  const correct=Number(q.dataset.answer);
-  const selected=q.querySelector(".option.selected");
-  const feedback=q.querySelector(".feedback");
-  q.dataset.locked="1";
-  if(selected){
-   answered++;
-   const index=Number(selected.dataset.index);
-   if(index===correct){
-    score++;
-    selected.classList.add("correct");
-    feedback.textContent="✓ To'g'ri!";
-    feedback.style.color="var(--green)";
-   }else{
-    selected.classList.add("wrong");
-    q.querySelectorAll(".option")[correct].classList.add("correct");
-    feedback.textContent="✗ Noto'g'ri. To'g'ri javob: "+q.querySelectorAll(".option")[correct].textContent;
-    feedback.style.color="var(--red)";
-   }
-  }else{
-   q.querySelectorAll(".option")[correct].classList.add("correct");
-   feedback.textContent="Javob belgilanmadi.";
-  }
- });
- const result=document.getElementById(id==="finalQuiz"?"finalResult":"result1");
- result.textContent=`Natija: ${score}/${blocks.length} (${Math.round(score/blocks.length*100)}%). Javob berilgan: ${answered}/${blocks.length}.`;
- updateProgress();
-}
-
-function resetQuiz(id){
- const data=id==="finalQuiz"?questions:questions.slice(0,10);
- renderQuiz(id,data);
- const result=document.getElementById(id==="finalQuiz"?"finalResult":"result1");
- result.textContent="";
-}
-
-renderQuiz("quiz1",questions.slice(0,15));
-renderQuiz("finalQuiz",questions);
-
-const fills=[
- ["___ you speak English?","Do"],
- ["___ she work here?","Does"],
- ["Where ___ he live?","does"],
- ["___ they students?","Are"],
- ["___ you go yesterday?","Did"],
- ["Why ___ she sad?","is"],
- ["What ___ you want?","do"],
- ["___ I late?","Am"],
- ["How often ___ he read?","does"],
- ["Where ___ they yesterday?","were"]
-];
-
-document.getElementById("fillQuiz").innerHTML=fills.map((q,i)=>`
-<div class="quiz-question">
- <b>${i+1}. ${q[0]}</b>
- <input type="text" id="fill${i}" placeholder="Javobingiz...">
- <div class="answer" id="fillAnswer${i}">To'g'ri javob: ${q[1]}</div>
+document.getElementById("vocabulary").innerHTML=
+vocabulary.map((w,i)=>`
+<div class="word">
+<div><strong>${i+1}. ${w[0]}</strong><br>
+<span class="uz">${w[1]}</span><br>
+<span class="small">/ ${w[2]} /</span></div>
+<div style="text-align:right">
+<button onclick="speakText('${w[0]}')">🔊</button>
+</div>
 </div>`).join("");
 
-function gradeFill(){
- let score=0;
- fills.forEach((q,i)=>{
-  const input=document.getElementById("fill"+i);
-  const ans=q[1].toLowerCase();
-  const ok=input.value.trim().toLowerCase()===ans;
-  if(ok)score++;
-  input.style.borderColor=ok?"var(--green)":"var(--red)";
-  document.getElementById("fillAnswer"+i).style.display="block";
- });
- document.getElementById("fillResult").textContent=`Natija: ${score}/${fills.length}`;
+document.getElementById("speaking").innerHTML=
+speaking.map((s,i)=>`
+<div class="example">
+<strong>${i+1}. ${s}</strong>
+<button onclick="speakText('${s.replace(/'/g,"\\'")}')">🔊</button>
+</div>`).join("");
+
+const listeningQuestions={
+1:[
+["What is the man's name?",["David","John","Tom"],0],
+["Where does David live?",["Paris","London","Rome"],1],
+["How old is he?",["Twenty","Thirty","Ten"],0],
+["When does he wake up?",["At six","At seven","At eight"],1],
+["Where does he work?",["At school","At home","In a shop"],2]
+],
+2:[
+["Who is Sarah?",["A teacher","A student","A doctor"],1],
+["Who is her teacher?",["Mr Brown","Mr John","Mr David"],0],
+["How many friends does she have?",["One","Two","Three"],1],
+["What does Sarah like reading?",["Newspapers","Books","Letters"],1],
+["What does she want to improve?",["Her English","Her cooking","Her driving"],0]
+]
+};
+
+function renderListening(){
+[1,2].forEach(n=>{
+document.getElementById("listen"+n).innerHTML=
+listeningQuestions[n].map((q,i)=>`
+<div class="question">
+<strong>${i+1}. ${q[0]}</strong>
+${q[1].map((a,j)=>`
+<label class="option">
+<input type="radio" name="l${n}_${i}" value="${j}"> ${a}
+</label>`).join("")}
+</div>`).join("");
+});
+}
+renderListening();
+
+function checkListening(n){
+let score=0;
+listeningQuestions[n].forEach((q,i)=>{
+let selected=document.querySelector(`input[name="l${n}_${i}"]:checked`);
+if(selected&&Number(selected.value)===q[2])score++;
+});
+document.getElementById("listenResult"+n).innerHTML=
+`<div class="rule">Natija: ${score} / ${listeningQuestions[n].length}</div>`;
 }
 
-const builds=[
- ["you / do / where / live","Where do you live?"],
- ["she / does / English / speak","Does she speak English?"],
- ["did / yesterday / go / where / you","Where did you go yesterday?"],
- ["he / why / is / sad","Why is he sad?"],
- ["they / do / football / play","Do they play football?"],
- ["what / she / want / does","What does she want?"],
- ["you / are / student / a","Are you a student?"],
- ["often / how / read / you / do","How often do you read?"]
+const grammar=[
+["___ you speak English?",["Do","Does","Is"],0],
+["___ she work here?",["Do","Does","Are"],1],
+["He ___ football.",["play","plays","playing"],1],
+["They ___ like coffee.",["doesn't","isn't","don't"],2],
+["___ you happy?",["Do","Are","Does"],1],
+["Where ___ he live?",["do","does","is"],1],
+["She doesn't ___ tea.",["likes","like","liking"],1],
+["___ they students?",["Are","Do","Does"],0],
+["I ___ English every day.",["studies","study","studying"],1],
+["What ___ your name?",["do","does","is"],2],
+["___ he a teacher?",["Does","Is","Do"],1],
+["Why ___ you study?",["do","does","is"],0],
+["My father ___ in a shop.",["work","works","working"],1],
+["We ___ not tired.",["is","am","are"],2],
+["___ she like music?",["Do","Does","Is"],1],
+["Where ___ you from?",["are","do","does"],0],
+["I ___ not understand.",["does","do","am"],1],
+["He ___ play tennis.",["don't","doesn't","isn't"],1],
+["___ I late?",["Am","Do","Does"],0],
+["How ___ are you?",["many","old","much"],1]
 ];
 
-document.getElementById("buildQuiz").innerHTML=builds.map((q,i)=>`
-<div class="quiz-question">
- <b>${i+1}. ${q[0]}</b>
- <input type="text" id="build${i}" placeholder="To'g'ri savolni yozing">
- <div class="answer" id="buildAnswer${i}">Namuna: ${q[1]}</div>
+function renderGrammar(){
+document.getElementById("grammar").innerHTML=grammar.map((q,i)=>`
+<div class="question">
+<strong>${i+1}. ${q[0]}</strong>
+${q[1].map((a,j)=>`
+<label class="option"><input type="radio" name="g${i}" value="${j}"> ${a}</label>
+`).join("")}
+</div>`).join("");
+}
+renderGrammar();
+
+function checkGrammar(){
+let score=0;
+grammar.forEach((q,i)=>{
+let a=document.querySelector(`input[name="g${i}"]:checked`);
+if(a&&Number(a.value)===q[2])score++;
+});
+document.getElementById("grammarResult").innerHTML=
+`<div class="rule">Sizning natijangiz: <strong>${score}/${grammar.length}</strong></div>`;
+}
+
+const building=[
+["English / speak / I","I speak English."],
+["live / Where / you / do","Where do you live?"],
+["she / likes / tea","She likes tea."],
+["does / work / he / Where","Where does he work?"],
+["not / I / coffee / drink / do","I do not drink coffee."],
+["you / Are / ready","Are you ready?"],
+["doesn't / He / football / play","He doesn't play football."],
+["your / What / name / is","What is your name?"],
+["they / students / Are","Are they students?"],
+["English / study / We / every day","We study English every day."]
+];
+
+document.getElementById("building").innerHTML=
+building.map((q,i)=>`
+<div class="question">
+<strong>${i+1}. ${q[0]}</strong>
+<input id="b${i}" placeholder="Javobingizni yozing">
 </div>`).join("");
 
 function normalize(s){
- return s.toLowerCase().replace(/[?.!,]/g,"").replace(/\s+/g," ").trim();
+return s.toLowerCase().replace(/[?.!,]/g,"").replace(/\s+/g," ").trim();
 }
-function gradeBuild(){
- let score=0;
- builds.forEach((q,i)=>{
-  const input=document.getElementById("build"+i);
-  const ok=normalize(input.value)===normalize(q[1]);
-  if(ok)score++;
-  input.style.borderColor=ok?"var(--green)":"var(--red)";
-  document.getElementById("buildAnswer"+i).style.display="block";
- });
- document.getElementById("buildResult").textContent=`Natija: ${score}/${builds.length}`;
+
+function checkBuilding(){
+let score=0;
+building.forEach((q,i)=>{
+let input=document.getElementById("b"+i);
+if(normalize(input.value)===normalize(q[1]))score++;
+});
+document.getElementById("buildingResult").innerHTML=
+`<div class="rule">To‘g‘ri javoblar: ${score}/${building.length}</div>`;
 }
 
 const translations=[
- ["Siz qayerda yashaysiz?","Where do you live?"],
- ["U ingliz tilida gapiradimi?","Does she speak English?"],
- ["Kecha nima sotib oldingiz?","What did you buy yesterday?"],
- ["Ular nima uchun maktabga bormadi?","Why didn't they go to school?"],
- ["Opangiz necha yoshda?","How old is your sister?"],
- ["Siz qanchalik tez-tez kitob o'qiysiz?","How often do you read books?"],
- ["Bu kimning telefoni?","Whose phone is this?"],
- ["U hozir uyda emasmi?","Isn't he at home now?"],
- ["Kim sizga yordam berdi?","Who helped you?"],
- ["U qaysi kitobni yoqtiradi?","Which book does she like?"]
+"Men ingliz tilida gapiraman.",
+"Siz qayerda yashaysiz?",
+"U har kuni ishlaydi.",
+"U qahvani yoqtirmaydi.",
+"Ular talabami?",
+"Men har kuni ingliz tilini o‘rganaman.",
+"Siz nima uchun ingliz tilini o‘rganyapsiz?",
+"U qayerda ishlaydi?",
+"Men charchamaganman.",
+"Uning ismi nima?",
+"Ular uyda emas.",
+"Siz qachon uyg‘onasiz?",
+"Men kitob o‘qiyman.",
+"U futbol o‘ynamaydi.",
+"Siz menga yordam bera olasizmi?"
 ];
 
-document.getElementById("translateQuiz").innerHTML=translations.map((q,i)=>`
-<div class="quiz-question">
- <b>${i+1}. ${q[0]}</b>
- <div class="answer" id="translation${i}">${q[1]}</div>
+document.getElementById("translation").innerHTML=
+translations.map((s,i)=>`
+<div class="question">
+<strong>${i+1}. ${s}</strong>
+<textarea placeholder="Ingliz tilida yozing..."></textarea>
 </div>`).join("");
 
-function showTranslations(){
- translations.forEach((q,i)=>{
-  document.getElementById("translation"+i).style.display="block";
- });
+const finalQuestions=[
+["I ___ English.",["speak","speaks","speaking"],0],
+["___ you work?",["Does","Do","Is"],1],
+["___ she study?",["Do","Does","Are"],1],
+["He ___ coffee.",["like","likes","liking"],1],
+["They ___ at home.",["is","am","are"],2],
+["She doesn't ___ here.",["works","working","work"],2],
+["___ you a student?",["Are","Do","Does"],0],
+["Where ___ he live?",["do","does","is"],1],
+["What ___ your name?",["are","is","do"],1],
+["I ___ not tired.",["am","is","are"],0],
+["___ they speak English?",["Does","Are","Do"],2],
+["Why ___ she happy?",["do","does","is"],2],
+["My brother ___ football.",["play","plays","playing"],1],
+["We ___ like milk.",["doesn't","don't","isn't"],1],
+["___ he your father?",["Is","Do","Does"],0],
+["When ___ you study?",["does","do","are"],1],
+["She ___ English every day.",["study","studies","studying"],1],
+["___ I late?",["Do","Does","Am"],2],
+["He does not ___ tea.",["drinks","drink","drinking"],1],
+["How ___ are you?",["old","many","much"],0],
+["___ she work here?",["Do","Does","Is"],1],
+["They ___ students.",["is","are","am"],1],
+["What ___ you eat?",["does","do","is"],1],
+["He ___ not play.",["don't","doesn't","isn't"],1],
+["___ you ready?",["Do","Are","Does"],1],
+["Where are ___?",["you","do","does"],0],
+["I ___ in London.",["lives","live","living"],1],
+["___ he like music?",["Do","Does","Are"],1],
+["We ___ English.",["learn","learns","learning"],0],
+["Why do you ___ English?",["learns","learning","learn"],2]
+];
+
+function renderFinal(){
+document.getElementById("finalTest").innerHTML=
+finalQuestions.map((q,i)=>`
+<div class="question">
+<strong>${i+1}. ${q[0]}</strong>
+${q[1].map((a,j)=>`
+<label class="option">
+<input type="radio" name="f${i}" value="${j}" onchange="updateCount()"> ${a}
+</label>`).join("")}
+</div>`).join("");
+}
+renderFinal();
+
+function updateCount(){
+let count=0;
+finalQuestions.forEach((q,i)=>{
+if(document.querySelector(`input[name="f${i}"]:checked`))count++;
+});
+document.getElementById("testCount").innerText=count+" / 30 javob";
+document.getElementById("testProgress").style.width=(count/30*100)+"%";
 }
 
-function updateProgress(){
- const done=document.querySelectorAll(".quiz-question").length;
- const checked=document.querySelectorAll(".quiz-question[data-locked='1']").length;
- document.getElementById("progressBar").style.width="100%";
+function finishTest(){
+let score=0;
+let unanswered=0;
+finalQuestions.forEach((q,i)=>{
+let a=document.querySelector(`input[name="f${i}"]:checked`);
+if(!a)unanswered++;
+else if(Number(a.value)===q[2])score++;
+});
+if(unanswered>0){
+document.getElementById("finalResult").innerHTML=
+`<div class="rule">Iltimos, barcha savollarga javob bering. Javobsiz savollar: ${unanswered}</div>`;
+return;
+}
+let percent=Math.round(score/30*100);
+let passed=percent>=80;
+document.getElementById("finalResult").innerHTML=`
+<div class="rule">
+<h3>${passed?"🎉 TABRIKLAYMIZ!":"📚 YANA MASHQ QILING!"}</h3>
+<h2>${score} / 30 — ${percent}%</h2>
+<p>${passed?"Siz 80% natijaga erishdingiz. 16-dars testidan muvaffaqiyatli o'tdingiz!":"O‘tish uchun kamida 24 ta to‘g‘ri javob kerak. Qoidalarni takrorlang va qayta urinib ko‘ring."}</p>
+</div>`;
 }
 </script>
+
 </body>
 </html>
