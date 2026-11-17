@@ -1,1 +1,1611 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 17 — Everyday English and Communication | English Up</title>
+
+<style>
+:root{
+ --p:#7047eb;
+ --p2:#9274ff;
+ --bg:#f5f3ff;
+ --card:#ffffff;
+ --text:#241b3b;
+ --muted:#716987;
+ --border:#e7e0fa;
+ --green:#159b69;
+ --red:#df4960;
+ --yellow:#f2b544;
+ --shadow:0 8px 28px rgba(66,39,120,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.7;
+}
+body.dark{
+ --bg:#171326;
+ --card:#241d36;
+ --text:#f4efff;
+ --muted:#b9aecf;
+ --border:#40345b;
+ --shadow:0 8px 28px rgba(0,0,0,.22);
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+header{
+ position:sticky;
+ top:0;
+ z-index:50;
+ background:var(--card);
+ border-bottom:1px solid var(--border);
+ box-shadow:var(--shadow);
+}
+.header-inner{
+ max-width:1100px;
+ margin:auto;
+ padding:12px 18px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+}
+.brand{
+ font-size:21px;
+ font-weight:900;
+ color:var(--p);
+ letter-spacing:1px;
+}
+.header-actions{display:flex;gap:8px}
+.icon-btn{
+ border:1px solid var(--border);
+ background:var(--bg);
+ color:var(--text);
+ border-radius:12px;
+ padding:8px 12px;
+}
+.progress-wrap{
+ height:5px;
+ background:var(--border);
+}
+.progress-bar{
+ height:5px;
+ width:0%;
+ background:linear-gradient(90deg,var(--p),var(--p2));
+ transition:.3s;
+}
+.container{
+ max-width:1000px;
+ margin:auto;
+ padding:22px 16px 60px;
+}
+.hero{
+ background:linear-gradient(135deg,#7047eb,#a28aff);
+ color:white;
+ padding:32px 24px;
+ border-radius:24px;
+ box-shadow:var(--shadow);
+ margin-bottom:22px;
+}
+.hero h1{
+ margin:0 0 10px;
+ font-size:clamp(25px,5vw,38px);
+ line-height:1.2;
+}
+.hero p{margin:8px 0;opacity:.95}
+.hero-badges{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:18px;
+}
+.hero-badges span{
+ background:#ffffff25;
+ border:1px solid #ffffff50;
+ padding:6px 12px;
+ border-radius:30px;
+ font-size:13px;
+}
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:22px;
+ margin:18px 0;
+ box-shadow:var(--shadow);
+}
+.card h2,.card h3{margin-top:0}
+.section-title{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-size:24px;
+ margin:34px 0 12px;
+}
+.section-number{
+ width:38px;
+ height:38px;
+ border-radius:12px;
+ background:var(--p);
+ color:white;
+ display:grid;
+ place-items:center;
+ font-weight:900;
+ flex-shrink:0;
+}
+.subheading{
+ color:var(--p);
+ font-size:19px;
+ margin:24px 0 10px;
+}
+.note{
+ background:#7047eb12;
+ border-left:4px solid var(--p);
+ padding:14px 16px;
+ border-radius:10px;
+ margin:14px 0;
+}
+.warning{
+ background:#f2b54418;
+ border-left:4px solid var(--yellow);
+ padding:14px;
+ border-radius:10px;
+ margin:14px 0;
+}
+.example{
+ background:var(--bg);
+ border:1px solid var(--border);
+ padding:13px 15px;
+ border-radius:12px;
+ margin:9px 0;
+}
+.en{font-weight:700;color:var(--p)}
+.uz{color:var(--muted)}
+.pron{font-size:13px;color:var(--muted)}
+.word-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+ gap:10px;
+}
+.word{
+ padding:12px;
+ background:var(--bg);
+ border:1px solid var(--border);
+ border-radius:12px;
+}
+.word strong{color:var(--p)}
+.speak{
+ border:0;
+ border-radius:9px;
+ background:var(--p);
+ color:white;
+ padding:6px 10px;
+ margin-left:5px;
+ font-size:13px;
+}
+.dialogue{
+ border:1px solid var(--border);
+ border-radius:16px;
+ overflow:hidden;
+ margin:18px 0;
+}
+.dialogue-head{
+ background:var(--p);
+ color:white;
+ padding:12px 16px;
+ font-weight:800;
+}
+.dialogue-body{padding:15px}
+.line{
+ padding:9px 10px;
+ margin:7px 0;
+ background:var(--bg);
+ border-radius:10px;
+}
+.line b{color:var(--p)}
+.listening{
+ background:#159b6910;
+ border:1px solid #159b6940;
+ border-radius:16px;
+ padding:17px;
+ margin:14px 0 24px;
+}
+.listening h4{margin:0 0 10px;color:var(--green)}
+.listen-btn{
+ background:var(--green);
+ color:white;
+ border:0;
+ padding:10px 15px;
+ border-radius:10px;
+ margin:5px 5px 8px 0;
+}
+.question{
+ padding:13px;
+ border:1px solid var(--border);
+ border-radius:12px;
+ margin:12px 0;
+}
+.question p{font-weight:700;margin:0 0 8px}
+.option{
+ display:block;
+ padding:7px 9px;
+ margin:5px 0;
+ border-radius:8px;
+ background:var(--bg);
+ cursor:pointer;
+}
+.option input{margin-right:8px}
+.feedback{
+ font-size:14px;
+ font-weight:700;
+ margin-top:7px;
+}
+.correct{color:var(--green)}
+.incorrect{color:var(--red)}
+.primary-btn{
+ background:var(--p);
+ color:white;
+ border:0;
+ border-radius:12px;
+ padding:12px 18px;
+ font-weight:700;
+ margin:8px 5px 8px 0;
+}
+.secondary-btn{
+ background:var(--bg);
+ color:var(--text);
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:11px 16px;
+ margin:5px;
+}
+textarea,input[type=text]{
+ width:100%;
+ padding:12px;
+ border:1px solid var(--border);
+ background:var(--bg);
+ color:var(--text);
+ border-radius:10px;
+ margin:7px 0;
+}
+.result{
+ padding:16px;
+ border-radius:12px;
+ background:var(--bg);
+ margin-top:12px;
+ font-weight:700;
+}
+.tabs{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin:15px 0;
+}
+.tabs a{
+ text-decoration:none;
+ color:var(--p);
+ background:var(--card);
+ border:1px solid var(--border);
+ padding:8px 12px;
+ border-radius:20px;
+ font-size:13px;
+}
+footer{
+ text-align:center;
+ padding:35px 15px;
+ color:var(--muted);
+}
+footer strong{color:var(--p);font-size:22px}
+.small{font-size:13px;color:var(--muted)}
+@media(max-width:600px){
+ .container{padding:14px 11px 40px}
+ .card{padding:16px}
+ .hero{padding:25px 18px}
+ .section-title{font-size:21px}
+ .brand{font-size:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="header-inner">
+  <div class="brand">ENGLISH UP</div>
+  <div class="header-actions">
+   <button class="icon-btn" onclick="history.back()">← Back</button>
+   <button class="icon-btn" onclick="toggleTheme()">🌙</button>
+  </div>
+ </div>
+ <div class="progress-wrap">
+  <div class="progress-bar" id="progressBar"></div>
+ </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+ <h1>LESSON 17</h1>
+ <h2>Everyday English and Communication</h2>
+ <p>Kundalik hayotda ingliz tilida erkin va tabiiy muloqot qilishni o‘rganamiz.</p>
+ <div class="hero-badges">
+  <span>5 Big Modules</span>
+  <span>10 Dialogues</span>
+  <span>Listening Practice</span>
+  <span>30 Questions</span>
+  <span>Speaking & Writing</span>
+ </div>
+</section>
+
+<div class="card">
+ <h2>📚 Darsning maqsadi</h2>
+ <p>Ushbu darsdan keyin siz do‘konda xarid qilish, sayohat qilish, restoranda buyurtma berish, uchrashuv belgilash va kundalik suhbatlarda qatnashish uchun kerakli inglizcha iboralarni ishlata olasiz.</p>
+ <div class="note">
+  <strong>Daftarga yozish:</strong>
+  Har bir yangi iborani inglizcha shakli, o‘zbekcha tarjimasi va talaffuzi bilan yozing. Dialoglarni ovoz chiqarib o‘qing.
+ </div>
+</div>
+
+<nav class="tabs">
+ <a href="#shopping">Shopping</a>
+ <a href="#travelling">Travelling</a>
+ <a href="#restaurant">Restaurant</a>
+ <a href="#plans">Making Plans</a>
+ <a href="#conversations">Conversations</a>
+ <a href="#finaltest">Final Test</a>
+ <a href="#homework">Homework</a>
+</nav>
+
+<!-- MODULE 1 -->
+
+<section id="shopping">
+ <h2 class="section-title"><span class="section-number">1</span> SHOPPING</h2>
+
+ <div class="card">
+  <h3>🛍️ Shopping — Do‘konda xarid qilish</h3>
+  <p>Shopping — xarid qilish degani. Ingliz tilida do‘konga kirganda, mahsulot narxini so‘raganda, o‘lcham yoki rang tanlaganda ishlatiladigan iboralarni bilish juda muhim.</p>
+
+  <h3 class="subheading">Asosiy iboralar</h3>
+  <div class="word-grid">
+   <div class="word"><strong>How much is it?</strong><br>Bu qancha turadi?<br><span class="pron">/hau mach iz it/</span> <button class="speak" onclick="say('How much is it?')">🔊</button></div>
+   <div class="word"><strong>How much are they?</strong><br>Bular qancha turadi?<br><span class="pron">/hau mach ar zey/</span> <button class="speak" onclick="say('How much are they?')">🔊</button></div>
+   <div class="word"><strong>Can I help you?</strong><br>Sizga yordam bera olamanmi?<br><span class="pron">/ken ay help yu/</span> <button class="speak" onclick="say('Can I help you?')">🔊</button></div>
+   <div class="word"><strong>I'm just looking.</strong><br>Shunchaki ko‘rib yuribman.<br><span class="pron">/aym jast luking/</span> <button class="speak" onclick="say(\"I'm just looking.\")">🔊</button></div>
+   <div class="word"><strong>Can I try it on?</strong><br>Buni kiyib ko‘rsam bo‘ladimi?<br><span class="pron">/ken ay tray it on/</span> <button class="speak" onclick="say('Can I try it on?')">🔊</button></div>
+   <div class="word"><strong>Do you have a smaller size?</strong><br>Kichikroq o‘lchami bormi?<br><span class="pron">/du yu hev e smoler sayz/</span> <button class="speak" onclick="say('Do you have a smaller size?')">🔊</button></div>
+   <div class="word"><strong>It's too expensive.</strong><br>Bu juda qimmat.<br><span class="pron">/its tu ikspensiv/</span> <button class="speak" onclick="say('It is too expensive.')">🔊</button></div>
+   <div class="word"><strong>Can I pay by card?</strong><br>Karta orqali to‘lasam bo‘ladimi?<br><span class="pron">/ken ay pey bay kard/</span> <button class="speak" onclick="say('Can I pay by card?')">🔊</button></div>
+  </div>
+
+  <h3 class="subheading">Muhim grammatik qoliplar</h3>
+  <div class="example">
+   <strong>How much + is + birlikdagi ot?</strong>
+   <p>How much is this shirt? — Bu ko‘ylak qancha turadi?</p>
+   <p>How much is that phone? — Anavi telefon qancha turadi?</p>
+  </div>
+  <div class="example">
+   <strong>How much + are + ko‘plikdagi ot?</strong>
+   <p>How much are these shoes? — Bu oyoq kiyimlar qancha turadi?</p>
+   <p>How much are those apples? — Anavi olmalar qancha turadi?</p>
+  </div>
+  <div class="example">
+   <strong>Can I + fe’lning birinchi shakli?</strong>
+   <p>Can I try it? — Sinab ko‘rsam bo‘ladimi?</p>
+   <p>Can I pay now? — Hozir to‘lasam bo‘ladimi?</p>
+   <p>Can I see it? — Uni ko‘rsam bo‘ladimi?</p>
+  </div>
+  <div class="note">
+   Eslab qoling: <b>Can I...?</b> odobli ruxsat so‘rash uchun ishlatiladi. Undan keyin fe'lning oddiy shakli keladi: Can I go? Can I sit? Can I ask?
+  </div>
+ </div>
+
+ <div class="card">
+  <h3>🗣️ Dialogue 1 — Buying a T-shirt</h3>
+  <p class="small">Do‘konda futbolka sotib olish</p>
+  <div class="dialogue">
+   <div class="dialogue-head">Customer and Shop Assistant</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Assistant:</b> Hello! Can I help you?<br><span class="uz">Salom! Sizga yordam bera olamanmi?</span></div>
+    <div class="line"><b>Customer:</b> Yes, please. I'm looking for a T-shirt.<br><span class="uz">Ha, iltimos. Men futbolka qidiryapman.</span></div>
+    <div class="line"><b>Assistant:</b> What colour would you like?<br><span class="uz">Qaysi rangni xohlaysiz?</span></div>
+    <div class="line"><b>Customer:</b> I'd like a blue one.<br><span class="uz">Ko‘k ranglisini xohlayman.</span></div>
+    <div class="line"><b>Assistant:</b> What size do you need?<br><span class="uz">Qaysi o‘lcham kerak?</span></div>
+    <div class="line"><b>Customer:</b> Medium, please. Can I try it on?<br><span class="uz">O‘rtacha o‘lcham, iltimos. Kiyib ko‘rsam bo‘ladimi?</span></div>
+    <div class="line"><b>Assistant:</b> Of course. The fitting room is over there.<br><span class="uz">Albatta. Kiyinish xonasi anavi yerda.</span></div>
+    <div class="line"><b>Customer:</b> It fits perfectly. How much is it?<br><span class="uz">Juda mos keldi. Bu qancha turadi?</span></div>
+    <div class="line"><b>Assistant:</b> It's twenty dollars.<br><span class="uz">Yigirma dollar.</span></div>
+    <div class="line"><b>Customer:</b> Great. I'll take it. Can I pay by card?<br><span class="uz">Ajoyib. Buni olaman. Karta orqali to‘lasam bo‘ladimi?</span></div>
+    <div class="line"><b>Assistant:</b> Certainly. Thank you!<br><span class="uz">Albatta. Rahmat!</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 1 — Buying a T-shirt</h4>
+   <p>Dialogni avval tarjimasiz tinglang. Keyin savollarga javob bering.</p>
+   <button class="listen-btn" onclick="sayDialogue('Hello! Can I help you? Yes, please. I am looking for a T-shirt. What colour would you like? I would like a blue one. What size do you need? Medium, please. Can I try it on? Of course. The fitting room is over there. It fits perfectly. How much is it? It is twenty dollars. Great. I will take it. Can I pay by card? Certainly. Thank you!')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. What is the customer looking for?</p>
+    <label class="option"><input type="radio" name="l1q1" value="a"> A pair of shoes</label>
+    <label class="option"><input type="radio" name="l1q1" value="b"> A T-shirt</label>
+    <label class="option"><input type="radio" name="l1q1" value="c"> A jacket</label>
+   </div>
+   <div class="question">
+    <p>2. What colour does the customer want?</p>
+    <label class="option"><input type="radio" name="l1q2" value="a"> Blue</label>
+    <label class="option"><input type="radio" name="l1q2" value="b"> Red</label>
+    <label class="option"><input type="radio" name="l1q2" value="c"> Black</label>
+   </div>
+   <div class="question">
+    <p>3. How much is the T-shirt?</p>
+    <label class="option"><input type="radio" name="l1q3" value="a"> Ten dollars</label>
+    <label class="option"><input type="radio" name="l1q3" value="b"> Fifteen dollars</label>
+    <label class="option"><input type="radio" name="l1q3" value="c"> Twenty dollars</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['l1q1','l1q2','l1q3'],['b','a','c'],'listen1result')">Check Listening</button>
+   <div id="listen1result" class="feedback"></div>
+  </div>
+
+  <h3 class="subheading">Dialogue 2 — Buying Groceries</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Customer and Shop Assistant</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Customer:</b> Excuse me, where can I find milk?<br><span class="uz">Kechirasiz, sutni qayerdan topsam bo‘ladi?</span></div>
+    <div class="line"><b>Assistant:</b> It's in aisle three, next to the cheese.<br><span class="uz">Uchinchi qatorda, pishloq yonida.</span></div>
+    <div class="line"><b>Customer:</b> Thank you. How much is a bottle?<br><span class="uz">Rahmat. Bir shishasi qancha turadi?</span></div>
+    <div class="line"><b>Assistant:</b> It's two dollars.<br><span class="uz">Ikki dollar.</span></div>
+    <div class="line"><b>Customer:</b> I'll take two bottles, please.<br><span class="uz">Ikkita shisha olaman, iltimos.</span></div>
+    <div class="line"><b>Assistant:</b> Anything else?<br><span class="uz">Yana biror narsa kerakmi?</span></div>
+    <div class="line"><b>Customer:</b> Yes, I'd like some bread and apples.<br><span class="uz">Ha, biroz non va olma olmoqchiman.</span></div>
+    <div class="line"><b>Assistant:</b> Here you are. Is that everything?<br><span class="uz">Marhamat. Shu hammasimi?</span></div>
+    <div class="line"><b>Customer:</b> Yes, thank you. Where can I pay?<br><span class="uz">Ha, rahmat. Qayerda to‘lasam bo‘ladi?</span></div>
+    <div class="line"><b>Assistant:</b> At the checkout, near the entrance.<br><span class="uz">Kirish joyi yaqinidagi kassada.</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 2 — Buying Groceries</h4>
+   <button class="listen-btn" onclick="sayDialogue('Excuse me, where can I find milk? It is in aisle three, next to the cheese. Thank you. How much is a bottle? It is two dollars. I will take two bottles, please. Anything else? Yes, I would like some bread and apples. Here you are. Is that everything? Yes, thank you. Where can I pay? At the checkout, near the entrance.')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. Where is the milk?</p>
+    <label class="option"><input type="radio" name="l2q1" value="a"> In aisle one</label>
+    <label class="option"><input type="radio" name="l2q1" value="b"> In aisle three</label>
+    <label class="option"><input type="radio" name="l2q1" value="c"> Near the entrance</label>
+   </div>
+   <div class="question">
+    <p>2. How many bottles of milk does the customer buy?</p>
+    <label class="option"><input type="radio" name="l2q2" value="a"> One</label>
+    <label class="option"><input type="radio" name="l2q2" value="b"> Three</label>
+    <label class="option"><input type="radio" name="l2q2" value="c"> Two</label>
+   </div>
+   <div class="question">
+    <p>3. Where can the customer pay?</p>
+    <label class="option"><input type="radio" name="l2q3" value="a"> At the checkout</label>
+    <label class="option"><input type="radio" name="l2q3" value="b"> In aisle three</label>
+    <label class="option"><input type="radio" name="l2q3" value="c"> At the door</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['l2q1','l2q2','l2q3'],['b','c','a'],'listen2result')">Check Listening</button>
+   <div id="listen2result" class="feedback"></div>
+  </div>
+
+  <div class="card">
+   <h3>✍️ Shopping Practice</h3>
+   <p>To‘g‘ri javobni tanlang.</p>
+   <div class="question">
+    <p>1. “Bu qancha turadi?” ingliz tilida qanday aytiladi?</p>
+    <label class="option"><input type="radio" name="sh1" value="a"> How old is it?</label>
+    <label class="option"><input type="radio" name="sh1" value="b"> How much is it?</label>
+    <label class="option"><input type="radio" name="sh1" value="c"> How many is it?</label>
+   </div>
+   <div class="question">
+    <p>2. “Kiyib ko‘rsam bo‘ladimi?”</p>
+    <label class="option"><input type="radio" name="sh2" value="a"> Can I try it on?</label>
+    <label class="option"><input type="radio" name="sh2" value="b"> Can I buy it on?</label>
+    <label class="option"><input type="radio" name="sh2" value="c"> Do I try it?</label>
+   </div>
+   <div class="question">
+    <p>3. “Juda qimmat”</p>
+    <label class="option"><input type="radio" name="sh3" value="a"> Very cheap</label>
+    <label class="option"><input type="radio" name="sh3" value="b"> Too small</label>
+    <label class="option"><input type="radio" name="sh3" value="c"> Too expensive</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['sh1','sh2','sh3'],['b','a','c'],'shoppingResult')">Check Answers</button>
+   <div id="shoppingResult" class="feedback"></div>
+  </div>
+</section>
+
+<!-- MODULE 2 -->
+
+<section id="travelling">
+ <h2 class="section-title"><span class="section-number">2</span> TRAVELLING</h2>
+
+ <div class="card">
+  <h3>✈️ Travelling — Sayohat va transport</h3>
+  <p>Sayohat paytida manzil so‘rash, chipta olish, transport jadvalini tushunish va mehmonxonada gaplashish uchun quyidagi iboralar kerak bo‘ladi.</p>
+
+  <div class="word-grid">
+   <div class="word"><strong>Where is the station?</strong><br>Vokzal qayerda?<br><span class="pron">/wer iz ze steyshn/</span> <button class="speak" onclick="say('Where is the station?')">🔊</button></div>
+   <div class="word"><strong>I'd like a ticket.</strong><br>Chipta olmoqchiman.<br><span class="pron">/ayd layk e tiket/</span> <button class="speak" onclick="say('I would like a ticket.')">🔊</button></div>
+   <div class="word"><strong>One way or return?</strong><br>Bir tomonga yoki borib-kelish?<br><span class="pron">/wan wey or ritern/</span> <button class="speak" onclick="say('One way or return?')">🔊</button></div>
+   <div class="word"><strong>What time does it leave?</strong><br>U soat nechada jo‘naydi?<br><span class="pron">/wot taym daz it liiv/</span> <button class="speak" onclick="say('What time does it leave?')">🔊</button></div>
+   <div class="word"><strong>How long does it take?</strong><br>Qancha vaqt ketadi?<br><span class="pron">/hau long daz it teyk/</span> <button class="speak" onclick="say('How long does it take?')">🔊</button></div>
+   <div class="word"><strong>Where should I get off?</strong><br>Qayerda tushishim kerak?<br><span class="pron">/wer shud ay get of/</span> <button class="speak" onclick="say('Where should I get off?')">🔊</button></div>
+   <div class="word"><strong>I'm looking for...</strong><br>Men ... qidiryapman.<br><span class="pron">/aym luking for/</span> <button class="speak" onclick="say('I am looking for...')">🔊</button></div>
+   <div class="word"><strong>Could you help me?</strong><br>Menga yordam bera olasizmi?<br><span class="pron">/kud yu help mi/</span> <button class="speak" onclick="say('Could you help me?')">🔊</button></div>
+  </div>
+
+  <h3 class="subheading">Yo‘l so‘rashda ishlatiladigan so‘zlar</h3>
+  <div class="example"><b>Turn left.</b> — Chapga buriling.</div>
+  <div class="example"><b>Turn right.</b> — O‘ngga buriling.</div>
+  <div class="example"><b>Go straight ahead.</b> — To‘g‘riga boring.</div>
+  <div class="example"><b>It's next to the bank.</b> — Bankning yonida.</div>
+  <div class="example"><b>It's opposite the hotel.</b> — Mehmonxonaning ro‘parasida.</div>
+  <div class="example"><b>It's near the bus stop.</b> — Avtobus bekati yaqinida.</div>
+
+  <h3 class="subheading">Grammatik qolip: How long does it take?</h3>
+  <p>Biror joyga yetib borish uchun qancha vaqt ketishini so‘rashda ishlatiladi.</p>
+  <div class="example">
+   <b>How long does it take to get to the airport?</b>
+   <br>Aeroportga yetib borish qancha vaqt oladi?
+  </div>
+  <div class="example">
+   <b>It takes thirty minutes.</b>
+   <br>O‘ttiz daqiqa vaqt ketadi.
+  </div>
+  <div class="example">
+   <b>It takes two hours by bus.</b>
+   <br>Avtobusda ikki soat ketadi.
+  </div>
+ </div>
+
+ <div class="card">
+  <h3>🗣️ Dialogue 1 — At the Train Station</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Passenger and Ticket Clerk</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Passenger:</b> Good morning. I'd like a ticket to London, please.<br><span class="uz">Xayrli tong. Londonga chipta olmoqchiman.</span></div>
+    <div class="line"><b>Clerk:</b> Certainly. One way or return?<br><span class="uz">Albatta. Bir tomonga yoki borib-kelish?</span></div>
+    <div class="line"><b>Passenger:</b> A return ticket, please.<br><span class="uz">Borib-kelish chiptasi, iltimos.</span></div>
+    <div class="line"><b>Clerk:</b> When would you like to travel?<br><span class="uz">Qachon sayohat qilmoqchisiz?</span></div>
+    <div class="line"><b>Passenger:</b> Tomorrow morning.<br><span class="uz">Ertaga ertalab.</span></div>
+    <div class="line"><b>Clerk:</b> The train leaves at nine fifteen.<br><span class="uz">Poyezd soat to‘qqiz-u o‘n beshda jo‘naydi.</span></div>
+    <div class="line"><b>Passenger:</b> How long does it take?<br><span class="uz">Qancha vaqt ketadi?</span></div>
+    <div class="line"><b>Clerk:</b> About two hours.<br><span class="uz">Taxminan ikki soat.</span></div>
+    <div class="line"><b>Passenger:</b> How much is the ticket?<br><span class="uz">Chipta qancha turadi?</span></div>
+    <div class="line"><b>Clerk:</b> It's forty pounds.<br><span class="uz">Qirq funt.</span></div>
+    <div class="line"><b>Passenger:</b> Here you are. Thank you.<br><span class="uz">Mana, marhamat. Rahmat.</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 1 — At the Train Station</h4>
+   <button class="listen-btn" onclick="sayDialogue('Good morning. I would like a ticket to London, please. Certainly. One way or return? A return ticket, please. When would you like to travel? Tomorrow morning. The train leaves at nine fifteen. How long does it take? About two hours. How much is the ticket? It is forty pounds. Here you are. Thank you.')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. Where does the passenger want to go?</p>
+    <label class="option"><input type="radio" name="t1q1" value="a"> London</label>
+    <label class="option"><input type="radio" name="t1q1" value="b"> Paris</label>
+    <label class="option"><input type="radio" name="t1q1" value="c"> Rome</label>
+   </div>
+   <div class="question">
+    <p>2. When does the passenger want to travel?</p>
+    <label class="option"><input type="radio" name="t1q2" value="a"> Today evening</label>
+    <label class="option"><input type="radio" name="t1q2" value="b"> Tomorrow morning</label>
+    <label class="option"><input type="radio" name="t1q2" value="c"> Next week</label>
+   </div>
+   <div class="question">
+    <p>3. How long does the journey take?</p>
+    <label class="option"><input type="radio" name="t1q3" value="a"> One hour</label>
+    <label class="option"><input type="radio" name="t1q3" value="b"> Three hours</label>
+    <label class="option"><input type="radio" name="t1q3" value="c"> Two hours</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['t1q1','t1q2','t1q3'],['a','b','c'],'travel1result')">Check Listening</button>
+   <div id="travel1result" class="feedback"></div>
+  </div>
+
+  <h3 class="subheading">Dialogue 2 — At the Hotel</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Guest and Receptionist</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Guest:</b> Hello. I have a reservation.<br><span class="uz">Salom. Menda bron bor.</span></div>
+    <div class="line"><b>Receptionist:</b> Welcome! What's your name, please?<br><span class="uz">Xush kelibsiz! Ismingiz nima?</span></div>
+    <div class="line"><b>Guest:</b> My name is Alex Brown.<br><span class="uz">Mening ismim Alex Brown.</span></div>
+    <div class="line"><b>Receptionist:</b> Let me check. Yes, a room for two nights.<br><span class="uz">Tekshirib ko‘ray. Ha, ikki kechaga xona.</span></div>
+    <div class="line"><b>Guest:</b> That's right. Is breakfast included?<br><span class="uz">To‘g‘ri. Nonushta narxga kiritilganmi?</span></div>
+    <div class="line"><b>Receptionist:</b> Yes, breakfast is from seven to ten.<br><span class="uz">Ha, nonushta yettidan o‘ngacha.</span></div>
+    <div class="line"><b>Guest:</b> Great. What time is check-out?<br><span class="uz">Ajoyib. Xonani topshirish vaqti nechada?</span></div>
+    <div class="line"><b>Receptionist:</b> Before eleven in the morning.<br><span class="uz">Ertalab soat o‘n birdan oldin.</span></div>
+    <div class="line"><b>Guest:</b> Thank you. Could I have the room key?<br><span class="uz">Rahmat. Xona kalitini olsam bo‘ladimi?</span></div>
+    <div class="line"><b>Receptionist:</b> Of course. Here you are. Enjoy your stay!<br><span class="uz">Albatta. Marhamat. Yaxshi dam oling!</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 2 — At the Hotel</h4>
+   <button class="listen-btn" onclick="sayDialogue('Hello. I have a reservation. Welcome! What is your name, please? My name is Alex Brown. Let me check. Yes, a room for two nights. That is right. Is breakfast included? Yes, breakfast is from seven to ten. Great. What time is check-out? Before eleven in the morning. Thank you. Could I have the room key? Of course. Here you are. Enjoy your stay!')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. How many nights is the room booked for?</p>
+    <label class="option"><input type="radio" name="t2q1" value="a"> One night</label>
+    <label class="option"><input type="radio" name="t2q1" value="b"> Two nights</label>
+    <label class="option"><input type="radio" name="t2q1" value="c"> Three nights</label>
+   </div>
+   <div class="question">
+    <p>2. Is breakfast included?</p>
+    <label class="option"><input type="radio" name="t2q2" value="a"> Yes</label>
+    <label class="option"><input type="radio" name="t2q2" value="b"> No</label>
+    <label class="option"><input type="radio" name="t2q2" value="c"> Not mentioned</label>
+   </div>
+   <div class="question">
+    <p>3. What time is check-out?</p>
+    <label class="option"><input type="radio" name="t2q3" value="a"> Before nine</label>
+    <label class="option"><input type="radio" name="t2q3" value="b"> Before ten</label>
+    <label class="option"><input type="radio" name="t2q3" value="c"> Before eleven</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['t2q1','t2q2','t2q3'],['b','a','c'],'travel2result')">Check Listening</button>
+   <div id="travel2result" class="feedback"></div>
+  </div>
+ </div>
+</section>
+
+<!-- MODULE 3 -->
+
+<section id="restaurant">
+ <h2 class="section-title"><span class="section-number">3</span> AT THE RESTAURANT</h2>
+
+ <div class="card">
+  <h3>🍽️ At the Restaurant — Restoranda</h3>
+  <p>Restoranda taom buyurtma qilish, menyu so‘rash va hisobni to‘lashda muloyim iboralardan foydalanamiz.</p>
+
+  <div class="word-grid">
+   <div class="word"><strong>Could I see the menu?</strong><br>Menyuni ko‘rsam bo‘ladimi?<br><button class="speak" onclick="say('Could I see the menu?')">🔊</button></div>
+   <div class="word"><strong>What do you recommend?</strong><br>Nimani tavsiya qilasiz?<br><button class="speak" onclick="say('What do you recommend?')">🔊</button></div>
+   <div class="word"><strong>I'd like to order.</strong><br>Buyurtma bermoqchiman.<br><button class="speak" onclick="say('I would like to order.')">🔊</button></div>
+   <div class="word"><strong>I'll have the chicken.</strong><br>Tovuq go‘shtlisini olaman.<br><button class="speak" onclick="say('I will have the chicken.')">🔊</button></div>
+   <div class="word"><strong>Anything to drink?</strong><br>Ichishga biror narsa olasizmi?<br><button class="speak" onclick="say('Anything to drink?')">🔊</button></div>
+   <div class="word"><strong>Could we have the bill?</strong><br>Hisobni olsak bo‘ladimi?<br><button class="speak" onclick="say('Could we have the bill?')">🔊</button></div>
+   <div class="word"><strong>It was delicious.</strong><br>Juda mazali edi.<br><button class="speak" onclick="say('It was delicious.')">🔊</button></div>
+   <div class="word"><strong>I'm allergic to nuts.</strong><br>Yong‘oqqa allergiyam bor.<br><button class="speak" onclick="say('I am allergic to nuts.')">🔊</button></div>
+  </div>
+
+  <h3 class="subheading">Muloyim so‘rov: Could I...?</h3>
+  <p><b>Could I...?</b> — odobli tarzda biror narsani so‘rash yoki ruxsat olish uchun ishlatiladi.</p>
+  <div class="example"><b>Could I have some water?</b> — Biroz suv olsam bo‘ladimi?</div>
+  <div class="example"><b>Could I see the menu?</b> — Menyuni ko‘rsam bo‘ladimi?</div>
+  <div class="example"><b>Could we sit here?</b> — Shu yerga o‘tirsak bo‘ladimi?</div>
+  <div class="note">Could I...? odatda Can I...? ga qaraganda muloyimroq eshitiladi. Restoran va xizmat ko‘rsatish joylarida juda foydali.</div>
+ </div>
+
+ <div class="card">
+  <h3>🗣️ Dialogue 1 — Ordering Food</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Waiter and Customer</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Waiter:</b> Good evening. Welcome to our restaurant.<br><span class="uz">Xayrli kech. Restoranimizga xush kelibsiz.</span></div>
+    <div class="line"><b>Customer:</b> Thank you. Could I see the menu, please?<br><span class="uz">Rahmat. Menyuni ko‘rsam bo‘ladimi?</span></div>
+    <div class="line"><b>Waiter:</b> Of course. Here you are.<br><span class="uz">Albatta. Marhamat.</span></div>
+    <div class="line"><b>Customer:</b> What do you recommend?<br><span class="uz">Nimani tavsiya qilasiz?</span></div>
+    <div class="line"><b>Waiter:</b> Our grilled chicken is very popular.<br><span class="uz">Bizning grilda pishirilgan tovuqimiz juda mashhur.</span></div>
+    <div class="line"><b>Customer:</b> That sounds good. I'll have that.<br><span class="uz">Yaxshi ekan. Shuni olaman.</span></div>
+    <div class="line"><b>Waiter:</b> Would you like something to drink?<br><span class="uz">Ichishga biror narsa xohlaysizmi?</span></div>
+    <div class="line"><b>Customer:</b> Yes, a glass of orange juice, please.<br><span class="uz">Ha, bir stakan apelsin sharbati, iltimos.</span></div>
+    <div class="line"><b>Waiter:</b> Certainly. I'll be right back.<br><span class="uz">Albatta. Hozir qaytaman.</span></div>
+    <div class="line"><b>Customer:</b> Thank you.<br><span class="uz">Rahmat.</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 1 — Ordering Food</h4>
+   <button class="listen-btn" onclick="sayDialogue('Good evening. Welcome to our restaurant. Thank you. Could I see the menu, please? Of course. Here you are. What do you recommend? Our grilled chicken is very popular. That sounds good. I will have that. Would you like something to drink? Yes, a glass of orange juice, please. Certainly. I will be right back. Thank you.')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. What does the customer ask to see?</p>
+    <label class="option"><input type="radio" name="r1q1" value="a"> The bill</label>
+    <label class="option"><input type="radio" name="r1q1" value="b"> The menu</label>
+    <label class="option"><input type="radio" name="r1q1" value="c"> The kitchen</label>
+   </div>
+   <div class="question">
+    <p>2. What food does the waiter recommend?</p>
+    <label class="option"><input type="radio" name="r1q2" value="a"> Grilled chicken</label>
+    <label class="option"><input type="radio" name="r1q2" value="b"> Fish</label>
+    <label class="option"><input type="radio" name="r1q2" value="c"> Pizza</label>
+   </div>
+   <div class="question">
+    <p>3. What does the customer drink?</p>
+    <label class="option"><input type="radio" name="r1q3" value="a"> Water</label>
+    <label class="option"><input type="radio" name="r1q3" value="b"> Tea</label>
+    <label class="option"><input type="radio" name="r1q3" value="c"> Orange juice</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['r1q1','r1q2','r1q3'],['b','a','c'],'restaurant1result')">Check Listening</button>
+   <div id="restaurant1result" class="feedback"></div>
+  </div>
+
+  <h3 class="subheading">Dialogue 2 — Asking for the Bill</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Customer and Waiter</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Waiter:</b> Was everything all right?<br><span class="uz">Hammasi yaxshimi edi?</span></div>
+    <div class="line"><b>Customer:</b> Yes, everything was delicious.<br><span class="uz">Ha, hammasi juda mazali edi.</span></div>
+    <div class="line"><b>Waiter:</b> I'm glad you enjoyed it.<br><span class="uz">Sizga yoqqanidan xursandman.</span></div>
+    <div class="line"><b>Customer:</b> Could we have the bill, please?<br><span class="uz">Hisobni olsak bo‘ladimi?</span></div>
+    <div class="line"><b>Waiter:</b> Certainly. Here you are.<br><span class="uz">Albatta. Marhamat.</span></div>
+    <div class="line"><b>Customer:</b> Can I pay by card?<br><span class="uz">Karta orqali to‘lasam bo‘ladimi?</span></div>
+    <div class="line"><b>Waiter:</b> Yes, of course.<br><span class="uz">Ha, albatta.</span></div>
+    <div class="line"><b>Customer:</b> Thank you for your service.<br><span class="uz">Xizmatingiz uchun rahmat.</span></div>
+    <div class="line"><b>Waiter:</b> You're welcome. Have a nice evening!<br><span class="uz">Arzimaydi. Yaxshi kech o‘tkazing!</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 2 — Asking for the Bill</h4>
+   <button class="listen-btn" onclick="sayDialogue('Was everything all right? Yes, everything was delicious. I am glad you enjoyed it. Could we have the bill, please? Certainly. Here you are. Can I pay by card? Yes, of course. Thank you for your service. You are welcome. Have a nice evening!')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. How was the food?</p>
+    <label class="option"><input type="radio" name="r2q1" value="a"> Delicious</label>
+    <label class="option"><input type="radio" name="r2q1" value="b"> Cold</label>
+    <label class="option"><input type="radio" name="r2q1" value="c"> Too expensive</label>
+   </div>
+   <div class="question">
+    <p>2. What does the customer ask for?</p>
+    <label class="option"><input type="radio" name="r2q2" value="a"> A menu</label>
+    <label class="option"><input type="radio" name="r2q2" value="b"> The bill</label>
+    <label class="option"><input type="radio" name="r2q2" value="c"> A table</label>
+   </div>
+   <div class="question">
+    <p>3. How does the customer want to pay?</p>
+    <label class="option"><input type="radio" name="r2q3" value="a"> In cash</label>
+    <label class="option"><input type="radio" name="r2q3" value="b"> By phone</label>
+    <label class="option"><input type="radio" name="r2q3" value="c"> By card</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['r2q1','r2q2','r2q3'],['a','b','c'],'restaurant2result')">Check Listening</button>
+   <div id="restaurant2result" class="feedback"></div>
+  </div>
+ </div>
+</section>
+
+<!-- MODULE 4 -->
+
+<section id="plans">
+ <h2 class="section-title"><span class="section-number">4</span> MAKING PLANS</h2>
+
+ <div class="card">
+  <h3>📅 Making Plans — Rejalar tuzish</h3>
+  <p>Do‘stlar bilan uchrashuv belgilash, taklif qilish, vaqt va joy haqida kelishish kundalik muloqotning muhim qismidir.</p>
+
+  <div class="word-grid">
+   <div class="word"><strong>Are you free tomorrow?</strong><br>Ertaga bo‘shmisiz?<button class="speak" onclick="say('Are you free tomorrow?')">🔊</button></div>
+   <div class="word"><strong>Would you like to come?</strong><br>Kelishni xohlaysizmi?<button class="speak" onclick="say('Would you like to come?')">🔊</button></div>
+   <div class="word"><strong>Let's meet at six.</strong><br>Keling, soat oltida uchrashamiz.<button class="speak" onclick="say('Let us meet at six.')">🔊</button></div>
+   <div class="word"><strong>That sounds great.</strong><br>Bu ajoyib fikr ekan.<button class="speak" onclick="say('That sounds great.')">🔊</button></div>
+   <div class="word"><strong>I'm afraid I can't.</strong><br>Afsuski, qila olmayman.<button class="speak" onclick="say('I am afraid I cannot.')">🔊</button></div>
+   <div class="word"><strong>Maybe another time.</strong><br>Balki boshqa safar.<button class="speak" onclick="say('Maybe another time.')">🔊</button></div>
+   <div class="word"><strong>What about Saturday?</strong><br>Shanba kuniga nima deysiz?<button class="speak" onclick="say('What about Saturday?')">🔊</button></div>
+   <div class="word"><strong>See you then!</strong><br>Unda ko‘rishguncha!<button class="speak" onclick="say('See you then!')">🔊</button></div>
+  </div>
+
+  <h3 class="subheading">Let's + Verb</h3>
+  <p><b>Let's</b> birgalikda biror ish qilishni taklif etishda ishlatiladi. Undan keyin fe'lning birinchi shakli keladi.</p>
+  <div class="example"><b>Let's go shopping.</b> — Keling, xarid qilgani boramiz.</div>
+  <div class="example"><b>Let's watch a film.</b> — Keling, film tomosha qilamiz.</div>
+  <div class="example"><b>Let's have dinner.</b> — Keling, kechki ovqat qilamiz.</div>
+  <div class="warning">Noto‘g‘ri: Let's to go. To‘g‘ri: Let's go. Let's dan keyin “to” qo‘yilmaydi.</div>
+
+  <h3 class="subheading">Would you like to...?</h3>
+  <p>Bu ibora birovga muloyim taklif berish uchun ishlatiladi.</p>
+  <div class="example"><b>Would you like to join us?</b> — Bizga qo‘shilishni xohlaysizmi?</div>
+  <div class="example"><b>Would you like to have coffee?</b> — Qahva ichishni xohlaysizmi?</div>
+  <div class="example"><b>Would you like to go out?</b> — Tashqariga chiqishni xohlaysizmi?</div>
+
+  <h3 class="subheading">Taklifga javob berish</h3>
+  <div class="example"><b>Yes, I'd love to.</b> — Ha, bajonidil.</div>
+  <div class="example"><b>That sounds wonderful.</b> — Juda ajoyib eshitilyapti.</div>
+  <div class="example"><b>Sorry, I'm busy.</b> — Kechirasiz, bandman.</div>
+  <div class="example"><b>I'm afraid I can't make it.</b> — Afsuski, bora olmayman.</div>
+ </div>
+
+ <div class="card">
+  <h3>🗣️ Dialogue 1 — Making Weekend Plans</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Two Friends</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Tom:</b> Hi, Anna! Are you free this Saturday?<br><span class="uz">Salom, Anna! Shu shanba kuni bo‘shmisan?</span></div>
+    <div class="line"><b>Anna:</b> Yes, I am. Why?<br><span class="uz">Ha, bo‘shman. Nima edi?</span></div>
+    <div class="line"><b>Tom:</b> Would you like to go to the cinema?<br><span class="uz">Kinoga borishni xohlaysanmi?</span></div>
+    <div class="line"><b>Anna:</b> That sounds great! What film do you want to watch?<br><span class="uz">Ajoyib fikr! Qaysi filmni ko‘rmoqchisan?</span></div>
+    <div class="line"><b>Tom:</b> There's a new comedy film.<br><span class="uz">Yangi komediya filmi bor.</span></div>
+    <div class="line"><b>Anna:</b> Perfect! What time shall we meet?<br><span class="uz">Zo‘r! Soat nechada uchrashamiz?</span></div>
+    <div class="line"><b>Tom:</b> Let's meet at five o'clock.<br><span class="uz">Keling, soat beshda uchrashamiz.</span></div>
+    <div class="line"><b>Anna:</b> Where shall we meet?<br><span class="uz">Qayerda uchrashamiz?</span></div>
+    <div class="line"><b>Tom:</b> In front of the cinema.<br><span class="uz">Kinoteatr oldida.</span></div>
+    <div class="line"><b>Anna:</b> Great. See you on Saturday!<br><span class="uz">Ajoyib. Shanba kuni ko‘rishamiz!</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 1 — Weekend Plans</h4>
+   <button class="listen-btn" onclick="sayDialogue('Hi, Anna! Are you free this Saturday? Yes, I am. Why? Would you like to go to the cinema? That sounds great! What film do you want to watch? There is a new comedy film. Perfect! What time shall we meet? Let us meet at five o clock. Where shall we meet? In front of the cinema. Great. See you on Saturday!')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. What day are they making plans for?</p>
+    <label class="option"><input type="radio" name="p1q1" value="a"> Friday</label>
+    <label class="option"><input type="radio" name="p1q1" value="b"> Saturday</label>
+    <label class="option"><input type="radio" name="p1q1" value="c"> Sunday</label>
+   </div>
+   <div class="question">
+    <p>2. Where do they want to go?</p>
+    <label class="option"><input type="radio" name="p1q2" value="a"> To the cinema</label>
+    <label class="option"><input type="radio" name="p1q2" value="b"> To the park</label>
+    <label class="option"><input type="radio" name="p1q2" value="c"> To a restaurant</label>
+   </div>
+   <div class="question">
+    <p>3. What time will they meet?</p>
+    <label class="option"><input type="radio" name="p1q3" value="a"> At four</label>
+    <label class="option"><input type="radio" name="p1q3" value="b"> At six</label>
+    <label class="option"><input type="radio" name="p1q3" value="c"> At five</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['p1q1','p1q2','p1q3'],['b','a','c'],'plans1result')">Check Listening</button>
+   <div id="plans1result" class="feedback"></div>
+  </div>
+
+  <h3 class="subheading">Dialogue 2 — Changing Plans</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Two Friends</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Lisa:</b> Hi, Mark. Are we still meeting tonight?<br><span class="uz">Salom, Mark. Bugun kechqurun hali ham uchrashamizmi?</span></div>
+    <div class="line"><b>Mark:</b> I'm sorry, but I can't make it tonight.<br><span class="uz">Kechirasan, bugun kechqurun bora olmayman.</span></div>
+    <div class="line"><b>Lisa:</b> Oh, that's a shame. Is everything okay?<br><span class="uz">Afsus. Hammasi joyidami?</span></div>
+    <div class="line"><b>Mark:</b> Yes, I just have a lot of work to do.<br><span class="uz">Ha, shunchaki bajarishim kerak bo‘lgan ishlarim ko‘p.</span></div>
+    <div class="line"><b>Lisa:</b> No problem. What about tomorrow?<br><span class="uz">Muammo yo‘q. Ertaga-chi?</span></div>
+    <div class="line"><b>Mark:</b> Tomorrow works for me.<br><span class="uz">Ertaga men uchun qulay.</span></div>
+    <div class="line"><b>Lisa:</b> Great. Let's meet at six.<br><span class="uz">Ajoyib. Soat oltida uchrashamiz.</span></div>
+    <div class="line"><b>Mark:</b> Perfect. See you tomorrow!<br><span class="uz">Zo‘r. Ertaga ko‘rishamiz!</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 2 — Changing Plans</h4>
+   <button class="listen-btn" onclick="sayDialogue('Hi, Mark. Are we still meeting tonight? I am sorry, but I cannot make it tonight. Oh, that is a shame. Is everything okay? Yes, I just have a lot of work to do. No problem. What about tomorrow? Tomorrow works for me. Great. Let us meet at six. Perfect. See you tomorrow!')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. Why can't Mark meet tonight?</p>
+    <label class="option"><input type="radio" name="p2q1" value="a"> He is travelling</label>
+    <label class="option"><input type="radio" name="p2q1" value="b"> He has a lot of work</label>
+    <label class="option"><input type="radio" name="p2q1" value="c"> He is ill</label>
+   </div>
+   <div class="question">
+    <p>2. When will they meet?</p>
+    <label class="option"><input type="radio" name="p2q2" value="a"> Tomorrow</label>
+    <label class="option"><input type="radio" name="p2q2" value="b"> Tonight</label>
+    <label class="option"><input type="radio" name="p2q2" value="c"> Next week</label>
+   </div>
+   <div class="question">
+    <p>3. What time will they meet?</p>
+    <label class="option"><input type="radio" name="p2q3" value="a"> At five</label>
+    <label class="option"><input type="radio" name="p2q3" value="b"> At seven</label>
+    <label class="option"><input type="radio" name="p2q3" value="c"> At six</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['p2q1','p2q2','p2q3'],['b','a','c'],'plans2result')">Check Listening</button>
+   <div id="plans2result" class="feedback"></div>
+  </div>
+ </div>
+</section>
+
+<!-- MODULE 5 -->
+
+<section id="conversations">
+ <h2 class="section-title"><span class="section-number">5</span> EVERYDAY CONVERSATIONS</h2>
+
+ <div class="card">
+  <h3>💬 Kundalik suhbatlar</h3>
+  <p>Ingliz tilida yaxshi muloqot qilish uchun faqat grammatikani bilish yetarli emas. Suhbatni boshlash, savol berish, javob qaytarish va suhbatni davom ettirishni ham o‘rganish kerak.</p>
+
+  <h3 class="subheading">Suhbatni boshlash</h3>
+  <div class="word-grid">
+   <div class="word"><strong>How's it going?</strong><br>Ishlar qalay?<button class="speak" onclick="say('How is it going?')">🔊</button></div>
+   <div class="word"><strong>How have you been?</strong><br>Qalaysiz? Ishlaringiz qanday?<button class="speak" onclick="say('How have you been?')">🔊</button></div>
+   <div class="word"><strong>Nice to see you.</strong><br>Sizni ko‘rganimdan xursandman.<button class="speak" onclick="say('Nice to see you.')">🔊</button></div>
+   <div class="word"><strong>Long time no see!</strong><br>Anchadan beri ko‘rishmadik!<button class="speak" onclick="say('Long time no see!')">🔊</button></div>
+  </div>
+
+  <h3 class="subheading">Suhbatni davom ettirish</h3>
+  <div class="example"><b>Really?</b> — Rostdanmi?</div>
+  <div class="example"><b>That's interesting.</b> — Bu qiziqarli ekan.</div>
+  <div class="example"><b>Tell me more.</b> — Batafsilroq aytib bering.</div>
+  <div class="example"><b>What happened next?</b> — Keyin nima bo‘ldi?</div>
+  <div class="example"><b>What do you think?</b> — Siz nima deb o‘ylaysiz?</div>
+
+  <h3 class="subheading">Tushunmaganda ishlatiladigan iboralar</h3>
+  <div class="example"><b>Could you repeat that, please?</b> — Iltimos, qaytara olasizmi?</div>
+  <div class="example"><b>Could you speak more slowly?</b> — Sekinroq gapira olasizmi?</div>
+  <div class="example"><b>What does this mean?</b> — Bu nimani anglatadi?</div>
+  <div class="example"><b>I'm not sure I understand.</b> — Tushunganimga ishonchim komil emas.</div>
+  <div class="example"><b>Let me think.</b> — Bir o‘ylab ko‘ray.</div>
+
+  <div class="note">
+   <b>Maslahat:</b> Suhbatda tushunmay qolsangiz, jim turmang. “Could you repeat that?” yoki “Could you speak more slowly?” deb so‘rang.
+  </div>
+ </div>
+
+ <div class="card">
+  <h3>🗣️ Dialogue 1 — Meeting an Old Friend</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Two Friends</div>
+   <div class="dialogue-body">
+    <div class="line"><b>John:</b> Hi, David! Long time no see!<br><span class="uz">Salom, David! Anchadan beri ko‘rishmadik!</span></div>
+    <div class="line"><b>David:</b> John! It's great to see you!<br><span class="uz">John! Seni ko‘rganimdan xursandman!</span></div>
+    <div class="line"><b>John:</b> How have you been?<br><span class="uz">Qalaysan? Ishlaring qanday?</span></div>
+    <div class="line"><b>David:</b> I've been good, thanks. What about you?<br><span class="uz">Yaxshi yuribman, rahmat. O‘zing-chi?</span></div>
+    <div class="line"><b>John:</b> I'm doing well. Are you still working at the bank?<br><span class="uz">Yaxshiman. Hali ham bankda ishlayapsanmi?</span></div>
+    <div class="line"><b>David:</b> No, I have a new job now.<br><span class="uz">Yo‘q, hozir yangi ishim bor.</span></div>
+    <div class="line"><b>John:</b> Really? That's interesting! What do you do?<br><span class="uz">Rostdanmi? Qiziqarli ekan! Nima ish qilasan?</span></div>
+    <div class="line"><b>David:</b> I work for a travel company.<br><span class="uz">Sayohat kompaniyasida ishlayman.</span></div>
+    <div class="line"><b>John:</b> That sounds exciting!<br><span class="uz">Juda qiziqarli ekan!</span></div>
+    <div class="line"><b>David:</b> It is! We should meet again soon.<br><span class="uz">Ha! Yaqinda yana uchrashishimiz kerak.</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 1 — Meeting an Old Friend</h4>
+   <button class="listen-btn" onclick="sayDialogue('Hi, David! Long time no see! John! It is great to see you! How have you been? I have been good, thanks. What about you? I am doing well. Are you still working at the bank? No, I have a new job now. Really? That is interesting! What do you do? I work for a travel company. That sounds exciting! It is! We should meet again soon.')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. Where did David work before?</p>
+    <label class="option"><input type="radio" name="c1q1" value="a"> At a school</label>
+    <label class="option"><input type="radio" name="c1q1" value="b"> At a bank</label>
+    <label class="option"><input type="radio" name="c1q1" value="c"> At a hotel</label>
+   </div>
+   <div class="question">
+    <p>2. Where does David work now?</p>
+    <label class="option"><input type="radio" name="c1q2" value="a"> For a travel company</label>
+    <label class="option"><input type="radio" name="c1q2" value="b"> At a restaurant</label>
+    <label class="option"><input type="radio" name="c1q2" value="c"> At a bank</label>
+   </div>
+   <div class="question">
+    <p>3. What do the friends want to do?</p>
+    <label class="option"><input type="radio" name="c1q3" value="a"> Travel together</label>
+    <label class="option"><input type="radio" name="c1q3" value="b"> Work together</label>
+    <label class="option"><input type="radio" name="c1q3" value="c"> Meet again soon</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['c1q1','c1q2','c1q3'],['b','a','c'],'conversation1result')">Check Listening</button>
+   <div id="conversation1result" class="feedback"></div>
+  </div>
+
+  <h3 class="subheading">Dialogue 2 — Asking for Help</h3>
+  <div class="dialogue">
+   <div class="dialogue-head">Two People</div>
+   <div class="dialogue-body">
+    <div class="line"><b>Visitor:</b> Excuse me. Could you help me, please?<br><span class="uz">Kechirasiz. Menga yordam bera olasizmi?</span></div>
+    <div class="line"><b>Local person:</b> Of course. What's the problem?<br><span class="uz">Albatta. Muammo nimada?</span></div>
+    <div class="line"><b>Visitor:</b> I'm looking for the city library.<br><span class="uz">Shahar kutubxonasini qidiryapman.</span></div>
+    <div class="line"><b>Local person:</b> It's not far from here.<br><span class="uz">Bu yerdan uzoq emas.</span></div>
+    <div class="line"><b>Visitor:</b> Could you tell me how to get there?<br><span class="uz">U yerga qanday borishni ayta olasizmi?</span></div>
+    <div class="line"><b>Local person:</b> Go straight and turn left at the traffic lights.<br><span class="uz">To‘g‘riga boring va svetoforda chapga buriling.</span></div>
+    <div class="line"><b>Visitor:</b> Is it next to the museum?<br><span class="uz">U muzeyning yonidami?</span></div>
+    <div class="line"><b>Local person:</b> Yes, it's opposite the museum.<br><span class="uz">Ha, muzeyning ro‘parasida.</span></div>
+    <div class="line"><b>Visitor:</b> Thank you very much!<br><span class="uz">Katta rahmat!</span></div>
+    <div class="line"><b>Local person:</b> You're welcome. Have a nice day!<br><span class="uz">Arzimaydi. Kuningiz yaxshi o‘tsin!</span></div>
+   </div>
+  </div>
+
+  <div class="listening">
+   <h4>🎧 Listening 2 — Asking for Help</h4>
+   <button class="listen-btn" onclick="sayDialogue('Excuse me. Could you help me, please? Of course. What is the problem? I am looking for the city library. It is not far from here. Could you tell me how to get there? Go straight and turn left at the traffic lights. Is it next to the museum? Yes, it is opposite the museum. Thank you very much! You are welcome. Have a nice day!')">▶ Listen to Dialogue</button>
+   <div class="question">
+    <p>1. What is the visitor looking for?</p>
+    <label class="option"><input type="radio" name="c2q1" value="a"> The train station</label>
+    <label class="option"><input type="radio" name="c2q1" value="b"> The city library</label>
+    <label class="option"><input type="radio" name="c2q1" value="c"> The museum</label>
+   </div>
+   <div class="question">
+    <p>2. Where should the visitor turn left?</p>
+    <label class="option"><input type="radio" name="c2q2" value="a"> At the traffic lights</label>
+    <label class="option"><input type="radio" name="c2q2" value="b"> At the bank</label>
+    <label class="option"><input type="radio" name="c2q2" value="c"> At the hotel</label>
+   </div>
+   <div class="question">
+    <p>3. Where is the library?</p>
+    <label class="option"><input type="radio" name="c2q3" value="a"> Behind the museum</label>
+    <label class="option"><input type="radio" name="c2q3" value="b"> Next to the bank</label>
+    <label class="option"><input type="radio" name="c2q3" value="c"> Opposite the museum</label>
+   </div>
+   <button class="primary-btn" onclick="checkGroup(['c2q1','c2q2','c2q3'],['b','a','c'],'conversation2result')">Check Listening</button>
+   <div id="conversation2result" class="feedback"></div>
+  </div>
+ </div>
+</section>
+
+<!-- SPEAKING -->
+
+<section id="speaking">
+ <h2 class="section-title"><span class="section-number">6</span> SPEAKING PRACTICE</h2>
+ <div class="card">
+  <h3>🎤 Speak English!</h3>
+  <p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir savolga kamida 2–3 ta gap bilan javob berishga harakat qiling.</p>
+
+  <div class="question">
+   <p>1. What do you usually buy at the supermarket?</p>
+   <span class="uz">Odatda supermarketdan nimalar xarid qilasiz?</span>
+   <button class="speak" onclick="say('What do you usually buy at the supermarket?')">🔊</button>
+   <textarea placeholder="Write your answer here..."></textarea>
+  </div>
+  <div class="question">
+   <p>2. Do you prefer travelling by bus or by train? Why?</p>
+   <span class="uz">Avtobusda yoki poyezdda sayohat qilishni afzal ko‘rasizmi? Nima uchun?</span>
+   <button class="speak" onclick="say('Do you prefer travelling by bus or by train? Why?')">🔊</button>
+   <textarea placeholder="Write your answer here..."></textarea>
+  </div>
+  <div class="question">
+   <p>3. What food do you usually order at a restaurant?</p>
+   <span class="uz">Restoranda odatda qanday taom buyurtma qilasiz?</span>
+   <button class="speak" onclick="say('What food do you usually order at a restaurant?')">🔊</button>
+   <textarea placeholder="Write your answer here..."></textarea>
+  </div>
+  <div class="question">
+   <p>4. How do you make plans with your friends?</p>
+   <span class="uz">Do‘stlaringiz bilan qanday qilib rejalar tuzasiz?</span>
+   <button class="speak" onclick="say('How do you make plans with your friends?')">🔊</button>
+   <textarea placeholder="Write your answer here..."></textarea>
+  </div>
+  <div class="question">
+   <p>5. What do you say when you don't understand someone?</p>
+   <span class="uz">Birovni tushunmaganingizda nima deysiz?</span>
+   <button class="speak" onclick="say('What do you say when you do not understand someone?')">🔊</button>
+   <textarea placeholder="Write your answer here..."></textarea>
+  </div>
+ </div>
+</section>
+
+<!-- WRITING -->
+
+<section id="writing">
+ <h2 class="section-title"><span class="section-number">7</span> WRITING PRACTICE</h2>
+ <div class="card">
+  <h3>✍️ Write in English</h3>
+  <p>Quyidagi topshiriqlarni ingliz tilida bajaring. Javoblaringizni yozib, saqlab qo‘ying.</p>
+
+  <h3 class="subheading">Task 1 — Shopping</h3>
+  <p>Do‘konda xarid qilayotganingiz haqida 5–7 ta gap yozing. Narx, rang va o‘lcham haqida gapiring.</p>
+  <textarea rows="5" placeholder="I went to a shop..."></textarea>
+
+  <h3 class="subheading">Task 2 — Travelling</h3>
+  <p>Sayohat qilishni rejalashtirayotganingiz haqida 5–7 ta gap yozing. Qayerga borishingiz, qanday transport tanlashingiz va qancha vaqt ketishini yozing.</p>
+  <textarea rows="5" placeholder="I want to travel to..."></textarea>
+
+  <h3 class="subheading">Task 3 — Restaurant</h3>
+  <p>Restoranda mijoz va ofitsiant o‘rtasida kamida 6 qatorli dialog tuzing.</p>
+  <textarea rows="7" placeholder="Waiter: Good evening..."></textarea>
+
+  <h3 class="subheading">Task 4 — Making Plans</h3>
+  <p>Do‘stingizni dam olish kunlari uchrashishga taklif qiladigan xabar yozing.</p>
+  <textarea rows="5" placeholder="Hi! Are you free this weekend?..."></textarea>
+ </div>
+</section>
+
+<!-- VOCABULARY REVIEW -->
+
+<section id="vocabulary">
+ <h2 class="section-title"><span class="section-number">8</span> VOCABULARY REVIEW</h2>
+ <div class="card">
+  <h3>📖 Darsning muhim so‘zlari</h3>
+  <div class="word-grid">
+   <div class="word"><strong>Customer</strong> — mijoz</div>
+   <div class="word"><strong>Shop assistant</strong> — sotuvchi</div>
+   <div class="word"><strong>Price</strong> — narx</div>
+   <div class="word"><strong>Size</strong> — o‘lcham</div>
+   <div class="word"><strong>Receipt</strong> — chek</div>
+   <div class="word"><strong>Ticket</strong> — chipta</div>
+   <div class="word"><strong>Journey</strong> — safar</div>
+   <div class="word"><strong>Station</strong> — vokzal</div>
+   <div class="word"><strong>Platform</strong> — platforma</div>
+   <div class="word"><strong>Reservation</strong> — bron</div>
+   <div class="word"><strong>Receptionist</strong> — qabulxona xodimi</div>
+   <div class="word"><strong>Guest</strong> — mehmon</div>
+   <div class="word"><strong>Menu</strong> — menyu</div>
+   <div class="word"><strong>Order</strong> — buyurtma</div>
+   <div class="word"><strong>Bill</strong> — hisob</div>
+   <div class="word"><strong>Waiter</strong> — ofitsiant</div>
+   <div class="word"><strong>Delicious</strong> — mazali</div>
+   <div class="word"><strong>Recommend</strong> — tavsiya qilmoq</div>
+   <div class="word"><strong>Invitation</strong> — taklif</div>
+   <div class="word"><strong>Available</strong> — bo‘sh, mavjud</div>
+   <div class="word"><strong>Appointment</strong> — uchrashuv</div>
+   <div class="word"><strong>Schedule</strong> — jadval</div>
+   <div class="word"><strong>Conversation</strong> — suhbat</div>
+   <div class="word"><strong>Repeat</strong> — takrorlamoq</div>
+   <div class="word"><strong>Explain</strong> — tushuntirmoq</div>
+   <div class="word"><strong>Understand</strong> — tushunmoq</div>
+   <div class="word"><strong>Perhaps</strong> — ehtimol</div>
+   <div class="word"><strong>Definitely</strong> — albatta, shubhasiz</div>
+   <div class="word"><strong>Convenient</strong> — qulay</div>
+   <div class="word"><strong>Polite</strong> — xushmuomala</div>
+  </div>
+ </div>
+</section>
+
+<!-- FINAL TEST -->
+
+<section id="finaltest">
+ <h2 class="section-title"><span class="section-number">9</span> FINAL TEST — 30 QUESTIONS</h2>
+ <div class="card">
+  <h3>📝 Yakuniy bilim sinovi</h3>
+  <p>Har bir savolga bitta javob tanlang. 30 ta savolning barchasiga javob berganingizdan keyin natijani tekshiring.</p>
+  <div id="finalQuestions"></div>
+  <button class="primary-btn" onclick="checkFinal()">Submit Final Test</button>
+  <button class="secondary-btn" onclick="resetFinal()">Reset Test</button>
+  <div id="finalResult" class="result">Natijangiz shu yerda ko‘rsatiladi.</div>
+ </div>
+</section>
+
+<!-- HOMEWORK -->
+
+<section id="homework">
+ <h2 class="section-title"><span class="section-number">10</span> HOMEWORK — UY VAZIFALARI</h2>
+
+ <div class="card">
+  <h3>📘 Homework 1 — Vocabulary Notebook</h3>
+  <p>Bugungi darsdagi kamida 30 ta yangi so‘zni daftaringizga yozing.</p>
+  <ul>
+   <li>Inglizcha so‘z.</li>
+   <li>O‘zbekcha tarjimasi.</li>
+   <li>Talaffuzi.</li>
+   <li>Har bir so‘z bilan bittadan gap.</li>
+  </ul>
+  <textarea rows="5" placeholder="Write your vocabulary here..."></textarea>
+ </div>
+
+ <div class="card">
+  <h3>🛍️ Homework 2 — Shopping Dialogue</h3>
+  <p>Do‘konda xarid qilish haqida kamida 12 qatorli dialog yozing. Dialogda narx, rang, o‘lcham, to‘lov va minnatdorchilik iboralari bo‘lsin.</p>
+  <textarea rows="8" placeholder="Customer: Hello..."></textarea>
+ </div>
+
+ <div class="card">
+  <h3>✈️ Homework 3 — Travel Story</h3>
+  <p>Kelajakdagi sayohatingiz haqida 10 ta gap yozing. Quyidagi savollardan foydalaning:</p>
+  <ul>
+   <li>Where would you like to go?</li>
+   <li>How will you travel?</li>
+   <li>Who will you travel with?</li>
+   <li>How long will you stay?</li>
+   <li>What would you like to visit?</li>
+  </ul>
+  <textarea rows="8" placeholder="My next trip..."></textarea>
+ </div>
+
+ <div class="card">
+  <h3>🍽️ Homework 4 — Restaurant Role-play</h3>
+  <p>Restoranda mijoz va ofitsiant rolini bajaring. O‘zingiz ikki kishining gaplarini yozing. Kamida 14 qator bo‘lsin.</p>
+  <textarea rows="9" placeholder="Waiter: Welcome!..."></textarea>
+ </div>
+
+ <div class="card">
+  <h3>🎤 Homework 5 — Speaking Challenge</h3>
+  <p>Quyidagi mavzulardan foydalanib, 1–2 daqiqalik inglizcha nutq tayyorlang:</p>
+  <ol>
+   <li>My Shopping Experience</li>
+   <li>A Trip I Want to Take</li>
+   <li>My Favourite Restaurant</li>
+   <li>My Weekend Plans</li>
+   <li>How I Communicate with People</li>
+  </ol>
+  <textarea rows="8" placeholder="My speaking notes..."></textarea>
+ </div>
+</section>
+
+<section class="card">
+ <h2>🏆 Lesson 17 — Self Assessment</h2>
+ <p>Quyidagi ko‘nikmalarni o‘zlashtirganingizni belgilang.</p>
+ <label class="option"><input type="checkbox"> Do‘konda ingliz tilida xarid qila olaman.</label>
+ <label class="option"><input type="checkbox"> Yo‘l va transport haqida savol bera olaman.</label>
+ <label class="option"><input type="checkbox"> Restoranda ovqat buyurtma qila olaman.</label>
+ <label class="option"><input type="checkbox"> Do‘stlarim bilan uchrashuv belgilay olaman.</label>
+ <label class="option"><input type="checkbox"> Kundalik suhbatni davom ettira olaman.</label>
+ <label class="option"><input type="checkbox"> Tushunmaganimda muloyim tarzda qayta so‘ray olaman.</label>
+</section>
+
+<section class="hero">
+ <h2>Keep Learning. Keep Growing!</h2>
+ <p>Har kuni ozgina mashq qiling. Har bir yangi ibora sizni ingliz tilida erkin muloqot qilishga yaqinlashtiradi.</p>
+ <h2>YOU CAN DO IT!</h2>
+ <p>Learn today. Succeed tomorrow.</p>
+</section>
+
+</main>
+
+<footer>
+ <strong>ENGLISH UP</strong>
+ <p>Learn today. Succeed tomorrow.</p>
+ <p>Lesson 17 — Everyday English and Communication</p>
+ <p class="small">Your journey to confident English starts with practice.</p>
+</footer>
+
+<script>
+/* ============================
+   THEME AND PROGRESS
+============================ */
+
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem(
+  "euLesson17Theme",
+  document.body.classList.contains("dark")?"dark":"light"
+ );
+}
+
+if(localStorage.getItem("euLesson17Theme")==="dark"){
+ document.body.classList.add("dark");
+}
+
+function updateProgress(){
+ const max=document.documentElement.scrollHeight-window.innerHeight;
+ const percent=max>0?(window.scrollY/max)*100:0;
+ document.getElementById("progressBar").style.width=percent+"%";
+}
+window.addEventListener("scroll",updateProgress);
+window.addEventListener("resize",updateProgress);
+
+/* ============================
+   SPEECH SYNTHESIS
+============================ */
+
+function say(text){
+ if(!("speechSynthesis" in window)){
+  alert("Your browser does not support speech synthesis.");
+  return;
+ }
+ speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang="en-US";
+ utterance.rate=.85;
+ utterance.pitch=1;
+ speechSynthesis.speak(utterance);
+}
+
+function sayDialogue(text){
+ if(!("speechSynthesis" in window)){
+  alert("Your browser does not support speech synthesis.");
+  return;
+ }
+ speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang="en-US";
+ utterance.rate=.78;
+ utterance.pitch=1;
+ speechSynthesis.speak(utterance);
+}
+
+/* ============================
+   GENERAL QUIZ CHECKER
+============================ */
+
+function checkGroup(names,answers,resultId){
+ let score=0;
+ let unanswered=0;
+
+ names.forEach((name,index)=>{
+  const selected=document.querySelector(
+   'input[name="'+name+'"]:checked'
+  );
+  if(!selected){
+   unanswered++;
+  }else if(selected.value===answers[index]){
+   score++;
+  }
+ });
+
+ const result=document.getElementById(resultId);
+ if(unanswered>0){
+  result.className="feedback incorrect";
+  result.textContent="Iltimos, barcha savollarga javob bering. Javobsiz savollar: "+unanswered;
+  return;
+ }
+
+ result.className="feedback "+(score===names.length?"correct":"incorrect");
+ result.textContent="Natija: "+score+"/"+names.length+
+  " ("+Math.round(score/names.length*100)+"%). "+
+  (score===names.length?"Excellent! Barcha javoblar to‘g‘ri!":"Yaxshi urinish! Xatolarni qayta ko‘rib chiqing.");
+}
+
+/* ============================
+   FINAL TEST DATA
+============================ */
+
+const finalData=[
+ {
+  q:"How much ___ this shirt?",
+  a:["is","are","do"],
+  c:0
+ },
+ {
+  q:"Can I ___ it on?",
+  a:["trying","try","tries"],
+  c:1
+ },
+ {
+  q:"It's too ___. I don't have enough money.",
+  a:["expensive","cheaply","smallest"],
+  c:0
+ },
+ {
+  q:"Where can I ___ a ticket?",
+  a:["buy","buying","buys"],
+  c:0
+ },
+ {
+  q:"How long does it ___?",
+  a:["takes","taking","take"],
+  c:2
+ },
+ {
+  q:"The train ___ at nine fifteen.",
+  a:["leave","leaves","leaving"],
+  c:1
+ },
+ {
+  q:"I have a ___ for two nights.",
+  a:["reservation","recommend","menu"],
+  c:0
+ },
+ {
+  q:"Is breakfast ___?",
+  a:["include","included","including"],
+  c:1
+ },
+ {
+  q:"Could I see the ___, please?",
+  a:["bill","menu","ticket"],
+  c:1
+ },
+ {
+  q:"What do you ___?",
+  a:["recommend","recommendation","recommended"],
+  c:0
+ },
+ {
+  q:"I'll ___ the chicken.",
+  a:["having","has","have"],
+  c:2
+ },
+ {
+  q:"Could we have the ___?",
+  a:["bill","station","size"],
+  c:0
+ },
+ {
+  q:"Would you like ___ come with us?",
+  a:["at","to","for"],
+  c:1
+ },
+ {
+  q:"Let's ___ a film.",
+  a:["watch","to watch","watching"],
+  c:0
+ },
+ {
+  q:"Are you free ___?",
+  a:["yesterday","tomorrow","last week"],
+  c:1
+ },
+ {
+  q:"That ___ great!",
+  a:["sound","sounds","sounding"],
+  c:1
+ },
+ {
+  q:"I'm afraid I can't ___ it.",
+  a:["make","do","making"],
+  c:0
+ },
+ {
+  q:"What about ___?",
+  a:["Saturday","to Saturday","at Saturday"],
+  c:0
+ },
+ {
+  q:"Long time no ___!",
+  a:["look","see","watch"],
+  c:1
+ },
+ {
+  q:"Could you ___ that, please?",
+  a:["repeat","repeats","repeating"],
+  c:0
+ },
+ {
+  q:"Could you speak more ___?",
+  a:["slow","slowly","slowerly"],
+  c:1
+ },
+ {
+  q:"I'm looking ___ the library.",
+  a:["at","on","for"],
+  c:2
+ },
+ {
+  q:"Turn ___ at the traffic lights.",
+  a:["left","straightly","near"],
+  c:0
+ },
+ {
+  q:"The library is ___ the museum.",
+  a:["opposite","oppositely","between of"],
+  c:0
+ },
+ {
+  q:"How ___ are these shoes?",
+  a:["much","many","old"],
+  c:0
+ },
+ {
+  q:"One way or ___?",
+  a:["return","returned","returns"],
+  c:0
+ },
+ {
+  q:"I'd like ___ ticket, please.",
+  a:["a","an","some"],
+  c:0
+ },
+ {
+  q:"I'm allergic ___ nuts.",
+  a:["with","to","for"],
+  c:1
+ },
+ {
+  q:"You're welcome. Have a nice ___!",
+  a:["day","price","size"],
+  c:0
+ },
+ {
+  q:"What does this ___?",
+  a:["means","meaning","mean"],
+  c:2
+ }
+];
+
+function renderFinal(){
+ const area=document.getElementById("finalQuestions");
+ area.innerHTML="";
+
+ finalData.forEach((item,index)=>{
+  const div=document.createElement("div");
+  div.className="question";
+
+  const p=document.createElement("p");
+  p.textContent=(index+1)+". "+item.q;
+  div.appendChild(p);
+
+  item.a.forEach((option,optionIndex)=>{
+   const label=document.createElement("label");
+   label.className="option";
+
+   const input=document.createElement("input");
+   input.type="radio";
+   input.name="final_"+index;
+   input.value=optionIndex;
+
+   label.appendChild(input);
+   label.appendChild(document.createTextNode(" "+option));
+   div.appendChild(label);
+  });
+
+  area.appendChild(div);
+ });
+}
+
+function checkFinal(){
+ let score=0;
+ let unanswered=0;
+
+ finalData.forEach((item,index)=>{
+  const selected=document.querySelector(
+   'input[name="final_'+index+'"]:checked'
+  );
+  if(!selected){
+   unanswered++;
+  }else if(Number(selected.value)===item.c){
+   score++;
+  }
+ });
+
+ const result=document.getElementById("finalResult");
+
+ if(unanswered>0){
+  result.textContent="Barcha savollarga javob bering. Javobsiz savollar: "+unanswered;
+  result.style.color="var(--red)";
+  return;
+ }
+
+ const percent=Math.round(score/finalData.length*100);
+ let message="";
+
+ if(percent>=90){
+  message="Outstanding! Excellent work!";
+ }else if(percent>=80){
+  message="Very good! You have successfully completed Lesson 17.";
+ }else if(percent>=70){
+  message="Good job! Review the mistakes and practise again.";
+ }else if(percent>=50){
+  message="Keep practising. You are making progress!";
+ }else{
+  message="Do not give up. Review the lesson and try again.";
+ }
+
+ result.innerHTML=
+  "Your score: "+score+"/30<br>"+
+  "Percentage: "+percent+"%<br>"+
+  message;
+
+ result.style.color=percent>=80?"var(--green)":"var(--p)";
+
+ localStorage.setItem("euLesson17FinalScore",JSON.stringify({
+  score:score,
+  percent:percent,
+  date:new Date().toISOString()
+ }));
+}
+
+function resetFinal(){
+ document.querySelectorAll('input[name^="final_"]').forEach(input=>{
+  input.checked=false;
+ });
+ document.getElementById("finalResult").textContent=
+  "Natijangiz shu yerda ko‘rsatiladi.";
+ document.getElementById("finalResult").style.color="var(--text)";
+}
+
+/* ============================
+   RESTORE LAST RESULT
+============================ */
+
+function restoreResult(){
+ const saved=localStorage.getItem("euLesson17FinalScore");
+ if(!saved)return;
+
+ try{
+  const data=JSON.parse(saved);
+  document.getElementById("finalResult").innerHTML=
+   "Oxirgi natijangiz: "+data.score+"/30 ("+data.percent+"%)";
+ }catch(error){
+  console.log("No saved result.");
+ }
+}
+
+/* ============================
+   HOMEWORK AUTOSAVE
+============================ */
+
+function setupHomeworkSave(){
+ const fields=document.querySelectorAll(
+  '#homework textarea, #writing textarea, #speaking textarea'
+ );
+
+ fields.forEach((field,index)=>{
+  const key="euLesson17Work_"+index;
+  const saved=localStorage.getItem(key);
+
+  if(saved!==null){
+   field.value=saved;
+  }
+
+  field.addEventListener("input",()=>{
+   localStorage.setItem(key,field.value);
+  });
+ });
+}
+
+/* ============================
+   START LESSON
+============================ */
+
+document.addEventListener("DOMContentLoaded",()=>{
+ renderFinal();
+ restoreResult();
+ setupHomeworkSave();
+ updateProgress();
+});
+</script>
+
+</body>
+</html>
+
