@@ -1,1 +1,1372 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Pre-Intermediate | 1-Kun | English Up</title>
+
+<style>
+:root{
+ --primary:#7047eb;
+ --primary2:#9274ff;
+ --bg:#f5f3ff;
+ --card:#ffffff;
+ --text:#24213a;
+ --muted:#77738e;
+ --border:#e8e3f5;
+ --soft:#eee9ff;
+ --green:#15966b;
+ --red:#dc4b61;
+ --shadow:0 8px 28px rgba(54,35,110,.08);
+}
+body.dark{
+ --bg:#151322;
+ --card:#211e32;
+ --text:#f4f0ff;
+ --muted:#aaa4c1;
+ --border:#38334d;
+ --soft:#30294a;
+ --shadow:0 8px 28px rgba(0,0,0,.22);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;
+ line-height:1.65;
+ transition:.25s;
+}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{
+ width:min(1050px,94%);
+ margin:auto;
+}
+header{
+ position:sticky;
+ top:0;
+ z-index:50;
+ background:var(--card);
+ border-bottom:1px solid var(--border);
+ box-shadow:0 3px 14px rgba(0,0,0,.04);
+}
+.nav{
+ min-height:65px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+}
+.logo{
+ color:var(--primary);
+ font-size:21px;
+ font-weight:900;
+ letter-spacing:1px;
+}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.small-btn{
+ border:1px solid var(--border);
+ background:var(--card);
+ color:var(--text);
+ padding:8px 12px;
+ border-radius:10px;
+ font-weight:700;
+}
+.hero{
+ margin:24px auto;
+ padding:35px 22px;
+ border-radius:24px;
+ color:white;
+ text-align:center;
+ background:linear-gradient(135deg,#5630c8,#9274ff);
+ box-shadow:var(--shadow);
+}
+.hero .tag{
+ display:inline-block;
+ padding:5px 13px;
+ border:1px solid rgba(255,255,255,.35);
+ background:rgba(255,255,255,.14);
+ border-radius:30px;
+ font-size:12px;
+ font-weight:bold;
+ letter-spacing:1px;
+}
+.hero h1{
+ margin:15px 0 5px;
+ font-size:clamp(27px,5vw,43px);
+ line-height:1.2;
+}
+.hero h2{
+ margin:10px 0;
+ font-size:clamp(17px,3vw,23px);
+}
+.hero p{margin:8px auto;max-width:700px;color:#eee8ff}
+.hero-meta{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:9px;
+ margin-top:18px;
+}
+.hero-meta span{
+ background:rgba(255,255,255,.16);
+ padding:7px 12px;
+ border-radius:9px;
+ font-size:13px;
+}
+.progress-wrap{
+ background:var(--card);
+ border:1px solid var(--border);
+ padding:15px;
+ border-radius:15px;
+ margin:18px 0;
+}
+.progress-top{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ font-weight:bold;
+ font-size:13px;
+}
+.progress-track{
+ height:9px;
+ background:var(--soft);
+ border-radius:20px;
+ overflow:hidden;
+ margin-top:9px;
+}
+.progress-fill{
+ height:100%;
+ width:0%;
+ background:linear-gradient(90deg,var(--primary),#b49cff);
+ transition:.3s;
+}
+.quick-nav{
+ display:flex;
+ gap:8px;
+ overflow-x:auto;
+ padding:5px 0 14px;
+ scrollbar-width:thin;
+}
+.quick-nav a{
+ white-space:nowrap;
+ background:var(--card);
+ border:1px solid var(--border);
+ padding:8px 12px;
+ border-radius:10px;
+ color:var(--muted);
+ font-size:12px;
+ font-weight:bold;
+}
+.quick-nav a:hover{color:var(--primary);border-color:var(--primary)}
+.section{
+ margin:22px 0;
+ padding:22px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:19px;
+ box-shadow:var(--shadow);
+}
+.section-title{
+ display:flex;
+ align-items:center;
+ gap:11px;
+ margin:0 0 17px;
+ font-size:22px;
+}
+.section-number{
+ width:36px;
+ height:36px;
+ flex-shrink:0;
+ display:grid;
+ place-items:center;
+ background:var(--soft);
+ color:var(--primary);
+ border-radius:11px;
+ font-weight:900;
+}
+h3{margin:18px 0 9px;font-size:17px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.note{
+ background:var(--soft);
+ border-left:4px solid var(--primary);
+ padding:13px 15px;
+ border-radius:9px;
+ margin:12px 0;
+}
+.warning{
+ background:#fff5e7;
+ color:#70420c;
+ border-left:4px solid #efa52b;
+ padding:13px 15px;
+ border-radius:9px;
+ margin:12px 0;
+}
+body.dark .warning{background:#3d2d19;color:#ffe0a9}
+.success-note{
+ background:#e7f8f1;
+ color:#145c43;
+ border-left:4px solid var(--green);
+ padding:13px 15px;
+ border-radius:9px;
+ margin:12px 0;
+}
+body.dark .success-note{background:#173c31;color:#b9f4dc}
+.rule-card{
+ border:1px solid var(--border);
+ padding:15px;
+ border-radius:13px;
+ margin:12px 0;
+}
+.rule-card h3{color:var(--primary);margin-top:0}
+.example{
+ background:var(--bg);
+ border-radius:9px;
+ padding:10px 12px;
+ margin:8px 0;
+}
+.example strong{color:var(--primary)}
+table{
+ width:100%;
+ border-collapse:collapse;
+ margin:12px 0;
+ font-size:14px;
+}
+th,td{
+ border:1px solid var(--border);
+ padding:10px;
+ text-align:left;
+}
+th{background:var(--soft);color:var(--primary)}
+.audio-card{
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:16px;
+ margin:14px 0;
+}
+.audio-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:10px;
+}
+.audio-btn,.primary-btn,.secondary-btn{
+ border:0;
+ border-radius:11px;
+ padding:11px 16px;
+ font-weight:800;
+}
+.audio-btn,.primary-btn{
+ background:var(--primary);
+ color:white;
+}
+.audio-btn:hover,.primary-btn:hover{background:#5934cb}
+.secondary-btn{
+ background:var(--soft);
+ color:var(--primary);
+ border:1px solid var(--border);
+}
+.audio-text{
+ display:none;
+ margin-top:14px;
+ padding:14px;
+ background:var(--bg);
+ border-radius:10px;
+}
+.audio-text.show{display:block}
+.audio-text p{margin:8px 0}
+.vocab-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:10px;
+}
+.vocab{
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:12px;
+ background:var(--card);
+}
+.vocab strong{color:var(--primary);font-size:16px}
+.vocab small{display:block;color:var(--muted);margin:3px 0}
+.vocab button{
+ border:0;
+ background:var(--soft);
+ color:var(--primary);
+ border-radius:8px;
+ padding:5px 9px;
+ margin-top:6px;
+ font-size:12px;
+ font-weight:bold;
+}
+.reading-text{
+ font-size:16px;
+ line-height:1.95;
+ background:var(--bg);
+ padding:19px;
+ border-radius:13px;
+ border:1px solid var(--border);
+}
+.reading-text p{margin:0 0 13px}
+.question-box{
+ padding:13px;
+ border:1px solid var(--border);
+ border-radius:12px;
+ margin:11px 0;
+}
+.question-box label{
+ display:block;
+ font-weight:700;
+ margin-bottom:7px;
+}
+.question-box textarea{
+ width:100%;
+ min-height:65px;
+ resize:vertical;
+ padding:10px;
+ border:1px solid var(--border);
+ background:var(--bg);
+ color:var(--text);
+ border-radius:9px;
+}
+.notebook-list{padding-left:22px}
+.notebook-list li{margin:9px 0}
+.check-row{
+ display:flex;
+ align-items:flex-start;
+ gap:10px;
+ padding:10px;
+ border-bottom:1px solid var(--border);
+}
+.check-row input{margin-top:6px;accent-color:var(--primary)}
+.test-intro{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:10px;
+}
+.test-question{
+ padding:15px;
+ border:1px solid var(--border);
+ border-radius:13px;
+ margin:13px 0;
+}
+.test-question h4{margin:0 0 10px;font-size:15px}
+.option{
+ display:flex;
+ align-items:flex-start;
+ gap:9px;
+ padding:9px;
+ border:1px solid var(--border);
+ border-radius:9px;
+ margin:7px 0;
+ cursor:pointer;
+}
+.option:hover{border-color:var(--primary);background:var(--soft)}
+.option input{margin-top:5px;accent-color:var(--primary)}
+.test-result{
+ display:none;
+ padding:15px;
+ margin-top:15px;
+ border-radius:12px;
+ background:var(--soft);
+ border:1px solid var(--primary);
+}
+.test-result.show{display:block}
+.result-score{font-size:25px;font-weight:900;color:var(--primary)}
+.homework-topic{
+ background:linear-gradient(135deg,#f0ebff,#e7e1ff);
+ color:#35216f;
+ border-radius:15px;
+ padding:18px;
+ margin:13px 0;
+}
+body.dark .homework-topic{
+ background:#30264d;
+ color:#eee5ff;
+}
+.homework-topic h3{margin-top:0}
+.copy-area{
+ width:100%;
+ min-height:110px;
+ background:var(--bg);
+ color:var(--text);
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:12px;
+}
+.motivation{
+ text-align:center;
+ padding:30px 20px;
+ margin:25px 0;
+ color:white;
+ border-radius:20px;
+ background:linear-gradient(135deg,#5531bd,#9475ff);
+}
+.motivation h2{font-size:25px;margin:0 0 10px}
+.motivation p{font-size:17px;color:#f1ebff}
+footer{
+ text-align:center;
+ color:var(--muted);
+ padding:25px 10px 35px;
+ font-size:13px;
+}
+.back-top{
+ position:fixed;
+ right:16px;
+ bottom:17px;
+ width:43px;
+ height:43px;
+ border:0;
+ border-radius:50%;
+ background:var(--primary);
+ color:white;
+ font-size:20px;
+ box-shadow:var(--shadow);
+}
+@media(max-width:600px){
+ .section{padding:16px}
+ .hero{padding:28px 15px}
+ .section-title{font-size:19px}
+ table{font-size:12px}
+ th,td{padding:7px}
+ .reading-text{font-size:15px;padding:14px}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="container nav">
+  <a class="logo" href="../index.html">ENGLISH UP</a>
+  <div class="nav-actions">
+   <button class="small-btn" onclick="toggleTheme()">🌙 / ☀️</button>
+   <a class="small-btn" href="elementary.html">Kurslar</a>
+  </div>
+ </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+ <span class="tag">ENGLISH UP • PRE-INTERMEDIATE</span>
+ <h1>PRE-INTERMEDIATE</h1>
+ <h2>1-KUN</h2>
+ <h2>TO BE, PERSONAL PRONOUNS & POSSESSIVES</h2>
+ <p>Elementary bilimlaringizni mustahkamlang va B1 sari birinchi qadamingizni qo‘ying!</p>
+ <div class="hero-meta">
+  <span>📘 Grammar</span>
+  <span>🎧 Listening</span>
+  <span>📖 Reading</span>
+  <span>✍️ Writing</span>
+  <span>📝 40 ta test</span>
+ </div>
+</section>
+
+<div class="progress-wrap">
+ <div class="progress-top">
+  <span>📊 Darsdagi topshiriqlar bajarilishi</span>
+  <span id="progressText">0%</span>
+ </div>
+ <div class="progress-track">
+  <div class="progress-fill" id="progressFill"></div>
+ </div>
+</div>
+
+<nav class="quick-nav">
+ <a href="#rules">Grammar</a>
+ <a href="#notebook">Daftar</a>
+ <a href="#listening">Listening</a>
+ <a href="#vocabulary">Vocabulary</a>
+ <a href="#reading">Reading</a>
+ <a href="#writing">Writing</a>
+ <a href="#test1">Test 1</a>
+ <a href="#test2">Test 2</a>
+ <a href="#homework">Homework</a>
+</nav>
+
+<!-- GRAMMAR -->
+<section class="section" id="rules">
+ <h2 class="section-title">
+  <span class="section-number">1</span>
+  GRAMMAR — GRAMMATIKA
+ </h2>
+
+ <p>Bugungi darsda o‘zimizni tanishtirish, boshqa odamlar haqida gapirish, narsalarning kimga tegishli ekanini bildirishni o‘rganamiz.</p>
+
+ <div class="rule-card">
+  <h3>1. TO BE — AM / IS / ARE</h3>
+  <p><b>To be</b> fe’li o‘zbek tiliga ko‘pincha “bo‘lmoq” deb tarjima qilinadi. Hozirgi zamonda ega bilan mos shakl ishlatiladi.</p>
+  <table>
+   <tr><th>Subject</th><th>To be</th><th>Misol</th></tr>
+   <tr><td>I</td><td>am</td><td>I am a student.</td></tr>
+   <tr><td>He / She / It</td><td>is</td><td>She is my sister.</td></tr>
+   <tr><td>You / We / They</td><td>are</td><td>They are friends.</td></tr>
+  </table>
+  <div class="example"><strong>I am happy.</strong> — Men xursandman.</div>
+  <div class="example"><strong>He is at home.</strong> — U uyda.</div>
+  <div class="example"><strong>We are ready.</strong> — Biz tayyormiz.</div>
+ </div>
+
+ <div class="rule-card">
+  <h3>2. NEGATIVE — INKOR SHAKLI</h3>
+  <p>Inkor gap hosil qilish uchun to be fe’lidan keyin <b>not</b> qo‘shiladi.</p>
+  <table>
+   <tr><th>To be</th><th>Qisqa shakli</th><th>Misol</th></tr>
+   <tr><td>am not</td><td>I'm not</td><td>I am not tired.</td></tr>
+   <tr><td>is not</td><td>isn't</td><td>He isn't busy.</td></tr>
+   <tr><td>are not</td><td>aren't</td><td>They aren't here.</td></tr>
+  </table>
+  <div class="example"><strong>She isn't my teacher.</strong> — U mening o‘qituvchim emas.</div>
+  <div class="example"><strong>We aren't late.</strong> — Biz kechikmadik.</div>
+ </div>
+
+ <div class="rule-card">
+  <h3>3. QUESTIONS — SO‘ROQ SHAKLI</h3>
+  <p>To be fe’li gap boshiga chiqadi. Keyin ega keladi.</p>
+  <div class="example"><strong>Are you a student?</strong> — Siz talabamisiz?</div>
+  <div class="example"><strong>Is she your mother?</strong> — U sizning onangizmi?</div>
+  <div class="example"><strong>Am I right?</strong> — Men haqmanmi?</div>
+  <p><b>Short answers:</b></p>
+  <ul>
+   <li>Yes, I am. / No, I'm not.</li>
+   <li>Yes, he is. / No, he isn't.</li>
+   <li>Yes, they are. / No, they aren't.</li>
+  </ul>
+ </div>
+
+ <div class="rule-card">
+  <h3>4. PERSONAL PRONOUNS — KISHILIK OLMOSHLARI</h3>
+  <table>
+   <tr><th>Olmosh</th><th>Ma’nosi</th><th>Misol</th></tr>
+   <tr><td>I</td><td>Men</td><td>I am happy.</td></tr>
+   <tr><td>You</td><td>Sen / Siz</td><td>You are kind.</td></tr>
+   <tr><td>He</td><td>U (erkak)</td><td>He is my brother.</td></tr>
+   <tr><td>She</td><td>U (ayol)</td><td>She is a doctor.</td></tr>
+   <tr><td>It</td><td>U (narsa/hayvon)</td><td>It is a book.</td></tr>
+   <tr><td>We</td><td>Biz</td><td>We are friends.</td></tr>
+   <tr><td>They</td><td>Ular</td><td>They are students.</td></tr>
+  </table>
+  <div class="note">Eslab qoling: ingliz tilida odatda gapda ega bo‘lishi kerak. “Am happy” emas, “I am happy” deyiladi.</div>
+ </div>
+
+ <div class="rule-card">
+  <h3>5. OBJECT PRONOUNS — TO‘LDIRUVCHI OLMOSHLAR</h3>
+  <p>Bu olmoshlar ish-harakat kimga yoki nimaga qaratilganini bildiradi. Odatda fe’ldan yoki predlogdan keyin keladi.</p>
+  <table>
+   <tr><th>Subject</th><th>Object</th><th>Ma’nosi</th></tr>
+   <tr><td>I</td><td>me</td><td>meni / menga</td></tr>
+   <tr><td>You</td><td>you</td><td>seni / sizni</td></tr>
+   <tr><td>He</td><td>him</td><td>uni (erkak)</td></tr>
+   <tr><td>She</td><td>her</td><td>uni (ayol)</td></tr>
+   <tr><td>It</td><td>it</td><td>uni (narsa)</td></tr>
+   <tr><td>We</td><td>us</td><td>bizni</td></tr>
+   <tr><td>They</td><td>them</td><td>ularni</td></tr>
+  </table>
+  <div class="example"><strong>She knows me.</strong> — U meni taniydi.</div>
+  <div class="example"><strong>I help them.</strong> — Men ularga yordam beraman.</div>
+  <div class="example"><strong>Please listen to us.</strong> — Iltimos, bizni tinglang.</div>
+ </div>
+
+ <div class="rule-card">
+  <h3>6. POSSESSIVE ADJECTIVES — EGALIK SIFATLARI</h3>
+  <p>Biror narsa kimga tegishli ekanini bildiradi. Ulardan keyin odatda ot keladi.</p>
+  <table>
+   <tr><th>Subject</th><th>Possessive adjective</th><th>Misol</th></tr>
+   <tr><td>I</td><td>my</td><td>my book</td></tr>
+   <tr><td>You</td><td>your</td><td>your bag</td></tr>
+   <tr><td>He</td><td>his</td><td>his father</td></tr>
+   <tr><td>She</td><td>her</td><td>her mother</td></tr>
+   <tr><td>It</td><td>its</td><td>its name</td></tr>
+   <tr><td>We</td><td>our</td><td>our house</td></tr>
+   <tr><td>They</td><td>their</td><td>their children</td></tr>
+  </table>
+  <div class="example"><strong>This is my phone.</strong> — Bu mening telefonim.</div>
+  <div class="example"><strong>Our teacher is kind.</strong> — Bizning o‘qituvchimiz mehribon.</div>
+  <div class="note">My, your, his, her, its, our, their so‘zlaridan keyin ot keladi: my book, their house.</div>
+ </div>
+
+ <div class="rule-card">
+  <h3>7. POSSESSIVE PRONOUNS — MUSTAQIL EGALIK OLMOSHLARI</h3>
+  <p>Bu shakllar egalikni bildiradi, lekin ulardan keyin ot yozilmaydi.</p>
+  <table>
+   <tr><th>Possessive adjective</th><th>Possessive pronoun</th><th>Misol</th></tr>
+   <tr><td>my</td><td>mine</td><td>This book is mine.</td></tr>
+   <tr><td>your</td><td>yours</td><td>This bag is yours.</td></tr>
+   <tr><td>his</td><td>his</td><td>The phone is his.</td></tr>
+   <tr><td>her</td><td>hers</td><td>The pen is hers.</td></tr>
+   <tr><td>our</td><td>ours</td><td>The house is ours.</td></tr>
+   <tr><td>their</td><td>theirs</td><td>The car is theirs.</td></tr>
+  </table>
+  <div class="example"><strong>This is my book.</strong> — Bu mening kitobim.</div>
+  <div class="example"><strong>This book is mine.</strong> — Bu kitob meniki.</div>
+ </div>
+
+ <div class="rule-card">
+  <h3>8. SUBJECT VA OBJECT FARQI</h3>
+  <p><b>Subject</b> — ish-harakatni bajaruvchi. <b>Object</b> — ish-harakat qaratilgan shaxs yoki narsa.</p>
+  <div class="example"><strong>She helps him.</strong><br>She — Subject, him — Object.</div>
+  <div class="example"><strong>They know us.</strong><br>They — Subject, us — Object.</div>
+  <div class="example"><strong>He likes her.</strong><br>He — Subject, her — Object.</div>
+ </div>
+
+ <div class="rule-card">
+  <h3>9. BIR NECHTA QOIDANI BIRLASHTIRAMIZ</h3>
+  <div class="example"><strong>My brother is a student. His school is near our house.</strong><br>Akam talaba. Uning maktabi bizning uyimiz yaqinida.</div>
+  <div class="example"><strong>We are friends. They know us.</strong><br>Biz do‘stmiz. Ular bizni taniydi.</div>
+  <div class="example"><strong>This is her notebook, but that one is mine.</strong><br>Bu uning daftari, ammo anavi meniki.</div>
+  <div class="example"><strong>Our parents are kind. We love them.</strong><br>Ota-onamiz mehribon. Biz ularni yaxshi ko‘ramiz.</div>
+ </div>
+
+ <div class="warning">
+  <b>Ko‘p uchraydigan xatolar:</b>
+  <ul>
+   <li>❌ She are happy. → ✅ She is happy.</li>
+   <li>❌ I is a student. → ✅ I am a student.</li>
+   <li>❌ This is mine book. → ✅ This is my book.</li>
+   <li>❌ He helps I. → ✅ He helps me.</li>
+   <li>❌ This book is my. → ✅ This book is mine.</li>
+  </ul>
+ </div>
+</section>
+
+<!-- NOTEBOOK -->
+<section class="section" id="notebook">
+ <h2 class="section-title">
+  <span class="section-number">2</span>
+  NOTEBOOK — DAFTAR ISHI
+ </h2>
+ <div class="warning">
+  <b>QAT’IY TALAB:</b> Ushbu bo‘limdagi topshiriqlarni daftarga yozish shart. Faqat o‘qib chiqish yoki telefonda bajarish yetarli emas.
+ </div>
+ <ol class="notebook-list">
+  <li>To be fe’lining am, is, are shakllarini jadval qilib yozing.</li>
+  <li>To be ning darak, inkor va so‘roq shakllaridan 5 tadan misol yozing.</li>
+  <li>7 ta Personal Pronouns va ularning tarjimasini yozing.</li>
+  <li>7 ta Object Pronouns va ularning tarjimasini yozing.</li>
+  <li>Possessive Adjectives va Possessive Pronouns jadvalini yozing.</li>
+  <li>Subject va Object farqini o‘z misollaringiz bilan tushuntiring.</li>
+  <li>Bugungi grammatikadan foydalanib 15 ta mustaqil inglizcha gap tuzing.</li>
+ </ol>
+ <div class="note">Daftarga yozib bo‘lgach, quyidagi belgilash katagiga bosing.</div>
+ <label class="check-row">
+  <input type="checkbox" class="task-check">
+  <span>Men grammatik qoidalarni va misollarni daftarga to‘liq yozdim.</span>
+ </label>
+</section>
+
+<!-- LISTENING -->
+<section class="section" id="listening">
+ <h2 class="section-title">
+  <span class="section-number">3</span>
+  LISTENING — TINGLAB TUSHUNISH
+ </h2>
+ <p>Har bir mashqdagi matnni avval tinglang. Keyin matnni ochib tekshiring. Audio tugmasi qurilmangizdagi inglizcha ovozdan foydalanadi.</p>
+
+ <div class="audio-card">
+  <div class="audio-head">
+   <div>
+    <h3>🎧 Listening 1 — Introducing Myself</h3>
+    <p class="muted">O‘zini tanishtirish</p>
+   </div>
+   <button class="audio-btn" onclick="speakText('audio1')">▶ Audio tinglash</button>
+  </div>
+  <button class="secondary-btn" onclick="toggleText('text1')">Matnni ko‘rish / yashirish</button>
+  <div class="audio-text" id="text1">
+   <p id="audio1">Hello! My name is Daniel. I am twenty-four years old. I am from Canada, but I live in a small city now. I am an English student. My English teacher is very friendly. She helps me with grammar and speaking. My favourite subject is English because it is useful and interesting. My best friend is Mark. He is also a student. We are in the same class. Our classroom is small, but it is comfortable. I am happy because my English is getting better every day.</p>
+   <p><b>Tarjima:</b> Salom! Mening ismim Daniel. Men yigirma to‘rt yoshdaman. Men Kanadadanman, lekin hozir kichik shaharda yashayman. Men ingliz tili o‘quvchisiman. Ingliz tili o‘qituvchim juda do‘stona. U menga grammatika va gapirishda yordam beradi. Mening sevimli fanim ingliz tili, chunki u foydali va qiziqarli. Eng yaqin do‘stim Mark. U ham o‘quvchi. Biz bir sinfda o‘qiymiz. Sinfimiz kichik, ammo qulay. Men xursandman, chunki ingliz tilim har kuni yaxshilanmoqda.</p>
+  </div>
+  <h3>Listening 1 — Savollar</h3>
+  <ol>
+   <li>What is the boy's name?</li>
+   <li>How old is he?</li>
+   <li>Where is he from?</li>
+   <li>Who helps him with English?</li>
+   <li>Why does he like English?</li>
+  </ol>
+  <textarea class="copy-area" placeholder="Javoblaringizni shu yerda yozib mashq qiling..."></textarea>
+ </div>
+
+ <div class="audio-card">
+  <div class="audio-head">
+   <div>
+    <h3>🎧 Listening 2 — My Family</h3>
+    <p class="muted">Oila haqida suhbat</p>
+   </div>
+   <button class="audio-btn" onclick="speakText('audio2')">▶ Audio tinglash</button>
+  </div>
+  <button class="secondary-btn" onclick="toggleText('text2')">Matnni ko‘rish / yashirish</button>
+  <div class="audio-text" id="text2">
+   <p id="audio2">My name is Anna, and this is my family. We are a family of five. My father's name is Robert. He is a doctor. My mother's name is Susan. She is a teacher. I have one brother and one sister. My brother, Tom, is sixteen years old. He is funny and helpful. My sister, Lily, is ten. She is very creative. Our home is not very big, but it is warm and comfortable. We love each other. At weekends, we are usually together. My parents are very important to me, and I am proud of my family.</p>
+   <p><b>Tarjima:</b> Mening ismim Anna va bu mening oilam. Biz besh kishilik oilamiz. Otamning ismi Robert. U shifokor. Onamning ismi Susan. U o‘qituvchi. Mening bitta akam va bitta singlim bor. Akam Tom o‘n olti yoshda. U quvnoq va yordam berishni yaxshi ko‘radi. Singlim Lily o‘n yoshda. U juda ijodkor. Uyimiz unchalik katta emas, ammo issiq va qulay. Biz bir-birimizni yaxshi ko‘ramiz. Dam olish kunlari odatda birga bo‘lamiz. Ota-onam men uchun juda muhim va men oilam bilan faxrlanaman.</p>
+  </div>
+  <h3>Listening 2 — Savollar</h3>
+  <ol>
+   <li>How many people are in Anna's family?</li>
+   <li>What is her father's job?</li>
+   <li>What is her mother's job?</li>
+   <li>How old are Tom and Lily?</li>
+   <li>What does Anna say about her family?</li>
+  </ol>
+  <textarea class="copy-area" placeholder="Listening 2 javoblarini yozing..."></textarea>
+ </div>
+ <label class="check-row">
+  <input type="checkbox" class="task-check">
+  <span>Men ikkala Listening matnini tingladim va savollarga javob berdim.</span>
+ </label>
+</section>
+
+<!-- VOCABULARY -->
+<section class="section" id="vocabulary">
+ <h2 class="section-title">
+  <span class="section-number">4</span>
+  VOCABULARY — 20 TA YANGI SO‘Z
+ </h2>
+ <p>Quyidagi so‘zlarni Reading matnida uchratasiz. Har birini tarjimasi va talaffuzi bilan o‘rganing.</p>
+ <div class="vocab-grid">
+  <div class="vocab"><strong>friendly</strong><small>/ˈfrendli/</small>Do‘stona, samimiy<button onclick="speakWord('friendly')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>comfortable</strong><small>/ˈkʌmftəbəl/</small>Qulay<button onclick="speakWord('comfortable')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>responsible</strong><small>/rɪˈspɒnsəbəl/</small>Mas’uliyatli<button onclick="speakWord('responsible')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>relationship</strong><small>/rɪˈleɪʃənʃɪp/</small>Munosabat<button onclick="speakWord('relationship')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>support</strong><small>/səˈpɔːt/</small>Qo‘llab-quvvatlamoq<button onclick="speakWord('support')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>proud</strong><small>/praʊd/</small>Faxrlangan<button onclick="speakWord('proud')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>independent</strong><small>/ˌɪndɪˈpendənt/</small>Mustaqil<button onclick="speakWord('independent')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>experience</strong><small>/ɪkˈspɪəriəns/</small>Tajriba<button onclick="speakWord('experience')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>improve</strong><small>/ɪmˈpruːv/</small>Yaxshilamoq<button onclick="speakWord('improve')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>confident</strong><small>/ˈkɒnfɪdənt/</small>O‘ziga ishongan<button onclick="speakWord('confident')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>patient</strong><small>/ˈpeɪʃənt/</small>Sabrli<button onclick="speakWord('patient')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>honest</strong><small>/ˈɒnɪst/</small>Halol, rostgo‘y<button onclick="speakWord('honest')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>similar</strong><small>/ˈsɪmɪlə/</small>O‘xshash<button onclick="speakWord('similar')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>different</strong><small>/ˈdɪfrənt/</small>Turli, boshqacha<button onclick="speakWord('different')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>especially</strong><small>/ɪˈspeʃəli/</small>Ayniqsa<button onclick="speakWord('especially')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>usually</strong><small>/ˈjuːʒuəli/</small>Odatda<button onclick="speakWord('usually')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>together</strong><small>/təˈɡeðə/</small>Birgalikda<button onclick="speakWord('together')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>important</strong><small>/ɪmˈpɔːtənt/</small>Muhim<button onclick="speakWord('important')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>careful</strong><small>/ˈkeəfəl/</small>Ehtiyotkor<button onclick="speakWord('careful')">🔊 Tinglash</button></div>
+  <div class="vocab"><strong>believe</strong><small>/bɪˈliːv/</small>Ishonmoq<button onclick="speakWord('believe')">🔊 Tinglash</button></div>
+ </div>
+ <div class="note">Vazifa: 20 ta so‘zni daftarga inglizchasi, talaffuzi va o‘zbekcha tarjimasi bilan yozing. Har bir so‘z bilan bittadan gap tuzing.</div>
+ <label class="check-row">
+  <input type="checkbox" class="task-check">
+  <span>20 ta yangi so‘zni daftarga yozdim va takrorladim.</span>
+ </label>
+</section>
+
+<!-- READING -->
+<section class="section" id="reading">
+ <h2 class="section-title">
+  <span class="section-number">5</span>
+  READING — O‘QISH
+ </h2>
+ <h3>My Family, My Life and My Goals</h3>
+ <p class="muted">Mening oilam, hayotim va maqsadlarim</p>
+ <div class="reading-text">
+  <p>My name is Alex, and I am twenty-three years old. I am from a small town, but now I am a student at a college in a big city. My life is quite busy, but I am happy with it. I live with my parents and my younger sister. Our home is comfortable, and our family is very friendly.</p>
+
+  <p>My father is a careful and responsible person. He is an engineer. His job is sometimes difficult, but he is always patient. My mother is a teacher. She is kind and helpful. Her students love her because she is friendly and honest. My sister Emma is fifteen. She is independent and confident. She is interested in music and art.</p>
+
+  <p>My family is important to me because they always support me. When I have a problem, I usually talk to my parents. Their advice is useful, and I believe them. My relationship with my sister is also good. We are different in some ways, but we have similar interests. We both enjoy films and travelling.</p>
+
+  <p>I am especially interested in learning English. It is not always easy, but I want to improve my language skills. My English teacher is very patient. She helps us become more confident. Our lessons are interesting, and we usually work together. My classmates are friendly, and they help me when I have questions.</p>
+
+  <p>At the moment, I am working hard because I have several goals. First, I want to speak English confidently. Second, I want to study at a good university. Finally, I want to have a successful career. I know that success takes time, patience and hard work. I believe in myself, and I am ready to learn something new every day.</p>
+ </div>
+ <div class="note">
+  <b>O‘qish tartibi:</b> Matnni birinchi marta lug‘atga qaramasdan o‘qing. Ikkinchi marta yangi so‘zlarga e’tibor bering. Uchinchi marta ovoz chiqarib o‘qing.
+ </div>
+ <label class="check-row">
+  <input type="checkbox" class="task-check">
+  <span>Reading matnini kamida 3 marta o‘qidim.</span>
+ </label>
+</section>
+
+<!-- WRITING -->
+<section class="section" id="writing">
+ <h2 class="section-title">
+  <span class="section-number">6</span>
+  WRITING — READING ASOSIDA YOZISH
+ </h2>
+ <div class="warning">
+  <b>MUHIM:</b> Quyidagi savollarga javoblarni telefonga emas, aynan daftaringizga yozing. Javoblar Reading matnidagi ma’lumotlarga asoslanishi kerak.
+ </div>
+ <p>Matnni yana bir marta o‘qing va quyidagi savollarga ingliz tilida to‘liq gaplar bilan javob yozing.</p>
+ <ol>
+  <li>How old is Alex?</li>
+  <li>Where is Alex from?</li>
+  <li>Where does he study now?</li>
+  <li>Who does Alex live with?</li>
+  <li>What is his father's job?</li>
+  <li>What is his father like?</li>
+  <li>What does his mother do?</li>
+  <li>Why do her students love her?</li>
+  <li>How old is Emma?</li>
+  <li>What is Emma interested in?</li>
+  <li>Why is Alex's family important to him?</li>
+  <li>Who does Alex talk to when he has a problem?</li>
+  <li>What do Alex and his sister enjoy?</li>
+  <li>Why is Alex interested in English?</li>
+  <li>How does his teacher help the students?</li>
+  <li>What are Alex's three goals?</li>
+  <li>What does success take?</li>
+  <li>Are Alex and his sister exactly the same?</li>
+  <li>What does Alex believe in?</li>
+  <li>What is the main idea of the text?</li>
+ </ol>
+ <div class="note">
+  <b>Yozish talabi:</b> Har bir savolga kamida bitta to‘liq inglizcha gap bilan javob yozing. Bir so‘zli javob qabul qilinmaydi. Matndan ko‘chirib yozish mumkin, lekin gapning ma’nosini tushunishingiz shart.
+ </div>
+ <label class="check-row">
+  <input type="checkbox" class="task-check">
+  <span>20 ta Reading savoliga javobni daftarga yozdim.</span>
+ </label>
+</section>
+
+<!-- TEST 1 -->
+<section class="section" id="test1">
+ <h2 class="section-title">
+  <span class="section-number">7</span>
+  INTERACTIVE TEST 1 — GRAMMAR
+ </h2>
+ <div class="test-intro">
+  <p>1-qism: 20 ta savol</p>
+  <span class="muted">To Be • Pronouns • Possessives</span>
+ </div>
+ <div id="grammarTest"></div>
+ <button class="primary-btn" onclick="gradeTest('grammarTest','grammarResult',grammarQuestions)">1-testni tekshirish</button>
+ <div class="test-result" id="grammarResult"></div>
+</section>
+
+<!-- TEST 2 -->
+<section class="section" id="test2">
+ <h2 class="section-title">
+  <span class="section-number">8</span>
+  INTERACTIVE TEST 2 — VOCABULARY & SENTENCES
+ </h2>
+ <div class="test-intro">
+  <p>2-qism: 20 ta savol</p>
+  <span class="muted">Vocabulary • Sentence Building • Reading</span>
+ </div>
+ <div id="vocabularyTest"></div>
+ <button class="primary-btn" onclick="gradeTest('vocabularyTest','vocabularyResult',vocabularyQuestions)">2-testni tekshirish</button>
+ <div class="test-result" id="vocabularyResult"></div>
+ <div class="success-note">
+  <b>Umumiy test:</b> 40 ta savol. Har bir qism alohida tekshiriladi. Ikkala test natijasini qo‘shib, umumiy natijangizni hisoblang.
+ </div>
+</section>
+
+<!-- HOMEWORK -->
+<section class="section" id="homework">
+ <h2 class="section-title">
+  <span class="section-number">9</span>
+  HOMEWORK — UY VAZIFASI
+ </h2>
+ <div class="homework-topic">
+  <h3>✍️ YOUR FAMILY AND YOUR PERSONAL GOALS</h3>
+  <p><b>Mavzu:</b> Mening oilam va shaxsiy maqsadlarim.</p>
+  <p>Shu mavzu asosida ingliz tilida mustaqil matn yozing va o‘qituvchingizga yuboring.</p>
+ </div>
+ <h3>Matn yozish shartlari:</h3>
+ <ol>
+  <li>Matn kamida 150–180 ta inglizcha so‘zdan iborat bo‘lsin.</li>
+  <li>Oilangiz haqida ma’lumot bering.</li>
+  <li>Oila a’zolaringizning kasbi va xarakterini tasvirlang.</li>
+  <li>Oilangiz sizni qanday qo‘llab-quvvatlashini yozing.</li>
+  <li>O‘zingizning kelajakdagi maqsadlaringizni tushuntiring.</li>
+  <li>To be, personal pronouns va possessives shakllaridan foydalaning.</li>
+  <li>Bugungi 20 ta yangi so‘zdan kamida 10 tasini ishlating.</li>
+ </ol>
+ <div class="warning">
+  <b>Qat’iy talab:</b> Matnni tarjimon orqali to‘liq tayyorlab olmang. O‘zingiz mustaqil yozing. Xatolardan qo‘rqmang — o‘qituvchi ularni tekshiradi va tushuntiradi.
+ </div>
+
+ <h3>Yuborishdan oldin tekshiring:</h3>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Matnim 150–180 so‘zdan iborat.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Bugungi grammatik qoidalardan foydalandim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Kamida 10 ta yangi so‘zni ishlatdim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Matnimni qayta o‘qib tekshirdim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Matnimni o‘qituvchimga yubordim.</span></label>
+
+ <h3>O‘zingiz uchun yozish maydoni</h3>
+ <textarea id="homeworkDraft" class="copy-area" style="min-height:190px" placeholder="Bu yerda matningizni qoralama sifatida yozishingiz mumkin. Yakuniy matnni daftarga ham yozing."></textarea>
+ <button class="secondary-btn" onclick="copyHomework()">📋 Matnni nusxalash</button>
+ <p class="muted" id="copyMessage"></p>
+ <label class="check-row">
+  <input type="checkbox" class="task-check">
+  <span>Men uy vazifamni daftarga yozdim va o‘qituvchimga yubordim.</span>
+ </label>
+</section>
+
+<section class="section">
+ <h2 class="section-title">
+  <span class="section-number">✓</span>
+  DARSNI YAKUNLASH
+ </h2>
+ <p>Quyidagi barcha ishlarni bajarganingizga ishonch hosil qiling:</p>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Grammar qoidalarini o‘rgandim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Daftar topshiriqlarini bajardim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Listening 1 va Listening 2 ni tingladim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>20 ta yangi so‘zni o‘rgandim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Reading matnini o‘qidim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>20 ta Writing savoliga daftarda javob berdim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>40 ta testni ishladim.</span></label>
+ <label class="check-row"><input type="checkbox" class="task-check"><span>Uy vazifasini tayyorladim.</span></label>
+</section>
+
+<section class="motivation">
+ <h2>🌟 YOU CAN DO IT!</h2>
+ <p>Har kuni ozgina harakat — katta natijaning boshlanishi.</p>
+ <p>Bugun o‘rgangan bitta qoida, ertaga tuzadigan yuzlab gaplaringizga asos bo‘ladi.</p>
+ <h3>Don't stop. Keep learning. Believe in yourself!</h3>
+ <p>English Up — Learn today. Succeed tomorrow.</p>
+</section>
+
+</main>
+
+<footer>
+ <b>ENGLISH UP</b><br>
+ PRE-INTERMEDIATE • 1-KUN<br>
+ Learn today. Succeed tomorrow.
+</footer>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* =========================================
+   THEME
+========================================= */
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem(
+  "eu-pre1-theme",
+  document.body.classList.contains("dark")?"dark":"light"
+ );
+}
+if(localStorage.getItem("eu-pre1-theme")==="dark"){
+ document.body.classList.add("dark");
+}
+
+/* =========================================
+   AUDIO / SPEECH
+========================================= */
+function speakText(id){
+ const element=document.getElementById(id);
+ if(!element)return;
+ speak(element.innerText);
+}
+function speakWord(word){
+ speak(word);
+}
+function speak(text){
+ if(!("speechSynthesis" in window)){
+  alert("Brauzeringiz audio o‘qishni qo‘llab-quvvatlamaydi.");
+  return;
+ }
+ window.speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang="en-US";
+ utterance.rate=0.82;
+ utterance.pitch=1;
+ window.speechSynthesis.speak(utterance);
+}
+function toggleText(id){
+ const el=document.getElementById(id);
+ el.classList.toggle("show");
+}
+
+/* =========================================
+   TASK PROGRESS
+========================================= */
+const checks=document.querySelectorAll(".task-check");
+function updateProgress(){
+ let done=0;
+ checks.forEach(c=>{if(c.checked)done++});
+ const percent=checks.length?Math.round(done/checks.length*100):0;
+ document.getElementById("progressText").textContent=percent+"%";
+ document.getElementById("progressFill").style.width=percent+"%";
+ localStorage.setItem("eu-pre1-checks",
+  JSON.stringify(Array.from(checks).map(c=>c.checked))
+ );
+}
+try{
+ const saved=JSON.parse(localStorage.getItem("eu-pre1-checks")||"[]");
+ checks.forEach((c,i)=>{if(saved[i])c.checked=true});
+}catch(e){}
+checks.forEach(c=>c.addEventListener("change",updateProgress));
+updateProgress();
+
+/* =========================================
+   TEST QUESTION DATA
+========================================= */
+const grammarQuestions=[
+ {
+  q:"I ___ a student.",
+  o:["is","am","are","be"],
+  a:1
+ },
+ {
+  q:"She ___ my sister.",
+  o:["am","are","is","be"],
+  a:2
+ },
+ {
+  q:"They ___ at home.",
+  o:["is","am","are","be"],
+  a:2
+ },
+ {
+  q:"Choose the correct negative sentence.",
+  o:["He not is tired.","He isn't tired.","He aren't tired.","He am not tired."],
+  a:1
+ },
+ {
+  q:"___ you ready?",
+  o:["Is","Am","Are","Be"],
+  a:2
+ },
+ {
+  q:"My brother is here. ___ is happy.",
+  o:["She","He","They","We"],
+  a:1
+ },
+ {
+  q:"Anna is my friend. ___ is kind.",
+  o:["He","It","She","We"],
+  a:2
+ },
+ {
+  q:"Tom and I are students. ___ are classmates.",
+  o:["We","They","You","He"],
+  a:0
+ },
+ {
+  q:"My parents love ___.",
+  o:["I","me","my","mine"],
+  a:1
+ },
+ {
+  q:"I know John. I know ___.",
+  o:["he","his","him","her"],
+  a:2
+ },
+ {
+  q:"This is ___ book. (Men)",
+  o:["mine","my","me","I"],
+  a:1
+ },
+ {
+  q:"That is ___ house. (Ular)",
+  o:["them","they","their","theirs"],
+  a:2
+ },
+ {
+  q:"This phone is ___. (Meniki)",
+  o:["my","me","mine","I"],
+  a:2
+ },
+ {
+  q:"The blue bag is ___. (Uning — ayol)",
+  o:["her","hers","she","him"],
+  a:1
+ },
+ {
+  q:"Choose the correct sentence.",
+  o:["This is mine pen.","This is my pen.","This is me pen.","This is I pen."],
+  a:1
+ },
+ {
+  q:"He helps ___. (Bizni)",
+  o:["we","our","us","ours"],
+  a:2
+ },
+ {
+  q:"___ are my teachers.",
+  o:["Them","Their","They","Theirs"],
+  a:2
+ },
+ {
+  q:"The children are happy. ___ are playing.",
+  o:["It","He","They","We"],
+  a:2
+ },
+ {
+  q:"This classroom is ___. (Bizniki)",
+  o:["our","us","ours","we"],
+  a:2
+ },
+ {
+  q:"Choose the correct sentence.",
+  o:["She are my mother.","She am my mother.","She is my mother.","She be my mother."],
+  a:2
+ }
+];
+
+const vocabularyQuestions=[
+ {
+  q:"What does 'friendly' mean?",
+  o:["Do‘stona","Xavfli","Qimmat","Kech"],
+  a:0
+ },
+ {
+  q:"What does 'comfortable' mean?",
+  o:["Qiyin","Qulay","Mustaqil","O‘xshash"],
+  a:1
+ },
+ {
+  q:"Choose the meaning of 'responsible'.",
+  o:["Mas’uliyatli","Xursand","Kichik","Charchagan"],
+  a:0
+ },
+ {
+  q:"'Proud' so‘zining ma’nosi qaysi?",
+  o:["Qo‘rqoq","Faxrlangan","Ehtiyotkor","Sokin"],
+  a:1
+ },
+ {
+  q:"'Improve' means:",
+  o:["Unutmoq","Yaxshilamoq","Kutmoq","Yopmoq"],
+  a:1
+ },
+ {
+  q:"'Independent' so‘zining ma’nosi:",
+  o:["Mustaqil","Mehribon","Kechikkan","Qiziqarli"],
+  a:0
+ },
+ {
+  q:"'Usually' means:",
+  o:["Hech qachon","Ba’zan","Odatda","Hozir"],
+  a:2
+ },
+ {
+  q:"'Together' means:",
+  o:["Alohida","Birgalikda","Tez","Sekin"],
+  a:1
+ },
+ {
+  q:"'Honest' means:",
+  o:["Halol","Dangasa","Baland","Yangi"],
+  a:0
+ },
+ {
+  q:"'Believe' means:",
+  o:["Ishonmoq","O‘qimoq","Yozmoq","Yugurmoq"],
+  a:0
+ },
+ {
+  q:"Choose the correct sentence.",
+  o:["My parents is kind.","My parents are kind.","My parents am kind.","My parents be kind."],
+  a:1
+ },
+ {
+  q:"Choose the correct sentence.",
+  o:["She helps I.","She helps me.","She helps my.","She helps mine."],
+  a:1
+ },
+ {
+  q:"Which sentence means 'Bu kitob meniki'?",
+  o:["This is me book.","This book is mine.","This book is my.","This mine is book."],
+  a:1
+ },
+ {
+  q:"Which word means 'munosabat'?",
+  o:["relationship","experience","support","different"],
+  a:0
+ },
+ {
+  q:"Which word means 'tajriba'?",
+  o:["patient","experience","proud","careful"],
+  a:1
+ },
+ {
+  q:"According to the Reading, what is Alex's father's job?",
+  o:["Teacher","Doctor","Engineer","Driver"],
+  a:2
+ },
+ {
+  q:"How old is Emma?",
+  o:["10","12","15","18"],
+  a:2
+ },
+ {
+  q:"What are Alex and his sister interested in?",
+  o:["Films and travelling","Football only","Cooking","Painting only"],
+  a:0
+ },
+ {
+  q:"What does Alex want to improve?",
+  o:["His cooking","His language skills","His driving","His job"],
+  a:1
+ },
+ {
+  q:"What does success take?",
+  o:["Only money","Luck only","Patience and hard work","A big house"],
+  a:2
+ }
+];
+
+/* =========================================
+   RENDER TESTS
+========================================= */
+function renderTest(containerId,questions,prefix){
+ const container=document.getElementById(containerId);
+ container.innerHTML="";
+ questions.forEach((item,index)=>{
+  const box=document.createElement("div");
+  box.className="test-question";
+  const title=document.createElement("h4");
+  title.textContent=(index+1)+". "+item.q;
+  box.appendChild(title);
+
+  item.o.forEach((option,optIndex)=>{
+   const label=document.createElement("label");
+   label.className="option";
+   const input=document.createElement("input");
+   input.type="radio";
+   input.name=prefix+"-"+index;
+   input.value=optIndex;
+   const span=document.createElement("span");
+   span.textContent=option;
+   label.appendChild(input);
+   label.appendChild(span);
+   box.appendChild(label);
+  });
+  container.appendChild(box);
+ });
+}
+
+renderTest("grammarTest",grammarQuestions,"g");
+renderTest("vocabularyTest",vocabularyQuestions,"v");
+
+/* =========================================
+   GRADE TESTS
+========================================= */
+function gradeTest(containerId,resultId,questions){
+ const container=document.getElementById(containerId);
+ let score=0;
+ let unanswered=0;
+ let review=[];
+
+ questions.forEach((item,index)=>{
+  const selected=container.querySelector(
+   'input[name="'+(containerId==="grammarTest"?"g":"v")+"-'+index+'"]:checked'
+  );
+  const box=container.children[index];
+  const options=box.querySelectorAll(".option");
+
+  options.forEach((label,i)=>{
+   label.style.borderColor="var(--border)";
+   label.style.background="transparent";
+  });
+
+  if(!selected){
+   unanswered++;
+   review.push({
+    number:index+1,
+    status:"Javob berilmagan"
+   });
+   options[item.a].style.borderColor="var(--green)";
+   return;
+  }
+
+  const answer=Number(selected.value);
+  if(answer===item.a){
+   score++;
+   options[answer].style.borderColor="var(--green)";
+   options[answer].style.background="rgba(21,150,107,.10)";
+   review.push({
+    number:index+1,
+    status:"To‘g‘ri"
+   });
+  }else{
+   options[answer].style.borderColor="var(--red)";
+   options[answer].style.background="rgba(220,75,97,.10)";
+   options[item.a].style.borderColor="var(--green)";
+   review.push({
+    number:index+1,
+    status:"Noto‘g‘ri. To‘g‘ri javob: "+item.o[item.a]
+   });
+  }
+ });
+
+ const percent=Math.round(score/questions.length*100);
+ let message="";
+ if(percent>=90){
+  message="Ajoyib! Mavzuni juda yaxshi tushungansiz.";
+ }else if(percent>=80){
+  message="Juda yaxshi! Yana bir marta takrorlasangiz yanada mustahkam bo‘ladi.";
+ }else if(percent>=60){
+  message="Yaxshi harakat. Xatolarni ko‘rib, qoidalarni qayta o‘rganing.";
+ }else{
+  message="Mavzuni qayta o‘qing va testni yana bir marta ishlang.";
+ }
+
+ const result=document.getElementById(resultId);
+ result.innerHTML=
+  '<div class="result-score">'+score+' / '+questions.length+
+  ' — '+percent+'%</div>'+
+  '<p><b>'+message+'</b></p>'+
+  '<p>Javobsiz savollar: '+unanswered+'</p>'+
+  '<details><summary>Javoblarni ko‘rish</summary>'+
+  review.map(r=>
+   '<p>'+r.number+'. '+r.status+'</p>'
+  ).join("")+
+  '</details>';
+ result.classList.add("show");
+ result.scrollIntoView({behavior:"smooth",block:"nearest"});
+
+ localStorage.setItem(resultId,JSON.stringify({
+  score:score,
+  total:questions.length,
+  percent:percent
+ }));
+}
+
+/* =========================================
+   HOMEWORK COPY
+========================================= */
+function copyHomework(){
+ const field=document.getElementById("homeworkDraft");
+ const text=field.value.trim();
+ const message=document.getElementById("copyMessage");
+ if(!text){
+  message.textContent="Avval matn yozing.";
+  return;
+ }
+ if(navigator.clipboard && window.isSecureContext){
+  navigator.clipboard.writeText(text).then(()=>{
+   message.textContent="Matn nusxalandi. Endi uni kerakli joyga joylashtiring.";
+  }).catch(()=>{
+   fallbackCopy(field,message);
+  });
+ }else{
+  fallbackCopy(field,message);
+ }
+}
+function fallbackCopy(field,message){
+ field.select();
+ try{
+  document.execCommand("copy");
+  message.textContent="Matn nusxalandi.";
+ }catch(e){
+  message.textContent="Matnni belgilang va nusxalash buyrug‘idan foydalaning.";
+ }
+}
+
+/* =========================================
+   STOP AUDIO WHEN LEAVING
+========================================= */
+document.addEventListener("visibilitychange",()=>{
+ if(document.hidden && "speechSynthesis" in window){
+  window.speechSynthesis.cancel();
+ }
+});
+</script>
+</body>
+</html>
+
