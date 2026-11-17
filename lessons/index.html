@@ -95,21 +95,6 @@
 
 <body>
 
-    <!-- FOYDALANUVCHINI TEKSHIRISH -->
-    <script>
-        let userData = JSON.parse(localStorage.getItem('englishUpUser'));
-
-        if (
-            !userData ||
-            !userData.name ||
-            !userData.expireDate ||
-            new Date().getTime() > userData.expireDate
-        ) {
-            alert("Iltimos, avval tizimga kiring yoki obunani yangilang!");
-            window.location.href = "../login.html";
-        }
-    </script>
-
     <!-- YUQORI MENYU -->
     <div class="top-bar">
         <a href="../index.html" class="back-btn">← Back</a>
