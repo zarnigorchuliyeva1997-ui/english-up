@@ -1,1 +1,683 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Elementary Course | English Up</title>
+
+<style>
+:root {
+ --primary:#7047eb;
+ --primary2:#9274ff;
+ --bg:#f6f4ff;
+ --card:#ffffff;
+ --text:#25213a;
+ --muted:#77738b;
+ --border:#ebe7fa;
+ --success:#16a36a;
+ --shadow:0 8px 28px rgba(75,50,140,.09);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+ font-family:'Segoe UI',Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.65;
+}
+
+button,a{font:inherit}
+a{text-decoration:none;color:inherit}
+
+.header{
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:rgba(255,255,255,.94);
+ backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--border);
+ padding:13px 5%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.logo{
+ color:var(--primary);
+ font-size:21px;
+ font-weight:900;
+ letter-spacing:1px;
+}
+
+.back{
+ color:var(--muted);
+ font-weight:700;
+ font-size:14px;
+}
+
+.theme{
+ border:0;
+ background:var(--bg);
+ border-radius:50%;
+ width:42px;
+ height:42px;
+ cursor:pointer;
+ font-size:20px;
+}
+
+.hero{
+ margin:25px auto;
+ max-width:1050px;
+ width:92%;
+ padding:45px 25px;
+ border-radius:25px;
+ background:linear-gradient(135deg,#5831d6,#7047eb,#a38aff);
+ color:white;
+ text-align:center;
+ box-shadow:0 15px 40px rgba(112,71,235,.25);
+ position:relative;
+ overflow:hidden;
+}
+
+.hero:before,.hero:after{
+ content:"";
+ position:absolute;
+ border-radius:50%;
+ background:rgba(255,255,255,.08);
+}
+
+.hero:before{
+ width:220px;height:220px;
+ top:-110px;left:-70px;
+}
+
+.hero:after{
+ width:260px;height:260px;
+ bottom:-160px;right:-60px;
+}
+
+.hero-content{position:relative;z-index:1}
+
+.eyebrow{
+ display:inline-block;
+ border:1px solid rgba(255,255,255,.4);
+ background:rgba(255,255,255,.13);
+ padding:6px 16px;
+ border-radius:30px;
+ font-size:12px;
+ font-weight:800;
+ letter-spacing:2px;
+ margin-bottom:17px;
+}
+
+.hero h1{
+ font-size:clamp(30px,6vw,48px);
+ line-height:1.2;
+ margin-bottom:15px;
+ font-weight:900;
+}
+
+.hero p{
+ max-width:650px;
+ margin:auto;
+ color:#f0eaff;
+ font-size:16px;
+}
+
+.hero-stats{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin:27px 0;
+}
+
+.stat{
+ background:rgba(255,255,255,.14);
+ border:1px solid rgba(255,255,255,.2);
+ padding:10px 18px;
+ border-radius:12px;
+ font-size:13px;
+ font-weight:700;
+}
+
+.primary-btn{
+ display:inline-block;
+ background:white;
+ color:var(--primary);
+ padding:14px 30px;
+ border-radius:13px;
+ font-weight:900;
+ font-size:15px;
+ box-shadow:0 6px 18px rgba(30,10,80,.15);
+ transition:.2s;
+}
+
+.primary-btn:hover{
+ transform:translateY(-3px);
+ box-shadow:0 10px 25px rgba(30,10,80,.2);
+}
+
+.container{
+ max-width:1000px;
+ width:92%;
+ margin:35px auto;
+}
+
+.section-title{
+ font-size:25px;
+ font-weight:900;
+ margin-bottom:8px;
+}
+
+.section-subtitle{
+ color:var(--muted);
+ font-size:14px;
+ margin-bottom:22px;
+}
+
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:24px;
+ margin-bottom:20px;
+ box-shadow:var(--shadow);
+}
+
+.about-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:15px;
+ margin-top:20px;
+}
+
+.info-card{
+ padding:19px;
+ border-radius:15px;
+ background:var(--bg);
+ border:1px solid var(--border);
+}
+
+.info-icon{
+ font-size:28px;
+ margin-bottom:8px;
+}
+
+.info-card h3{
+ font-size:16px;
+ margin-bottom:5px;
+}
+
+.info-card p{
+ color:var(--muted);
+ font-size:13px;
+}
+
+.lesson-list{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:11px;
+}
+
+.lesson-item{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:13px;
+ transition:.2s;
+}
+
+.lesson-item:hover{
+ border-color:var(--primary);
+ transform:translateY(-2px);
+}
+
+.lesson-number{
+ min-width:37px;
+ height:37px;
+ display:grid;
+ place-items:center;
+ border-radius:11px;
+ background:#eee9ff;
+ color:var(--primary);
+ font-weight:900;
+ font-size:14px;
+}
+
+.lesson-name{
+ font-size:13px;
+ font-weight:800;
+ line-height:1.4;
+}
+
+.lesson-label{
+ font-size:11px;
+ color:var(--muted);
+ margin-top:3px;
+}
+
+.outcome-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:13px;
+}
+
+.outcome{
+ padding:17px;
+ background:var(--bg);
+ border-radius:13px;
+ border:1px solid var(--border);
+}
+
+.outcome strong{
+ display:block;
+ font-size:14px;
+ margin-bottom:5px;
+}
+
+.outcome p{
+ font-size:13px;
+ color:var(--muted);
+}
+
+.check{
+ color:var(--success);
+ font-weight:900;
+ margin-right:6px;
+}
+
+.rules{
+ display:grid;
+ gap:13px;
+}
+
+.rule{
+ display:flex;
+ gap:12px;
+ align-items:flex-start;
+ padding:14px;
+ background:var(--bg);
+ border-radius:12px;
+}
+
+.rule-icon{
+ font-size:22px;
+}
+
+.rule strong{
+ display:block;
+ font-size:14px;
+ margin-bottom:3px;
+}
+
+.rule p{
+ color:var(--muted);
+ font-size:13px;
+}
+
+.warning{
+ background:#fff7e8;
+ border:1px solid #f7dfaa;
+ color:#80551a;
+ padding:18px;
+ border-radius:14px;
+ font-size:13px;
+ margin-top:18px;
+}
+
+.start-box{
+ background:linear-gradient(135deg,#5831d6,#9274ff);
+ color:white;
+ padding:35px 20px;
+ text-align:center;
+ border-radius:22px;
+ margin:35px 0;
+}
+
+.start-box h2{
+ font-size:26px;
+ margin-bottom:10px;
+}
+
+.start-box p{
+ color:#eee8ff;
+ font-size:14px;
+ max-width:600px;
+ margin:0 auto 22px;
+}
+
+.start-btn{
+ display:inline-block;
+ background:white;
+ color:#7047eb;
+ padding:15px 35px;
+ border-radius:13px;
+ font-weight:900;
+ font-size:16px;
+ transition:.2s;
+}
+
+.start-btn:hover{transform:scale(1.04)}
+
+.footer{
+ text-align:center;
+ padding:25px 15px;
+ color:var(--muted);
+ font-size:13px;
+}
+
+.footer strong{color:var(--primary)}
+
+body.dark{
+ --bg:#111827;
+ --card:#1f2937;
+ --text:#f9fafb;
+ --muted:#b1b8c7;
+ --border:#374151;
+ --shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+body.dark .header{background:rgba(31,41,55,.95)}
+body.dark .lesson-number{background:#392d5d;color:#c4b5fd}
+body.dark .warning{background:#42351e;color:#ffe0a0;border-color:#66502b}
+
+@media(max-width:650px){
+ .hero{padding:35px 18px}
+ .about-grid,.lesson-list,.outcome-grid{grid-template-columns:1fr}
+ .card{padding:18px}
+ .section-title{font-size:22px}
+ .hero p{font-size:14px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+ <a class="back" href="../index.html">← Back</a>
+ <div class="logo">ENGLISH UP</div>
+ <button class="theme" onclick="toggleTheme()" aria-label="Change theme">🌙</button>
+</header>
+
+<section class="hero">
+ <div class="hero-content">
+  <div class="eyebrow">ENGLISH UP ACADEMY</div>
+  <h1>WELCOME TO<br>ELEMENTARY COURSE!</h1>
+  <p>
+   Ingliz tilini keyingi bosqichga olib chiqing!
+   Bilimingizni mustahkamlang, gapirishni rivojlantiring
+   va ingliz tilida mustaqil muloqot qilishga tayyorlaning.
+  </p>
+
+  <div class="hero-stats">
+   <div class="stat">📚 17 TA DARS</div>
+   <div class="stat">🎯 A2 LEVEL</div>
+   <div class="stat">🎧 LISTENING</div>
+   <div class="stat">🗣 SPEAKING</div>
+  </div>
+
+  <a href="#about" class="primary-btn">KURS BILAN TANISHISH ↓</a>
+ </div>
+</section>
+
+<main class="container">
+
+<section class="card" id="about">
+ <h2 class="section-title">📖 Elementary kursi haqida</h2>
+ <p class="section-subtitle">
+  Bu kurs ingliz tilidagi boshlang‘ich bilimlarini mustahkamlash
+  va kundalik muloqot ko‘nikmalarini rivojlantirish uchun yaratilgan.
+ </p>
+
+ <p style="font-size:14px;color:var(--muted)">
+  Elementary bosqichida siz grammatik qoidalarni shunchaki yodlamaysiz.
+  Ularni gaplarda ishlatishni, savollar tuzishni, fikringizni ifodalashni,
+  matnlarni tushunishni va kundalik vaziyatlarda ingliz tilidan
+  foydalanishni o‘rganasiz.
+ </p>
+
+ <div class="about-grid">
+  <div class="info-card">
+   <div class="info-icon">📚</div>
+   <h3>Grammar</h3>
+   <p>Grammatik qoidalar va ularni amalda qo‘llash.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">🗣</div>
+   <h3>Speaking</h3>
+   <p>Gap tuzish va kundalik suhbatlarda qatnashish.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">🎧</div>
+   <h3>Listening</h3>
+   <p>Dialoglar va inglizcha gaplarni tushunish.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">✍️</div>
+   <h3>Writing</h3>
+   <p>To‘g‘ri gaplar va kichik matnlar yozish.</p>
+  </div>
+ </div>
+</section>
+
+<section class="card">
+ <h2 class="section-title">🗂 Barcha 17 ta dars</h2>
+ <p class="section-subtitle">
+  Elementary kursida o‘rganiladigan mavzular bilan oldindan tanishing.
+ </p>
+
+ <div class="lesson-list" id="lessonList"></div>
+</section>
+
+<section class="card">
+ <h2 class="section-title">🏆 Kursni tugatganingizda...</h2>
+ <p class="section-subtitle">
+  Kurs yakunida quyidagi bilim va ko‘nikmalarni rivojlantirasiz.
+ </p>
+
+ <div class="outcome-grid">
+  <div class="outcome">
+   <strong><span class="check">✓</span>Grammatika</strong>
+   <p>Asosiy zamonlar va muhim grammatik tuzilmalarni tushunasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Gap tuzish</strong>
+   <p>Darak, inkor va so‘roq gaplarni mustaqil tuzasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Speaking</strong>
+   <p>Kundalik mavzularda suhbatlashish ko‘nikmangiz rivojlanadi.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Listening</strong>
+   <p>Sodda dialoglar va kundalik nutqni yaxshiroq tushunasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Vocabulary</strong>
+   <p>Yangi so‘zlarni gaplarda ishlatishni o‘rganasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Writing</strong>
+   <p>O‘z fikringizni sodda va tushunarli yozma ifodalaysiz.</p>
+  </div>
+ </div>
+</section>
+
+<section class="card">
+ <h2 class="section-title">📌 O‘quvchilar uchun qat'iy qoidalar</h2>
+ <p class="section-subtitle">
+  Natijaga erishish uchun quyidagi talablar bajarilishi shart.
+ </p>
+
+ <div class="rules">
+
+  <div class="rule">
+   <div class="rule-icon">📓</div>
+   <div>
+    <strong>1. DAFTAR TUTISH MAJBURIY!</strong>
+    <p>Har bir darsdagi grammatik qoida, formula va muhim misollarni daftaringizga yozing. Daftarsiz o‘rganish mumkin emas.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">📝</div>
+   <div>
+    <strong>2. BARCHA MASHQLARNI BAJARING!</strong>
+    <p>Darsdagi topshiriqlarni shunchaki ko‘rib chiqmang. Mustaqil ishlang va javoblaringizni tekshiring.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">📚</div>
+   <div>
+    <strong>3. YANGI LUG‘ATLARNI YODLANG!</strong>
+    <p>Har bir darsdagi yangi so‘zlarni tarjimasi va talaffuzi bilan daftaringizga yozing. Ularni gaplarda ishlating.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">🎧</div>
+   <div>
+    <strong>4. LISTENINGNI BAJARING!</strong>
+    <p>Dialoglarni tinglang, matn bilan solishtiring va talaffuz ustida ishlang.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">🗣</div>
+   <div>
+    <strong>5. OVOZ CHIQARIB GAPIRING!</strong>
+    <p>Speaking mashqlarini ichingizda emas, ovoz chiqarib bajaring. Ingliz tilida gapirishni mashq qiling.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">🔄</div>
+   <div>
+    <strong>6. TAKRORLASHNI UNUTMANG!</strong>
+    <p>Oldingi mavzularni takrorlang. Har bir yangi mavzuni avvalgi bilimlar bilan bog‘lang.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">⏳</div>
+   <div>
+    <strong>7. SHOSHILMANG!</strong>
+    <p>Mavzuni tushunmasdan keyingi darsga o‘tishga urinmang. Sifatli o‘rganish tez tugatishdan muhimroq.</p>
+   </div>
+  </div>
+
+ </div>
+
+ <div class="warning">
+  ⚠️ <strong>ESLATMA:</strong>
+  English Up'da maqsad shunchaki 17 ta darsni tugatish emas.
+  Maqsad — o‘rgangan bilimlaringizni haqiqiy ingliz tilida
+  ishlata olish. Har bir darsga mas'uliyat bilan yondashing!
+ </div>
+</section>
+
+<section class="start-box">
+ <h2>🚀 Bilimingizni yangi bosqichga olib chiqing!</h2>
+ <p>
+  17 ta dars, yangi bilimlar va amaliy mashqlar sizni kutmoqda.
+  Daftaringizni tayyorlang va Elementary kursini boshlang!
+ </p>
+
+ <a href="elementary.html" class="start-btn">
+  KURSNI BOSHLASH →
+ </a>
+</section>
+
+</main>
+
+<footer class="footer">
+ <strong>ENGLISH UP</strong>
+ <p>Learn today. Succeed tomorrow.</p>
+ <p>© 2026 English Up Academy</p>
+</footer>
+
+<script>
+const lessons = [
+ "Present Simple — Deep Revision",
+ "Have Got / Has Got",
+ "Present Continuous — Revision and Practice",
+ "Future Simple — Will",
+ "Be Going To — Future Plans",
+ "Countable and Uncountable Nouns",
+ "Articles — A, An and The",
+ "Modal Verbs — Can, Could, Must and Should",
+ "Comparatives and Superlatives",
+ "Prepositions of Time and Place",
+ "Pronouns and Possessives",
+ "There Is / There Are — Revision and Practice",
+ "Gerunds and Infinitives",
+ "Adjectives and Adverbs",
+ "Past Simple — Deep Revision",
+ "Questions and Sentence Structure",
+ "Everyday English and Communication"
+];
+
+const lessonList = document.getElementById("lessonList");
+
+lessons.forEach((lesson,index)=>{
+ const item=document.createElement("div");
+ item.className="lesson-item";
+
+ const number=document.createElement("div");
+ number.className="lesson-number";
+ number.textContent=String(index+1).padStart(2,"0");
+
+ const content=document.createElement("div");
+ const name=document.createElement("div");
+ name.className="lesson-name";
+ name.textContent=lesson;
+
+ const label=document.createElement("div");
+ label.className="lesson-label";
+ label.textContent="Elementary lesson "+(index+1);
+
+ content.append(name,label);
+ item.append(number,content);
+ lessonList.appendChild(item);
+});
+
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+
+ const dark=document.body.classList.contains("dark");
+ document.querySelector(".theme").textContent=dark?"☀️":"🌙";
+
+ try{
+  localStorage.setItem("euElementaryIntroTheme",dark?"dark":"light");
+ }catch(e){}
+}
+
+try{
+ if(localStorage.getItem("euElementaryIntroTheme")==="dark"){
+  document.body.classList.add("dark");
+  document.querySelector(".theme").textContent="☀️";
+ }
+}catch(e){}
+</script>
+
+</body>
+</html>
+
