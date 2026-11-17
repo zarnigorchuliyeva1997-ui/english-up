@@ -1,1 +1,771 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Beginner Course | English Up</title>
+
+<style>
+:root{
+ --primary:#7047eb;
+ --primary2:#9274ff;
+ --bg:#f6f4ff;
+ --card:#ffffff;
+ --text:#25213a;
+ --muted:#77738b;
+ --border:#ebe7fa;
+ --success:#16a36a;
+}
+
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+ font-family:'Segoe UI',Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.65;
+}
+
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+
+.header{
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:rgba(255,255,255,.95);
+ backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--border);
+ padding:13px 5%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.logo{
+ color:var(--primary);
+ font-size:21px;
+ font-weight:900;
+ letter-spacing:1px;
+}
+
+.back{
+ color:var(--muted);
+ font-weight:700;
+ font-size:14px;
+}
+
+.theme{
+ border:0;
+ background:var(--bg);
+ border-radius:50%;
+ width:42px;
+ height:42px;
+ cursor:pointer;
+ font-size:20px;
+}
+
+.hero{
+ margin:25px auto;
+ max-width:1050px;
+ width:92%;
+ padding:48px 25px;
+ border-radius:25px;
+ background:linear-gradient(135deg,#5831d6,#7047eb,#a38aff);
+ color:white;
+ text-align:center;
+ box-shadow:0 15px 40px rgba(112,71,235,.25);
+ position:relative;
+ overflow:hidden;
+}
+
+.hero:before,.hero:after{
+ content:"";
+ position:absolute;
+ border-radius:50%;
+ background:rgba(255,255,255,.08);
+}
+
+.hero:before{
+ width:220px;
+ height:220px;
+ top:-110px;
+ left:-70px;
+}
+
+.hero:after{
+ width:260px;
+ height:260px;
+ bottom:-160px;
+ right:-60px;
+}
+
+.hero-content{position:relative;z-index:1}
+
+.eyebrow{
+ display:inline-block;
+ border:1px solid rgba(255,255,255,.4);
+ background:rgba(255,255,255,.13);
+ padding:6px 16px;
+ border-radius:30px;
+ font-size:12px;
+ font-weight:800;
+ letter-spacing:2px;
+ margin-bottom:17px;
+}
+
+.hero h1{
+ font-size:clamp(30px,6vw,48px);
+ line-height:1.2;
+ margin-bottom:15px;
+ font-weight:900;
+}
+
+.hero p{
+ max-width:680px;
+ margin:auto;
+ color:#f0eaff;
+ font-size:16px;
+}
+
+.hero-stats{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin:27px 0;
+}
+
+.stat{
+ background:rgba(255,255,255,.14);
+ border:1px solid rgba(255,255,255,.2);
+ padding:10px 18px;
+ border-radius:12px;
+ font-size:13px;
+ font-weight:700;
+}
+
+.primary-btn{
+ display:inline-block;
+ background:white;
+ color:var(--primary);
+ padding:14px 30px;
+ border-radius:13px;
+ font-weight:900;
+ font-size:15px;
+ box-shadow:0 6px 18px rgba(30,10,80,.15);
+ transition:.2s;
+}
+
+.primary-btn:hover{
+ transform:translateY(-3px);
+}
+
+.container{
+ max-width:1000px;
+ width:92%;
+ margin:35px auto;
+}
+
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:24px;
+ margin-bottom:20px;
+ box-shadow:0 8px 28px rgba(75,50,140,.07);
+}
+
+.section-title{
+ font-size:25px;
+ font-weight:900;
+ margin-bottom:8px;
+}
+
+.section-subtitle{
+ color:var(--muted);
+ font-size:14px;
+ margin-bottom:22px;
+}
+
+.about-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:15px;
+ margin-top:20px;
+}
+
+.info-card{
+ padding:19px;
+ border-radius:15px;
+ background:var(--bg);
+ border:1px solid var(--border);
+}
+
+.info-icon{
+ font-size:28px;
+ margin-bottom:8px;
+}
+
+.info-card h3{
+ font-size:16px;
+ margin-bottom:5px;
+}
+
+.info-card p{
+ color:var(--muted);
+ font-size:13px;
+}
+
+.lesson-list{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:11px;
+}
+
+.lesson-item{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:13px;
+ transition:.2s;
+}
+
+.lesson-item:hover{
+ border-color:var(--primary);
+ transform:translateY(-2px);
+}
+
+.lesson-number{
+ min-width:38px;
+ height:38px;
+ display:grid;
+ place-items:center;
+ border-radius:11px;
+ background:#eee9ff;
+ color:var(--primary);
+ font-weight:900;
+ font-size:14px;
+}
+
+.lesson-name{
+ font-size:13px;
+ font-weight:800;
+ line-height:1.4;
+}
+
+.lesson-label{
+ font-size:11px;
+ color:var(--muted);
+ margin-top:3px;
+}
+
+.outcome-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:13px;
+}
+
+.outcome{
+ padding:17px;
+ background:var(--bg);
+ border-radius:13px;
+ border:1px solid var(--border);
+}
+
+.outcome strong{
+ display:block;
+ font-size:14px;
+ margin-bottom:5px;
+}
+
+.outcome p{
+ font-size:13px;
+ color:var(--muted);
+}
+
+.check{
+ color:var(--success);
+ font-weight:900;
+ margin-right:6px;
+}
+
+.rules{
+ display:grid;
+ gap:13px;
+}
+
+.rule{
+ display:flex;
+ gap:12px;
+ align-items:flex-start;
+ padding:14px;
+ background:var(--bg);
+ border-radius:12px;
+}
+
+.rule-icon{font-size:22px}
+
+.rule strong{
+ display:block;
+ font-size:14px;
+ margin-bottom:3px;
+}
+
+.rule p{
+ color:var(--muted);
+ font-size:13px;
+}
+
+.warning{
+ background:#fff7e8;
+ border:1px solid #f7dfaa;
+ color:#80551a;
+ padding:18px;
+ border-radius:14px;
+ font-size:13px;
+ margin-top:18px;
+}
+
+.start-box{
+ background:linear-gradient(135deg,#5831d6,#9274ff);
+ color:white;
+ padding:38px 20px;
+ text-align:center;
+ border-radius:22px;
+ margin:35px 0;
+}
+
+.start-box h2{
+ font-size:26px;
+ margin-bottom:10px;
+}
+
+.start-box p{
+ color:#eee8ff;
+ font-size:14px;
+ max-width:620px;
+ margin:0 auto 22px;
+}
+
+.start-btn{
+ display:inline-block;
+ background:white;
+ color:#7047eb;
+ padding:15px 35px;
+ border-radius:13px;
+ font-weight:900;
+ font-size:16px;
+ transition:.2s;
+}
+
+.start-btn:hover{transform:scale(1.04)}
+
+.footer{
+ text-align:center;
+ padding:25px 15px;
+ color:var(--muted);
+ font-size:13px;
+}
+
+.footer strong{color:var(--primary)}
+
+body.dark{
+ --bg:#111827;
+ --card:#1f2937;
+ --text:#f9fafb;
+ --muted:#b1b8c7;
+ --border:#374151;
+}
+
+body.dark .header{
+ background:rgba(31,41,55,.95);
+}
+
+body.dark .lesson-number{
+ background:#392d5d;
+ color:#c4b5fd;
+}
+
+body.dark .warning{
+ background:#42351e;
+ color:#ffe0a0;
+ border-color:#66502b;
+}
+
+@media(max-width:650px){
+ .hero{padding:35px 18px}
+ .about-grid,.lesson-list,.outcome-grid{
+  grid-template-columns:1fr;
+ }
+ .card{padding:18px}
+ .section-title{font-size:22px}
+ .hero p{font-size:14px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+ <a class="back" href="../index.html">← Back</a>
+ <div class="logo">ENGLISH UP</div>
+ <button class="theme" onclick="toggleTheme()">🌙</button>
+</header>
+
+<section class="hero">
+ <div class="hero-content">
+
+  <div class="eyebrow">ENGLISH UP ACADEMY</div>
+
+  <h1>WELCOME TO<br>BEGINNER COURSE!</h1>
+
+  <p>
+   Ingliz tilini mutlaqo noldan boshlang!
+   Birinchi harflardan boshlab so'zlar, gaplar,
+   grammatika va kundalik suhbatlargacha bo'lgan
+   qiziqarli sayohatga xush kelibsiz.
+  </p>
+
+  <div class="hero-stats">
+   <div class="stat">📚 12 TA DARS</div>
+   <div class="stat">🌱 A1 LEVEL</div>
+   <div class="stat">🎧 LISTENING</div>
+   <div class="stat">🗣 SPEAKING</div>
+  </div>
+
+  <a href="#about" class="primary-btn">
+   KURS BILAN TANISHISH ↓
+  </a>
+
+ </div>
+</section>
+
+<main class="container">
+
+<!-- ABOUT -->
+<section class="card" id="about">
+
+ <h2 class="section-title">📖 Beginner kursi haqida</h2>
+
+ <p class="section-subtitle">
+  Ingliz tilini mutlaqo noldan o'rganishni xohlovchilar uchun
+  maxsus tayyorlangan boshlang'ich kurs.
+ </p>
+
+ <p style="font-size:14px;color:var(--muted)">
+  Ushbu kursda siz ingliz alifbosini o'rganishdan boshlaysiz.
+  Keyinchalik salomlashish, o'zingiz haqingizda gapirish,
+  oila, kundalik buyumlar, ranglar, vaqt, kundalik ishlar,
+  Present Simple va boshqa boshlang'ich mavzularni o'zlashtirasiz.
+  Har bir mavzu nazariya va amaliy mashqlar bilan mustahkamlanadi.
+ </p>
+
+ <div class="about-grid">
+
+  <div class="info-card">
+   <div class="info-icon">🔤</div>
+   <h3>Alphabet & Vocabulary</h3>
+   <p>Harflar, so'zlar, talaffuz va yangi lug'atlar.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">📚</div>
+   <h3>Grammar</h3>
+   <p>Eng muhim boshlang'ich grammatik qoidalar.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">🗣</div>
+   <h3>Speaking</h3>
+   <p>O'zingiz va kundalik hayotingiz haqida gapirish.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">🎧</div>
+   <h3>Listening</h3>
+   <p>Sodda inglizcha so'zlar va dialoglarni tinglash.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">✍️</div>
+   <h3>Writing</h3>
+   <p>Oddiy so'zlar va gaplarni to'g'ri yozish.</p>
+  </div>
+
+  <div class="info-card">
+   <div class="info-icon">📖</div>
+   <h3>Reading</h3>
+   <p>Qisqa matnlar va sodda gaplarni o'qish.</p>
+  </div>
+
+ </div>
+</section>
+
+<!-- LESSONS -->
+<section class="card">
+
+ <h2 class="section-title">🗂 Beginner kursining 12 ta darsi</h2>
+
+ <p class="section-subtitle">
+  Quyida kursimizning barcha mavzulari bilan tanishing.
+  Darslar oddiydan boshlab bosqichma-bosqich rivojlanadi.
+ </p>
+
+ <div class="lesson-list" id="lessonList"></div>
+
+</section>
+
+<!-- RESULTS -->
+<section class="card">
+
+ <h2 class="section-title">🏆 Kursni tugatganingizda...</h2>
+
+ <p class="section-subtitle">
+  Beginner kursini to'liq o'zlashtirganingizdan so'ng
+  quyidagi boshlang'ich ko'nikmalarni rivojlantirasiz.
+ </p>
+
+ <div class="outcome-grid">
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Alifbo va talaffuz</strong>
+   <p>Ingliz alifbosini taniysiz, harflarni aytasiz va sodda so'zlarni o'qiysiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>O'zingizni tanishtirish</strong>
+   <p>Ismingiz, yoshingiz, davlatingiz va shaxsiy ma'lumotlaringiz haqida gapirasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Oila va buyumlar</strong>
+   <p>Oila a'zolari va kundalik buyumlar nomlarini bilasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Grammatika</strong>
+   <p>To Be, egalik sifatlari, A/An va Present Simple asoslarini tushunasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Kundalik muloqot</strong>
+   <p>Salomlashish, oddiy savollar berish va sodda javoblar qaytarishni mashq qilasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Vaqt va yo'nalish</strong>
+   <p>Vaqt, kunlar, oylar va shahardagi joylar haqida sodda gaplar tuzasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Listening</strong>
+   <p>Sodda so'zlar va qisqa dialoglarni tushunish ko'nikmasini rivojlantirasiz.</p>
+  </div>
+
+  <div class="outcome">
+   <strong><span class="check">✓</span>Elementaryga tayyorgarlik</strong>
+   <p>Keyingi bosqich — Elementary kursiga o'tish uchun asosiy bilimlarga ega bo'lasiz.</p>
+  </div>
+
+ </div>
+</section>
+
+<!-- RULES -->
+<section class="card">
+
+ <h2 class="section-title">📌 O'quvchilar uchun qat'iy qoidalar</h2>
+
+ <p class="section-subtitle">
+  English Up'da natijaga erishish uchun har bir o'quvchi
+  quyidagi talablarni bajarishi shart.
+ </p>
+
+ <div class="rules">
+
+  <div class="rule">
+   <div class="rule-icon">📓</div>
+   <div>
+    <strong>1. DAFTAR TUTISH MAJBURIY!</strong>
+    <p>Har bir darsdagi qoidalar, yangi so'zlar, formulalar va misollarni daftaringizga yozing. Daftarga yozmasdan darsni tugallangan deb hisoblamang.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">🔤</div>
+   <div>
+    <strong>2. HAR BIR YANGI SO'ZNI O'RGANING!</strong>
+    <p>Inglizcha so'z, o'zbekcha tarjima va talaffuzini daftarga yozing. So'zlarni faqat ko'z bilan o'qimang, ovoz chiqarib takrorlang.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">✍️</div>
+   <div>
+    <strong>3. BARCHA YOZMA MASHQLARNI BAJARING!</strong>
+    <p>Gaplar tuzing, tarjima qiling va grammatik mashqlarni mustaqil bajaring.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">🎧</div>
+   <div>
+    <strong>4. LISTENINGNI TASHLAB KETMANG!</strong>
+    <p>Dialoglarni diqqat bilan tinglang. Avval tinglang, keyin matn bilan solishtiring va yana takrorlang.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">🗣</div>
+   <div>
+    <strong>5. SPEAKINGNI OVOZ CHIQARIB BAJARING!</strong>
+    <p>Har bir dialog va gapirish mashqini ovoz chiqarib bajaring. Xato qilishdan qo'rqmang, mashq qilishdan to'xtamang.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">📝</div>
+   <div>
+    <strong>6. HOMEWORKNI TO'LIQ BAJARING!</strong>
+    <p>Uy vazifalarini shoshilmasdan, mustaqil bajaring. Javoblarni ko'chirish o'rniga avval o'zingiz fikrlang.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">🔄</div>
+   <div>
+    <strong>7. OLDINGI MAVZULARNI TAKRORLANG!</strong>
+    <p>Har kuni oldingi darslardagi so'zlar va qoidalarni qayta ko'rib chiqing.</p>
+   </div>
+  </div>
+
+  <div class="rule">
+   <div class="rule-icon">⏳</div>
+   <div>
+    <strong>8. SHOSHILMANG, TUSHUNIB O'RGANING!</strong>
+    <p>Biror mavzuni tushunmasangiz, qayta o'qing va mashqlarni takrorlang. Mustahkam bilim tezlikdan muhim.</p>
+   </div>
+  </div>
+
+ </div>
+
+ <div class="warning">
+  ⚠️ <strong>MUHIM ESLATMA:</strong>
+  Siz bu kursni noldan boshlayapsiz. Shuning uchun o'zingizdan
+  birdaniga mukammal ingliz tilini talab qilmang. Har kuni
+  oz bo'lsa ham o'rganing. Eng muhimi — muntazamlik va amaliyot!
+ </div>
+
+</section>
+
+<!-- START -->
+<section class="start-box">
+
+ <h2>🌱 Sizning ingliz tili sayohatingiz shu yerdan boshlanadi!</h2>
+
+ <p>
+  Birinchi harfdan birinchi jumlagacha.
+  Har bir dars sizni ingliz tiliga yana bir qadam yaqinlashtiradi.
+  Daftaringizni tayyorlang va boshlang!
+ </p>
+
+ <a href="beginner.html" class="start-btn">
+  BEGINNER KURSINI BOSHLASH →
+ </a>
+
+</section>
+
+</main>
+
+<footer class="footer">
+ <strong>ENGLISH UP</strong>
+ <p>Learn today. Succeed tomorrow.</p>
+ <p>© 2026 English Up Academy</p>
+</footer>
+
+<script>
+
+const lessons=[
+ "Alifbo va Salomlashish (Alphabet & Greetings)",
+ "Raqamlar va Shaxsiy ma'lumotlar (Numbers & Personal Information)",
+ "Davlatlar va Millatlar (Countries and Nationalities)",
+ "Oila a'zolari va Egalik olmoshlari (Family & Possessive Adjectives)",
+ "Kundalik buyumlar va A/An artikllari (Everyday Objects & A/An)",
+ "Ranglar va Sifatlar (Colors & Adjectives)",
+ "Kunlar, Oylar, Fasllar (Days, Months, Seasons)",
+ "Vaqtni aytish va Kundalik ishlar (Telling the Time & Daily Routine)",
+ "Hozirgi oddiy zamon (Present Simple)",
+ "Ovqat va Ichimliklar (Food and Drinks)",
+ "\"To Be\" bo'yicha Katta Takrorlash va Test",
+ "Shahardagi joylar va Yo'nalish (Places in the City & Directions)"
+];
+
+const lessonList=document.getElementById("lessonList");
+
+lessons.forEach((lesson,index)=>{
+
+ const item=document.createElement("div");
+ item.className="lesson-item";
+
+ const number=document.createElement("div");
+ number.className="lesson-number";
+ number.textContent=String(index+1).padStart(2,"0");
+
+ const content=document.createElement("div");
+
+ const name=document.createElement("div");
+ name.className="lesson-name";
+ name.textContent=lesson;
+
+ const label=document.createElement("div");
+ label.className="lesson-label";
+ label.textContent="Beginner lesson "+(index+1);
+
+ content.append(name,label);
+ item.append(number,content);
+ lessonList.appendChild(item);
+
+});
+
+function toggleTheme(){
+
+ document.body.classList.toggle("dark");
+
+ const dark=document.body.classList.contains("dark");
+
+ document.querySelector(".theme").textContent=
+ dark?"☀️":"🌙";
+
+ try{
+  localStorage.setItem(
+   "euBeginnerIntroTheme",
+   dark?"dark":"light"
+  );
+ }catch(e){}
+
+}
+
+try{
+
+ if(localStorage.getItem("euBeginnerIntroTheme")==="dark"){
+  document.body.classList.add("dark");
+  document.querySelector(".theme").textContent="☀️";
+ }
+
+}catch(e){}
+
+</script>
+
+</body>
+</html>
