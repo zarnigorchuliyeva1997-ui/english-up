@@ -5,85 +5,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#7047eb">
-<title>Lesson 12 — There Is / There Are | English Up</title>
+<title>Lesson 13 — Gerunds and Infinitives | English Up</title>
 
 <style>
 :root{
- --primary:#7047eb;
- --primary2:#9274ff;
- --bg:#f5f3ff;
- --card:#ffffff;
- --text:#242039;
- --muted:#6d6880;
- --border:#e7e1fa;
- --soft:#eee9ff;
- --green:#16834a;
- --red:#c33d50;
- --shadow:0 8px 28px rgba(70,45,130,.08);
+ --primary:#7047eb;--primary2:#9274ff;
+ --bg:#f5f3ff;--card:#fff;--text:#242039;
+ --muted:#6d6880;--border:#e7e1fa;--soft:#eee9ff;
+ --green:#16834a;--red:#c33d50;
 }
 body.dark{
- --bg:#151322;
- --card:#211e32;
- --text:#f4f0ff;
- --muted:#b9b1d0;
- --border:#39324f;
- --soft:#302747;
- --shadow:0 8px 28px rgba(0,0,0,.2);
+ --bg:#151322;--card:#211e32;--text:#f4f0ff;
+ --muted:#b9b1d0;--border:#39324f;--soft:#302747;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
  margin:0;background:var(--bg);color:var(--text);
  font-family:Arial,Helvetica,sans-serif;line-height:1.7;
- transition:.25s;
 }
 header{
- position:sticky;top:0;z-index:20;
- background:var(--card);border-bottom:1px solid var(--border);
- padding:12px 4%;
+ position:sticky;top:0;z-index:20;background:var(--card);
+ border-bottom:1px solid var(--border);padding:12px 4%;
  display:flex;justify-content:space-between;align-items:center;
 }
-.logo{font-weight:900;color:var(--primary);font-size:20px;letter-spacing:1px}
-.header-actions{display:flex;gap:8px;align-items:center}
+.logo{font-size:20px;font-weight:900;color:var(--primary);letter-spacing:1px}
 button{
- cursor:pointer;border:0;border-radius:11px;padding:10px 14px;
- background:var(--primary);color:white;font-weight:700;
+ cursor:pointer;border:0;border-radius:10px;padding:10px 14px;
+ background:var(--primary);color:#fff;font-weight:700;
 }
 button.secondary{background:var(--soft);color:var(--primary)}
-button:disabled{opacity:.5;cursor:not-allowed}
 .progress-track{height:5px;background:var(--border)}
-#progressBar{height:5px;background:var(--primary);width:0}
+#progressBar{height:5px;width:0;background:var(--primary)}
 .container{max-width:950px;margin:auto;padding:22px 16px 60px}
 .hero{
  background:linear-gradient(135deg,#7047eb,#9c79ff);
  color:white;border-radius:22px;padding:30px 23px;margin-bottom:22px;
- box-shadow:var(--shadow);
 }
-.hero h1{font-size:clamp(27px,5vw,42px);line-height:1.2;margin:10px 0}
-.hero p{margin:8px 0}
-.pill{
- display:inline-block;background:rgba(255,255,255,.18);
- padding:5px 11px;border-radius:20px;font-size:12px;font-weight:700;
-}
+.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.2}
+.pill{display:inline-block;padding:5px 11px;border-radius:20px;
+ background:#ffffff2e;font-size:12px;font-weight:700}
 .card{
  background:var(--card);border:1px solid var(--border);
- border-radius:17px;padding:22px;margin:17px 0;box-shadow:var(--shadow);
+ border-radius:17px;padding:22px;margin:17px 0;
+ box-shadow:0 8px 28px rgba(70,45,130,.07);
 }
-h2{font-size:24px;margin:0 0 14px;color:var(--primary)}
+h2{color:var(--primary);font-size:24px;margin:0 0 14px}
 h3{font-size:19px;margin:20px 0 8px}
 p{margin:9px 0}
 .muted{color:var(--muted)}
+.rule{
+ background:var(--soft);padding:13px;border-radius:11px;
+ text-align:center;font-weight:800;font-size:17px;margin:13px 0;
+}
 .note{
  background:var(--soft);border-left:4px solid var(--primary);
  border-radius:9px;padding:13px 15px;margin:14px 0;
 }
 .warning{border-left-color:#d58b19;background:rgba(213,139,25,.1)}
 .good{border-left-color:var(--green);background:rgba(22,131,74,.09)}
-.rule{
- background:var(--soft);padding:13px;border-radius:12px;
- font-weight:800;text-align:center;margin:12px 0;
- font-size:17px;
-}
 .example{
  border:1px solid var(--border);border-radius:11px;
  padding:12px 14px;margin:9px 0;
@@ -91,32 +71,17 @@ p{margin:9px 0}
 .en{font-weight:700;font-size:16px}
 .uz{color:var(--muted);font-size:14px}
 .pron{color:var(--primary);font-size:13px}
-.audio{padding:5px 9px;margin-left:7px;font-size:12px}
+.audio{padding:5px 9px;font-size:12px;margin-left:5px}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
-th,td{padding:11px;border:1px solid var(--border);text-align:left}
+th,td{padding:10px;border:1px solid var(--border);text-align:left}
 th{background:var(--soft);color:var(--primary)}
 .write{
- background:rgba(22,131,74,.08);
- border:1px dashed var(--green);
+ background:rgba(22,131,74,.08);border:1px dashed var(--green);
  padding:15px;border-radius:12px;margin:16px 0;
 }
 .write h3{color:var(--green);margin-top:0}
-.exercise{
- background:var(--soft);padding:15px;border-radius:12px;margin:12px 0;
-}
-.exercise input{
- width:100%;padding:11px;border:1px solid var(--border);
- border-radius:9px;background:var(--card);color:var(--text);
- margin:7px 0;
-}
-details{
- border:1px solid var(--border);border-radius:10px;
- padding:12px;margin:9px 0;background:var(--card);
-}
-summary{cursor:pointer;font-weight:700;color:var(--primary)}
-.quiz-question{
- border:1px solid var(--border);padding:15px;border-radius:13px;margin:14px 0;
-}
+.exercise{background:var(--soft);padding:15px;border-radius:12px;margin:12px 0}
+.quiz-question{border:1px solid var(--border);padding:15px;border-radius:13px;margin:14px 0}
 .option{
  display:block;width:100%;text-align:left;margin:7px 0;
  background:var(--soft);color:var(--text);border:1px solid var(--border);
@@ -124,14 +89,9 @@ summary{cursor:pointer;font-weight:700;color:var(--primary)}
 .option.correct{background:rgba(22,131,74,.15);border-color:var(--green)}
 .option.wrong{background:rgba(195,61,80,.12);border-color:var(--red)}
 .feedback{font-weight:700;margin-top:8px}
-.homework-task{
- border:1px solid var(--border);border-radius:13px;padding:17px;margin:13px 0;
-}
+.homework-task{border:1px solid var(--border);border-radius:13px;padding:17px;margin:13px 0}
+#quizResult{display:none;background:var(--soft);padding:17px;border-radius:13px;margin-top:15px}
 footer{text-align:center;color:var(--muted);padding:25px}
-#quizResult{
- background:var(--soft);border-radius:13px;padding:17px;margin-top:15px;
- font-weight:700;display:none;
-}
 @media(max-width:600px){
  .container{padding:14px 11px 40px}
  .card{padding:16px}
@@ -145,7 +105,7 @@ footer{text-align:center;color:var(--muted);padding:25px}
 <body>
 <header>
  <div class="logo">ENGLISH UP</div>
- <div class="header-actions">
+ <div style="display:flex;gap:8px">
   <button class="secondary" onclick="location.href='../../index.html'">← Back</button>
   <button class="secondary" onclick="toggleTheme()">☾</button>
  </div>
@@ -155,1007 +115,1057 @@ footer{text-align:center;color:var(--muted);padding:25px}
 <main class="container">
 
 <section class="hero">
- <span class="pill">ELEMENTARY COURSE · LESSON 12</span>
- <h1>THERE IS / THERE ARE<br>THERE WAS / THERE WERE</h1>
- <p><b>Biror joyda nimadir bor yoki mavjud bo‘lishi haqida gapirish.</b></p>
- <p>Bugungi darsda hozirgi va o‘tgan zamonda birlik, ko‘plik, inkor va so‘roq gaplarni o‘rganamiz.</p>
- <p>📚 Daftar · ✍️ Yozish · 🗣 Talaffuz · 🎧 Tinglash · 📝 Test</p>
+ <span class="pill">ELEMENTARY COURSE · LESSON 13</span>
+ <h1>GERUNDS AND INFINITIVES</h1>
+ <h2 style="color:white">Verb + -ing / to + Verb</h2>
+ <p>Ingliz tilida fe'llardan keyin boshqa fe'l qanday shaklda keladi?</p>
+ <p>Enjoy doing? Want to do? Like doing? Like to do?</p>
+ <p>📚 Grammar · ✍️ Notebook · 🗣 Speaking · 🎧 Listening · 📝 Test</p>
 </section>
 
 <section class="card">
-<h2>1. Dars maqsadi</h2>
-<p>Ushbu dars yakunida siz quyidagilarni mustaqil bajara olishingiz kerak:</p>
+<h2>1. Bugungi dars maqsadi</h2>
+<p>Bugun ingliz tilidagi juda muhim grammatik mavzuni o‘rganamiz. Ba'zi fe'llardan keyin ikkinchi fe'l <b>-ing</b> shaklida, ba'zilaridan keyin esa <b>to + verb</b> shaklida keladi.</p>
+<p>Dars yakunida siz:</p>
 <ul>
-<li>There is va There are farqini tushunish.</li>
-<li>Birlik va ko‘plikdagi otlarni to‘g‘ri ishlatish.</li>
-<li>There isn't va There aren't bilan inkor gap tuzish.</li>
-<li>Is there...? va Are there...? savollarini berish.</li>
-<li>Some va any so‘zlarini to‘g‘ri ishlatish.</li>
-<li>There was va There were orqali o‘tmish haqida gapirish.</li>
-<li>Was there...? va Were there...? savollarini tuzish.</li>
-<li>There is va It is o‘rtasidagi farqni bilish.</li>
-<li>Uy, xona, maktab, shahar va boshqa joylarni ingliz tilida tasvirlash.</li>
+<li>Gerund nima ekanini tushunasiz.</li>
+<li>Infinitive nima ekanini tushunasiz.</li>
+<li>Fe'lga -ing qo‘shish qoidalarini bilasiz.</li>
+<li>Enjoy, finish, avoid, suggest kabi fe'llardan keyin -ing ishlatasiz.</li>
+<li>Want, need, decide, hope kabi fe'llardan keyin to + verb ishlatasiz.</li>
+<li>Like, love, hate, prefer bilan ikkala shaklni ham ishlatishni o‘rganasiz.</li>
+<li>Prepositionlardan keyin nima uchun -ing kelishini tushunasiz.</li>
+<li>Gerund va infinitive bilan gaplar tuzasiz.</li>
+<li>Eng ko‘p uchraydigan xatolardan qochasiz.</li>
 </ul>
 <div class="note warning">
-<b>MUHIM:</b> Bu darsda faqat o‘qib chiqish yetarli emas. Har bir qoida, formula va misol daftarga yoziladi. Mashqlar daftarda bajariladi.
+<b>Daftar qoidasi:</b> Har bir yangi qoida, formula, jadval va misol daftarga yoziladi. Har bir bo‘limdagi mustaqil mashqlar yozma ravishda bajariladi.
 </div>
 </section>
 
 <section class="card">
-<h2>2. Daftar bilan ishlash — majburiy qoida</h2>
-<p>Darsni boshlashdan oldin daftaringizni tayyorlang. Har bir bo‘limda yozish va mustaqil ishlash topshirig‘i bor.</p>
+<h2>2. Avval FE'LLAR haqida tushunib olaylik</h2>
+<p>Ingliz tilida verb — fe'l, ya'ni harakat yoki holatni bildiruvchi so‘z.</p>
+<p>Masalan:</p>
+<table>
+<tr><th>Verb</th><th>Tarjimasi</th></tr>
+<tr><td>read</td><td>o‘qimoq</td></tr>
+<tr><td>write</td><td>yozmoq</td></tr>
+<tr><td>play</td><td>o‘ynamoq</td></tr>
+<tr><td>swim</td><td>suzmoq</td></tr>
+<tr><td>learn</td><td>o‘rganmoq</td></tr>
+<tr><td>work</td><td>ishlamoq</td></tr>
+<tr><td>cook</td><td>ovqat pishirmoq</td></tr>
+<tr><td>travel</td><td>sayohat qilmoq</td></tr>
+</table>
+<p>Oddiy gapda bitta fe'l ishlatilishi mumkin:</p>
+<div class="example">
+<div class="en">I read books.</div>
+<div class="uz">Men kitoblar o‘qiyman.</div>
+</div>
+<p>Ba'zan esa bir gapda ikkita fe'l qatnashadi:</p>
+<div class="example">
+<div class="en">I enjoy reading books.</div>
+<div class="uz">Men kitob o‘qishdan zavqlanaman.</div>
+</div>
+<div class="example">
+<div class="en">I want to read this book.</div>
+<div class="uz">Men bu kitobni o‘qishni xohlayman.</div>
+</div>
+<p>Ko‘ryapsizmi? Birinchi gapda <b>reading</b>, ikkinchi gapda <b>to read</b> ishlatildi.</p>
+<p>Aynan mana shu farq bugungi mavzuning asosidir.</p>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-1. Sanani yozing.<br>
-2. Mavzu nomini yozing: THERE IS / THERE ARE — THERE WAS / THERE WERE.<br>
-3. Dars maqsadlarini yozing.<br>
-4. Har bir yangi grammatik formulani ko‘chiring.<br>
-5. Har bir qoidadan kamida 3 ta misol yozing.
-</div>
-<div class="note warning">
-<b>Qat'iy talab:</b> Har bir bo‘limdagi yozma topshiriq bajarilgandan keyingina keyingi bo‘limga o‘ting. Javoblarni shunchaki ko‘z bilan o‘qib chiqish mustaqil bajarish hisoblanmaydi.
+Verb so‘zining ma'nosini va jadvaldagi 8 ta fe'lni tarjimasi bilan yozing. Keyin ikki misol gapni ko‘chiring.
 </div>
 </section>
 
 <section class="card">
-<h2>3. THERE IS nima?</h2>
-<p><b>There is</b> ingliz tilida biror joyda bitta narsa borligini yoki mavjudligini bildirish uchun ishlatiladi.</p>
-<p>O‘zbek tiliga odatda <b>bor, mavjud</b> deb tarjima qilinadi.</p>
-<div class="rule">THERE IS + birlikdagi ot</div>
-<p><b>Qachon ishlatamiz?</b></p>
-<ul>
-<li>Bitta odam yoki narsa haqida gapirganda.</li>
-<li>Biror joyda bitta buyum borligini aytganda.</li>
-<li>Birlikdagi sanaladigan ot bilan.</li>
-<li>Sanalmaydigan ot bilan ham.</li>
-</ul>
-
-<h3>Misollar</h3>
+<h2>3. GERUND nima?</h2>
+<p><b>Gerund</b> — fe'lga <b>-ing</b> qo‘shish orqali hosil bo‘ladigan shakl. U gapda ko‘pincha harakat nomi sifatida ishlatiladi.</p>
+<div class="rule">VERB + ING = GERUND</div>
+<p>Masalan:</p>
+<table>
+<tr><th>Oddiy fe'l</th><th>Gerund</th><th>Tarjima</th></tr>
+<tr><td>read</td><td>reading</td><td>o‘qish</td></tr>
+<tr><td>write</td><td>writing</td><td>yozish</td></tr>
+<tr><td>swim</td><td>swimming</td><td>suzish</td></tr>
+<tr><td>dance</td><td>dancing</td><td>raqsga tushish</td></tr>
+<tr><td>cook</td><td>cooking</td><td>ovqat pishirish</td></tr>
+<tr><td>learn</td><td>learning</td><td>o‘rganish</td></tr>
+</table>
+<h3>Gerund gapda qanday ishlatiladi?</h3>
 <div class="example">
-<div class="en">There is a book on the table. <button class="audio" onclick="speak('There is a book on the table')">🔊</button></div>
-<div class="uz">Stol ustida bitta kitob bor.</div>
-<div class="pron">Talaffuz: Zer iz e buk on ze teybl.</div>
+<div class="en">Reading is important.</div>
+<div class="uz">O‘qish muhim.</div>
+<div class="pron">Talaffuz: Riiding iz importent.</div>
 </div>
 <div class="example">
-<div class="en">There is a teacher in the classroom. <button class="audio" onclick="speak('There is a teacher in the classroom')">🔊</button></div>
-<div class="uz">Sinf xonasida bitta o‘qituvchi bor.</div>
-<div class="pron">Talaffuz: Zer iz e tiicher in ze klasrum.</div>
+<div class="en">Swimming is good exercise.</div>
+<div class="uz">Suzish yaxshi mashqdir.</div>
 </div>
 <div class="example">
-<div class="en">There is a cat under the chair. <button class="audio" onclick="speak('There is a cat under the chair')">🔊</button></div>
-<div class="uz">Stul tagida mushuk bor.</div>
-<div class="pron">Talaffuz: Zer iz e ket ander ze cheyr.</div>
-</div>
-<div class="example">
-<div class="en">There is some water in the bottle. <button class="audio" onclick="speak('There is some water in the bottle')">🔊</button></div>
-<div class="uz">Shishada biroz suv bor.</div>
-<div class="pron">Talaffuz: Zer iz sam voter in ze botl.</div>
+<div class="en">Learning English takes time.</div>
+<div class="uz">Ingliz tilini o‘rganish vaqt talab qiladi.</div>
 </div>
 <div class="note good">
-<b>Eslab qoling:</b> There is faqat bitta sanaladigan narsa uchun emas, water, milk, sugar kabi sanalmaydigan otlar bilan ham ishlatiladi.
-</div>
-
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-Formulani yozing: There is + singular noun / uncountable noun.<br>
-Yuqoridagi 4 ta misolni inglizchasi, tarjimasi va talaffuzi bilan ko‘chiring.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-<p>There is bilan 5 ta yangi gap tuzing:</p>
-1. Xonada bitta stol bor.<br>
-2. Oshxonada sut bor.<br>
-3. Bog‘da bitta daraxt bor.<br>
-4. Sumkada bitta ruchka bor.<br>
-5. Stakan ichida suv bor.
-</div>
-</section>
-
-<section class="card">
-<h2>4. THERE ARE nima?</h2>
-<p><b>There are</b> biror joyda ikki yoki undan ortiq narsa borligini bildirish uchun ishlatiladi.</p>
-<div class="rule">THERE ARE + ko‘plikdagi ot</div>
-<p>Ingliz tilida ko‘plikdagi otlar ko‘pincha -s yoki -es bilan tugaydi. Lekin ayrim otlarning ko‘plik shakli o‘zgaradi.</p>
-<h3>Misollar</h3>
-<div class="example">
-<div class="en">There are two books on the table. <button class="audio" onclick="speak('There are two books on the table')">🔊</button></div>
-<div class="uz">Stol ustida ikkita kitob bor.</div>
-<div class="pron">Talaffuz: Zer ar tu buks on ze teybl.</div>
-</div>
-<div class="example">
-<div class="en">There are three chairs in the room. <button class="audio" onclick="speak('There are three chairs in the room')">🔊</button></div>
-<div class="uz">Xonada uchta stul bor.</div>
-<div class="pron">Talaffuz: Zer ar sri cheyrz in ze rum.</div>
-</div>
-<div class="example">
-<div class="en">There are many students at school. <button class="audio" onclick="speak('There are many students at school')">🔊</button></div>
-<div class="uz">Maktabda ko‘plab o‘quvchilar bor.</div>
-<div class="pron">Talaffuz: Zer ar meni styudents et skul.</div>
-</div>
-<div class="example">
-<div class="en">There are five apples in the basket. <button class="audio" onclick="speak('There are five apples in the basket')">🔊</button></div>
-<div class="uz">Savatda beshta olma bor.</div>
-<div class="pron">Talaffuz: Zer ar fayv eplz in ze basket.</div>
-</div>
-
-<div class="note warning">
-<b>Diqqat!</b> There are dan keyin odatda ko‘plikdagi sanaladigan ot keladi: books, chairs, students, apples.
+<b>Esda tuting:</b> Gerund ko‘pincha o‘zbek tilidagi “-ish” shakliga mos keladi: reading — o‘qish, writing — yozish, swimming — suzish.
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-There are + plural noun formulasini yozing. 4 ta misolni ko‘chiring.
+Gerund ta'rifini va formulasini yozing. Jadvaldagi 6 ta fe'lning -ing shaklini ko‘chiring. Misollarni tarjimasi bilan yozing.
 </div>
 <div class="exercise">
 <b>📝 DAFTARDA BAJARING</b>
-There are bilan quyidagi gaplarni ingliz tiliga tarjima qiling:
+Quyidagi fe'llarni -ing shakliga aylantiring:
 <ol>
-<li>Xonada to‘rtta deraza bor.</li>
-<li>Stolda ikkita telefon bor.</li>
-<li>Maktabda ko‘p o‘quvchilar bor.</li>
-<li>Oshxonada uchta stul bor.</li>
-<li>Sumkada beshta kitob bor.</li>
+<li>play</li><li>work</li><li>eat</li><li>study</li><li>run</li>
+<li>make</li><li>dance</li><li>write</li><li>sit</li><li>swim</li>
 </ol>
 </div>
 </section>
 
 <section class="card">
-<h2>5. THERE IS va THERE ARE farqi</h2>
-<p>Bu ikki shaklning ma'nosi o‘xshash: ikkalasi ham “bor” degan ma'noni beradi. Farq ularning qaysi ot bilan ishlatilishida.</p>
+<h2>4. -ING qo‘shish qoidalari</h2>
+<p>Har bir fe'lga -ing ni shunchaki bir xil usulda qo‘shib bo‘lmaydi. Bir nechta imlo qoidalari bor.</p>
+
+<h3>1-qoida: Ko‘pchilik fe'llarga -ing qo‘shiladi</h3>
+<div class="rule">VERB + ING</div>
 <table>
-<tr><th>There is</th><th>There are</th></tr>
-<tr><td>Bitta narsa</td><td>Ikki yoki undan ortiq narsa</td></tr>
-<tr><td>Birlikdagi ot</td><td>Ko‘plikdagi ot</td></tr>
-<tr><td>There is a book.</td><td>There are books.</td></tr>
-<tr><td>Bitta kitob bor.</td><td>Kitoblar bor.</td></tr>
-<tr><td>There is a chair.</td><td>There are chairs.</td></tr>
-<tr><td>Bitta stul bor.</td><td>Stullar bor.</td></tr>
+<tr><th>Verb</th><th>Gerund</th><th>Tarjima</th></tr>
+<tr><td>read</td><td>reading</td><td>o‘qish</td></tr>
+<tr><td>work</td><td>working</td><td>ishlash</td></tr>
+<tr><td>play</td><td>playing</td><td>o‘ynash</td></tr>
+<tr><td>help</td><td>helping</td><td>yordam berish</td></tr>
+<tr><td>watch</td><td>watching</td><td>tomosha qilish</td></tr>
 </table>
-<h3>Bir xil joy, lekin soni boshqa</h3>
+
+<h3>2-qoida: Oxiri -e bilan tugagan fe'llarda e tushib qoladi</h3>
+<div class="rule">VERB - E + ING</div>
+<table>
+<tr><th>Verb</th><th>Gerund</th></tr>
+<tr><td>make</td><td>making</td></tr>
+<tr><td>write</td><td>writing</td></tr>
+<tr><td>dance</td><td>dancing</td></tr>
+<tr><td>come</td><td>coming</td></tr>
+<tr><td>drive</td><td>driving</td></tr>
+</table>
+<p>Masalan, makeing emas, making yoziladi.</p>
+
+<h3>3-qoida: Qisqa fe'llarda oxirgi undosh ikki marta yozilishi mumkin</h3>
+<p>Ayrim qisqa fe'llarda oxirgi undosh harf takrorlanadi.</p>
+<table>
+<tr><th>Verb</th><th>Gerund</th></tr>
+<tr><td>run</td><td>running</td></tr>
+<tr><td>swim</td><td>swimming</td></tr>
+<tr><td>sit</td><td>sitting</td></tr>
+<tr><td>stop</td><td>stopping</td></tr>
+<tr><td>get</td><td>getting</td></tr>
+</table>
+<p>Bu qoida ayniqsa qisqa, oxiri undosh-unli-undosh tovush tartibida tugaydigan fe'llarda uchraydi. Har bir fe'lda qo‘llanmaydi.</p>
+
+<h3>4-qoida: -ie bilan tugagan fe'llarda ie → y bo‘ladi</h3>
+<table>
+<tr><th>Verb</th><th>Gerund</th></tr>
+<tr><td>lie</td><td>lying</td></tr>
+<tr><td>die</td><td>dying</td></tr>
+<tr><td>tie</td><td>tying</td></tr>
+</table>
+<div class="note warning">
+<b>Ko‘p uchraydigan xatolar:</b><br>
+❌ makeing → ✅ making<br>
+❌ runing → ✅ running<br>
+❌ swiming → ✅ swimming<br>
+❌ lieing → ✅ lying
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+To‘rtta imlo qoidasini alohida yozing. Har bir qoida uchun jadvaldagi misollarni ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi fe'llarni to‘g‘ri -ing shaklida yozing:
+<ol>
+<li>take</li><li>shop</li><li>begin</li><li>lie</li><li>use</li>
+<li>cut</li><li>swim</li><li>sit</li><li>open</li><li>travel</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>5. INFINITIVE nima?</h2>
+<p><b>Infinitive</b> — fe'lning boshlang‘ich shakli oldidan <b>to</b> qo‘yilgan shakli.</p>
+<div class="rule">TO + VERB = TO-INFINITIVE</div>
+<table>
+<tr><th>Verb</th><th>Infinitive</th><th>Tarjima</th></tr>
+<tr><td>go</td><td>to go</td><td>bormoq</td></tr>
+<tr><td>read</td><td>to read</td><td>o‘qimoq</td></tr>
+<tr><td>learn</td><td>to learn</td><td>o‘rganmoq</td></tr>
+<tr><td>write</td><td>to write</td><td>yozmoq</td></tr>
+<tr><td>buy</td><td>to buy</td><td>sotib olmoq</td></tr>
+<tr><td>travel</td><td>to travel</td><td>sayohat qilmoq</td></tr>
+</table>
+<h3>Infinitive gapda qanday ishlatiladi?</h3>
 <div class="example">
-<div class="en">There is one apple on the table.</div>
-<div class="uz">Stolda bitta olma bor.</div>
+<div class="en">I want to learn English.</div>
+<div class="uz">Men ingliz tilini o‘rganishni xohlayman.</div>
+<div class="pron">Talaffuz: Ay vont tu lern inglish.</div>
 </div>
 <div class="example">
-<div class="en">There are five apples on the table.</div>
-<div class="uz">Stolda beshta olma bor.</div>
+<div class="en">She decided to study.</div>
+<div class="uz">U o‘qishga qaror qildi.</div>
+</div>
+<div class="example">
+<div class="en">We hope to travel next year.</div>
+<div class="uz">Biz kelasi yili sayohat qilishga umid qilamiz.</div>
 </div>
 <div class="note">
-<b>Sonni tekshiring:</b> Bitta bo‘lsa — is. Ko‘plik bo‘lsa — are. Otning birlik yoki ko‘plik shaklini ham tekshiring.
+<b>Farq:</b><br>
+Gerund: reading — o‘qish.<br>
+Infinitive: to read — o‘qimoq / o‘qishni.
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-Jadvalni daftaringizga aynan ko‘chiring. Har bir shaklga o‘zingizdan 3 tadan misol qo‘shing.
+Infinitive ta'rifini va formulasini yozing. Jadvaldagi 6 ta misolni ko‘chiring.
 </div>
 </section>
 
 <section class="card">
-<h2>6. Birlik va ko‘plik otlar</h2>
-<p>There is yoki There are ni to‘g‘ri tanlash uchun otning birlik yoki ko‘plik ekanini bilish kerak.</p>
+<h2>6. GERUND va INFINITIVE — asosiy farq</h2>
+<p>Gerund va infinitive ikkalasi ham fe'lning boshqa shaklini bildiradi. Lekin ulardan qaysi biri ishlatilishi ko‘pincha oldingi fe'lga bog‘liq.</p>
 <table>
-<tr><th>Birlik</th><th>Ko‘plik</th><th>Tarjima</th></tr>
-<tr><td>book</td><td>books</td><td>kitob / kitoblar</td></tr>
-<tr><td>chair</td><td>chairs</td><td>stul / stullar</td></tr>
-<tr><td>box</td><td>boxes</td><td>quti / qutilar</td></tr>
-<tr><td>baby</td><td>babies</td><td>chaqaloq / chaqaloqlar</td></tr>
-<tr><td>child</td><td>children</td><td>bola / bolalar</td></tr>
-<tr><td>man</td><td>men</td><td>erkak / erkaklar</td></tr>
-<tr><td>woman</td><td>women</td><td>ayol / ayollar</td></tr>
-<tr><td>person</td><td>people</td><td>odam / odamlar</td></tr>
-<tr><td>foot</td><td>feet</td><td>oyoq / oyoqlar</td></tr>
-<tr><td>tooth</td><td>teeth</td><td>tish / tishlar</td></tr>
+<tr><th>Gerund</th><th>Infinitive</th></tr>
+<tr><td>enjoy reading</td><td>want to read</td></tr>
+<tr><td>finish working</td><td>decide to work</td></tr>
+<tr><td>avoid driving</td><td>hope to drive</td></tr>
+<tr><td>suggest going</td><td>plan to go</td></tr>
 </table>
-<h3>Ko‘plik yasash qoidalari</h3>
-<p><b>1. Ko‘pchilik otlarga -s qo‘shiladi:</b></p>
-<p>book → books; pen → pens; table → tables.</p>
-<p><b>2. -s, -ss, -sh, -ch, -x, -z bilan tugagan otlarga ko‘pincha -es qo‘shiladi:</b></p>
-<p>bus → buses; box → boxes; watch → watches.</p>
-<p><b>3. Undosh + y bilan tugagan otlarda y → ies:</b></p>
-<p>baby → babies; city → cities.</p>
-<p><b>4. Unli + y bo‘lsa, faqat -s qo‘shiladi:</b></p>
-<p>boy → boys; toy → toys.</p>
-<p><b>5. Ayrim otlar butunlay o‘zgaradi:</b></p>
-<p>child → children; man → men; woman → women.</p>
+<p>Quyidagi ikkita gapni taqqoslang:</p>
+<div class="example">
+<div class="en">I enjoy reading books.</div>
+<div class="uz">Men kitob o‘qishdan zavqlanaman.</div>
+</div>
+<div class="example">
+<div class="en">I want to read this book.</div>
+<div class="uz">Men bu kitobni o‘qishni xohlayman.</div>
+</div>
+<p>Enjoy dan keyin reading, want dan keyin to read kelgan. Bu fe'llarning o‘z grammatik talabi bor.</p>
 <div class="note warning">
-Bu qoidalar otning ko‘plik shaklini yasash uchun kerak. There are ishlatganda otning to‘g‘ri ko‘plik shaklini yozing.
+Gerund yoki infinitive tanlashda faqat o‘zbekcha tarjimaga qarab qaror qilmang. Ingliz tilida oldingi fe'lning qaysi shaklni talab qilishini o‘rganish kerak.
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-Ko‘plik yasash qoidalarini va jadvaldagi barcha 10 ta so‘zni yozing.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-Quyidagi so‘zlarni ko‘plikka aylantiring:
-<ol>
-<li>apple</li><li>class</li><li>dish</li><li>city</li><li>boy</li>
-<li>box</li><li>child</li><li>man</li><li>woman</li><li>person</li>
-</ol>
+Gerund va infinitive taqqoslash jadvalini yozing. Har bir ustunga o‘zingizdan 3 tadan misol qo‘shing.
 </div>
 </section>
 
 <section class="card">
-<h2>7. THERE IS / THERE ARE — inkor shakli</h2>
-<p>Biror joyda narsa yo‘qligini aytmoqchi bo‘lsak, inkor shaklidan foydalanamiz.</p>
-<h3>There is not = There isn't</h3>
-<div class="rule">THERE IS NOT + birlikdagi ot</div>
-<p>There is not shaklining qisqartmasi — <b>There isn't</b>.</p>
-<div class="example">
-<div class="en">There isn't a TV in my bedroom. <button class="audio" onclick="speak('There is not a TV in my bedroom')">🔊</button></div>
-<div class="uz">Mening yotoqxonamda televizor yo‘q.</div>
-</div>
-<div class="example">
-<div class="en">There isn't a bank near my house.</div>
-<div class="uz">Uyim yaqinida bank yo‘q.</div>
-</div>
-<h3>There are not = There aren't</h3>
-<div class="rule">THERE ARE NOT + ko‘plikdagi ot</div>
-<div class="example">
-<div class="en">There aren't any books on the desk. <button class="audio" onclick="speak('There are not any books on the desk')">🔊</button></div>
-<div class="uz">Parta ustida hech qanday kitob yo‘q.</div>
-</div>
-<div class="example">
-<div class="en">There aren't any students in the classroom.</div>
-<div class="uz">Sinf xonasida hech qanday o‘quvchi yo‘q.</div>
-</div>
+<h2>7. GERUND talab qiladigan fe'llar</h2>
+<p>Quyidagi fe'llardan keyin odatda ikkinchi fe'l <b>-ing</b> shaklida keladi.</p>
+<div class="rule">SUBJECT + VERB + VERB-ING</div>
 <table>
-<tr><th>Oddiy shakl</th><th>Inkor shakli</th></tr>
-<tr><td>There is a book.</td><td>There isn't a book.</td></tr>
-<tr><td>There are books.</td><td>There aren't books.</td></tr>
-<tr><td>There is some water.</td><td>There isn't any water.</td></tr>
+<tr><th>Fe'l</th><th>Tarjimasi</th></tr>
+<tr><td>enjoy</td><td>zavqlanmoq</td></tr>
+<tr><td>finish</td><td>tugatmoq</td></tr>
+<tr><td>avoid</td><td>qochmoq, chetlab o‘tmoq</td></tr>
+<tr><td>mind</td><td>qarshi bo‘lmoq</td></tr>
+<tr><td>suggest</td><td>taklif qilmoq</td></tr>
+<tr><td>keep</td><td>davom ettirmoq</td></tr>
+<tr><td>practise</td><td>mashq qilmoq</td></tr>
+<tr><td>consider</td><td>ko‘rib chiqmoq</td></tr>
+<tr><td>miss</td><td>sog‘inmoq / o‘tkazib yubormoq</td></tr>
+<tr><td>admit</td><td>tan olmoq</td></tr>
 </table>
+<h3>ENJOY + ING</h3>
+<p>Enjoy — biror ishni qilishdan zavqlanish.</p>
+<div class="example">
+<div class="en">I enjoy learning English.</div>
+<div class="uz">Men ingliz tilini o‘rganishdan zavqlanaman.</div>
+</div>
+<div class="example">
+<div class="en">She enjoys cooking.</div>
+<div class="uz">U ovqat pishirishdan zavqlanadi.</div>
+</div>
+<h3>FINISH + ING</h3>
+<p>Finish — biror ishni tugatish.</p>
+<div class="example">
+<div class="en">I finished doing my homework.</div>
+<div class="uz">Men uy vazifamni bajarishni tugatdim.</div>
+</div>
+<div class="example">
+<div class="en">He finished reading the book.</div>
+<div class="uz">U kitobni o‘qishni tugatdi.</div>
+</div>
+<h3>AVOID + ING</h3>
+<p>Avoid — biror ishni qilishdan qochish yoki undan saqlanish.</p>
+<div class="example">
+<div class="en">You should avoid eating too much sugar.</div>
+<div class="uz">Juda ko‘p shakar iste'mol qilishdan saqlanishingiz kerak.</div>
+</div>
+<div class="example">
+<div class="en">He avoids driving at night.</div>
+<div class="uz">U tunda mashina haydashdan qochadi.</div>
+</div>
+<h3>MIND + ING</h3>
+<p>Mind — biror ishga qarshi bo‘lish yoki noqulaylik sezish.</p>
+<div class="example">
+<div class="en">Do you mind opening the window?</div>
+<div class="uz">Derazani ochishga qarshi emasmisiz?</div>
+</div>
+<div class="example">
+<div class="en">I don't mind waiting.</div>
+<div class="uz">Kutishga qarshi emasman.</div>
+</div>
+<h3>SUGGEST + ING</h3>
+<p>Suggest — biror ishni taklif qilmoq.</p>
+<div class="example">
+<div class="en">I suggest going by bus.</div>
+<div class="uz">Avtobusda borishni taklif qilaman.</div>
+</div>
+<div class="example">
+<div class="en">She suggested studying together.</div>
+<div class="uz">U birga o‘qishni taklif qildi.</div>
+</div>
+<h3>KEEP + ING</h3>
+<p>Keep — harakatni davom ettirish.</p>
+<div class="example">
+<div class="en">Keep practising English.</div>
+<div class="uz">Ingliz tilini mashq qilishda davom et.</div>
+</div>
+<div class="example">
+<div class="en">He keeps asking questions.</div>
+<div class="uz">U savol berishda davom etadi.</div>
+</div>
+<h3>PRACTISE + ING</h3>
+<div class="example">
+<div class="en">I practise speaking every day.</div>
+<div class="uz">Men har kuni gapirishni mashq qilaman.</div>
+</div>
+<h3>MISS + ING</h3>
+<div class="example">
+<div class="en">I miss playing football with my friends.</div>
+<div class="uz">Do‘stlarim bilan futbol o‘ynashni sog‘inaman.</div>
+</div>
 <div class="note warning">
-<b>Eng ko‘p uchraydigan xato:</b><br>
-❌ There aren't a book.<br>
-✅ There isn't a book.<br><br>
-❌ There isn't two chairs.<br>
-✅ There aren't two chairs.
+<b>Yodlang:</b><br>
+enjoy doing<br>
+finish doing<br>
+avoid doing<br>
+mind doing<br>
+suggest doing<br>
+keep doing<br>
+practise doing<br>
+consider doing<br>
+miss doing
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-There isn't va There aren't formulalarini, qisqartmalarini va misollarini yozing.
+Jadvaldagi fe'llarni tarjimasi bilan yozing. Har bir fe'lga bittadan misol gap ko‘chiring. Eng muhim 9 ta fe'lni alohida yodlang.
 </div>
 <div class="exercise">
 <b>📝 DAFTARDA BAJARING</b>
-Quyidagi gaplarni inkor shakliga aylantiring:
+Qavs ichidagi fe'lni to‘g‘ri shaklda yozing:
 <ol>
-<li>There is a computer in the room.</li>
-<li>There are five pens in the bag.</li>
-<li>There is some milk in the fridge.</li>
-<li>There are two cars outside.</li>
-<li>There is a park near my house.</li>
+<li>I enjoy _____ books. (read)</li>
+<li>She finished _____ dinner. (cook)</li>
+<li>He avoids _____ fast. (drive)</li>
+<li>Do you mind _____ here? (wait)</li>
+<li>They suggested _____ by train. (travel)</li>
+<li>Keep _____ English. (learn)</li>
+<li>I practise _____ every day. (speak)</li>
+<li>He misses _____ football. (play)</li>
 </ol>
 </div>
 </section>
 
 <section class="card">
-<h2>8. THERE IS / THERE ARE — so‘roq shakli</h2>
-<p>Biror joyda narsa bor yoki yo‘qligini so‘rash uchun <b>is</b> yoki <b>are</b> gap boshiga chiqadi.</p>
-<h3>Is there...? — birlik</h3>
-<div class="rule">IS + THERE + birlikdagi ot + ...?</div>
-<div class="example">
-<div class="en">Is there a bank near here? <button class="audio" onclick="speak('Is there a bank near here?')">🔊</button></div>
-<div class="uz">Shu yaqin atrofda bank bormi?</div>
-</div>
-<div class="example">
-<div class="en">Is there a bathroom in this house?</div>
-<div class="uz">Bu uyda hammom bormi?</div>
-</div>
-<h3>Are there...? — ko‘plik</h3>
-<div class="rule">ARE + THERE + ko‘plikdagi ot + ...?</div>
-<div class="example">
-<div class="en">Are there any shops near your house? <button class="audio" onclick="speak('Are there any shops near your house?')">🔊</button></div>
-<div class="uz">Uyingiz yaqinida do‘konlar bormi?</div>
-</div>
-<div class="example">
-<div class="en">Are there any students in the classroom?</div>
-<div class="uz">Sinf xonasida o‘quvchilar bormi?</div>
-</div>
-<h3>Qisqa javoblar</h3>
+<h2>8. INFINITIVE talab qiladigan fe'llar</h2>
+<p>Quyidagi fe'llardan keyin odatda <b>to + verb</b> ishlatiladi.</p>
+<div class="rule">SUBJECT + VERB + TO + VERB</div>
 <table>
-<tr><th>Savol</th><th>Ha</th><th>Yo‘q</th></tr>
-<tr><td>Is there a book?</td><td>Yes, there is.</td><td>No, there isn't.</td></tr>
-<tr><td>Are there books?</td><td>Yes, there are.</td><td>No, there aren't.</td></tr>
+<tr><th>Fe'l</th><th>Tarjimasi</th></tr>
+<tr><td>want</td><td>xohlamoq</td></tr>
+<tr><td>need</td><td>kerak bo‘lmoq</td></tr>
+<tr><td>decide</td><td>qaror qilmoq</td></tr>
+<tr><td>hope</td><td>umid qilmoq</td></tr>
+<tr><td>plan</td><td>rejalashtirmoq</td></tr>
+<tr><td>promise</td><td>va'da bermoq</td></tr>
+<tr><td>learn</td><td>o‘rganmoq</td></tr>
+<tr><td>agree</td><td>rozi bo‘lmoq</td></tr>
+<tr><td>offer</td><td>taklif qilmoq</td></tr>
+<tr><td>expect</td><td>kutmoq</td></tr>
+<tr><td>choose</td><td>tanlamoq</td></tr>
+<tr><td>hope</td><td>umid qilmoq</td></tr>
 </table>
+<h3>WANT + TO + VERB</h3>
+<div class="example">
+<div class="en">I want to learn English.</div>
+<div class="uz">Men ingliz tilini o‘rganishni xohlayman.</div>
+</div>
+<div class="example">
+<div class="en">She wants to buy a new phone.</div>
+<div class="uz">U yangi telefon sotib olishni xohlaydi.</div>
+</div>
+<h3>NEED + TO + VERB</h3>
+<div class="example">
+<div class="en">I need to study today.</div>
+<div class="uz">Bugun o‘qishim kerak.</div>
+</div>
+<div class="example">
+<div class="en">He needs to work harder.</div>
+<div class="uz">U ko‘proq mehnat qilishi kerak.</div>
+</div>
+<h3>DECIDE + TO + VERB</h3>
+<div class="example">
+<div class="en">We decided to travel.</div>
+<div class="uz">Biz sayohat qilishga qaror qildik.</div>
+</div>
+<div class="example">
+<div class="en">She decided to learn English.</div>
+<div class="uz">U ingliz tilini o‘rganishga qaror qildi.</div>
+</div>
+<h3>HOPE + TO + VERB</h3>
+<div class="example">
+<div class="en">I hope to see you soon.</div>
+<div class="uz">Sizni tez orada ko‘rishga umid qilaman.</div>
+</div>
+<h3>PLAN + TO + VERB</h3>
+<div class="example">
+<div class="en">They plan to visit London.</div>
+<div class="uz">Ular Londonga borishni rejalashtirishmoqda.</div>
+</div>
+<h3>PROMISE + TO + VERB</h3>
+<div class="example">
+<div class="en">I promise to help you.</div>
+<div class="uz">Men sizga yordam berishga va'da beraman.</div>
+</div>
+<h3>AGREE + TO + VERB</h3>
+<div class="example">
+<div class="en">He agreed to work with us.</div>
+<div class="uz">U biz bilan ishlashga rozi bo‘ldi.</div>
+</div>
+<h3>OFFER + TO + VERB</h3>
+<div class="example">
+<div class="en">She offered to help me.</div>
+<div class="uz">U menga yordam berishni taklif qildi.</div>
+</div>
 <div class="note warning">
-<b>Muhim:</b> Qisqa javobda “Yes, there is a book” deyish shart emas. Oddiy qisqa javob: “Yes, there is.”<br>
-❌ Yes, there are not.<br>
-✅ No, there aren't.
+<b>Yodlang:</b><br>
+want to do<br>
+need to do<br>
+decide to do<br>
+hope to do<br>
+plan to do<br>
+promise to do<br>
+agree to do<br>
+offer to do<br>
+expect to do<br>
+choose to do
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-Is there va Are there formulalarini yozing. Jadvalni daftarga ko‘chiring.
+Infinitive talab qiladigan fe'llarni tarjimasi bilan yozing. Har bir fe'lga bittadan inglizcha misol yozing.
 </div>
 <div class="exercise">
 <b>📝 DAFTARDA BAJARING</b>
-Quyidagi gaplarni so‘roq shakliga aylantiring:
+Qavs ichidagi fe'lni to + verb shaklida yozing:
 <ol>
-<li>There is a school near my house.</li>
-<li>There are three windows in the room.</li>
-<li>There is a computer on the desk.</li>
-<li>There are some shops in this street.</li>
-<li>There is some water in the glass.</li>
-</ol>
-Har bir savolga Yes va No shaklida qisqa javob yozing.
-</div>
-</section>
-
-<section class="card">
-<h2>9. SOME va ANY</h2>
-<p><b>Some</b> va <b>any</b> miqdorni aniq aytmasdan “bir oz”, “bir nechta”, “qandaydir” ma'nolarini beradi.</p>
-<h3>SOME — asosan darak gaplarda</h3>
-<p>There is va There are bilan darak gaplarda ko‘p ishlatiladi.</p>
-<div class="example">
-<div class="en">There are some apples in the basket.</div>
-<div class="uz">Savatda bir nechta olma bor.</div>
-</div>
-<div class="example">
-<div class="en">There is some juice in the glass.</div>
-<div class="uz">Stakanda biroz sharbat bor.</div>
-</div>
-<h3>ANY — asosan inkor va so‘roq gaplarda</h3>
-<div class="example">
-<div class="en">There aren't any eggs in the fridge.</div>
-<div class="uz">Muzlatkichda hech qanday tuxum yo‘q.</div>
-</div>
-<div class="example">
-<div class="en">Are there any children in the park?</div>
-<div class="uz">Bog‘da bolalar bormi?</div>
-</div>
-<div class="example">
-<div class="en">There isn't any sugar in the tea.</div>
-<div class="uz">Choyda shakar yo‘q.</div>
-</div>
-<table>
-<tr><th>Gap turi</th><th>Ko‘p ishlatiladigan so‘z</th><th>Misol</th></tr>
-<tr><td>Darak</td><td>some</td><td>There are some books.</td></tr>
-<tr><td>Inkor</td><td>any</td><td>There aren't any books.</td></tr>
-<tr><td>So‘roq</td><td>any</td><td>Are there any books?</td></tr>
-</table>
-<div class="note">
-<b>Eslatma:</b> Some so‘roq gaplarda ham taklif yoki iltimosda ishlatilishi mumkin. Hozircha asosiy qoida sifatida darak gapda some, inkor va oddiy so‘roq gapda any ni o‘rganing.
-</div>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-Some va any qoidalarini jadval bilan yozing. Har biriga 3 tadan misol ko‘chiring.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-Bo‘sh joyga some yoki any yozing:
-<ol>
-<li>There are _____ flowers in the garden.</li>
-<li>There isn't _____ milk in the fridge.</li>
-<li>Are there _____ students here?</li>
-<li>There is _____ bread on the table.</li>
-<li>There aren't _____ chairs in the room.</li>
+<li>I want _____ English. (learn)</li>
+<li>She needs _____ today. (work)</li>
+<li>They decided _____ home. (go)</li>
+<li>We hope _____ you. (see)</li>
+<li>He plans _____ a car. (buy)</li>
+<li>I promise _____ you. (help)</li>
+<li>She agreed _____ us. (join)</li>
+<li>He offered _____ dinner. (cook)</li>
 </ol>
 </div>
 </section>
 
 <section class="card">
-<h2>10. SANALADIGAN VA SANALMAYDIGAN OTLAR</h2>
-<p>There is va There are ni tanlashda otning sanaladigan yoki sanalmaydigan ekaniga ham e'tibor berish kerak.</p>
-<h3>Sanaladigan otlar — Countable nouns</h3>
-<p>Bularni dona-dona sanash mumkin: one apple, two apples, three books.</p>
+<h2>9. LIKE, LOVE, HATE, PREFER — ikkala shakl</h2>
+<p>Bu bo‘lim juda muhim. Chunki ayrim fe'llardan keyin ham gerund, ham infinitive ishlatish mumkin.</p>
+<p>Asosiy fe'llar:</p>
 <ul>
-<li>one book — bitta kitob</li>
-<li>two books — ikkita kitob</li>
-<li>one chair — bitta stul</li>
-<li>three chairs — uchta stul</li>
+<li>like — yoqtirmoq</li>
+<li>love — juda yoqtirmoq</li>
+<li>hate — yomon ko‘rmoq</li>
+<li>prefer — afzal ko‘rmoq</li>
 </ul>
-<h3>Sanalmaydigan otlar — Uncountable nouns</h3>
-<p>Bularni odatda dona-dona sanamaymiz. Masalan:</p>
-<ul>
-<li>water — suv</li><li>milk — sut</li><li>rice — guruch</li>
-<li>sugar — shakar</li><li>bread — non</li><li>money — pul</li>
-<li>information — ma'lumot</li><li>furniture — mebel</li>
-</ul>
-<div class="rule">THERE IS + UNCOUNTABLE NOUN</div>
+<h3>LIKE + ING</h3>
 <div class="example">
-<div class="en">There is some water in the bottle.</div>
-<div class="uz">Shishada biroz suv bor.</div>
+<div class="en">I like reading books.</div>
+<div class="uz">Men kitob o‘qishni yoqtiraman.</div>
 </div>
+<h3>LIKE + TO + VERB</h3>
 <div class="example">
-<div class="en">There is some rice in the kitchen.</div>
-<div class="uz">Oshxonada biroz guruch bor.</div>
+<div class="en">I like to read before sleeping.</div>
+<div class="uz">Men uxlashdan oldin o‘qishni yoqtiraman.</div>
 </div>
-<div class="note warning">
-<b>Juda muhim:</b><br>
-❌ There are some water.<br>
-✅ There is some water.<br><br>
-Water sanalmaydigan ot bo‘lgani uchun There is ishlatiladi.
-</div>
-<h3>Sanalmaydigan narsani idish yoki birlik bilan sanash</h3>
-<p>Masalan, water so‘zini bevosita sanamaymiz, lekin bottle yoki glass ni sanashimiz mumkin.</p>
+<p>Ko‘p vaziyatlarda ikkala shakl ham grammatik jihatdan to‘g‘ri. Ma'no juda yaqin bo‘lishi mumkin.</p>
+<h3>LOVE</h3>
 <div class="example">
-<div class="en">There are two bottles of water.</div>
-<div class="uz">Ikkita shisha suv bor.</div>
+<div class="en">She loves dancing.</div>
+<div class="uz">U raqsga tushishni juda yaxshi ko‘radi.</div>
 </div>
 <div class="example">
-<div class="en">There are three glasses of milk.</div>
-<div class="uz">Uchta stakan sut bor.</div>
+<div class="en">She loves to dance at parties.</div>
+<div class="uz">U bazmlarda raqsga tushishni juda yaxshi ko‘radi.</div>
+</div>
+<h3>HATE</h3>
+<div class="example">
+<div class="en">I hate waiting.</div>
+<div class="uz">Men kutishni yomon ko‘raman.</div>
 </div>
 <div class="example">
-<div class="en">There is a bottle of water.</div>
-<div class="uz">Bitta shisha suv bor.</div>
+<div class="en">I hate to wait for a long time.</div>
+<div class="uz">Men uzoq vaqt kutishni yomon ko‘raman.</div>
 </div>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-Sanaladigan va sanalmaydigan otlar ro‘yxatini ikki ustunda yozing. There is bilan 3 ta sanalmaydigan otli gap tuzing.
-</div>
-</section>
-
-<section class="card">
-<h2>11. A / AN bilan ishlatilishi</h2>
-<p>Birlikdagi sanaladigan ot oldidan ko‘pincha <b>a</b> yoki <b>an</b> ishlatiladi.</p>
-<ul>
-<li><b>a</b> — undosh tovush bilan boshlanadigan so‘zlardan oldin: a book, a chair, a teacher.</li>
-<li><b>an</b> — unli tovush bilan boshlanadigan so‘zlardan oldin: an apple, an egg, an orange.</li>
-</ul>
+<h3>PREFER</h3>
 <div class="example">
-<div class="en">There is a book on the desk.</div>
-<div class="uz">Parta ustida bitta kitob bor.</div>
+<div class="en">I prefer walking.</div>
+<div class="uz">Men piyoda yurishni afzal ko‘raman.</div>
 </div>
 <div class="example">
-<div class="en">There is an apple in the bag.</div>
-<div class="uz">Sumkada bitta olma bor.</div>
-</div>
-<div class="note warning">
-A/an faqat birlikdagi sanaladigan ot bilan ishlatiladi.<br>
-❌ There is a books.<br>
-✅ There are books.<br>
-❌ There are an apple.<br>
-✅ There is an apple.
-</div>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-A va an qoidalarini, misollarni va xatolarni daftarga yozing.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-To‘g‘ri variantni tanlab yozing:
-<ol>
-<li>There is (a / an) orange.</li>
-<li>There is (a / an) chair.</li>
-<li>There are (a / an) books.</li>
-<li>There is (a / an) egg.</li>
-<li>There is (a / an) computer.</li>
-</ol>
-</div>
-</section>
-
-<section class="card">
-<h2>12. JOY PREPOSITIONLARI</h2>
-<p>Biror narsa qayerda joylashganini aytish uchun joy predloglari ishlatiladi.</p>
-<table>
-<tr><th>Predlog</th><th>Ma'nosi</th><th>Misol</th></tr>
-<tr><td>in</td><td>ichida</td><td>in the room</td></tr>
-<tr><td>on</td><td>ustida</td><td>on the table</td></tr>
-<tr><td>under</td><td>tagida</td><td>under the bed</td></tr>
-<tr><td>next to</td><td>yonida</td><td>next to the door</td></tr>
-<tr><td>between</td><td>orasida</td><td>between two chairs</td></tr>
-<tr><td>behind</td><td>orqasida</td><td>behind the house</td></tr>
-<tr><td>in front of</td><td>oldida</td><td>in front of the school</td></tr>
-<tr><td>near</td><td>yaqinida</td><td>near my home</td></tr>
-<tr><td>above</td><td>tepasida</td><td>above the bed</td></tr>
-<tr><td>opposite</td><td>qarshisida</td><td>opposite the bank</td></tr>
-</table>
-<h3>There is / There are bilan misollar</h3>
-<div class="example">
-<div class="en">There is a cat under the table.</div>
-<div class="uz">Stol tagida mushuk bor.</div>
-</div>
-<div class="example">
-<div class="en">There are two pictures on the wall.</div>
-<div class="uz">Devorda ikkita rasm bor.</div>
-</div>
-<div class="example">
-<div class="en">There is a garden behind the house.</div>
-<div class="uz">Uyning orqasida bog‘ bor.</div>
-</div>
-<div class="example">
-<div class="en">There are two shops next to the bank.</div>
-<div class="uz">Bank yonida ikkita do‘kon bor.</div>
-</div>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-10 ta predlogni tarjimasi bilan yozing. Har biridan kamida bittadan misol tuzing.
-</div>
-</section>
-
-<section class="card">
-<h2>13. THERE WAS — o‘tgan zamon, birlik</h2>
-<p>Endi biror narsa hozir emas, balki o'tmishda bor bo‘lganini aytishni o‘rganamiz.</p>
-<p><b>There was</b> — o'tgan zamondagi birlik yoki sanalmaydigan ot bilan ishlatiladi.</p>
-<div class="rule">THERE WAS + birlikdagi ot / sanalmaydigan ot</div>
-<p>Tarjimasi: bor edi, mavjud edi.</p>
-<div class="example">
-<div class="en">There was a book on the table yesterday. <button class="audio" onclick="speak('There was a book on the table yesterday')">🔊</button></div>
-<div class="uz">Kecha stol ustida kitob bor edi.</div>
-</div>
-<div class="example">
-<div class="en">There was a big tree in the garden.</div>
-<div class="uz">Bog‘da katta daraxt bor edi.</div>
-</div>
-<div class="example">
-<div class="en">There was some milk in the fridge.</div>
-<div class="uz">Muzlatkichda biroz sut bor edi.</div>
-</div>
-<div class="example">
-<div class="en">There was a teacher in the classroom.</div>
-<div class="uz">Sinf xonasida o‘qituvchi bor edi.</div>
-</div>
-<p>There was ko‘pincha quyidagi vaqt so‘zlari bilan keladi:</p>
-<ul><li>yesterday — kecha</li><li>last week — o‘tgan hafta</li><li>last year — o‘tgan yil</li><li>two days ago — ikki kun oldin</li><li>in 2020 — 2020-yilda</li></ul>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-There was formulasini yozing. Yuqoridagi 4 ta misolni tarjimasi bilan ko‘chiring.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-There was yordamida 5 ta gap tuzing. Quyidagi so‘zlardan foydalaning:
-book, tree, teacher, water, computer.
-</div>
-</section>
-
-<section class="card">
-<h2>14. THERE WERE — o‘tgan zamon, ko‘plik</h2>
-<p><b>There were</b> o'tmishda ikki yoki undan ortiq narsa mavjud bo‘lganini bildiradi.</p>
-<div class="rule">THERE WERE + ko‘plikdagi ot</div>
-<div class="example">
-<div class="en">There were five students in the classroom yesterday. <button class="audio" onclick="speak('There were five students in the classroom yesterday')">🔊</button></div>
-<div class="uz">Kecha sinfxonada beshta o‘quvchi bor edi.</div>
-</div>
-<div class="example">
-<div class="en">There were many cars in the street.</div>
-<div class="uz">Ko‘chada ko‘p mashinalar bor edi.</div>
-</div>
-<div class="example">
-<div class="en">There were two cats in the garden.</div>
-<div class="uz">Bog‘da ikkita mushuk bor edi.</div>
-</div>
-<div class="example">
-<div class="en">There were some apples on the table.</div>
-<div class="uz">Stolda bir nechta olma bor edi.</div>
+<div class="en">I prefer to walk in the morning.</div>
+<div class="uz">Men ertalab piyoda yurishni afzal ko‘raman.</div>
 </div>
 <table>
-<tr><th>Hozirgi zamon</th><th>O‘tgan zamon</th></tr>
-<tr><td>There is a book.</td><td>There was a book.</td></tr>
-<tr><td>There are books.</td><td>There were books.</td></tr>
-<tr><td>There is some water.</td><td>There was some water.</td></tr>
-<tr><td>There are children.</td><td>There were children.</td></tr>
+<tr><th>Fe'l</th><th>Gerund</th><th>Infinitive</th></tr>
+<tr><td>like</td><td>like reading</td><td>like to read</td></tr>
+<tr><td>love</td><td>love cooking</td><td>love to cook</td></tr>
+<tr><td>hate</td><td>hate waiting</td><td>hate to wait</td></tr>
+<tr><td>prefer</td><td>prefer walking</td><td>prefer to walk</td></tr>
 </table>
 <div class="note good">
-<b>Yodlash uchun:</b><br>
-IS → WAS<br>
-ARE → WERE<br>
-There is/are hozirgi zamon, There was/were o'tgan zamon.
+<b>Elementary daraja uchun asosiy qoida:</b> Like, love, hate va prefer fe'llaridan keyin ko‘pincha -ing yoki to + verb ishlatish mumkin. Ba'zi kontekstlarda ma'no yoki urg‘u farqi paydo bo‘ladi.
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-There were formulasini va misollarni yozing. Hozirgi va o'tgan zamon jadvalini ko‘chiring.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-Quyidagi gaplarni o'tgan zamonga aylantiring:
-<ol>
-<li>There are two cars outside.</li>
-<li>There is a dog in the garden.</li>
-<li>There are many students at school.</li>
-<li>There is some milk in the fridge.</li>
-<li>There are three books on the table.</li>
-</ol>
+Like, love, hate va prefer fe'llarining ikkala shaklini jadvalga yozing. Har bir fe'l bilan ikkita gap tuzing.
 </div>
 </section>
 
 <section class="card">
-<h2>15. THERE WAS / THERE WERE — inkor shakli</h2>
-<p>O'tmishda biror narsa mavjud bo‘lmaganini aytish uchun wasn't yoki weren't ishlatiladi.</p>
-<div class="rule">There was not = There wasn't</div>
-<p>Birlik va sanalmaydigan otlar bilan:</p>
+<h2>10. PREPOSITION + GERUND</h2>
+<p>Bu qoidani yaxshilab tushunish kerak: ingliz tilida predlogdan keyin fe'l kelsa, odatda uning -ing shakli ishlatiladi.</p>
+<div class="rule">PREPOSITION + VERB-ING</div>
+<p>Preposition — in, on, at, about, before, after, without, for kabi so‘zlar.</p>
+<h3>ABOUT + ING</h3>
 <div class="example">
-<div class="en">There wasn't a computer in my room.</div>
-<div class="uz">Mening xonamda kompyuter yo‘q edi.</div>
+<div class="en">I am thinking about moving to another city.</div>
+<div class="uz">Boshqa shaharga ko‘chish haqida o‘ylayapman.</div>
 </div>
+<h3>BEFORE + ING</h3>
 <div class="example">
-<div class="en">There wasn't any water in the bottle.</div>
-<div class="uz">Shishada suv yo‘q edi.</div>
+<div class="en">Wash your hands before eating.</div>
+<div class="uz">Ovqatlanishdan oldin qo‘llaringizni yuving.</div>
 </div>
-<div class="rule">There were not = There weren't</div>
-<p>Ko‘plikdagi otlar bilan:</p>
+<h3>AFTER + ING</h3>
 <div class="example">
-<div class="en">There weren't any students at school.</div>
-<div class="uz">Maktabda hech qanday o‘quvchilar yo‘q edi.</div>
+<div class="en">After finishing work, I went home.</div>
+<div class="uz">Ishni tugatgandan keyin uyga bordim.</div>
 </div>
+<h3>WITHOUT + ING</h3>
 <div class="example">
-<div class="en">There weren't many cars in the street.</div>
-<div class="uz">Ko‘chada ko‘p mashinalar yo‘q edi.</div>
+<div class="en">He left without saying goodbye.</div>
+<div class="uz">U xayrlashmasdan ketdi.</div>
 </div>
-<table>
-<tr><th>Darak</th><th>Inkor</th></tr>
-<tr><td>There was a book.</td><td>There wasn't a book.</td></tr>
-<tr><td>There were books.</td><td>There weren't books.</td></tr>
-<tr><td>There was some water.</td><td>There wasn't any water.</td></tr>
-</table>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-Wasn't va weren't shakllarini, formulalarini va misollarini yozing.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-Quyidagi gaplarni inkor shakliga aylantiring:
-<ol>
-<li>There was a park near my old house.</li>
-<li>There were five children in the room.</li>
-<li>There was some food on the table.</li>
-<li>There were two teachers at school.</li>
-<li>There was a bus near the station.</li>
-</ol>
-</div>
-</section>
-
-<section class="card">
-<h2>16. THERE WAS / THERE WERE — so‘roq shakli</h2>
-<p>O'tmishda biror narsa bor bo‘lganmi deb so‘rash uchun was yoki were gap boshiga chiqadi.</p>
-<h3>Was there...? — birlik</h3>
-<div class="rule">WAS + THERE + birlikdagi ot + ...?</div>
+<h3>IN + ING</h3>
 <div class="example">
-<div class="en">Was there a school here before? <button class="audio" onclick="speak('Was there a school here before?')">🔊</button></div>
-<div class="uz">Oldin bu yerda maktab bormidi?</div>
+<div class="en">She is interested in learning English.</div>
+<div class="uz">U ingliz tilini o‘rganishga qiziqadi.</div>
 </div>
-<h3>Were there...? — ko‘plik</h3>
-<div class="rule">WERE + THERE + ko‘plikdagi ot + ...?</div>
+<h3>GOOD AT + ING</h3>
 <div class="example">
-<div class="en">Were there many people at the market?</div>
-<div class="uz">Bozorda ko‘p odamlar bormidi?</div>
+<div class="en">He is good at playing football.</div>
+<div class="uz">U futbol o‘ynashni yaxshi biladi.</div>
 </div>
-<h3>Qisqa javoblar</h3>
-<table>
-<tr><th>Savol</th><th>Ha</th><th>Yo‘q</th></tr>
-<tr><td>Was there a shop?</td><td>Yes, there was.</td><td>No, there wasn't.</td></tr>
-<tr><td>Were there shops?</td><td>Yes, there were.</td><td>No, there weren't.</td></tr>
-</table>
+<h3>THANK YOU FOR + ING</h3>
 <div class="example">
-<div class="en">Was there a dog in the garden?</div>
-<div class="uz">Bog‘da it bormidi?</div>
-<div class="en">Yes, there was.</div>
-<div class="uz">Ha, bor edi.</div>
-</div>
-<div class="example">
-<div class="en">Were there any books on the desk?</div>
-<div class="uz">Parta ustida kitoblar bormidi?</div>
-<div class="en">No, there weren't.</div>
-<div class="uz">Yo‘q, yo‘q edi.</div>
+<div class="en">Thank you for helping me.</div>
+<div class="uz">Menga yordam berganingiz uchun rahmat.</div>
 </div>
 <div class="note warning">
-<b>Diqqat:</b><br>
-❌ Did there was a shop?<br>
-✅ Was there a shop?<br><br>
-❌ Did there were books?<br>
-✅ Were there books?<br><br>
-There was/were bilan savol tuzishda did ishlatilmaydi.
-</div>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-Was there va Were there formulalarini, qisqa javoblar jadvalini yozing.
-</div>
-<div class="exercise">
-<b>📝 DAFTARDA BAJARING</b>
-Quyidagi gaplardan so‘roq tuzing:
-<ol>
-<li>There was a hospital in this town.</li>
-<li>There were three shops near the house.</li>
-<li>There was some food in the kitchen.</li>
-<li>There were many people in the park.</li>
-<li>There was a computer in the classroom.</li>
-</ol>
-Har biriga qisqa Yes va No javoblarini ham yozing.
-</div>
-</section>
-
-<section class="card">
-<h2>17. PRESENT va PAST — to‘liq taqqoslash</h2>
-<p>Hozirgi zamon va o'tgan zamon shakllarini aralashtirmaslik uchun ushbu jadvalni yaxshilab o‘rganing.</p>
-<table>
-<tr><th>Gap turi</th><th>Hozirgi zamon</th><th>O‘tgan zamon</th></tr>
-<tr><td>Birlik</td><td>There is a book.</td><td>There was a book.</td></tr>
-<tr><td>Ko‘plik</td><td>There are books.</td><td>There were books.</td></tr>
-<tr><td>Inkor birlik</td><td>There isn't a book.</td><td>There wasn't a book.</td></tr>
-<tr><td>Inkor ko‘plik</td><td>There aren't books.</td><td>There weren't books.</td></tr>
-<tr><td>Savol birlik</td><td>Is there a book?</td><td>Was there a book?</td></tr>
-<tr><td>Savol ko‘plik</td><td>Are there books?</td><td>Were there books?</td></tr>
-</table>
-<h3>Bir vaziyatni to‘rt xil ko‘rinishda aytamiz</h3>
-<div class="example">
-<div class="en">There is a tree in the garden.</div>
-<div class="uz">Bog‘da daraxt bor.</div>
-</div>
-<div class="example">
-<div class="en">There was a tree in the garden.</div>
-<div class="uz">Bog‘da daraxt bor edi.</div>
-</div>
-<div class="example">
-<div class="en">There isn't a tree in the garden.</div>
-<div class="uz">Bog‘da daraxt yo‘q.</div>
-</div>
-<div class="example">
-<div class="en">There wasn't a tree in the garden.</div>
-<div class="uz">Bog‘da daraxt yo‘q edi.</div>
-</div>
-<div class="note good">
-<b>Eng muhim yodlash jadvali:</b><br>
-Hozirgi birlik: IS<br>
-Hozirgi ko‘plik: ARE<br>
-O‘tgan birlik: WAS<br>
-O‘tgan ko‘plik: WERE
-</div>
-<div class="write">
-<h3>✍️ DAFTARGA YOZING</h3>
-Ushbu jadvalni daftarga ko‘chiring. Har bir shaklga bittadan o‘zingiz tuzgan gap yozing.
-</div>
-</section>
-
-<section class="card">
-<h2>18. THERE IS va IT IS — farqi</h2>
-<p>Bu ikki ibora ko‘pincha chalkashtiriladi. Ularning vazifasi boshqa-boshqa.</p>
-<h3>THERE IS — biror narsa mavjudligini aytadi</h3>
-<div class="example">
-<div class="en">There is a book on the table.</div>
-<div class="uz">Stol ustida kitob bor.</div>
-</div>
-<h3>IT IS — ma'lum narsa haqida ma'lumot beradi</h3>
-<div class="example">
-<div class="en">It is a book.</div>
-<div class="uz">U kitob.</div>
-</div>
-<p>Yana bir misol:</p>
-<div class="example">
-<div class="en">There is a man outside.</div>
-<div class="uz">Tashqarida bir erkak bor.</div>
-</div>
-<div class="example">
-<div class="en">He is my father.</div>
-<div class="uz">U mening otam.</div>
+<b>Ko‘p uchraydigan xato:</b><br>
+❌ Thank you for help me.<br>
+✅ Thank you for helping me.<br><br>
+❌ Before eat, wash your hands.<br>
+✅ Before eating, wash your hands.
 </div>
 <div class="note">
-<b>Farqni eslab qoling:</b><br>
-There is — nimadir borligini bildiradi.<br>
-It is — bu nima yoki qanday ekanini bildiradi.
+<b>Yana bir muhim holat:</b> “to” har doim infinitive belgisi emas. Ba'zan u predlog bo‘ladi. Masalan, “look forward to” birikmasidan keyin gerund keladi: I look forward to meeting you.
+</div>
+<div class="example">
+<div class="en">I look forward to seeing you.</div>
+<div class="uz">Siz bilan ko‘rishishni intiqlik bilan kutaman.</div>
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-There is va It is farqini yozing. Yuqoridagi misollarni ko‘chiring.
+Preposition + Gerund qoidasini yozing. About, before, after, without, in, at, for va look forward to bilan misollarni ko‘chiring.
 </div>
 <div class="exercise">
 <b>📝 DAFTARDA BAJARING</b>
-There is yoki It is bilan to‘ldiring:
+Fe'lni -ing shaklida yozing:
 <ol>
-<li>_____ a cat in the garden.</li>
-<li>_____ my new phone.</li>
-<li>_____ two books on the desk.</li>
-<li>_____ a beautiful house.</li>
-<li>_____ very cold today.</li>
+<li>Before _____, wash your hands. (eat)</li>
+<li>Thank you for _____ me. (help)</li>
+<li>He left without _____ goodbye. (say)</li>
+<li>She is interested in _____ English. (learn)</li>
+<li>I am good at _____. (cook)</li>
+<li>After _____, we went home. (work)</li>
+<li>I look forward to _____ you. (meet)</li>
 </ol>
 </div>
 </section>
 
 <section class="card">
-<h2>19. Kundalik hayotda ishlatish</h2>
-<p>Endi grammatikani haqiqiy vaziyatlarda qo‘llashni o‘rganamiz.</p>
-<h3>A. Xonani tasvirlash</h3>
+<h2>11. PURPOSE — maqsadni bildirish uchun TO</h2>
+<p>To + verb faqat want yoki need dan keyin emas, biror ishning maqsadini bildirish uchun ham ishlatiladi.</p>
+<p><b>To + verb</b> ko‘pincha “... qilish uchun” ma'nosini beradi.</p>
 <div class="example">
-<div class="en">There is a bed in my room.</div>
-<div class="uz">Xonamda karavot bor.</div>
-<div class="en">There are two windows.</div>
-<div class="uz">Ikkita deraza bor.</div>
-<div class="en">There is a desk next to the window.</div>
-<div class="uz">Deraza yonida yozuv stoli bor.</div>
-<div class="en">There are some books on the desk.</div>
-<div class="uz">Stol ustida bir nechta kitob bor.</div>
+<div class="en">I went to the shop to buy milk.</div>
+<div class="uz">Sut sotib olish uchun do‘konga bordim.</div>
 </div>
-<h3>B. Maktabni tasvirlash</h3>
 <div class="example">
-<div class="en">There is a library in my school.</div>
-<div class="uz">Maktabimda kutubxona bor.</div>
-<div class="en">There are many classrooms.</div>
-<div class="uz">Ko‘plab sinfxonalar bor.</div>
-<div class="en">There is a computer in the library.</div>
-<div class="uz">Kutubxonada kompyuter bor.</div>
+<div class="en">She studies hard to pass the exam.</div>
+<div class="uz">U imtihondan o‘tish uchun qattiq o‘qiydi.</div>
 </div>
-<h3>C. Bozorni tasvirlash</h3>
 <div class="example">
-<div class="en">There are many people at the market.</div>
-<div class="uz">Bozorda ko‘p odamlar bor.</div>
-<div class="en">There are fresh fruits and vegetables.</div>
-<div class="uz">Yangi meva va sabzavotlar bor.</div>
-<div class="en">There is some fresh bread.</div>
-<div class="uz">Biroz yangi non bor.</div>
+<div class="en">I use my phone to learn English.</div>
+<div class="uz">Ingliz tilini o‘rganish uchun telefonimdan foydalanaman.</div>
 </div>
-<h3>D. O‘tgan kun haqida gapirish</h3>
 <div class="example">
-<div class="en">There was a meeting yesterday.</div>
-<div class="uz">Kecha yig‘ilish bor edi.</div>
-<div class="en">There were many people there.</div>
-<div class="uz">U yerda ko‘p odamlar bor edi.</div>
-<div class="en">There wasn't enough time.</div>
-<div class="uz">Yetarli vaqt yo‘q edi.</div>
+<div class="en">He went outside to get some fresh air.</div>
+<div class="uz">Toza havo olish uchun tashqariga chiqdi.</div>
 </div>
+<div class="rule">TO + VERB = ... QILISH UCHUN</div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-Har bir mavzu bo‘yicha kamida 3 tadan gap ko‘chiring: xona, maktab, bozor, o‘tgan kun.
+Purpose qoidasini yozing va yuqoridagi misollarni tarjimasi bilan ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi gaplarni ingliz tiliga tarjima qiling:
+<ol>
+<li>Men ingliz tilini o‘rganish uchun kitob sotib oldim.</li>
+<li>U pul topish uchun ishlaydi.</li>
+<li>Biz do‘stlarimizni ko‘rish uchun bordik.</li>
+<li>U imtihondan o‘tish uchun o‘qiydi.</li>
+<li>Men suv sotib olish uchun do‘konga bordim.</li>
+</ol>
 </div>
 </section>
 
 <section class="card">
-<h2>20. Kundalik dialoglar</h2>
-<h3>Dialog 1 — Uy haqida</h3>
+<h2>12. BARE INFINITIVE — TO siz fe'l</h2>
+<p>Ba'zi vaziyatlarda fe'l oldidan to qo‘yilmaydi. Bunday shakl <b>bare infinitive</b> deb ataladi.</p>
+<div class="rule">BARE INFINITIVE = VERB (TO YO‘Q)</div>
+<h3>1. Modal fe'llardan keyin</h3>
+<p>Can, could, must, should, may, might kabi modal fe'llardan keyin asosiy fe'lning oddiy shakli keladi.</p>
 <div class="example">
-<b>A:</b> Is there a garden near your house?
-<div class="uz">Uyingiz yaqinida bog‘ bormi?</div>
-<b>B:</b> Yes, there is.
-<div class="uz">Ha, bor.</div>
-<b>A:</b> Are there any trees in the garden?
-<div class="uz">Bog‘da daraxtlar bormi?</div>
-<b>B:</b> Yes, there are many trees.
-<div class="uz">Ha, ko‘p daraxtlar bor.</div>
+<div class="en">I can swim.</div>
+<div class="uz">Men suza olaman.</div>
 </div>
-<h3>Dialog 2 — O‘tmish haqida</h3>
 <div class="example">
-<b>A:</b> Was there a shop here before?
-<div class="uz">Oldin bu yerda do‘kon bormidi?</div>
-<b>B:</b> Yes, there was.
-<div class="uz">Ha, bor edi.</div>
-<b>A:</b> Were there many people?
-<div class="uz">Odamlar ko‘p edimi?</div>
-<b>B:</b> Yes, there were.
-<div class="uz">Ha, ko‘p edi.</div>
+<div class="en">You should study.</div>
+<div class="uz">Siz o‘qishingiz kerak.</div>
 </div>
-<h3>Dialog 3 — Sinfxonada</h3>
 <div class="example">
-<b>A:</b> Are there any students in the classroom?
-<div class="uz">Sinf xonasida o‘quvchilar bormi?</div>
-<b>B:</b> Yes, there are ten students.
-<div class="uz">Ha, o‘nta o‘quvchi bor.</div>
-<b>A:</b> Is there a teacher?
-<div class="uz">O‘qituvchi bormi?</div>
-<b>B:</b> No, there isn't.
-<div class="uz">Yo‘q, yo‘q.</div>
+<div class="en">We must go now.</div>
+<div class="uz">Biz hozir ketishimiz shart.</div>
+</div>
+<div class="note warning">
+❌ I can to swim.<br>
+✅ I can swim.<br><br>
+❌ You should to study.<br>
+✅ You should study.
+</div>
+<h3>2. LET + OBJECT + VERB</h3>
+<p>Let — ruxsat bermoq yoki imkon bermoq.</p>
+<div class="example">
+<div class="en">Let me help you.</div>
+<div class="uz">Sizga yordam berishimga ruxsat bering.</div>
+</div>
+<div class="example">
+<div class="en">My parents let me go out.</div>
+<div class="uz">Ota-onam tashqariga chiqishimga ruxsat berishadi.</div>
+</div>
+<h3>3. MAKE + OBJECT + VERB</h3>
+<p>Make — kimnidir biror ishni qilishga majbur qilmoq yoki sabab bo‘lmoq.</p>
+<div class="example">
+<div class="en">The teacher made us repeat the sentence.</div>
+<div class="uz">O‘qituvchi bizga gapni takrorlatdi.</div>
+</div>
+<div class="note">
+Make fe'li majhul nisbatda ishlatilganda “to” qaytadi: We were made to wait. Bu keyingi bosqichda chuqurroq o‘rganiladi.
 </div>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-Uchta dialogni inglizcha va o‘zbekcha ko‘chiring. Keyin har bir dialogni ovoz chiqarib 3 marta o‘qing.
+Bare infinitive ta'rifini yozing. Modal fe'llar, let va make bilan misollarni ko‘chiring.
 </div>
 </section>
 
 <section class="card">
-<h2>21. Eng ko‘p uchraydigan xatolar</h2>
+<h2>13. GERUND va INFINITIVE — bir xil fe'l, boshqa ma'no</h2>
+<p>Ba'zi fe'llardan keyin gerund ham, infinitive ham kelishi mumkin. Lekin ma'no o‘zgaradi. Bu bo‘limga alohida e'tibor bering.</p>
+
+<h3>1. STOP</h3>
+<p><b>Stop + ING</b> — biror ishni bajarishni to‘xtatmoq.</p>
+<div class="example">
+<div class="en">He stopped smoking.</div>
+<div class="uz">U chekishni tashladi.</div>
+</div>
+<p><b>Stop + TO + VERB</b> — boshqa ishni bajarish uchun to‘xtamoq.</p>
+<div class="example">
+<div class="en">He stopped to drink water.</div>
+<div class="uz">U suv ichish uchun to‘xtadi.</div>
+</div>
+
+<h3>2. REMEMBER</h3>
+<p><b>Remember + ING</b> — o'tmishda sodir bo‘lgan ishni eslamoq.</p>
+<div class="example">
+<div class="en">I remember meeting him.</div>
+<div class="uz">U bilan uchrashganimni eslayman.</div>
+</div>
+<p><b>Remember + TO + VERB</b> — biror ishni qilishni unutmaslik, eslab qolmoq.</p>
+<div class="example">
+<div class="en">Remember to call your mother.</div>
+<div class="uz">Onangizga qo‘ng‘iroq qilishni unutmang.</div>
+</div>
+
+<h3>3. FORGET</h3>
+<p><b>Forget + ING</b> — o'tmishda sodir bo‘lgan ishni eslay olmaslik yoki unutmoq.</p>
+<div class="example">
+<div class="en">I'll never forget meeting you.</div>
+<div class="uz">Siz bilan uchrashganimni hech qachon unutmayman.</div>
+</div>
+<p><b>Forget + TO + VERB</b> — bajarilishi kerak bo‘lgan ishni unutmoq.</p>
+<div class="example">
+<div class="en">I forgot to buy bread.</div>
+<div class="uz">Non sotib olishni unutdim.</div>
+</div>
+
+<h3>4. TRY</h3>
+<p><b>Try + ING</b> — muammoni hal qilish uchun bir usulni sinab ko‘rmoq.</p>
+<div class="example">
+<div class="en">Try drinking some water.</div>
+<div class="uz">Biroz suv ichib ko‘ring.</div>
+</div>
+<p><b>Try + TO + VERB</b> — biror ishni bajarishga urinmoq, harakat qilmoq.</p>
+<div class="example">
+<div class="en">I tried to open the door.</div>
+<div class="uz">Eshikni ochishga harakat qildim.</div>
+</div>
+
+<table>
+<tr><th>Fe'l</th><th>ING shakli</th><th>TO shakli</th></tr>
+<tr><td>stop</td><td>ishni to‘xtatish</td><td>bir ish uchun to‘xtash</td></tr>
+<tr><td>remember</td><td>o‘tgan ishni eslash</td><td>qilishni eslab qolish</td></tr>
+<tr><td>forget</td><td>o‘tgan ishni unutish</td><td>qilish kerakligini unutish</td></tr>
+<tr><td>try</td><td>usulni sinash</td><td>urinib ko‘rish</td></tr>
+</table>
+<div class="note warning">
+Bu ma'no farqlari muhim, lekin hozircha ularni yodlab, misollar orqali tushunib oling. Har bir fe'lning ikki shaklini bir-biriga almashtirib yubormang.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Stop, remember, forget va try fe'llarining ikki shaklini alohida jadvalga yozing. Har biriga misol va tarjima yozing.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Qavsdagi ma'noga mos shaklni tanlang:
+<ol>
+<li>He stopped _____ (chekishni tashladi). (smoke)</li>
+<li>She stopped _____ (suv ichish uchun). (drink)</li>
+<li>Remember _____ your homework. (bajarishni unutmang) (do)</li>
+<li>I remember _____ him last year. (uchrashganimni eslayman) (meet)</li>
+<li>I forgot _____ the door. (eshikni qulflashni unutdim) (lock)</li>
+<li>Try _____ the computer again. (boshqa usulni sinab ko‘ring) (restart)</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>14. GERUND — gap boshida va boshqa vazifalarda</h2>
+<p>Gerund faqat enjoy yoki finish dan keyin kelmaydi. U gapning boshida ham, predloglardan keyin ham ishlatiladi.</p>
+<h3>1. Gapning egasi sifatida</h3>
+<div class="example">
+<div class="en">Reading improves your vocabulary.</div>
+<div class="uz">O‘qish lug‘at boyligingizni oshiradi.</div>
+</div>
+<div class="example">
+<div class="en">Walking is good for your health.</div>
+<div class="uz">Piyoda yurish sog‘liq uchun foydali.</div>
+</div>
+<h3>2. Predlogdan keyin</h3>
+<div class="example">
+<div class="en">She is interested in learning languages.</div>
+<div class="uz">U tillarni o‘rganishga qiziqadi.</div>
+</div>
+<h3>3. Ayrim birikmalardan keyin</h3>
+<div class="example">
+<div class="en">It's worth visiting this place.</div>
+<div class="uz">Bu joyga borishga arziydi.</div>
+</div>
+<div class="example">
+<div class="en">I have difficulty understanding him.</div>
+<div class="uz">Uni tushunishda qiynalaman.</div>
+</div>
+<div class="example">
+<div class="en">There is no point in arguing.</div>
+<div class="uz">Bahslashishdan foyda yo‘q.</div>
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Uchta vazifani yozing: gap egasi, predlogdan keyin, birikmalardan keyin. Har biriga misol ko‘chiring.
+</div>
+</section>
+
+<section class="card">
+<h2>15. GERUND va INFINITIVE bilan inkor gaplar</h2>
+<p>Gerund va infinitive inkor shaklida ham ishlatilishi mumkin.</p>
+<h3>NOT + GERUND</h3>
+<div class="rule">NOT + VERB-ING</div>
+<div class="example">
+<div class="en">He admitted not telling the truth.</div>
+<div class="uz">U haqiqatni aytmaganini tan oldi.</div>
+</div>
+<div class="example">
+<div class="en">Not studying regularly is a problem.</div>
+<div class="uz">Muntazam o‘qimaslik muammo.</div>
+</div>
+<h3>NOT + TO-INFINITIVE</h3>
+<div class="rule">NOT + TO + VERB</div>
+<div class="example">
+<div class="en">I decided not to go.</div>
+<div class="uz">Men bormaslikka qaror qildim.</div>
+</div>
+<div class="example">
+<div class="en">She promised not to be late.</div>
+<div class="uz">U kechikmaslikka va'da berdi.</div>
+</div>
+<div class="note">
+Inkor so‘zi not tegishli shakldan oldin keladi: not doing yoki not to do.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Not + gerund va not + infinitive formulalarini yozing. Misollarni ko‘chiring.
+</div>
+</section>
+
+<section class="card">
+<h2>16. GERUND va INFINITIVE — umumiy jadval</h2>
+<table>
+<tr><th>Gerund talab qiladi</th><th>Infinitive talab qiladi</th></tr>
+<tr><td>enjoy doing</td><td>want to do</td></tr>
+<tr><td>finish doing</td><td>need to do</td></tr>
+<tr><td>avoid doing</td><td>decide to do</td></tr>
+<tr><td>mind doing</td><td>hope to do</td></tr>
+<tr><td>suggest doing</td><td>plan to do</td></tr>
+<tr><td>keep doing</td><td>promise to do</td></tr>
+<tr><td>practise doing</td><td>agree to do</td></tr>
+<tr><td>consider doing</td><td>offer to do</td></tr>
+<tr><td>miss doing</td><td>expect to do</td></tr>
+<tr><td>admit doing</td><td>choose to do</td></tr>
+</table>
+<h3>Ikkala shaklni qabul qiladigan fe'llar</h3>
+<table>
+<tr><th>Fe'l</th><th>Gerund</th><th>Infinitive</th></tr>
+<tr><td>like</td><td>like doing</td><td>like to do</td></tr>
+<tr><td>love</td><td>love doing</td><td>love to do</td></tr>
+<tr><td>hate</td><td>hate doing</td><td>hate to do</td></tr>
+<tr><td>prefer</td><td>prefer doing</td><td>prefer to do</td></tr>
+</table>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Ushbu ikki jadvalni to‘liq ko‘chiring. Fe'llarni ikki guruhga ajratib yodlang.
+</div>
+</section>
+
+<section class="card">
+<h2>17. Kundalik hayotdagi misollar</h2>
+<h3>My Free Time</h3>
+<div class="example">
+<div class="en">I enjoy reading books in my free time.</div>
+<div class="uz">Bo‘sh vaqtimda kitob o‘qishdan zavqlanaman.</div>
+<div class="en">I like listening to music.</div>
+<div class="uz">Musiqa tinglashni yoqtiraman.</div>
+<div class="en">I want to learn new things.</div>
+<div class="uz">Yangi narsalarni o‘rganishni xohlayman.</div>
+<div class="en">I plan to visit my friends this weekend.</div>
+<div class="uz">Bu dam olish kunlari do‘stlarimni ko‘rishni rejalashtiryapman.</div>
+</div>
+<h3>Learning English</h3>
+<div class="example">
+<div class="en">I practise speaking English every day.</div>
+<div class="uz">Men har kuni ingliz tilida gapirishni mashq qilaman.</div>
+<div class="en">I want to improve my pronunciation.</div>
+<div class="uz">Talaffuzimni yaxshilashni xohlayman.</div>
+<div class="en">I enjoy learning new words.</div>
+<div class="uz">Yangi so‘zlarni o‘rganishdan zavqlanaman.</div>
+<div class="en">I decided to study English regularly.</div>
+<div class="uz">Ingliz tilini muntazam o‘rganishga qaror qildim.</div>
+</div>
+<h3>At Work</h3>
+<div class="example">
+<div class="en">I need to finish my work.</div>
+<div class="uz">Ishimni tugatishim kerak.</div>
+<div class="en">I enjoy helping customers.</div>
+<div class="uz">Mijozlarga yordam berishdan zavqlanaman.</div>
+<div class="en">I avoid making mistakes.</div>
+<div class="uz">Xato qilishdan saqlanaman.</div>
+<div class="en">I hope to improve my skills.</div>
+<div class="uz">Ko‘nikmalarimni yaxshilashga umid qilaman.</div>
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Uchta matndan o‘zingiz uchun foydali bo‘lgan 10 ta gapni tanlab ko‘chiring. Gerund va infinitive shakllarini belgilang.
+</div>
+</section>
+
+<section class="card">
+<h2>18. Dialoglar</h2>
+<h3>Dialog 1 — Hobbies</h3>
+<div class="example">
+<b>A:</b> What do you enjoy doing in your free time?
+<div class="uz">Bo‘sh vaqtingizda nima qilishdan zavqlanasiz?</div>
+<b>B:</b> I enjoy reading and listening to music.
+<div class="uz">Kitob o‘qish va musiqa tinglashdan zavqlanaman.</div>
+<b>A:</b> Do you want to learn something new?
+<div class="uz">Yangi biror narsa o‘rganishni xohlaysizmi?</div>
+<b>B:</b> Yes, I want to learn English.
+<div class="uz">Ha, ingliz tilini o‘rganishni xohlayman.</div>
+</div>
+<h3>Dialog 2 — Plans</h3>
+<div class="example">
+<b>A:</b> What are you planning to do this weekend?
+<div class="uz">Bu dam olish kunlari nima qilishni rejalashtiryapsiz?</div>
+<b>B:</b> I plan to visit my family.
+<div class="uz">Oilamni ko‘rishni rejalashtiryapman.</div>
+<b>A:</b> Do you enjoy travelling?
+<div class="uz">Sayohat qilishni yoqtirasizmi?</div>
+<b>B:</b> Yes, I love travelling.
+<div class="uz">Ha, sayohat qilishni juda yaxshi ko‘raman.</div>
+</div>
+<h3>Dialog 3 — Learning</h3>
+<div class="example">
+<b>A:</b> How do you practise English?
+<div class="uz">Ingliz tilini qanday mashq qilasiz?</div>
+<b>B:</b> I practise speaking every day.
+<div class="uz">Har kuni gapirishni mashq qilaman.</div>
+<b>A:</b> Do you want to improve your grammar?
+<div class="uz">Grammatikangizni yaxshilashni xohlaysizmi?</div>
+<b>B:</b> Of course. I need to study more.
+<div class="uz">Albatta. Ko‘proq o‘qishim kerak.</div>
+</div>
+<div class="write">
+<h3>🗣 DAFTARGA YOZING VA OVOZ CHIQARIB O‘QING</h3>
+Dialoglarni daftarga ko‘chiring. Har bir dialogni kamida 3 marta ovoz chiqarib o‘qing. Keyin rollarni almashtirib mashq qiling.
+</div>
+</section>
+
+<section class="card">
+<h2>19. Eng ko‘p uchraydigan xatolar</h2>
 <table>
 <tr><th>Noto‘g‘ri</th><th>To‘g‘ri</th><th>Sabab</th></tr>
-<tr><td>There are a book.</td><td>There is a book.</td><td>Bitta kitob.</td></tr>
-<tr><td>There is two books.</td><td>There are two books.</td><td>Ko‘plik.</td></tr>
-<tr><td>There are some water.</td><td>There is some water.</td><td>Water sanalmaydi.</td></tr>
-<tr><td>There isn't books.</td><td>There aren't books.</td><td>Books ko‘plik.</td></tr>
-<tr><td>Is there books?</td><td>Are there books?</td><td>Ko‘plik savoli.</td></tr>
-<tr><td>Are there a chair?</td><td>Is there a chair?</td><td>Birlik savoli.</td></tr>
-<tr><td>There were a man.</td><td>There was a man.</td><td>Birlik ot.</td></tr>
-<tr><td>There was children.</td><td>There were children.</td><td>Ko‘plik ot.</td></tr>
-<tr><td>Did there was a shop?</td><td>Was there a shop?</td><td>Was gap boshiga chiqadi.</td></tr>
-<tr><td>Did there were books?</td><td>Were there books?</td><td>Were gap boshiga chiqadi.</td></tr>
+<tr><td>I enjoy to read.</td><td>I enjoy reading.</td><td>Enjoy + ing.</td></tr>
+<tr><td>I want learning.</td><td>I want to learn.</td><td>Want + to.</td></tr>
+<tr><td>She finished to work.</td><td>She finished working.</td><td>Finish + ing.</td></tr>
+<tr><td>He decided going.</td><td>He decided to go.</td><td>Decide + to.</td></tr>
+<tr><td>Thank you for help me.</td><td>Thank you for helping me.</td><td>Predlog + ing.</td></tr>
+<tr><td>I can to swim.</td><td>I can swim.</td><td>Modal + bare infinitive.</td></tr>
+<tr><td>She suggested to go.</td><td>She suggested going.</td><td>Suggest + ing.</td></tr>
+<tr><td>I hope seeing you.</td><td>I hope to see you.</td><td>Hope + to.</td></tr>
+<tr><td>He avoids to drive.</td><td>He avoids driving.</td><td>Avoid + ing.</td></tr>
+<tr><td>I promise helping.</td><td>I promise to help.</td><td>Promise + to.</td></tr>
 </table>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-Jadvaldagi barcha noto‘g‘ri va to‘g‘ri gaplarni daftarga ko‘chiring. Har bir xatoning sababini o‘zbek tilida yozing.
+Barcha xato va to‘g‘ri gaplarni ko‘chiring. Har bir xatoning sababini yozing.
 </div>
 </section>
 
 <section class="card">
-<h2>22. Talaffuz mashqi</h2>
-<p>Quyidagi gaplarni avval tinglang, keyin ovoz chiqarib takrorlang.</p>
-<div class="example">
-<div class="en">There is a book.</div><button class="audio" onclick="speak('There is a book')">🔊 Tinglash</button>
-<div class="pron">Zer iz e buk.</div>
+<h2>20. Yakuniy grammatik xulosa</h2>
+<div class="rule">GERUND = VERB + ING</div>
+<div class="rule">INFINITIVE = TO + VERB</div>
+<div class="rule">BARE INFINITIVE = VERB (TO YO‘Q)</div>
+<p><b>Gerund ishlatiladigan asosiy fe'llar:</b></p>
+<p>enjoy, finish, avoid, mind, suggest, keep, practise, consider, miss, admit.</p>
+<p><b>Infinitive ishlatiladigan asosiy fe'llar:</b></p>
+<p>want, need, decide, hope, plan, promise, agree, offer, expect, choose.</p>
+<p><b>Ikkala shakl ham ishlatiladigan fe'llar:</b></p>
+<p>like, love, hate, prefer.</p>
+<p><b>Predlogdan keyin:</b></p>
+<p>before eating, after working, without saying, interested in learning.</p>
+<p><b>Modal fe'llardan keyin:</b></p>
+<p>can swim, should study, must go.</p>
+<div class="note good">
+Mavzuning eng asosiy siri: ikkinchi fe'lning shaklini ko‘pincha birinchi fe'l belgilaydi. Shuning uchun fe'llarni alohida emas, balki birikma sifatida yodlang: enjoy doing, want to do, decide to do.
 </div>
-<div class="example">
-<div class="en">There are two books.</div><button class="audio" onclick="speak('There are two books')">🔊 Tinglash</button>
-<div class="pron">Zer ar tu buks.</div>
-</div>
-<div class="example">
-<div class="en">There isn't any water.</div><button class="audio" onclick="speak('There is not any water')">🔊 Tinglash</button>
-<div class="pron">Zer iznt eni voter.</div>
-</div>
-<div class="example">
-<div class="en">Are there any students?</div><button class="audio" onclick="speak('Are there any students?')">🔊 Tinglash</button>
-<div class="pron">Ar zer eni styudents?</div>
-</div>
-<div class="example">
-<div class="en">There was a big house.</div><button class="audio" onclick="speak('There was a big house')">🔊 Tinglash</button>
-<div class="pron">Zer voz e big haus.</div>
-</div>
-<div class="example">
-<div class="en">There were many people.</div><button class="audio" onclick="speak('There were many people')">🔊 Tinglash</button>
-<div class="pron">Zer ver meni pipel.</div>
-</div>
-<div class="note">
-Talaffuz yozuvi inglizcha tovushlarni taxminiy ifodalaydi. Eng yaxshi mashq — audio tugmasini bosib, gapni bir necha marta tinglash va takrorlash.
-</div>
-<div class="write">
-<h3>🗣 DAFTARDA VA OVOZ CHIQARIB BAJARING</h3>
-6 ta gapni daftarga yozing. Har bir gapni 5 martadan ovoz chiqarib takrorlang.
-</div>
-</section>
-
-<section class="card">
-<h2>23. Umumiy takrorlash</h2>
-<table>
-<tr><th>Shakl</th><th>Formula</th><th>Misol</th></tr>
-<tr><td>Darak, hozirgi birlik</td><td>There is + singular</td><td>There is a pen.</td></tr>
-<tr><td>Darak, hozirgi ko‘plik</td><td>There are + plural</td><td>There are pens.</td></tr>
-<tr><td>Inkor, hozirgi birlik</td><td>There isn't + singular</td><td>There isn't a pen.</td></tr>
-<tr><td>Inkor, hozirgi ko‘plik</td><td>There aren't + plural</td><td>There aren't pens.</td></tr>
-<tr><td>Savol, hozirgi birlik</td><td>Is there + singular?</td><td>Is there a pen?</td></tr>
-<tr><td>Savol, hozirgi ko‘plik</td><td>Are there + plural?</td><td>Are there pens?</td></tr>
-<tr><td>Darak, o'tgan birlik</td><td>There was + singular</td><td>There was a pen.</td></tr>
-<tr><td>Darak, o'tgan ko‘plik</td><td>There were + plural</td><td>There were pens.</td></tr>
-<tr><td>Inkor, o'tgan birlik</td><td>There wasn't + singular</td><td>There wasn't a pen.</td></tr>
-<tr><td>Inkor, o'tgan ko‘plik</td><td>There weren't + plural</td><td>There weren't pens.</td></tr>
-<tr><td>Savol, o'tgan birlik</td><td>Was there + singular?</td><td>Was there a pen?</td></tr>
-<tr><td>Savol, o'tgan ko‘plik</td><td>Were there + plural?</td><td>Were there pens?</td></tr>
-</table>
 <div class="write">
 <h3>✍️ DAFTARGA YOZING</h3>
-Ushbu umumiy jadvalni to‘liq ko‘chiring. Jadvalga qaramasdan barcha 12 ta formulani yoddan qayta yozib ko‘ring.
+Uchta asosiy formulani va fe'llar guruhini daftarga yozing. Daftarga qaramasdan ularni qayta yozib ko‘ring.
 </div>
 </section>
 
 <section class="card" id="quiz">
-<h2>24. Katta test — 30 ta savol</h2>
-<p>Har bir savolda faqat bitta to‘g‘ri javob bor. Avval mustaqil javob bering. Natijangiz oxirida ko‘rinadi.</p>
-<p><b>O‘tish mezoni:</b> kamida 24 ta to‘g‘ri javob — 80%.</p>
+<h2>21. KATTA TEST — 30 TA SAVOL</h2>
+<p>Har bir savolga bitta javob tanlang. Javobni belgilaganingizdan so‘ng izoh ko‘rinadi.</p>
+<p><b>O‘tish mezoni: 24/30 — 80%.</b></p>
 <div id="quizArea"></div>
 <button onclick="finishQuiz()">TESTNI YAKUNLASH</button>
 <div id="quizResult"></div>
 </section>
 
 <section class="card">
-<h2>25. HOMEWORK — Uy vazifasi</h2>
-<p>Uy vazifasi 4 ta asosiy ko‘nikma bo‘yicha bajariladi. Barcha yozma topshiriqlar daftarda bajarilishi shart.</p>
+<h2>22. HOMEWORK — UY VAZIFASI</h2>
+<p>Uy vazifasi 4 ta asosiy ko‘nikmadan iborat. Barcha yozma ishlar daftarda bajariladi.</p>
 
 <div class="homework-task">
 <h3>1-TOPSHIRIQ — GRAMMAR</h3>
-<p>Quyidagi topshiriqlarni daftarda bajaring.</p>
 <b>A. To‘g‘ri shaklni tanlang:</b>
 <ol>
-<li>There (is / are) a book on the table.</li>
-<li>There (is / are) five students in the room.</li>
-<li>There (was / were) a tree in the garden.</li>
-<li>There (was / were) many people at the market.</li>
-<li>There (isn't / aren't) any milk.</li>
-<li>There (wasn't / weren't) any chairs.</li>
+<li>I enjoy (read / reading / to read) books.</li>
+<li>She wants (learn / learning / to learn) English.</li>
+<li>They finished (work / working / to work).</li>
+<li>He decided (go / going / to go) home.</li>
+<li>We avoid (make / making / to make) mistakes.</li>
+<li>I hope (see / seeing / to see) you.</li>
+<li>She suggested (go / going / to go) by bus.</li>
+<li>He promised (help / helping / to help) me.</li>
+<li>I am interested in (learn / learning / to learn) English.</li>
+<li>You should (study / studying / to study) more.</li>
 </ol>
-<b>B. Inkor shakliga aylantiring:</b>
+<b>B. Xatolarni toping va to‘g‘rilang:</b>
 <ol>
-<li>There is a computer in the room.</li>
-<li>There are three windows.</li>
-<li>There was a shop here.</li>
-<li>There were many children.</li>
+<li>I enjoy to play football.</li>
+<li>She wants learning English.</li>
+<li>He finished to write the letter.</li>
+<li>Thank you for help me.</li>
+<li>I can to speak English.</li>
 </ol>
-<b>C. So‘roq shakliga aylantiring:</b>
+<b>C. Ingliz tiliga tarjima qiling:</b>
 <ol>
-<li>There is a bank near here.</li>
-<li>There are some apples.</li>
-<li>There was a teacher.</li>
-<li>There were two cars.</li>
+<li>Men kitob o‘qishni yoqtiraman.</li>
+<li>U ingliz tilini o‘rganishni xohlaydi.</li>
+<li>Biz ishlashni tugatdik.</li>
+<li>Men sizga yordam berishga va'da beraman.</li>
+<li>U musiqa tinglashdan zavqlanadi.</li>
 </ol>
 </div>
 
 <div class="homework-task">
 <h3>2-TOPSHIRIQ — WRITING</h3>
-<p><b>My House and My Town</b> mavzusida kamida 15 ta inglizcha gap yozing.</p>
+<p><b>My Hobbies and My Plans</b> mavzusida kamida 15 ta inglizcha gap yozing.</p>
 <p>Talablar:</p>
 <ul>
-<li>Kamida 5 ta There is / There are gaplari.</li>
-<li>Kamida 3 ta inkor gap.</li>
-<li>Kamida 3 ta so‘roq gap.</li>
-<li>Kamida 4 ta There was / There were gaplari.</li>
-<li>Kamida 5 ta joy predlogidan foydalaning.</li>
+<li>Kamida 5 ta gerund ishlating.</li>
+<li>Kamida 5 ta infinitive ishlating.</li>
+<li>Like, love, hate yoki prefer dan foydalaning.</li>
+<li>Kamida 2 ta preposition + gerund ishlating.</li>
+<li>Kamida 2 ta maqsadni bildiruvchi to + verb gap yozing.</li>
 </ul>
 <p>Har bir gapning o‘zbekcha tarjimasini ham yozing.</p>
 </div>
@@ -1164,53 +1174,58 @@ Ushbu umumiy jadvalni to‘liq ko‘chiring. Jadvalga qaramasdan barcha 12 ta fo
 <h3>3-TOPSHIRIQ — READING</h3>
 <p>Matnni kamida 3 marta o‘qing. Keyin daftarga ko‘chirib, tarjima qiling.</p>
 <div class="example">
-<p class="en">MY OLD HOUSE</p>
-<p>There is a small garden near my house. There are three trees in the garden. There is a big table in the kitchen. There are four chairs around the table. There is a small shop next to my house.</p>
-<p>There was a beautiful park near my old house. There were many children in the park. There was a small lake behind the park. There weren't many cars in that street.</p>
-<p>Now there are more shops and houses in my town. There is also a new school near the market.</p>
+<p class="en">LEARNING ENGLISH</p>
+<p>My name is Alex. I enjoy learning English because it helps me communicate with people. I practise speaking every day. I also like reading short stories and listening to English podcasts.</p>
+<p>I want to improve my vocabulary. I decided to learn ten new words every day. I need to practise using these words in sentences. Sometimes I make mistakes, but I don't stop learning.</p>
+<p>My teacher suggested watching English videos. I hope to speak English confidently in the future. I know that learning a language takes time, so I plan to study regularly.</p>
 </div>
-<p><b>Savollarga ingliz tilida javob yozing:</b></p>
+<b>Savollarga ingliz tilida javob yozing:</b>
 <ol>
-<li>Is there a garden near the house?</li>
-<li>How many trees are there in the garden?</li>
-<li>Where is the shop?</li>
-<li>Was there a park near the old house?</li>
-<li>Were there many children in the park?</li>
-<li>Are there more shops in the town now?</li>
+<li>What does Alex enjoy doing?</li>
+<li>How often does he practise speaking?</li>
+<li>What does he want to improve?</li>
+<li>How many new words does he plan to learn every day?</li>
+<li>What did his teacher suggest?</li>
+<li>What does Alex hope to do in the future?</li>
+<li>Does he stop learning when he makes mistakes?</li>
 </ol>
+<p>Matndan 5 ta gerund va 5 ta infinitive topib, alohida yozing.</p>
 </div>
 
 <div class="homework-task">
 <h3>4-TOPSHIRIQ — SPEAKING</h3>
-<p>Quyidagi mavzularda ovoz chiqarib gapiring. Har bir mavzuda kamida 1 daqiqa gapirishga harakat qiling.</p>
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir javobni kamida 3 ta gap bilan kengaytiring.</p>
 <ol>
-<li>Describe your room.</li>
-<li>Describe your house.</li>
-<li>Describe your school or workplace.</li>
-<li>Talk about your town in the past.</li>
-<li>Talk about what there is and isn't in your neighbourhood.</li>
+<li>What do you enjoy doing in your free time?</li>
+<li>What do you want to learn?</li>
+<li>Do you like reading books?</li>
+<li>What do you need to improve in English?</li>
+<li>What do you plan to do next year?</li>
+<li>What do you avoid doing?</li>
+<li>Do you enjoy learning new words?</li>
+<li>What do you hope to achieve?</li>
 </ol>
-<p>Gapirishda There is, There are, There was, There were, isn't, aren't, wasn't va weren't shakllaridan foydalaning.</p>
+<p>Har bir javobda gerund va infinitive ishlatishga harakat qiling. Gaplarni avval daftarga yozing, keyin ovoz chiqarib ayting.</p>
 </div>
 
 <div class="note warning">
-<b>Uy vazifasi talabi:</b> Grammar va Writing topshiriqlari daftarda to‘liq bajariladi. Reading matni tarjima qilinadi. Speaking topshiriqlari ovoz chiqarib mashq qilinadi.
+<b>Uy vazifasi talabi:</b> Grammar, Writing va Reading yozma ravishda daftarda bajariladi. Speaking topshiriqlari ovoz chiqarib mashq qilinadi. Javoblarni shunchaki ko‘chirib olish emas, qoidani tushunib mustaqil bajarish muhim.
 </div>
 </section>
 
 <section class="hero">
- <span class="pill">LESSON 12 COMPLETED</span>
- <h1>KEEP LEARNING. KEEP GROWING!</h1>
- <p>Bugun siz ingliz tilida bor, mavjud, bor edi va mavjud edi kabi muhim fikrlarni ifodalashni o‘rgandingiz.</p>
- <p>Har bir qoida — yangi bilim. Har bir yozilgan gap — yangi qadam. Har bir mashq — yanada kuchli ingliz tili.</p>
- <h2 style="color:white">Learn today. Succeed tomorrow.</h2>
- <p><b>ENGLISH UP — Your journey to confident English!</b></p>
+<span class="pill">LESSON 13 COMPLETED</span>
+<h1>NEVER STOP LEARNING!</h1>
+<p>Bugun siz ingliz tilida fe'llardan keyin -ing yoki to + verb ishlatilishini o‘rgandingiz.</p>
+<p>Har kuni ozgina mashq qiling. Yangi qoidalarni yozing, misollar tuzing va ingliz tilida gapirishdan to‘xtamang.</p>
+<h2 style="color:white">Learn today. Succeed tomorrow.</h2>
+<p><b>ENGLISH UP — Your journey to confident English!</b></p>
 </section>
 
 </main>
 
 <footer>
-ENGLISH UP · ELEMENTARY COURSE · LESSON 12<br>
+ENGLISH UP · ELEMENTARY COURSE · LESSON 13<br>
 Learn today. Succeed tomorrow.
 </footer>
 
@@ -1231,47 +1246,47 @@ function speak(text){
  window.speechSynthesis.cancel();
  const utterance=new SpeechSynthesisUtterance(text);
  utterance.lang='en-US';
- utterance.rate=0.82;
+ utterance.rate=.82;
  window.speechSynthesis.speak(utterance);
 }
 
 window.addEventListener('scroll',()=>{
- const scrollTop=document.documentElement.scrollTop;
+ const top=document.documentElement.scrollTop;
  const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
- document.getElementById('progressBar').style.width=(height>0?(scrollTop/height)*100:0)+'%';
+ document.getElementById('progressBar').style.width=(height>0?top/height*100:0)+'%';
 });
 
 const questions=[
- {q:"_____ a book on the table.",o:["There are","There is","There were"],a:1,e:"A book birlik. There is ishlatiladi."},
- {q:"_____ three chairs in the room.",o:["There is","There was","There are"],a:2,e:"Three chairs ko‘plik. There are ishlatiladi."},
- {q:"_____ some water in the glass.",o:["There is","There are","There were"],a:0,e:"Water sanalmaydigan ot. There is ishlatiladi."},
- {q:"There _____ a computer in my room.",o:["aren't","isn't","weren't"],a:1,e:"A computer birlik, inkor shakli isn't."},
- {q:"There _____ any students here.",o:["isn't","wasn't","aren't"],a:2,e:"Students ko‘plik, inkor shakli aren't."},
- {q:"_____ there a bank near here?",o:["Is","Are","Were"],a:0,e:"Birlikdagi savol Is there bilan boshlanadi."},
- {q:"_____ there any shops in this street?",o:["Is","Are","Was"],a:1,e:"Shops ko‘plik. Are there ishlatiladi."},
- {q:"Yes, there _____.",o:["is","are","isn't"],a:0,e:"Is there savoliga Yes, there is deb javob beriladi."},
- {q:"No, there _____.",o:["are","is","isn't"],a:2,e:"Is there savolining inkor qisqa javobi No, there isn't."},
- {q:"There are _____ apples in the basket.",o:["some","any","a"],a:0,e:"Darak gapda some ishlatiladi."},
- {q:"There aren't _____ eggs.",o:["some","any","an"],a:1,e:"Inkor gapda any ishlatiladi."},
- {q:"There is _____ orange on the table.",o:["a","an","some"],a:1,e:"Orange unli tovush bilan boshlanadi: an orange."},
- {q:"There are two _____ in the room.",o:["child","children","childs"],a:1,e:"Child so‘zining ko‘pligi children."},
- {q:"There _____ a tree here yesterday.",o:["were","was","are"],a:1,e:"Yesterday o'tgan zamon. A tree birlik, was."},
- {q:"There _____ many people at the market.",o:["was","is","were"],a:2,e:"People ko‘plik ma'nosida, o'tgan zamon were."},
- {q:"There _____ any milk in the fridge yesterday.",o:["weren't","wasn't","aren't"],a:1,e:"Milk sanalmaydi. O'tgan zamon inkori wasn't."},
- {q:"There _____ any books on the desk.",o:["wasn't","weren't","isn't"],a:1,e:"Books ko‘plik. O'tgan zamon inkori weren't."},
- {q:"_____ there a school here before?",o:["Were","Was","Is"],a:1,e:"A school birlik va o'tgan zamon: Was there?" },
- {q:"_____ there many cars yesterday?",o:["Was","Is","Were"],a:2,e:"Many cars ko‘plik. Were there?" },
- {q:"Yes, there _____.",o:["was","were","are"],a:0,e:"Was there savoliga Yes, there was deb javob beriladi."},
- {q:"No, there _____.",o:["weren't","wasn't","isn't"],a:1,e:"Was there savolining qisqa inkor javobi No, there wasn't."},
- {q:"There is a cat _____ the table.",o:["under","between","at"],a:0,e:"Under — tagida."},
- {q:"There are two pictures _____ the wall.",o:["in","on","under"],a:1,e:"On the wall — devorda."},
- {q:"There is a shop _____ my house.",o:["near","between","under"],a:0,e:"Near — yaqinida."},
- {q:"_____ a book on the desk. It is mine.",o:["There are","There is","There were"],a:1,e:"Bitta kitob mavjud: There is."},
- {q:"_____ my new phone.",o:["There is","It is","There are"],a:1,e:"It is biror narsani tanishtirish yoki ta'riflash uchun."},
- {q:"Choose the correct sentence.",o:["There are some water.","There is some water.","There is waters."],a:1,e:"Water sanalmaydigan ot. There is some water."},
- {q:"Choose the correct question.",o:["Did there was a shop?","Was there a shop?","Were there a shop?"],a:1,e:"Birlikdagi o'tgan zamon savoli Was there bilan tuziladi."},
- {q:"Choose the correct sentence.",o:["There were five students.","There was five students.","There is five students."],a:0,e:"Five students ko‘plik. O'tgan zamonda There were."},
- {q:"Choose the correct sentence.",o:["There isn't two chairs.","There aren't two chairs.","There wasn't two chairs now."],a:1,e:"Two chairs ko‘plik. Hozirgi zamon inkori There aren't."}
+{q:"I enjoy _____ books.",o:["to read","reading","read"],a:1,e:"Enjoy fe'lidan keyin gerund (-ing) ishlatiladi."},
+{q:"She wants _____ English.",o:["learning","learn","to learn"],a:2,e:"Want + to + verb."},
+{q:"He finished _____ his homework.",o:["doing","to do","do"],a:0,e:"Finish + gerund."},
+{q:"They decided _____ home.",o:["going","go","to go"],a:2,e:"Decide + to + verb."},
+{q:"I avoid _____ mistakes.",o:["make","making","to make"],a:1,e:"Avoid + gerund."},
+{q:"We hope _____ you soon.",o:["seeing","see","to see"],a:2,e:"Hope + to + verb."},
+{q:"She suggested _____ by bus.",o:["going","to go","go"],a:0,e:"Suggest + gerund."},
+{q:"I practise _____ English every day.",o:["to speak","speaking","speak"],a:1,e:"Practise + gerund."},
+{q:"He promised _____ me.",o:["helping","help","to help"],a:2,e:"Promise + to + verb."},
+{q:"Thank you for _____ me.",o:["helping","help","to help"],a:0,e:"Predlog for dan keyin gerund keladi."},
+{q:"Before _____, wash your hands.",o:["eat","to eat","eating"],a:2,e:"Before predlogidan keyin gerund."},
+{q:"I am interested in _____ languages.",o:["learning","learn","to learn"],a:0,e:"In predlogidan keyin gerund."},
+{q:"I can _____ English.",o:["to speak","speaking","speak"],a:2,e:"Can modal fe'lidan keyin bare infinitive."},
+{q:"You should _____ more.",o:["study","to study","studying"],a:0,e:"Should dan keyin fe'lning oddiy shakli keladi."},
+{q:"I like _____ books.",o:["read","reading","to reading"],a:1,e:"Like + gerund mumkin."},
+{q:"She loves _____.",o:["dance","dancing","to dancing"],a:1,e:"Love + gerund mumkin."},
+{q:"He needs _____ today.",o:["working","work","to work"],a:2,e:"Need + to + verb."},
+{q:"I plan _____ abroad.",o:["to travel","travelling","travel"],a:0,e:"Plan + to + verb."},
+{q:"Keep _____ English.",o:["to practise","practising","practise"],a:1,e:"Keep + gerund."},
+{q:"She agreed _____ us.",o:["joining","join","to join"],a:2,e:"Agree + to + verb."},
+{q:"He stopped _____ (chekishni tashladi).",o:["to smoke","smoking","smoke"],a:1,e:"Stop + ing — harakatni butunlay to‘xtatish."},
+{q:"He stopped _____ water (suv ichish uchun to‘xtadi).",o:["drinking","to drink","drink"],a:1,e:"Stop + to + verb — boshqa ishni qilish uchun to‘xtash."},
+{q:"Remember _____ the door.",o:["locking","to lock","lock"],a:1,e:"Remember to do — bajarishni esdan chiqarmaslik."},
+{q:"I remember _____ him.",o:["meeting","to meet","meet"],a:0,e:"Remember doing — o'tmishda sodir bo‘lgan ishni eslash."},
+{q:"I went to the shop _____ bread.",o:["buying","to buy","buy"],a:1,e:"To buy — sotib olish uchun, maqsadni bildiradi."},
+{q:"She is good at _____.",o:["cook","to cook","cooking"],a:2,e:"Good at dan keyin gerund."},
+{q:"He decided not _____.",o:["going","to go","go"],a:1,e:"Inkor infinitive: not to + verb."},
+{q:"_____ is good for your health.",o:["Walk","Walking","To walking"],a:1,e:"Gerund gap boshida ega bo‘lib kelishi mumkin."},
+{q:"Choose the correct sentence.",o:["I enjoy to learn English.","I enjoy learning English.","I enjoy learn English."],a:1,e:"Enjoy + gerund."},
+{q:"Choose the correct sentence.",o:["She wants to study.","She wants studying.","She wants study."],a:0,e:"Want + to + verb."}
 ];
 
 let answers={};
@@ -1310,17 +1325,15 @@ function renderQuiz(){
   area.appendChild(box);
  });
 }
+
 function finishQuiz(){
  const count=questions.filter((q,i)=>answers[i]===q.a).length;
  const percent=Math.round(count/questions.length*100);
  const result=document.getElementById('quizResult');
  result.style.display='block';
- let message='';
- if(percent>=80){
-  message='Ajoyib! Siz 80% yoki undan yuqori natija oldingiz. Mavzuni yaxshi o‘zlashtirgansiz.';
- }else{
-  message='Hozircha 80% ga yetmadi. Xato javoblarni ko‘rib chiqing, qoidalarni takrorlang va testni qayta ishlang.';
- }
+ const message=percent>=80
+ ?'Ajoyib! Siz 80% yoki undan yuqori natija oldingiz. Mavzuni yaxshi o‘zlashtirgansiz.'
+ :'Hozircha 80% ga yetmadi. Qoidalarni qayta o‘rganing va testni yana bir marta bajaring.';
  result.innerHTML='Natija: '+count+' / 30 ('+percent+'%)<br>'+message;
  result.scrollIntoView({behavior:'smooth',block:'center'});
 }
@@ -1328,4 +1341,3 @@ renderQuiz();
 </script>
 </body>
 </html>
-
