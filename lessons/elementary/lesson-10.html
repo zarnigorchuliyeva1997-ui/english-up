@@ -1,3 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 10 — Prepositions of Time and Place | English Up</title>
+
+<style>
+:root{
+  --primary:#7047eb;
+  --primary2:#9274ff;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --text:#25213a;
+  --muted:#77718b;
+  --border:#e8e2fa;
+  --soft:#eee9ff;
+  --green:#159b68;
+  --red:#dc4c59;
+  --shadow:0 5px 22px rgba(75,48,140,.08);
+}
+body.dark{
+  --bg:#151222;
+  --card:#211c32;
+  --text:#f4f0ff;
+  --muted:#b8afcf;
+  --border:#39304f;
+  --soft:#302747;
+  --shadow:0 5px 22px rgba(0,0,0,.2);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.7;
+  transition:.25s;
+}
+button{font:inherit;cursor:pointer}
+header{
+  background:linear-gradient(135deg,#7047eb,#9274ff);
+  color:white;
+  padding:17px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 3px 15px #3c247833;
+}
+.brand{font-size:20px;font-weight:900;letter-spacing:1px}
+.header-actions{display:flex;gap:9px;align-items:center}
+.header-btn{
+  border:1px solid #ffffff66;
+  background:#ffffff20;
+  color:white;
+  border-radius:10px;
+  padding:8px 12px;
+  text-decoration:none;
+}
+.progress-track{
+  height:5px;
+  background:#ffffff55;
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+}
+#readingProgress{
+  height:5px;
+  width:0;
+  background:#ffe27a;
+}
+.container{width:min(1050px,92%);margin:auto}
+.hero{
+  margin:28px auto 20px;
+  padding:32px 25px;
+  border-radius:22px;
+  color:white;
+  background:linear-gradient(135deg,#7047eb,#a18aff);
+  box-shadow:var(--shadow);
+}
+.hero .tag{
+  display:inline-block;
+  background:#ffffff25;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:13px;
+}
+.hero h1{font-size:clamp(25px,5vw,38px);line-height:1.2;margin:16px 0 8px}
+.hero p{margin:6px 0}
+.hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hero-stats span{
+  background:#ffffff22;
+  border:1px solid #ffffff44;
+  padding:7px 12px;
+  border-radius:10px;
+  font-size:13px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:22px;
+  margin:18px 0;
+  box-shadow:var(--shadow);
+}
+h2{font-size:23px;margin:0 0 12px}
+h3{font-size:18px;margin:18px 0 8px}
+.muted{color:var(--muted)}
+.intro-text,.lesson-content{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  line-height:1.85;
+}
+.lesson-content{font-size:15px}
+.section-card{padding:0;overflow:hidden}
+.section-heading{
+  width:100%;
+  border:0;
+  background:var(--card);
+  color:var(--text);
+  text-align:left;
+  padding:19px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-weight:800;
+  font-size:16px;
+}
+.section-heading:hover{background:var(--soft)}
+.section-heading .arrow{color:var(--primary);font-size:20px}
+.section-body{padding:0 20px 20px;border-top:1px solid var(--border)}
+.section-tools{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0}
+.small-btn{
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--primary);
+  border-radius:9px;
+  padding:7px 11px;
+  font-size:13px;
+  font-weight:700;
+}
+.small-btn:hover{filter:brightness(.96)}
+.callout{
+  background:var(--soft);
+  border-left:4px solid var(--primary);
+  padding:13px 15px;
+  border-radius:9px;
+  margin:13px 0;
+}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:450px}
+th,td{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:var(--soft)}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
+.toc a{
+  text-decoration:none;
+  color:var(--text);
+  background:var(--soft);
+  border-radius:9px;
+  padding:9px 12px;
+  font-size:13px;
+}
+.toc a:hover{color:var(--primary)}
+.quiz-question{
+  border:1px solid var(--border);
+  padding:16px;
+  border-radius:12px;
+  margin:13px 0;
+}
+.quiz-question p{font-weight:700;margin:0 0 10px}
+.option{
+  display:block;
+  padding:9px 11px;
+  margin:6px 0;
+  background:var(--bg);
+  border-radius:8px;
+  cursor:pointer;
+}
+.option input{margin-right:8px;accent-color:var(--primary)}
+.correct-answer{border:1px solid var(--green);background:#159b6815}
+.wrong-answer{border:1px solid var(--red);background:#dc4c5915}
+#quizResult{
+  display:none;
+  padding:20px;
+  border-radius:13px;
+  background:var(--soft);
+  margin-top:18px;
+}
+.result-score{font-size:34px;font-weight:900;color:var(--primary)}
+.homework-task{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px;
+  margin:12px 0;
+}
+.homework-task h3{margin-top:0}
+.homework-task li{margin:7px 0}
+.action-btn{
+  background:var(--primary);
+  color:white;
+  border:0;
+  border-radius:10px;
+  padding:11px 17px;
+  font-weight:700;
+}
+.action-btn:hover{background:#5c36d1}
+.secondary-btn{
+  background:var(--soft);
+  color:var(--primary);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 15px;
+  font-weight:700;
+}
+.button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.motivation{
+  text-align:center;
+  padding:30px 20px;
+  background:linear-gradient(135deg,#7047eb,#9274ff);
+  color:white;
+  border-radius:18px;
+  margin:25px 0;
+}
+.motivation h2{font-size:25px}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:13px}
+@media(max-width:600px){
+  header{padding:13px 4%}
+  .brand{font-size:16px}
+  .header-btn{padding:7px 9px;font-size:12px}
+  .hero{padding:24px 18px}
+  .card{padding:16px}
+  .section-heading{padding:16px;font-size:14px}
+  .section-body{padding:0 15px 16px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="brand">ENGLISH UP</div>
+  <div class="header-actions">
+    <a class="header-btn" href="../../index.html">← Back</a>
+    <button class="header-btn" onclick="toggleTheme()" id="themeButton">🌙</button>
+  </div>
+  <div class="progress-track"><div id="readingProgress"></div></div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <span class="tag">ELEMENTARY · LESSON 10</span>
+  <h1>PREPOSITIONS OF TIME AND PLACE</h1>
+  <p>Vaqt va joy predloglari</p>
+  <p>Bugun ingliz tilida vaqt, joy va yo‘nalishni to‘g‘ri ifodalashni o‘rganamiz.</p>
+  <div class="hero-stats">
+    <span>📘 20 ta katta bo‘lim</span>
+    <span>🔊 Talaffuz</span>
+    <span>📝 30 ta test</span>
+    <span>🎯 4 ko‘nikmali homework</span>
+  </div>
+</section>
+
+<section class="card">
+  <h2>👋 Darsga xush kelibsiz!</h2>
+  <div class="intro-text" id="introduction"></div>
+  <div class="section-tools">
+    <button class="small-btn" onclick="speakText(document.getElementById('introduction').innerText)">🔊 Kirish qismini tinglash</button>
+    <button class="small-btn" onclick="stopSpeech()">⏹ Ovozni to‘xtatish</button>
+  </div>
+</section>
+
+<section class="card">
+  <h2>📚 Dars mundarijasi</h2>
+  <p class="muted">Kerakli bo‘limni tanlab, to‘g‘ridan-to‘g‘ri o‘tishingiz mumkin.</p>
+  <div class="toc" id="toc"></div>
+</section>
+
+<section class="card">
+  <h2>📖 Asosiy dars</h2>
+  <p class="muted">Har bir bo‘limni oching, tushuntirishlarni o‘qing va talaffuzni tinglang.</p>
+  <div id="lessonSections"></div>
+</section>
+
+<section class="card" id="quizSection">
+  <h2>📝 30 TA TEST — BILIMINGIZNI TEKSHIRING</h2>
+  <p class="muted">Har bir savol uchun bitta to‘g‘ri javobni belgilang. Barcha savollarga javob bergach, natijani tekshiring.</p>
+  <div id="quiz"></div>
+  <div class="button-row">
+    <button class="action-btn" onclick="submitQuiz()">Natijani tekshirish</button>
+    <button class="secondary-btn" onclick="resetQuiz()">Testni qayta boshlash</button>
+  </div>
+  <div id="quizResult"></div>
+</section>
+
+<section class="card" id="homework">
+  <h2>🏡 HOMEWORK — UYGA VAZIFA</h2>
+  <p>Bugungi mavzuni mustahkamlash uchun quyidagi to‘rtta topshiriqni bajaring.</p>
+
+  <div class="homework-task">
+    <h3>1. GRAMMAR — GRAMMATIKA</h3>
+    <ol>
+      <li>IN, ON va AT predloglari yordamida 15 ta gap yozing.</li>
+      <li>UNDER, ABOVE, BELOW, BETWEEN va BEHIND yordamida 10 ta gap tuzing.</li>
+      <li>TO, FROM, INTO, OUT OF va THROUGH yordamida 5 ta gap yozing.</li>
+      <li>Har bir gapning o‘zbekcha tarjimasini yozing.</li>
+    </ol>
+  </div>
+
+  <div class="homework-task">
+    <h3>2. WRITING — YOZISH</h3>
+    <p><b>Mavzu: My Home and My Daily Routine</b></p>
+    <p>Uy va kundalik tartibingiz haqida 12–15 ta inglizcha gap yozing.</p>
+    <p>Matnda quyidagilardan foydalaning:</p>
+    <ul>
+      <li>Kamida 5 ta vaqt predlogi.</li>
+      <li>Kamida 7 ta joy predlogi.</li>
+      <li>Kamida 3 ta harakat predlogi.</li>
+    </ul>
+    <p>Namuna: I wake up at 6 o'clock. My phone is on the table.</p>
+  </div>
+
+  <div class="homework-task">
+    <h3>3. READING — O‘QISH VA TUSHUNISH</h3>
+    <p><b>My Daily Life</b></p>
+    <p>
+      I wake up at 6 o'clock in the morning. I have breakfast in the kitchen.
+      My phone is on the table and my keys are in my bag. I go to work at 8 o'clock.
+      I work from Monday to Saturday. At lunchtime, I have a meal with my friends.
+      In the evening, I come home and sit next to my family.
+      My children are usually in their rooms. We have dinner at 7 o'clock.
+      At night, I read a book before I go to bed.
+    </p>
+    <p><b>Savollar:</b></p>
+    <ol>
+      <li>What time does the person wake up?</li>
+      <li>Where does the person have breakfast?</li>
+      <li>Where are the phone and keys?</li>
+      <li>What days does the person work?</li>
+      <li>What does the person do at night?</li>
+    </ol>
+  </div>
+
+  <div class="homework-task">
+    <h3>4. SPEAKING — GAPIRISH</h3>
+    <ol>
+      <li>O‘zingizning bir kunlik tartibingizni ingliz tilida aytib bering.</li>
+      <li>Xonangizdagi 10 ta narsaning qayerda joylashganini tushuntiring.</li>
+      <li>Uyingiz va maktabingiz yoki ish joyingiz orasidagi joylashuvni tasvirlang.</li>
+      <li>IN, ON, AT ishlatilgan 10 ta gapni ovoz chiqarib o‘qing.</li>
+    </ol>
+    <p><b>Speaking namunasi:</b></p>
+    <p>
+      I wake up at 7 o'clock. My clothes are in the wardrobe.
+      My books are on the desk. My school is near my house.
+      I go to school in the morning.
+    </p>
+  </div>
+
+  <div class="callout">
+    <b>📌 Eslatma:</b> Homeworkni shunchaki o‘qib chiqmang. Gaplarni o‘zingiz yozing, ovoz chiqarib ayting va predloglarning nima sababdan ishlatilganini tushuntirishga harakat qiling.
+  </div>
+</section>
+
+<section class="motivation">
+  <h2>🌟 KEEP LEARNING!</h2>
+  <p>Har bir yangi qoida — ingliz tilida erkin gapirish sari yana bir qadam.</p>
+  <p>Bugun o‘rganganlaringizni amalda ishlating. Xatolardan qo‘rqmang, mashq qilishda davom eting!</p>
+  <h2>ENGLISH UP</h2>
+  <p>Learn today. Succeed tomorrow!</p>
+</section>
+
+</main>
+
+<footer>
+  © English Up — Learn today. Succeed tomorrow!
+</footer>
+
+<script>
 const lesson10 = {
     id: 10,
     title: "Prepositions of Time and Place",
@@ -5,1005 +392,1149 @@ const lesson10 = {
     level: "Elementary",
 
     introduction: `
-        Assalomu alaykum, aziz o‘quvchilar!
+Assalomu alaykum, aziz o‘quvchilar!
 
-        English Up platformasining 10-darsiga xush kelibsiz!
+English Up platformasining 10-darsiga xush kelibsiz!
 
-        Bugungi mavzumiz ingliz tilidagi eng muhim grammatik mavzulardan biri — PREPOSITIONS OF TIME AND PLACE.
+Bugungi mavzumiz ingliz tilidagi eng muhim grammatik mavzulardan biri — PREPOSITIONS OF TIME AND PLACE.
 
-        Preposition — predlog, ya'ni so‘zlar orasidagi vaqt, joy, yo‘nalish va munosabatni ifodalovchi yordamchi so‘z.
+Preposition — predlog, ya'ni so‘zlar orasidagi vaqt, joy, yo‘nalish va munosabatni ifodalovchi yordamchi so‘z.
 
-        Masalan:
-        I wake up at 7 o'clock.
-        Men soat 7 da uyg'onaman.
+Masalan:
+I wake up at 7 o'clock.
+Men soat 7 da uyg'onaman.
 
-        The book is on the table.
-        Kitob stol ustida.
+The book is on the table.
+Kitob stol ustida.
 
-        She lives in London.
-        U Londonda yashaydi.
+She lives in London.
+U Londonda yashaydi.
 
-        Ushbu gaplarda AT, ON va IN predlog hisoblanadi.
+Ushbu gaplarda AT, ON va IN predlog hisoblanadi.
 
-        Bugungi dars oxirida siz vaqt va joyni ingliz tilida aniq va to‘g‘ri ifodalashni o‘rganasiz.
-    `,
+Bugungi dars oxirida siz vaqt va joyni ingliz tilida aniq va to‘g‘ri ifodalashni o‘rganasiz.
+`,
 
     sections: [
-        // ==================================================
-        // 1. PREPOSITION NIMA?
-        // ==================================================
-        {
-            title: "1. PREPOSITION NIMA?",
-            content: `
-                Preposition — ot yoki olmosh bilan bog‘lanib, uning boshqa so‘zlarga nisbatan munosabatini ko‘rsatadigan so‘z.
-
-                Predloglar quyidagi savollarga javob berishi mumkin:
-
-                WHEN? — Qachon?
-                WHERE? — Qayerda?
-                WHERE TO? — Qayerga?
-                WHERE FROM? — Qayerdan?
-
-                Misollar:
-
-                I study in the morning.
-                Men ertalab o‘qiyman.
-
-                The phone is on the table.
-                Telefon stol ustida.
-
-                We meet at school.
-                Biz maktabda uchrashamiz.
-
-                He goes to work.
-                U ishga boradi.
-
-                Eslab qoling:
-                IN, ON, AT, UNDER, BEHIND, BETWEEN, TO kabi so‘zlar turli munosabatlarni ifodalaydi.
-            `
-        },
-
-        // ==================================================
-        // 2. PREPOSITIONS OF TIME
-        // ==================================================
-        {
-            title: "2. PREPOSITIONS OF TIME — VAQT PREDLOGLARI",
-            content: `
-                Vaqt predloglari biror ish-harakat qachon sodir bo‘lishini ko‘rsatadi.
-
-                Eng muhim uchta vaqt predlogi: IN, ON, AT.
-
-                Ularning barchasi o‘zbek tiliga ayrim vaziyatlarda "-da" deb tarjima qilinishi mumkin.
-
-                Lekin ingliz tilida ularning ishlatilish qoidalari bir-biridan farq qiladi.
-
-                IN — katta vaqt oralig‘i.
-                ON — kun va sana.
-                AT — aniq vaqt nuqtasi.
-
-                Bu umumiy qoida. Quyida har birini alohida va barcha muhim holatlari bilan o‘rganamiz.
-            `
-        },
-
-        // ==================================================
-        // 3. IN — TIME
-        // ==================================================
-        {
-            title: "3. IN — VAQTDA ISHLATILISHI",
-            content: `
-                IN odatda katta vaqt oralig‘ini ifodalaydi.
-
-                1. OY BILAN (MONTHS)
-                in January — yanvar oyida
-                in February — fevral oyida
-                in March — mart oyida
-                in April — aprel oyida
-                in May — may oyida
-                in June — iyun oyida
-                in July — iyul oyida
-                in August — avgust oyida
-                in September — sentabr oyida
-                in October — oktabr oyida
-                in November — noyabr oyida
-                in December — dekabr oyida
-
-                Misollar:
-                My birthday is in May.
-                Mening tug‘ilgan kunim may oyida.
-
-                We travel in August.
-                Biz avgust oyida sayohat qilamiz.
-
-                2. YIL BILAN (YEARS)
-                in 2020 — 2020-yilda
-                in 2024 — 2024-yilda
-                in 2030 — 2030-yilda
-
-                I was born in 2000.
-                Men 2000-yilda tug‘ilganman.
-
-                She started school in 2015.
-                U 2015-yilda maktabni boshlagan.
-
-                3. FASLLAR BILAN (SEASONS)
-                in spring — bahorda
-                in summer — yozda
-                in autumn — kuzda
-                in winter — qishda
-
-                Flowers grow in spring.
-                Gullar bahorda o‘sadi.
-
-                It is cold in winter.
-                Qishda sovuq bo‘ladi.
-
-                4. KUNNING UMUMIY QISMLARI
-                in the morning — ertalab
-                in the afternoon — tushdan keyin
-                in the evening — kechqurun
-
-                I study in the morning.
-                Men ertalab o‘qiyman.
-
-                She reads in the evening.
-                U kechqurun kitob o‘qiydi.
-
-                MUHIM ISTISNO:
-                at night — tunda
-
-                We sleep at night.
-                Biz tunda uxlaymiz.
-
-                Nega in the evening, lekin at night?
-                Chunki ingliz tilida bu ikki vaqt ifodasi an'anaviy ravishda turli predloglar bilan ishlatiladi. Ularni alohida eslab qolish kerak.
-
-                5. MA'LUM VAQTDAN KEYIN
-                in five minutes — besh daqiqadan keyin
-                in two hours — ikki soatdan keyin
-                in three days — uch kundan keyin
-                in a week — bir haftadan keyin
-
-                I will come in ten minutes.
-                Men o‘n daqiqadan keyin kelaman.
-
-                The lesson will start in an hour.
-                Dars bir soatdan keyin boshlanadi.
-
-                DIQQAT: Bu holatda IN kelajakdagi vaqt oralig‘ini bildiradi.
-            `
-        },
-
-        // ==================================================
-        // 4. ON — TIME
-        // ==================================================
-        {
-            title: "4. ON — VAQTDA ISHLATILISHI",
-            content: `
-                ON asosan hafta kunlari va aniq sanalar bilan ishlatiladi.
-
-                1. HAFTA KUNLARI
-                on Monday — dushanba kuni
-                on Tuesday — seshanba kuni
-                on Wednesday — chorshanba kuni
-                on Thursday — payshanba kuni
-                on Friday — juma kuni
-                on Saturday — shanba kuni
-                on Sunday — yakshanba kuni
-
-                I work on Monday.
-                Men dushanba kuni ishlayman.
-
-                We play football on Sunday.
-                Biz yakshanba kuni futbol o‘ynaymiz.
-
-                2. ANIQ SANALAR
-                on 5 May — 5-may kuni
-                on 10 June — 10-iyun kuni
-                on 21 December — 21-dekabr kuni
-
-                My birthday is on 5 May.
-                Mening tug‘ilgan kunim 5-may kuni.
-
-                3. MAXSUS KUNLAR
-                on my birthday — tug‘ilgan kunimda
-                on New Year's Day — Yangi yil kunida
-                on Christmas Day — Rojdestvo kunida
-                on Independence Day — Mustaqillik kunida
-
-                We visit our family on New Year's Day.
-                Biz Yangi yil kuni oilamiznikiga boramiz.
-
-                4. HAFTA KUNINING BIR QISMI
-                on Monday morning — dushanba ertalab
-                on Friday evening — juma kuni kechqurun
-                on Sunday afternoon — yakshanba tushdan keyin
-
-                I have an English lesson on Monday morning.
-                Menda dushanba ertalab ingliz tili darsi bor.
-
-                NIMA UCHUN ON MONDAY MORNING?
-                Morning alohida ishlatilganda IN THE MORNING. Ammo aniq bir kun bilan birga kelganda ON MONDAY MORNING ishlatiladi.
-
-                Taqqoslang:
-                in the morning -> on Monday morning
-                in the evening -> on Friday evening
-            `
-        },
-
-        // ==================================================
-        // 5. AT — TIME
-        // ==================================================
-        {
-            title: "5. AT — VAQTDA ISHLATILISHI",
-            content: `
-                AT aniq vaqt nuqtalarini ko‘rsatishda ishlatiladi.
-
-                1. SOAT BILAN
-                at 6 o'clock — soat 6 da
-                at 7:30 — soat 7:30 da
-                at 9:15 — soat 9:15 da
-                at 12 o'clock — soat 12 da
-
-                I wake up at 6 o'clock.
-                Men soat 6 da uyg‘onaman.
-
-                The film starts at 8:30.
-                Film soat 8:30 da boshlanadi.
-
-                2. MAXSUS VAQT IFODALARI
-                at noon — tush paytida
-                at midnight — yarim tunda
-                at sunrise — quyosh chiqishida
-                at sunset — quyosh botishida
-                at lunchtime — tushlik vaqtida
-                at dinnertime — kechki ovqat vaqtida
-
-                We have lunch at noon.
-                Biz tush paytida tushlik qilamiz.
-
-                3. AT NIGHT
-                at night — tunda
-
-                I don't work at night.
-                Men tunda ishlamayman.
-
-                The stars shine at night.
-                Yulduzlar tunda porlaydi.
-
-                4. AT THE WEEKEND / ON THE WEEKEND
-                at the weekend — dam olish kunlari (asosan Britaniya ingliz tilida)
-                on the weekend — dam olish kunlari (asosan Amerika ingliz tilida)
-
-                I relax at the weekend.
-                Men dam olish kunlari dam olaman.
-
-                5. AT PRESENT
-                at present — hozirgi vaqtda
-                at the moment — ayni paytda
-
-                She is busy at the moment.
-                U ayni paytda band.
-
-                At present, I am learning English.
-                Hozirgi vaqtda men ingliz tilini o‘rganyapman.
-            `
-        },
-
-        // ==================================================
-        // 6. IN ON AT COMPARISON
-        // ==================================================
-        {
-            title: "6. IN, ON, AT — CHUQUR TAQQOSLASH",
-            content: `
-                Uchta predlogni farqlashning eng oson yo‘li:
-                IN — katta vaqt oralig‘i.
-                ON — kun yoki sana.
-                AT — aniq vaqt.
-
-                Misollar:
-                in 2025
-                on Monday
-                at 7 o'clock
-
-                in July
-                on 15 July
-                at 9:00
-
-                in winter
-                on Monday morning
-                at noon
-
-                BIR KUN ICHIDA:
-                I study in the morning.
-                Men ertalab o‘qiyman.
-
-                I have a lesson on Monday.
-                Menda dushanba kuni dars bor.
-
-                I start studying at 8.
-                Men soat 8 da o‘qishni boshlayman.
-
-                Bitta gapda uchalasi:
-                I have an English lesson on Monday at 9 o'clock in the morning.
-                Menda dushanba kuni ertalab soat 9 da ingliz tili darsi bor.
-
-                XATOLAR:
-                Incorrect: I wake up in 7 o'clock.
-                Correct: I wake up at 7 o'clock.
-
-                Incorrect: I was born on 2000.
-                Correct: I was born in 2000.
-
-                Incorrect: I work at Monday.
-                Correct: I work on Monday.
-
-                Incorrect: I study on the morning.
-                Correct: I study in the morning.
-
-                MUHIM:
-                Last, next, every va this so‘zlari bilan vaqt ifodalaridan oldin odatda predlog ishlatilmaydi.
-                last Monday — o‘tgan dushanba
-                next week — keyingi hafta
-                every morning — har kuni ertalab
-                this year — bu yil
-
-                Incorrect: on next Monday
-                Correct: next Monday
-
-                Incorrect: in every morning
-                Correct: every morning
-
-                Yana bir muhim holat:
-                Today — bugun
-                Tomorrow — ertaga
-                Yesterday — kecha
-
-                Bu so‘zlardan oldin ham IN, ON, AT qo‘yilmaydi.
-            `
-        },
-
-        // ==================================================
-        // 7. PREPOSITIONS OF PLACE
-        // ==================================================
-        {
-            title: "7. PREPOSITIONS OF PLACE — JOY PREDLOGLARI",
-            content: `
-                Endi joy predloglarini o‘rganamiz.
-
-                Joy predloglari biror odam yoki narsaning qayerda joylashganini ko‘rsatadi.
-
-                WHERE? — Qayerda?
-
-                The book is on the table.
-                Kitob stol ustida.
-
-                The cat is under the chair.
-                Mushuk stul tagida.
-
-                My mother is in the kitchen.
-                Onam oshxonada.
-
-                Eng ko‘p ishlatiladigan joy predloglari:
-                IN — ichida
-                ON — ustida
-                AT — muayyan joyda
-                UNDER — tagida
-                ABOVE — yuqorisida
-                BELOW — pastida
-                OVER — ustidan / yuqorisida
-                BETWEEN — ikkitasining orasida
-                AMONG — ko‘pchilik orasida
-                BEHIND — orqasida
-                IN FRONT OF — oldida
-                NEXT TO — yonida
-                BESIDE — yonida
-                NEAR — yaqinida
-                OPPOSITE — qarshisida
-                INSIDE — ichkarisida
-                OUTSIDE — tashqarisida
-            `
-        },
-
-        // ==================================================
-        // 8. IN — PLACE
-        // ==================================================
-        {
-            title: "8. IN — JOYDA ISHLATILISHI",
-            content: `
-                IN biror narsaning ichida yoki chegaralangan hudud ichida joylashganini bildiradi.
-
-                1. XONALAR VA BINOLAR
-                in the room — xonada
-                in the kitchen — oshxonada
-                in the bathroom — hammomda
-                in the bedroom — yotoqxonada
-                in the classroom — sinfxonada
-
-                The children are in the room.
-                Bolalar xonada.
-
-                My phone is in the bag.
-                Telefonim sumkaning ichida.
-
-                2. IDISH VA KONTEYNERLAR
-                in the box — qutining ichida
-                in the bottle — shishaning ichida
-                in the cup — piyolaning ichida
-
-                The milk is in the bottle.
-                Sut shishaning ichida.
-
-                3. SHAHAR VA DAVLATLAR
-                in Uzbekistan — O‘zbekistonda
-                in Russia — Rossiyada
-                in London — Londonda
-                in Paris — Parijda
-
-                I live in Russia.
-                Men Rossiyada yashayman.
-
-                4. YOPIQ HUDUDLAR
-                in the garden — bog‘da
-                in the park — parkda
-                in the forest — o‘rmonda
-
-                5. TRANSPORT
-                in a car — mashinada
-                in a taxi — taksida
-
-                She is in the car.
-                U mashinaning ichida.
-
-                MUHIM FARQ:
-                in a car — mashina ichida.
-                on a bus — avtobusda.
-
-                Odatda katta jamoat transportiga chiqish va unda sayohat qilish ma'nosida ON ishlatiladi.
-            `
-        },
-
-        // ==================================================
-        // 9. ON — PLACE
-        // ==================================================
-        {
-            title: "9. ON — JOYDA ISHLATILISHI",
-            content: `
-                ON biror narsaning sirtida yoki yuzasida joylashganini bildiradi.
-
-                1. YUZALAR
-                on the table — stol ustida
-                on the floor — polda
-                on the wall — devorda
-                on the ceiling — shiftda
-                on the desk — parta ustida
-
-                The book is on the table.
-                Kitob stol ustida.
-
-                There is a picture on the wall.
-                Devorda rasm bor.
-
-                2. YO‘LLAR VA KO‘CHALAR
-                on this street — bu ko‘chada
-                on Oxford Street — Oxford ko‘chasida
-
-                My school is on this street.
-                Maktabim shu ko‘chada.
-
-                3. TRANSPORT
-                on a bus — avtobusda
-                on a train — poyezdda
-                on a plane — samolyotda
-                on a ship — kemada
-                on a bicycle — velosipedda
-
-                I am on the bus.
-                Men avtobusdaman.
-
-                He is on a plane.
-                U samolyotda.
-
-                4. EKRAN VA INTERNET
-                on TV — televizorda
-                on the internet — internetda
-                on the phone — telefonda
-                on the website — veb-saytda
-
-                I saw it on TV.
-                Men buni televizorda ko‘rdim.
-
-                She is on the phone.
-                U telefonda gaplashyapti.
-
-                Eslatma: ON har doim jismoniy ustida degani emas. Ba'zi iboralarda u ingliz tilidagi odatiy birikmaning bir qismi hisoblanadi.
-            `
-        },
-
-        // ==================================================
-        // 10. AT — PLACE
-        // ==================================================
-        {
-            title: "10. AT — JOYDA ISHLATILISHI",
-            content: `
-                AT muayyan nuqta, manzil yoki faoliyat bilan bog‘liq joyni ko‘rsatadi.
-
-                1. MUAYYAN JOYLAR
-                at school — maktabda
-                at work — ishda
-                at home — uyda
-                at university — universitetda
-                at the station — bekatda
-                at the airport — aeroportda
-
-                My father is at work.
-                Otam ishda.
-
-                I am at home.
-                Men uydaman.
-
-                2. MANZIL VA MUAYYAN NUQTA
-                at the door — eshik oldida
-                at the bus stop — avtobus bekatida
-                at the entrance — kirish joyida
-                at the traffic lights — svetofor oldida
-
-                She is waiting at the bus stop.
-                U avtobus bekatida kutyapti.
-
-                3. TADBIR VA UCHRASHUVLAR
-                at a party — ziyofatda
-                at a meeting — yig‘ilishda
-                at a concert — konsertda
-                at a wedding — to‘yda
-
-                We met at a party.
-                Biz ziyofatda uchrashdik.
-
-                4. AT HOME VA IN THE HOUSE
-                at home — uyda, uyda bo‘lish holati.
-                in the house — uyning ichida.
-
-                I am at home.
-                Men uydaman.
-
-                I am in the house.
-                Men uyning ichidaman.
-
-                Farq: AT HOME odamning uyda ekanligini bildiradi. IN THE HOUSE esa binoning ichida ekanligini aniqroq ifodalaydi.
-
-                5. AT SCHOOL VA IN THE SCHOOL
-                at school — maktabda, o‘qish yoki maktab faoliyati bilan bog‘liq holat.
-                in the school — maktab binosining ichida.
-
-                He is at school.
-                U maktabda.
-
-                He is in the school.
-                U maktab binosining ichida.
-
-                Bu farqni kontekst belgilaydi.
-            `
-        },
-
-        // ==================================================
-        // 11. UNDER / ABOVE / BELOW / OVER
-        // ==================================================
-        {
-            title: "11. UNDER, ABOVE, BELOW, OVER",
-            content: `
-                UNDER — biror narsaning tagida.
-                The cat is under the table.
-                Mushuk stol tagida.
-
-                BELOW — pastroq darajada yoki joylashuvda.
-                The temperature is below zero.
-                Harorat noldan past.
-
-                ABOVE — yuqorida, lekin tegib turishi shart emas.
-                The lamp is above the table.
-                Chiroq stolning yuqorisida.
-
-                OVER — ustidan, tepasida yoki biror narsani qoplab turgan holatda.
-                The plane is flying over the city.
-                Samolyot shahar ustidan uchyapti.
-
-                There is a bridge over the river.
-                Daryo ustida ko‘prik bor.
-
-                FARQLARI:
-                UNDER — tagida.
-                BELOW — past darajada.
-                ABOVE — yuqoriroqda.
-                OVER — tepasidan / ustidan.
-
-                Misollar:
-                The shoes are under the bed.
-                Oyoq kiyimlar karavot tagida.
-
-                The picture is above the sofa.
-                Rasm divandan yuqorida.
-
-                The plane flew over the mountains.
-                Samolyot tog‘lar ustidan uchdi.
-            `
-        },
-
-        // ==================================================
-        // 12. BETWEEN / AMONG
-        // ==================================================
-        {
-            title: "12. BETWEEN VA AMONG",
-            content: `
-                BETWEEN — ikki tomon yoki alohida ko‘rsatilgan obyektlar orasida.
-                The bank is between the school and the shop.
-                Bank maktab va do‘kon orasida.
-
-                The ball is between the two chairs.
-                To‘p ikkita stul orasida.
-
-                AMONG — guruh yoki ko‘pchilik orasida.
-                She is among her friends.
-                U do‘stlari orasida.
-
-                The house is among the trees.
-                Uy daraxtlar orasida.
-
-                MUHIM: BETWEEN faqat ikkita narsa bilan cheklanmaydi. Bir nechta alohida va aniq ko‘rsatilgan obyektlar o‘rtasidagi munosabatda ham ishlatilishi mumkin.
-
-                Masalan:
-                The agreement is between the three countries.
-                Kelishuv uchta davlat o‘rtasida.
-
-                AMONG esa guruh ichidagi umumiy joylashuvni ifodalashda ko‘proq ishlatiladi.
-            `
-        },
-
-        // ==================================================
-        // 13. BEHIND / IN FRONT OF
-        // ==================================================
-        {
-            title: "13. BEHIND VA IN FRONT OF",
-            content: `
-                BEHIND — orqasida.
-                The car is behind the house.
-                Mashina uyning orqasida.
-
-                The garden is behind the school.
-                Bog‘ maktabning orqasida.
-
-                IN FRONT OF — oldida.
-                The bus is in front of the school.
-                Avtobus maktab oldida.
-
-                There is a tree in front of my house.
-                Uyim oldida daraxt bor.
-
-                OPPOSITE — qarshisida.
-                The bank is opposite the supermarket.
-                Bank supermarketning qarshisida.
-
-                Eslab qoling:
-                BEHIND — orqa tomon.
-                IN FRONT OF — old tomon.
-                OPPOSITE — qarama-qarshi tomon.
-            `
-        },
-
-        // ==================================================
-        // 14. NEXT TO / BESIDE / NEAR
-        // ==================================================
-        {
-            title: "14. NEXT TO, BESIDE VA NEAR",
-            content: `
-                NEXT TO — bevosita yonida.
-                The chair is next to the table.
-                Stul stolning yonida.
-
-                BESIDE — yonida.
-                She is sitting beside her mother.
-                U onasining yonida o‘tiribdi.
-
-                NEAR — yaqinida.
-                My house is near the school.
-                Uyim maktabga yaqin.
-
-                FAR FROM — uzoqda.
-                The hospital is far from my house.
-                Kasalxona uyimdan uzoqda.
-
-                FARQLARI:
-                NEXT TO — juda yaqin, yonma-yon.
-                BESIDE — yonida.
-                NEAR — yaqin hududda.
-                FAR FROM — uzoq masofada.
-
-                Misollar:
-                I sit next to my friend.
-                Men do‘stimning yonida o‘tiraman.
-
-                The shop is near my house.
-                Do‘kon uyimga yaqin.
-            `
-        },
-
-        // ==================================================
-        // 15. INSIDE / OUTSIDE
-        // ==================================================
-        {
-            title: "15. INSIDE VA OUTSIDE",
-            content: `
-                INSIDE — ichkarida.
-                The children are inside the classroom.
-                Bolalar sinfxona ichida.
-
-                OUTSIDE — tashqarida.
-                The children are outside the classroom.
-                Bolalar sinfxona tashqarisida.
-
-                The dog is outside the house.
-                It uyning tashqarisida.
-
-                INSIDE va IN o‘rtasidagi farq:
-                IN — ichida joylashganini bildiruvchi oddiy predlog.
-                INSIDE — aynan ichki qismda ekanligiga ko‘proq urg‘u beradi.
-                OUTSIDE esa tashqi tomonni ta'kidlaydi.
-            `
-        },
-
-        // ==================================================
-        // 16. PREPOSITIONS OF MOVEMENT
-        // ==================================================
-        {
-            title: "16. HARAKAT VA YO‘NALISH PREDLOGLARI",
-            content: `
-                Endi biror joyda turishni emas, harakatni ifodalovchi predloglarni o‘rganamiz.
-
-                TO — ga, tomon.
-                I go to school.
-                Men maktabga boraman.
-
-                FROM — dan.
-                I come from work.
-                Men ishdan kelaman.
-
-                INTO — ichiga.
-                She goes into the room.
-                U xonaga kiradi.
-
-                OUT OF — ichidan tashqariga.
-                He comes out of the house.
-                U uydan tashqariga chiqadi.
-
-                THROUGH — ichidan / orqali.
-                We walked through the forest.
-                Biz o‘rmon ichidan yurdik.
-
-                ACROSS — narigi tomoniga / kesib o‘tib.
-                She walked across the street.
-                U ko‘chani kesib o‘tdi.
-
-                ALONG — bo‘ylab.
-                We walked along the river.
-                Biz daryo bo‘ylab yurdik.
-
-                TOWARDS — tomon.
-                He walked towards the door.
-                U eshik tomon yurdi.
-
-                PAST — yonidan o‘tib.
-                I walked past the shop.
-                Men do‘kon yonidan o‘tib ketdim.
-
-                MUHIM FARQ:
-                IN — ichida turish.
-                INTO — ichkariga harakatlanish.
-                OUT OF — ichkaridan tashqariga harakatlanish.
-
-                Misollar:
-                The boy is in the room.
-                Bola xonada.
-
-                The boy goes into the room.
-                Bola xonaga kiradi.
-
-                She is in the car.
-                U mashinada.
-
-                She gets out of the car.
-                U mashinadan tushadi.
-            `
-        },
-
-        // ==================================================
-        // 17. COMMON MISTAKES
-        // ==================================================
-        {
-            title: "17. ENG KO‘P UCHRAYDIGAN XATOLAR",
-            content: `
-                1. Incorrect: I was born on 2005.
-                   Correct: I was born in 2005.
-
-                2. Incorrect: I wake up in 6 o'clock.
-                   Correct: I wake up at 6 o'clock.
-
-                3. Incorrect: The book is in the table.
-                   Correct: The book is on the table.
-
-                4. Incorrect: I go at school.
-                   Correct: I go to school.
-
-                5. Incorrect: I am in home.
-                   Correct: I am at home.
-
-                6. Incorrect: I study on the morning.
-                   Correct: I study in the morning.
-
-                7. Incorrect: I work in Monday.
-                   Correct: I work on Monday.
-
-                8. Incorrect: The cat is on the table. (Agar mushuk stol tagida bo‘lsa)
-                   Correct: The cat is under the table.
-
-                9. Incorrect: I am waiting in the bus stop.
-                   Correct: I am waiting at the bus stop.
-
-                10. Incorrect: I go school.
-                    Correct: I go to school.
-
-                11. Incorrect: She was born at July.
-                    Correct: She was born in July.
-
-                12. Incorrect: We meet in night.
-                    Correct: We meet at night.
-
-                13. Incorrect: I am on the car. (Agar mashina ichida bo‘lsangiz)
-                    Correct: I am in the car.
-
-                14. Incorrect: The picture is under the wall. (Agar rasm devorga osilgan bo‘lsa)
-                    Correct: The picture is on the wall.
-            `
-        },
-
-        // ==================================================
-        // 18. USEFUL VOCABULARY
-        // ==================================================
-        {
-            title: "18. MAVZU UCHUN MUHIM LUG‘AT",
-            content: `
-                time — vaqt
-                place — joy
-                preposition — predlog
-                morning — ertalab
-                afternoon — tushdan keyin
-                evening — kechqurun
-                night — tun
-                midnight — yarim tun
-                noon — tush payti
-                weekend — dam olish kunlari
-                month — oy
-                year — yil
-                season — fasl
-                date — sana
-                calendar — taqvim
-                clock — soat
-                wall — devor
-                ceiling — shift
-                floor — pol
-                corner — burchak
-                entrance — kirish joyi
-                exit — chiqish joyi
-                direction — yo‘nalish
-                distance — masofa
-                between — orasida
-                opposite — qarshisida
-                behind — orqasida
-                above — yuqorisida
-                below — pastida
-                inside — ichkarida
-                outside — tashqarida
-                near — yaqin
-                far — uzoq
-                through — orqali
-                across — kesib o‘tib
-                towards — tomon
-            `
-        },
-
-        // ==================================================
-        // 19. REAL LIFE EXAMPLES
-        // ==================================================
-        {
-            title: "19. KUNDALIK HAYOTDAN 20 TA REAL MISOL",
-            content: `
-                1. I wake up at 6 every morning.
-                   Men har kuni ertalab soat 6 da uyg‘onaman.
-                2. I have breakfast in the morning.
-                   Men ertalab nonushta qilaman.
-                3. I go to work at 8 o'clock.
-                   Men soat 8 da ishga boraman.
-                4. I work on Monday.
-                   Men dushanba kuni ishlayman.
-                5. My birthday is in November.
-                   Mening tug‘ilgan kunim noyabrda.
-                6. My phone is on the table.
-                   Telefonim stol ustida.
-                7. My keys are in my bag.
-                   Kalitlarim sumkamda.
-                8. My children are at school.
-                   Farzandlarim maktabda.
-                9. My wife is in the kitchen.
-                   Turmush o‘rtog‘im oshxonada.
-                10. The shoes are under the bed.
-                    Oyoq kiyimlar karavot tagida.
-                11. The clock is on the wall.
-                    Soat devorda.
-                12. The supermarket is near my house.
-                    Supermarket uyimga yaqin.
-                13. The bank is opposite the school.
-                    Bank maktabning qarshisida.
-                14. The car is behind the building.
-                    Mashina binoning orqasida.
-                15. The chair is next to the window.
-                    Stul deraza yonida.
-                16. I am on the bus.
-                    Men avtobusdaman.
-                17. I am in the car.
-                    Men mashina ichidaman.
-                18. I walk across the street.
-                    Men ko‘chani kesib o‘taman.
-                19. I go into the shop.
-                    Men do‘konga kiraman.
-                20. I come home at 7 in the evening.
-                    Men kechqurun soat 7 da uyga kelaman.
-            `
-        },
-
-        // ==================================================
-        // 20. FINAL SUMMARY
-        // ==================================================
-        {
-            title: "20. BARCHA QOIDALARNING YAKUNIY XULOSASI",
-            content: `
-                VAQT:
-                IN: in January, in 2026, in summer, in the morning, in two hours
-                ON: on Monday, on 15 May, on my birthday, on Monday morning
-                AT: at 7 o'clock, at noon, at midnight, at night, at the weekend (British English)
-
-                JOY:
-                IN: in the room, in the box, in London, in the car
-                ON: on the table, on the wall, on the floor, on the bus
-                AT: at home, at school, at work, at the bus stop
-
-                BOSHQA JOY PREDLOGLARI:
-                under — tagida
-                above — yuqorisida
-                below — pastida
-                over — ustidan
-                between — orasida
-                among — guruh orasida
-                behind — orqasida
-                in front of — oldida
-                next to — yonida
-                beside — yonida
-                near — yaqinida
-                opposite — qarshisida
-                inside — ichkarida
-                outside — tashqarida
-
-                HARAKAT:
-                to — ga
-                from — dan
-                into — ichiga
-                out of — ichidan tashqariga
-                through — orqali
-                across — kesib o‘tib
-                along — bo‘ylab
-                towards — tomon
-                past — yonidan o‘tib
-
-                TABIIY INGLIZ TILIDA GAPIRISH UCHUN:
-                Har bir predlogni alohida so‘z sifatida emas, butun birikma va gap ichida o‘rganing.
-            `
-        }
+{
+title:"1. PREPOSITION NIMA?",
+content:`Preposition — ot yoki olmosh bilan bog‘lanib, uning boshqa so‘zlarga nisbatan munosabatini ko‘rsatadigan so‘z.
+
+Predloglar quyidagi savollarga javob berishi mumkin:
+
+WHEN? — Qachon?
+WHERE? — Qayerda?
+WHERE TO? — Qayerga?
+WHERE FROM? — Qayerdan?
+
+Misollar:
+
+I study in the morning.
+Men ertalab o‘qiyman.
+
+The phone is on the table.
+Telefon stol ustida.
+
+We meet at school.
+Biz maktabda uchrashamiz.
+
+He goes to work.
+U ishga boradi.
+
+Eslab qoling:
+IN, ON, AT, UNDER, BEHIND, BETWEEN, TO kabi so‘zlar turli munosabatlarni ifodalaydi.`
+},
+{
+title:"2. PREPOSITIONS OF TIME — VAQT PREDLOGLARI",
+content:`Vaqt predloglari biror ish-harakat qachon sodir bo‘lishini ko‘rsatadi.
+
+Eng muhim uchta vaqt predlogi: IN, ON, AT.
+
+Ularning barchasi o‘zbek tiliga ayrim vaziyatlarda "-da" deb tarjima qilinishi mumkin.
+
+Lekin ingliz tilida ularning ishlatilish qoidalari bir-biridan farq qiladi.
+
+IN — katta vaqt oralig‘i.
+ON — kun va sana.
+AT — aniq vaqt nuqtasi.
+
+Bu umumiy qoida. Quyida har birini alohida va barcha muhim holatlari bilan o‘rganamiz.`
+},
+{
+title:"3. IN — VAQTDA ISHLATILISHI",
+content:`IN odatda katta vaqt oralig‘ini ifodalaydi.
+
+1. OY BILAN (MONTHS)
+in January — yanvar oyida
+in February — fevral oyida
+in March — mart oyida
+in April — aprel oyida
+in May — may oyida
+in June — iyun oyida
+in July — iyul oyida
+in August — avgust oyida
+in September — sentabr oyida
+in October — oktabr oyida
+in November — noyabr oyida
+in December — dekabr oyida
+
+Misollar:
+My birthday is in May.
+Mening tug‘ilgan kunim may oyida.
+
+We travel in August.
+Biz avgust oyida sayohat qilamiz.
+
+2. YIL BILAN (YEARS)
+in 2020 — 2020-yilda
+in 2024 — 2024-yilda
+in 2030 — 2030-yilda
+
+I was born in 2000.
+Men 2000-yilda tug‘ilganman.
+
+She started school in 2015.
+U 2015-yilda maktabni boshlagan.
+
+3. FASLLAR BILAN (SEASONS)
+in spring — bahorda
+in summer — yozda
+in autumn — kuzda
+in winter — qishda
+
+Flowers grow in spring.
+Gullar bahorda o‘sadi.
+
+It is cold in winter.
+Qishda sovuq bo‘ladi.
+
+4. KUNNING UMUMIY QISMLARI
+in the morning — ertalab
+in the afternoon — tushdan keyin
+in the evening — kechqurun
+
+I study in the morning.
+Men ertalab o‘qiyman.
+
+She reads in the evening.
+U kechqurun kitob o‘qiydi.
+
+MUHIM ISTISNO:
+at night — tunda
+
+We sleep at night.
+Biz tunda uxlaymiz.
+
+Nega in the evening, lekin at night?
+Chunki ingliz tilida bu ikki vaqt ifodasi an'anaviy ravishda turli predloglar bilan ishlatiladi. Ularni alohida eslab qolish kerak.
+
+5. MA'LUM VAQTDAN KEYIN
+in five minutes — besh daqiqadan keyin
+in two hours — ikki soatdan keyin
+in three days — uch kundan keyin
+in a week — bir haftadan keyin
+
+I will come in ten minutes.
+Men o‘n daqiqadan keyin kelaman.
+
+The lesson will start in an hour.
+Dars bir soatdan keyin boshlanadi.
+
+DIQQAT: Bu holatda IN kelajakdagi vaqt oralig‘ini bildiradi.`
+},
+{
+title:"4. ON — VAQTDA ISHLATILISHI",
+content:`ON asosan hafta kunlari va aniq sanalar bilan ishlatiladi.
+
+1. HAFTA KUNLARI
+on Monday — dushanba kuni
+on Tuesday — seshanba kuni
+on Wednesday — chorshanba kuni
+on Thursday — payshanba kuni
+on Friday — juma kuni
+on Saturday — shanba kuni
+on Sunday — yakshanba kuni
+
+I work on Monday.
+Men dushanba kuni ishlayman.
+
+We play football on Sunday.
+Biz yakshanba kuni futbol o‘ynaymiz.
+
+2. ANIQ SANALAR
+on 5 May — 5-may kuni
+on 10 June — 10-iyun kuni
+on 21 December — 21-dekabr kuni
+
+My birthday is on 5 May.
+Mening tug‘ilgan kunim 5-may kuni.
+
+3. MAXSUS KUNLAR
+on my birthday — tug‘ilgan kunimda
+on New Year's Day — Yangi yil kunida
+on Christmas Day — Rojdestvo kunida
+on Independence Day — Mustaqillik kunida
+
+We visit our family on New Year's Day.
+Biz Yangi yil kuni oilamiznikiga boramiz.
+
+4. HAFTA KUNINING BIR QISMI
+on Monday morning — dushanba ertalab
+on Friday evening — juma kuni kechqurun
+on Sunday afternoon — yakshanba tushdan keyin
+
+I have an English lesson on Monday morning.
+Menda dushanba ertalab ingliz tili darsi bor.
+
+NIMA UCHUN ON MONDAY MORNING?
+Morning alohida ishlatilganda IN THE MORNING. Ammo aniq bir kun bilan birga kelganda ON MONDAY MORNING ishlatiladi.
+
+Taqqoslang:
+in the morning -> on Monday morning
+in the evening -> on Friday evening`
+},
+{
+title:"5. AT — VAQTDA ISHLATILISHI",
+content:`AT aniq vaqt nuqtalarini ko‘rsatishda ishlatiladi.
+
+1. SOAT BILAN
+at 6 o'clock — soat 6 da
+at 7:30 — soat 7:30 da
+at 9:15 — soat 9:15 da
+at 12 o'clock — soat 12 da
+
+I wake up at 6 o'clock.
+Men soat 6 da uyg‘onaman.
+
+The film starts at 8:30.
+Film soat 8:30 da boshlanadi.
+
+2. MAXSUS VAQT IFODALARI
+at noon — tush paytida
+at midnight — yarim tunda
+at sunrise — quyosh chiqishida
+at sunset — quyosh botishida
+at lunchtime — tushlik vaqtida
+at dinnertime — kechki ovqat vaqtida
+
+We have lunch at noon.
+Biz tush paytida tushlik qilamiz.
+
+3. AT NIGHT
+at night — tunda
+
+I don't work at night.
+Men tunda ishlamayman.
+
+The stars shine at night.
+Yulduzlar tunda porlaydi.
+
+4. AT THE WEEKEND / ON THE WEEKEND
+at the weekend — dam olish kunlari (asosan Britaniya ingliz tilida)
+on the weekend — dam olish kunlari (asosan Amerika ingliz tilida)
+
+I relax at the weekend.
+Men dam olish kunlari dam olaman.
+
+5. AT PRESENT
+at present — hozirgi vaqtda
+at the moment — ayni paytda
+
+She is busy at the moment.
+U ayni paytda band.
+
+At present, I am learning English.
+Hozirgi vaqtda men ingliz tilini o‘rganyapman.`
+},
+{
+title:"6. IN, ON, AT — CHUQUR TAQQOSLASH",
+content:`Uchta predlogni farqlashning eng oson yo‘li:
+IN — katta vaqt oralig‘i.
+ON — kun yoki sana.
+AT — aniq vaqt.
+
+Misollar:
+in 2025
+on Monday
+at 7 o'clock
+
+in July
+on 15 July
+at 9:00
+
+in winter
+on Monday morning
+at noon
+
+BIR KUN ICHIDA:
+I study in the morning.
+Men ertalab o‘qiyman.
+
+I have a lesson on Monday.
+Menda dushanba kuni dars bor.
+
+I start studying at 8.
+Men soat 8 da o‘qishni boshlayman.
+
+Bitta gapda uchalasi:
+I have an English lesson on Monday at 9 o'clock in the morning.
+Menda dushanba kuni ertalab soat 9 da ingliz tili darsi bor.
+
+XATOLAR:
+Incorrect: I wake up in 7 o'clock.
+Correct: I wake up at 7 o'clock.
+
+Incorrect: I was born on 2000.
+Correct: I was born in 2000.
+
+Incorrect: I work at Monday.
+Correct: I work on Monday.
+
+Incorrect: I study on the morning.
+Correct: I study in the morning.
+
+MUHIM:
+Last, next, every va this so‘zlari bilan vaqt ifodalaridan oldin odatda predlog ishlatilmaydi.
+last Monday — o‘tgan dushanba
+next week — keyingi hafta
+every morning — har kuni ertalab
+this year — bu yil
+
+Incorrect: on next Monday
+Correct: next Monday
+
+Incorrect: in every morning
+Correct: every morning
+
+Yana bir muhim holat:
+Today — bugun
+Tomorrow — ertaga
+Yesterday — kecha
+
+Bu so‘zlardan oldin ham IN, ON, AT qo‘yilmaydi.`
+},
+{
+title:"7. PREPOSITIONS OF PLACE — JOY PREDLOGLARI",
+content:`Endi joy predloglarini o‘rganamiz.
+
+Joy predloglari biror odam yoki narsaning qayerda joylashganini ko‘rsatadi.
+
+WHERE? — Qayerda?
+
+The book is on the table.
+Kitob stol ustida.
+
+The cat is under the chair.
+Mushuk stul tagida.
+
+My mother is in the kitchen.
+Onam oshxonada.
+
+Eng ko‘p ishlatiladigan joy predloglari:
+IN — ichida
+ON — ustida
+AT — muayyan joyda
+UNDER — tagida
+ABOVE — yuqorisida
+BELOW — pastida
+OVER — ustidan / yuqorisida
+BETWEEN — ikkitasining orasida
+AMONG — ko‘pchilik orasida
+BEHIND — orqasida
+IN FRONT OF — oldida
+NEXT TO — yonida
+BESIDE — yonida
+NEAR — yaqinida
+OPPOSITE — qarshisida
+INSIDE — ichkarisida
+OUTSIDE — tashqarisida`
+},
+{
+title:"8. IN — JOYDA ISHLATILISHI",
+content:`IN biror narsaning ichida yoki chegaralangan hudud ichida joylashganini bildiradi.
+
+1. XONALAR VA BINOLAR
+in the room — xonada
+in the kitchen — oshxonada
+in the bathroom — hammomda
+in the bedroom — yotoqxonada
+in the classroom — sinfxonada
+
+The children are in the room.
+Bolalar xonada.
+
+My phone is in the bag.
+Telefonim sumkaning ichida.
+
+2. IDISH VA KONTEYNERLAR
+in the box — qutining ichida
+in the bottle — shishaning ichida
+in the cup — piyolaning ichida
+
+The milk is in the bottle.
+Sut shishaning ichida.
+
+3. SHAHAR VA DAVLATLAR
+in Uzbekistan — O‘zbekistonda
+in Russia — Rossiyada
+in London — Londonda
+in Paris — Parijda
+
+I live in Russia.
+Men Rossiyada yashayman.
+
+4. YOPIQ HUDUDLAR
+in the garden — bog‘da
+in the park — parkda
+in the forest — o‘rmonda
+
+5. TRANSPORT
+in a car — mashinada
+in a taxi — taksida
+
+She is in the car.
+U mashinaning ichida.
+
+MUHIM FARQ:
+in a car — mashina ichida.
+on a bus — avtobusda.
+
+Odatda katta jamoat transportiga chiqish va unda sayohat qilish ma'nosida ON ishlatiladi.`
+},
+{
+title:"9. ON — JOYDA ISHLATILISHI",
+content:`ON biror narsaning sirtida yoki yuzasida joylashganini bildiradi.
+
+1. YUZALAR
+on the table — stol ustida
+on the floor — polda
+on the wall — devorda
+on the ceiling — shiftda
+on the desk — parta ustida
+
+The book is on the table.
+Kitob stol ustida.
+
+There is a picture on the wall.
+Devorda rasm bor.
+
+2. YO‘LLAR VA KO‘CHALAR
+on this street — bu ko‘chada
+on Oxford Street — Oxford ko‘chasida
+
+My school is on this street.
+Maktabim shu ko‘chada.
+
+3. TRANSPORT
+on a bus — avtobusda
+on a train — poyezdda
+on a plane — samolyotda
+on a ship — kemada
+on a bicycle — velosipedda
+
+I am on the bus.
+Men avtobusdaman.
+
+He is on a plane.
+U samolyotda.
+
+4. EKRAN VA INTERNET
+on TV — televizorda
+on the internet — internetda
+on the phone — telefonda
+on the website — veb-saytda
+
+I saw it on TV.
+Men buni televizorda ko‘rdim.
+
+She is on the phone.
+U telefonda gaplashyapti.
+
+Eslatma: ON har doim jismoniy ustida degani emas. Ba'zi iboralarda u ingliz tilidagi odatiy birikmaning bir qismi hisoblanadi.`
+},
+{
+title:"10. AT — JOYDA ISHLATILISHI",
+content:`AT muayyan nuqta, manzil yoki faoliyat bilan bog‘liq joyni ko‘rsatadi.
+
+1. MUAYYAN JOYLAR
+at school — maktabda
+at work — ishda
+at home — uyda
+at university — universitetda
+at the station — bekatda
+at the airport — aeroportda
+
+My father is at work.
+Otam ishda.
+
+I am at home.
+Men uydaman.
+
+2. MANZIL VA MUAYYAN NUQTA
+at the door — eshik oldida
+at the bus stop — avtobus bekatida
+at the entrance — kirish joyida
+at the traffic lights — svetofor oldida
+
+She is waiting at the bus stop.
+U avtobus bekatida kutyapti.
+
+3. TADBIR VA UCHRASHUVLAR
+at a party — ziyofatda
+at a meeting — yig‘ilishda
+at a concert — konsertda
+at a wedding — to‘yda
+
+We met at a party.
+Biz ziyofatda uchrashdik.
+
+4. AT HOME VA IN THE HOUSE
+at home — uyda, uyda bo‘lish holati.
+in the house — uyning ichida.
+
+I am at home.
+Men uydaman.
+
+I am in the house.
+Men uyning ichidaman.
+
+Farq: AT HOME odamning uyda ekanligini bildiradi. IN THE HOUSE esa binoning ichida ekanligini aniqroq ifodalaydi.
+
+5. AT SCHOOL VA IN THE SCHOOL
+at school — maktabda, o‘qish yoki maktab faoliyati bilan bog‘liq holat.
+in the school — maktab binosining ichida.
+
+He is at school.
+U maktabda.
+
+He is in the school.
+U maktab binosining ichida.
+
+Bu farqni kontekst belgilaydi.`
+},
+{
+title:"11. UNDER, ABOVE, BELOW, OVER",
+content:`UNDER — biror narsaning tagida.
+The cat is under the table.
+Mushuk stol tagida.
+
+BELOW — pastroq darajada yoki joylashuvda.
+The temperature is below zero.
+Harorat noldan past.
+
+ABOVE — yuqorida, lekin tegib turishi shart emas.
+The lamp is above the table.
+Chiroq stolning yuqorisida.
+
+OVER — ustidan, tepasida yoki biror narsani qoplab turgan holatda.
+The plane is flying over the city.
+Samolyot shahar ustidan uchyapti.
+
+There is a bridge over the river.
+Daryo ustida ko‘prik bor.
+
+FARQLARI:
+UNDER — tagida.
+BELOW — past darajada.
+ABOVE — yuqoriroqda.
+OVER — tepasidan / ustidan.
+
+Misollar:
+The shoes are under the bed.
+Oyoq kiyimlar karavot tagida.
+
+The picture is above the sofa.
+Rasm divandan yuqorida.
+
+The plane flew over the mountains.
+Samolyot tog‘lar ustidan uchdi.`
+},
+{
+title:"12. BETWEEN VA AMONG",
+content:`BETWEEN — ikki tomon yoki alohida ko‘rsatilgan obyektlar orasida.
+The bank is between the school and the shop.
+Bank maktab va do‘kon orasida.
+
+The ball is between the two chairs.
+To‘p ikkita stul orasida.
+
+AMONG — guruh yoki ko‘pchilik orasida.
+She is among her friends.
+U do‘stlari orasida.
+
+The house is among the trees.
+Uy daraxtlar orasida.
+
+MUHIM: BETWEEN faqat ikkita narsa bilan cheklanmaydi. Bir nechta alohida va aniq ko‘rsatilgan obyektlar o‘rtasidagi munosabatda ham ishlatilishi mumkin.
+
+Masalan:
+The agreement is between the three countries.
+Kelishuv uchta davlat o‘rtasida.
+
+AMONG esa guruh ichidagi umumiy joylashuvni ifodalashda ko‘proq ishlatiladi.`
+},
+{
+title:"13. BEHIND VA IN FRONT OF",
+content:`BEHIND — orqasida.
+The car is behind the house.
+Mashina uyning orqasida.
+
+The garden is behind the school.
+Bog‘ maktabning orqasida.
+
+IN FRONT OF — oldida.
+The bus is in front of the school.
+Avtobus maktab oldida.
+
+There is a tree in front of my house.
+Uyim oldida daraxt bor.
+
+OPPOSITE — qarshisida.
+The bank is opposite the supermarket.
+Bank supermarketning qarshisida.
+
+Eslab qoling:
+BEHIND — orqa tomon.
+IN FRONT OF — old tomon.
+OPPOSITE — qarama-qarshi tomon.`
+},
+{
+title:"14. NEXT TO, BESIDE VA NEAR",
+content:`NEXT TO — bevosita yonida.
+The chair is next to the table.
+Stul stolning yonida.
+
+BESIDE — yonida.
+She is sitting beside her mother.
+U onasining yonida o‘tiribdi.
+
+NEAR — yaqinida.
+My house is near the school.
+Uyim maktabga yaqin.
+
+FAR FROM — uzoqda.
+The hospital is far from my house.
+Kasalxona uyimdan uzoqda.
+
+FARQLARI:
+NEXT TO — juda yaqin, yonma-yon.
+BESIDE — yonida.
+NEAR — yaqin hududda.
+FAR FROM — uzoq masofada.
+
+Misollar:
+I sit next to my friend.
+Men do‘stimning yonida o‘tiraman.
+
+The shop is near my house.
+Do‘kon uyimga yaqin.`
+},
+{
+title:"15. INSIDE VA OUTSIDE",
+content:`INSIDE — ichkarida.
+The children are inside the classroom.
+Bolalar sinfxona ichida.
+
+OUTSIDE — tashqarida.
+The children are outside the classroom.
+Bolalar sinfxona tashqarisida.
+
+The dog is outside the house.
+It uyning tashqarisida.
+
+INSIDE va IN o‘rtasidagi farq:
+IN — ichida joylashganini bildiruvchi oddiy predlog.
+INSIDE — aynan ichki qismda ekanligiga ko‘proq urg‘u beradi.
+OUTSIDE esa tashqi tomonni ta'kidlaydi.`
+},
+{
+title:"16. HARAKAT VA YO‘NALISH PREDLOGLARI",
+content:`Endi biror joyda turishni emas, harakatni ifodalovchi predloglarni o‘rganamiz.
+
+TO — ga, tomon.
+I go to school.
+Men maktabga boraman.
+
+FROM — dan.
+I come from work.
+Men ishdan kelaman.
+
+INTO — ichiga.
+She goes into the room.
+U xonaga kiradi.
+
+OUT OF — ichidan tashqariga.
+He comes out of the house.
+U uydan tashqariga chiqadi.
+
+THROUGH — ichidan / orqali.
+We walked through the forest.
+Biz o‘rmon ichidan yurdik.
+
+ACROSS — narigi tomoniga / kesib o‘tib.
+She walked across the street.
+U ko‘chani kesib o‘tdi.
+
+ALONG — bo‘ylab.
+We walked along the river.
+Biz daryo bo‘ylab yurdik.
+
+TOWARDS — tomon.
+He walked towards the door.
+U eshik tomon yurdi.
+
+PAST — yonidan o‘tib.
+I walked past the shop.
+Men do‘kon yonidan o‘tib ketdim.
+
+MUHIM FARQ:
+IN — ichida turish.
+INTO — ichkariga harakatlanish.
+OUT OF — ichkaridan tashqariga harakatlanish.
+
+Misollar:
+The boy is in the room.
+Bola xonada.
+
+The boy goes into the room.
+Bola xonaga kiradi.
+
+She is in the car.
+U mashinada.
+
+She gets out of the car.
+U mashinadan tushadi.`
+},
+{
+title:"17. ENG KO‘P UCHRAYDIGAN XATOLAR",
+content:`1. Incorrect: I was born on 2005.
+   Correct: I was born in 2005.
+
+2. Incorrect: I wake up in 6 o'clock.
+   Correct: I wake up at 6 o'clock.
+
+3. Incorrect: The book is in the table.
+   Correct: The book is on the table.
+
+4. Incorrect: I go at school.
+   Correct: I go to school.
+
+5. Incorrect: I am in home.
+   Correct: I am at home.
+
+6. Incorrect: I study on the morning.
+   Correct: I study in the morning.
+
+7. Incorrect: I work in Monday.
+   Correct: I work on Monday.
+
+8. Incorrect: The cat is on the table. (Agar mushuk stol tagida bo‘lsa)
+   Correct: The cat is under the table.
+
+9. Incorrect: I am waiting in the bus stop.
+   Correct: I am waiting at the bus stop.
+
+10. Incorrect: I go school.
+    Correct: I go to school.
+
+11. Incorrect: She was born at July.
+    Correct: She was born in July.
+
+12. Incorrect: We meet in night.
+    Correct: We meet at night.
+
+13. Incorrect: I am on the car. (Agar mashina ichida bo‘lsangiz)
+    Correct: I am in the car.
+
+14. Incorrect: The picture is under the wall. (Agar rasm devorga osilgan bo‘lsa)
+    Correct: The picture is on the wall.`
+},
+{
+title:"18. MAVZU UCHUN MUHIM LUG‘AT",
+content:`time — vaqt
+place — joy
+preposition — predlog
+morning — ertalab
+afternoon — tushdan keyin
+evening — kechqurun
+night — tun
+midnight — yarim tun
+noon — tush payti
+weekend — dam olish kunlari
+month — oy
+year — yil
+season — fasl
+date — sana
+calendar — taqvim
+clock — soat
+wall — devor
+ceiling — shift
+floor — pol
+corner — burchak
+entrance — kirish joyi
+exit — chiqish joyi
+direction — yo‘nalish
+distance — masofa
+between — orasida
+opposite — qarshisida
+behind — orqasida
+above — yuqorisida
+below — pastida
+inside — ichkarida
+outside — tashqarida
+near — yaqin
+far — uzoq
+through — orqali
+across — kesib o‘tib
+towards — tomon`
+},
+{
+title:"19. KUNDALIK HAYOTDAN 20 TA REAL MISOL",
+content:`1. I wake up at 6 every morning.
+   Men har kuni ertalab soat 6 da uyg‘onaman.
+2. I have breakfast in the morning.
+   Men ertalab nonushta qilaman.
+3. I go to work at 8 o'clock.
+   Men soat 8 da ishga boraman.
+4. I work on Monday.
+   Men dushanba kuni ishlayman.
+5. My birthday is in November.
+   Mening tug‘ilgan kunim noyabrda.
+6. My phone is on the table.
+   Telefonim stol ustida.
+7. My keys are in my bag.
+   Kalitlarim sumkamda.
+8. My children are at school.
+   Farzandlarim maktabda.
+9. My wife is in the kitchen.
+   Turmush o‘rtog‘im oshxonada.
+10. The shoes are under the bed.
+    Oyoq kiyimlar karavot tagida.
+11. The clock is on the wall.
+    Soat devorda.
+12. The supermarket is near my house.
+    Supermarket uyimga yaqin.
+13. The bank is opposite the school.
+    Bank maktabning qarshisida.
+14. The car is behind the building.
+    Mashina binoning orqasida.
+15. The chair is next to the window.
+    Stul deraza yonida.
+16. I am on the bus.
+    Men avtobusdaman.
+17. I am in the car.
+    Men mashina ichidaman.
+18. I walk across the street.
+    Men ko‘chani kesib o‘taman.
+19. I go into the shop.
+    Men do‘konga kiraman.
+20. I come home at 7 in the evening.
+    Men kechqurun soat 7 da uyga kelaman.`
+},
+{
+title:"20. BARCHA QOIDALARNING YAKUNIY XULOSASI",
+content:`VAQT:
+IN: in January, in 2026, in summer, in the morning, in two hours
+ON: on Monday, on 15 May, on my birthday, on Monday morning
+AT: at 7 o'clock, at noon, at midnight, at night, at the weekend (British English)
+
+JOY:
+IN: in the room, in the box, in London, in the car
+ON: on the table, on the wall, on the floor, on the bus
+AT: at home, at school, at work, at the bus stop
+
+BOSHQA JOY PREDLOGLARI:
+under — tagida
+above — yuqorisida
+below — pastida
+over — ustidan
+between — orasida
+among — guruh orasida
+behind — orqasida
+in front of — oldida
+next to — yonida
+beside — yonida
+near — yaqinida
+opposite — qarshisida
+inside — ichkarida
+outside — tashqarida
+
+HARAKAT:
+to — ga
+from — dan
+into — ichiga
+out of — ichidan tashqariga
+through — orqali
+across — kesib o‘tib
+along — bo‘ylab
+towards — tomon
+past — yonidan o‘tib
+
+TABIIY INGLIZ TILIDA GAPIRISH UCHUN:
+Har bir predlogni alohida so‘z sifatida emas, butun birikma va gap ichida o‘rganing.`
+}
     ]
 };
+
+document.getElementById("introduction").textContent = lesson10.introduction;
+
+const sectionContainer = document.getElementById("lessonSections");
+const toc = document.getElementById("toc");
+
+lesson10.sections.forEach((section,index)=>{
+  const id = "lesson-section-"+(index+1);
+
+  const link = document.createElement("a");
+  link.href = "#"+id;
+  link.textContent = section.title;
+  toc.appendChild(link);
+
+  const article = document.createElement("article");
+  article.className = "card section-card";
+  article.id = id;
+
+  const heading = document.createElement("button");
+  heading.className = "section-heading";
+  heading.type = "button";
+
+  const headingText = document.createElement("span");
+  headingText.textContent = section.title;
+
+  const arrow = document.createElement("span");
+  arrow.className = "arrow";
+  arrow.textContent = "＋";
+
+  heading.append(headingText,arrow);
+
+  const body = document.createElement("div");
+  body.className = "section-body";
+  body.hidden = true;
+
+  const tools = document.createElement("div");
+  tools.className = "section-tools";
+
+  const listenButton = document.createElement("button");
+  listenButton.className = "small-btn";
+  listenButton.textContent = "🔊 Bo‘limni tinglash";
+  listenButton.onclick = ()=>speakText(section.content);
+
+  const stopButton = document.createElement("button");
+  stopButton.className = "small-btn";
+  stopButton.textContent = "⏹ Ovozni to‘xtatish";
+  stopButton.onclick = stopSpeech;
+
+  tools.append(listenButton,stopButton);
+
+  const content = document.createElement("div");
+  content.className = "lesson-content";
+  content.textContent = section.content;
+
+  const note = document.createElement("div");
+  note.className = "callout";
+  note.textContent = "📌 Maslahat: Ushbu bo‘limdagi qoidalarni daftaringizga yozing va misollarni ovoz chiqarib takrorlang.";
+
+  body.append(tools,content,note);
+  article.append(heading,body);
+  sectionContainer.appendChild(article);
+
+  heading.addEventListener("click",()=>{
+    body.hidden = !body.hidden;
+    arrow.textContent = body.hidden ? "＋" : "−";
+  });
+});
+
+function speakText(text){
+  if(!("speechSynthesis" in window)){
+    alert("Bu brauzerda ovozli o‘qish qo‘llab-quvvatlanmaydi.");
+    return;
+  }
+
+  stopSpeech();
+
+  const cleanText = text
+    .replace(/—/g,", ")
+    .replace(/->/g," to ")
+    .replace(/Incorrect:/g,"Incorrect.")
+    .replace(/Correct:/g,"Correct.");
+
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+  utterance.lang = "en-US";
+  utterance.rate = 0.82;
+  utterance.pitch = 1;
+
+  const voices = speechSynthesis.getVoices();
+  const englishVoice = voices.find(v=>v.lang==="en-US") ||
+                       voices.find(v=>v.lang.startsWith("en"));
+
+  if(englishVoice) utterance.voice = englishVoice;
+
+  speechSynthesis.speak(utterance);
+}
+
+function stopSpeech(){
+  if("speechSynthesis" in window) speechSynthesis.cancel();
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  const dark = document.body.classList.contains("dark");
+  localStorage.setItem("euLessonTheme",dark ? "dark":"light");
+  document.getElementById("themeButton").textContent = dark ? "☀️":"🌙";
+}
+
+if(localStorage.getItem("euLessonTheme")==="dark"){
+  document.body.classList.add("dark");
+  document.getElementById("themeButton").textContent = "☀️";
+}
+
+window.addEventListener("scroll",()=>{
+  const total = document.documentElement.scrollHeight-window.innerHeight;
+  const progress = total>0 ? (window.scrollY/total)*100 : 0;
+  document.getElementById("readingProgress").style.width=progress+"%";
+});
+
+/* =========================
+   30 TA TEST SAVOLLARI
+========================= */
+
+const questions = [
+{q:"I wake up ___ 7 o'clock.",o:["in","on","at","under"],a:2,e:"AT aniq soat bilan ishlatiladi."},
+{q:"My birthday is ___ May.",o:["at","in","on","under"],a:1,e:"IN oylar bilan ishlatiladi."},
+{q:"We have English ___ Monday.",o:["on","at","in","by"],a:0,e:"ON hafta kunlari bilan ishlatiladi."},
+{q:"The book is ___ the table.",o:["in","at","on","between"],a:2,e:"ON sirt ustida joylashishni bildiradi."},
+{q:"The cat is ___ the chair.",o:["under","at","on","from"],a:0,e:"UNDER tagida degani."},
+{q:"I live ___ London.",o:["on","at","in","under"],a:2,e:"IN shaharlar bilan ishlatiladi."},
+{q:"My father is ___ work.",o:["in","at","on","to"],a:1,e:"AT WORK — ishda."},
+{q:"We sleep ___ night.",o:["in","on","at","to"],a:2,e:"AT NIGHT — tunda."},
+{q:"She was born ___ 2005.",o:["on","at","in","over"],a:2,e:"IN yillar bilan ishlatiladi."},
+{q:"The picture is ___ the wall.",o:["on","in","at","under"],a:0,e:"ON THE WALL — devorda."},
+{q:"The ball is ___ the two chairs.",o:["among","between","above","behind"],a:1,e:"BETWEEN alohida ko‘rsatilgan obyektlar orasida."},
+{q:"She is ___ her friends.",o:["between","among","under","into"],a:1,e:"AMONG guruh orasida."},
+{q:"The car is ___ the house.",o:["behind","in","at","on"],a:0,e:"BEHIND — orqasida."},
+{q:"The bank is ___ the school.",o:["opposite","inside","through","under"],a:0,e:"OPPOSITE — qarshisida."},
+{q:"The chair is ___ the table.",o:["next to","through","into","from"],a:0,e:"NEXT TO — yonida."},
+{q:"The children are ___ the classroom.",o:["outside","inside","above","across"],a:1,e:"INSIDE — ichkarida."},
+{q:"I go ___ school every day.",o:["at","in","to","on"],a:2,e:"TO yo‘nalishni bildiradi."},
+{q:"I come ___ work at 6.",o:["from","into","over","under"],a:0,e:"FROM — dan."},
+{q:"She goes ___ the room.",o:["in","into","on","at"],a:1,e:"INTO ichkariga harakatni bildiradi."},
+{q:"We walked ___ the forest.",o:["through","at","on","under"],a:0,e:"THROUGH — ichidan yoki orqali."},
+{q:"The plane is flying ___ the city.",o:["under","over","between","inside"],a:1,e:"OVER — ustidan."},
+{q:"I study ___ the morning.",o:["on","at","in","to"],a:2,e:"IN THE MORNING — ertalab."},
+{q:"The lesson starts ___ noon.",o:["in","on","at","from"],a:2,e:"AT NOON — tush paytida."},
+{q:"We travel ___ summer.",o:["in","on","at","to"],a:0,e:"IN fasllar bilan ishlatiladi."},
+{q:"I have a lesson ___ Monday morning.",o:["in","on","at","under"],a:1,e:"Aniq kun bilan ON MONDAY MORNING."},
+{q:"The shoes are ___ the bed.",o:["above","under","between","opposite"],a:1,e:"UNDER — tagida."},
+{q:"My phone is ___ my bag.",o:["on","at","in","over"],a:2,e:"IN THE BAG — sumka ichida."},
+{q:"The shop is ___ my house.",o:["near","into","through","at"],a:0,e:"NEAR — yaqinida."},
+{q:"The temperature is ___ zero.",o:["above","below","between","inside"],a:1,e:"BELOW ZERO — noldan past."},
+{q:"I will come ___ ten minutes.",o:["on","at","in","under"],a:2,e:"IN TEN MINUTES — o‘n daqiqadan keyin."}
+];
+
+const quizContainer = document.getElementById("quiz");
+
+questions.forEach((question,index)=>{
+  const box = document.createElement("div");
+  box.className = "quiz-question";
+  box.id = "question-"+index;
+
+  const title = document.createElement("p");
+  title.textContent = (index+1)+". "+question.q;
+  box.appendChild(title);
+
+  question.o.forEach((option,optionIndex)=>{
+    const label = document.createElement("label");
+    label.className = "option";
+
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "question-"+index;
+    radio.value = optionIndex;
+
+    label.append(radio,document.createTextNode(option));
+    box.appendChild(label);
+  });
+
+  quizContainer.appendChild(box);
+});
+
+function submitQuiz(){
+  let score = 0;
+  let unanswered = 0;
+
+  questions.forEach((question,index)=>{
+    const selected = document.querySelector('input[name="question-'+index+'"]:checked');
+    const box = document.getElementById("question-"+index);
+    const labels = box.querySelectorAll(".option");
+
+    box.classList.remove("correct-answer","wrong-answer");
+
+    labels.forEach((label,optionIndex)=>{
+      label.classList.remove("correct-answer","wrong-answer");
+
+      if(optionIndex===question.a){
+        label.classList.add("correct-answer");
+      }
+    });
+
+    if(!selected){
+      unanswered++;
+      box.classList.add("wrong-answer");
+      return;
+    }
+
+    if(Number(selected.value)===question.a){
+      score++;
+    }else{
+      box.classList.add("wrong-answer");
+      labels[Number(selected.value)].classList.add("wrong-answer");
+    }
+  });
+
+  const result = document.getElementById("quizResult");
+  result.style.display="block";
+
+  const percent = Math.round(score/questions.length*100);
+  let message = "";
+
+  if(percent>=80){
+    message="Ajoyib! Siz mavzuni yaxshi o‘zlashtirdingiz. Davom eting!";
+  }else if(percent>=60){
+    message="Yaxshi harakat! Xatolaringizni ko‘rib chiqing va mavzuni yana takrorlang.";
+  }else{
+    message="Mavzuni yana bir bor o‘qing. Har bir xato sizga nimani takrorlash kerakligini ko‘rsatadi.";
+  }
+
+  result.innerHTML=`
+    <h3>📊 TEST NATIJASI</h3>
+    <div class="result-score">${score} / ${questions.length}</div>
+    <p><b>${percent}%</b> to‘g‘ri javob</p>
+    <p>${message}</p>
+    <p>Javobsiz savollar: ${unanswered}</p>
+    <p class="muted">Yashil rang — to‘g‘ri javob. Qizil rang — xato javob.</p>
+  `;
+
+  result.scrollIntoView({behavior:"smooth",block:"center"});
+  localStorage.setItem("euLesson10Quiz",JSON.stringify({
+    score:score,
+    total:questions.length,
+    percent:percent,
+    date:new Date().toISOString()
+  }));
+}
+
+function resetQuiz(){
+  document.querySelectorAll('#quiz input[type="radio"]').forEach(input=>{
+    input.checked=false;
+  });
+
+  document.querySelectorAll(".quiz-question,.option").forEach(item=>{
+    item.classList.remove("correct-answer","wrong-answer");
+  });
+
+  document.getElementById("quizResult").style.display="none";
+  document.getElementById("quizSection").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
