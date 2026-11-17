@@ -213,11 +213,16 @@ body.dark .warning{
  padding:15px 30px;
  background:var(--purple);
  color:white;
+ border:0;
  border-radius:13px;
  font-weight:900;
  box-shadow:0 6px 18px rgba(112,71,235,.25);
+ cursor:pointer;
 }
 .start-btn:hover{background:#5e36d5}
+#lessonProgram[hidden]{
+ display:none;
+}
 footer{
  text-align:center;
  color:var(--muted);
@@ -257,8 +262,6 @@ footer{
   murakkabroq gaplar tuzing va kundalik hayotda
   ingliz tilida muloqot qilish ko‘nikmalaringizni rivojlantiring.
  </p>
- <a href="pre-intermediate/pre-intermediate-lesson-1.html"
- class="hero-btn">1-DARSNI BOSHLASH →</a>
 </section>
 
 <section class="stats">
@@ -331,6 +334,51 @@ footer{
 </section>
 
 <section class="section">
+ <h2>📌 O‘QUVCHINING QAT'IY QOIDALARI</h2>
+ <p>Ushbu kursda quyidagi qoidalarga amal qilish majburiy:</p>
+
+ <ol class="rules">
+  <li><strong>Daftar tutish majburiy.</strong> Har bir darsdagi grammatik qoidalar, misollar va mashqlar daftarga yoziladi.</li>
+  <li><strong>Lug‘atni yozish va yodlash shart.</strong> Yangi so‘zlar tarjimasi va talaffuzi bilan daftarga yoziladi.</li>
+  <li><strong>Listening mashqlarini bajaring.</strong> Har ikkala audio mashqni tinglang va tushunganingizni tekshiring.</li>
+  <li><strong>Reading matnini o‘qing.</strong> Matn mazmunini tushuning va yangi so‘zlarni o‘rganing.</li>
+  <li><strong>Writing vazifasini bajaring.</strong> Reading matni asosidagi savollarga daftarda to‘liq javob yozing.</li>
+  <li><strong>Interaktiv testlarni mustaqil bajaring.</strong> Har ikkala 20 savollik testni yakunlang.</li>
+  <li><strong>Homework majburiy.</strong> Berilgan mavzuda mustaqil inglizcha matn yozib, o‘qituvchiga yuboring.</li>
+  <li><strong>Shoshilmang.</strong> Tushunmagan mavzuni qayta o‘rganmasdan keyingi bosqichga o‘tmang.</li>
+ </ol>
+
+ <div class="warning">
+  Darslarni faqat ochib chiqish yetarli emas.
+  Har bir topshiriqni bajarish, daftar bilan ishlash
+  va mustaqil mashq qilish talab etiladi.
+ </div>
+</section>
+
+<section class="section">
+ <h2>📋 HAR BIR DARSNING TUZILISHI</h2>
+ <ol class="rules">
+  <li>Grammar — batafsil tushuntirish va misollar.</li>
+  <li>Listening — 2 ta tinglab tushunish mashqi va audio.</li>
+  <li>Vocabulary — yangi so‘zlar, tarjima va talaffuz.</li>
+  <li>Reading — yangi lug‘atlar qatnashgan matn.</li>
+  <li>Writing — Reading matniga asoslangan savollar.</li>
+  <li>Interactive Tests — 20 tadan 2 ta mustaqil test.</li>
+  <li>Homework — mavzu bo‘yicha mustaqil yozma ish.</li>
+ </ol>
+ <p><strong>Har bir asosiy darsda jami 40 ta interaktiv test savoli bo‘ladi.</strong></p>
+</section>
+
+<section class="start-area">
+ <h2>Bilimingizni keyingi bosqichga olib chiqing!</h2>
+ <p class="muted">Daftaringizni tayyorlang. Birinchi darsni boshlash vaqti keldi.</p>
+ <br>
+ <button class="start-btn" id="startLessons" type="button">
+  🚀 PRE-INTERMEDIATE'NI BOSHLASH
+ </button>
+</section>
+
+<section class="section" id="lessonProgram" hidden>
  <h2>🗂️ KURS DASTURI — 21 TA DARS</h2>
  <p class="muted">
   1–20-darslar asosiy o‘quv dasturi.
@@ -402,51 +450,6 @@ footer{
  </div>
 </section>
 
-<section class="section">
- <h2>📌 O‘QUVCHINING QAT'IY QOIDALARI</h2>
- <p>Ushbu kursda quyidagi qoidalarga amal qilish majburiy:</p>
-
- <ol class="rules">
-  <li><strong>Daftar tutish majburiy.</strong> Har bir darsdagi grammatik qoidalar, misollar va mashqlar daftarga yoziladi.</li>
-  <li><strong>Lug‘atni yozish va yodlash shart.</strong> Yangi so‘zlar tarjimasi va talaffuzi bilan daftarga yoziladi.</li>
-  <li><strong>Listening mashqlarini bajaring.</strong> Har ikkala audio mashqni tinglang va tushunganingizni tekshiring.</li>
-  <li><strong>Reading matnini o‘qing.</strong> Matn mazmunini tushuning va yangi so‘zlarni o‘rganing.</li>
-  <li><strong>Writing vazifasini bajaring.</strong> Reading matni asosidagi savollarga daftarda to‘liq javob yozing.</li>
-  <li><strong>Interaktiv testlarni mustaqil bajaring.</strong> Har ikkala 20 savollik testni yakunlang.</li>
-  <li><strong>Homework majburiy.</strong> Berilgan mavzuda mustaqil inglizcha matn yozib, o‘qituvchiga yuboring.</li>
-  <li><strong>Shoshilmang.</strong> Tushunmagan mavzuni qayta o‘rganmasdan keyingi bosqichga o‘tmang.</li>
- </ol>
-
- <div class="warning">
-  Darslarni faqat ochib chiqish yetarli emas.
-  Har bir topshiriqni bajarish, daftar bilan ishlash
-  va mustaqil mashq qilish talab etiladi.
- </div>
-</section>
-
-<section class="section">
- <h2>📋 HAR BIR DARSNING TUZILISHI</h2>
- <ol class="rules">
-  <li>Grammar — batafsil tushuntirish va misollar.</li>
-  <li>Listening — 2 ta tinglab tushunish mashqi va audio.</li>
-  <li>Vocabulary — yangi so‘zlar, tarjima va talaffuz.</li>
-  <li>Reading — yangi lug‘atlar qatnashgan matn.</li>
-  <li>Writing — Reading matniga asoslangan savollar.</li>
-  <li>Interactive Tests — 20 tadan 2 ta mustaqil test.</li>
-  <li>Homework — mavzu bo‘yicha mustaqil yozma ish.</li>
- </ol>
- <p><strong>Har bir asosiy darsda jami 40 ta interaktiv test savoli bo‘ladi.</strong></p>
-</section>
-
-<section class="start-area">
- <h2>Bilimingizni keyingi bosqichga olib chiqing!</h2>
- <p class="muted">Daftaringizni tayyorlang. Birinchi darsni boshlash vaqti keldi.</p>
- <br>
- <a class="start-btn" href="pre-intermediate/pre-intermediate-lesson-1.html">
-  🚀 PRE-INTERMEDIATE'NI BOSHLASH
- </a>
-</section>
-
 </main>
 
 <footer>
@@ -477,8 +480,19 @@ themeButton.addEventListener("click",()=>{
  const nextTheme=document.body.classList.contains("dark")?"light":"dark";
  applyTheme(nextTheme);
 });
+
+const startButton=document.getElementById("startLessons");
+const lessonProgram=document.getElementById("lessonProgram");
+
+startButton.addEventListener("click",()=>{
+ lessonProgram.hidden=false;
+ startButton.textContent="📚 21 TA DARSLAR RO‘YXATI OCHILDI";
+ lessonProgram.scrollIntoView({
+  behavior:"smooth",
+  block:"start"
+ });
+});
 </script>
 
 </body>
 </html>
-
