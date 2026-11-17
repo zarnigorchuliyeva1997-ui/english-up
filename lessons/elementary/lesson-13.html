@@ -1,1 +1,1331 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 12 — There Is / There Are | English Up</title>
+
+<style>
+:root{
+ --primary:#7047eb;
+ --primary2:#9274ff;
+ --bg:#f5f3ff;
+ --card:#ffffff;
+ --text:#242039;
+ --muted:#6d6880;
+ --border:#e7e1fa;
+ --soft:#eee9ff;
+ --green:#16834a;
+ --red:#c33d50;
+ --shadow:0 8px 28px rgba(70,45,130,.08);
+}
+body.dark{
+ --bg:#151322;
+ --card:#211e32;
+ --text:#f4f0ff;
+ --muted:#b9b1d0;
+ --border:#39324f;
+ --soft:#302747;
+ --shadow:0 8px 28px rgba(0,0,0,.2);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;line-height:1.7;
+ transition:.25s;
+}
+header{
+ position:sticky;top:0;z-index:20;
+ background:var(--card);border-bottom:1px solid var(--border);
+ padding:12px 4%;
+ display:flex;justify-content:space-between;align-items:center;
+}
+.logo{font-weight:900;color:var(--primary);font-size:20px;letter-spacing:1px}
+.header-actions{display:flex;gap:8px;align-items:center}
+button{
+ cursor:pointer;border:0;border-radius:11px;padding:10px 14px;
+ background:var(--primary);color:white;font-weight:700;
+}
+button.secondary{background:var(--soft);color:var(--primary)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.progress-track{height:5px;background:var(--border)}
+#progressBar{height:5px;background:var(--primary);width:0}
+.container{max-width:950px;margin:auto;padding:22px 16px 60px}
+.hero{
+ background:linear-gradient(135deg,#7047eb,#9c79ff);
+ color:white;border-radius:22px;padding:30px 23px;margin-bottom:22px;
+ box-shadow:var(--shadow);
+}
+.hero h1{font-size:clamp(27px,5vw,42px);line-height:1.2;margin:10px 0}
+.hero p{margin:8px 0}
+.pill{
+ display:inline-block;background:rgba(255,255,255,.18);
+ padding:5px 11px;border-radius:20px;font-size:12px;font-weight:700;
+}
+.card{
+ background:var(--card);border:1px solid var(--border);
+ border-radius:17px;padding:22px;margin:17px 0;box-shadow:var(--shadow);
+}
+h2{font-size:24px;margin:0 0 14px;color:var(--primary)}
+h3{font-size:19px;margin:20px 0 8px}
+p{margin:9px 0}
+.muted{color:var(--muted)}
+.note{
+ background:var(--soft);border-left:4px solid var(--primary);
+ border-radius:9px;padding:13px 15px;margin:14px 0;
+}
+.warning{border-left-color:#d58b19;background:rgba(213,139,25,.1)}
+.good{border-left-color:var(--green);background:rgba(22,131,74,.09)}
+.rule{
+ background:var(--soft);padding:13px;border-radius:12px;
+ font-weight:800;text-align:center;margin:12px 0;
+ font-size:17px;
+}
+.example{
+ border:1px solid var(--border);border-radius:11px;
+ padding:12px 14px;margin:9px 0;
+}
+.en{font-weight:700;font-size:16px}
+.uz{color:var(--muted);font-size:14px}
+.pron{color:var(--primary);font-size:13px}
+.audio{padding:5px 9px;margin-left:7px;font-size:12px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{padding:11px;border:1px solid var(--border);text-align:left}
+th{background:var(--soft);color:var(--primary)}
+.write{
+ background:rgba(22,131,74,.08);
+ border:1px dashed var(--green);
+ padding:15px;border-radius:12px;margin:16px 0;
+}
+.write h3{color:var(--green);margin-top:0}
+.exercise{
+ background:var(--soft);padding:15px;border-radius:12px;margin:12px 0;
+}
+.exercise input{
+ width:100%;padding:11px;border:1px solid var(--border);
+ border-radius:9px;background:var(--card);color:var(--text);
+ margin:7px 0;
+}
+details{
+ border:1px solid var(--border);border-radius:10px;
+ padding:12px;margin:9px 0;background:var(--card);
+}
+summary{cursor:pointer;font-weight:700;color:var(--primary)}
+.quiz-question{
+ border:1px solid var(--border);padding:15px;border-radius:13px;margin:14px 0;
+}
+.option{
+ display:block;width:100%;text-align:left;margin:7px 0;
+ background:var(--soft);color:var(--text);border:1px solid var(--border);
+}
+.option.correct{background:rgba(22,131,74,.15);border-color:var(--green)}
+.option.wrong{background:rgba(195,61,80,.12);border-color:var(--red)}
+.feedback{font-weight:700;margin-top:8px}
+.homework-task{
+ border:1px solid var(--border);border-radius:13px;padding:17px;margin:13px 0;
+}
+footer{text-align:center;color:var(--muted);padding:25px}
+#quizResult{
+ background:var(--soft);border-radius:13px;padding:17px;margin-top:15px;
+ font-weight:700;display:none;
+}
+@media(max-width:600px){
+ .container{padding:14px 11px 40px}
+ .card{padding:16px}
+ .hero{padding:23px 17px}
+ table{font-size:12px}
+ th,td{padding:7px}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="logo">ENGLISH UP</div>
+ <div class="header-actions">
+  <button class="secondary" onclick="location.href='../../index.html'">← Back</button>
+  <button class="secondary" onclick="toggleTheme()">☾</button>
+ </div>
+</header>
+<div class="progress-track"><div id="progressBar"></div></div>
+
+<main class="container">
+
+<section class="hero">
+ <span class="pill">ELEMENTARY COURSE · LESSON 12</span>
+ <h1>THERE IS / THERE ARE<br>THERE WAS / THERE WERE</h1>
+ <p><b>Biror joyda nimadir bor yoki mavjud bo‘lishi haqida gapirish.</b></p>
+ <p>Bugungi darsda hozirgi va o‘tgan zamonda birlik, ko‘plik, inkor va so‘roq gaplarni o‘rganamiz.</p>
+ <p>📚 Daftar · ✍️ Yozish · 🗣 Talaffuz · 🎧 Tinglash · 📝 Test</p>
+</section>
+
+<section class="card">
+<h2>1. Dars maqsadi</h2>
+<p>Ushbu dars yakunida siz quyidagilarni mustaqil bajara olishingiz kerak:</p>
+<ul>
+<li>There is va There are farqini tushunish.</li>
+<li>Birlik va ko‘plikdagi otlarni to‘g‘ri ishlatish.</li>
+<li>There isn't va There aren't bilan inkor gap tuzish.</li>
+<li>Is there...? va Are there...? savollarini berish.</li>
+<li>Some va any so‘zlarini to‘g‘ri ishlatish.</li>
+<li>There was va There were orqali o‘tmish haqida gapirish.</li>
+<li>Was there...? va Were there...? savollarini tuzish.</li>
+<li>There is va It is o‘rtasidagi farqni bilish.</li>
+<li>Uy, xona, maktab, shahar va boshqa joylarni ingliz tilida tasvirlash.</li>
+</ul>
+<div class="note warning">
+<b>MUHIM:</b> Bu darsda faqat o‘qib chiqish yetarli emas. Har bir qoida, formula va misol daftarga yoziladi. Mashqlar daftarda bajariladi.
+</div>
+</section>
+
+<section class="card">
+<h2>2. Daftar bilan ishlash — majburiy qoida</h2>
+<p>Darsni boshlashdan oldin daftaringizni tayyorlang. Har bir bo‘limda yozish va mustaqil ishlash topshirig‘i bor.</p>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+1. Sanani yozing.<br>
+2. Mavzu nomini yozing: THERE IS / THERE ARE — THERE WAS / THERE WERE.<br>
+3. Dars maqsadlarini yozing.<br>
+4. Har bir yangi grammatik formulani ko‘chiring.<br>
+5. Har bir qoidadan kamida 3 ta misol yozing.
+</div>
+<div class="note warning">
+<b>Qat'iy talab:</b> Har bir bo‘limdagi yozma topshiriq bajarilgandan keyingina keyingi bo‘limga o‘ting. Javoblarni shunchaki ko‘z bilan o‘qib chiqish mustaqil bajarish hisoblanmaydi.
+</div>
+</section>
+
+<section class="card">
+<h2>3. THERE IS nima?</h2>
+<p><b>There is</b> ingliz tilida biror joyda bitta narsa borligini yoki mavjudligini bildirish uchun ishlatiladi.</p>
+<p>O‘zbek tiliga odatda <b>bor, mavjud</b> deb tarjima qilinadi.</p>
+<div class="rule">THERE IS + birlikdagi ot</div>
+<p><b>Qachon ishlatamiz?</b></p>
+<ul>
+<li>Bitta odam yoki narsa haqida gapirganda.</li>
+<li>Biror joyda bitta buyum borligini aytganda.</li>
+<li>Birlikdagi sanaladigan ot bilan.</li>
+<li>Sanalmaydigan ot bilan ham.</li>
+</ul>
+
+<h3>Misollar</h3>
+<div class="example">
+<div class="en">There is a book on the table. <button class="audio" onclick="speak('There is a book on the table')">🔊</button></div>
+<div class="uz">Stol ustida bitta kitob bor.</div>
+<div class="pron">Talaffuz: Zer iz e buk on ze teybl.</div>
+</div>
+<div class="example">
+<div class="en">There is a teacher in the classroom. <button class="audio" onclick="speak('There is a teacher in the classroom')">🔊</button></div>
+<div class="uz">Sinf xonasida bitta o‘qituvchi bor.</div>
+<div class="pron">Talaffuz: Zer iz e tiicher in ze klasrum.</div>
+</div>
+<div class="example">
+<div class="en">There is a cat under the chair. <button class="audio" onclick="speak('There is a cat under the chair')">🔊</button></div>
+<div class="uz">Stul tagida mushuk bor.</div>
+<div class="pron">Talaffuz: Zer iz e ket ander ze cheyr.</div>
+</div>
+<div class="example">
+<div class="en">There is some water in the bottle. <button class="audio" onclick="speak('There is some water in the bottle')">🔊</button></div>
+<div class="uz">Shishada biroz suv bor.</div>
+<div class="pron">Talaffuz: Zer iz sam voter in ze botl.</div>
+</div>
+<div class="note good">
+<b>Eslab qoling:</b> There is faqat bitta sanaladigan narsa uchun emas, water, milk, sugar kabi sanalmaydigan otlar bilan ham ishlatiladi.
+</div>
+
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Formulani yozing: There is + singular noun / uncountable noun.<br>
+Yuqoridagi 4 ta misolni inglizchasi, tarjimasi va talaffuzi bilan ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+<p>There is bilan 5 ta yangi gap tuzing:</p>
+1. Xonada bitta stol bor.<br>
+2. Oshxonada sut bor.<br>
+3. Bog‘da bitta daraxt bor.<br>
+4. Sumkada bitta ruchka bor.<br>
+5. Stakan ichida suv bor.
+</div>
+</section>
+
+<section class="card">
+<h2>4. THERE ARE nima?</h2>
+<p><b>There are</b> biror joyda ikki yoki undan ortiq narsa borligini bildirish uchun ishlatiladi.</p>
+<div class="rule">THERE ARE + ko‘plikdagi ot</div>
+<p>Ingliz tilida ko‘plikdagi otlar ko‘pincha -s yoki -es bilan tugaydi. Lekin ayrim otlarning ko‘plik shakli o‘zgaradi.</p>
+<h3>Misollar</h3>
+<div class="example">
+<div class="en">There are two books on the table. <button class="audio" onclick="speak('There are two books on the table')">🔊</button></div>
+<div class="uz">Stol ustida ikkita kitob bor.</div>
+<div class="pron">Talaffuz: Zer ar tu buks on ze teybl.</div>
+</div>
+<div class="example">
+<div class="en">There are three chairs in the room. <button class="audio" onclick="speak('There are three chairs in the room')">🔊</button></div>
+<div class="uz">Xonada uchta stul bor.</div>
+<div class="pron">Talaffuz: Zer ar sri cheyrz in ze rum.</div>
+</div>
+<div class="example">
+<div class="en">There are many students at school. <button class="audio" onclick="speak('There are many students at school')">🔊</button></div>
+<div class="uz">Maktabda ko‘plab o‘quvchilar bor.</div>
+<div class="pron">Talaffuz: Zer ar meni styudents et skul.</div>
+</div>
+<div class="example">
+<div class="en">There are five apples in the basket. <button class="audio" onclick="speak('There are five apples in the basket')">🔊</button></div>
+<div class="uz">Savatda beshta olma bor.</div>
+<div class="pron">Talaffuz: Zer ar fayv eplz in ze basket.</div>
+</div>
+
+<div class="note warning">
+<b>Diqqat!</b> There are dan keyin odatda ko‘plikdagi sanaladigan ot keladi: books, chairs, students, apples.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+There are + plural noun formulasini yozing. 4 ta misolni ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+There are bilan quyidagi gaplarni ingliz tiliga tarjima qiling:
+<ol>
+<li>Xonada to‘rtta deraza bor.</li>
+<li>Stolda ikkita telefon bor.</li>
+<li>Maktabda ko‘p o‘quvchilar bor.</li>
+<li>Oshxonada uchta stul bor.</li>
+<li>Sumkada beshta kitob bor.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>5. THERE IS va THERE ARE farqi</h2>
+<p>Bu ikki shaklning ma'nosi o‘xshash: ikkalasi ham “bor” degan ma'noni beradi. Farq ularning qaysi ot bilan ishlatilishida.</p>
+<table>
+<tr><th>There is</th><th>There are</th></tr>
+<tr><td>Bitta narsa</td><td>Ikki yoki undan ortiq narsa</td></tr>
+<tr><td>Birlikdagi ot</td><td>Ko‘plikdagi ot</td></tr>
+<tr><td>There is a book.</td><td>There are books.</td></tr>
+<tr><td>Bitta kitob bor.</td><td>Kitoblar bor.</td></tr>
+<tr><td>There is a chair.</td><td>There are chairs.</td></tr>
+<tr><td>Bitta stul bor.</td><td>Stullar bor.</td></tr>
+</table>
+<h3>Bir xil joy, lekin soni boshqa</h3>
+<div class="example">
+<div class="en">There is one apple on the table.</div>
+<div class="uz">Stolda bitta olma bor.</div>
+</div>
+<div class="example">
+<div class="en">There are five apples on the table.</div>
+<div class="uz">Stolda beshta olma bor.</div>
+</div>
+<div class="note">
+<b>Sonni tekshiring:</b> Bitta bo‘lsa — is. Ko‘plik bo‘lsa — are. Otning birlik yoki ko‘plik shaklini ham tekshiring.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Jadvalni daftaringizga aynan ko‘chiring. Har bir shaklga o‘zingizdan 3 tadan misol qo‘shing.
+</div>
+</section>
+
+<section class="card">
+<h2>6. Birlik va ko‘plik otlar</h2>
+<p>There is yoki There are ni to‘g‘ri tanlash uchun otning birlik yoki ko‘plik ekanini bilish kerak.</p>
+<table>
+<tr><th>Birlik</th><th>Ko‘plik</th><th>Tarjima</th></tr>
+<tr><td>book</td><td>books</td><td>kitob / kitoblar</td></tr>
+<tr><td>chair</td><td>chairs</td><td>stul / stullar</td></tr>
+<tr><td>box</td><td>boxes</td><td>quti / qutilar</td></tr>
+<tr><td>baby</td><td>babies</td><td>chaqaloq / chaqaloqlar</td></tr>
+<tr><td>child</td><td>children</td><td>bola / bolalar</td></tr>
+<tr><td>man</td><td>men</td><td>erkak / erkaklar</td></tr>
+<tr><td>woman</td><td>women</td><td>ayol / ayollar</td></tr>
+<tr><td>person</td><td>people</td><td>odam / odamlar</td></tr>
+<tr><td>foot</td><td>feet</td><td>oyoq / oyoqlar</td></tr>
+<tr><td>tooth</td><td>teeth</td><td>tish / tishlar</td></tr>
+</table>
+<h3>Ko‘plik yasash qoidalari</h3>
+<p><b>1. Ko‘pchilik otlarga -s qo‘shiladi:</b></p>
+<p>book → books; pen → pens; table → tables.</p>
+<p><b>2. -s, -ss, -sh, -ch, -x, -z bilan tugagan otlarga ko‘pincha -es qo‘shiladi:</b></p>
+<p>bus → buses; box → boxes; watch → watches.</p>
+<p><b>3. Undosh + y bilan tugagan otlarda y → ies:</b></p>
+<p>baby → babies; city → cities.</p>
+<p><b>4. Unli + y bo‘lsa, faqat -s qo‘shiladi:</b></p>
+<p>boy → boys; toy → toys.</p>
+<p><b>5. Ayrim otlar butunlay o‘zgaradi:</b></p>
+<p>child → children; man → men; woman → women.</p>
+<div class="note warning">
+Bu qoidalar otning ko‘plik shaklini yasash uchun kerak. There are ishlatganda otning to‘g‘ri ko‘plik shaklini yozing.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Ko‘plik yasash qoidalarini va jadvaldagi barcha 10 ta so‘zni yozing.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi so‘zlarni ko‘plikka aylantiring:
+<ol>
+<li>apple</li><li>class</li><li>dish</li><li>city</li><li>boy</li>
+<li>box</li><li>child</li><li>man</li><li>woman</li><li>person</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>7. THERE IS / THERE ARE — inkor shakli</h2>
+<p>Biror joyda narsa yo‘qligini aytmoqchi bo‘lsak, inkor shaklidan foydalanamiz.</p>
+<h3>There is not = There isn't</h3>
+<div class="rule">THERE IS NOT + birlikdagi ot</div>
+<p>There is not shaklining qisqartmasi — <b>There isn't</b>.</p>
+<div class="example">
+<div class="en">There isn't a TV in my bedroom. <button class="audio" onclick="speak('There is not a TV in my bedroom')">🔊</button></div>
+<div class="uz">Mening yotoqxonamda televizor yo‘q.</div>
+</div>
+<div class="example">
+<div class="en">There isn't a bank near my house.</div>
+<div class="uz">Uyim yaqinida bank yo‘q.</div>
+</div>
+<h3>There are not = There aren't</h3>
+<div class="rule">THERE ARE NOT + ko‘plikdagi ot</div>
+<div class="example">
+<div class="en">There aren't any books on the desk. <button class="audio" onclick="speak('There are not any books on the desk')">🔊</button></div>
+<div class="uz">Parta ustida hech qanday kitob yo‘q.</div>
+</div>
+<div class="example">
+<div class="en">There aren't any students in the classroom.</div>
+<div class="uz">Sinf xonasida hech qanday o‘quvchi yo‘q.</div>
+</div>
+<table>
+<tr><th>Oddiy shakl</th><th>Inkor shakli</th></tr>
+<tr><td>There is a book.</td><td>There isn't a book.</td></tr>
+<tr><td>There are books.</td><td>There aren't books.</td></tr>
+<tr><td>There is some water.</td><td>There isn't any water.</td></tr>
+</table>
+<div class="note warning">
+<b>Eng ko‘p uchraydigan xato:</b><br>
+❌ There aren't a book.<br>
+✅ There isn't a book.<br><br>
+❌ There isn't two chairs.<br>
+✅ There aren't two chairs.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+There isn't va There aren't formulalarini, qisqartmalarini va misollarini yozing.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi gaplarni inkor shakliga aylantiring:
+<ol>
+<li>There is a computer in the room.</li>
+<li>There are five pens in the bag.</li>
+<li>There is some milk in the fridge.</li>
+<li>There are two cars outside.</li>
+<li>There is a park near my house.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>8. THERE IS / THERE ARE — so‘roq shakli</h2>
+<p>Biror joyda narsa bor yoki yo‘qligini so‘rash uchun <b>is</b> yoki <b>are</b> gap boshiga chiqadi.</p>
+<h3>Is there...? — birlik</h3>
+<div class="rule">IS + THERE + birlikdagi ot + ...?</div>
+<div class="example">
+<div class="en">Is there a bank near here? <button class="audio" onclick="speak('Is there a bank near here?')">🔊</button></div>
+<div class="uz">Shu yaqin atrofda bank bormi?</div>
+</div>
+<div class="example">
+<div class="en">Is there a bathroom in this house?</div>
+<div class="uz">Bu uyda hammom bormi?</div>
+</div>
+<h3>Are there...? — ko‘plik</h3>
+<div class="rule">ARE + THERE + ko‘plikdagi ot + ...?</div>
+<div class="example">
+<div class="en">Are there any shops near your house? <button class="audio" onclick="speak('Are there any shops near your house?')">🔊</button></div>
+<div class="uz">Uyingiz yaqinida do‘konlar bormi?</div>
+</div>
+<div class="example">
+<div class="en">Are there any students in the classroom?</div>
+<div class="uz">Sinf xonasida o‘quvchilar bormi?</div>
+</div>
+<h3>Qisqa javoblar</h3>
+<table>
+<tr><th>Savol</th><th>Ha</th><th>Yo‘q</th></tr>
+<tr><td>Is there a book?</td><td>Yes, there is.</td><td>No, there isn't.</td></tr>
+<tr><td>Are there books?</td><td>Yes, there are.</td><td>No, there aren't.</td></tr>
+</table>
+<div class="note warning">
+<b>Muhim:</b> Qisqa javobda “Yes, there is a book” deyish shart emas. Oddiy qisqa javob: “Yes, there is.”<br>
+❌ Yes, there are not.<br>
+✅ No, there aren't.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Is there va Are there formulalarini yozing. Jadvalni daftarga ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi gaplarni so‘roq shakliga aylantiring:
+<ol>
+<li>There is a school near my house.</li>
+<li>There are three windows in the room.</li>
+<li>There is a computer on the desk.</li>
+<li>There are some shops in this street.</li>
+<li>There is some water in the glass.</li>
+</ol>
+Har bir savolga Yes va No shaklida qisqa javob yozing.
+</div>
+</section>
+
+<section class="card">
+<h2>9. SOME va ANY</h2>
+<p><b>Some</b> va <b>any</b> miqdorni aniq aytmasdan “bir oz”, “bir nechta”, “qandaydir” ma'nolarini beradi.</p>
+<h3>SOME — asosan darak gaplarda</h3>
+<p>There is va There are bilan darak gaplarda ko‘p ishlatiladi.</p>
+<div class="example">
+<div class="en">There are some apples in the basket.</div>
+<div class="uz">Savatda bir nechta olma bor.</div>
+</div>
+<div class="example">
+<div class="en">There is some juice in the glass.</div>
+<div class="uz">Stakanda biroz sharbat bor.</div>
+</div>
+<h3>ANY — asosan inkor va so‘roq gaplarda</h3>
+<div class="example">
+<div class="en">There aren't any eggs in the fridge.</div>
+<div class="uz">Muzlatkichda hech qanday tuxum yo‘q.</div>
+</div>
+<div class="example">
+<div class="en">Are there any children in the park?</div>
+<div class="uz">Bog‘da bolalar bormi?</div>
+</div>
+<div class="example">
+<div class="en">There isn't any sugar in the tea.</div>
+<div class="uz">Choyda shakar yo‘q.</div>
+</div>
+<table>
+<tr><th>Gap turi</th><th>Ko‘p ishlatiladigan so‘z</th><th>Misol</th></tr>
+<tr><td>Darak</td><td>some</td><td>There are some books.</td></tr>
+<tr><td>Inkor</td><td>any</td><td>There aren't any books.</td></tr>
+<tr><td>So‘roq</td><td>any</td><td>Are there any books?</td></tr>
+</table>
+<div class="note">
+<b>Eslatma:</b> Some so‘roq gaplarda ham taklif yoki iltimosda ishlatilishi mumkin. Hozircha asosiy qoida sifatida darak gapda some, inkor va oddiy so‘roq gapda any ni o‘rganing.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Some va any qoidalarini jadval bilan yozing. Har biriga 3 tadan misol ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Bo‘sh joyga some yoki any yozing:
+<ol>
+<li>There are _____ flowers in the garden.</li>
+<li>There isn't _____ milk in the fridge.</li>
+<li>Are there _____ students here?</li>
+<li>There is _____ bread on the table.</li>
+<li>There aren't _____ chairs in the room.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>10. SANALADIGAN VA SANALMAYDIGAN OTLAR</h2>
+<p>There is va There are ni tanlashda otning sanaladigan yoki sanalmaydigan ekaniga ham e'tibor berish kerak.</p>
+<h3>Sanaladigan otlar — Countable nouns</h3>
+<p>Bularni dona-dona sanash mumkin: one apple, two apples, three books.</p>
+<ul>
+<li>one book — bitta kitob</li>
+<li>two books — ikkita kitob</li>
+<li>one chair — bitta stul</li>
+<li>three chairs — uchta stul</li>
+</ul>
+<h3>Sanalmaydigan otlar — Uncountable nouns</h3>
+<p>Bularni odatda dona-dona sanamaymiz. Masalan:</p>
+<ul>
+<li>water — suv</li><li>milk — sut</li><li>rice — guruch</li>
+<li>sugar — shakar</li><li>bread — non</li><li>money — pul</li>
+<li>information — ma'lumot</li><li>furniture — mebel</li>
+</ul>
+<div class="rule">THERE IS + UNCOUNTABLE NOUN</div>
+<div class="example">
+<div class="en">There is some water in the bottle.</div>
+<div class="uz">Shishada biroz suv bor.</div>
+</div>
+<div class="example">
+<div class="en">There is some rice in the kitchen.</div>
+<div class="uz">Oshxonada biroz guruch bor.</div>
+</div>
+<div class="note warning">
+<b>Juda muhim:</b><br>
+❌ There are some water.<br>
+✅ There is some water.<br><br>
+Water sanalmaydigan ot bo‘lgani uchun There is ishlatiladi.
+</div>
+<h3>Sanalmaydigan narsani idish yoki birlik bilan sanash</h3>
+<p>Masalan, water so‘zini bevosita sanamaymiz, lekin bottle yoki glass ni sanashimiz mumkin.</p>
+<div class="example">
+<div class="en">There are two bottles of water.</div>
+<div class="uz">Ikkita shisha suv bor.</div>
+</div>
+<div class="example">
+<div class="en">There are three glasses of milk.</div>
+<div class="uz">Uchta stakan sut bor.</div>
+</div>
+<div class="example">
+<div class="en">There is a bottle of water.</div>
+<div class="uz">Bitta shisha suv bor.</div>
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Sanaladigan va sanalmaydigan otlar ro‘yxatini ikki ustunda yozing. There is bilan 3 ta sanalmaydigan otli gap tuzing.
+</div>
+</section>
+
+<section class="card">
+<h2>11. A / AN bilan ishlatilishi</h2>
+<p>Birlikdagi sanaladigan ot oldidan ko‘pincha <b>a</b> yoki <b>an</b> ishlatiladi.</p>
+<ul>
+<li><b>a</b> — undosh tovush bilan boshlanadigan so‘zlardan oldin: a book, a chair, a teacher.</li>
+<li><b>an</b> — unli tovush bilan boshlanadigan so‘zlardan oldin: an apple, an egg, an orange.</li>
+</ul>
+<div class="example">
+<div class="en">There is a book on the desk.</div>
+<div class="uz">Parta ustida bitta kitob bor.</div>
+</div>
+<div class="example">
+<div class="en">There is an apple in the bag.</div>
+<div class="uz">Sumkada bitta olma bor.</div>
+</div>
+<div class="note warning">
+A/an faqat birlikdagi sanaladigan ot bilan ishlatiladi.<br>
+❌ There is a books.<br>
+✅ There are books.<br>
+❌ There are an apple.<br>
+✅ There is an apple.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+A va an qoidalarini, misollarni va xatolarni daftarga yozing.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+To‘g‘ri variantni tanlab yozing:
+<ol>
+<li>There is (a / an) orange.</li>
+<li>There is (a / an) chair.</li>
+<li>There are (a / an) books.</li>
+<li>There is (a / an) egg.</li>
+<li>There is (a / an) computer.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>12. JOY PREPOSITIONLARI</h2>
+<p>Biror narsa qayerda joylashganini aytish uchun joy predloglari ishlatiladi.</p>
+<table>
+<tr><th>Predlog</th><th>Ma'nosi</th><th>Misol</th></tr>
+<tr><td>in</td><td>ichida</td><td>in the room</td></tr>
+<tr><td>on</td><td>ustida</td><td>on the table</td></tr>
+<tr><td>under</td><td>tagida</td><td>under the bed</td></tr>
+<tr><td>next to</td><td>yonida</td><td>next to the door</td></tr>
+<tr><td>between</td><td>orasida</td><td>between two chairs</td></tr>
+<tr><td>behind</td><td>orqasida</td><td>behind the house</td></tr>
+<tr><td>in front of</td><td>oldida</td><td>in front of the school</td></tr>
+<tr><td>near</td><td>yaqinida</td><td>near my home</td></tr>
+<tr><td>above</td><td>tepasida</td><td>above the bed</td></tr>
+<tr><td>opposite</td><td>qarshisida</td><td>opposite the bank</td></tr>
+</table>
+<h3>There is / There are bilan misollar</h3>
+<div class="example">
+<div class="en">There is a cat under the table.</div>
+<div class="uz">Stol tagida mushuk bor.</div>
+</div>
+<div class="example">
+<div class="en">There are two pictures on the wall.</div>
+<div class="uz">Devorda ikkita rasm bor.</div>
+</div>
+<div class="example">
+<div class="en">There is a garden behind the house.</div>
+<div class="uz">Uyning orqasida bog‘ bor.</div>
+</div>
+<div class="example">
+<div class="en">There are two shops next to the bank.</div>
+<div class="uz">Bank yonida ikkita do‘kon bor.</div>
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+10 ta predlogni tarjimasi bilan yozing. Har biridan kamida bittadan misol tuzing.
+</div>
+</section>
+
+<section class="card">
+<h2>13. THERE WAS — o‘tgan zamon, birlik</h2>
+<p>Endi biror narsa hozir emas, balki o'tmishda bor bo‘lganini aytishni o‘rganamiz.</p>
+<p><b>There was</b> — o'tgan zamondagi birlik yoki sanalmaydigan ot bilan ishlatiladi.</p>
+<div class="rule">THERE WAS + birlikdagi ot / sanalmaydigan ot</div>
+<p>Tarjimasi: bor edi, mavjud edi.</p>
+<div class="example">
+<div class="en">There was a book on the table yesterday. <button class="audio" onclick="speak('There was a book on the table yesterday')">🔊</button></div>
+<div class="uz">Kecha stol ustida kitob bor edi.</div>
+</div>
+<div class="example">
+<div class="en">There was a big tree in the garden.</div>
+<div class="uz">Bog‘da katta daraxt bor edi.</div>
+</div>
+<div class="example">
+<div class="en">There was some milk in the fridge.</div>
+<div class="uz">Muzlatkichda biroz sut bor edi.</div>
+</div>
+<div class="example">
+<div class="en">There was a teacher in the classroom.</div>
+<div class="uz">Sinf xonasida o‘qituvchi bor edi.</div>
+</div>
+<p>There was ko‘pincha quyidagi vaqt so‘zlari bilan keladi:</p>
+<ul><li>yesterday — kecha</li><li>last week — o‘tgan hafta</li><li>last year — o‘tgan yil</li><li>two days ago — ikki kun oldin</li><li>in 2020 — 2020-yilda</li></ul>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+There was formulasini yozing. Yuqoridagi 4 ta misolni tarjimasi bilan ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+There was yordamida 5 ta gap tuzing. Quyidagi so‘zlardan foydalaning:
+book, tree, teacher, water, computer.
+</div>
+</section>
+
+<section class="card">
+<h2>14. THERE WERE — o‘tgan zamon, ko‘plik</h2>
+<p><b>There were</b> o'tmishda ikki yoki undan ortiq narsa mavjud bo‘lganini bildiradi.</p>
+<div class="rule">THERE WERE + ko‘plikdagi ot</div>
+<div class="example">
+<div class="en">There were five students in the classroom yesterday. <button class="audio" onclick="speak('There were five students in the classroom yesterday')">🔊</button></div>
+<div class="uz">Kecha sinfxonada beshta o‘quvchi bor edi.</div>
+</div>
+<div class="example">
+<div class="en">There were many cars in the street.</div>
+<div class="uz">Ko‘chada ko‘p mashinalar bor edi.</div>
+</div>
+<div class="example">
+<div class="en">There were two cats in the garden.</div>
+<div class="uz">Bog‘da ikkita mushuk bor edi.</div>
+</div>
+<div class="example">
+<div class="en">There were some apples on the table.</div>
+<div class="uz">Stolda bir nechta olma bor edi.</div>
+</div>
+<table>
+<tr><th>Hozirgi zamon</th><th>O‘tgan zamon</th></tr>
+<tr><td>There is a book.</td><td>There was a book.</td></tr>
+<tr><td>There are books.</td><td>There were books.</td></tr>
+<tr><td>There is some water.</td><td>There was some water.</td></tr>
+<tr><td>There are children.</td><td>There were children.</td></tr>
+</table>
+<div class="note good">
+<b>Yodlash uchun:</b><br>
+IS → WAS<br>
+ARE → WERE<br>
+There is/are hozirgi zamon, There was/were o'tgan zamon.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+There were formulasini va misollarni yozing. Hozirgi va o'tgan zamon jadvalini ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi gaplarni o'tgan zamonga aylantiring:
+<ol>
+<li>There are two cars outside.</li>
+<li>There is a dog in the garden.</li>
+<li>There are many students at school.</li>
+<li>There is some milk in the fridge.</li>
+<li>There are three books on the table.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>15. THERE WAS / THERE WERE — inkor shakli</h2>
+<p>O'tmishda biror narsa mavjud bo‘lmaganini aytish uchun wasn't yoki weren't ishlatiladi.</p>
+<div class="rule">There was not = There wasn't</div>
+<p>Birlik va sanalmaydigan otlar bilan:</p>
+<div class="example">
+<div class="en">There wasn't a computer in my room.</div>
+<div class="uz">Mening xonamda kompyuter yo‘q edi.</div>
+</div>
+<div class="example">
+<div class="en">There wasn't any water in the bottle.</div>
+<div class="uz">Shishada suv yo‘q edi.</div>
+</div>
+<div class="rule">There were not = There weren't</div>
+<p>Ko‘plikdagi otlar bilan:</p>
+<div class="example">
+<div class="en">There weren't any students at school.</div>
+<div class="uz">Maktabda hech qanday o‘quvchilar yo‘q edi.</div>
+</div>
+<div class="example">
+<div class="en">There weren't many cars in the street.</div>
+<div class="uz">Ko‘chada ko‘p mashinalar yo‘q edi.</div>
+</div>
+<table>
+<tr><th>Darak</th><th>Inkor</th></tr>
+<tr><td>There was a book.</td><td>There wasn't a book.</td></tr>
+<tr><td>There were books.</td><td>There weren't books.</td></tr>
+<tr><td>There was some water.</td><td>There wasn't any water.</td></tr>
+</table>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Wasn't va weren't shakllarini, formulalarini va misollarini yozing.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi gaplarni inkor shakliga aylantiring:
+<ol>
+<li>There was a park near my old house.</li>
+<li>There were five children in the room.</li>
+<li>There was some food on the table.</li>
+<li>There were two teachers at school.</li>
+<li>There was a bus near the station.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>16. THERE WAS / THERE WERE — so‘roq shakli</h2>
+<p>O'tmishda biror narsa bor bo‘lganmi deb so‘rash uchun was yoki were gap boshiga chiqadi.</p>
+<h3>Was there...? — birlik</h3>
+<div class="rule">WAS + THERE + birlikdagi ot + ...?</div>
+<div class="example">
+<div class="en">Was there a school here before? <button class="audio" onclick="speak('Was there a school here before?')">🔊</button></div>
+<div class="uz">Oldin bu yerda maktab bormidi?</div>
+</div>
+<h3>Were there...? — ko‘plik</h3>
+<div class="rule">WERE + THERE + ko‘plikdagi ot + ...?</div>
+<div class="example">
+<div class="en">Were there many people at the market?</div>
+<div class="uz">Bozorda ko‘p odamlar bormidi?</div>
+</div>
+<h3>Qisqa javoblar</h3>
+<table>
+<tr><th>Savol</th><th>Ha</th><th>Yo‘q</th></tr>
+<tr><td>Was there a shop?</td><td>Yes, there was.</td><td>No, there wasn't.</td></tr>
+<tr><td>Were there shops?</td><td>Yes, there were.</td><td>No, there weren't.</td></tr>
+</table>
+<div class="example">
+<div class="en">Was there a dog in the garden?</div>
+<div class="uz">Bog‘da it bormidi?</div>
+<div class="en">Yes, there was.</div>
+<div class="uz">Ha, bor edi.</div>
+</div>
+<div class="example">
+<div class="en">Were there any books on the desk?</div>
+<div class="uz">Parta ustida kitoblar bormidi?</div>
+<div class="en">No, there weren't.</div>
+<div class="uz">Yo‘q, yo‘q edi.</div>
+</div>
+<div class="note warning">
+<b>Diqqat:</b><br>
+❌ Did there was a shop?<br>
+✅ Was there a shop?<br><br>
+❌ Did there were books?<br>
+✅ Were there books?<br><br>
+There was/were bilan savol tuzishda did ishlatilmaydi.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Was there va Were there formulalarini, qisqa javoblar jadvalini yozing.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+Quyidagi gaplardan so‘roq tuzing:
+<ol>
+<li>There was a hospital in this town.</li>
+<li>There were three shops near the house.</li>
+<li>There was some food in the kitchen.</li>
+<li>There were many people in the park.</li>
+<li>There was a computer in the classroom.</li>
+</ol>
+Har biriga qisqa Yes va No javoblarini ham yozing.
+</div>
+</section>
+
+<section class="card">
+<h2>17. PRESENT va PAST — to‘liq taqqoslash</h2>
+<p>Hozirgi zamon va o'tgan zamon shakllarini aralashtirmaslik uchun ushbu jadvalni yaxshilab o‘rganing.</p>
+<table>
+<tr><th>Gap turi</th><th>Hozirgi zamon</th><th>O‘tgan zamon</th></tr>
+<tr><td>Birlik</td><td>There is a book.</td><td>There was a book.</td></tr>
+<tr><td>Ko‘plik</td><td>There are books.</td><td>There were books.</td></tr>
+<tr><td>Inkor birlik</td><td>There isn't a book.</td><td>There wasn't a book.</td></tr>
+<tr><td>Inkor ko‘plik</td><td>There aren't books.</td><td>There weren't books.</td></tr>
+<tr><td>Savol birlik</td><td>Is there a book?</td><td>Was there a book?</td></tr>
+<tr><td>Savol ko‘plik</td><td>Are there books?</td><td>Were there books?</td></tr>
+</table>
+<h3>Bir vaziyatni to‘rt xil ko‘rinishda aytamiz</h3>
+<div class="example">
+<div class="en">There is a tree in the garden.</div>
+<div class="uz">Bog‘da daraxt bor.</div>
+</div>
+<div class="example">
+<div class="en">There was a tree in the garden.</div>
+<div class="uz">Bog‘da daraxt bor edi.</div>
+</div>
+<div class="example">
+<div class="en">There isn't a tree in the garden.</div>
+<div class="uz">Bog‘da daraxt yo‘q.</div>
+</div>
+<div class="example">
+<div class="en">There wasn't a tree in the garden.</div>
+<div class="uz">Bog‘da daraxt yo‘q edi.</div>
+</div>
+<div class="note good">
+<b>Eng muhim yodlash jadvali:</b><br>
+Hozirgi birlik: IS<br>
+Hozirgi ko‘plik: ARE<br>
+O‘tgan birlik: WAS<br>
+O‘tgan ko‘plik: WERE
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Ushbu jadvalni daftarga ko‘chiring. Har bir shaklga bittadan o‘zingiz tuzgan gap yozing.
+</div>
+</section>
+
+<section class="card">
+<h2>18. THERE IS va IT IS — farqi</h2>
+<p>Bu ikki ibora ko‘pincha chalkashtiriladi. Ularning vazifasi boshqa-boshqa.</p>
+<h3>THERE IS — biror narsa mavjudligini aytadi</h3>
+<div class="example">
+<div class="en">There is a book on the table.</div>
+<div class="uz">Stol ustida kitob bor.</div>
+</div>
+<h3>IT IS — ma'lum narsa haqida ma'lumot beradi</h3>
+<div class="example">
+<div class="en">It is a book.</div>
+<div class="uz">U kitob.</div>
+</div>
+<p>Yana bir misol:</p>
+<div class="example">
+<div class="en">There is a man outside.</div>
+<div class="uz">Tashqarida bir erkak bor.</div>
+</div>
+<div class="example">
+<div class="en">He is my father.</div>
+<div class="uz">U mening otam.</div>
+</div>
+<div class="note">
+<b>Farqni eslab qoling:</b><br>
+There is — nimadir borligini bildiradi.<br>
+It is — bu nima yoki qanday ekanini bildiradi.
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+There is va It is farqini yozing. Yuqoridagi misollarni ko‘chiring.
+</div>
+<div class="exercise">
+<b>📝 DAFTARDA BAJARING</b>
+There is yoki It is bilan to‘ldiring:
+<ol>
+<li>_____ a cat in the garden.</li>
+<li>_____ my new phone.</li>
+<li>_____ two books on the desk.</li>
+<li>_____ a beautiful house.</li>
+<li>_____ very cold today.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<h2>19. Kundalik hayotda ishlatish</h2>
+<p>Endi grammatikani haqiqiy vaziyatlarda qo‘llashni o‘rganamiz.</p>
+<h3>A. Xonani tasvirlash</h3>
+<div class="example">
+<div class="en">There is a bed in my room.</div>
+<div class="uz">Xonamda karavot bor.</div>
+<div class="en">There are two windows.</div>
+<div class="uz">Ikkita deraza bor.</div>
+<div class="en">There is a desk next to the window.</div>
+<div class="uz">Deraza yonida yozuv stoli bor.</div>
+<div class="en">There are some books on the desk.</div>
+<div class="uz">Stol ustida bir nechta kitob bor.</div>
+</div>
+<h3>B. Maktabni tasvirlash</h3>
+<div class="example">
+<div class="en">There is a library in my school.</div>
+<div class="uz">Maktabimda kutubxona bor.</div>
+<div class="en">There are many classrooms.</div>
+<div class="uz">Ko‘plab sinfxonalar bor.</div>
+<div class="en">There is a computer in the library.</div>
+<div class="uz">Kutubxonada kompyuter bor.</div>
+</div>
+<h3>C. Bozorni tasvirlash</h3>
+<div class="example">
+<div class="en">There are many people at the market.</div>
+<div class="uz">Bozorda ko‘p odamlar bor.</div>
+<div class="en">There are fresh fruits and vegetables.</div>
+<div class="uz">Yangi meva va sabzavotlar bor.</div>
+<div class="en">There is some fresh bread.</div>
+<div class="uz">Biroz yangi non bor.</div>
+</div>
+<h3>D. O‘tgan kun haqida gapirish</h3>
+<div class="example">
+<div class="en">There was a meeting yesterday.</div>
+<div class="uz">Kecha yig‘ilish bor edi.</div>
+<div class="en">There were many people there.</div>
+<div class="uz">U yerda ko‘p odamlar bor edi.</div>
+<div class="en">There wasn't enough time.</div>
+<div class="uz">Yetarli vaqt yo‘q edi.</div>
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Har bir mavzu bo‘yicha kamida 3 tadan gap ko‘chiring: xona, maktab, bozor, o‘tgan kun.
+</div>
+</section>
+
+<section class="card">
+<h2>20. Kundalik dialoglar</h2>
+<h3>Dialog 1 — Uy haqida</h3>
+<div class="example">
+<b>A:</b> Is there a garden near your house?
+<div class="uz">Uyingiz yaqinida bog‘ bormi?</div>
+<b>B:</b> Yes, there is.
+<div class="uz">Ha, bor.</div>
+<b>A:</b> Are there any trees in the garden?
+<div class="uz">Bog‘da daraxtlar bormi?</div>
+<b>B:</b> Yes, there are many trees.
+<div class="uz">Ha, ko‘p daraxtlar bor.</div>
+</div>
+<h3>Dialog 2 — O‘tmish haqida</h3>
+<div class="example">
+<b>A:</b> Was there a shop here before?
+<div class="uz">Oldin bu yerda do‘kon bormidi?</div>
+<b>B:</b> Yes, there was.
+<div class="uz">Ha, bor edi.</div>
+<b>A:</b> Were there many people?
+<div class="uz">Odamlar ko‘p edimi?</div>
+<b>B:</b> Yes, there were.
+<div class="uz">Ha, ko‘p edi.</div>
+</div>
+<h3>Dialog 3 — Sinfxonada</h3>
+<div class="example">
+<b>A:</b> Are there any students in the classroom?
+<div class="uz">Sinf xonasida o‘quvchilar bormi?</div>
+<b>B:</b> Yes, there are ten students.
+<div class="uz">Ha, o‘nta o‘quvchi bor.</div>
+<b>A:</b> Is there a teacher?
+<div class="uz">O‘qituvchi bormi?</div>
+<b>B:</b> No, there isn't.
+<div class="uz">Yo‘q, yo‘q.</div>
+</div>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Uchta dialogni inglizcha va o‘zbekcha ko‘chiring. Keyin har bir dialogni ovoz chiqarib 3 marta o‘qing.
+</div>
+</section>
+
+<section class="card">
+<h2>21. Eng ko‘p uchraydigan xatolar</h2>
+<table>
+<tr><th>Noto‘g‘ri</th><th>To‘g‘ri</th><th>Sabab</th></tr>
+<tr><td>There are a book.</td><td>There is a book.</td><td>Bitta kitob.</td></tr>
+<tr><td>There is two books.</td><td>There are two books.</td><td>Ko‘plik.</td></tr>
+<tr><td>There are some water.</td><td>There is some water.</td><td>Water sanalmaydi.</td></tr>
+<tr><td>There isn't books.</td><td>There aren't books.</td><td>Books ko‘plik.</td></tr>
+<tr><td>Is there books?</td><td>Are there books?</td><td>Ko‘plik savoli.</td></tr>
+<tr><td>Are there a chair?</td><td>Is there a chair?</td><td>Birlik savoli.</td></tr>
+<tr><td>There were a man.</td><td>There was a man.</td><td>Birlik ot.</td></tr>
+<tr><td>There was children.</td><td>There were children.</td><td>Ko‘plik ot.</td></tr>
+<tr><td>Did there was a shop?</td><td>Was there a shop?</td><td>Was gap boshiga chiqadi.</td></tr>
+<tr><td>Did there were books?</td><td>Were there books?</td><td>Were gap boshiga chiqadi.</td></tr>
+</table>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Jadvaldagi barcha noto‘g‘ri va to‘g‘ri gaplarni daftarga ko‘chiring. Har bir xatoning sababini o‘zbek tilida yozing.
+</div>
+</section>
+
+<section class="card">
+<h2>22. Talaffuz mashqi</h2>
+<p>Quyidagi gaplarni avval tinglang, keyin ovoz chiqarib takrorlang.</p>
+<div class="example">
+<div class="en">There is a book.</div><button class="audio" onclick="speak('There is a book')">🔊 Tinglash</button>
+<div class="pron">Zer iz e buk.</div>
+</div>
+<div class="example">
+<div class="en">There are two books.</div><button class="audio" onclick="speak('There are two books')">🔊 Tinglash</button>
+<div class="pron">Zer ar tu buks.</div>
+</div>
+<div class="example">
+<div class="en">There isn't any water.</div><button class="audio" onclick="speak('There is not any water')">🔊 Tinglash</button>
+<div class="pron">Zer iznt eni voter.</div>
+</div>
+<div class="example">
+<div class="en">Are there any students?</div><button class="audio" onclick="speak('Are there any students?')">🔊 Tinglash</button>
+<div class="pron">Ar zer eni styudents?</div>
+</div>
+<div class="example">
+<div class="en">There was a big house.</div><button class="audio" onclick="speak('There was a big house')">🔊 Tinglash</button>
+<div class="pron">Zer voz e big haus.</div>
+</div>
+<div class="example">
+<div class="en">There were many people.</div><button class="audio" onclick="speak('There were many people')">🔊 Tinglash</button>
+<div class="pron">Zer ver meni pipel.</div>
+</div>
+<div class="note">
+Talaffuz yozuvi inglizcha tovushlarni taxminiy ifodalaydi. Eng yaxshi mashq — audio tugmasini bosib, gapni bir necha marta tinglash va takrorlash.
+</div>
+<div class="write">
+<h3>🗣 DAFTARDA VA OVOZ CHIQARIB BAJARING</h3>
+6 ta gapni daftarga yozing. Har bir gapni 5 martadan ovoz chiqarib takrorlang.
+</div>
+</section>
+
+<section class="card">
+<h2>23. Umumiy takrorlash</h2>
+<table>
+<tr><th>Shakl</th><th>Formula</th><th>Misol</th></tr>
+<tr><td>Darak, hozirgi birlik</td><td>There is + singular</td><td>There is a pen.</td></tr>
+<tr><td>Darak, hozirgi ko‘plik</td><td>There are + plural</td><td>There are pens.</td></tr>
+<tr><td>Inkor, hozirgi birlik</td><td>There isn't + singular</td><td>There isn't a pen.</td></tr>
+<tr><td>Inkor, hozirgi ko‘plik</td><td>There aren't + plural</td><td>There aren't pens.</td></tr>
+<tr><td>Savol, hozirgi birlik</td><td>Is there + singular?</td><td>Is there a pen?</td></tr>
+<tr><td>Savol, hozirgi ko‘plik</td><td>Are there + plural?</td><td>Are there pens?</td></tr>
+<tr><td>Darak, o'tgan birlik</td><td>There was + singular</td><td>There was a pen.</td></tr>
+<tr><td>Darak, o'tgan ko‘plik</td><td>There were + plural</td><td>There were pens.</td></tr>
+<tr><td>Inkor, o'tgan birlik</td><td>There wasn't + singular</td><td>There wasn't a pen.</td></tr>
+<tr><td>Inkor, o'tgan ko‘plik</td><td>There weren't + plural</td><td>There weren't pens.</td></tr>
+<tr><td>Savol, o'tgan birlik</td><td>Was there + singular?</td><td>Was there a pen?</td></tr>
+<tr><td>Savol, o'tgan ko‘plik</td><td>Were there + plural?</td><td>Were there pens?</td></tr>
+</table>
+<div class="write">
+<h3>✍️ DAFTARGA YOZING</h3>
+Ushbu umumiy jadvalni to‘liq ko‘chiring. Jadvalga qaramasdan barcha 12 ta formulani yoddan qayta yozib ko‘ring.
+</div>
+</section>
+
+<section class="card" id="quiz">
+<h2>24. Katta test — 30 ta savol</h2>
+<p>Har bir savolda faqat bitta to‘g‘ri javob bor. Avval mustaqil javob bering. Natijangiz oxirida ko‘rinadi.</p>
+<p><b>O‘tish mezoni:</b> kamida 24 ta to‘g‘ri javob — 80%.</p>
+<div id="quizArea"></div>
+<button onclick="finishQuiz()">TESTNI YAKUNLASH</button>
+<div id="quizResult"></div>
+</section>
+
+<section class="card">
+<h2>25. HOMEWORK — Uy vazifasi</h2>
+<p>Uy vazifasi 4 ta asosiy ko‘nikma bo‘yicha bajariladi. Barcha yozma topshiriqlar daftarda bajarilishi shart.</p>
+
+<div class="homework-task">
+<h3>1-TOPSHIRIQ — GRAMMAR</h3>
+<p>Quyidagi topshiriqlarni daftarda bajaring.</p>
+<b>A. To‘g‘ri shaklni tanlang:</b>
+<ol>
+<li>There (is / are) a book on the table.</li>
+<li>There (is / are) five students in the room.</li>
+<li>There (was / were) a tree in the garden.</li>
+<li>There (was / were) many people at the market.</li>
+<li>There (isn't / aren't) any milk.</li>
+<li>There (wasn't / weren't) any chairs.</li>
+</ol>
+<b>B. Inkor shakliga aylantiring:</b>
+<ol>
+<li>There is a computer in the room.</li>
+<li>There are three windows.</li>
+<li>There was a shop here.</li>
+<li>There were many children.</li>
+</ol>
+<b>C. So‘roq shakliga aylantiring:</b>
+<ol>
+<li>There is a bank near here.</li>
+<li>There are some apples.</li>
+<li>There was a teacher.</li>
+<li>There were two cars.</li>
+</ol>
+</div>
+
+<div class="homework-task">
+<h3>2-TOPSHIRIQ — WRITING</h3>
+<p><b>My House and My Town</b> mavzusida kamida 15 ta inglizcha gap yozing.</p>
+<p>Talablar:</p>
+<ul>
+<li>Kamida 5 ta There is / There are gaplari.</li>
+<li>Kamida 3 ta inkor gap.</li>
+<li>Kamida 3 ta so‘roq gap.</li>
+<li>Kamida 4 ta There was / There were gaplari.</li>
+<li>Kamida 5 ta joy predlogidan foydalaning.</li>
+</ul>
+<p>Har bir gapning o‘zbekcha tarjimasini ham yozing.</p>
+</div>
+
+<div class="homework-task">
+<h3>3-TOPSHIRIQ — READING</h3>
+<p>Matnni kamida 3 marta o‘qing. Keyin daftarga ko‘chirib, tarjima qiling.</p>
+<div class="example">
+<p class="en">MY OLD HOUSE</p>
+<p>There is a small garden near my house. There are three trees in the garden. There is a big table in the kitchen. There are four chairs around the table. There is a small shop next to my house.</p>
+<p>There was a beautiful park near my old house. There were many children in the park. There was a small lake behind the park. There weren't many cars in that street.</p>
+<p>Now there are more shops and houses in my town. There is also a new school near the market.</p>
+</div>
+<p><b>Savollarga ingliz tilida javob yozing:</b></p>
+<ol>
+<li>Is there a garden near the house?</li>
+<li>How many trees are there in the garden?</li>
+<li>Where is the shop?</li>
+<li>Was there a park near the old house?</li>
+<li>Were there many children in the park?</li>
+<li>Are there more shops in the town now?</li>
+</ol>
+</div>
+
+<div class="homework-task">
+<h3>4-TOPSHIRIQ — SPEAKING</h3>
+<p>Quyidagi mavzularda ovoz chiqarib gapiring. Har bir mavzuda kamida 1 daqiqa gapirishga harakat qiling.</p>
+<ol>
+<li>Describe your room.</li>
+<li>Describe your house.</li>
+<li>Describe your school or workplace.</li>
+<li>Talk about your town in the past.</li>
+<li>Talk about what there is and isn't in your neighbourhood.</li>
+</ol>
+<p>Gapirishda There is, There are, There was, There were, isn't, aren't, wasn't va weren't shakllaridan foydalaning.</p>
+</div>
+
+<div class="note warning">
+<b>Uy vazifasi talabi:</b> Grammar va Writing topshiriqlari daftarda to‘liq bajariladi. Reading matni tarjima qilinadi. Speaking topshiriqlari ovoz chiqarib mashq qilinadi.
+</div>
+</section>
+
+<section class="hero">
+ <span class="pill">LESSON 12 COMPLETED</span>
+ <h1>KEEP LEARNING. KEEP GROWING!</h1>
+ <p>Bugun siz ingliz tilida bor, mavjud, bor edi va mavjud edi kabi muhim fikrlarni ifodalashni o‘rgandingiz.</p>
+ <p>Har bir qoida — yangi bilim. Har bir yozilgan gap — yangi qadam. Har bir mashq — yanada kuchli ingliz tili.</p>
+ <h2 style="color:white">Learn today. Succeed tomorrow.</h2>
+ <p><b>ENGLISH UP — Your journey to confident English!</b></p>
+</section>
+
+</main>
+
+<footer>
+ENGLISH UP · ELEMENTARY COURSE · LESSON 12<br>
+Learn today. Succeed tomorrow.
+</footer>
+
+<script>
+function toggleTheme(){
+ document.body.classList.toggle('dark');
+ localStorage.setItem('euLessonTheme',document.body.classList.contains('dark')?'dark':'light');
+}
+if(localStorage.getItem('euLessonTheme')==='dark'){
+ document.body.classList.add('dark');
+}
+
+function speak(text){
+ if(!('speechSynthesis' in window)){
+  alert('Audio ushbu brauzerda mavjud emas.');
+  return;
+ }
+ window.speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang='en-US';
+ utterance.rate=0.82;
+ window.speechSynthesis.speak(utterance);
+}
+
+window.addEventListener('scroll',()=>{
+ const scrollTop=document.documentElement.scrollTop;
+ const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ document.getElementById('progressBar').style.width=(height>0?(scrollTop/height)*100:0)+'%';
+});
+
+const questions=[
+ {q:"_____ a book on the table.",o:["There are","There is","There were"],a:1,e:"A book birlik. There is ishlatiladi."},
+ {q:"_____ three chairs in the room.",o:["There is","There was","There are"],a:2,e:"Three chairs ko‘plik. There are ishlatiladi."},
+ {q:"_____ some water in the glass.",o:["There is","There are","There were"],a:0,e:"Water sanalmaydigan ot. There is ishlatiladi."},
+ {q:"There _____ a computer in my room.",o:["aren't","isn't","weren't"],a:1,e:"A computer birlik, inkor shakli isn't."},
+ {q:"There _____ any students here.",o:["isn't","wasn't","aren't"],a:2,e:"Students ko‘plik, inkor shakli aren't."},
+ {q:"_____ there a bank near here?",o:["Is","Are","Were"],a:0,e:"Birlikdagi savol Is there bilan boshlanadi."},
+ {q:"_____ there any shops in this street?",o:["Is","Are","Was"],a:1,e:"Shops ko‘plik. Are there ishlatiladi."},
+ {q:"Yes, there _____.",o:["is","are","isn't"],a:0,e:"Is there savoliga Yes, there is deb javob beriladi."},
+ {q:"No, there _____.",o:["are","is","isn't"],a:2,e:"Is there savolining inkor qisqa javobi No, there isn't."},
+ {q:"There are _____ apples in the basket.",o:["some","any","a"],a:0,e:"Darak gapda some ishlatiladi."},
+ {q:"There aren't _____ eggs.",o:["some","any","an"],a:1,e:"Inkor gapda any ishlatiladi."},
+ {q:"There is _____ orange on the table.",o:["a","an","some"],a:1,e:"Orange unli tovush bilan boshlanadi: an orange."},
+ {q:"There are two _____ in the room.",o:["child","children","childs"],a:1,e:"Child so‘zining ko‘pligi children."},
+ {q:"There _____ a tree here yesterday.",o:["were","was","are"],a:1,e:"Yesterday o'tgan zamon. A tree birlik, was."},
+ {q:"There _____ many people at the market.",o:["was","is","were"],a:2,e:"People ko‘plik ma'nosida, o'tgan zamon were."},
+ {q:"There _____ any milk in the fridge yesterday.",o:["weren't","wasn't","aren't"],a:1,e:"Milk sanalmaydi. O'tgan zamon inkori wasn't."},
+ {q:"There _____ any books on the desk.",o:["wasn't","weren't","isn't"],a:1,e:"Books ko‘plik. O'tgan zamon inkori weren't."},
+ {q:"_____ there a school here before?",o:["Were","Was","Is"],a:1,e:"A school birlik va o'tgan zamon: Was there?" },
+ {q:"_____ there many cars yesterday?",o:["Was","Is","Were"],a:2,e:"Many cars ko‘plik. Were there?" },
+ {q:"Yes, there _____.",o:["was","were","are"],a:0,e:"Was there savoliga Yes, there was deb javob beriladi."},
+ {q:"No, there _____.",o:["weren't","wasn't","isn't"],a:1,e:"Was there savolining qisqa inkor javobi No, there wasn't."},
+ {q:"There is a cat _____ the table.",o:["under","between","at"],a:0,e:"Under — tagida."},
+ {q:"There are two pictures _____ the wall.",o:["in","on","under"],a:1,e:"On the wall — devorda."},
+ {q:"There is a shop _____ my house.",o:["near","between","under"],a:0,e:"Near — yaqinida."},
+ {q:"_____ a book on the desk. It is mine.",o:["There are","There is","There were"],a:1,e:"Bitta kitob mavjud: There is."},
+ {q:"_____ my new phone.",o:["There is","It is","There are"],a:1,e:"It is biror narsani tanishtirish yoki ta'riflash uchun."},
+ {q:"Choose the correct sentence.",o:["There are some water.","There is some water.","There is waters."],a:1,e:"Water sanalmaydigan ot. There is some water."},
+ {q:"Choose the correct question.",o:["Did there was a shop?","Was there a shop?","Were there a shop?"],a:1,e:"Birlikdagi o'tgan zamon savoli Was there bilan tuziladi."},
+ {q:"Choose the correct sentence.",o:["There were five students.","There was five students.","There is five students."],a:0,e:"Five students ko‘plik. O'tgan zamonda There were."},
+ {q:"Choose the correct sentence.",o:["There isn't two chairs.","There aren't two chairs.","There wasn't two chairs now."],a:1,e:"Two chairs ko‘plik. Hozirgi zamon inkori There aren't."}
+];
+
+let answers={};
+
+function renderQuiz(){
+ const area=document.getElementById('quizArea');
+ area.innerHTML='';
+ questions.forEach((q,i)=>{
+  const box=document.createElement('div');
+  box.className='quiz-question';
+  const title=document.createElement('b');
+  title.textContent=(i+1)+'. '+q.q;
+  box.appendChild(title);
+  q.o.forEach((option,j)=>{
+   const btn=document.createElement('button');
+   btn.className='option';
+   btn.textContent=String.fromCharCode(65+j)+'. '+option;
+   btn.onclick=()=>{
+    answers[i]=j;
+    [...box.querySelectorAll('.option')].forEach((b,k)=>{
+     b.classList.remove('correct','wrong');
+     if(k===q.a)b.classList.add('correct');
+     if(k===j&&j!==q.a)b.classList.add('wrong');
+    });
+    let feedback=box.querySelector('.feedback');
+    if(!feedback){
+     feedback=document.createElement('div');
+     feedback.className='feedback';
+     box.appendChild(feedback);
+    }
+    feedback.textContent=(j===q.a?'✓ To‘g‘ri! ':'✗ Noto‘g‘ri. ')+q.e;
+    feedback.style.color=j===q.a?'var(--green)':'var(--red)';
+   };
+   box.appendChild(btn);
+  });
+  area.appendChild(box);
+ });
+}
+function finishQuiz(){
+ const count=questions.filter((q,i)=>answers[i]===q.a).length;
+ const percent=Math.round(count/questions.length*100);
+ const result=document.getElementById('quizResult');
+ result.style.display='block';
+ let message='';
+ if(percent>=80){
+  message='Ajoyib! Siz 80% yoki undan yuqori natija oldingiz. Mavzuni yaxshi o‘zlashtirgansiz.';
+ }else{
+  message='Hozircha 80% ga yetmadi. Xato javoblarni ko‘rib chiqing, qoidalarni takrorlang va testni qayta ishlang.';
+ }
+ result.innerHTML='Natija: '+count+' / 30 ('+percent+'%)<br>'+message;
+ result.scrollIntoView({behavior:'smooth',block:'center'});
+}
+renderQuiz();
+</script>
+</body>
+</html>
+
