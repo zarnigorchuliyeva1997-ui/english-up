@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#7047eb">
     <title>Lessons | English Up</title>
+
     <style>
         * {
             box-sizing: border-box;
@@ -15,6 +18,7 @@
         body {
             background-color: #f4f7f6;
             color: #333;
+            min-height: 100vh;
         }
 
         .top-bar {
@@ -46,18 +50,37 @@
         .theme-icon {
             font-size: 20px;
             cursor: pointer;
+            border: none;
+            background: transparent;
+            padding: 5px;
         }
 
         .container {
-            padding: 20px 15px;
+            padding: 25px 15px;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .page-heading {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .page-heading h1 {
+            color: #7047eb;
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .page-heading p {
+            color: #777;
+            font-size: 14px;
         }
 
         .level-card {
             background: #fff;
             border: 1px solid #e0e0e0;
-            border-radius: 10px;
+            border-radius: 14px;
             padding: 20px;
             margin-bottom: 15px;
             cursor: pointer;
@@ -68,7 +91,7 @@
 
         .level-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             border-color: #b39ddb;
         }
 
@@ -90,6 +113,71 @@
             font-size: 14px;
             font-weight: 500;
         }
+
+        .level-card.available {
+            border-left: 5px solid #7047eb;
+        }
+
+        .level-card.coming-soon {
+            cursor: default;
+            opacity: 0.75;
+        }
+
+        .level-card.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: #e0e0e0;
+        }
+
+        body.dark {
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        body.dark .top-bar {
+            background: #1f2937;
+            border-color: #374151;
+        }
+
+        body.dark .back-btn {
+            color: #d1d5db;
+        }
+
+        body.dark .level-card {
+            background: #1f2937;
+            border-color: #374151;
+        }
+
+        body.dark .level-title {
+            color: #c4b5fd;
+        }
+
+        body.dark .level-desc,
+        body.dark .page-heading p {
+            color: #b1b8c7;
+        }
+
+        body.dark .level-count {
+            color: #e5e7eb;
+        }
+
+        body.dark .page-heading h1 {
+            color: #a78bfa;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 13px;
+            }
+
+            .page-heading h1 {
+                font-size: 24px;
+            }
+
+            .level-card {
+                padding: 18px;
+            }
+        }
     </style>
 </head>
 
@@ -103,55 +191,87 @@
             ENGLISH<span style="color:#9c27b0">UP</span>
         </div>
 
-        <div class="theme-icon">☀️</div>
+        <button class="theme-icon" onclick="toggleTheme()" aria-label="Change theme">
+            🌙
+        </button>
     </div>
 
     <!-- DARAJALAR -->
     <div class="container">
 
+        <div class="page-heading">
+            <h1>📚 ENGLISH UP LESSONS</h1>
+            <p>O'z darajangizni tanlang va ingliz tilini o'rganishni boshlang!</p>
+        </div>
+
         <!-- BEGINNER -->
-        <a href="beginner.html" class="level-card">
+        <a href="beginner-intro.html" class="level-card available">
             <div class="level-title">Beginner</div>
             <div class="level-desc">Boshlang'ich daraja</div>
             <div class="level-count">12 ta dars</div>
         </a>
 
         <!-- ELEMENTARY -->
-        <a href="elementary.html" class="level-card">
+        <a href="elementary-intro.html" class="level-card available">
             <div class="level-title">Elementary</div>
             <div class="level-desc">Keyingi daraja</div>
             <div class="level-count">17 ta dars</div>
         </a>
 
         <!-- PRE-INTERMEDIATE -->
-        <div class="level-card">
+        <div class="level-card coming-soon">
             <div class="level-title">Pre-Intermediate</div>
             <div class="level-desc">O'rta daraja</div>
             <div class="level-count">Tez kunda...</div>
         </div>
 
         <!-- INTERMEDIATE -->
-        <div class="level-card">
+        <div class="level-card coming-soon">
             <div class="level-title">Intermediate</div>
             <div class="level-desc">O'rta daraja</div>
             <div class="level-count">Tez kunda...</div>
         </div>
 
         <!-- UPPER-INTERMEDIATE -->
-        <div class="level-card">
+        <div class="level-card coming-soon">
             <div class="level-title">Upper-Intermediate</div>
             <div class="level-desc">Yuqori daraja</div>
             <div class="level-count">Tez kunda...</div>
         </div>
 
         <!-- IELTS -->
-        <div class="level-card">
+        <div class="level-card coming-soon">
             <div class="level-title">IELTS</div>
             <div class="level-desc">IELTS darslari</div>
             <div class="level-count">Tez kunda...</div>
         </div>
 
     </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+
+            const dark = document.body.classList.contains("dark");
+
+            document.querySelector(".theme-icon").textContent =
+                dark ? "☀️" : "🌙";
+
+            try {
+                localStorage.setItem(
+                    "englishUpLessonsTheme",
+                    dark ? "dark" : "light"
+                );
+            } catch (e) {}
+        }
+
+        try {
+            if (localStorage.getItem("englishUpLessonsTheme") === "dark") {
+                document.body.classList.add("dark");
+                document.querySelector(".theme-icon").textContent = "☀️";
+            }
+        } catch (e) {}
+    </script>
 
 </body>
 </html>
