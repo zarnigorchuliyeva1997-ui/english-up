@@ -6,241 +6,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#7047eb">
 <title>Pre-Intermediate | English Up</title>
-
 <style>
-:root{
- --purple:#7047eb;
- --purple2:#9274ff;
- --bg:#f5f3ff;
- --card:#ffffff;
- --text:#241d38;
- --muted:#716b82;
- --border:#e8e2fa;
- --soft:#eee9ff;
-}
-body.dark{
- --bg:#151321;
- --card:#211e30;
- --text:#f5f1ff;
- --muted:#b8b0ca;
- --border:#39334d;
- --soft:#30294a;
-}
+:root{--purple:#7047eb;--purple2:#9274ff;--bg:#f5f3ff;--card:#fff;--text:#241d38;--muted:#716b82;--border:#e8e2fa;--soft:#eee9ff}
+body.dark{--bg:#151321;--card:#211e30;--text:#f5f1ff;--muted:#b8b0ca;--border:#39334d;--soft:#30294a}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
- margin:0;
- background:var(--bg);
- color:var(--text);
- font-family:Arial,Helvetica,sans-serif;
- line-height:1.65;
- transition:.25s;
-}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65;transition:.25s}
 a{text-decoration:none;color:inherit}
 button{font:inherit}
-header{
- position:sticky;
- top:0;
- z-index:10;
- background:var(--card);
- border-bottom:1px solid var(--border);
-}
-.nav{
- max-width:1050px;
- margin:auto;
- padding:13px 18px;
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:12px;
-}
-.logo{
- font-size:21px;
- font-weight:900;
- color:var(--purple);
- letter-spacing:1px;
-}
+header{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--border)}
+.nav{max-width:1050px;margin:auto;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:21px;font-weight:900;color:var(--purple);letter-spacing:1px}
 .nav-actions{display:flex;gap:9px;align-items:center}
-.nav-btn{
- border:1px solid var(--border);
- background:var(--soft);
- color:var(--text);
- padding:8px 12px;
- border-radius:10px;
- cursor:pointer;
- font-weight:700;
-}
-.container{
- width:min(100% - 28px,950px);
- margin:auto;
-}
-.hero{
- margin:25px auto;
- padding:40px 24px;
- border-radius:25px;
- background:linear-gradient(135deg,#7047eb,#9274ff);
- color:white;
- text-align:center;
- box-shadow:0 10px 30px rgba(65,40,120,.16);
-}
-.level-tag{
- display:inline-block;
- padding:6px 14px;
- border:1px solid rgba(255,255,255,.4);
- background:rgba(255,255,255,.15);
- border-radius:30px;
- font-size:13px;
- font-weight:800;
- letter-spacing:1px;
-}
-.hero h1{
- margin:17px 0 10px;
- font-size:clamp(29px,6vw,44px);
- line-height:1.2;
-}
-.hero p{
- max-width:700px;
- margin:12px auto;
- color:#f0eaff;
- font-size:16px;
-}
-.hero-btn{
- display:inline-block;
- margin-top:18px;
- background:white;
- color:#7047eb;
- padding:14px 24px;
- border-radius:13px;
- font-weight:900;
-}
-.stats{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
- margin:20px 0 28px;
-}
-.stat{
- background:var(--card);
- border:1px solid var(--border);
- padding:17px 10px;
- border-radius:17px;
- text-align:center;
-}
-.stat strong{
- display:block;
- color:var(--purple);
- font-size:26px;
-}
+.nav-btn{border:1px solid var(--border);background:var(--soft);color:var(--text);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700}
+.container{width:min(100% - 28px,950px);margin:auto}
+.hero{margin:25px auto;padding:40px 24px;border-radius:25px;background:linear-gradient(135deg,#7047eb,#9274ff);color:white;text-align:center;box-shadow:0 10px 30px rgba(65,40,120,.16)}
+.level-tag{display:inline-block;padding:6px 14px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.15);border-radius:30px;font-size:13px;font-weight:800;letter-spacing:1px}
+.hero h1{margin:17px 0 10px;font-size:clamp(29px,6vw,44px);line-height:1.2}
+.hero p{max-width:700px;margin:12px auto;color:#f0eaff;font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 28px}
+.stat{background:var(--card);border:1px solid var(--border);padding:17px 10px;border-radius:17px;text-align:center}
+.stat strong{display:block;color:var(--purple);font-size:26px}
 .stat span{font-size:13px;color:var(--muted)}
-.section{
- margin:25px 0;
- padding:24px;
- border:1px solid var(--border);
- border-radius:20px;
- background:var(--card);
- box-shadow:0 7px 24px rgba(65,40,120,.06);
-}
+.section{margin:25px 0;padding:24px;border:1px solid var(--border);border-radius:20px;background:var(--card);box-shadow:0 7px 24px rgba(65,40,120,.06)}
 .section h2{margin:0 0 15px;font-size:23px}
 .section p{margin:10px 0}
 .muted{color:var(--muted)}
-.outcomes{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
-}
-.outcome{
- background:var(--soft);
- padding:14px;
- border-radius:13px;
-}
+.outcomes{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.outcome{background:var(--soft);padding:14px;border-radius:13px}
 .outcome strong{display:block;margin-bottom:4px}
 .outcome p{margin:0;color:var(--muted);font-size:14px}
-.lesson-list{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:11px;
- margin-top:17px;
-}
-.lesson{
- display:flex;
- gap:12px;
- align-items:flex-start;
- padding:14px;
- border:1px solid var(--border);
- background:var(--bg);
- border-radius:13px;
-}
-.lesson-number{
- flex:0 0 35px;
- height:35px;
- display:grid;
- place-items:center;
- border-radius:10px;
- background:var(--soft);
- color:var(--purple);
- font-weight:900;
-}
-.lesson strong{display:block;font-size:14px}
-.lesson small{color:var(--muted)}
-.exam{
- margin-top:20px;
- padding:20px;
- border-radius:16px;
- border:2px solid var(--purple);
- background:var(--soft);
-}
-.exam h3{margin:0 0 8px;color:var(--purple)}
 .rules{padding-left:22px}
 .rules li{margin:11px 0}
-.warning{
- padding:15px;
- background:#fff4dc;
- color:#704900;
- border-radius:12px;
- border-left:4px solid #e5a52c;
- margin-top:15px;
-}
-body.dark .warning{
- background:#3a3020;
- color:#ffe1a1;
-}
-.start-area{
- text-align:center;
- padding:28px 12px 40px;
-}
-.start-btn{
- display:inline-block;
- padding:15px 30px;
- background:var(--purple);
- color:white;
- border:0;
- border-radius:13px;
- font-weight:900;
- box-shadow:0 6px 18px rgba(112,71,235,.25);
- cursor:pointer;
-}
+.warning{padding:15px;background:#fff4dc;color:#704900;border-radius:12px;border-left:4px solid #e5a52c;margin-top:15px}
+body.dark .warning{background:#3a3020;color:#ffe1a1}
+.start-area{text-align:center;padding:28px 12px 40px}
+.start-btn{display:inline-block;padding:15px 30px;background:var(--purple);color:white;border:0;border-radius:13px;font-weight:900;box-shadow:0 6px 18px rgba(112,71,235,.25);cursor:pointer}
 .start-btn:hover{background:#5e36d5}
-#lessonProgram[hidden]{
- display:none;
-}
-footer{
- text-align:center;
- color:var(--muted);
- padding:25px 15px 35px;
-}
+footer{text-align:center;color:var(--muted);padding:25px 15px 35px}
 @media(max-width:650px){
- .stats{gap:8px}
- .stat{padding:13px 5px}
- .stat strong{font-size:21px}
- .outcomes,.lesson-list{grid-template-columns:1fr}
- .hero{padding:30px 17px}
- .section{padding:18px}
+.stats{gap:8px}.stat{padding:13px 5px}.stat strong{font-size:21px}
+.outcomes{grid-template-columns:1fr}.hero{padding:30px 17px}.section{padding:18px}
 }
 </style>
 </head>
-
 <body>
-
 <header>
  <div class="nav">
   <a class="logo" href="index.html">ENGLISH UP</a>
@@ -252,7 +62,6 @@ footer{
 </header>
 
 <main class="container">
-
 <section class="hero">
  <span class="level-tag">ENGLISH UP • PRE-INTERMEDIATE</span>
  <h1>PRE-INTERMEDIATE<br>ENGLISH COURSE</h1>
@@ -265,18 +74,9 @@ footer{
 </section>
 
 <section class="stats">
- <div class="stat">
-  <strong>21</strong>
-  <span>Jami dars</span>
- </div>
- <div class="stat">
-  <strong>20</strong>
-  <span>Asosiy mavzu</span>
- </div>
- <div class="stat">
-  <strong>250</strong>
-  <span>Yakuniy imtihon savoli</span>
- </div>
+ <div class="stat"><strong>21</strong><span>Jami dars</span></div>
+ <div class="stat"><strong>20</strong><span>Asosiy mavzu</span></div>
+ <div class="stat"><strong>250</strong><span>Yakuniy imtihon savoli</span></div>
 </section>
 
 <section class="section">
@@ -297,34 +97,14 @@ footer{
 
 <section class="section">
  <h2>🎯 Kursni tugatganingizda nimalarga erishasiz?</h2>
-
  <div class="outcomes">
-  <div class="outcome">
-   <strong>📚 Grammar</strong>
-   <p>Grammatik qoidalarni tushunish va gaplarda to‘g‘ri qo‘llash.</p>
-  </div>
-  <div class="outcome">
-   <strong>🎧 Listening</strong>
-   <p>Kundalik suhbatlarni tinglab, asosiy mazmunini tushunish.</p>
-  </div>
-  <div class="outcome">
-   <strong>📖 Reading</strong>
-   <p>Pre-Intermediate darajasidagi matnlarni o‘qish va anglash.</p>
-  </div>
-  <div class="outcome">
-   <strong>✍️ Writing</strong>
-   <p>O‘z fikrlaringizni bog‘langan inglizcha matn shaklida yozish.</p>
-  </div>
-  <div class="outcome">
-   <strong>🗣️ Speaking</strong>
-   <p>Kundalik mavzularda to‘liqroq gaplar bilan fikr bildirish.</p>
-  </div>
-  <div class="outcome">
-   <strong>🧠 Vocabulary</strong>
-   <p>Yangi so‘zlarni gaplarda va kundalik vaziyatlarda ishlatish.</p>
-  </div>
+  <div class="outcome"><strong>📚 Grammar</strong><p>Grammatik qoidalarni tushunish va gaplarda to‘g‘ri qo‘llash.</p></div>
+  <div class="outcome"><strong>🎧 Listening</strong><p>Kundalik suhbatlarni tinglab, asosiy mazmunini tushunish.</p></div>
+  <div class="outcome"><strong>📖 Reading</strong><p>Pre-Intermediate darajasidagi matnlarni o‘qish va anglash.</p></div>
+  <div class="outcome"><strong>✍️ Writing</strong><p>O‘z fikrlaringizni bog‘langan inglizcha matn shaklida yozish.</p></div>
+  <div class="outcome"><strong>🗣️ Speaking</strong><p>Kundalik mavzularda to‘liqroq gaplar bilan fikr bildirish.</p></div>
+  <div class="outcome"><strong>🧠 Vocabulary</strong><p>Yangi so‘zlarni gaplarda va kundalik vaziyatlarda ishlatish.</p></div>
  </div>
-
  <div class="warning">
   <strong>MUHIM:</strong>
   Kursni tugatish avtomatik ravishda B1 darajasini
@@ -336,7 +116,6 @@ footer{
 <section class="section">
  <h2>📌 O‘QUVCHINING QAT'IY QOIDALARI</h2>
  <p>Ushbu kursda quyidagi qoidalarga amal qilish majburiy:</p>
-
  <ol class="rules">
   <li><strong>Daftar tutish majburiy.</strong> Har bir darsdagi grammatik qoidalar, misollar va mashqlar daftarga yoziladi.</li>
   <li><strong>Lug‘atni yozish va yodlash shart.</strong> Yangi so‘zlar tarjimasi va talaffuzi bilan daftarga yoziladi.</li>
@@ -347,7 +126,6 @@ footer{
   <li><strong>Homework majburiy.</strong> Berilgan mavzuda mustaqil inglizcha matn yozib, o‘qituvchiga yuboring.</li>
   <li><strong>Shoshilmang.</strong> Tushunmagan mavzuni qayta o‘rganmasdan keyingi bosqichga o‘tmang.</li>
  </ol>
-
  <div class="warning">
   Darslarni faqat ochib chiqish yetarli emas.
   Har bir topshiriqni bajarish, daftar bilan ishlash
@@ -373,83 +151,10 @@ footer{
  <h2>Bilimingizni keyingi bosqichga olib chiqing!</h2>
  <p class="muted">Daftaringizni tayyorlang. Birinchi darsni boshlash vaqti keldi.</p>
  <br>
- <button class="start-btn" id="startLessons" type="button">
+ <a class="start-btn" href="pre-intermediate.html">
   🚀 PRE-INTERMEDIATE'NI BOSHLASH
- </button>
+ </a>
 </section>
-
-<section class="section" id="lessonProgram" hidden>
- <h2>🗂️ KURS DASTURI — 21 TA DARS</h2>
- <p class="muted">
-  1–20-darslar asosiy o‘quv dasturi.
-  21-dars — barcha mavzular bo‘yicha yakuniy imtihon.
- </p>
-
- <h3 style="margin-top:22px">1–7-darslar: Bilimlarni mustahkamlash</h3>
- <div class="lesson-list">
-
-  <div class="lesson"><span class="lesson-number">01</span><div><strong>To Be, Personal Pronouns & Possessives</strong><small>To be, olmoshlar va egalik shakllari</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">02</span><div><strong>Present Simple</strong><small>Oddiy hozirgi zamon</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">03</span><div><strong>Present Continuous</strong><small>Davomiy hozirgi zamon</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">04</span><div><strong>Past Simple</strong><small>Oddiy o‘tgan zamon</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">05</span><div><strong>Future Forms — Will / Going to</strong><small>Kelasi zamon shakllari</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">06</span><div><strong>There Is/Are, Articles & Quantifiers</strong><small>Mavjudlik, artikllar va miqdor so‘zlari</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">07</span><div><strong>Comparatives, Superlatives & Prepositions</strong><small>Taqqoslash va predloglar</small></div></div>
-
- </div>
-
- <h3 style="margin-top:28px">8–20-darslar: Yangi mavzular</h3>
- <div class="lesson-list">
-
-  <div class="lesson"><span class="lesson-number">08</span><div><strong>Present Perfect</strong><small>Hozirgi tugallangan zamon</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">09</span><div><strong>Present Perfect vs Past Simple</strong><small>Ikki zamonning farqlari</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">10</span><div><strong>Past Continuous</strong><small>O‘tgan davomiy zamon</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">11</span><div><strong>Past Simple vs Past Continuous</strong><small>Ikki o‘tgan zamonning farqlari</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">12</span><div><strong>Modal Verbs</strong><small>Should, Must, Have to, Might</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">13</span><div><strong>First Conditional</strong><small>Birinchi shart gaplar</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">14</span><div><strong>Zero Conditional</strong><small>Umumiy haqiqatlarni ifodalash</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">15</span><div><strong>Gerunds & Infinitives</strong><small>-ing va to + verb shakllari</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">16</span><div><strong>Adverbs & Adjectives</strong><small>Ravishlar va sifatlar</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">17</span><div><strong>Relative Clauses</strong><small>Who, Which, That, Where</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">18</span><div><strong>Passive Voice</strong><small>Majhul nisbat</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">19</span><div><strong>Reported Speech</strong><small>O‘zlashtirma gap</small></div></div>
-
-  <div class="lesson"><span class="lesson-number">20</span><div><strong>Everyday Communication & B1 Skills</strong><small>Kundalik muloqot va B1 ko‘nikmalari</small></div></div>
-
- </div>
-
- <div class="exam">
-  <h3>🏆 21-DARS — FINAL EXAM</h3>
-  <strong>250 ta interaktiv savol</strong>
-  <p>
-   Yakuniy imtihonda 1–20-darslarda o‘rganilgan
-   barcha grammatik mavzular, lug‘at va matnlarni
-   tushunish bo‘yicha bilimlaringiz tekshiriladi.
-  </p>
-  <p>
-   Imtihon kurs davomida olgan bilimlaringizni
-   umumiy baholash uchun mo‘ljallangan.
-  </p>
- </div>
-</section>
-
 </main>
 
 <footer>
@@ -460,39 +165,18 @@ footer{
 
 <script>
 const themeButton=document.getElementById("themeToggle");
-
 function applyTheme(theme){
  document.body.classList.toggle("dark",theme==="dark");
  themeButton.textContent=theme==="dark"?"☀️":"🌙";
- try{
-  localStorage.setItem("eu-pre-intermediate-theme",theme);
- }catch(e){}
+ try{localStorage.setItem("eu-pre-intermediate-theme",theme)}catch(e){}
 }
-
 let savedTheme="light";
-try{
- savedTheme=localStorage.getItem("eu-pre-intermediate-theme")||"light";
-}catch(e){}
-
+try{savedTheme=localStorage.getItem("eu-pre-intermediate-theme")||"light"}catch(e){}
 applyTheme(savedTheme);
-
 themeButton.addEventListener("click",()=>{
  const nextTheme=document.body.classList.contains("dark")?"light":"dark";
  applyTheme(nextTheme);
 });
-
-const startButton=document.getElementById("startLessons");
-const lessonProgram=document.getElementById("lessonProgram");
-
-startButton.addEventListener("click",()=>{
- lessonProgram.hidden=false;
- startButton.textContent="📚 21 TA DARSLAR RO‘YXATI OCHILDI";
- lessonProgram.scrollIntoView({
-  behavior:"smooth",
-  block:"start"
- });
-});
 </script>
-
 </body>
 </html>
