@@ -1,1 +1,1176 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 3 - Present Continuous | English Up</title>
+
+<style>
+:root{
+--purple:#7047eb;
+--purple2:#9274ff;
+--bg:#f5f3ff;
+--card:#ffffff;
+--text:#241d38;
+--muted:#77718a;
+--border:#e8e2fa;
+--green:#16a36a;
+--red:#e34c5b;
+--shadow:0 5px 22px rgba(70,45,130,.08);
+}
+.dark{
+--bg:#151322;
+--card:#211d32;
+--text:#f5f1ff;
+--muted:#b9b0ce;
+--border:#39314e;
+--shadow:0 5px 22px rgba(0,0,0,.2);
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
+}
+header{
+background:linear-gradient(120deg,#7047eb,#9274ff);
+color:white;
+padding:17px;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:var(--shadow);
+}
+.header-inner{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+header a{color:white;text-decoration:none;font-weight:bold}
+header button{
+background:rgba(255,255,255,.2);
+border:1px solid rgba(255,255,255,.3);
+color:white;
+padding:9px 13px;
+border-radius:10px;
+cursor:pointer;
+}
+.container{max-width:1050px;margin:auto;padding:18px}
+.hero{
+background:linear-gradient(135deg,#7047eb,#a18aff);
+color:white;
+padding:30px 22px;
+border-radius:20px;
+margin:20px 0;
+}
+.hero h1{font-size:30px;margin:0 0 10px}
+.hero p{margin:5px 0}
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:22px;
+}
+.stat{
+background:rgba(255,255,255,.17);
+border-radius:12px;
+padding:12px;
+text-align:center;
+}
+.stat strong{display:block;font-size:21px}
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:17px;
+padding:21px;
+margin:17px 0;
+box-shadow:var(--shadow);
+}
+.card h2{margin-top:0;color:var(--purple)}
+.card h3{color:var(--purple)}
+.tag{
+display:inline-block;
+padding:4px 10px;
+border-radius:20px;
+background:#eee8ff;
+color:#7047eb;
+font-size:12px;
+font-weight:bold;
+margin-bottom:10px;
+}
+.notice{
+background:rgba(112,71,235,.09);
+border-left:4px solid var(--purple);
+padding:14px;
+border-radius:8px;
+margin:14px 0;
+}
+.warning{
+background:rgba(227,76,91,.09);
+border-left:4px solid var(--red);
+padding:14px;
+border-radius:8px;
+margin:14px 0;
+}
+.success{
+background:rgba(22,163,106,.1);
+border-left:4px solid var(--green);
+padding:14px;
+border-radius:8px;
+margin:14px 0;
+}
+.rule{
+padding:14px;
+background:var(--bg);
+border-radius:12px;
+margin:12px 0;
+}
+.formula{
+background:#eee8ff;
+color:#43239a;
+padding:13px;
+border-radius:10px;
+font-weight:bold;
+text-align:center;
+margin:12px 0;
+overflow-wrap:anywhere;
+}
+.dark .formula{background:#362b55;color:#e2d8ff}
+.example{
+border-left:3px solid var(--purple);
+padding:8px 13px;
+margin:10px 0;
+background:var(--bg);
+border-radius:5px;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin:14px 0;
+}
+td,th{
+padding:11px;
+border:1px solid var(--border);
+text-align:left;
+}
+th{background:rgba(112,71,235,.12)}
+button,.btn{
+cursor:pointer;
+border:0;
+border-radius:10px;
+padding:11px 16px;
+font-weight:bold;
+}
+.primary{background:var(--purple);color:white}
+.secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.nav-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:9px;
+margin:20px 0;
+}
+.nav-grid button{
+background:var(--card);
+color:var(--text);
+border:1px solid var(--border);
+text-align:left;
+}
+.nav-grid button:hover{border-color:var(--purple)}
+.word{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:8px;
+padding:10px;
+border-bottom:1px solid var(--border);
+}
+.word:nth-child(even){background:var(--bg)}
+.word-head{font-weight:bold;color:var(--purple)}
+.audio-box{
+background:var(--bg);
+border-radius:12px;
+padding:15px;
+margin:12px 0;
+}
+.audio-box button{margin:5px 3px}
+.question{
+border:1px solid var(--border);
+border-radius:13px;
+padding:15px;
+margin:13px 0;
+}
+.options{
+display:grid;
+gap:8px;
+margin-top:12px;
+}
+.option{
+text-align:left;
+background:var(--bg);
+color:var(--text);
+border:1px solid var(--border);
+width:100%;
+}
+.option.selected{border:2px solid var(--purple)}
+.option.correct{background:#d8f5e7;color:#12663f}
+.option.wrong{background:#ffe0e3;color:#a51d2b}
+.result{
+padding:17px;
+border-radius:12px;
+background:var(--bg);
+margin:15px 0;
+}
+.progress{
+height:10px;
+background:var(--border);
+border-radius:20px;
+overflow:hidden;
+margin:12px 0;
+}
+.progress div{
+height:100%;
+width:0;
+background:var(--purple);
+transition:.3s;
+}
+textarea{
+width:100%;
+min-height:130px;
+padding:13px;
+border:1px solid var(--border);
+border-radius:10px;
+background:var(--bg);
+color:var(--text);
+font:inherit;
+}
+input[type=text]{
+width:100%;
+padding:12px;
+border:1px solid var(--border);
+border-radius:9px;
+background:var(--bg);
+color:var(--text);
+}
+.task{
+padding:12px;
+border:1px solid var(--border);
+border-radius:10px;
+margin:10px 0;
+}
+.task input{margin-right:8px}
+footer{
+text-align:center;
+padding:30px;
+color:var(--muted);
+}
+.section-title{
+display:flex;
+align-items:center;
+gap:10px;
+}
+.section-number{
+background:var(--purple);
+color:white;
+border-radius:50%;
+width:35px;
+height:35px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+}
+@media(max-width:650px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.nav-grid{grid-template-columns:repeat(2,1fr)}
+.container{padding:12px}
+.card{padding:15px}
+.hero h1{font-size:25px}
+.word{font-size:13px;gap:4px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+<a href="../../index.html">← ENGLISH UP</a>
+<div>
+<button onclick="toggleTheme()">🌙 Theme</button>
+<a href="pre-intermediate.html" style="margin-left:8px">Course</a>
+</div>
+</div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+<span class="tag" style="background:white;color:#7047eb">PRE-INTERMEDIATE • LESSON 3</span>
+<h1>Present Continuous</h1>
+<p>Actions happening now, temporary situations and future arrangements.</p>
+<p>Hozir davom etayotgan harakatlar, vaqtinchalik vaziyatlar va kelishilgan rejalar.</p>
+
+<div class="stats">
+<div class="stat"><strong>3</strong>Grammar topics</div>
+<div class="stat"><strong>2</strong>Listening</div>
+<div class="stat"><strong>40</strong>Test questions</div>
+<div class="stat"><strong>B1</strong>Target level</div>
+</div>
+</section>
+
+<div class="notice">
+<strong>🎯 Darsning asosiy maqsadi</strong>
+<p>Dars oxirida siz Present Continuous zamonida gap tuza olishingiz, savollar bera olishingiz, vaqtinchalik vaziyatlarni tushuntirishingiz va kelajakdagi kelishilgan rejalaringiz haqida gapira olishingiz kerak.</p>
+</div>
+
+<div class="warning">
+<strong>📒 QAT'IY TALAB — DAFTAR BILAN ISHLASH</strong>
+<ul>
+<li>Har bir grammatik qoidani daftaringizga yozing.</li>
+<li>Har bir formula uchun kamida 3 ta misol yozing.</li>
+<li>20 ta yangi so'zni tarjimasi va talaffuzi bilan yozib oling.</li>
+<li>Listening matnlarini tinglang va daftarga asosiy mazmunini yozing.</li>
+<li>Reading savollariga yozma javob bering.</li>
+<li>Writing topshirig'ini to'liq daftarda bajaring.</li>
+<li>40 ta testni mustaqil bajaring.</li>
+<li>Homework topshiriqlarini yozma bajarmasdan keyingi darsga o'tmang.</li>
+</ul>
+</div>
+
+<nav class="nav-grid">
+<button onclick="go('grammar')">📘 Grammar</button>
+<button onclick="go('listening')">🎧 Listening</button>
+<button onclick="go('vocabulary')">📚 Vocabulary</button>
+<button onclick="go('reading')">📖 Reading</button>
+<button onclick="go('writing')">✍️ Writing</button>
+<button onclick="go('tests')">📝 Tests</button>
+<button onclick="go('homework')">🏠 Homework</button>
+</nav>
+
+<!-- GRAMMAR -->
+
+<section class="card" id="grammar">
+<h2 class="section-title"><span class="section-number">1</span> Grammar Explanation</h2>
+
+<span class="tag">MAIN TOPIC</span>
+<h3>1. Present Continuous nima?</h3>
+<p>Present Continuous — hozir sodir bo'layotgan yoki ma'lum bir vaqt davomida davom etayotgan harakatlarni ifodalash uchun ishlatiladi.</p>
+
+<div class="example">
+<strong>I am studying English now.</strong><br>
+Men hozir ingliz tilini o'rganyapman.
+</div>
+<div class="example">
+<strong>She is talking on the phone.</strong><br>
+U telefonda gaplashyapti.
+</div>
+<div class="example">
+<strong>They are playing football.</strong><br>
+Ular futbol o'ynashyapti.
+</div>
+
+<h3>2. Present Continuous formulasi</h3>
+
+<div class="rule">
+<strong>Positive — Darak gap</strong>
+<div class="formula">Subject + am/is/are + Verb-ing</div>
+<p>I am working.</p>
+<p>He is reading.</p>
+<p>They are studying.</p>
+</div>
+
+<div class="rule">
+<strong>Negative — Inkor gap</strong>
+<div class="formula">Subject + am/is/are + not + Verb-ing</div>
+<p>I am not sleeping.</p>
+<p>She is not cooking.</p>
+<p>We are not watching TV.</p>
+</div>
+
+<div class="rule">
+<strong>Question — So'roq gap</strong>
+<div class="formula">Am/Is/Are + Subject + Verb-ing?</div>
+<p>Are you listening?</p>
+<p>Is he working?</p>
+<p>Am I speaking correctly?</p>
+</div>
+
+<h3>3. Am / Is / Are ishlatilishi</h3>
+<table>
+<tr><th>Subject</th><th>Helping verb</th><th>Example</th></tr>
+<tr><td>I</td><td>am</td><td>I am reading.</td></tr>
+<tr><td>He</td><td>is</td><td>He is reading.</td></tr>
+<tr><td>She</td><td>is</td><td>She is reading.</td></tr>
+<tr><td>It</td><td>is</td><td>It is raining.</td></tr>
+<tr><td>You</td><td>are</td><td>You are reading.</td></tr>
+<tr><td>We</td><td>are</td><td>We are reading.</td></tr>
+<tr><td>They</td><td>are</td><td>They are reading.</td></tr>
+</table>
+
+<div class="notice">
+<strong>Esda saqlang!</strong>
+<p>I bilan faqat AM, He/She/It bilan IS, You/We/They bilan ARE ishlatiladi.</p>
+<p>Present Continuous gapida yordamchi fe'lni tashlab ketish mumkin emas.</p>
+</div>
+
+<h3>4. -ING qo'shilish qoidalari</h3>
+
+<table>
+<tr><th>Qoida</th><th>Verb</th><th>Verb-ing</th></tr>
+<tr><td>Oddiy qo'shish</td><td>work</td><td>working</td></tr>
+<tr><td>Oxirgi E tushadi</td><td>make</td><td>making</td></tr>
+<tr><td>Oxirgi E tushadi</td><td>write</td><td>writing</td></tr>
+<tr><td>IE → Y</td><td>lie</td><td>lying</td></tr>
+<tr><td>Undosh ikki marta</td><td>run</td><td>running</td></tr>
+<tr><td>Undosh ikki marta</td><td>sit</td><td>sitting</td></tr>
+<tr><td>Oddiy qo'shish</td><td>study</td><td>studying</td></tr>
+<tr><td>Oddiy qo'shish</td><td>play</td><td>playing</td></tr>
+</table>
+
+<h3>5. Qachon ishlatiladi?</h3>
+
+<div class="rule">
+<strong>A. Hozir sodir bo'layotgan harakat</strong>
+<p>I am writing a message now.</p>
+<p>Men hozir xabar yozyapman.</p>
+</div>
+
+<div class="rule">
+<strong>B. Vaqtinchalik vaziyat</strong>
+<p>He is living with his parents this month.</p>
+<p>U shu oy ota-onasi bilan yashayapti.</p>
+</div>
+
+<div class="rule">
+<strong>C. O'zgarayotgan vaziyat</strong>
+<p>The weather is getting colder.</p>
+<p>Ob-havo sovuqlashib boryapti.</p>
+</div>
+
+<div class="rule">
+<strong>D. Kelajakdagi kelishilgan reja</strong>
+<p>We are meeting our teacher tomorrow.</p>
+<p>Biz ertaga o'qituvchimiz bilan uchrashyapmiz.</p>
+</div>
+
+<h3>6. Signal words</h3>
+<table>
+<tr><th>English</th><th>Uzbek</th></tr>
+<tr><td>Now</td><td>Hozir</td></tr>
+<tr><td>Right now</td><td>Aynan hozir</td></tr>
+<tr><td>At the moment</td><td>Ayni paytda</td></tr>
+<tr><td>Currently</td><td>Hozirgi vaqtda</td></tr>
+<tr><td>Today</td><td>Bugun</td></tr>
+<tr><td>This week</td><td>Shu hafta</td></tr>
+<tr><td>These days</td><td>Shu kunlarda</td></tr>
+<tr><td>Look!</td><td>Qara!</td></tr>
+<tr><td>Listen!</td><td>Eshit!</td></tr>
+</table>
+
+<h3>7. Present Simple va Present Continuous farqi</h3>
+
+<table>
+<tr><th>Present Simple</th><th>Present Continuous</th></tr>
+<tr><td>I work every day.</td><td>I am working now.</td></tr>
+<tr><td>Men har kuni ishlayman.</td><td>Men hozir ishlayapman.</td></tr>
+<tr><td>She reads books.</td><td>She is reading a book.</td></tr>
+<tr><td>He usually walks.</td><td>He is walking now.</td></tr>
+</table>
+
+<div class="notice">
+<strong>MUHIM FARQ:</strong>
+<p>Present Simple — odat, takrorlanadigan ish va umumiy haqiqat.</p>
+<p>Present Continuous — ayni paytdagi yoki vaqtinchalik harakat.</p>
+</div>
+
+<h3>8. Stative verbs — holat fe'llari</h3>
+<p>Ba'zi fe'llar odatda Continuous shaklida ishlatilmaydi, chunki ular harakatdan ko'ra holatni bildiradi.</p>
+
+<table>
+<tr><th>Verb</th><th>Ma'nosi</th></tr>
+<tr><td>Know</td><td>Bilmoq</td></tr>
+<tr><td>Understand</td><td>Tushunmoq</td></tr>
+<tr><td>Believe</td><td>Ishonmoq</td></tr>
+<tr><td>Need</td><td>Kerak bo'lmoq</td></tr>
+<tr><td>Want</td><td>Xohlamoq</td></tr>
+<tr><td>Love</td><td>Sevmoq</td></tr>
+<tr><td>Like</td><td>Yoqtirmoq</td></tr>
+<tr><td>Remember</td><td>Eslamoq</td></tr>
+</table>
+
+<div class="example">
+I understand the lesson. ✅<br>
+I am understanding the lesson. ❌ (odatdagi ma'noda)
+</div>
+
+<p><strong>Eslatma:</strong> Ayrim fe'llar ma'nosiga qarab Continuous shaklida ham ishlatilishi mumkin. Masalan, <em>I'm thinking about it</em> — bu haqda o'ylayapman.</p>
+
+<h3>9. Short answers</h3>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Are you working?</td><td>Yes, I am.</td></tr>
+<tr><td>Is she sleeping?</td><td>No, she isn't.</td></tr>
+<tr><td>Are they studying?</td><td>Yes, they are.</td></tr>
+<tr><td>Is he cooking?</td><td>No, he isn't.</td></tr>
+</table>
+
+<div class="success">
+<strong>📒 GRAMMAR DAFTAR TOPSHIRIG'I</strong>
+<ol>
+<li>Present Continuous formulasini yozing.</li>
+<li>7 ta subject uchun am/is/are misollarini yozing.</li>
+<li>10 ta darak gap tuzing.</li>
+<li>10 ta inkor gap tuzing.</li>
+<li>10 ta so'roq gap tuzing.</li>
+<li>Present Simple va Present Continuous farqini o'z so'zlaringiz bilan tushuntiring.</li>
+<li>10 ta -ing qo'shilgan fe'l yozing.</li>
+</ol>
+</div>
+</section>
+
+<!-- LISTENING -->
+
+<section class="card" id="listening">
+<h2 class="section-title"><span class="section-number">2</span> Listening Practice</h2>
+<p>Har bir dialogni kamida 3 marta tinglang. Birinchi marta umumiy mazmunni tushuning. Ikkinchi marta tafsilotlarga e'tibor bering. Uchinchi marta eshitgan gaplaringizni takrorlang.</p>
+
+<div class="audio-box">
+<h3>🎧 Listening 1 — A Busy Morning</h3>
+<p><strong>Daraja:</strong> Pre-Intermediate</p>
+<p><strong>Mavzu:</strong> Morning activities</p>
+<button class="primary" onclick="speak('Good morning, Tom. What are you doing? I am preparing breakfast. Are the children getting ready for school? Yes, they are. Emma is brushing her teeth and Jack is looking for his school bag. What is your wife doing? She is making coffee. We are all getting ready for a busy day.')">▶ Listen</button>
+<button class="secondary" onclick="stopAudio()">■ Stop</button>
+<button class="secondary" onclick="speak('Good morning, Tom. What are you doing? I am preparing breakfast. Are the children getting ready for school? Yes, they are. Emma is brushing her teeth and Jack is looking for his school bag. What is your wife doing? She is making coffee. We are all getting ready for a busy day.',0.75)">🐢 Slow</button>
+
+<h4>Dialog matni</h4>
+<p><strong>Anna:</strong> Good morning, Tom. What are you doing?</p>
+<p><strong>Tom:</strong> I am preparing breakfast.</p>
+<p><strong>Anna:</strong> Are the children getting ready for school?</p>
+<p><strong>Tom:</strong> Yes, they are. Emma is brushing her teeth and Jack is looking for his school bag.</p>
+<p><strong>Anna:</strong> What is your wife doing?</p>
+<p><strong>Tom:</strong> She is making coffee. We are all getting ready for a busy day.</p>
+
+<h4>Listening questions</h4>
+<ol>
+<li>What is Tom preparing?</li>
+<li>What is Emma doing?</li>
+<li>What is Jack looking for?</li>
+<li>What is Tom's wife making?</li>
+<li>Why is the family busy?</li>
+</ol>
+
+<textarea placeholder="Listening 1 javoblaringizni shu yerda yozing..."></textarea>
+</div>
+
+<div class="audio-box">
+<h3>🎧 Listening 2 — Plans for the Weekend</h3>
+<p><strong>Daraja:</strong> Pre-Intermediate</p>
+<button class="primary" onclick="speak('Hi, Sarah. Are you doing anything interesting this weekend? Yes, I am visiting my grandparents on Saturday. What are you doing on Sunday? I am meeting some friends in the city centre. Are you going by bus? No, we are travelling by train because it is more comfortable. That sounds great. Are you staying there all day? No, we are coming home in the evening.')">▶ Listen</button>
+<button class="secondary" onclick="stopAudio()">■ Stop</button>
+<button class="secondary" onclick="speak('Hi, Sarah. Are you doing anything interesting this weekend? Yes, I am visiting my grandparents on Saturday. What are you doing on Sunday? I am meeting some friends in the city centre. Are you going by bus? No, we are travelling by train because it is more comfortable. That sounds great. Are you staying there all day? No, we are coming home in the evening.',0.75)">🐢 Slow</button>
+
+<h4>Dialog matni</h4>
+<p><strong>David:</strong> Hi, Sarah. Are you doing anything interesting this weekend?</p>
+<p><strong>Sarah:</strong> Yes, I am visiting my grandparents on Saturday.</p>
+<p><strong>David:</strong> What are you doing on Sunday?</p>
+<p><strong>Sarah:</strong> I am meeting some friends in the city centre.</p>
+<p><strong>David:</strong> Are you going by bus?</p>
+<p><strong>Sarah:</strong> No, we are travelling by train because it is more comfortable.</p>
+<p><strong>David:</strong> That sounds great. Are you staying there all day?</p>
+<p><strong>Sarah:</strong> No, we are coming home in the evening.</p>
+
+<h4>Listening questions</h4>
+<ol>
+<li>Who is Sarah visiting on Saturday?</li>
+<li>Who is she meeting on Sunday?</li>
+<li>Where are they meeting?</li>
+<li>How are they travelling?</li>
+<li>When are they coming home?</li>
+</ol>
+
+<textarea placeholder="Listening 2 javoblaringizni shu yerda yozing..."></textarea>
+</div>
+
+<div class="notice">
+<strong>📒 Listening daftari:</strong>
+<p>Har ikkala dialogdan kamida 5 ta gapni tanlang. Ularni ingliz tilida daftarga yozing, o'zbek tiliga tarjima qiling va ovoz chiqarib takrorlang.</p>
+</div>
+</section>
+
+<!-- VOCABULARY -->
+
+<section class="card" id="vocabulary">
+<h2 class="section-title"><span class="section-number">3</span> Vocabulary</h2>
+<p>Quyidagi 30 ta so'z va iborani talaffuzi hamda tarjimasi bilan o'rganing.</p>
+
+<div class="word word-head">
+<span>English</span><span>Pronunciation</span><span>Uzbek</span>
+</div>
+
+<div id="words"></div>
+
+<div class="notice">
+<strong>📒 Lug'at daftari majburiy:</strong>
+<p>30 ta so'zning barchasini daftaringizga yozing. Har bir so'zning yoniga tarjimasini va talaffuzini yozing. So'ng 15 ta so'z bilan mustaqil gap tuzing.</p>
+</div>
+
+<h3>Vocabulary Speaking Challenge</h3>
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering.</p>
+<ol>
+<li>What are you doing at the moment?</li>
+<li>Are you learning any new skills these days?</li>
+<li>What is your family doing right now?</li>
+<li>Are you working or studying this week?</li>
+<li>What are you preparing for tomorrow?</li>
+<li>Are you reading an interesting book these days?</li>
+<li>What is changing in your life at the moment?</li>
+<li>Who are you spending time with this week?</li>
+</ol>
+</section>
+
+<!-- READING -->
+
+<section class="card" id="reading">
+<h2 class="section-title"><span class="section-number">4</span> Reading Practice</h2>
+
+<span class="tag">READING • B1 PREPARATION</span>
+<h3>A Different Week</h3>
+
+<p>My name is Daniel, and I usually work in an office. However, this week is different because I am working from home. My company is changing its office, so all the employees are working remotely.</p>
+
+<p>At the moment, I am sitting in my living room and answering emails. My colleague James is preparing a presentation, and our manager is talking to a new customer.</p>
+
+<p>My wife is also working today. She is teaching English online. Our children are staying with their grandparents because their school is closed for a few days.</p>
+
+<p>We are planning a short family trip for next weekend. We are visiting a small town near the mountains. I am looking forward to this trip because I really need some rest.</p>
+
+<h3>New expressions</h3>
+<ul>
+<li>Work from home — uydan ishlamoq</li>
+<li>Remotely — masofadan</li>
+<li>At the moment — ayni paytda</li>
+<li>Answer emails — xatlarga javob bermoq</li>
+<li>Look forward to — intiqlik bilan kutmoq</li>
+<li>Short family trip — qisqa oilaviy sayohat</li>
+<li>Need some rest — biroz dam olishga muhtoj bo'lmoq</li>
+</ul>
+
+<h3>Reading comprehension</h3>
+<ol>
+<li>Where does Daniel usually work?</li>
+<li>Why is he working from home this week?</li>
+<li>What is James preparing?</li>
+<li>Who is teaching English online?</li>
+<li>Where are the children staying?</li>
+<li>What are they planning for next weekend?</li>
+<li>Why is Daniel looking forward to the trip?</li>
+</ol>
+
+<textarea placeholder="Reading savollariga ingliz tilida to'liq javob yozing..."></textarea>
+
+<div class="notice">
+📒 Matnni yana bir marta o'qing. Undagi Present Continuous zamonida yozilgan gaplarni toping va daftaringizga ko'chiring.
+</div>
+</section>
+
+<!-- WRITING -->
+
+<section class="card" id="writing">
+<h2 class="section-title"><span class="section-number">5</span> Writing Practice</h2>
+<p>Bu bo'limda o'zingiz mustaqil gap va matn tuzishni o'rganasiz.</p>
+
+<h3>Task 1 — Sentence Building</h3>
+<p>Quyidagi so'zlardan to'g'ri gaplar tuzing.</p>
+<ol>
+<li>now / I / English / am / learning</li>
+<li>is / dinner / mother / preparing / my</li>
+<li>playing / children / are / outside / the</li>
+<li>not / he / working / is / today</li>
+<li>you / what / doing / are / now</li>
+<li>we / meeting / are / tomorrow / our teacher</li>
+<li>the weather / getting / is / colder</li>
+<li>they / watching / are / a film</li>
+<li>she / writing / is / an email</li>
+<li>coming / are / your friends / tonight</li>
+</ol>
+
+<h3>Task 2 — Translate into English</h3>
+<p>Quyidagi gaplarni ingliz tiliga tarjima qiling.</p>
+<ol>
+<li>Men hozir kitob o'qiyapman.</li>
+<li>U hozir ovqat tayyorlayapti.</li>
+<li>Biz bugun ishlamayapmiz.</li>
+<li>Bolalar tashqarida o'ynashyapti.</li>
+<li>Sen meni eshityapsanmi?</li>
+<li>Ular ertaga biz bilan uchrashyapti.</li>
+<li>Havo sovuqlashib boryapti.</li>
+<li>Men hozir yangi so'zlarni o'rganyapman.</li>
+<li>U nima uchun kulayapti?</li>
+<li>Biz ingliz tilida gaplashishni mashq qilyapmiz.</li>
+</ol>
+
+<h3>Task 3 — Guided Writing</h3>
+<p>Quyidagi mavzu bo'yicha 100–120 so'zli matn yozing.</p>
+<div class="formula">What is happening in your life these days?</div>
+<p>Matnda quyidagi savollardan foydalaning:</p>
+<ul>
+<li>What are you learning these days?</li>
+<li>Are you working or studying?</li>
+<li>What is your family doing?</li>
+<li>Are you developing any new skills?</li>
+<li>What are you planning for the future?</li>
+</ul>
+
+<textarea placeholder="Writing matningizni avval daftarga yozing. Keyin bu yerga ham kiritishingiz mumkin..." ></textarea>
+
+<div class="warning">
+<strong>QAT'IY TALAB:</strong>
+<p>Writing topshirig'i daftarda bajariladi. Faqat shu oynaga yozish yetarli emas. Matningizda kamida 10 ta Present Continuous gap ishlating.</p>
+</div>
+
+<h3>Task 4 — Speaking Challenge</h3>
+<p>Har bir savolga kamida 3 ta gap bilan javob bering.</p>
+<ol>
+<li>What are you doing differently this month?</li>
+<li>What new things are you learning?</li>
+<li>How is your English improving?</li>
+<li>What are your friends doing these days?</li>
+<li>What are you planning for next weekend?</li>
+</ol>
+</section>
+
+<!-- TESTS -->
+
+<section class="card" id="tests">
+<h2 class="section-title"><span class="section-number">6</span> Interactive Tests</h2>
+
+<div class="warning">
+<strong>Test qoidalari</strong>
+<ul>
+<li>Jami 40 ta savol mavjud.</li>
+<li>Test 1 — 20 ta savol.</li>
+<li>Test 2 — 20 ta savol.</li>
+<li>Har bir savolga faqat bitta javob belgilang.</li>
+<li>80% natija — 16/20 yoki undan yuqori.</li>
+<li>Javoblar test yakunida tekshiriladi.</li>
+<li>Mustaqil ishlang, javoblarni taxmin qilishdan oldin qoidalarni eslang.</li>
+</ul>
+</div>
+
+<div id="testArea"></div>
+</section>
+
+<!-- HOMEWORK -->
+
+<section class="card" id="homework">
+<h2 class="section-title"><span class="section-number">7</span> Homework</h2>
+
+<span class="tag">MANDATORY HOMEWORK</span>
+<h3>Part 1 — Grammar Notebook</h3>
+<ol>
+<li>Present Continuous formulasini yozing.</li>
+<li>Darak gapdan 10 ta misol yozing.</li>
+<li>Inkor gapdan 10 ta misol yozing.</li>
+<li>So'roq gapdan 10 ta misol yozing.</li>
+<li>Present Simple va Present Continuous farqini tushuntiring.</li>
+</ol>
+
+<h3>Part 2 — Vocabulary Memorization</h3>
+<p>Ushbu darsdagi 30 ta yangi so'zni daftarga yozing va yodlang. Har bir so'z bilan bittadan gap tuzing.</p>
+
+<h3>Part 3 — Translation</h3>
+<p>Quyidagi 10 ta gapni tarjima qiling.</p>
+<ol>
+<li>My brother is looking for his keys.</li>
+<li>We are preparing for an important meeting.</li>
+<li>She isn't using her computer at the moment.</li>
+<li>Are you waiting for someone?</li>
+<li>The children are making a lot of noise.</li>
+<li>I am trying to improve my English.</li>
+<li>They are staying at a hotel this week.</li>
+<li>My parents are visiting us tomorrow.</li>
+<li>Why are you learning English?</li>
+<li>Our city is changing quickly.</li>
+</ol>
+
+<h3>Part 4 — Writing Homework</h3>
+<div class="formula">My Life These Days</div>
+<p>150–180 so'zli matn yozing.</p>
+<p>Shartlar:</p>
+<ul>
+<li>Kamida 15 ta Present Continuous gap.</li>
+<li>Kamida 5 ta inkor gap.</li>
+<li>Kamida 5 ta so'roq gap.</li>
+<li>Kelajakdagi kelishilgan rejalar haqida kamida 3 ta gap.</li>
+<li>Yangi lug'atdan kamida 10 ta so'z.</li>
+</ul>
+
+<h3>Part 5 — Listening Homework</h3>
+<ul>
+<li>Listening 1 ni 3 marta tinglang.</li>
+<li>Listening 2 ni 3 marta tinglang.</li>
+<li>Har bir dialogdan 5 ta gapni daftarga ko'chiring.</li>
+<li>Ovoz chiqarib takrorlang.</li>
+</ul>
+
+<h3>Part 6 — Speaking Homework</h3>
+<p>Quyidagi mavzuda 2 daqiqalik mustaqil nutq tayyorlang:</p>
+<div class="formula">What Am I Doing These Days?</div>
+<p>Nutqingizda o'zingizning kundalik hayotingiz, vaqtinchalik ishlaringiz va kelajakdagi rejalaringiz haqida gapiring.</p>
+
+<h3>Part 7 — Final Notebook Checklist</h3>
+<div id="homeChecks">
+<div class="task"><label><input type="checkbox"> Grammar qoidalarini daftarga yozdim.</label></div>
+<div class="task"><label><input type="checkbox"> 30 ta yangi so'zni yozdim va yodladim.</label></div>
+<div class="task"><label><input type="checkbox"> Listening mashqlarini bajardim.</label></div>
+<div class="task"><label><input type="checkbox"> Reading savollariga javob berdim.</label></div>
+<div class="task"><label><input type="checkbox"> Writing topshirig'ini daftarda bajardim.</label></div>
+<div class="task"><label><input type="checkbox"> 40 ta testni mustaqil ishladim.</label></div>
+<div class="task"><label><input type="checkbox"> Speaking mashqini bajardim.</label></div>
+<div class="task"><label><input type="checkbox"> Homework topshiriqlarini bajardim.</label></div>
+</div>
+
+<div class="success">
+<strong>🎓 DARSNI YAKUNLASH TALABI</strong>
+<p>Faqat test natijasini olish darsni to'liq tugatganingizni anglatmaydi. Daftar, lug'at, listening, reading, writing va speaking topshiriqlari ham bajarilishi shart.</p>
+</div>
+
+</section>
+
+<section class="card">
+<h2>🏆 Lesson 3 — Final Achievement</h2>
+<p>Ushbu darsni muvaffaqiyatli yakunlagan o'quvchi:</p>
+<ul>
+<li>Present Continuous formulasini tushunadi.</li>
+<li>Am, is, are dan to'g'ri foydalanadi.</li>
+<li>Inkor va so'roq gaplar tuza oladi.</li>
+<li>-ing qo'shilish qoidalarini biladi.</li>
+<li>Hozirgi va vaqtinchalik harakatlarni ifodalay oladi.</li>
+<li>Kelajakdagi kelishilgan rejalar haqida gapira oladi.</li>
+<li>Present Simple bilan farqini tushunadi.</li>
+<li>Oddiy B1 darajasidagi dialoglarni tushunishga tayyorlanadi.</li>
+</ul>
+</section>
+
+</main>
+
+<footer>
+<strong>ENGLISH UP</strong>
+<p>Learn today. Succeed tomorrow.</p>
+<p>Pre-Intermediate Course • Lesson 3</p>
+</footer>
+
+<script>
+/* THEME */
+
+function toggleTheme(){
+document.body.classList.toggle("dark");
+localStorage.setItem(
+"eu_pre_theme",
+document.body.classList.contains("dark")?"dark":"light"
+);
+}
+
+if(localStorage.getItem("eu_pre_theme")==="dark"){
+document.body.classList.add("dark");
+}
+
+/* NAVIGATION */
+
+function go(id){
+document.getElementById(id).scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+}
+
+/* SPEECH */
+
+let currentUtterance=null;
+
+function speak(text,rate=0.9){
+if(!("speechSynthesis" in window)){
+alert("Brauzeringiz audio funksiyasini qo'llab-quvvatlamaydi.");
+return;
+}
+speechSynthesis.cancel();
+currentUtterance=new SpeechSynthesisUtterance(text);
+currentUtterance.lang="en-US";
+currentUtterance.rate=rate;
+currentUtterance.pitch=1;
+speechSynthesis.speak(currentUtterance);
+}
+
+function stopAudio(){
+if("speechSynthesis" in window){
+speechSynthesis.cancel();
+}
+}
+
+/* VOCABULARY */
+
+const vocabulary=[
+["prepare","prɪˈpeər","tayyorlamoq"],
+["improve","ɪmˈpruːv","yaxshilamoq"],
+["develop","dɪˈveləp","rivojlantirmoq"],
+["practice","ˈpræktɪs","mashq qilmoq"],
+["currently","ˈkʌrəntli","hozirgi vaqtda"],
+["temporary","ˈtempərəri","vaqtinchalik"],
+["happen","ˈhæpən","sodir bo'lmoq"],
+["change","tʃeɪndʒ","o'zgarmoq"],
+["increase","ɪnˈkriːs","oshmoq"],
+["decrease","dɪˈkriːs","kamaymoq"],
+["travel","ˈtrævəl","sayohat qilmoq"],
+["arrange","əˈreɪndʒ","tashkil qilmoq"],
+["organise","ˈɔːɡənaɪz","tashkil etmoq"],
+["prepare for","prɪˈpeər fɔːr","tayyorlanmoq"],
+["look for","lʊk fɔːr","qidirmoq"],
+["wait for","weɪt fɔːr","kutmoq"],
+["discuss","dɪˈskʌs","muhokama qilmoq"],
+["communicate","kəˈmjuːnɪkeɪt","muloqot qilmoq"],
+["environment","ɪnˈvaɪrənmənt","atrof-muhit"],
+["comfortable","ˈkʌmftəbəl","qulay"],
+["remote","rɪˈməʊt","masofaviy"],
+["colleague","ˈkɒliːɡ","hamkasb"],
+["presentation","ˌprezənˈteɪʃən","taqdimot"],
+["customer","ˈkʌstəmər","mijoz"],
+["employee","ɪmˈplɔɪiː","xodim"],
+["journey","ˈdʒɜːni","safar"],
+["plan","plæn","rejalashtirmoq"],
+["activity","ækˈtɪvəti","faoliyat"],
+["experience","ɪkˈspɪəriəns","tajriba"],
+["look forward to","lʊk ˈfɔːwəd tuː","intiqlik bilan kutmoq"]
+];
+
+const wordsArea=document.getElementById("words");
+
+vocabulary.forEach((w,i)=>{
+const div=document.createElement("div");
+div.className="word";
+div.innerHTML=`
+<span><strong>${i+1}. ${w[0]}</strong></span>
+<span>${w[1]}</span>
+<span>${w[2]}</span>`;
+wordsArea.appendChild(div);
+});
+
+/* TEST DATA */
+
+const tests1=[
+["I ___ studying English now.",["am","is","are","be"],0],
+["She ___ cooking dinner.",["am","are","is","be"],2],
+["They ___ playing football.",["is","am","are","be"],2],
+["He is ___ a book.",["read","reads","reading","readed"],2],
+["We ___ watching television.",["isn't","aren't","am not","not"],1],
+["___ you listening to me?",["Is","Am","Are","Be"],2],
+["My father is ___ today.",["work","works","working","worked"],2],
+["Look! It ___.",["rains","is raining","rain","raining"],1],
+["I am not ___ now.",["sleep","sleeps","sleeping","slept"],2],
+["What ___ she doing?",["am","are","is","be"],2],
+["The children ___ studying.",["is","are","am","be"],1],
+["He ___ not working today.",["am","are","is","be"],2],
+["We are ___ for the bus.",["wait","waits","waiting","waited"],2],
+["Are they ___ English?",["learn","learning","learns","learned"],1],
+["I ___ meeting my friend tomorrow.",["am","is","are","be"],0],
+["She is ___ her homework.",["do","does","doing","did"],2],
+["The weather is ___ colder.",["get","gets","getting","got"],2],
+["He is ___ a new car.",["look for","looking for","looks for","looked for"],1],
+["Which is correct?",["I am know him.","I knowing him.","I know him.","I am knows him."],2],
+["They ___ staying at a hotel this week.",["is","am","are","be"],2]
+];
+
+const tests2=[
+["I usually work, but today I ___ at home.",["work","am working","works","working"],1],
+["She ___ coffee every morning.",["is drinking","drink","drinks","drinking"],2],
+["Why ___ you laughing?",["do","is","are","am"],2],
+["He isn't ___ to music.",["listen","listens","listening","listened"],2],
+["We ___ our teacher tomorrow.",["meet","are meeting","meets","meeting"],1],
+["My English ___ better these days.",["is getting","get","gets","getting"],0],
+["___ your brother working today?",["Are","Am","Is","Do"],2],
+["They are not ___ television.",["watch","watches","watching","watched"],2],
+["I ___ what you mean.",["am understanding","understand","understanding","understands"],1],
+["Listen! Someone ___ at the door.",["knock","knocks","is knocking","knocking"],2],
+["Which sentence is correct?",["She are reading.","She is reading.","She am reading.","She reading."],1],
+["Choose the correct form of 'run'.",["runing","runnning","running","runingg"],2],
+["Choose the correct form of 'make'.",["makeing","making","makking","makeing"],1],
+["What ___ they doing at the moment?",["is","am","are","do"],2],
+["He ___ living with his parents this month.",["is","are","am","do"],0],
+["We ___ preparing for an exam right now.",["is","are","am","be"],1],
+["Which is a stative verb?",["run","write","know","play"],2],
+["She is ___ a presentation.",["prepare","prepares","preparing","prepared"],2],
+["Present Simple usually describes ___.",["habits","actions happening now only","temporary actions only","future arrangements only"],0],
+["Present Continuous can describe ___.",["daily habits only","temporary situations","permanent facts only","all stative verbs"],1]
+];
+
+/* TEST ENGINE */
+
+let testAnswers={1:{},2:{}};
+let testSubmitted={1:false,2:false};
+
+function renderTest(testNumber,questions){
+const area=document.getElementById("testArea");
+const section=document.createElement("div");
+section.className="card";
+section.id="test"+testNumber;
+
+section.innerHTML=`
+<h3>Test ${testNumber} — ${questions.length} Questions</h3>
+<p>Har bir savol uchun bitta javob tanlang.</p>
+<div class="progress"><div id="progress${testNumber}"></div></div>
+<p id="answered${testNumber}">Answered: 0/${questions.length}</p>
+<div id="questions${testNumber}"></div>
+<button class="primary" id="submit${testNumber}" onclick="submitTest(${testNumber})">Finish Test ${testNumber}</button>
+<div id="result${testNumber}" class="result" style="display:none"></div>
+`;
+
+area.appendChild(section);
+
+const qArea=section.querySelector("#questions"+testNumber);
+
+questions.forEach((q,i)=>{
+const div=document.createElement("div");
+div.className="question";
+div.id="q"+testNumber+"_"+i;
+
+div.innerHTML=`
+<strong>${i+1}. ${q[0]}</strong>
+<div class="options">
+${q[1].map((option,j)=>`
+<button class="option" onclick="chooseAnswer(${testNumber},${i},${j})">
+${String.fromCharCode(65+j)}. ${option}
+</button>
+`).join("")}
+</div>
+`;
+
+qArea.appendChild(div);
+});
+}
+
+function chooseAnswer(testNumber,qIndex,optionIndex){
+if(testSubmitted[testNumber])return;
+
+testAnswers[testNumber][qIndex]=optionIndex;
+
+const q=document.getElementById("q"+testNumber+"_"+qIndex);
+const buttons=q.querySelectorAll(".option");
+
+buttons.forEach((b,i)=>{
+b.classList.toggle("selected",i===optionIndex);
+});
+
+const count=Object.keys(testAnswers[testNumber]).length;
+const total=20;
+
+document.getElementById("answered"+testNumber).textContent=
+"Answered: "+count+"/"+total;
+
+document.getElementById("progress"+testNumber).style.width=
+(count/total*100)+"%";
+}
+
+function submitTest(testNumber){
+if(testSubmitted[testNumber])return;
+
+const questions=testNumber===1?tests1:tests2;
+const answers=testAnswers[testNumber];
+const answered=Object.keys(answers).length;
+
+if(answered!==20){
+if(!confirm("Siz "+answered+"/20 savolga javob berdingiz. Testni yakunlaysizmi?")){
+return;
+}
+}
+
+let score=0;
+
+questions.forEach((q,i)=>{
+const correct=q[2];
+const selected=answers[i];
+const question=document.getElementById("q"+testNumber+"_"+i);
+const buttons=question.querySelectorAll(".option");
+
+buttons.forEach((b,j)=>{
+b.disabled=true;
+if(j===correct)b.classList.add("correct");
+if(j===selected&&j!==correct)b.classList.add("wrong");
+});
+
+if(selected===correct)score++;
+});
+
+testSubmitted[testNumber]=true;
+
+const percentage=Math.round(score/20*100);
+const passed=score>=16;
+
+const result=document.getElementById("result"+testNumber);
+result.style.display="block";
+
+result.innerHTML=`
+<h3>${passed?"🎉 Test passed!":"📚 Keep practising!"}</h3>
+<p><strong>Correct answers:</strong> ${score}/20</p>
+<p><strong>Percentage:</strong> ${percentage}%</p>
+<p><strong>Required score:</strong> 80% (16/20)</p>
+<p>${passed?
+"Juda yaxshi! Siz bu testdan muvaffaqiyatli o'tdingiz.":
+"80% natijaga erishilmadi. Xatolaringizni o'rganing va grammatikani qayta takrorlang."}</p>
+`;
+
+document.getElementById("submit"+testNumber).disabled=true;
+
+saveTestResults();
+}
+
+function saveTestResults(){
+const data={
+answers:testAnswers,
+submitted:testSubmitted,
+date:new Date().toISOString()
+};
+localStorage.setItem("eu_pre_lesson3_tests",JSON.stringify(data));
+}
+
+renderTest(1,tests1);
+renderTest(2,tests2);
+
+/* NOTEBOOK CHECKLIST */
+
+document.querySelectorAll("#homeChecks input").forEach((checkbox,index)=>{
+const key="eu_pre_lesson3_homework_"+index;
+
+checkbox.checked=localStorage.getItem(key)==="true";
+
+checkbox.addEventListener("change",()=>{
+localStorage.setItem(key,checkbox.checked?"true":"false");
+});
+});
+
+/* PREVENT ACCIDENTAL FORM LOSS WARNING */
+
+window.addEventListener("beforeunload",function(e){
+const writing=document.querySelectorAll("textarea");
+let hasText=false;
+
+writing.forEach(item=>{
+if(item.value.trim().length>0)hasText=true;
+});
+
+if(hasText){
+e.preventDefault();
+e.returnValue="";
+}
+});
+
+</script>
+
+</body>
+</html>
+
