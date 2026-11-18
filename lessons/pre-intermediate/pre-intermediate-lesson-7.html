@@ -1,1 +1,1341 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 7 | Comparisons & Prepositions — English Up</title>
+<style>
+:root{
+--p:#7047eb;--p2:#9274ff;--bg:#f5f3ff;--card:#fff;
+--text:#241d38;--muted:#77718a;--border:#e8e1fa;
+--green:#16a36a;--red:#e34c64;--shadow:0 5px 22px #38208012;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.header{background:linear-gradient(120deg,#5831d4,#9274ff);
+color:white;padding:22px 16px 30px;border-radius:0 0 25px 25px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:900;letter-spacing:2px}
+.back{color:white;text-decoration:none;border:1px solid #ffffff70;
+padding:7px 13px;border-radius:20px;font-size:13px}
+.hero{max-width:850px;margin:25px auto 0}
+.hero h1{font-size:30px;line-height:1.2;margin:8px 0}
+.hero p{color:#eee7ff}
+.container{max-width:950px;margin:20px auto;padding:0 13px}
+.card{background:var(--card);border:1px solid var(--border);
+border-radius:17px;padding:19px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card h2{font-size:21px;margin:0 0 12px;color:var(--p)}
+.card h3{font-size:17px;margin:18px 0 7px}
+.muted{color:var(--muted);font-size:13px}
+.tag{display:inline-block;background:#eee9ff;color:#613bd0;
+padding:4px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+.progress-wrap{height:9px;background:#e9e3f6;border-radius:20px;overflow:hidden}
+.progress{height:100%;background:linear-gradient(90deg,#7047eb,#ad91ff);
+width:0%;transition:.3s}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 13px}
+.nav button{white-space:nowrap;border:1px solid var(--border);
+background:white;color:var(--text);border-radius:20px;padding:9px 14px}
+.nav button.active{background:var(--p);color:white}
+.section{display:none}
+.section.active{display:block}
+.rule{background:#f7f4ff;border-left:4px solid var(--p);
+padding:12px 14px;border-radius:8px;margin:12px 0}
+.formula{font-size:17px;font-weight:bold;color:#5c35ca;
+background:#eee9ff;padding:10px;border-radius:9px;margin:8px 0}
+.example{padding:10px 12px;border-bottom:1px solid var(--border)}
+.example:last-child{border:0}
+.en{font-weight:bold}
+.uz{color:var(--muted);font-size:14px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+td,th{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:#f0ebff;color:#5734c2}
+.btn{background:var(--p);color:white;border:0;padding:11px 18px;
+border-radius:11px;font-weight:bold}
+.btn.secondary{background:#eee9ff;color:#5934c5}
+.btn.dark{background:#35265e}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.word{border:1px solid var(--border);padding:12px;border-radius:12px}
+.word strong{display:block;color:var(--p);font-size:17px}
+.word small{display:block;color:var(--muted)}
+.question{padding:15px;border:1px solid var(--border);
+border-radius:12px;margin:12px 0}
+.options{display:grid;gap:8px;margin-top:10px}
+.option{padding:10px;border:1px solid var(--border);
+border-radius:9px;background:white;text-align:left}
+.option.selected{border:2px solid var(--p);background:#f3efff}
+.option.correct{border:2px solid var(--green);background:#e9fff4}
+.option.wrong{border:2px solid var(--red);background:#fff0f2}
+.feedback{font-size:13px;margin-top:8px;font-weight:bold}
+textarea,input[type=text]{width:100%;padding:12px;border:1px solid var(--border);
+border-radius:10px;background:white;color:var(--text)}
+textarea{min-height:130px;resize:vertical}
+.task{padding:13px;border:1px solid var(--border);
+border-radius:12px;margin:10px 0}
+.task label{display:flex;gap:10px;align-items:flex-start}
+.task input{margin-top:6px}
+.result{padding:15px;border-radius:12px;background:#f1edff;margin:12px 0}
+footer{text-align:center;color:var(--muted);padding:25px;font-size:13px}
+@media(max-width:600px){
+.hero h1{font-size:25px}.card{padding:15px}
+}
+</style>
+</head>
+<body>
 
+<header class="header">
+<div class="top">
+<a class="back" href="index.html">← Back</a>
+<div class="brand">ENGLISH UP</div>
+<span class="tag" style="background:#ffffff25;color:white">LESSON 07</span>
+</div>
+<div class="hero">
+<span class="tag">PRE-INTERMEDIATE • B1 DEVELOPMENT</span>
+<h1>Comparisons & Prepositions</h1>
+<p>Comparative adjectives, superlatives, equality and prepositions of place, time and movement.</p>
+<div style="display:flex;justify-content:space-between;font-size:13px">
+<span>Lesson progress</span><span id="progressText">0%</span>
+</div>
+<div class="progress-wrap"><div class="progress" id="progressBar"></div></div>
+</div>
+</header>
+
+<main class="container">
+<div class="card">
+<strong>📌 DARSNING QAT'IY QOIDASI</strong>
+<p>Har bir grammatik qoidani daftaringizga yozing. Faqat o'qib chiqish yetarli emas!</p>
+<ul>
+<li>Har bir qoida va uning formulasini yozing.</li>
+<li>Inglizcha misollarni o'zbekcha tarjimasi bilan yozing.</li>
+<li>Jadval va istisnolarni daftarga ko'chiring.</li>
+<li>Mustaqil mashqlarni daftarda bajaring.</li>
+<li>Yangi lug'atlarni talaffuzi va tarjimasi bilan yozing.</li>
+</ul>
+</div>
+
+<nav class="nav" id="nav">
+<button class="active" data-tab="intro">Introduction</button>
+<button data-tab="grammar">Grammar</button>
+<button data-tab="vocabulary">Vocabulary</button>
+<button data-tab="listening">Listening</button>
+<button data-tab="reading">Reading</button>
+<button data-tab="dialogue">Dialogues</button>
+<button data-tab="writing">Writing</button>
+<button data-tab="speaking">Speaking</button>
+<button data-tab="tests">Tests</button>
+<button data-tab="homework">Homework</button>
+</nav>
+
+<section class="section active" id="intro">
+<div class="card">
+<h2>🎯 1. Lesson objectives</h2>
+<p>Ushbu darsdan keyin siz quyidagilarni bajara olishingiz kerak:</p>
+<ul>
+<li>Ikki yoki undan ortiq narsani taqqoslash.</li>
+<li>Biror narsaning eng yuqori darajasini ifodalash.</li>
+<li>O'xshashlik va farqlar haqida gapirish.</li>
+<li>Joylashuvni aniq tushuntirish.</li>
+<li>Vaqt predloglarini to'g'ri ishlatish.</li>
+<li>Harakat va yo'nalishni ifodalash.</li>
+<li>Taqqoslash orqali o'z fikringizni asoslash.</li>
+</ul>
+</div>
+<div class="card">
+<h2>🧠 Warm-up questions</h2>
+<p>Avval quyidagi savollarga ingliz tilida javob berishga harakat qiling.</p>
+<div id="warmQuestions"></div>
+</div>
+<div class="card">
+<h2>📚 Dars xaritasi</h2>
+<div class="task">1. Comparative adjectives</div>
+<div class="task">2. Superlative adjectives</div>
+<div class="task">3. As...as / Not as...as</div>
+<div class="task">4. Intensifiers with comparatives</div>
+<div class="task">5. Prepositions of place</div>
+<div class="task">6. Prepositions of time</div>
+<div class="task">7. Prepositions of movement</div>
+<div class="task">8. Practical communication</div>
+</div>
+</section>
+
+<section class="section" id="grammar">
+<div class="card">
+<h2>📖 GRAMMAR — 1. Comparative Adjectives</h2>
+<p>Comparative adjectives ikki shaxs, narsa, joy yoki hodisani taqqoslash uchun ishlatiladi.</p>
+<div class="rule">
+<strong>QOIDA:</strong> Bir narsaning boshqa narsadan qanday farq qilishini aytish uchun comparative shaklidan foydalanamiz.
+</div>
+<div class="formula">Subject + verb + comparative adjective + than + object</div>
+<h3>A. Qisqa sifatlar: -er</h3>
+<p>Ko'pchilik bir bo'g'inli sifatlarning oxiriga <b>-er</b> qo'shiladi.</p>
+<table>
+<tr><th>Adjective</th><th>Comparative</th><th>Tarjima</th></tr>
+<tr><td>tall</td><td>taller</td><td>balandroq</td></tr>
+<tr><td>small</td><td>smaller</td><td>kichikroq</td></tr>
+<tr><td>fast</td><td>faster</td><td>tezroq</td></tr>
+<tr><td>old</td><td>older</td><td>kattaroq / eskiroq</td></tr>
+<tr><td>cheap</td><td>cheaper</td><td>arzonroq</td></tr>
+<tr><td>short</td><td>shorter</td><td>qisqaroq</td></tr>
+</table>
+<div class="example"><div class="en">My brother is taller than me.</div><div class="uz">Akam mendan balandroq.</div></div>
+<div class="example"><div class="en">This car is cheaper than that one.</div><div class="uz">Bu mashina unisidan arzonroq.</div></div>
+<h3>B. Oxiri -e bilan tugagan sifatlar</h3>
+<div class="formula">Adjective + r</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>large</td><td>larger</td></tr>
+<tr><td>nice</td><td>nicer</td></tr>
+<tr><td>wide</td><td>wider</td></tr>
+<tr><td>safe</td><td>safer</td></tr>
+</table>
+<div class="example"><div class="en">This room is larger than mine.</div><div class="uz">Bu xona menikidan kattaroq.</div></div>
+<h3>C. Undosh + unli + undosh</h3>
+<p>Ayrim qisqa sifatlarda oxirgi undosh ikki marta yoziladi.</p>
+<div class="formula">Double final consonant + er</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>big</td><td>bigger</td></tr>
+<tr><td>hot</td><td>hotter</td></tr>
+<tr><td>thin</td><td>thinner</td></tr>
+<tr><td>fat</td><td>fatter</td></tr>
+</table>
+<div class="example"><div class="en">Today is hotter than yesterday.</div><div class="uz">Bugun kechagidan issiqroq.</div></div>
+<h3>D. Oxiri -y bilan tugagan sifatlar</h3>
+<div class="formula">y → ier</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>easy</td><td>easier</td></tr>
+<tr><td>happy</td><td>happier</td></tr>
+<tr><td>busy</td><td>busier</td></tr>
+<tr><td>heavy</td><td>heavier</td></tr>
+<tr><td>friendly</td><td>friendlier</td></tr>
+</table>
+<div class="example"><div class="en">English is easier with regular practice.</div><div class="uz">Muntazam mashq bilan ingliz tili osonroq bo'ladi.</div></div>
+<h3>E. Uzun sifatlar: more</h3>
+<p>Ko'p bo'g'inli sifatlarning oldiga <b>more</b> qo'yiladi.</p>
+<div class="formula">more + adjective + than</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>beautiful</td><td>more beautiful</td></tr>
+<tr><td>expensive</td><td>more expensive</td></tr>
+<tr><td>interesting</td><td>more interesting</td></tr>
+<tr><td>comfortable</td><td>more comfortable</td></tr>
+<tr><td>important</td><td>more important</td></tr>
+<tr><td>dangerous</td><td>more dangerous</td></tr>
+</table>
+<div class="example"><div class="en">This book is more interesting than that one.</div><div class="uz">Bu kitob unisidan qiziqarliroq.</div></div>
+<div class="example"><div class="en">Education is more important than money.</div><div class="uz">Ta'lim puldan muhimroq.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 2. Superlative Adjectives</h2>
+<p>Superlative bir guruh ichidagi eng yuqori yoki eng past darajani ko'rsatadi.</p>
+<div class="formula">the + adjective-est</div>
+<p>Qisqa sifatlarda odatda <b>-est</b> ishlatiladi.</p>
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+<tr><td>tall</td><td>taller</td><td>the tallest</td></tr>
+<tr><td>small</td><td>smaller</td><td>the smallest</td></tr>
+<tr><td>fast</td><td>faster</td><td>the fastest</td></tr>
+<tr><td>old</td><td>older</td><td>the oldest</td></tr>
+<tr><td>cheap</td><td>cheaper</td><td>the cheapest</td></tr>
+<tr><td>big</td><td>bigger</td><td>the biggest</td></tr>
+<tr><td>happy</td><td>happier</td><td>the happiest</td></tr>
+</table>
+<div class="formula">the most + long adjective</div>
+<table>
+<tr><th>Positive</th><th>Superlative</th></tr>
+<tr><td>beautiful</td><td>the most beautiful</td></tr>
+<tr><td>expensive</td><td>the most expensive</td></tr>
+<tr><td>interesting</td><td>the most interesting</td></tr>
+<tr><td>comfortable</td><td>the most comfortable</td></tr>
+<tr><td>important</td><td>the most important</td></tr>
+</table>
+<div class="example"><div class="en">Mount Everest is the highest mountain in the world.</div><div class="uz">Everest dunyodagi eng baland tog'dir.</div></div>
+<div class="example"><div class="en">This is the most interesting lesson.</div><div class="uz">Bu eng qiziqarli dars.</div></div>
+<div class="rule"><b>Eslab qoling:</b> Superlative oldidan ko'pincha <b>the</b> ishlatiladi.</div>
+</div>
+
+<div class="card">
+<h2>📖 3. Irregular Comparisons</h2>
+<p>Ba'zi sifatlar odatiy qoidalarga bo'ysunmaydi. Ularni yodlash kerak.</p>
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th><th>Tarjima</th></tr>
+<tr><td>good</td><td>better</td><td>the best</td><td>yaxshi</td></tr>
+<tr><td>bad</td><td>worse</td><td>the worst</td><td>yomon</td></tr>
+<tr><td>far</td><td>farther/further</td><td>the farthest/furthest</td><td>uzoq</td></tr>
+<tr><td>little</td><td>less</td><td>the least</td><td>kam</td></tr>
+<tr><td>many/much</td><td>more</td><td>the most</td><td>ko'p</td></tr>
+</table>
+<div class="example"><div class="en">Your English is better than before.</div><div class="uz">Ingliz tilingiz avvalgidan yaxshiroq.</div></div>
+<div class="example"><div class="en">This is the best restaurant in town.</div><div class="uz">Bu shahardagi eng yaxshi restoran.</div></div>
+<div class="example"><div class="en">His result is worse than mine.</div><div class="uz">Uning natijasi menikidan yomonroq.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 4. Equality — As...as</h2>
+<p>Ikki narsaning teng darajada ekanini ifodalash uchun ishlatiladi.</p>
+<div class="formula">as + adjective + as</div>
+<div class="example"><div class="en">My house is as big as yours.</div><div class="uz">Mening uyim senikidek katta.</div></div>
+<div class="example"><div class="en">She is as intelligent as her brother.</div><div class="uz">U akasidek aqlli.</div></div>
+<h3>Not as...as</h3>
+<p>Teng emaslikni yoki pastroq darajani bildiradi.</p>
+<div class="formula">not as + adjective + as</div>
+<div class="example"><div class="en">This city is not as crowded as London.</div><div class="uz">Bu shahar London kabi gavjum emas.</div></div>
+<div class="example"><div class="en">My phone is not as expensive as yours.</div><div class="uz">Telefonim senikidek qimmat emas.</div></div>
+<h3>As much as / As many as</h3>
+<div class="rule"><b>As much as</b> — sanalmaydigan otlar bilan. <b>As many as</b> — sanaladigan ko'plik otlar bilan.</div>
+<div class="example"><div class="en">I don't have as much time as you.</div><div class="uz">Menda sendagidek ko'p vaqt yo'q.</div></div>
+<div class="example"><div class="en">She has as many books as I do.</div><div class="uz">Unda menikidek ko'p kitob bor.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 5. Intensifiers with Comparatives</h2>
+<p>Taqqoslash darajasini kuchaytirish yoki yumshatish uchun maxsus so'zlar ishlatiladi.</p>
+<table>
+<tr><th>Word</th><th>Ma'nosi</th><th>Example</th></tr>
+<tr><td>much</td><td>ancha</td><td>much better</td></tr>
+<tr><td>far</td><td>ancha</td><td>far more expensive</td></tr>
+<tr><td>a lot</td><td>juda ham</td><td>a lot easier</td></tr>
+<tr><td>slightly</td><td>biroz</td><td>slightly bigger</td></tr>
+<tr><td>a little</td><td>ozgina</td><td>a little faster</td></tr>
+<tr><td>even</td><td>hatto yanada</td><td>even better</td></tr>
+</table>
+<div class="formula">much / far / a lot / slightly + comparative</div>
+<div class="example"><div class="en">This exercise is much harder than the previous one.</div><div class="uz">Bu mashq avvalgisidan ancha qiyinroq.</div></div>
+<div class="example"><div class="en">The new phone is slightly lighter.</div><div class="uz">Yangi telefon biroz yengilroq.</div></div>
+<div class="rule">Noto'g'ri: very better. To'g'ri: much better.</div>
+</div>
+
+<div class="card">
+<h2>📖 6. Prepositions of Place</h2>
+<p>Joy predloglari biror narsaning qayerda joylashganini ko'rsatadi.</p>
+<table>
+<tr><th>Preposition</th><th>Tarjima</th><th>Misol</th></tr>
+<tr><td>in</td><td>ichida</td><td>in the room</td></tr>
+<tr><td>on</td><td>ustida</td><td>on the table</td></tr>
+<tr><td>at</td><td>aniq joyda</td><td>at the station</td></tr>
+<tr><td>under</td><td>tagida</td><td>under the bed</td></tr>
+<tr><td>above</td><td>yuqorisida</td><td>above the door</td></tr>
+<tr><td>below</td><td>pastida</td><td>below the picture</td></tr>
+<tr><td>behind</td><td>orqasida</td><td>behind the house</td></tr>
+<tr><td>in front of</td><td>oldida</td><td>in front of the school</td></tr>
+<tr><td>between</td><td>ikkita orasida</td><td>between two buildings</td></tr>
+<tr><td>among</td><td>ko'pchilik orasida</td><td>among friends</td></tr>
+<tr><td>next to</td><td>yonida</td><td>next to the bank</td></tr>
+<tr><td>near</td><td>yaqinida</td><td>near my house</td></tr>
+<tr><td>opposite</td><td>ro'parasida</td><td>opposite the park</td></tr>
+<tr><td>inside</td><td>ichkarisida</td><td>inside the box</td></tr>
+<tr><td>outside</td><td>tashqarisida</td><td>outside the building</td></tr>
+</table>
+<h3>In, On va At farqi</h3>
+<div class="rule"><b>IN:</b> xona, bino, shahar, mamlakat yoki yopiq hudud ichida.</div>
+<div class="example"><div class="en">I live in the Netherlands.</div><div class="uz">Men Niderlandiyada yashayman.</div></div>
+<div class="rule"><b>ON:</b> sirt ustida yoki ayrim transport vositalarida.</div>
+<div class="example"><div class="en">The keys are on the table.</div><div class="uz">Kalitlar stol ustida.</div></div>
+<div class="rule"><b>AT:</b> aniq nuqta, manzil yoki faoliyat joyi.</div>
+<div class="example"><div class="en">She is at school.</div><div class="uz">U maktabda.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 7. Prepositions of Time</h2>
+<p>Vaqt predloglari voqea qachon sodir bo'lishini ko'rsatadi.</p>
+<table>
+<tr><th>Preposition</th><th>Qachon?</th><th>Misol</th></tr>
+<tr><td>in</td><td>Oy, yil, fasl, kun qismi</td><td>in July, in 2026, in winter</td></tr>
+<tr><td>on</td><td>Hafta kuni, sana</td><td>on Monday, on 18 May</td></tr>
+<tr><td>at</td><td>Aniq vaqt</td><td>at 7 o'clock</td></tr>
+<tr><td>since</td><td>Boshlanish nuqtasi</td><td>since 2020</td></tr>
+<tr><td>for</td><td>Davomiylik</td><td>for three years</td></tr>
+<tr><td>during</td><td>Davomida</td><td>during the lesson</td></tr>
+<tr><td>before</td><td>Oldin</td><td>before dinner</td></tr>
+<tr><td>after</td><td>Keyin</td><td>after work</td></tr>
+<tr><td>until</td><td>Gacha</td><td>until Friday</td></tr>
+<tr><td>by</td><td>Eng kechida</td><td>by 5 o'clock</td></tr>
+</table>
+<h3>IN / ON / AT — vaqt bo'yicha</h3>
+<div class="example"><div class="en">I was born in 2000.</div><div class="uz">Men 2000-yilda tug'ilganman.</div></div>
+<div class="example"><div class="en">We have a meeting on Tuesday.</div><div class="uz">Seshanba kuni uchrashuvimiz bor.</div></div>
+<div class="example"><div class="en">The lesson starts at 9 a.m.</div><div class="uz">Dars ertalab soat 9 da boshlanadi.</div></div>
+<h3>Since va For farqi</h3>
+<div class="formula">Since + boshlanish vaqti</div>
+<div class="formula">For + vaqt davomiyligi</div>
+<div class="example"><div class="en">I have lived here since 2022.</div><div class="uz">Men bu yerda 2022-yildan beri yashayman.</div></div>
+<div class="example"><div class="en">I have studied English for six years.</div><div class="uz">Men olti yildan beri ingliz tilini o'rganyapman.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 8. Prepositions of Movement</h2>
+<p>Harakat predloglari bir joydan boshqa joyga harakatni ko'rsatadi.</p>
+<table>
+<tr><th>Preposition</th><th>Ma'nosi</th><th>Example</th></tr>
+<tr><td>to</td><td>ga</td><td>go to school</td></tr>
+<tr><td>into</td><td>ichiga</td><td>walk into the room</td></tr>
+<tr><td>out of</td><td>ichidan tashqariga</td><td>get out of the car</td></tr>
+<tr><td>onto</td><td>ustiga</td><td>jump onto the bed</td></tr>
+<tr><td>off</td><td>ustidan pastga</td><td>get off the bus</td></tr>
+<tr><td>across</td><td>kesib o'tib</td><td>walk across the street</td></tr>
+<tr><td>through</td><td>ichidan o'tib</td><td>go through the tunnel</td></tr>
+<tr><td>along</td><td>bo'ylab</td><td>walk along the river</td></tr>
+<tr><td>past</td><td>yonidan o'tib</td><td>walk past the bank</td></tr>
+<tr><td>towards</td><td>tomon</td><td>move towards the door</td></tr>
+<tr><td>around</td><td>atrofida</td><td>walk around the park</td></tr>
+<tr><td>from</td><td>dan</td><td>come from school</td></tr>
+</table>
+<div class="example"><div class="en">She walked across the street.</div><div class="uz">U ko'chani kesib o'tdi.</div></div>
+<div class="example"><div class="en">The children ran into the garden.</div><div class="uz">Bolalar bog'ning ichiga yugurishdi.</div></div>
+<div class="example"><div class="en">We walked along the river.</div><div class="uz">Biz daryo bo'ylab yurdik.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 9. Common Prepositional Expressions</h2>
+<p>Quyidagi birikmalarni ham daftarga yozing va yodlang.</p>
+<table>
+<tr><th>Expression</th><th>Tarjima</th></tr>
+<tr><td>interested in</td><td>...ga qiziqqan</td></tr>
+<tr><td>good at</td><td>...da yaxshi</td></tr>
+<tr><td>afraid of</td><td>...dan qo'rqqan</td></tr>
+<tr><td>proud of</td><td>...dan faxrlangan</td></tr>
+<tr><td>different from</td><td>...dan farqli</td></tr>
+<tr><td>similar to</td><td>...ga o'xshash</td></tr>
+<tr><td>famous for</td><td>...bilan mashhur</td></tr>
+<tr><td>responsible for</td><td>...uchun mas'ul</td></tr>
+<tr><td>depend on</td><td>...ga bog'liq</td></tr>
+<tr><td>listen to</td><td>...ni tinglamoq</td></tr>
+<tr><td>wait for</td><td>...ni kutmoq</td></tr>
+<tr><td>believe in</td><td>...ga ishonmoq</td></tr>
+</table>
+<div class="example"><div class="en">I am interested in learning languages.</div><div class="uz">Men tillarni o'rganishga qiziqaman.</div></div>
+<div class="example"><div class="en">Success depends on hard work.</div><div class="uz">Muvaffaqiyat qattiq mehnatga bog'liq.</div></div>
+</div>
+
+<div class="card">
+<h2>⚠️ 10. Common Mistakes</h2>
+<table>
+<tr><th>Incorrect</th><th>Correct</th></tr>
+<tr><td>more better</td><td>better</td></tr>
+<tr><td>the most tallest</td><td>the tallest</td></tr>
+<tr><td>more easier</td><td>easier</td></tr>
+<tr><td>as tall than</td><td>as tall as</td></tr>
+<tr><td>in Monday</td><td>on Monday</td></tr>
+<tr><td>at 2026</td><td>in 2026</td></tr>
+<tr><td>good in English</td><td>good at English</td></tr>
+<tr><td>different than (standard British usage)</td><td>different from</td></tr>
+</table>
+</div>
+</section>
+
+<section class="section" id="vocabulary">
+<div class="card">
+<h2>📚 50 Essential Vocabulary Words</h2>
+<p>Har bir so'zni daftaringizga inglizchasi, talaffuzi va tarjimasi bilan yozing.</p>
+<div class="grid" id="words"></div>
+</div>
+<div class="card">
+<h2>📝 Vocabulary practice</h2>
+<p>So'zlarni ko'rib chiqing va ularni o'zbekchaga tarjima qilishga harakat qiling.</p>
+<button class="btn" onclick="shuffleWords()">🔀 So'zlarni aralashtirish</button>
+</div>
+</section>
+
+<section class="section" id="listening">
+<div class="card">
+<h2>🎧 Listening 1 — Comparing Two Cities</h2>
+<p class="muted">Avval matnni tinglang. Keyin savollarga javob bering.</p>
+<button class="btn" onclick="speakText('London is larger and busier than many small towns. However, life in a small town can be quieter and less expensive. Some people prefer big cities because they offer more opportunities. Others prefer smaller places because they are more peaceful and comfortable.')">▶ Listen</button>
+<button class="btn secondary" onclick="speakText('London is larger and busier than many small towns. However, life in a small town can be quieter and less expensive. Some people prefer big cities because they offer more opportunities. Others prefer smaller places because they are more peaceful and comfortable.')">🔁 Listen again</button>
+<div class="rule">
+London is larger and busier than many small towns. However, life in a small town can be quieter and less expensive. Some people prefer big cities because they offer more opportunities. Others prefer smaller places because they are more peaceful and comfortable.
+</div>
+<h3>Listening questions</h3>
+<div id="listen1"></div>
+</div>
+<div class="card">
+<h2>🎧 Listening 2 — Finding a Place</h2>
+<button class="btn" onclick="speakText('The library is opposite the school. There is a small cafe next to the library. The bank is between the supermarket and the post office. To get to the park, walk along the main street and turn left. The park is behind the museum.')">▶ Listen</button>
+<div class="rule">
+The library is opposite the school. There is a small cafe next to the library. The bank is between the supermarket and the post office. To get to the park, walk along the main street and turn left. The park is behind the museum.
+</div>
+<div id="listen2"></div>
+</div>
+<div class="card">
+<h2>🎧 Listening strategy</h2>
+<ul>
+<li>Matnni birinchi marta umumiy mazmun uchun tinglang.</li>
+<li>Ikkinchi marta muhim so'zlarni aniqlang.</li>
+<li>Uchinchi marta gaplarni to'liq tushunishga harakat qiling.</li>
+<li>Notanish so'zlarni daftarga yozing.</li>
+<li>Matnni ovoz chiqarib takrorlang.</li>
+</ul>
+</div>
+</section>
+
+<section class="section" id="reading">
+<div class="card">
+<h2>📖 Reading — The Best Place to Live</h2>
+<p class="muted">Read carefully. Pay attention to comparative and superlative adjectives.</p>
+<div class="rule" style="line-height:2">
+People have different opinions about the best place to live. Some prefer large cities, while others enjoy small towns. Large cities are usually more crowded and more expensive than small towns. However, they often provide better job opportunities, bigger hospitals and more educational institutions.
+<br><br>
+Small towns are generally quieter and safer. Houses may be cheaper, and people often know their neighbours better. Life can be less stressful because there is less traffic and noise.
+<br><br>
+Living in the countryside is another choice. The countryside is often more peaceful than cities. There is usually more fresh air and beautiful natural scenery. However, public transport may be less convenient.
+<br><br>
+There is no perfect place for everyone. The best place depends on personal needs, lifestyle and priorities. A student may prefer a large city because it offers more educational opportunities. A family may choose a small town because it is quieter and more comfortable.
+<br><br>
+In the end, the most important thing is to find a place where you feel comfortable, safe and happy.
+</div>
+<h3>Vocabulary from the text</h3>
+<table>
+<tr><td>crowded</td><td>gavjum</td></tr>
+<tr><td>opportunity</td><td>imkoniyat</td></tr>
+<tr><td>neighbour</td><td>qo'shni</td></tr>
+<tr><td>countryside</td><td>qishloq joy</td></tr>
+<tr><td>scenery</td><td>manzara</td></tr>
+<tr><td>convenient</td><td>qulay</td></tr>
+<tr><td>priority</td><td>ustuvorlik</td></tr>
+<tr><td>peaceful</td><td>tinch</td></tr>
+</table>
+<h3>Reading comprehension — 15 questions</h3>
+<div id="readingQuestions"></div>
+</div>
+</section>
+
+<section class="section" id="dialogue">
+<div class="card">
+<h2>🗣 Dialogue 1 — Which City Is Better?</h2>
+<div class="example"><b>Ali:</b> Which city do you prefer, London or a small town?</div>
+<div class="example"><b>John:</b> I prefer a small town because it is quieter and less crowded.</div>
+<div class="example"><b>Ali:</b> But London has more job opportunities.</div>
+<div class="example"><b>John:</b> That's true. London is also more exciting.</div>
+<div class="example"><b>Ali:</b> So, which one is better?</div>
+<div class="example"><b>John:</b> It depends on your lifestyle. For work, London may be better. For a peaceful life, a small town is more suitable.</div>
+<button class="btn" onclick="speakText('Ali: Which city do you prefer, London or a small town? John: I prefer a small town because it is quieter and less crowded. Ali: But London has more job opportunities. John: That is true. London is also more exciting. Ali: So, which one is better? John: It depends on your lifestyle. For work, London may be better. For a peaceful life, a small town is more suitable.')">▶ Listen to dialogue</button>
+</div>
+<div class="card">
+<h2>🗣 Dialogue 2 — Finding the Best Place</h2>
+<div class="example"><b>Anna:</b> Excuse me, where is the nearest supermarket?</div>
+<div class="example"><b>Tom:</b> It is next to the bank, opposite the post office.</div>
+<div class="example"><b>Anna:</b> Is it far from here?</div>
+<div class="example"><b>Tom:</b> No, it is only five minutes away.</div>
+<div class="example"><b>Anna:</b> How can I get there?</div>
+<div class="example"><b>Tom:</b> Walk along this street, go past the pharmacy and turn right.</div>
+<div class="example"><b>Anna:</b> Thank you very much!</div>
+<div class="example"><b>Tom:</b> You're welcome!</div>
+<button class="btn" onclick="speakText('Anna: Excuse me, where is the nearest supermarket? Tom: It is next to the bank, opposite the post office. Anna: Is it far from here? Tom: No, it is only five minutes away. Anna: How can I get there? Tom: Walk along this street, go past the pharmacy and turn right. Anna: Thank you very much! Tom: You are welcome!')">▶ Listen to dialogue</button>
+</div>
+<div class="card">
+<h2>🎭 Dialogue practice</h2>
+<p>Ikki kishilik suhbatni ovoz chiqarib mashq qiling. Avval birinchi, keyin ikkinchi rolni bajaring.</p>
+</div>
+</section>
+
+<section class="section" id="writing">
+<div class="card">
+<h2>✍️ Writing — Comparing Two Cities</h2>
+<p>Quyidagi namunaviy gaplarni o'rganing.</p>
+<div class="example"><b>1.</b> My hometown is smaller than the capital city.<div class="uz">Mening tug'ilgan shahrim poytaxtdan kichikroq.</div></div>
+<div class="example"><b>2.</b> The capital is more crowded than my hometown.<div class="uz">Poytaxt mening shahrimdan gavjumroq.</div></div>
+<div class="example"><b>3.</b> Public transport is more convenient in large cities.<div class="uz">Katta shaharlarda jamoat transporti qulayroq.</div></div>
+<div class="example"><b>4.</b> Small towns are usually quieter than big cities.<div class="uz">Kichik shaharlar odatda katta shaharlardan tinchroq.</div></div>
+<div class="example"><b>5.</b> My favourite place is the most beautiful place for me.<div class="uz">Sevimli joyim men uchun eng chiroyli joy.</div></div>
+<h3>Writing structure</h3>
+<div class="rule"><b>Introduction:</b> Ikki shahar yoki mamlakatni tanishtiring.</div>
+<div class="rule"><b>Body paragraph 1:</b> Birinchi joyning afzalliklari va kamchiliklari.</div>
+<div class="rule"><b>Body paragraph 2:</b> Ikkinchi joy bilan taqqoslang.</div>
+<div class="rule"><b>Conclusion:</b> Qaysi joyni afzal ko'rishingizni va nima uchunligini tushuntiring.</div>
+<h3>📝 Your writing task</h3>
+<p>Write 150–180 words: Compare two cities or two countries.</p>
+<textarea id="writingText" placeholder="Write your essay here..."></textarea>
+<p class="muted" id="wordCount">Words: 0</p>
+<button class="btn" onclick="countWriting()">Count words</button>
+</div>
+</section>
+
+<section class="section" id="speaking">
+<div class="card">
+<h2>🎤 Speaking — 15 Questions</h2>
+<p>Har bir savolga kamida 3–5 ta gap bilan javob berishga harakat qiling.</p>
+<div id="speakingQuestions"></div>
+</div>
+<div class="card">
+<h2>🎯 Speaking challenge</h2>
+<p>Quyidagi mavzuda 2 daqiqa davomida gapiring:</p>
+<div class="rule">
+Compare life in a big city with life in a small town. Which do you prefer and why?
+</div>
+<p>Javobingizda kamida quyidagilar bo'lsin:</p>
+<ul>
+<li>5 ta comparative adjective.</li>
+<li>2 ta superlative adjective.</li>
+<li>2 ta as...as konstruksiyasi.</li>
+<li>5 ta preposition.</li>
+<li>Shaxsiy fikringiz va sabablar.</li>
+</ul>
+</div>
+</section>
+
+<section class="section" id="tests">
+<div class="card">
+<h2>🧪 Test 1 — Grammar (20 Questions)</h2>
+<p>Har bir savolda bitta to'g'ri javobni tanlang.</p>
+<div id="grammarTest"></div>
+<button class="btn" onclick="checkTest('grammarTest','grammarResult')">Submit test</button>
+<div id="grammarResult"></div>
+</div>
+<div class="card">
+<h2>🧪 Test 2 — Mixed Skills (20 Questions)</h2>
+<div id="mixedTest"></div>
+<button class="btn" onclick="checkTest('mixedTest','mixedResult')">Submit test</button>
+<div id="mixedResult"></div>
+</div>
+</section>
+
+<section class="section" id="homework">
+<div class="card">
+<h2>📒 HOMEWORK — MAJBURIY</h2>
+<p>Uy vazifalarini to'liq bajarish keyingi darsga tayyorgarlikning asosiy shartidir.</p>
+<div class="rule">
+<strong>1-TALAB: DAFTAR</strong>
+<p>Barcha 9 ta grammatik bo'limdagi qoidalar, formulalar, istisnolar va misollarni daftarga yozing.</p>
+<p>Har bir qoida bo'yicha kamida 3 ta o'zingiz tuzgan gap yozing.</p>
+</div>
+<div class="rule">
+<strong>2-TALAB: VOCABULARY</strong>
+<p>50 ta yangi so'zni daftarga yozing. Talaffuzi, tarjimasi va kamida bittadan misol bilan yodlang.</p>
+</div>
+<div class="rule">
+<strong>3-TALAB: GRAMMAR</strong>
+<p>Quyidagi topshiriqlarni daftarda bajaring:</p>
+<ul>
+<li>10 ta comparative gap.</li>
+<li>10 ta superlative gap.</li>
+<li>5 ta as...as gap.</li>
+<li>5 ta not as...as gap.</li>
+<li>10 ta joy predloglari bilan gap.</li>
+<li>10 ta vaqt predloglari bilan gap.</li>
+<li>10 ta harakat predloglari bilan gap.</li>
+</ul>
+</div>
+<div class="rule">
+<strong>4-TALAB: LISTENING</strong>
+<p>Ikki listening matnini kamida 3 martadan tinglang. Har birining mazmunini o'zbek tilida yozing va 5 ta yangi gapni ingliz tilida ko'chiring.</p>
+</div>
+<div class="rule">
+<strong>5-TALAB: READING</strong>
+<p>Reading matnini kamida ikki marta o'qing. 10 ta yangi so'zni yozing va matnni o'z so'zlaringiz bilan ingliz tilida qayta aytib bering.</p>
+</div>
+<div class="rule">
+<strong>6-TALAB: WRITING</strong>
+<p>150–180 so'zli mustaqil matn yozing. Kamida 8 ta comparative/superlative va 8 ta preposition ishlating.</p>
+</div>
+<div class="rule">
+<strong>7-TALAB: SPEAKING</strong>
+<p>15 ta speaking savoliga ovozli javob bering. Yakuniy mavzuda 2 daqiqalik monolog tayyorlang.</p>
+</div>
+<div class="rule">
+<strong>8-TALAB: DIALOGUE</strong>
+<p>Ikkala dialogni o'qing, tinglang va yoddan aytishga harakat qiling.</p>
+</div>
+<h3>Homework checklist</h3>
+<div id="homeworkChecklist"></div>
+<div class="result">
+<strong>Homework progress:</strong>
+<div class="progress-wrap"><div class="progress" id="hwProgress"></div></div>
+<p id="hwText">0/8 completed</p>
+</div>
+</div>
+<div class="card">
+<h2>🏆 Final lesson requirements</h2>
+<ul>
+<li>Grammatik qoidalar daftarga yozilgan.</li>
+<li>50 ta so'z o'rganilgan.</li>
+<li>Listening va reading bajarilgan.</li>
+<li>Writing va speaking topshiriqlari bajarilgan.</li>
+<li>Har ikkala testdan kamida 80% olingan.</li>
+<li>Homework to'liq bajarilgan.</li>
+</ul>
+<p><b>English Up:</b> Learn today. Succeed tomorrow.</p>
+</div>
+</section>
+</main>
+<footer>ENGLISH UP • PRE-INTERMEDIATE • LESSON 07</footer>
+
+<script>
+const words=[
+["compare","kəmˈpeə","taqqoslamoq"],
+["comparison","kəmˈpærɪsən","taqqoslash"],
+["similar","ˈsɪmɪlə","o'xshash"],
+["different","ˈdɪfrənt","farqli"],
+["difference","ˈdɪfrəns","farq"],
+["advantage","ədˈvɑːntɪdʒ","afzallik"],
+["disadvantage","ˌdɪsədˈvɑːntɪdʒ","kamchilik"],
+["crowded","ˈkraʊdɪd","gavjum"],
+["peaceful","ˈpiːsfəl","tinch"],
+["convenient","kənˈviːniənt","qulay"],
+["comfortable","ˈkʌmftəbəl","qulay"],
+["expensive","ɪkˈspensɪv","qimmat"],
+["affordable","əˈfɔːdəbəl","hamyonbop"],
+["beautiful","ˈbjuːtɪfəl","chiroyli"],
+["dangerous","ˈdeɪndʒərəs","xavfli"],
+["important","ɪmˈpɔːtənt","muhim"],
+["interesting","ˈɪntrəstɪŋ","qiziqarli"],
+["popular","ˈpɒpjələ","mashhur"],
+["quiet","ˈkwaɪət","sokin"],
+["noisy","ˈnɔɪzi","shovqinli"],
+["location","ləʊˈkeɪʃən","joylashuv"],
+["direction","dəˈrekʃən","yo'nalish"],
+["distance","ˈdɪstəns","masofa"],
+["neighbourhood","ˈneɪbəhʊd","mahalla"],
+["countryside","ˈkʌntrisaɪd","qishloq joy"],
+["environment","ɪnˈvaɪrənmənt","atrof-muhit"],
+["opportunity","ˌɒpəˈtjuːnəti","imkoniyat"],
+["transport","ˈtrænspɔːt","transport"],
+["population","ˌpɒpjəˈleɪʃən","aholi"],
+["development","dɪˈveləpmənt","rivojlanish"],
+["above","əˈbʌv","yuqorisida"],
+["below","bɪˈləʊ","pastida"],
+["behind","bɪˈhaɪnd","orqasida"],
+["opposite","ˈɒpəzɪt","ro'parasida"],
+["between","bɪˈtwiːn","orasida"],
+["among","əˈmʌŋ","orasida"],
+["through","θruː","ichidan"],
+["across","əˈkrɒs","kesib o'tib"],
+["towards","təˈwɔːdz","tomon"],
+["along","əˈlɒŋ","bo'ylab"],
+["during","ˈdjʊərɪŋ","davomida"],
+["since","sɪns","...dan beri"],
+["until","ənˈtɪl","...gacha"],
+["within","wɪˈðɪn","ichida"],
+["beyond","bɪˈjɒnd","narida"],
+["nearby","ˌnɪəˈbaɪ","yaqin atrofda"],
+["further","ˈfɜːðə","yanada uzoqroq"],
+["slightly","ˈslaɪtli","biroz"],
+["especially","ɪˈspeʃəli","ayniqsa"],
+["prefer","prɪˈfɜː","afzal ko'rmoq"],
+["priority","praɪˈɒrəti","ustuvorlik"]
+];
+
+function renderWords(){
+document.getElementById("words").innerHTML=words.map((w,i)=>
+`<div class="word"><span class="muted">${i+1}.</span><strong>${w[0]}</strong><small>${w[1]}</small><span>${w[2]}</span></div>`
+).join("");
+}
+function shuffleWords(){
+words.sort(()=>Math.random()-.5);renderWords();
+}
+renderWords();
+
+const warm=[
+"Which is better: living in a big city or a small town?",
+"What is the most important thing in your life?",
+"Is English easier or more difficult than your native language?",
+"Where is your favourite place?"
+];
+document.getElementById("warmQuestions").innerHTML=warm.map((q,i)=>
+`<div class="task"><b>${i+1}. ${q}</b><textarea placeholder="Your answer..."></textarea></div>`
+).join("");
+
+const listen1=[
+["What are large cities usually like?","More crowded and expensive","Quieter and cheaper","Smaller and safer",0],
+["What can large cities offer?","Fewer opportunities","More opportunities","Less education",1],
+["Why do some people prefer small towns?","They are more peaceful","They are more expensive","They are busier",0],
+["Which place is usually more crowded?","A small town","The countryside","A large city",2],
+["What does the text compare?","Two jobs","Two types of places","Two schools",1]
+];
+const listen2=[
+["Where is the library?","Opposite the school","Behind the bank","Inside the school",0],
+["Where is the cafe?","Behind the museum","Next to the library","Across the road",1],
+["What is between the supermarket and post office?","The library","The park","The bank",2],
+["Where is the park?","Behind the museum","In front of the bank","Next to the school",0],
+["Which direction should you turn?","Right","Left","Straight only",1]
+];
+
+function renderSimpleQuiz(data,id){
+document.getElementById(id).innerHTML=data.map((q,i)=>
+`<div class="question"><b>${i+1}. ${q[0]}</b><div class="options">${
+q.slice(1,4).map((a,j)=>`<button class="option" onclick="selectOption(this,'${id}',${i},${j})">${String.fromCharCode(65+j)}. ${a}</button>`).join("")
+}</div><input type="hidden" id="${id}a${i}" value="-1"></div>`
+).join("");
+}
+function selectOption(btn,id,i,j){
+btn.parentElement.querySelectorAll("button").forEach(b=>b.classList.remove("selected"));
+btn.classList.add("selected");
+document.getElementById(id+"a"+i).value=j;
+}
+renderSimpleQuiz(listen1,"listen1");
+renderSimpleQuiz(listen2,"listen2");
+
+const reading=[
+["What do some people prefer?","Large cities","Only villages","Deserts",0],
+["What is usually more expensive?","Small towns","Large cities","Countryside",1],
+["What do large cities provide?","Better job opportunities","No schools","Less transport",0],
+["What is usually quieter?","A large city","A small town","An airport",1],
+["Why can small towns be less stressful?","More traffic","Less traffic and noise","More crowds",1],
+["What is another living choice?","The countryside","The airport","The factory",0],
+["What is often fresher in the countryside?","Traffic","Air","Buildings",1],
+["What may be less convenient in the countryside?","Public transport","Fresh air","Nature",0],
+["What does the best place depend on?","Personal needs","Only money","Only weather",0],
+["Why might a student prefer a large city?","More educational opportunities","Less education","More silence",0],
+["Why might a family choose a small town?","It is more crowded","It is quieter","It is noisier",1],
+["Does one place suit everyone?","Yes","No","Only cities",1],
+["What is the main idea?","There is one perfect city","People have different preferences","Cities are always better",1],
+["Which word means 'gavjum'?","Peaceful","Crowded","Convenient",1],
+["What is the most important thing?","Finding a comfortable and safe place","Living in the biggest city","Having the largest house",0]
+];
+renderSimpleQuiz(reading,"readingQuestions");
+
+const speaking=[
+"Which city would you like to live in? Why?",
+"Is life in a big city more stressful?",
+"What is the most beautiful place you have visited?",
+"Are modern phones better than old phones?",
+"Which is more important: money or education?",
+"Is learning English easier today than in the past?",
+"What is the biggest advantage of living in a small town?",
+"What is the greatest disadvantage of living in a big city?",
+"Which season is the most comfortable for you?",
+"Is travelling by train better than travelling by bus?",
+"Where is the best place to study?",
+"Who is the most important person in your life?",
+"Are online lessons as effective as traditional lessons?",
+"What makes a neighbourhood comfortable?",
+"Would you prefer a quieter or busier lifestyle?"
+];
+document.getElementById("speakingQuestions").innerHTML=speaking.map((q,i)=>
+`<div class="task"><b>${i+1}. ${q}</b><textarea placeholder="Write your speaking notes..."></textarea></div>`
+).join("");
+
+const grammar=[
+["My brother is ___ than me.","tall","taller","tallest",1],
+["This is the ___ building in town.","higher","highest","most high",1],
+["English is ___ than I expected.","easy","easier","easiest",1],
+["This book is ___ interesting than that one.","more","most","much",0],
+["Today is ___ than yesterday.","hotter","hottest","more hot",0],
+["She is the ___ student in the class.","better","best","good",1],
+["My car is not as expensive ___ yours.","than","like","as",2],
+["This exercise is ___ harder than the last one.","much","very","many",0],
+["The bank is ___ the supermarket and the post office.","among","between","through",1],
+["The picture is ___ the wall.","in","on","at",1],
+["I was born ___ 2001.","at","on","in",2],
+["The lesson starts ___ 8 o'clock.","at","in","on",0],
+["We have a meeting ___ Friday.","in","on","at",1],
+["She has lived here ___ 2020.","for","since","during",1],
+["I have studied English ___ six years.","since","during","for",2],
+["He walked ___ the room.","into","between","above",0],
+["They walked ___ the bridge.","across","inside","under",0],
+["She is good ___ English.","in","at","on",1],
+["This city is different ___ my hometown.","from","to","at",0],
+["Your result is ___ than mine.","good","better","best",1]
+];
+const mixed=[
+["What is the superlative of 'beautiful'?","beautifulest","the most beautiful","more beautiful",1],
+["What is the comparative of 'bad'?","badder","worse","worst",1],
+["Which phrase means 'ozgina kattaroq'?","slightly bigger","the biggest","most big",0],
+["Choose the correct sentence.","She is more taller.","She is taller.","She is tallest than me.",1],
+["Which word means 'tinch'?","crowded","peaceful","dangerous",1],
+["Which means 'yonida'?","next to","through","above",0],
+["Which means 'ko'chani kesib o'tmoq'?","walk across the street","walk under the street","walk inside the street",0],
+["Which preposition is used with 'July'?","on","at","in",2],
+["Which preposition is used with 'Monday'?","on","in","at",0],
+["Which means '...dan beri'?","for","since","until",1],
+["Which means 'davomida'?","during","between","towards",0],
+["Which means 'bo'ylab'?","along","under","inside",0],
+["What is the comparative of 'good'?","gooder","better","best",1],
+["What is the superlative of 'small'?","smaller","the smallest","most small",1],
+["Choose the correct expression.","interested on","interested in","interested at",1],
+["Choose the correct expression.","depend of","depend in","depend on",2],
+["Which word means 'imkoniyat'?","opportunity","population","direction",0],
+["Which word means 'farq'?","difference","distance","development",0],
+["Which is correct?","as tall as","as tall than","as taller as",0],
+["Which means 'hamyonbop'?","expensive","affordable","crowded",1]
+];
+renderSimpleQuiz(grammar,"grammarTest");
+renderSimpleQuiz(mixed,"mixedTest");
+
+function checkTest(id,resultId){
+const data=id==="grammarTest"?grammar:mixed;
+let score=0,answered=0;
+data.forEach((q,i)=>{
+const val=Number(document.getElementById(id+"a"+i).value);
+const buttons=document.querySelectorAll(`#${id} .question:nth-child(${i+1}) .option`);
+if(val>=0){
+answered++;
+if(val===q[4]){score++;buttons[val].classList.add("correct")}
+else{buttons[val].classList.add("wrong");buttons[q[4]].classList.add("correct")}
+}
+});
+const percent=Math.round(score/data.length*100);
+document.getElementById(resultId).innerHTML=
+`<div class="result"><h3>Natija: ${score}/${data.length} — ${percent}%</h3>
+<p>Javob berilgan savollar: ${answered}/${data.length}</p>
+<strong>${percent>=80?"Ajoyib! Siz 80% talabini bajardingiz.":"Yana mashq qiling. 80% natijaga erishishga harakat qiling."}</strong></div>`;
+localStorage.setItem("eu_l7_"+id,percent);
+updateProgress();
+}
+
+const hw=[
+"Grammatik qoidalar va formulalarni daftarga yozish",
+"50 ta yangi so'zni yozish va yodlash",
+"Grammar mashqlarini daftarda bajarish",
+"Listening mashqlarini bajarish",
+"Reading matnini o'qish va qayta hikoya qilish",
+"150–180 so'zli writing yozish",
+"15 ta speaking savoliga javob tayyorlash",
+"Ikkala dialogni mashq qilish"
+];
+document.getElementById("homeworkChecklist").innerHTML=hw.map((t,i)=>
+`<div class="task"><label><input type="checkbox" onchange="saveHomework()"><span>${i+1}. ${t}</span></label></div>`
+).join("");
+
+function saveHomework(){
+const checks=[...document.querySelectorAll("#homeworkChecklist input")];
+const done=checks.filter(c=>c.checked).length;
+localStorage.setItem("eu_l7_hw",JSON.stringify(checks.map(c=>c.checked)));
+document.getElementById("hwProgress").style.width=(done/8*100)+"%";
+document.getElementById("hwText").textContent=done+"/8 completed";
+updateProgress();
+}
+function loadHomework(){
+try{
+const saved=JSON.parse(localStorage.getItem("eu_l7_hw")||"[]");
+document.querySelectorAll("#homeworkChecklist input").forEach((c,i)=>c.checked=!!saved[i]);
+}catch(e){}
+saveHomework();
+}
+loadHomework();
+
+function countWriting(){
+const text=document.getElementById("writingText").value.trim();
+const count=text?text.split(/\s+/).length:0;
+document.getElementById("wordCount").textContent="Words: "+count;
+}
+document.getElementById("writingText").addEventListener("input",countWriting);
+
+function speakText(text){
+if(!("speechSynthesis" in window)){alert("Audio playback is not supported in this browser.");return}
+speechSynthesis.cancel();
+const utter=new SpeechSynthesisUtterance(text);
+utter.lang="en-US";utter.rate=.82;
+speechSynthesis.speak(utter);
+}
+
+document.getElementById("nav").addEventListener("click",e=>{
+const btn=e.target.closest("button[data-tab]");
+if(!btn)return;
+document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+btn.classList.add("active");
+document.getElementById(btn.dataset.tab).classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
+updateProgress();
+});
+
+function updateProgress(){
+const visited=[...document.querySelectorAll(".section")].filter(s=>s.dataset.visited==="yes").length;
+const active=document.querySelector(".section.active");
+if(active)active.dataset.visited="yes";
+const total=document.querySelectorAll(".section").length;
+const percent=Math.round(visited/total*100);
+document.getElementById("progressBar").style.width=percent+"%";
+document.getElementById("progressText").textContent=percent+"%";
+}
+document.querySelector(".section.active").dataset.visited="yes";
+updateProgress();
+</script>
+</body><!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 7 | Comparisons & Prepositions — English Up</title>
+<style>
+:root{
+--p:#7047eb;--p2:#9274ff;--bg:#f5f3ff;--card:#fff;
+--text:#241d38;--muted:#77718a;--border:#e8e1fa;
+--green:#16a36a;--red:#e34c64;--shadow:0 5px 22px #38208012;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.header{background:linear-gradient(120deg,#5831d4,#9274ff);
+color:white;padding:22px 16px 30px;border-radius:0 0 25px 25px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:900;letter-spacing:2px}
+.back{color:white;text-decoration:none;border:1px solid #ffffff70;
+padding:7px 13px;border-radius:20px;font-size:13px}
+.hero{max-width:850px;margin:25px auto 0}
+.hero h1{font-size:30px;line-height:1.2;margin:8px 0}
+.hero p{color:#eee7ff}
+.container{max-width:950px;margin:20px auto;padding:0 13px}
+.card{background:var(--card);border:1px solid var(--border);
+border-radius:17px;padding:19px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card h2{font-size:21px;margin:0 0 12px;color:var(--p)}
+.card h3{font-size:17px;margin:18px 0 7px}
+.muted{color:var(--muted);font-size:13px}
+.tag{display:inline-block;background:#eee9ff;color:#613bd0;
+padding:4px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+.progress-wrap{height:9px;background:#e9e3f6;border-radius:20px;overflow:hidden}
+.progress{height:100%;background:linear-gradient(90deg,#7047eb,#ad91ff);
+width:0%;transition:.3s}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 13px}
+.nav button{white-space:nowrap;border:1px solid var(--border);
+background:white;color:var(--text);border-radius:20px;padding:9px 14px}
+.nav button.active{background:var(--p);color:white}
+.section{display:none}
+.section.active{display:block}
+.rule{background:#f7f4ff;border-left:4px solid var(--p);
+padding:12px 14px;border-radius:8px;margin:12px 0}
+.formula{font-size:17px;font-weight:bold;color:#5c35ca;
+background:#eee9ff;padding:10px;border-radius:9px;margin:8px 0}
+.example{padding:10px 12px;border-bottom:1px solid var(--border)}
+.example:last-child{border:0}
+.en{font-weight:bold}
+.uz{color:var(--muted);font-size:14px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+td,th{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:#f0ebff;color:#5734c2}
+.btn{background:var(--p);color:white;border:0;padding:11px 18px;
+border-radius:11px;font-weight:bold}
+.btn.secondary{background:#eee9ff;color:#5934c5}
+.btn.dark{background:#35265e}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.word{border:1px solid var(--border);padding:12px;border-radius:12px}
+.word strong{display:block;color:var(--p);font-size:17px}
+.word small{display:block;color:var(--muted)}
+.question{padding:15px;border:1px solid var(--border);
+border-radius:12px;margin:12px 0}
+.options{display:grid;gap:8px;margin-top:10px}
+.option{padding:10px;border:1px solid var(--border);
+border-radius:9px;background:white;text-align:left}
+.option.selected{border:2px solid var(--p);background:#f3efff}
+.option.correct{border:2px solid var(--green);background:#e9fff4}
+.option.wrong{border:2px solid var(--red);background:#fff0f2}
+.feedback{font-size:13px;margin-top:8px;font-weight:bold}
+textarea,input[type=text]{width:100%;padding:12px;border:1px solid var(--border);
+border-radius:10px;background:white;color:var(--text)}
+textarea{min-height:130px;resize:vertical}
+.task{padding:13px;border:1px solid var(--border);
+border-radius:12px;margin:10px 0}
+.task label{display:flex;gap:10px;align-items:flex-start}
+.task input{margin-top:6px}
+.result{padding:15px;border-radius:12px;background:#f1edff;margin:12px 0}
+footer{text-align:center;color:var(--muted);padding:25px;font-size:13px}
+@media(max-width:600px){
+.hero h1{font-size:25px}.card{padding:15px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="top">
+<a class="back" href="index.html">← Back</a>
+<div class="brand">ENGLISH UP</div>
+<span class="tag" style="background:#ffffff25;color:white">LESSON 07</span>
+</div>
+<div class="hero">
+<span class="tag">PRE-INTERMEDIATE • B1 DEVELOPMENT</span>
+<h1>Comparisons & Prepositions</h1>
+<p>Comparative adjectives, superlatives, equality and prepositions of place, time and movement.</p>
+<div style="display:flex;justify-content:space-between;font-size:13px">
+<span>Lesson progress</span><span id="progressText">0%</span>
+</div>
+<div class="progress-wrap"><div class="progress" id="progressBar"></div></div>
+</div>
+</header>
+
+<main class="container">
+<div class="card">
+<strong>📌 DARSNING QAT'IY QOIDASI</strong>
+<p>Har bir grammatik qoidani daftaringizga yozing. Faqat o'qib chiqish yetarli emas!</p>
+<ul>
+<li>Har bir qoida va uning formulasini yozing.</li>
+<li>Inglizcha misollarni o'zbekcha tarjimasi bilan yozing.</li>
+<li>Jadval va istisnolarni daftarga ko'chiring.</li>
+<li>Mustaqil mashqlarni daftarda bajaring.</li>
+<li>Yangi lug'atlarni talaffuzi va tarjimasi bilan yozing.</li>
+</ul>
+</div>
+
+<nav class="nav" id="nav">
+<button class="active" data-tab="intro">Introduction</button>
+<button data-tab="grammar">Grammar</button>
+<button data-tab="vocabulary">Vocabulary</button>
+<button data-tab="listening">Listening</button>
+<button data-tab="reading">Reading</button>
+<button data-tab="dialogue">Dialogues</button>
+<button data-tab="writing">Writing</button>
+<button data-tab="speaking">Speaking</button>
+<button data-tab="tests">Tests</button>
+<button data-tab="homework">Homework</button>
+</nav>
+
+<section class="section active" id="intro">
+<div class="card">
+<h2>🎯 1. Lesson objectives</h2>
+<p>Ushbu darsdan keyin siz quyidagilarni bajara olishingiz kerak:</p>
+<ul>
+<li>Ikki yoki undan ortiq narsani taqqoslash.</li>
+<li>Biror narsaning eng yuqori darajasini ifodalash.</li>
+<li>O'xshashlik va farqlar haqida gapirish.</li>
+<li>Joylashuvni aniq tushuntirish.</li>
+<li>Vaqt predloglarini to'g'ri ishlatish.</li>
+<li>Harakat va yo'nalishni ifodalash.</li>
+<li>Taqqoslash orqali o'z fikringizni asoslash.</li>
+</ul>
+</div>
+<div class="card">
+<h2>🧠 Warm-up questions</h2>
+<p>Avval quyidagi savollarga ingliz tilida javob berishga harakat qiling.</p>
+<div id="warmQuestions"></div>
+</div>
+<div class="card">
+<h2>📚 Dars xaritasi</h2>
+<div class="task">1. Comparative adjectives</div>
+<div class="task">2. Superlative adjectives</div>
+<div class="task">3. As...as / Not as...as</div>
+<div class="task">4. Intensifiers with comparatives</div>
+<div class="task">5. Prepositions of place</div>
+<div class="task">6. Prepositions of time</div>
+<div class="task">7. Prepositions of movement</div>
+<div class="task">8. Practical communication</div>
+</div>
+</section>
+
+<section class="section" id="grammar">
+<div class="card">
+<h2>📖 GRAMMAR — 1. Comparative Adjectives</h2>
+<p>Comparative adjectives ikki shaxs, narsa, joy yoki hodisani taqqoslash uchun ishlatiladi.</p>
+<div class="rule">
+<strong>QOIDA:</strong> Bir narsaning boshqa narsadan qanday farq qilishini aytish uchun comparative shaklidan foydalanamiz.
+</div>
+<div class="formula">Subject + verb + comparative adjective + than + object</div>
+<h3>A. Qisqa sifatlar: -er</h3>
+<p>Ko'pchilik bir bo'g'inli sifatlarning oxiriga <b>-er</b> qo'shiladi.</p>
+<table>
+<tr><th>Adjective</th><th>Comparative</th><th>Tarjima</th></tr>
+<tr><td>tall</td><td>taller</td><td>balandroq</td></tr>
+<tr><td>small</td><td>smaller</td><td>kichikroq</td></tr>
+<tr><td>fast</td><td>faster</td><td>tezroq</td></tr>
+<tr><td>old</td><td>older</td><td>kattaroq / eskiroq</td></tr>
+<tr><td>cheap</td><td>cheaper</td><td>arzonroq</td></tr>
+<tr><td>short</td><td>shorter</td><td>qisqaroq</td></tr>
+</table>
+<div class="example"><div class="en">My brother is taller than me.</div><div class="uz">Akam mendan balandroq.</div></div>
+<div class="example"><div class="en">This car is cheaper than that one.</div><div class="uz">Bu mashina unisidan arzonroq.</div></div>
+<h3>B. Oxiri -e bilan tugagan sifatlar</h3>
+<div class="formula">Adjective + r</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>large</td><td>larger</td></tr>
+<tr><td>nice</td><td>nicer</td></tr>
+<tr><td>wide</td><td>wider</td></tr>
+<tr><td>safe</td><td>safer</td></tr>
+</table>
+<div class="example"><div class="en">This room is larger than mine.</div><div class="uz">Bu xona menikidan kattaroq.</div></div>
+<h3>C. Undosh + unli + undosh</h3>
+<p>Ayrim qisqa sifatlarda oxirgi undosh ikki marta yoziladi.</p>
+<div class="formula">Double final consonant + er</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>big</td><td>bigger</td></tr>
+<tr><td>hot</td><td>hotter</td></tr>
+<tr><td>thin</td><td>thinner</td></tr>
+<tr><td>fat</td><td>fatter</td></tr>
+</table>
+<div class="example"><div class="en">Today is hotter than yesterday.</div><div class="uz">Bugun kechagidan issiqroq.</div></div>
+<h3>D. Oxiri -y bilan tugagan sifatlar</h3>
+<div class="formula">y → ier</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>easy</td><td>easier</td></tr>
+<tr><td>happy</td><td>happier</td></tr>
+<tr><td>busy</td><td>busier</td></tr>
+<tr><td>heavy</td><td>heavier</td></tr>
+<tr><td>friendly</td><td>friendlier</td></tr>
+</table>
+<div class="example"><div class="en">English is easier with regular practice.</div><div class="uz">Muntazam mashq bilan ingliz tili osonroq bo'ladi.</div></div>
+<h3>E. Uzun sifatlar: more</h3>
+<p>Ko'p bo'g'inli sifatlarning oldiga <b>more</b> qo'yiladi.</p>
+<div class="formula">more + adjective + than</div>
+<table>
+<tr><th>Positive</th><th>Comparative</th></tr>
+<tr><td>beautiful</td><td>more beautiful</td></tr>
+<tr><td>expensive</td><td>more expensive</td></tr>
+<tr><td>interesting</td><td>more interesting</td></tr>
+<tr><td>comfortable</td><td>more comfortable</td></tr>
+<tr><td>important</td><td>more important</td></tr>
+<tr><td>dangerous</td><td>more dangerous</td></tr>
+</table>
+<div class="example"><div class="en">This book is more interesting than that one.</div><div class="uz">Bu kitob unisidan qiziqarliroq.</div></div>
+<div class="example"><div class="en">Education is more important than money.</div><div class="uz">Ta'lim puldan muhimroq.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 2. Superlative Adjectives</h2>
+<p>Superlative bir guruh ichidagi eng yuqori yoki eng past darajani ko'rsatadi.</p>
+<div class="formula">the + adjective-est</div>
+<p>Qisqa sifatlarda odatda <b>-est</b> ishlatiladi.</p>
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+<tr><td>tall</td><td>taller</td><td>the tallest</td></tr>
+<tr><td>small</td><td>smaller</td><td>the smallest</td></tr>
+<tr><td>fast</td><td>faster</td><td>the fastest</td></tr>
+<tr><td>old</td><td>older</td><td>the oldest</td></tr>
+<tr><td>cheap</td><td>cheaper</td><td>the cheapest</td></tr>
+<tr><td>big</td><td>bigger</td><td>the biggest</td></tr>
+<tr><td>happy</td><td>happier</td><td>the happiest</td></tr>
+</table>
+<div class="formula">the most + long adjective</div>
+<table>
+<tr><th>Positive</th><th>Superlative</th></tr>
+<tr><td>beautiful</td><td>the most beautiful</td></tr>
+<tr><td>expensive</td><td>the most expensive</td></tr>
+<tr><td>interesting</td><td>the most interesting</td></tr>
+<tr><td>comfortable</td><td>the most comfortable</td></tr>
+<tr><td>important</td><td>the most important</td></tr>
+</table>
+<div class="example"><div class="en">Mount Everest is the highest mountain in the world.</div><div class="uz">Everest dunyodagi eng baland tog'dir.</div></div>
+<div class="example"><div class="en">This is the most interesting lesson.</div><div class="uz">Bu eng qiziqarli dars.</div></div>
+<div class="rule"><b>Eslab qoling:</b> Superlative oldidan ko'pincha <b>the</b> ishlatiladi.</div>
+</div>
+
+<div class="card">
+<h2>📖 3. Irregular Comparisons</h2>
+<p>Ba'zi sifatlar odatiy qoidalarga bo'ysunmaydi. Ularni yodlash kerak.</p>
+<table>
+<tr><th>Positive</th><th>Comparative</th><th>Superlative</th><th>Tarjima</th></tr>
+<tr><td>good</td><td>better</td><td>the best</td><td>yaxshi</td></tr>
+<tr><td>bad</td><td>worse</td><td>the worst</td><td>yomon</td></tr>
+<tr><td>far</td><td>farther/further</td><td>the farthest/furthest</td><td>uzoq</td></tr>
+<tr><td>little</td><td>less</td><td>the least</td><td>kam</td></tr>
+<tr><td>many/much</td><td>more</td><td>the most</td><td>ko'p</td></tr>
+</table>
+<div class="example"><div class="en">Your English is better than before.</div><div class="uz">Ingliz tilingiz avvalgidan yaxshiroq.</div></div>
+<div class="example"><div class="en">This is the best restaurant in town.</div><div class="uz">Bu shahardagi eng yaxshi restoran.</div></div>
+<div class="example"><div class="en">His result is worse than mine.</div><div class="uz">Uning natijasi menikidan yomonroq.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 4. Equality — As...as</h2>
+<p>Ikki narsaning teng darajada ekanini ifodalash uchun ishlatiladi.</p>
+<div class="formula">as + adjective + as</div>
+<div class="example"><div class="en">My house is as big as yours.</div><div class="uz">Mening uyim senikidek katta.</div></div>
+<div class="example"><div class="en">She is as intelligent as her brother.</div><div class="uz">U akasidek aqlli.</div></div>
+<h3>Not as...as</h3>
+<p>Teng emaslikni yoki pastroq darajani bildiradi.</p>
+<div class="formula">not as + adjective + as</div>
+<div class="example"><div class="en">This city is not as crowded as London.</div><div class="uz">Bu shahar London kabi gavjum emas.</div></div>
+<div class="example"><div class="en">My phone is not as expensive as yours.</div><div class="uz">Telefonim senikidek qimmat emas.</div></div>
+<h3>As much as / As many as</h3>
+<div class="rule"><b>As much as</b> — sanalmaydigan otlar bilan. <b>As many as</b> — sanaladigan ko'plik otlar bilan.</div>
+<div class="example"><div class="en">I don't have as much time as you.</div><div class="uz">Menda sendagidek ko'p vaqt yo'q.</div></div>
+<div class="example"><div class="en">She has as many books as I do.</div><div class="uz">Unda menikidek ko'p kitob bor.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 5. Intensifiers with Comparatives</h2>
+<p>Taqqoslash darajasini kuchaytirish yoki yumshatish uchun maxsus so'zlar ishlatiladi.</p>
+<table>
+<tr><th>Word</th><th>Ma'nosi</th><th>Example</th></tr>
+<tr><td>much</td><td>ancha</td><td>much better</td></tr>
+<tr><td>far</td><td>ancha</td><td>far more expensive</td></tr>
+<tr><td>a lot</td><td>juda ham</td><td>a lot easier</td></tr>
+<tr><td>slightly</td><td>biroz</td><td>slightly bigger</td></tr>
+<tr><td>a little</td><td>ozgina</td><td>a little faster</td></tr>
+<tr><td>even</td><td>hatto yanada</td><td>even better</td></tr>
+</table>
+<div class="formula">much / far / a lot / slightly + comparative</div>
+<div class="example"><div class="en">This exercise is much harder than the previous one.</div><div class="uz">Bu mashq avvalgisidan ancha qiyinroq.</div></div>
+<div class="example"><div class="en">The new phone is slightly lighter.</div><div class="uz">Yangi telefon biroz yengilroq.</div></div>
+<div class="rule">Noto'g'ri: very better. To'g'ri: much better.</div>
+</div>
+
+<div class="card">
+<h2>📖 6. Prepositions of Place</h2>
+<p>Joy predloglari biror narsaning qayerda joylashganini ko'rsatadi.</p>
+<table>
+<tr><th>Preposition</th><th>Tarjima</th><th>Misol</th></tr>
+<tr><td>in</td><td>ichida</td><td>in the room</td></tr>
+<tr><td>on</td><td>ustida</td><td>on the table</td></tr>
+<tr><td>at</td><td>aniq joyda</td><td>at the station</td></tr>
+<tr><td>under</td><td>tagida</td><td>under the bed</td></tr>
+<tr><td>above</td><td>yuqorisida</td><td>above the door</td></tr>
+<tr><td>below</td><td>pastida</td><td>below the picture</td></tr>
+<tr><td>behind</td><td>orqasida</td><td>behind the house</td></tr>
+<tr><td>in front of</td><td>oldida</td><td>in front of the school</td></tr>
+<tr><td>between</td><td>ikkita orasida</td><td>between two buildings</td></tr>
+<tr><td>among</td><td>ko'pchilik orasida</td><td>among friends</td></tr>
+<tr><td>next to</td><td>yonida</td><td>next to the bank</td></tr>
+<tr><td>near</td><td>yaqinida</td><td>near my house</td></tr>
+<tr><td>opposite</td><td>ro'parasida</td><td>opposite the park</td></tr>
+<tr><td>inside</td><td>ichkarisida</td><td>inside the box</td></tr>
+<tr><td>outside</td><td>tashqarisida</td><td>outside the building</td></tr>
+</table>
+<h3>In, On va At farqi</h3>
+<div class="rule"><b>IN:</b> xona, bino, shahar, mamlakat yoki yopiq hudud ichida.</div>
+<div class="example"><div class="en">I live in the Netherlands.</div><div class="uz">Men Niderlandiyada yashayman.</div></div>
+<div class="rule"><b>ON:</b> sirt ustida yoki ayrim transport vositalarida.</div>
+<div class="example"><div class="en">The keys are on the table.</div><div class="uz">Kalitlar stol ustida.</div></div>
+<div class="rule"><b>AT:</b> aniq nuqta, manzil yoki faoliyat joyi.</div>
+<div class="example"><div class="en">She is at school.</div><div class="uz">U maktabda.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 7. Prepositions of Time</h2>
+<p>Vaqt predloglari voqea qachon sodir bo'lishini ko'rsatadi.</p>
+<table>
+<tr><th>Preposition</th><th>Qachon?</th><th>Misol</th></tr>
+<tr><td>in</td><td>Oy, yil, fasl, kun qismi</td><td>in July, in 2026, in winter</td></tr>
+<tr><td>on</td><td>Hafta kuni, sana</td><td>on Monday, on 18 May</td></tr>
+<tr><td>at</td><td>Aniq vaqt</td><td>at 7 o'clock</td></tr>
+<tr><td>since</td><td>Boshlanish nuqtasi</td><td>since 2020</td></tr>
+<tr><td>for</td><td>Davomiylik</td><td>for three years</td></tr>
+<tr><td>during</td><td>Davomida</td><td>during the lesson</td></tr>
+<tr><td>before</td><td>Oldin</td><td>before dinner</td></tr>
+<tr><td>after</td><td>Keyin</td><td>after work</td></tr>
+<tr><td>until</td><td>Gacha</td><td>until Friday</td></tr>
+<tr><td>by</td><td>Eng kechida</td><td>by 5 o'clock</td></tr>
+</table>
+<h3>IN / ON / AT — vaqt bo'yicha</h3>
+<div class="example"><div class="en">I was born in 2000.</div><div class="uz">Men 2000-yilda tug'ilganman.</div></div>
+<div class="example"><div class="en">We have a meeting on Tuesday.</div><div class="uz">Seshanba kuni uchrashuvimiz bor.</div></div>
+<div class="example"><div class="en">The lesson starts at 9 a.m.</div><div class="uz">Dars ertalab soat 9 da boshlanadi.</div></div>
+<h3>Since va For farqi</h3>
+<div class="formula">Since + boshlanish vaqti</div>
+<div class="formula">For + vaqt davomiyligi</div>
+<div class="example"><div class="en">I have lived here since 2022.</div><div class="uz">Men bu yerda 2022-yildan beri yashayman.</div></div>
+<div class="example"><div class="en">I have studied English for six years.</div><div class="uz">Men olti yildan beri ingliz tilini o'rganyapman.</div></div>
+</div>
+
+<div class="card">
+<h2>📖 8. Prepositions of Movement</h2>
+<p>Harakat predloglari bir joydan boshqa joyga harakatni ko'rsatadi.</p>
+<table>
+<tr><th>Preposition</th><th>Ma'nosi</th><th>Example</th></tr>
+<tr><td>to</td><td>ga</td><td>go to school</td></tr>
+<tr><td>into</td><td>ichiga</td><td>walk into the room</td></tr>
+<tr><td>out of</td><td>ichidan tashqariga</td><td>get out of the car</td></tr>
+<tr><td>onto</td><td>ustiga</td><td>jump onto the bed</td></tr>
+<tr><td>off</td><td>ustidan pastga</td><td>get off the bus</td></tr>
+<tr><td>across</td><td>kesib o'tib</td><td>walk across the street</td></tr>
+<tr><td>through</td><td>ichidan o'tib</td><td>go through the tunnel</td></tr>
+<tr><td>along</td><td>bo'ylab</td><td>walk along the river</td></tr>
+<tr><td>past</td><td>yonidan o'tib</td><td>walk past the bank</td></tr>
+<tr><td>towards</td><td>tomon</td><td>move towards the door</td></tr>
+<tr><td>around</td><td>atrofida</td><td>walk around the park</td></tr>
+<tr><td>from</td><td>dan</td><td>come from school</td></tr>
+</table>
+<div class="example"><div
+</html>
