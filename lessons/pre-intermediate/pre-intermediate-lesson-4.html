@@ -1,1 +1,1803 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 4 - Past Simple | English Up</title>
+
+<style>
+:root {
+    --primary: #7047eb;
+    --primary-light: #9274ff;
+    --background: #f5f3ff;
+    --card: #ffffff;
+    --text: #241d38;
+    --muted: #716b80;
+    --border: #e7e1f5;
+    --success: #168653;
+    --danger: #d94343;
+    --warning: #d28b16;
+    --shadow: 0 5px 20px rgba(65, 40, 120, .08);
+}
+
+body.dark {
+    --background: #171326;
+    --card: #241e36;
+    --text: #f4efff;
+    --muted: #b9afce;
+    --border: #3a3150;
+    --shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    transition: .2s;
+}
+
+button, input, textarea {
+    font: inherit;
+}
+
+header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: var(--shadow);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand {
+    color: var(--primary);
+    font-size: 21px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.small-btn {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    padding: 7px 11px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container {
+    width: min(100% - 28px, 950px);
+    margin: 22px auto 60px;
+}
+
+.hero {
+    background: linear-gradient(130deg, #7047eb, #a18aff);
+    color: white;
+    padding: 30px 22px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.hero h1 {
+    font-size: clamp(27px, 5vw, 39px);
+    margin-bottom: 8px;
+}
+
+.hero p {
+    opacity: .95;
+}
+
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 17px;
+}
+
+.hero-tags span {
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 30px;
+    padding: 5px 12px;
+    font-size: 13px;
+}
+
+.progress-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.progress-track {
+    height: 10px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 9px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    transition: .3s;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 21px;
+    margin-bottom: 19px;
+    box-shadow: var(--shadow);
+}
+
+.section-title {
+    font-size: 23px;
+    color: var(--primary);
+    margin-bottom: 13px;
+}
+
+.sub-title {
+    font-size: 18px;
+    margin: 18px 0 8px;
+}
+
+p {
+    margin: 8px 0;
+}
+
+ul, ol {
+    padding-left: 23px;
+    margin: 9px 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+.note {
+    background: rgba(112,71,235,.09);
+    border-left: 4px solid var(--primary);
+    padding: 13px 15px;
+    border-radius: 9px;
+    margin: 13px 0;
+}
+
+.warning {
+    background: rgba(210,139,22,.10);
+    border-left: 4px solid var(--warning);
+    padding: 13px 15px;
+    border-radius: 9px;
+    margin: 13px 0;
+}
+
+.example {
+    background: var(--background);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 10px;
+    margin: 9px 0;
+}
+
+.example strong {
+    color: var(--primary);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 13px 0;
+    font-size: 14px;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 9px;
+    text-align: left;
+}
+
+th {
+    background: rgba(112,71,235,.10);
+    color: var(--primary);
+}
+
+.action-btn {
+    background: var(--primary);
+    color: white;
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 7px 5px 7px 0;
+    font-weight: bold;
+}
+
+.action-btn:hover {
+    opacity: .88;
+}
+
+.secondary-btn {
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 9px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.audio-box {
+    background: var(--background);
+    padding: 16px;
+    border-radius: 13px;
+    margin: 13px 0;
+    border: 1px solid var(--border);
+}
+
+.audio-text {
+    display: none;
+    background: var(--card);
+    padding: 13px;
+    border-radius: 10px;
+    margin-top: 12px;
+}
+
+.audio-text.show {
+    display: block;
+}
+
+.word-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 10px;
+}
+
+.word {
+    background: var(--background);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 11px;
+}
+
+.word strong {
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.word small {
+    display: block;
+    color: var(--muted);
+}
+
+.quiz-question {
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 15px;
+    margin: 13px 0;
+    background: var(--background);
+}
+
+.quiz-question h4 {
+    margin-bottom: 10px;
+}
+
+.option {
+    display: block;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    margin: 7px 0;
+    cursor: pointer;
+    background: var(--card);
+}
+
+.option:hover {
+    border-color: var(--primary);
+}
+
+.option input {
+    margin-right: 8px;
+}
+
+.correct {
+    border: 2px solid var(--success) !important;
+}
+
+.incorrect {
+    border: 2px solid var(--danger) !important;
+}
+
+.feedback {
+    font-size: 14px;
+    margin-top: 7px;
+    font-weight: bold;
+}
+
+.result {
+    background: rgba(112,71,235,.10);
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 14px;
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    resize: vertical;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--background);
+    color: var(--text);
+}
+
+.task {
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    margin: 10px 0;
+}
+
+.task label {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.task input {
+    margin-top: 6px;
+}
+
+footer {
+    text-align: center;
+    color: var(--muted);
+    padding: 25px;
+}
+
+@media(max-width:600px) {
+    .container {
+        width: min(100% - 18px, 950px);
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .hero {
+        padding: 23px 17px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">ENGLISH UP</a>
+        <div class="header-actions">
+            <a class="small-btn" href="pre-intermediate.html">Course</a>
+            <button class="small-btn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+    <p>PRE-INTERMEDIATE • LESSON 4</p>
+    <h1>Past Simple</h1>
+    <p>O‘tgan zamonda sodir bo‘lgan voqealar haqida gapirishni o‘rganamiz.</p>
+    <div class="hero-tags">
+        <span>📘 Grammar</span>
+        <span>🎧 2 Listening</span>
+        <span>📚 30 Words</span>
+        <span>📖 Reading</span>
+        <span>✍️ Writing</span>
+        <span>📝 40 Tests</span>
+    </div>
+</section>
+
+<section class="progress-box">
+    <strong>📊 Dars jarayoni</strong>
+    <p id="progressText">Bajarilgan vazifalar: 0 / 8</p>
+    <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</section>
+
+<section class="card">
+    <h2 class="section-title">🎯 Dars maqsadlari</h2>
+    <p>Ushbu darsni oxirigacha bajarganingizdan so‘ng siz:</p>
+    <ul>
+        <li>O‘tgan zamonda sodir bo‘lgan ishlar haqida gapira olasiz.</li>
+        <li>Regular va irregular fe’llarni farqlay olasiz.</li>
+        <li>Past Simple darak gaplarini tuza olasiz.</li>
+        <li>Inkor gaplarda <b>didn't</b> ishlata olasiz.</li>
+        <li>So‘roq gaplarda <b>Did</b> yordamchi fe’lidan foydalana olasiz.</li>
+        <li>O‘tgan zamon vaqt ko‘rsatkichlarini taniysiz.</li>
+        <li>Past Simple va Present Simple farqini tushunasiz.</li>
+        <li>O‘tgan kuningiz yoki sayohatingiz haqida kichik matn yoza olasiz.</li>
+    </ul>
+    <div class="note">
+        <b>Asosiy qoida:</b> Past Simple — o‘tmishda sodir bo‘lgan va tugagan harakatlar uchun ishlatiladi.
+    </div>
+</section>
+
+<!-- GRAMMAR -->
+<section class="card" id="grammar">
+    <h2 class="section-title">1. GRAMMAR — Past Simple</h2>
+
+    <h3 class="sub-title">1.1. Past Simple nima?</h3>
+    <p>Past Simple o‘tmishda sodir bo‘lgan va hozirga kelib tugagan harakatlarni ifodalaydi.</p>
+
+    <div class="example">
+        <strong>I visited my grandmother yesterday.</strong><br>
+        Men kecha buvimnikiga bordim.
+    </div>
+    <div class="example">
+        <strong>She watched a film last night.</strong><br>
+        U kecha kechqurun film tomosha qildi.
+    </div>
+    <div class="example">
+        <strong>We travelled to Samarkand last year.</strong><br>
+        Biz o‘tgan yili Samarqandga sayohat qildik.
+    </div>
+
+    <h3 class="sub-title">1.2. Darak gap — Positive</h3>
+    <div class="note">
+        <b>Formula:</b> Subject + Verb 2 + Object
+    </div>
+    <p>Darak gapda fe’lning o‘tgan zamon shakli ishlatiladi.</p>
+
+    <div class="example">
+        I worked yesterday. — Men kecha ishladim.
+    </div>
+    <div class="example">
+        He played football. — U futbol o‘ynadi.
+    </div>
+    <div class="example">
+        They went to school. — Ular maktabga borishdi.
+    </div>
+
+    <h3 class="sub-title">1.3. Regular Verbs — To‘g‘ri fe’llar</h3>
+    <p>Ko‘pchilik regular fe’llarga <b>-ed</b> qo‘shimchasi qo‘shiladi.</p>
+
+    <table>
+        <tr><th>V1</th><th>V2</th><th>Tarjimasi</th></tr>
+        <tr><td>work</td><td>worked</td><td>ishlamoq</td></tr>
+        <tr><td>play</td><td>played</td><td>o‘ynamoq</td></tr>
+        <tr><td>watch</td><td>watched</td><td>tomosha qilmoq</td></tr>
+        <tr><td>clean</td><td>cleaned</td><td>tozalamoq</td></tr>
+        <tr><td>visit</td><td>visited</td><td>tashrif buyurmoq</td></tr>
+        <tr><td>open</td><td>opened</td><td>ochmoq</td></tr>
+        <tr><td>study</td><td>studied</td><td>o‘qimoq</td></tr>
+        <tr><td>stop</td><td>stopped</td><td>to‘xtamoq</td></tr>
+    </table>
+
+    <h3 class="sub-title">1.4. -ed qo‘shish qoidalari</h3>
+
+    <p><b>1-qoida:</b> Odatda fe’lga -ed qo‘shiladi.</p>
+    <div class="example">play → played<br>help → helped<br>visit → visited</div>
+
+    <p><b>2-qoida:</b> Fe’l -e bilan tugasa, faqat -d qo‘shiladi.</p>
+    <div class="example">live → lived<br>love → loved<br>dance → danced</div>
+
+    <p><b>3-qoida:</b> Undosh + y bilan tugasa, y o‘rniga ied yoziladi.</p>
+    <div class="example">study → studied<br>try → tried<br>cry → cried</div>
+
+    <p><b>4-qoida:</b> Ayrim qisqa fe’llarda oxirgi undosh ikki marta yoziladi.</p>
+    <div class="example">stop → stopped<br>plan → planned</div>
+
+    <div class="warning">
+        Eslab qoling: <b>play → played</b>, chunki play so‘zida y dan oldin unli harf bor.
+    </div>
+
+    <h3 class="sub-title">1.5. Irregular Verbs — Noto‘g‘ri fe’llar</h3>
+    <p>Irregular fe’llar -ed qo‘shimchasini olmaydi. Ularning o‘tgan zamon shaklini yodlash kerak.</p>
+
+    <table>
+        <tr><th>V1</th><th>V2</th><th>Uzbekcha</th></tr>
+        <tr><td>go</td><td>went</td><td>bormoq</td></tr>
+        <tr><td>come</td><td>came</td><td>kelmoq</td></tr>
+        <tr><td>see</td><td>saw</td><td>ko‘rmoq</td></tr>
+        <tr><td>eat</td><td>ate</td><td>yemoq</td></tr>
+        <tr><td>drink</td><td>drank</td><td>ichmoq</td></tr>
+        <tr><td>buy</td><td>bought</td><td>sotib olmoq</td></tr>
+        <tr><td>make</td><td>made</td><td>yasamoq</td></tr>
+        <tr><td>take</td><td>took</td><td>olmoq</td></tr>
+        <tr><td>give</td><td>gave</td><td>bermoq</td></tr>
+        <tr><td>write</td><td>wrote</td><td>yozmoq</td></tr>
+        <tr><td>read</td><td>read</td><td>o‘qimoq</td></tr>
+        <tr><td>have</td><td>had</td><td>ega bo‘lmoq</td></tr>
+        <tr><td>do</td><td>did</td><td>qilmoq</td></tr>
+        <tr><td>get</td><td>got</td><td>olmoq</td></tr>
+        <tr><td>find</td><td>found</td><td>topmoq</td></tr>
+    </table>
+
+    <h3 class="sub-title">1.6. Inkor gap — Negative</h3>
+    <div class="note">
+        <b>Formula:</b> Subject + did not (didn't) + V1
+    </div>
+    <p>Inkor gapda <b>didn't</b> ishlatiladi. Undan keyin fe’lning birinchi shakli keladi.</p>
+
+    <div class="example">
+        I didn't go to school yesterday.<br>
+        Men kecha maktabga bormadim.
+    </div>
+    <div class="example">
+        She didn't watch TV.<br>
+        U televizor ko‘rmadi.
+    </div>
+    <div class="example">
+        They didn't buy a new car.<br>
+        Ular yangi mashina sotib olishmadi.
+    </div>
+
+    <div class="warning">
+        <b>Juda muhim!</b><br>
+        I didn't went — XATO<br>
+        I didn't go — TO‘G‘RI<br>
+        Did yordamchi fe’li ishlatilganda asosiy fe’l V1 shaklida qoladi.
+    </div>
+
+    <h3 class="sub-title">1.7. So‘roq gap — Questions</h3>
+    <div class="note">
+        <b>Formula:</b> Did + Subject + V1 + ...?
+    </div>
+
+    <div class="example">
+        Did you work yesterday?<br>
+        Kecha ishladingizmi?
+    </div>
+    <div class="example">
+        Did she visit her friend?<br>
+        U dugonasini ko‘rgani bordimi?
+    </div>
+    <div class="example">
+        Did they arrive on time?<br>
+        Ular vaqtida yetib kelishdimi?
+    </div>
+
+    <h3 class="sub-title">1.8. Qisqa javoblar</h3>
+    <table>
+        <tr><th>Question</th><th>Positive</th><th>Negative</th></tr>
+        <tr><td>Did you go?</td><td>Yes, I did.</td><td>No, I didn't.</td></tr>
+        <tr><td>Did he work?</td><td>Yes, he did.</td><td>No, he didn't.</td></tr>
+        <tr><td>Did they come?</td><td>Yes, they did.</td><td>No, they didn't.</td></tr>
+    </table>
+
+    <h3 class="sub-title">1.9. WH-Questions</h3>
+    <p>WH-so‘zlar yordamida o‘tgan voqea haqida batafsil savol beramiz.</p>
+    <div class="example">
+        <b>Where did you go?</b> — Qayerga bordingiz?
+    </div>
+    <div class="example">
+        <b>What did she buy?</b> — U nima sotib oldi?
+    </div>
+    <div class="example">
+        <b>When did they arrive?</b> — Ular qachon yetib kelishdi?
+    </div>
+    <div class="example">
+        <b>Why did he leave?</b> — U nima uchun ketdi?
+    </div>
+    <div class="example">
+        <b>Who did you meet?</b> — Siz kim bilan uchrashdingiz?
+    </div>
+
+    <h3 class="sub-title">1.10. Was / Were</h3>
+    <p><b>Was</b> va <b>were</b> — to be fe’lining o‘tgan zamon shakllari.</p>
+
+    <table>
+        <tr><th>Subject</th><th>Past form</th></tr>
+        <tr><td>I</td><td>was</td></tr>
+        <tr><td>He / She / It</td><td>was</td></tr>
+        <tr><td>You</td><td>were</td></tr>
+        <tr><td>We</td><td>were</td></tr>
+        <tr><td>They</td><td>were</td></tr>
+    </table>
+
+    <div class="example">
+        I was tired yesterday.<br>
+        Men kecha charchagan edim.
+    </div>
+    <div class="example">
+        They were at home.<br>
+        Ular uyda edi.
+    </div>
+
+    <p><b>Inkor:</b> was not = wasn't; were not = weren't.</p>
+    <div class="example">
+        She wasn't at school.<br>
+        U maktabda emas edi.
+    </div>
+
+    <p><b>So‘roq:</b> Was/Were + subject ...?</p>
+    <div class="example">
+        Were you busy yesterday?<br>
+        Kecha band edingizmi?
+    </div>
+
+    <div class="warning">
+        Was/were bilan did ishlatilmaydi.<br>
+        Were you tired? — To‘g‘ri.<br>
+        Did you were tired? — Xato.
+    </div>
+
+    <h3 class="sub-title">1.11. Past Simple vaqt ko‘rsatkichlari</h3>
+    <table>
+        <tr><th>English</th><th>Uzbekcha</th></tr>
+        <tr><td>yesterday</td><td>kecha</td></tr>
+        <tr><td>yesterday morning</td><td>kecha ertalab</td></tr>
+        <tr><td>last night</td><td>kecha kechasi</td></tr>
+        <tr><td>last week</td><td>o‘tgan hafta</td></tr>
+        <tr><td>last month</td><td>o‘tgan oy</td></tr>
+        <tr><td>last year</td><td>o‘tgan yil</td></tr>
+        <tr><td>two days ago</td><td>ikki kun oldin</td></tr>
+        <tr><td>a week ago</td><td>bir hafta oldin</td></tr>
+        <tr><td>in 2020</td><td>2020-yilda</td></tr>
+        <tr><td>when I was young</td><td>men yosh bo‘lganimda</td></tr>
+    </table>
+
+    <h3 class="sub-title">1.12. Past Simple va Present Simple farqi</h3>
+    <table>
+        <tr><th>Present Simple</th><th>Past Simple</th></tr>
+        <tr><td>I work every day.</td><td>I worked yesterday.</td></tr>
+        <tr><td>She goes to school.</td><td>She went to school yesterday.</td></tr>
+        <tr><td>We eat at home.</td><td>We ate at home last night.</td></tr>
+        <tr><td>He plays football.</td><td>He played football yesterday.</td></tr>
+    </table>
+
+    <div class="note">
+        <b>Esda tuting:</b><br>
+        Present Simple — odat, muntazam ish yoki umumiy haqiqat.<br>
+        Past Simple — o‘tmishda sodir bo‘lgan va tugagan ish.
+    </div>
+
+    <h3 class="sub-title">1.13. Eng ko‘p uchraydigan xatolar</h3>
+    <table>
+        <tr><th>Xato</th><th>To‘g‘ri</th></tr>
+        <tr><td>I goed.</td><td>I went.</td></tr>
+        <tr><td>She didn't went.</td><td>She didn't go.</td></tr>
+        <tr><td>Did you saw him?</td><td>Did you see him?</td></tr>
+        <tr><td>He were happy.</td><td>He was happy.</td></tr>
+        <tr><td>They was tired.</td><td>They were tired.</td></tr>
+        <tr><td>Did she studied?</td><td>Did she study?</td></tr>
+    </table>
+
+    <h3 class="sub-title">📓 Daftarga yozish majburiyati</h3>
+    <div class="warning">
+        Quyidagilarni daftaringizga to‘liq yozing:
+        <ol>
+            <li>Past Simple ta’rifi va ishlatilishi.</li>
+            <li>Darak, inkor va so‘roq gap formulalari.</li>
+            <li>Regular fe’llarning -ed qoidalari.</li>
+            <li>Kamida 20 ta irregular fe’lning V1 va V2 shakli.</li>
+            <li>Was/were qoidalari.</li>
+            <li>Past Simple vaqt ko‘rsatkichlari.</li>
+            <li>O‘zingiz tuzgan 10 ta darak gap.</li>
+            <li>O‘zingiz tuzgan 5 ta inkor gap.</li>
+            <li>O‘zingiz tuzgan 5 ta so‘roq gap.</li>
+        </ol>
+        Daftarga yozmasdan keyingi bosqichga o‘tish tavsiya etilmaydi.
+    </div>
+    <button class="action-btn" onclick="completeSection('grammar')">Grammatikani o‘rgandim ✓</button>
+</section>
+
+<!-- LISTENING -->
+<section class="card" id="listening">
+    <h2 class="section-title">2. LISTENING — Tinglab tushunish</h2>
+    <p>Avval audio matnini tinglang. Birinchi tinglashda matnni ochmang. Keyin matnni ko‘rib, yana tinglang.</p>
+
+    <div class="audio-box">
+        <h3 class="sub-title">🎧 Listening 1 — A Busy Saturday</h3>
+        <p>Ikki do‘st o‘tgan shanba kuni haqida suhbatlashmoqda.</p>
+        <button class="action-btn" onclick="speakText(listeningOne)">▶ Tinglash</button>
+        <button class="secondary-btn" onclick="stopAudio()">⏹ To‘xtatish</button>
+        <button class="secondary-btn" onclick="toggleTranscript('transcript1')">Matnni ko‘rish</button>
+        <div class="audio-text" id="transcript1">
+            <p><b>Anna:</b> Hi, David! What did you do last Saturday?</p>
+            <p><b>David:</b> I had a very busy day. I woke up at seven and cleaned my room.</p>
+            <p><b>Anna:</b> Did you go anywhere?</p>
+            <p><b>David:</b> Yes, I went to the city centre with my brother.</p>
+            <p><b>Anna:</b> What did you buy?</p>
+            <p><b>David:</b> I bought a new jacket and some books.</p>
+            <p><b>Anna:</b> Did you have lunch there?</p>
+            <p><b>David:</b> Yes, we ate at a small Italian restaurant. The food was delicious.</p>
+            <p><b>Anna:</b> That sounds great!</p>
+            <p><b>David:</b> In the evening, I watched a film and went to bed early.</p>
+        </div>
+    </div>
+
+    <div class="audio-box">
+        <h3 class="sub-title">🎧 Listening 2 — My First Day at Work</h3>
+        <p>Bir kishi yangi ish joyidagi birinchi kuni haqida gapirmoqda.</p>
+        <button class="action-btn" onclick="speakText(listeningTwo)">▶ Tinglash</button>
+        <button class="secondary-btn" onclick="stopAudio()">⏹ To‘xtatish</button>
+        <button class="secondary-btn" onclick="toggleTranscript('transcript2')">Matnni ko‘rish</button>
+        <div class="audio-text" id="transcript2">
+            <p>Last Monday was my first day at a new job. I felt a little nervous in the morning, but my colleagues were very friendly. I arrived at the office at eight thirty. My manager showed me around the building and introduced me to the team. Then I learned how to use the computer system. At lunchtime, I went to a café with two colleagues. We talked about our hobbies and families. I finished work at five o'clock. I was tired, but I felt happy because everything went well.</p>
+        </div>
+    </div>
+
+    <h3 class="sub-title">Listening savollari</h3>
+    <div class="task">
+        <p><b>1.</b> What time did David wake up?</p>
+        <label><input type="radio" name="l1" value="a"> At six</label>
+        <label><input type="radio" name="l1" value="b"> At seven</label>
+        <label><input type="radio" name="l1" value="c"> At eight</label>
+    </div>
+    <div class="task">
+        <p><b>2.</b> Where did David go?</p>
+        <label><input type="radio" name="l2" value="a"> To the city centre</label>
+        <label><input type="radio" name="l2" value="b"> To the airport</label>
+        <label><input type="radio" name="l2" value="c"> To the hospital</label>
+    </div>
+    <div class="task">
+        <p><b>3.</b> What did David buy?</p>
+        <label><input type="radio" name="l3" value="a"> A phone</label>
+        <label><input type="radio" name="l3" value="b"> A jacket and books</label>
+        <label><input type="radio" name="l3" value="c"> Shoes</label>
+    </div>
+    <div class="task">
+        <p><b>4.</b> How did the speaker feel on his first day at work?</p>
+        <label><input type="radio" name="l4" value="a"> Angry</label>
+        <label><input type="radio" name="l4" value="b"> Bored</label>
+        <label><input type="radio" name="l4" value="c"> Nervous but happy</label>
+    </div>
+    <div class="task">
+        <p><b>5.</b> What time did the speaker finish work?</p>
+        <label><input type="radio" name="l5" value="a"> At four</label>
+        <label><input type="radio" name="l5" value="b"> At five</label>
+        <label><input type="radio" name="l5" value="c"> At six</label>
+    </div>
+
+    <button class="action-btn" onclick="checkListening()">Javoblarni tekshirish</button>
+    <div class="result" id="listeningResult"></div>
+    <button class="action-btn" onclick="completeSection('listening')">Listening tugadi ✓</button>
+</section>
+
+<!-- VOCABULARY -->
+<section class="card" id="vocabulary">
+    <h2 class="section-title">3. VOCABULARY — 30 ta yangi so‘z</h2>
+    <p>Har bir so‘zni talaffuzi va tarjimasi bilan o‘rganing. So‘zlarni daftarga yozing va yodlang.</p>
+
+    <div class="word-list" id="wordList"></div>
+
+    <div class="note">
+        <b>Vazifa:</b> 30 ta so‘zni inglizcha, talaffuzi va o‘zbekcha tarjimasi bilan daftarga yozing. Har bir so‘z bilan bittadan gap tuzishga harakat qiling.
+    </div>
+    <button class="action-btn" onclick="completeSection('vocabulary')">Lug‘atni o‘rgandim ✓</button>
+</section>
+
+<!-- READING -->
+<section class="card" id="reading">
+    <h2 class="section-title">4. READING — A Weekend in the Countryside</h2>
+
+    <p>Matnni avval mustaqil o‘qing. Keyin notanish so‘zlarni aniqlang va mazmunini tushunishga harakat qiling.</p>
+
+    <div class="example">
+        <h3>A Weekend in the Countryside</h3>
+        <p>Last weekend, my family and I visited my grandparents in the countryside. We left home early on Saturday morning. The weather was sunny, and the journey was pleasant.</p>
+        <p>When we arrived, my grandmother prepared a delicious breakfast. My grandfather showed us his garden. He grew tomatoes, potatoes, carrots and many other vegetables. I helped him water the plants.</p>
+        <p>In the afternoon, my cousins came to visit us. We played football in the garden and took some photos. Later, we sat together and talked about our lives.</p>
+        <p>On Sunday, we had lunch together. My grandmother cooked my favourite meal. Before we left, I thanked my grandparents for their hospitality. We returned home in the evening. I felt tired, but I really enjoyed the weekend.</p>
+    </div>
+
+    <h3 class="sub-title">Reading comprehension</h3>
+
+    <div class="task">
+        <p><b>1.</b> When did the family visit the grandparents?</p>
+        <label><input type="radio" name="r1" value="a"> Last weekend</label>
+        <label><input type="radio" name="r1" value="b"> Next weekend</label>
+        <label><input type="radio" name="r1" value="c"> Last month</label>
+    </div>
+
+    <div class="task">
+        <p><b>2.</b> Where did the grandparents live?</p>
+        <label><input type="radio" name="r2" value="a"> In the city centre</label>
+        <label><input type="radio" name="r2" value="b"> In the countryside</label>
+        <label><input type="radio" name="r2" value="c"> Near the airport</label>
+    </div>
+
+    <div class="task">
+        <p><b>3.</b> What did the grandfather grow?</p>
+        <label><input type="radio" name="r3" value="a"> Flowers only</label>
+        <label><input type="radio" name="r3" value="b"> Fruit only</label>
+        <label><input type="radio" name="r3" value="c"> Vegetables</label>
+    </div>
+
+    <div class="task">
+        <p><b>4.</b> What did the children do in the afternoon?</p>
+        <label><input type="radio" name="r4" value="a"> Played football and took photos</label>
+        <label><input type="radio" name="r4" value="b"> Went shopping</label>
+        <label><input type="radio" name="r4" value="c"> Watched television</label>
+    </div>
+
+    <div class="task">
+        <p><b>5.</b> How did the writer feel at the end?</p>
+        <label><input type="radio" name="r5" value="a"> Angry</label>
+        <label><input type="radio" name="r5" value="b"> Tired but happy</label>
+        <label><input type="radio" name="r5" value="c"> Bored</label>
+    </div>
+
+    <button class="action-btn" onclick="checkReading()">Reading javoblarini tekshirish</button>
+    <div class="result" id="readingResult"></div>
+    <button class="action-btn" onclick="completeSection('reading')">Reading tugadi ✓</button>
+</section>
+
+<!-- WRITING -->
+<section class="card" id="writing">
+    <h2 class="section-title">5. WRITING — Yozish mashqlari</h2>
+
+    <h3 class="sub-title">Task 1 — Gaplarni Past Simple shakliga o‘tkazing</h3>
+    <p>Quyidagi gaplarni o‘tgan zamonga o‘zgartiring. Javoblarni daftaringizga yozing.</p>
+    <ol>
+        <li>I visit my friend.</li>
+        <li>She cooks dinner.</li>
+        <li>They play football.</li>
+        <li>He goes to work.</li>
+        <li>We see a beautiful bird.</li>
+        <li>My brother buys a new book.</li>
+        <li>I write an email.</li>
+        <li>She studies English.</li>
+    </ol>
+
+    <h3 class="sub-title">Task 2 — Inkor gaplar tuzing</h3>
+    <p>Quyidagi gaplarni didn't yordamida inkor shakliga o‘tkazing.</p>
+    <ol>
+        <li>I watched television.</li>
+        <li>He visited his uncle.</li>
+        <li>We went to the park.</li>
+        <li>She bought a dress.</li>
+        <li>They ate breakfast.</li>
+    </ol>
+
+    <h3 class="sub-title">Task 3 — So‘roq gaplar tuzing</h3>
+    <p>Quyidagi gaplardan Did yordamida savol tuzing.</p>
+    <ol>
+        <li>You cleaned your room.</li>
+        <li>She called her mother.</li>
+        <li>They travelled to London.</li>
+        <li>He finished his homework.</li>
+        <li>Tom played tennis.</li>
+    </ol>
+
+    <h3 class="sub-title">Task 4 — O‘z hayotingiz haqida yozing</h3>
+    <p>Quyidagi savollarga ingliz tilida javob yozing.</p>
+    <ol>
+        <li>What did you do yesterday?</li>
+        <li>Where did you go last weekend?</li>
+        <li>Who did you meet?</li>
+        <li>What did you eat yesterday?</li>
+        <li>Did you study English yesterday?</li>
+        <li>What time did you wake up?</li>
+        <li>Did you watch a film last week?</li>
+        <li>How was your last weekend?</li>
+    </ol>
+
+    <h3 class="sub-title">Task 5 — Paragraph writing</h3>
+    <p><b>Topic:</b> My Last Weekend</p>
+    <p>O‘tgan dam olish kuningiz haqida 100–120 ta so‘zdan iborat matn yozing.</p>
+    <p>Matningizda quyidagilar bo‘lsin:</p>
+    <ul>
+        <li>Qayerga borganingiz.</li>
+        <li>Kim bilan vaqt o‘tkazganingiz.</li>
+        <li>Nima qilganingiz.</li>
+        <li>Nima yeganingiz yoki sotib olganingiz.</li>
+        <li>Dam olish kuningiz qanday o‘tgani.</li>
+    </ul>
+
+    <textarea id="writingAnswer" placeholder="My Last Weekend..."></textarea>
+    <button class="action-btn" onclick="saveWriting()">Yozgan matnimni saqlash</button>
+    <p id="writingStatus"></p>
+
+    <div class="warning">
+        Barcha writing mashqlarini avval daftarda bajaring. Saytdagi maydonga esa o‘zingiz yozgan matnni qayta kiriting. Tayyor tarjimadan ko‘chirmang.
+    </div>
+    <button class="action-btn" onclick="completeSection('writing')">Writing tugadi ✓</button>
+</section>
+
+<!-- TEST 1 -->
+<section class="card" id="test1">
+    <h2 class="section-title">6. TEST 1 — Grammar (20 questions)</h2>
+    <p>Har bir savol uchun bitta to‘g‘ri javobni belgilang. Testni mustaqil bajaring.</p>
+    <div id="quiz1"></div>
+    <button class="action-btn" onclick="submitQuiz(1)">Testni yakunlash</button>
+    <div class="result" id="result1"></div>
+</section>
+
+<!-- TEST 2 -->
+<section class="card" id="test2">
+    <h2 class="section-title">7. TEST 2 — Mixed Skills (20 questions)</h2>
+    <p>Bu testda grammatika, fe’llar, tarjima va gap tuzish bo‘yicha savollar bor.</p>
+    <div id="quiz2"></div>
+    <button class="action-btn" onclick="submitQuiz(2)">Testni yakunlash</button>
+    <div class="result" id="result2"></div>
+</section>
+
+<!-- HOMEWORK -->
+<section class="card" id="homework">
+    <h2 class="section-title">8. HOMEWORK — Uy vazifasi</h2>
+
+    <div class="warning">
+        <b>QAT’IY TALAB:</b> Uy vazifasini daftarga yozib bajaring. Faqat o‘qib chiqish yoki javoblarni ko‘rib qo‘yish uy vazifasi bajarildi degani emas.
+    </div>
+
+    <h3 class="sub-title">1-vazifa — Grammar</h3>
+    <ul>
+        <li>Past Simple formulasini yodlang.</li>
+        <li>Regular fe’llarning -ed qoidalarini daftarga yozing.</li>
+        <li>Kamida 25 ta irregular fe’lning V1 va V2 shaklini yodlang.</li>
+        <li>10 ta darak, 10 ta inkor va 10 ta so‘roq gap tuzing.</li>
+    </ul>
+
+    <h3 class="sub-title">2-vazifa — Vocabulary</h3>
+    <ul>
+        <li>Darsdagi 30 ta yangi so‘zni daftarga yozing.</li>
+        <li>Inglizcha so‘z, talaffuz va o‘zbekcha tarjimasini yozing.</li>
+        <li>Har bir so‘zni ovoz chiqarib o‘qing.</li>
+        <li>Kamida 15 ta so‘z bilan gap tuzing.</li>
+    </ul>
+
+    <h3 class="sub-title">3-vazifa — Listening</h3>
+    <ul>
+        <li>Listening 1 ni kamida 3 marta tinglang.</li>
+        <li>Listening 2 ni kamida 3 marta tinglang.</li>
+        <li>Har bir matndan 5 tadan yangi ibora yozib oling.</li>
+        <li>Dialoglarni ovoz chiqarib takrorlang.</li>
+    </ul>
+
+    <h3 class="sub-title">4-vazifa — Reading</h3>
+    <ul>
+        <li>Reading matnini ikki marta o‘qing.</li>
+        <li>Matn mazmunini o‘zbek tilida tushuntirib bering.</li>
+        <li>Matn asosida 5 ta inglizcha gap yozing.</li>
+    </ul>
+
+    <h3 class="sub-title">5-vazifa — Writing</h3>
+    <ul>
+        <li>My Last Weekend mavzusida 100–120 so‘z yozing.</li>
+        <li>Matnda kamida 10 ta Past Simple fe’l ishlating.</li>
+        <li>Kamida 2 ta inkor va 2 ta so‘roq gap yozing.</li>
+    </ul>
+
+    <h3 class="sub-title">6-vazifa — Speaking</h3>
+    <p>Quyidagi savollarga ovoz chiqarib, to‘liq gaplar bilan javob bering:</p>
+    <ol>
+        <li>What did you do yesterday?</li>
+        <li>What time did you wake up?</li>
+        <li>Where did you go last weekend?</li>
+        <li>What did you eat yesterday?</li>
+        <li>Who did you talk to?</li>
+        <li>Did you learn anything new last week?</li>
+        <li>What was the best day of your last week?</li>
+        <li>How was your last holiday?</li>
+    </ol>
+
+    <h3 class="sub-title">7-vazifa — Takrorlash</h3>
+    <p>Oldingi darslardagi Present Simple va Present Continuous mavzularini ham takrorlang. Ularni Past Simple bilan taqqoslang.</p>
+
+    <h3 class="sub-title">Uy vazifasi nazorat ro‘yxati</h3>
+    <div id="homeworkChecklist">
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> Grammar qoidalarini daftarga yozdim.</label></div>
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> Irregular fe’llarni yodladim.</label></div>
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> 30 ta lug‘atni yozdim va yodladim.</label></div>
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> Listening mashqlarini bajardim.</label></div>
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> Reading matnini o‘qidim.</label></div>
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> Writing vazifasini bajardim.</label></div>
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> Speaking savollariga javob berdim.</label></div>
+        <div class="task"><label><input type="checkbox" onchange="updateProgress()"> Testlarni mustaqil bajardim.</label></div>
+    </div>
+
+    <button class="action-btn" onclick="completeSection('homework')">Uy vazifasini bajardim ✓</button>
+</section>
+
+<section class="card">
+    <h2 class="section-title">🏁 Dars yakuni</h2>
+    <p>Quyidagi talablarni bajarganingizdan so‘ng darsni yakunlashingiz mumkin:</p>
+    <ul>
+        <li>Grammatika qoidalarini tushunish.</li>
+        <li>30 ta yangi so‘zni yodlash.</li>
+        <li>Listening va reading mashqlarini bajarish.</li>
+        <li>Writing vazifasini daftarda bajarish.</li>
+        <li>Ikki testni mustaqil ishlash.</li>
+        <li>Uy vazifasini to‘liq bajarish.</li>
+    </ul>
+    <div class="note" id="finalStatus">
+        Dars bo‘limlarini bajarganingiz sari yuqoridagi jarayon ko‘rsatkichi yangilanadi.
+    </div>
+    <button class="action-btn" onclick="showFinalStatus()">Dars holatini tekshirish</button>
+</section>
+
+</main>
+
+<footer>
+    <b>ENGLISH UP</b>
+    <p>Learn today. Succeed tomorrow.</p>
+    <p>Pre-Intermediate Course • Lesson 4</p>
+</footer>
+
+<script>
+/* =========================
+   THEME
+========================= */
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem(
+        "eu_pre4_theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+    );
+}
+
+if (localStorage.getItem("eu_pre4_theme") === "dark") {
+    document.body.classList.add("dark");
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+const sectionNames = [
+    "grammar",
+    "listening",
+    "vocabulary",
+    "reading",
+    "writing",
+    "test1",
+    "test2",
+    "homework"
+];
+
+let completedSections = JSON.parse(
+    localStorage.getItem("eu_pre4_completed") || "[]"
+);
+
+function completeSection(name) {
+    if (!completedSections.includes(name)) {
+        completedSections.push(name);
+    }
+
+    localStorage.setItem(
+        "eu_pre4_completed",
+        JSON.stringify(completedSections)
+    );
+
+    updateProgress();
+    alert("Bo‘lim bajarildi!");
+}
+
+function updateProgress() {
+    const homeworkChecks = document.querySelectorAll(
+        "#homeworkChecklist input[type=checkbox]"
+    );
+
+    let checked = 0;
+    homeworkChecks.forEach(item => {
+        if (item.checked) checked++;
+    });
+
+    const total = sectionNames.length;
+    const done = completedSections.length;
+    const percent = Math.round(done / total * 100);
+
+    document.getElementById("progressText").textContent =
+        "Bajarilgan bo‘limlar: " + done + " / " + total +
+        " | Uy vazifasi: " + checked + " / " + homeworkChecks.length;
+
+    document.getElementById("progressFill").style.width =
+        percent + "%";
+}
+
+updateProgress();
+
+/* =========================
+   TEXT TO SPEECH
+========================= */
+
+const listeningOne = `
+Anna: Hi, David! What did you do last Saturday?
+David: I had a very busy day. I woke up at seven and cleaned my room.
+Anna: Did you go anywhere?
+David: Yes, I went to the city centre with my brother.
+Anna: What did you buy?
+David: I bought a new jacket and some books.
+Anna: Did you have lunch there?
+David: Yes, we ate at a small Italian restaurant. The food was delicious.
+Anna: That sounds great!
+David: In the evening, I watched a film and went to bed early.
+`;
+
+const listeningTwo = `
+Last Monday was my first day at a new job.
+I felt a little nervous in the morning,
+but my colleagues were very friendly.
+I arrived at the office at eight thirty.
+My manager showed me around the building
+and introduced me to the team.
+Then I learned how to use the computer system.
+At lunchtime, I went to a cafe with two colleagues.
+We talked about our hobbies and families.
+I finished work at five o'clock.
+I was tired, but I felt happy because everything went well.
+`;
+
+function speakText(text) {
+    if (!("speechSynthesis" in window)) {
+        alert("Ushbu brauzer audio o‘qishni qo‘llab-quvvatlamaydi.");
+        return;
+    }
+
+    stopAudio();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 0.82;
+    utterance.pitch = 1;
+
+    speechSynthesis.speak(utterance);
+}
+
+function stopAudio() {
+    if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+    }
+}
+
+function toggleTranscript(id) {
+    document.getElementById(id).classList.toggle("show");
+}
+
+/* =========================
+   VOCABULARY - 30 WORDS
+========================= */
+
+const words = [
+    ["arrive", "/əˈraɪv/", "yetib kelmoq", "We arrived early."],
+    ["leave", "/liːv/", "ketmoq", "I left home at eight."],
+    ["visit", "/ˈvɪzɪt/", "tashrif buyurmoq", "We visited our uncle."],
+    ["travel", "/ˈtrævəl/", "sayohat qilmoq", "They travelled by train."],
+    ["decide", "/dɪˈsaɪd/", "qaror qilmoq", "She decided to stay."],
+    ["enjoy", "/ɪnˈdʒɔɪ/", "zavqlanmoq", "I enjoyed the trip."],
+    ["remember", "/rɪˈmembər/", "eslamoq", "I remembered his name."],
+    ["forget", "/fəˈɡet/", "unutmoq", "He forgot his keys."],
+    ["meet", "/miːt/", "uchrashmoq", "I met my friend."],
+    ["invite", "/ɪnˈvaɪt/", "taklif qilmoq", "We invited our neighbours."],
+    ["borrow", "/ˈbɒrəʊ/", "qarzga olmoq", "I borrowed a book."],
+    ["return", "/rɪˈtɜːrn/", "qaytmoq", "She returned home."],
+    ["spend", "/spend/", "vaqt yoki pul sarflamoq", "We spent two days there."],
+    ["choose", "/tʃuːz/", "tanlamoq", "He chose a blue shirt."],
+    ["happen", "/ˈhæpən/", "sodir bo‘lmoq", "What happened yesterday?"],
+    ["arrangement", "/əˈreɪndʒmənt/", "kelishuv, reja", "We made an arrangement."],
+    ["journey", "/ˈdʒɜːrni/", "sayohat, safar", "The journey was long."],
+    ["delicious", "/dɪˈlɪʃəs/", "mazali", "The food was delicious."],
+    ["crowded", "/ˈkraʊdɪd/", "gavjum", "The bus was crowded."],
+    ["quiet", "/ˈkwaɪət/", "tinch", "The village was quiet."],
+    ["expensive", "/ɪkˈspensɪv/", "qimmat", "The hotel was expensive."],
+    ["cheap", "/tʃiːp/", "arzon", "The ticket was cheap."],
+    ["comfortable", "/ˈkʌmftəbəl/", "qulay", "The room was comfortable."],
+    ["surprised", "/sərˈpraɪzd/", "hayratlangan", "I was surprised."],
+    ["nervous", "/ˈnɜːrvəs/", "hayajonlangan", "She felt nervous."],
+    ["pleased", "/pliːzd/", "mamnun", "We were pleased."],
+    ["carefully", "/ˈkerfəli/", "ehtiyotkorlik bilan", "He drove carefully."],
+    ["suddenly", "/ˈsʌdənli/", "to‘satdan", "It suddenly started raining."],
+    ["finally", "/ˈfaɪnəli/", "nihoyat", "We finally arrived."],
+    ["fortunately", "/ˈfɔːrtʃənətli/", "yaxshiyamki", "Fortunately, nobody was hurt."]
+];
+
+function renderWords() {
+    const container = document.getElementById("wordList");
+
+    container.innerHTML = words.map((word, index) => `
+        <div class="word">
+            <small>${index + 1}-so‘z</small>
+            <strong>${word[0]}</strong>
+            <small>${word[1]}</small>
+            <p>${word[2]}</p>
+            <small><i>${word[3]}</i></small>
+            <button class="secondary-btn" onclick="speakWord('${word[0]}')">
+                🔊 Tinglash
+            </button>
+        </div>
+    `).join("");
+}
+
+function speakWord(word) {
+    if (!("speechSynthesis" in window)) return;
+
+    stopAudio();
+
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-US";
+    utterance.rate = 0.75;
+
+    speechSynthesis.speak(utterance);
+}
+
+renderWords();
+
+/* =========================
+   LISTENING ANSWERS
+========================= */
+
+function checkListening() {
+    const answers = {
+        l1: "b",
+        l2: "a",
+        l3: "b",
+        l4: "c",
+        l5: "b"
+    };
+
+    let score = 0;
+
+    Object.keys(answers).forEach(name => {
+        const selected = document.querySelector(
+            `input[name="${name}"]:checked`
+        );
+
+        if (selected && selected.value === answers[name]) {
+            score++;
+        }
+    });
+
+    const result = document.getElementById("listeningResult");
+    result.style.display = "block";
+    result.innerHTML =
+        `<b>Natija: ${score} / 5</b><br>` +
+        (score >= 4 ? "Ajoyib! Juda yaxshi tinglabsiz." :
+        "Yana bir marta tinglab, qayta urinib ko‘ring.");
+}
+
+/* =========================
+   READING ANSWERS
+========================= */
+
+function checkReading() {
+    const answers = {
+        r1: "a",
+        r2: "b",
+        r3: "c",
+        r4: "a",
+        r5: "b"
+    };
+
+    let score = 0;
+
+    Object.keys(answers).forEach(name => {
+        const selected = document.querySelector(
+            `input[name="${name}"]:checked`
+        );
+
+        if (selected && selected.value === answers[name]) {
+            score++;
+        }
+    });
+
+    const result = document.getElementById("readingResult");
+    result.style.display = "block";
+    result.innerHTML =
+        `<b>Natija: ${score} / 5</b><br>` +
+        (score >= 4 ? "Matnni yaxshi tushungansiz!" :
+        "Matnni qayta o‘qib, yana urinib ko‘ring.");
+}
+
+/* =========================
+   WRITING SAVE
+========================= */
+
+function saveWriting() {
+    const text = document.getElementById("writingAnswer").value.trim();
+
+    if (text.length < 20) {
+        alert("Iltimos, matningizni to‘liqroq yozing.");
+        return;
+    }
+
+    localStorage.setItem("eu_pre4_writing", text);
+
+    document.getElementById("writingStatus").textContent =
+        "Matningiz ushbu qurilmada saqlandi.";
+}
+
+const savedWriting = localStorage.getItem("eu_pre4_writing");
+
+if (savedWriting) {
+    document.getElementById("writingAnswer").value = savedWriting;
+}
+
+/* =========================
+   QUIZ DATA
+========================= */
+
+const quiz1 = [
+    {
+        q: "I ___ to school yesterday.",
+        o: ["go", "went", "going"],
+        a: 1,
+        e: "Go fe’lining V2 shakli went."
+    },
+    {
+        q: "She ___ dinner last night.",
+        o: ["cooked", "cook", "cooking"],
+        a: 0,
+        e: "Cook regular fe’l, cooked bo‘ladi."
+    },
+    {
+        q: "They didn't ___ football.",
+        o: ["played", "playing", "play"],
+        a: 2,
+        e: "Didn't dan keyin V1 ishlatiladi."
+    },
+    {
+        q: "___ you visit your friend?",
+        o: ["Do", "Did", "Does"],
+        a: 1,
+        e: "Past Simple so‘rog‘ida Did ishlatiladi."
+    },
+    {
+        q: "He ___ at home yesterday.",
+        o: ["were", "are", "was"],
+        a: 2,
+        e: "He bilan was ishlatiladi."
+    },
+    {
+        q: "We ___ very tired.",
+        o: ["was", "were", "are"],
+        a: 1,
+        e: "We bilan were ishlatiladi."
+    },
+    {
+        q: "I ___ a new phone last week.",
+        o: ["buy", "buyed", "bought"],
+        a: 2,
+        e: "Buy fe’lining V2 shakli bought."
+    },
+    {
+        q: "She didn't ___ the film.",
+        o: ["see", "saw", "seen"],
+        a: 0,
+        e: "Didn't dan keyin see ishlatiladi."
+    },
+    {
+        q: "He ___ English two years ago.",
+        o: ["study", "studied", "studies"],
+        a: 1,
+        e: "Study → studied."
+    },
+    {
+        q: "___ they at the party?",
+        o: ["Was", "Did", "Were"],
+        a: 2,
+        e: "They bilan were ishlatiladi."
+    },
+    {
+        q: "We ___ a beautiful place.",
+        o: ["visited", "visit", "visiting"],
+        a: 0,
+        e: "O‘tgan zamon: visited."
+    },
+    {
+        q: "Did she ___ you yesterday?",
+        o: ["called", "call", "calling"],
+        a: 1,
+        e: "Did dan keyin V1."
+    },
+    {
+        q: "I ___ breakfast at seven.",
+        o: ["have", "has", "had"],
+        a: 2,
+        e: "Have fe’lining V2 shakli had."
+    },
+    {
+        q: "They ___ to London last year.",
+        o: ["went", "go", "goes"],
+        a: 0,
+        e: "Go → went."
+    },
+    {
+        q: "She ___ happy yesterday.",
+        o: ["is", "was", "were"],
+        a: 1,
+        e: "She bilan was."
+    },
+    {
+        q: "We ___ the door.",
+        o: ["opened", "open", "opens"],
+        a: 0,
+        e: "Open → opened."
+    },
+    {
+        q: "He didn't ___ his homework.",
+        o: ["did", "does", "do"],
+        a: 2,
+        e: "Didn't dan keyin do."
+    },
+    {
+        q: "I ___ my old friend last month.",
+        o: ["meet", "met", "meets"],
+        a: 1,
+        e: "Meet → met."
+    },
+    {
+        q: "They ___ at school yesterday.",
+        o: ["wasn't", "weren't", "isn't"],
+        a: 1,
+        e: "They weren't — ular maktabda emas edi."
+    },
+    {
+        q: "What ___ you do last night?",
+        o: ["did", "do", "does"],
+        a: 0,
+        e: "Past Simple savolida did."
+    }
+];
+
+const quiz2 = [
+    {
+        q: "Choose the correct sentence.",
+        o: ["I didn't went home.", "I didn't go home.", "I not went home."],
+        a: 1,
+        e: "Didn't + V1."
+    },
+    {
+        q: "What is the past form of 'write'?",
+        o: ["writed", "wrote", "written"],
+        a: 1,
+        e: "Write → wrote."
+    },
+    {
+        q: "'Yesterday' tarjimasi nima?",
+        o: ["Ertaga", "Bugun", "Kecha"],
+        a: 2,
+        e: "Yesterday — kecha."
+    },
+    {
+        q: "Choose the correct question.",
+        o: ["Did he saw you?", "Did he see you?", "Does he saw you?"],
+        a: 1,
+        e: "Did + subject + V1."
+    },
+    {
+        q: "We ___ at the restaurant last night.",
+        o: ["ate", "eat", "eaten"],
+        a: 0,
+        e: "Eat → ate."
+    },
+    {
+        q: "What is the past form of 'take'?",
+        o: ["taked", "took", "taken"],
+        a: 1,
+        e: "Take → took."
+    },
+    {
+        q: "She ___ a letter yesterday.",
+        o: ["write", "wrote", "writes"],
+        a: 1,
+        e: "Write → wrote."
+    },
+    {
+        q: "I was ___ yesterday.",
+        o: ["tired", "tire", "tiring"],
+        a: 0,
+        e: "Was tired — charchagan edi."
+    },
+    {
+        q: "They ___ not at home.",
+        o: ["was", "were", "did"],
+        a: 1,
+        e: "They were not."
+    },
+    {
+        q: "Choose the correct form: stop →",
+        o: ["stoped", "stopped", "stopt"],
+        a: 1,
+        e: "Stop → stopped."
+    },
+    {
+        q: "I ___ my keys two days ago.",
+        o: ["lost", "lose", "loses"],
+        a: 0,
+        e: "Lose → lost."
+    },
+    {
+        q: "What does 'arrive' mean?",
+        o: ["Ketmoq", "Yetib kelmoq", "Unutmoq"],
+        a: 1,
+        e: "Arrive — yetib kelmoq."
+    },
+    {
+        q: "Choose the correct negative sentence.",
+        o: ["He didn't bought it.", "He doesn't bought it.", "He didn't buy it."],
+        a: 2,
+        e: "Didn't + buy."
+    },
+    {
+        q: "She ___ to the office at nine.",
+        o: ["came", "come", "comes"],
+        a: 0,
+        e: "Come → came."
+    },
+    {
+        q: "Which one is a Past Simple time expression?",
+        o: ["Every day", "Usually", "Last week"],
+        a: 2,
+        e: "Last week — o‘tgan hafta."
+    },
+    {
+        q: "I ___ my friend at the station.",
+        o: ["met", "meet", "meeting"],
+        a: 0,
+        e: "Meet → met."
+    },
+    {
+        q: "___ she tired after work?",
+        o: ["Did", "Was", "Were"],
+        a: 1,
+        e: "She was tired."
+    },
+    {
+        q: "We ___ a lot of money last year.",
+        o: ["spend", "spended", "spent"],
+        a: 2,
+        e: "Spend → spent."
+    },
+    {
+        q: "Choose the correct Present Simple sentence.",
+        o: ["I go to work every day.", "I went to work every day yesterday.", "I going to work."],
+        a: 0,
+        e: "Every day odatni bildiradi."
+    },
+    {
+        q: "What is the past form of 'find'?",
+        o: ["finded", "found", "find"],
+        a: 1,
+        e: "Find → found."
+    }
+];
+
+/* =========================
+   QUIZ RENDERING
+========================= */
+
+function renderQuiz(quiz, containerId, prefix) {
+    const container = document.getElementById(containerId);
+
+    container.innerHTML = quiz.map((item, index) => {
+        const options = item.o.map((option, optionIndex) => `
+            <label class="option" id="${prefix}_${index}_${optionIndex}">
+                <input
+                    type="radio"
+                    name="${prefix}_q${index}"
+                    value="${optionIndex}">
+                ${String.fromCharCode(65 + optionIndex)}. ${option}
+            </label>
+        `).join("");
+
+        return `
+            <div class="quiz-question" id="${prefix}_question_${index}">
+                <h4>${index + 1}. ${item.q}</h4>
+                ${options}
+                <div class="feedback" id="${prefix}_feedback_${index}"></div>
+            </div>
+        `;
+    }).join("");
+}
+
+renderQuiz(quiz1, "quiz1", "quiz1");
+renderQuiz(quiz2, "quiz2", "quiz2");
+
+/* =========================
+   QUIZ CHECKING
+========================= */
+
+const quizSubmitted = {
+    1: false,
+    2: false
+};
+
+function submitQuiz(number) {
+    if (quizSubmitted[number]) {
+        alert("Bu test avval tekshirilgan. Natijangiz saqlangan.");
+        return;
+    }
+
+    const quiz = number === 1 ? quiz1 : quiz2;
+    const prefix = "quiz" + number;
+
+    let score = 0;
+    let answered = 0;
+
+    quiz.forEach((item, index) => {
+        const selected = document.querySelector(
+            `input[name="${prefix}_q${index}"]:checked`
+        );
+
+        const feedback = document.getElementById(
+            `${prefix}_feedback_${index}`
+        );
+
+        if (!selected) {
+            feedback.textContent = "Javob belgilanmagan.";
+            feedback.style.color = "var(--warning)";
+            return;
+        }
+
+        answered++;
+
+        const selectedIndex = Number(selected.value);
+        const selectedLabel = document.getElementById(
+            `${prefix}_${index}_${selectedIndex}`
+        );
+
+        if (selectedIndex === item.a) {
+            score++;
+            selectedLabel.classList.add("correct");
+            feedback.textContent = "✓ To‘g‘ri! " + item.e;
+            feedback.style.color = "var(--success)";
+        } else {
+            selectedLabel.classList.add("incorrect");
+
+            const correctLabel = document.getElementById(
+                `${prefix}_${index}_${item.a}`
+            );
+
+            correctLabel.classList.add("correct");
+
+            feedback.textContent =
+                "✗ To‘g‘ri javob: " +
+                item.o[item.a] + ". " + item.e;
+
+            feedback.style.color = "var(--danger)";
+        }
+    });
+
+    const percent = Math.round(score / quiz.length * 100);
+    const result = document.getElementById("result" + number);
+
+    result.style.display = "block";
+    result.innerHTML = `
+        <h3>Test ${number} natijasi</h3>
+        <p><b>To‘g‘ri javoblar:</b> ${score} / ${quiz.length}</p>
+        <p><b>Javob berilgan savollar:</b> ${answered} / ${quiz.length}</p>
+        <p><b>Foiz:</b> ${percent}%</p>
+        <p>${percent >= 80
+            ? "Ajoyib! Siz 80% natijaga erishdingiz."
+            : "Yaxshi natija uchun xatolarni tahlil qilib, mavzuni takrorlang."
+        }</p>
+    `;
+
+    quizSubmitted[number] = true;
+
+    document.querySelectorAll(
+        `#quiz${number} input`
+    ).forEach(input => {
+        input.disabled = true;
+    });
+
+    if (percent >= 80) {
+        completeSection("test" + number);
+    }
+
+    localStorage.setItem(
+        "eu_pre4_test" + number,
+        JSON.stringify({
+            score: score,
+            total: quiz.length,
+            percent: percent
+        })
+    );
+}
+
+/* =========================
+   FINAL STATUS
+========================= */
+
+function showFinalStatus() {
+    const done = completedSections.length;
+    const total = sectionNames.length;
+
+    const status = document.getElementById("finalStatus");
+
+    if (done === total) {
+        status.innerHTML =
+            "<b>Tabriklaymiz!</b> Barcha dars bo‘limlari belgilangan.";
+    } else {
+        status.innerHTML =
+            `Hozircha ${done} / ${total} bo‘lim bajarilgan. ` +
+            "Qolgan bo‘limlarni ham tugating.";
+    }
+}
+
+/* =========================
+   RESTORE HOMEWORK CHECKLIST
+========================= */
+
+const checklistKey = "eu_pre4_homework_checks";
+const savedChecks = JSON.parse(
+    localStorage.getItem(checklistKey) || "[]"
+);
+
+const homeworkInputs = document.querySelectorAll(
+    "#homeworkChecklist input[type=checkbox]"
+);
+
+homeworkInputs.forEach((input, index) => {
+    input.checked = savedChecks[index] === true;
+
+    input.addEventListener("change", () => {
+        const current = Array.from(homeworkInputs).map(
+            checkbox => checkbox.checked
+        );
+
+        localStorage.setItem(
+            checklistKey,
+            JSON.stringify(current)
+        );
+
+        updateProgress();
+    });
+});
+
+updateProgress();
+
+/* =========================
+   PAGE SAFETY
+========================= */
+
+window.addEventListener("beforeunload", function() {
+    stopAudio();
+});
+</script>
+
+</body>
+</html>
