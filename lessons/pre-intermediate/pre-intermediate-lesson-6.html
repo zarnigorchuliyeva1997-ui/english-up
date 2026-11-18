@@ -1,1 +1,1956 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 6 — There Is, Articles & Quantifiers | English Up</title>
 
+<style>
+:root{
+ --primary:#7047eb;
+ --primary2:#9274ff;
+ --bg:#f5f3ff;
+ --card:#ffffff;
+ --text:#241d38;
+ --muted:#746d83;
+ --border:#e7e0fa;
+ --green:#16a36a;
+ --red:#e34d59;
+ --orange:#f0a43b;
+ --shadow:0 8px 25px rgba(65,42,120,.08);
+}
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.65;
+}
+body.dark{
+ --bg:#171322;
+ --card:#241d33;
+ --text:#f4efff;
+ --muted:#b6abc9;
+ --border:#403451;
+ --shadow:0 8px 25px rgba(0,0,0,.2);
+}
+header{
+ background:linear-gradient(135deg,#7047eb,#9b7aff);
+ color:white;
+ padding:22px 16px 28px;
+}
+.header-inner{max-width:1050px;margin:auto}
+.topbar{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ flex-wrap:wrap;
+}
+.brand{font-weight:900;letter-spacing:2px;font-size:19px}
+.header-actions{display:flex;gap:8px}
+.header-actions button{
+ border:1px solid rgba(255,255,255,.45);
+ background:rgba(255,255,255,.15);
+ color:white;
+ border-radius:10px;
+ padding:9px 12px;
+ cursor:pointer;
+}
+.hero{margin-top:25px}
+.hero h1{font-size:clamp(27px,5vw,42px);line-height:1.15;margin:8px 0}
+.hero p{max-width:720px;margin:8px 0;color:#f3edff}
+.lesson-label{
+ display:inline-block;
+ padding:5px 11px;
+ border-radius:30px;
+ background:rgba(255,255,255,.18);
+ font-size:13px;
+}
+.container{
+ max-width:1050px;
+ margin:22px auto;
+ padding:0 14px 50px;
+}
+.progress-card{
+ background:var(--card);
+ border:1px solid var(--border);
+ padding:17px;
+ border-radius:16px;
+ box-shadow:var(--shadow);
+ margin-bottom:20px;
+}
+.progress-top{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ flex-wrap:wrap;
+ font-weight:bold;
+}
+.progress-track{
+ background:var(--border);
+ height:11px;
+ border-radius:20px;
+ margin-top:12px;
+ overflow:hidden;
+}
+.progress-fill{
+ height:100%;
+ width:0;
+ background:linear-gradient(90deg,#7047eb,#b49cff);
+ transition:.3s;
+}
+.nav{
+ display:flex;
+ gap:8px;
+ overflow-x:auto;
+ padding:5px 0 14px;
+ margin-bottom:10px;
+}
+.nav button{
+ flex-shrink:0;
+ border:1px solid var(--border);
+ color:var(--text);
+ background:var(--card);
+ border-radius:10px;
+ padding:10px 13px;
+ cursor:pointer;
+}
+.nav button.active{
+ background:var(--primary);
+ color:white;
+ border-color:var(--primary);
+}
+.section{display:none;animation:fade .2s ease}
+.section.active{display:block}
+@keyframes fade{
+ from{opacity:.5;transform:translateY(5px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:17px;
+ padding:20px;
+ margin-bottom:17px;
+ box-shadow:var(--shadow);
+}
+h2{font-size:24px;margin:0 0 14px}
+h3{font-size:19px;margin:18px 0 9px}
+h4{margin:12px 0 6px}
+p{margin:9px 0}
+.muted{color:var(--muted)}
+.purple{color:var(--primary);font-weight:bold}
+body.dark .purple{color:#b49cff}
+.rule{
+ background:rgba(112,71,235,.09);
+ border-left:4px solid var(--primary);
+ padding:13px 15px;
+ border-radius:9px;
+ margin:12px 0;
+}
+.good{
+ background:rgba(22,163,106,.10);
+ border-left:4px solid var(--green);
+ padding:12px;
+ border-radius:9px;
+ margin:12px 0;
+}
+.warning{
+ background:rgba(240,164,59,.12);
+ border-left:4px solid var(--orange);
+ padding:12px;
+ border-radius:9px;
+ margin:12px 0;
+}
+.bad{
+ background:rgba(227,77,89,.09);
+ border-left:4px solid var(--red);
+ padding:12px;
+ border-radius:9px;
+ margin:12px 0;
+}
+.example{
+ padding:11px 13px;
+ background:var(--bg);
+ border-radius:10px;
+ margin:8px 0;
+}
+table{
+ width:100%;
+ border-collapse:collapse;
+ margin:12px 0;
+ font-size:14px;
+}
+th,td{
+ border:1px solid var(--border);
+ padding:10px;
+ text-align:left;
+}
+th{background:rgba(112,71,235,.10)}
+button{font-family:inherit}
+.action{
+ border:0;
+ background:var(--primary);
+ color:white;
+ border-radius:10px;
+ padding:11px 16px;
+ cursor:pointer;
+ font-weight:bold;
+}
+.action.secondary{
+ background:var(--bg);
+ color:var(--text);
+ border:1px solid var(--border);
+}
+.action.green{background:var(--green)}
+.action:disabled{opacity:.5;cursor:not-allowed}
+.button-row{
+ display:flex;
+ gap:9px;
+ flex-wrap:wrap;
+ margin-top:12px;
+}
+input[type="text"],textarea,select{
+ width:100%;
+ padding:12px;
+ border:1px solid var(--border);
+ border-radius:10px;
+ background:var(--bg);
+ color:var(--text);
+ font:inherit;
+ margin:7px 0;
+}
+textarea{min-height:110px;resize:vertical}
+.checkbox-list label{
+ display:flex;
+ gap:10px;
+ align-items:flex-start;
+ padding:9px 0;
+ border-bottom:1px solid var(--border);
+}
+.checkbox-list input{margin-top:6px}
+.word{
+ display:grid;
+ grid-template-columns:1fr 1fr 1fr auto;
+ gap:10px;
+ align-items:center;
+ border-bottom:1px solid var(--border);
+ padding:11px 0;
+}
+.word:last-child{border:0}
+.word strong{color:var(--primary)}
+.word button{
+ border:1px solid var(--border);
+ background:var(--bg);
+ color:var(--text);
+ padding:7px 10px;
+ border-radius:8px;
+ cursor:pointer;
+}
+.quiz-question{
+ border:1px solid var(--border);
+ padding:15px;
+ border-radius:13px;
+ margin:13px 0;
+}
+.quiz-question p{font-weight:bold}
+.option{
+ display:block;
+ width:100%;
+ text-align:left;
+ padding:11px;
+ margin:7px 0;
+ border:1px solid var(--border);
+ border-radius:9px;
+ background:var(--bg);
+ color:var(--text);
+ cursor:pointer;
+}
+.option.selected{border:2px solid var(--primary)}
+.option.correct{background:rgba(22,163,106,.13);border-color:var(--green)}
+.option.wrong{background:rgba(227,77,89,.12);border-color:var(--red)}
+.result{
+ font-weight:bold;
+ padding:14px;
+ border-radius:10px;
+ margin-top:12px;
+}
+.result.pass{background:rgba(22,163,106,.13);color:var(--green)}
+.result.fail{background:rgba(227,77,89,.12);color:var(--red)}
+.day-banner{
+ background:linear-gradient(135deg,#7047eb,#9b7aff);
+ color:white;
+ padding:19px;
+ border-radius:15px;
+ margin-bottom:17px;
+}
+.day-banner h2{margin:0}
+.small-note{font-size:13px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:25px 10px}
+@media(max-width:600px){
+ .card{padding:15px}
+ .word{grid-template-columns:1fr 1fr}
+ .word button{grid-column:2}
+ table{font-size:12px}
+ th,td{padding:7px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="header-inner">
+  <div class="topbar">
+   <div class="brand">ENGLISH UP</div>
+   <div class="header-actions">
+    <button onclick="history.back()">← Back</button>
+    <button onclick="toggleTheme()">🌙 Theme</button>
+   </div>
+  </div>
+  <div class="hero">
+   <span class="lesson-label">PRE-INTERMEDIATE · LESSON 06</span>
+   <h1>There Is / There Are, Articles & Quantifiers</h1>
+   <p>Describe places, rooms, objects and quantities. Learn how to say what exists, how many things there are, and how much of something you have.</p>
+  </div>
+ </div>
+</header>
+
+<main class="container">
+
+<div class="progress-card">
+ <div class="progress-top">
+  <span>📘 Lesson progress</span>
+  <span id="progressText">0% completed</span>
+ </div>
+ <div class="progress-track">
+  <div class="progress-fill" id="progressFill"></div>
+ </div>
+ <p class="muted" id="motivationText">Har bir yangi qoida sizning ingliz tilingizni kuchaytiradi!</p>
+</div>
+
+<nav class="nav">
+ <button class="active" onclick="showSection('intro',this)">Start</button>
+ <button onclick="showSection('grammar',this)">Grammar</button>
+ <button onclick="showSection('vocabulary',this)">Vocabulary</button>
+ <button onclick="showSection('listening',this)">Listening</button>
+ <button onclick="showSection('reading',this)">Reading</button>
+ <button onclick="showSection('writing',this)">Notebook</button>
+ <button onclick="showSection('test1',this)">Test 1</button>
+ <button onclick="showSection('test2',this)">Test 2</button>
+ <button onclick="showSection('homework',this)">Homework</button>
+</nav>
+
+<!-- START -->
+
+<section class="section active" id="intro">
+
+ <div class="day-banner">
+  <h2>Welcome to Lesson 6!</h2>
+  <p>Today we learn how to describe places and quantities.</p>
+ </div>
+
+ <div class="card">
+  <h2>🎯 Dars maqsadlari</h2>
+  <p>Dars yakunida siz quyidagilarni bajara olishingiz kerak:</p>
+  <div class="checkbox-list">
+   <label><input type="checkbox" class="goal"> There is va There are farqini tushunish.</label>
+   <label><input type="checkbox" class="goal"> Darak, inkor va so‘roq gaplar tuzish.</label>
+   <label><input type="checkbox" class="goal"> A, An va The artikllarini to‘g‘ri ishlatish.</label>
+   <label><input type="checkbox" class="goal"> Countable va Uncountable nouns farqini bilish.</label>
+   <label><input type="checkbox" class="goal"> Some, Any, Much, Many va A lot of ishlatish.</label>
+   <label><input type="checkbox" class="goal"> Xona, uy va shaharni ingliz tilida tasvirlash.</label>
+   <label><input type="checkbox" class="goal"> Listening, Speaking, Reading va Writing mashqlarini bajarish.</label>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>📌 Qat'iy o‘quv qoidalari</h2>
+  <div class="warning">
+   <strong>DAFTAR SHART!</strong>
+   <p>Grammatik qoidalarni shunchaki o‘qib ketmang. Har bir formulani daftarga yozing va o‘zingiz misollar tuzing.</p>
+  </div>
+  <ol>
+   <li>Har bir grammatik qoidani daftarga yozing.</li>
+   <li>Har bir qoida uchun kamida 5 ta misol tuzing.</li>
+   <li>30 ta yangi lug‘atni tarjimasi va talaffuzi bilan yozing.</li>
+   <li>Listening dialoglarini tinglang va takrorlang.</li>
+   <li>Reading matnini o‘qing va savollarga javob bering.</li>
+   <li>Speaking topshiriqlarini ovoz chiqarib bajaring.</li>
+   <li>Writing vazifalarini daftarga yozing.</li>
+   <li>Har ikkala testni mustaqil bajaring.</li>
+   <li>Homework bo‘limidagi barcha topshiriqlarni bajaring.</li>
+  </ol>
+ </div>
+
+ <div class="card">
+  <h2>🔥 Motivation</h2>
+  <p>Bugun siz ingliz tilida atrofingizdagi dunyoni tasvirlashni o‘rganasiz.</p>
+  <div class="good">
+   <strong>Remember:</strong>
+   <p>Small steps every day lead to big results.</p>
+   <p>Har kuni ozgina harakat qilish katta natijalarga olib keladi.</p>
+  </div>
+  <p>Bugungi maqsad — qoidalarni yodlash bilan cheklanmasdan, ularni haqiqiy gaplarda ishlatish.</p>
+  <button class="action" onclick="showSection('grammar',document.querySelectorAll('.nav button')[1])">Start learning →</button>
+ </div>
+
+</section>
+
+<!-- GRAMMAR -->
+
+<section class="section" id="grammar">
+
+ <div class="card">
+  <h2>1. There is / There are nima?</h2>
+  <p><strong>There is</strong> va <strong>There are</strong> biror joyda nimadir borligini yoki mavjudligini bildirish uchun ishlatiladi.</p>
+  <p>O‘zbek tilidagi “bor” so‘ziga o‘xshaydi.</p>
+
+  <div class="example">
+   There is a book on the table.<br>
+   <span class="muted">Stol ustida bitta kitob bor.</span>
+  </div>
+
+  <div class="example">
+   There are three books on the table.<br>
+   <span class="muted">Stol ustida uchta kitob bor.</span>
+  </div>
+
+  <div class="rule">
+   <strong>There is</strong> — birlikdagi otlar bilan.<br>
+   <strong>There are</strong> — ko‘plikdagi otlar bilan.
+  </div>
+
+  <p>Esda tuting: bu yerda asosiy e'tibor kimdir biror narsani qilayotganiga emas, balki biror narsaning mavjudligiga qaratiladi.</p>
+ </div>
+
+ <div class="card">
+  <h2>2. Affirmative — Darak gap</h2>
+  <div class="rule">
+   <strong>Formula 1:</strong><br>
+   There is + a/an + singular noun.
+  </div>
+  <div class="example">There is a chair in the room.</div>
+  <div class="example">There is an apple on the table.</div>
+
+  <div class="rule">
+   <strong>Formula 2:</strong><br>
+   There are + plural noun.
+  </div>
+  <div class="example">There are two chairs in the room.</div>
+  <div class="example">There are many students in the classroom.</div>
+
+  <h3>Qisqartmalar</h3>
+  <table>
+   <tr><th>Full form</th><th>Short form</th></tr>
+   <tr><td>There is</td><td>There's</td></tr>
+   <tr><td>There are</td><td>There're (odatda qisqartirilmaydi)</td></tr>
+  </table>
+
+  <div class="good">
+   Kundalik ingliz tilida “There's” juda ko‘p ishlatiladi. “There are” esa odatda to‘liq shaklda aytiladi.
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>3. Negative — Inkor gap</h2>
+  <div class="rule">
+   There is not + singular noun.<br>
+   There are not + plural noun.
+  </div>
+
+  <table>
+   <tr><th>Full form</th><th>Short form</th><th>Ma'nosi</th></tr>
+   <tr><td>There is not</td><td>There isn't</td><td>Yo‘q</td></tr>
+   <tr><td>There are not</td><td>There aren't</td><td>Yo‘q</td></tr>
+  </table>
+
+  <div class="example">
+   There isn't a TV in my bedroom.<br>
+   <span class="muted">Mening yotoqxonamda televizor yo‘q.</span>
+  </div>
+
+  <div class="example">
+   There aren't any students in the classroom.<br>
+   <span class="muted">Sinfda hech qanday o‘quvchi yo‘q.</span>
+  </div>
+
+  <div class="warning">
+   Inkor gaplarda ko‘pincha any ishlatiladi:<br>
+   There aren't any apples.
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>4. Questions — So‘roq gap</h2>
+  <div class="rule">
+   <strong>Formula:</strong><br>
+   Is there + singular noun...?<br>
+   Are there + plural noun...?
+  </div>
+
+  <div class="example">Is there a bank near here? — Bu yer yaqinida bank bormi?</div>
+  <div class="example">Are there any shops nearby? — Yaqin atrofda do‘konlar bormi?</div>
+
+  <h3>Short answers</h3>
+  <table>
+   <tr><th>Question</th><th>Positive</th><th>Negative</th></tr>
+   <tr><td>Is there a park?</td><td>Yes, there is.</td><td>No, there isn't.</td></tr>
+   <tr><td>Are there shops?</td><td>Yes, there are.</td><td>No, there aren't.</td></tr>
+  </table>
+
+  <div class="bad">
+   There is a park? ❌<br>
+   Is there a park? ✅
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>5. There is / There are — mixed examples</h2>
+  <p>Bir gapda birlik va ko‘plikdagi otlar birga kelishi mumkin.</p>
+  <div class="example">
+   There is a sofa and two chairs in the living room.
+  </div>
+  <div class="example">
+   There are two chairs and a sofa in the living room.
+  </div>
+  <p>Ko‘pincha fe'l undan keyin kelgan birinchi otga moslashadi. Lekin gapni aniq va sodda tuzish tavsiya etiladi.</p>
+ </div>
+
+ <div class="card">
+  <h2>6. Countable nouns — Sanaladigan otlar</h2>
+  <p>Countable nouns — dona-dona sanash mumkin bo‘lgan narsalar.</p>
+  <table>
+   <tr><th>Singular</th><th>Plural</th><th>Tarjima</th></tr>
+   <tr><td>book</td><td>books</td><td>kitob</td></tr>
+   <tr><td>chair</td><td>chairs</td><td>stul</td></tr>
+   <tr><td>apple</td><td>apples</td><td>olma</td></tr>
+   <tr><td>student</td><td>students</td><td>o‘quvchi</td></tr>
+   <tr><td>house</td><td>houses</td><td>uy</td></tr>
+  </table>
+
+  <div class="rule">
+   Birlik: a book, an apple.<br>
+   Ko‘plik: two books, five apples.
+  </div>
+
+  <p>Countable nouns bilan quyidagilar ishlatilishi mumkin:</p>
+  <ul>
+   <li>a / an</li>
+   <li>many</li>
+   <li>a few</li>
+   <li>some</li>
+   <li>any</li>
+   <li>a lot of</li>
+  </ul>
+ </div>
+
+ <div class="card">
+  <h2>7. Uncountable nouns — Sanalmaydigan otlar</h2>
+  <p>Uncountable nouns — odatda dona-dona sanalmaydigan modda, suyuqlik yoki mavhum tushunchalar.</p>
+
+  <table>
+   <tr><th>Word</th><th>Tarjima</th></tr>
+   <tr><td>water</td><td>suv</td></tr>
+   <tr><td>milk</td><td>sut</td></tr>
+   <tr><td>rice</td><td>guruch</td></tr>
+   <tr><td>bread</td><td>non</td></tr>
+   <tr><td>sugar</td><td>shakar</td></tr>
+   <tr><td>money</td><td>pul</td></tr>
+   <tr><td>information</td><td>ma'lumot</td></tr>
+   <tr><td>advice</td><td>maslahat</td></tr>
+   <tr><td>furniture</td><td>mebel</td></tr>
+   <tr><td>homework</td><td>uy vazifasi</td></tr>
+  </table>
+
+  <div class="warning">
+   Odatda quyidagilar noto‘g‘ri:<br>
+   an information ❌<br>
+   informations ❌<br>
+   some information ✅
+  </div>
+
+  <p>Uncountable nouns bilan odatda a/an ishlatilmaydi va fe'l birlik shaklida keladi.</p>
+  <div class="example">There is some water in the bottle.</div>
+  <div class="example">The information is useful.</div>
+ </div>
+
+ <div class="card">
+  <h2>8. A va An — Noaniq artikllar</h2>
+  <p>A va An birlikdagi sanaladigan otlardan oldin ishlatiladi. Biror narsani birinchi marta tilga olganimizda ham qo‘llanadi.</p>
+
+  <div class="rule">
+   <strong>A</strong> — undosh tovush bilan boshlanadigan talaffuzdan oldin.<br>
+   a book, a car, a university.
+  </div>
+
+  <div class="rule">
+   <strong>An</strong> — unli tovush bilan boshlanadigan talaffuzdan oldin.<br>
+   an apple, an egg, an hour.
+  </div>
+
+  <div class="warning">
+   Muhim: harfga emas, tovushga qaraymiz.<br>
+   a university — “yu” tovushi bilan boshlanadi.<br>
+   an hour — h talaffuz qilinmaydi.
+  </div>
+
+  <h3>Misollar</h3>
+  <div class="example">There is a book on the desk.</div>
+  <div class="example">There is an orange in the fridge.</div>
+  <div class="example">She is a teacher.</div>
+  <div class="example">He is an engineer.</div>
+ </div>
+
+ <div class="card">
+  <h2>9. The — Aniq artikl</h2>
+  <p>The muayyan, aniq narsa haqida gapirganda ishlatiladi.</p>
+
+  <h3>A / An dan keyin The</h3>
+  <div class="example">
+   I saw a dog. The dog was very friendly.
+  </div>
+  <p>Birinchi gapda it haqida birinchi marta gapiryapmiz. Ikkinchi gapda esa qaysi it ekanligi ma'lum.</p>
+
+  <h3>Hamma biladigan yagona narsalar</h3>
+  <div class="example">The sun is bright.</div>
+  <div class="example">The moon looks beautiful.</div>
+
+  <h3>Muayyan joy yoki narsa</h3>
+  <div class="example">Please close the door.</div>
+  <div class="example">The kitchen is clean.</div>
+
+  <div class="good">
+   A/An — noma'lum yoki birinchi marta aytilayotgan birlikdagi narsa.<br>
+   The — aniq, ma'lum narsa.
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>10. Some va Any</h2>
+  <p>Some va Any miqdori aniq bo‘lmagan narsalarni bildirishda ishlatiladi.</p>
+
+  <div class="rule">
+   <strong>Some</strong> — ko‘pincha darak gaplarda.<br>
+   There are some apples.<br>
+   There is some milk.
+  </div>
+
+  <div class="rule">
+   <strong>Any</strong> — ko‘pincha inkor va so‘roq gaplarda.<br>
+   There aren't any apples.<br>
+   Is there any milk?
+  </div>
+
+  <h3>Some bilan taklif va iltimos</h3>
+  <div class="example">Would you like some tea?</div>
+  <div class="example">Can I have some water?</div>
+
+  <div class="warning">
+   Some faqat ko‘plikdagi sanaladigan otlar bilan emas, sanalmaydigan otlar bilan ham ishlatiladi.
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>11. Much va Many</h2>
+  <div class="rule">
+   <strong>Many</strong> — sanaladigan ko‘plik otlar bilan.<br>
+   How many books are there?
+  </div>
+  <div class="rule">
+   <strong>Much</strong> — sanalmaydigan otlar bilan.<br>
+   How much water is there?
+  </div>
+
+  <table>
+   <tr><th>Many</th><th>Much</th></tr>
+   <tr><td>many books</td><td>much water</td></tr>
+   <tr><td>many people</td><td>much money</td></tr>
+   <tr><td>many chairs</td><td>much time</td></tr>
+   <tr><td>many questions</td><td>much information</td></tr>
+  </table>
+
+  <div class="example">How many students are there in your class?</div>
+  <div class="example">How much sugar do you need?</div>
+  <p>Much va Many savol va inkor gaplarda juda ko‘p ishlatiladi.</p>
+ </div>
+
+ <div class="card">
+  <h2>12. A lot of / Lots of</h2>
+  <p>A lot of va lots of ko‘p miqdorni bildiradi. Ikkalasi ham sanaladigan va sanalmaydigan otlar bilan ishlatiladi.</p>
+  <div class="example">There are a lot of books in the library.</div>
+  <div class="example">There is a lot of water in the bottle.</div>
+  <div class="example">We have lots of friends.</div>
+  <div class="example">She has lots of work today.</div>
+  <div class="good">
+   A lot of kundalik suhbatlarda juda foydali. Many va Much ga qaraganda darak gaplarda tabiiyroq eshitiladi.
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>13. A few va A little</h2>
+  <div class="rule">
+   <strong>A few</strong> — sanaladigan ko‘plik otlar bilan.<br>
+   I have a few friends.
+  </div>
+  <div class="rule">
+   <strong>A little</strong> — sanalmaydigan otlar bilan.<br>
+   There is a little milk.
+  </div>
+
+  <table>
+   <tr><th>Expression</th><th>Example</th></tr>
+   <tr><td>a few</td><td>a few apples</td></tr>
+   <tr><td>a few</td><td>a few questions</td></tr>
+   <tr><td>a little</td><td>a little water</td></tr>
+   <tr><td>a little</td><td>a little sugar</td></tr>
+  </table>
+  <p>A few va A little oz bo‘lsa ham yetarli miqdor borligini anglatishi mumkin.</p>
+ </div>
+
+ <div class="card">
+  <h2>14. How many va How much</h2>
+  <div class="rule">
+   How many + plural countable noun...?<br>
+   How much + uncountable noun...?
+  </div>
+  <div class="example">How many rooms are there in your house?</div>
+  <div class="example">How many people are there?</div>
+  <div class="example">How much money do you have?</div>
+  <div class="example">How much rice do we need?</div>
+  <p>Javoblarda son yoki miqdorni aytamiz.</p>
+  <div class="example">There are five rooms.</div>
+  <div class="example">There is a little rice.</div>
+ </div>
+
+ <div class="card">
+  <h2>15. There is / There are bilan miqdorlar</h2>
+  <table>
+   <tr><th>Example</th><th>Tarjima</th></tr>
+   <tr><td>There are many books.</td><td>Ko‘p kitoblar bor.</td></tr>
+   <tr><td>There are a few chairs.</td><td>Bir nechta stul bor.</td></tr>
+   <tr><td>There is some water.</td><td>Biroz suv bor.</td></tr>
+   <tr><td>There isn't much milk.</td><td>Ko‘p sut yo‘q.</td></tr>
+   <tr><td>Are there any shops?</td><td>Do‘konlar bormi?</td></tr>
+   <tr><td>There is a lot of furniture.</td><td>Ko‘p mebel bor.</td></tr>
+  </table>
+ </div>
+
+ <div class="card">
+  <h2>16. Common mistakes — Ko‘p uchraydigan xatolar</h2>
+  <div class="bad">
+   There are a book. ❌<br>
+   There is a book. ✅
+  </div>
+  <div class="bad">
+   There is three chairs. ❌<br>
+   There are three chairs. ✅
+  </div>
+  <div class="bad">
+   I have many money. ❌<br>
+   I have a lot of money. ✅
+  </div>
+  <div class="bad">
+   There isn't some milk. ❌<br>
+   There isn't any milk. ✅
+  </div>
+  <div class="bad">
+   She has an book. ❌<br>
+   She has a book. ✅
+  </div>
+  <div class="bad">
+   There are much people. ❌<br>
+   There are many people. ✅
+  </div>
+  <div class="bad">
+   I need an information. ❌<br>
+   I need some information. ✅
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>17. Real-life examples</h2>
+  <h3>At home</h3>
+  <div class="example">
+   There is a sofa in the living room.<br>
+   There are two bedrooms in my house.<br>
+   There isn't a television in the kitchen.
+  </div>
+  <h3>At a supermarket</h3>
+  <div class="example">
+   There are many apples.<br>
+   There is some milk in the fridge.<br>
+   Are there any fresh vegetables?
+  </div>
+  <h3>In a city</h3>
+  <div class="example">
+   There are many shops in the city centre.<br>
+   There is a large park near my house.<br>
+   There aren't many buses at night.
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>18. Grammar practice — Daftarda bajaring</h2>
+  <ol>
+   <li>There is bilan 5 ta darak gap tuzing.</li>
+   <li>There are bilan 5 ta darak gap tuzing.</li>
+   <li>There isn't bilan 5 ta inkor gap tuzing.</li>
+   <li>There aren't bilan 5 ta inkor gap tuzing.</li>
+   <li>Is there bilan 5 ta savol tuzing.</li>
+   <li>Are there bilan 5 ta savol tuzing.</li>
+   <li>A va An uchun 10 ta misol yozing.</li>
+   <li>The bilan 5 ta gap tuzing.</li>
+   <li>Some va Any bilan 10 ta gap yozing.</li>
+   <li>Much va Many bilan 10 ta savol tuzing.</li>
+  </ol>
+  <div class="warning">
+   Bu topshiriqlarni bajarish darsning muhim qismidir. Faqat test natijasiga qarab mavzuni o‘zlashtirdim deb hisoblamang.
+  </div>
+ </div>
+
+</section>
+
+<!-- VOCABULARY -->
+
+<section class="section" id="vocabulary">
+
+ <div class="card">
+  <h2>📚 30 ta yangi so‘z</h2>
+  <p>Bu darsdagi lug‘atlar uy, xona, oshxona, shahar va kundalik narsalar mavzusiga oid.</p>
+  <p class="muted">Har bir so‘zni daftarga yozing. Talaffuzni eshiting va takrorlang.</p>
+  <div id="wordList"></div>
+  <div class="button-row">
+   <button class="action" onclick="speakWords()">🔊 Listen to all words</button>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>Vocabulary notebook task</h2>
+  <ol>
+   <li>30 ta so‘zni daftarga yozing.</li>
+   <li>Har bir so‘zning o‘zbekcha tarjimasini yozing.</li>
+   <li>Talaffuzini eshitib, uch marta takrorlang.</li>
+   <li>Kamida 15 ta so‘z bilan inglizcha gap tuzing.</li>
+   <li>10 ta so‘z bilan There is / There are ishlating.</li>
+   <li>Tarjimalarni yopib, inglizcha so‘zlarni eslang.</li>
+  </ol>
+ </div>
+
+</section>
+
+<!-- LISTENING -->
+
+<section class="section" id="listening">
+
+ <div class="card">
+  <h2>🎧 Listening 1 — My New Apartment</h2>
+  <p class="muted">Avval tinglang. Keyin dialogni o‘qing. So‘ng yana tinglab, gaplarni takrorlang.</p>
+
+  <div class="button-row">
+   <button class="action" onclick="speak(dialog1)">▶ Listen</button>
+   <button class="action secondary" onclick="stopSpeech()">■ Stop</button>
+  </div>
+
+  <h3>Dialogue</h3>
+  <div class="example">
+   <strong>Anna:</strong> Welcome to my new apartment, Jack!<br>
+   <strong>Jack:</strong> Thank you! It looks lovely. How many rooms are there?<br>
+   <strong>Anna:</strong> There are three bedrooms, a living room and a kitchen.<br>
+   <strong>Jack:</strong> Is there a balcony?<br>
+   <strong>Anna:</strong> Yes, there is. There are some flowers on it.<br>
+   <strong>Jack:</strong> That's wonderful. Is there much furniture?<br>
+   <strong>Anna:</strong> Not really. There is a sofa, a table and a few chairs.<br>
+   <strong>Jack:</strong> Is there a supermarket nearby?<br>
+   <strong>Anna:</strong> Yes, there are two supermarkets near the apartment.<br>
+   <strong>Jack:</strong> It sounds like a great place to live!
+  </div>
+
+  <h3>Uzbekcha mazmuni</h3>
+  <p>Anna Jekni yangi kvartirasiga taklif qiladi. Kvartirada uchta yotoqxona, mehmonxona va oshxona bor. Balkonda gullar bor. Uyda hozircha ko‘p mebel yo‘q. Kvartira yaqinida ikkita supermarket joylashgan.</p>
+
+  <h3>Listening questions</h3>
+  <ol>
+   <li>How many bedrooms are there?</li>
+   <li>Is there a balcony?</li>
+   <li>What is on the balcony?</li>
+   <li>Is there much furniture?</li>
+   <li>How many supermarkets are nearby?</li>
+  </ol>
+  <textarea id="listen1Answers" placeholder="Javoblaringizni ingliz tilida yozing..."></textarea>
+ </div>
+
+ <div class="card">
+  <h2>🎧 Listening 2 — At the Supermarket</h2>
+  <p class="muted">Bu dialogda supermarketda mahsulotlar haqida suhbat bor.</p>
+
+  <div class="button-row">
+   <button class="action" onclick="speak(dialog2)">▶ Listen</button>
+   <button class="action secondary" onclick="stopSpeech()">■ Stop</button>
+  </div>
+
+  <div class="example">
+   <strong>Customer:</strong> Excuse me, is there any milk?<br>
+   <strong>Assistant:</strong> Yes, there is some milk in the fridge.<br>
+   <strong>Customer:</strong> Great. Are there any eggs?<br>
+   <strong>Assistant:</strong> Yes, there are. We have a lot of fresh eggs.<br>
+   <strong>Customer:</strong> How much is this bread?<br>
+   <strong>Assistant:</strong> It is two euros.<br>
+   <strong>Customer:</strong> How many apples are in this bag?<br>
+   <strong>Assistant:</strong> There are six apples.<br>
+   <strong>Customer:</strong> Do you have any rice?<br>
+   <strong>Assistant:</strong> Yes, we have some rice near the pasta section.<br>
+   <strong>Customer:</strong> Thank you very much!<br>
+   <strong>Assistant:</strong> You're welcome!
+  </div>
+
+  <h3>Uzbekcha mazmuni</h3>
+  <p>Xaridor sotuvchidan sut, tuxum, non, olma va guruch haqida so‘raydi. Sotuvchi kerakli mahsulotlar borligini aytadi. Xaridor mahsulotlarning miqdori va narxini so‘raydi.</p>
+
+  <h3>Listening questions</h3>
+  <ol>
+   <li>Where is the milk?</li>
+   <li>Are there any eggs?</li>
+   <li>How much is the bread?</li>
+   <li>How many apples are in the bag?</li>
+   <li>Where is the rice?</li>
+  </ol>
+  <textarea id="listen2Answers" placeholder="Javoblaringizni ingliz tilida yozing..."></textarea>
+ </div>
+
+ <div class="card">
+  <h2>🎤 Listening practice qoidasi</h2>
+  <ol>
+   <li>Birinchi tinglashda dialogning umumiy mazmunini tushuning.</li>
+   <li>Ikkinchi tinglashda There is / There are gaplarini aniqlang.</li>
+   <li>Uchinchi tinglashda Some, Any, Much va Many so‘zlarini toping.</li>
+   <li>Har bir dialogdan kamida 8 ta gapni daftarga yozing.</li>
+   <li>Dialogdagi rollarni navbat bilan ovoz chiqarib o‘qing.</li>
+  </ol>
+  <p class="small-note">Audio brauzerning matnni ovozga aylantirish imkoniyatidan foydalanadi. Ovoz sifati va mavjudligi qurilmaga bog‘liq.</p>
+ </div>
+
+</section>
+
+<!-- READING -->
+
+<section class="section" id="reading">
+
+ <div class="card">
+  <h2>📖 Reading — A Beautiful Neighbourhood</h2>
+  <p class="muted">Matnni diqqat bilan o‘qing. There is / There are va miqdor bildiruvchi so‘zlarni toping.</p>
+
+  <div class="example">
+   I live in a quiet neighbourhood. There are many houses and a few small apartment buildings in my area. There is a beautiful park near my home, and there are several trees around it.
+   <br><br>
+   There is a supermarket on the main street. It sells a lot of fresh food. There are many different vegetables and fruits, and there is always some fresh bread. There is also a small bakery next to the supermarket.
+   <br><br>
+   There aren't many cars in my street, so it is usually quiet. There isn't much noise at night. There are a few cafés and restaurants nearby, but there aren't any large shopping centres.
+   <br><br>
+   I like my neighbourhood because there are friendly people and many useful places. There is everything I need for everyday life.
+  </div>
+
+  <h3>Matnning o‘zbekcha mazmuni</h3>
+  <p>Muallif tinch mahallada yashaydi. Uning hududida ko‘plab uylar va bir nechta kichik ko‘p qavatli binolar bor. Uy yaqinida chiroyli park, asosiy ko‘chada supermarket va uning yonida novvoyxona joylashgan. Mahallada mashinalar va shovqin ko‘p emas. Yaqin atrofda bir nechta kafe va restoranlar bor. Muallif o‘z mahallasini yaxshi ko‘radi, chunki u yerda kundalik hayot uchun kerakli joylar mavjud.</p>
+ </div>
+
+ <div class="card">
+  <h2>Reading comprehension</h2>
+  <ol>
+   <li>Where does the writer live?</li>
+   <li>What is near the writer's home?</li>
+   <li>What does the supermarket sell?</li>
+   <li>What is next to the supermarket?</li>
+   <li>Are there many cars in the street?</li>
+   <li>Is there much noise at night?</li>
+   <li>Are there any shopping centres?</li>
+   <li>Why does the writer like the neighbourhood?</li>
+  </ol>
+  <textarea placeholder="Savollarga ingliz tilida javob yozing..."></textarea>
+ </div>
+
+ <div class="card">
+  <h2>Reading analysis</h2>
+  <p>Matndan quyidagilarni toping va daftarga yozing:</p>
+  <ul>
+   <li>There is bilan kelgan 5 ta gap.</li>
+   <li>There are bilan kelgan 5 ta gap.</li>
+   <li>Some ishlatilgan gap.</li>
+   <li>Many ishlatilgan gap.</li>
+   <li>Much ishlatilgan gap.</li>
+   <li>A few ishlatilgan gap.</li>
+   <li>Any ishlatilgan gap.</li>
+  </ul>
+  <p>Keyin matnni o‘zingizning mahallangizga moslab qayta yozing.</p>
+ </div>
+
+</section>
+
+<!-- NOTEBOOK -->
+
+<section class="section" id="writing">
+
+ <div class="card">
+  <h2>✍️ Notebook — Daftarda ishlash</h2>
+  <div class="warning">
+   <strong>BU BO‘LIM MAJBURIY!</strong>
+   <p>Daftarda ishlash orqali qoidalarni faol bilimga aylantirasiz. Har bir topshiriqni yozma ravishda bajaring.</p>
+  </div>
+
+  <h3>1-topshiriq: Grammatik formulalar</h3>
+  <p>Quyidagi formulalarni daftarga yozing:</p>
+  <div class="rule">
+   There is + singular noun.<br>
+   There are + plural noun.<br>
+   There isn't + singular noun.<br>
+   There aren't + plural noun.<br>
+   Is there + singular noun...?<br>
+   Are there + plural noun...?
+  </div>
+
+  <div class="rule">
+   A + consonant sound.<br>
+   An + vowel sound.<br>
+   The + specific noun.
+  </div>
+
+  <div class="rule">
+   Some — usually affirmative sentences.<br>
+   Any — usually questions and negative sentences.<br>
+   Many — countable plural nouns.<br>
+   Much — uncountable nouns.<br>
+   A lot of — countable and uncountable nouns.
+  </div>
+
+  <h3>2-topshiriq: 30 ta gap</h3>
+  <ul>
+   <li>5 ta There is bilan darak gap.</li>
+   <li>5 ta There are bilan darak gap.</li>
+   <li>5 ta There isn't / There aren't bilan inkor gap.</li>
+   <li>5 ta Is there / Are there bilan savol.</li>
+   <li>5 ta Some / Any bilan gap.</li>
+   <li>5 ta Much / Many / A lot of bilan gap.</li>
+  </ul>
+
+  <h3>3-topshiriq: Articles</h3>
+  <p>A, An va The uchun jami 15 ta misol yozing. Har bir artiklning qachon ishlatilishini yoniga qisqacha tushuntiring.</p>
+
+  <h3>4-topshiriq: Countable va Uncountable</h3>
+  <p>20 ta sanaladigan va 20 ta sanalmaydigan ot yozing. Ularni ikki guruhga ajrating.</p>
+
+  <h3>5-topshiriq: Tarjima</h3>
+  <ol>
+   <li>Mening xonamda katta stol bor.</li>
+   <li>Oshxonada ikkita deraza bor.</li>
+   <li>Stolda bir nechta olma bor.</li>
+   <li>Muzlatkichda sut yo‘q.</li>
+   <li>Uyingizda nechta xona bor?</li>
+   <li>Shishada qancha suv bor?</li>
+   <li>Bizda ko‘p vaqt yo‘q.</li>
+   <li>Ko‘chada ko‘plab mashinalar bor.</li>
+   <li>Bu yerda bir nechta do‘kon bor.</li>
+   <li>Stolda hech qanday kitob yo‘q.</li>
+   <li>Men bir oz shakar xohlayman.</li>
+   <li>Bu shaharda ko‘p odamlar yashaydi.</li>
+  </ol>
+
+  <h3>6-topshiriq: Xatolarni tuzating</h3>
+  <ol>
+   <li>There are a cat in the garden.</li>
+   <li>There is five students in the room.</li>
+   <li>I have many money.</li>
+   <li>There isn't some water.</li>
+   <li>She has an university degree.</li>
+   <li>How much books do you have?</li>
+   <li>There are much furniture here.</li>
+   <li>There is any milk in the fridge.</li>
+   <li>I need an information.</li>
+   <li>Are there a bank near here?</li>
+  </ol>
+
+  <h3>7-topshiriq: Mustaqil Writing</h3>
+  <p><strong>Topic:</strong> Describe Your Home and Neighbourhood.</p>
+  <p>120–150 so‘z yozing. Quyidagi talablarni bajaring:</p>
+  <ul>
+   <li>Kamida 5 ta There is gap.</li>
+   <li>Kamida 5 ta There are gap.</li>
+   <li>Kamida 2 ta inkor gap.</li>
+   <li>Kamida 3 ta so‘roq gap.</li>
+   <li>A, An va The artikllaridan foydalaning.</li>
+   <li>Some, Any, Many, Much yoki A lot of ishlating.</li>
+  </ul>
+  <textarea id="writingDraft" placeholder="Matningizni shu yerda mashq qiling. Yakuniy nusxasini daftarga yozing..."></textarea>
+ </div>
+
+ <div class="card">
+  <h2>🎤 Speaking — Describe your world</h2>
+  <p>Quyidagi savollarga ovoz chiqarib javob bering. Har bir javob kamida 2–3 gapdan iborat bo‘lsin.</p>
+  <ol>
+   <li>How many rooms are there in your home?</li>
+   <li>Is there a garden near your house?</li>
+   <li>Are there any shops in your neighbourhood?</li>
+   <li>What furniture is there in your bedroom?</li>
+   <li>Is there much traffic in your area?</li>
+   <li>Are there many parks in your town?</li>
+   <li>What food is there in your fridge?</li>
+   <li>How much water do you drink every day?</li>
+   <li>How many people are there in your family?</li>
+   <li>What is your favourite place in your home?</li>
+  </ol>
+  <div class="good">
+   <strong>Speaking challenge:</strong>
+   <p>Uyingizni 90 soniya davomida ingliz tilida tasvirlab bering. To‘xtab qolmaslikka harakat qiling.</p>
+  </div>
+ </div>
+
+</section>
+
+<!-- TEST 1 -->
+
+<section class="section" id="test1">
+ <div class="card">
+  <h2>📝 Test 1 — Grammar Foundation</h2>
+  <p>20 ta savol. Har bir savolda bitta to‘g‘ri javob mavjud.</p>
+  <div id="quiz1"></div>
+  <button class="action" onclick="submitQuiz(1)">Submit Test 1</button>
+  <div id="result1"></div>
+ </div>
+</section>
+
+<!-- TEST 2 -->
+
+<section class="section" id="test2">
+ <div class="card">
+  <h2>🧠 Test 2 — Practical English Challenge</h2>
+  <p>20 ta savol. Bu test grammatikani amaliy vaziyatlarda ishlatishingizni tekshiradi.</p>
+  <div id="quiz2"></div>
+  <button class="action" onclick="submitQuiz(2)">Submit Test 2</button>
+  <div id="result2"></div>
+ </div>
+</section>
+
+<!-- HOMEWORK -->
+
+<section class="section" id="homework">
+
+ <div class="card">
+  <h2>🏠 HOMEWORK — Uy vazifasi</h2>
+  <div class="warning">
+   <strong>Uy vazifasi majburiy!</strong>
+   <p>Har bir bo‘limni bajarib, daftaringizda yozma ishlarni yakunlang. To‘rtta asosiy ko‘nikma alohida mashq qilinadi.</p>
+  </div>
+
+  <h3>1. LISTENING — Tinglab tushunish</h3>
+  <ol>
+   <li>Listening 1 dialogini kamida 3 marta tinglang.</li>
+   <li>Listening 2 dialogini kamida 3 marta tinglang.</li>
+   <li>Har bir dialogdan 10 tadan foydali gap yozib oling.</li>
+   <li>Dialogdagi There is / There are gaplarini belgilang.</li>
+   <li>Some, Any, Much va Many ishlatilgan joylarni toping.</li>
+   <li>Dialoglar bo‘yicha savollarga ingliz tilida javob yozing.</li>
+   <li>Dialoglarni matnga qaramasdan qayta aytib bering.</li>
+  </ol>
+
+  <h3>2. SPEAKING — Gapirish</h3>
+  <ol>
+   <li>Describe your home — 1 daqiqa.</li>
+   <li>Describe your bedroom — 1 daqiqa.</li>
+   <li>Describe your neighbourhood — 1–2 daqiqa.</li>
+   <li>Talk about the food in your kitchen — 1 daqiqa.</li>
+   <li>Uyingizdagi buyumlar haqida kamida 15 ta gap ayting.</li>
+   <li>Kamida 5 ta savol tuzib, ularga o‘zingiz javob bering.</li>
+   <li>Ovoz chiqarib mashq qiling va imkon bo‘lsa ovozingizni yozib oling.</li>
+  </ol>
+
+  <h3>3. READING — O‘qish</h3>
+  <ol>
+   <li>“A Beautiful Neighbourhood” matnini 3 marta o‘qing.</li>
+   <li>Matndagi yangi so‘zlarni daftarga yozing.</li>
+   <li>There is / There are gaplarini toping.</li>
+   <li>Some, Any, Much, Many ishlatilgan gaplarni ajrating.</li>
+   <li>Matnni 8–10 ta gap bilan qayta hikoya qiling.</li>
+   <li>Matn bo‘yicha berilgan savollarga javob yozing.</li>
+  </ol>
+
+  <h3>4. WRITING — Yozish</h3>
+  <ol>
+   <li>“My Home” mavzusida 120–150 so‘z yozing.</li>
+   <li>“My Neighbourhood” mavzusida 120–150 so‘z yozing.</li>
+   <li>“My Kitchen” mavzusida 80–100 so‘z yozing.</li>
+   <li>Har bir matnda There is / There are ishlating.</li>
+   <li>A, An va The artikllaridan foydalaning.</li>
+   <li>Some, Any, Much, Many va A lot of ishlating.</li>
+   <li>Matnlaringizni qayta o‘qib, xatolarni tuzating.</li>
+  </ol>
+
+  <h3>5. GRAMMAR — Grammatika</h3>
+  <ol>
+   <li>There is / There are formulalarini yodlang.</li>
+   <li>Darak, inkor va so‘roq shakllarini daftarga yozing.</li>
+   <li>Countable va Uncountable nouns farqini tushuntirib yozing.</li>
+   <li>A / An / The qoidalarini o‘z misollaringiz bilan mustahkamlang.</li>
+   <li>Some / Any uchun 10 ta gap tuzing.</li>
+   <li>Much / Many uchun 10 ta gap tuzing.</li>
+   <li>A lot of / A few / A little uchun 10 ta gap tuzing.</li>
+   <li>How many va How much bilan 10 ta savol yozing.</li>
+  </ol>
+
+  <h3>6. VOCABULARY — Lug‘at</h3>
+  <ol>
+   <li>30 ta yangi so‘zni daftarga yozing.</li>
+   <li>Inglizcha so‘z, talaffuz va tarjimani birga yozing.</li>
+   <li>Har bir so‘zni ovoz chiqarib takrorlang.</li>
+   <li>15 ta so‘z bilan mustaqil gap tuzing.</li>
+   <li>So‘zlarni tarjimasiz eslab qolishga harakat qiling.</li>
+  </ol>
+
+  <h3>7. TRANSLATION — Tarjima</h3>
+  <p>Quyidagi gaplarni ingliz tiliga tarjima qiling:</p>
+  <ol>
+   <li>Mening uyimda to‘rtta xona bor.</li>
+   <li>Oshxonada katta muzlatkich bor.</li>
+   <li>Stol ustida bir nechta kitob bor.</li>
+   <li>Bizning bog‘imizda ko‘p daraxtlar bor.</li>
+   <li>Bu yerda hech qanday supermarket yo‘q.</li>
+   <li>Shishada qancha suv bor?</li>
+   <li>Sinfingizda nechta o‘quvchi bor?</li>
+   <li>Men ozgina sut xohlayman.</li>
+   <li>Bizda ko‘p pul yo‘q.</li>
+   <li>Ko‘chada ko‘plab mashinalar bor.</li>
+   <li>Uning xonasida bitta kompyuter bor.</li>
+   <li>Bu shaharda ko‘p parklar bormi?</li>
+   <li>Muzlatkichda tuxum bormi?</li>
+   <li>Men bir oz ma'lumotga muhtojman.</li>
+   <li>Bizning uyimiz yaqinida ikkita maktab bor.</li>
+  </ol>
+
+  <h3>8. EXTRA CHALLENGE — Qo‘shimcha topshiriq</h3>
+  <ol>
+   <li>Countable nouns bo‘yicha 20 ta so‘z yozing.</li>
+   <li>Uncountable nouns bo‘yicha 20 ta so‘z yozing.</li>
+   <li>10 ta xato gapni to‘g‘rilang.</li>
+   <li>Uyingizning oddiy chizmasini chizing va har bir xonani ingliz tilida belgilang.</li>
+   <li>Har bir xona haqida kamida 3 ta inglizcha gap yozing.</li>
+  </ol>
+ </div>
+
+ <div class="card">
+  <h2>📋 Homework completion checklist</h2>
+  <p>Bajargan vazifalaringizni belgilang. Belgilar qurilmangizda saqlanadi.</p>
+  <div class="checkbox-list" id="homeworkChecks">
+   <label><input type="checkbox" class="hw"> Listening 1 va Listening 2 bajarildi.</label>
+   <label><input type="checkbox" class="hw"> Listening savollariga javob yozildi.</label>
+   <label><input type="checkbox" class="hw"> Speaking mashqlari bajarildi.</label>
+   <label><input type="checkbox" class="hw"> Reading matni o‘qildi va qayta hikoya qilindi.</label>
+   <label><input type="checkbox" class="hw"> Reading savollariga javob yozildi.</label>
+   <label><input type="checkbox" class="hw"> Writing 1 bajarildi.</label>
+   <label><input type="checkbox" class="hw"> Writing 2 bajarildi.</label>
+   <label><input type="checkbox" class="hw"> Writing 3 bajarildi.</label>
+   <label><input type="checkbox" class="hw"> Grammar mashqlari bajarildi.</label>
+   <label><input type="checkbox" class="hw"> 30 ta lug‘at yozildi va yodlandi.</label>
+   <label><input type="checkbox" class="hw"> Translation mashqlari bajarildi.</label>
+   <label><input type="checkbox" class="hw"> Extra Challenge bajarildi.</label>
+   <label><input type="checkbox" class="hw"> Test 1 va Test 2 topshirildi.</label>
+  </div>
+  <div class="progress-track">
+   <div class="progress-fill" id="hwProgress"></div>
+  </div>
+  <p id="hwProgressText" class="muted">0 / 13 completed</p>
+ </div>
+
+ <div class="card">
+  <h2>🏆 Final lesson reflection</h2>
+  <p>Quyidagi savollarga o‘zingiz uchun javob yozing:</p>
+  <ol>
+   <li>Which grammar rule was easiest?</li>
+   <li>Which grammar rule was difficult?</li>
+   <li>Can you describe your home in English?</li>
+   <li>Can you use Some and Any correctly?</li>
+   <li>What do you need to practise more?</li>
+  </ol>
+  <textarea placeholder="O‘z fikrlaringizni yozing..."></textarea>
+ </div>
+
+</section>
+
+<footer>
+ <strong>ENGLISH UP</strong>
+ <p>Learn today. Succeed tomorrow.</p>
+ <p>Lesson 6 — Keep learning, keep growing!</p>
+</footer>
+
+</main>
+
+<script>
+/* =========================================
+   ENGLISH UP — LESSON 6
+   THERE IS / THERE ARE
+   ARTICLES AND QUANTIFIERS
+========================================= */
+
+/* NAVIGATION */
+
+function showSection(id,button){
+ document.querySelectorAll(".section").forEach(section=>{
+  section.classList.remove("active");
+ });
+ document.querySelectorAll(".nav button").forEach(btn=>{
+  btn.classList.remove("active");
+ });
+ const target=document.getElementById(id);
+ if(target) target.classList.add("active");
+ if(button) button.classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+ updateProgress();
+}
+
+/* THEME */
+
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem(
+  "eu_l6_theme",
+  document.body.classList.contains("dark")?"dark":"light"
+ );
+}
+
+if(localStorage.getItem("eu_l6_theme")==="dark"){
+ document.body.classList.add("dark");
+}
+
+/* VOCABULARY */
+
+const words=[
+ {en:"apartment",pron:"əˈpɑːrtmənt",uz:"kvartira"},
+ {en:"neighbourhood",pron:"ˈneɪbərhʊd",uz:"mahalla"},
+ {en:"furniture",pron:"ˈfɜːrnɪtʃər",uz:"mebel"},
+ {en:"ceiling",pron:"ˈsiːlɪŋ",uz:"shift"},
+ {en:"curtain",pron:"ˈkɜːrtən",uz:"parda"},
+ {en:"cupboard",pron:"ˈkʌbərd",uz:"shkaf"},
+ {en:"shelf",pron:"ʃelf",uz:"tokcha"},
+ {en:"drawer",pron:"drɔːr",uz:"tortma"},
+ {en:"carpet",pron:"ˈkɑːrpɪt",uz:"gilam"},
+ {en:"balcony",pron:"ˈbælkəni",uz:"balkon"},
+ {en:"basement",pron:"ˈbeɪsmənt",uz:"yerto‘la"},
+ {en:"entrance",pron:"ˈentrəns",uz:"kirish joyi"},
+ {en:"garden",pron:"ˈɡɑːrdən",uz:"bog‘"},
+ {en:"fridge",pron:"frɪdʒ",uz:"muzlatkich"},
+ {en:"freezer",pron:"ˈfriːzər",uz:"muzlatgich bo‘limi"},
+ {en:"kettle",pron:"ˈketəl",uz:"choynak"},
+ {en:"oven",pron:"ˈʌvən",uz:"duhovka"},
+ {en:"sink",pron:"sɪŋk",uz:"rakovina"},
+ {en:"neighbour",pron:"ˈneɪbər",uz:"qo‘shni"},
+ {en:"bakery",pron:"ˈbeɪkəri",uz:"novvoyxona"},
+ {en:"supermarket",pron:"ˈsuːpərmɑːrkɪt",uz:"supermarket"},
+ {en:"marketplace",pron:"ˈmɑːrkɪtpleɪs",uz:"bozor maydoni"},
+ {en:"traffic",pron:"ˈtræfɪk",uz:"transport qatnovi"},
+ {en:"vegetable",pron:"ˈvedʒtəbəl",uz:"sabzavot"},
+ {en:"ingredient",pron:"ɪnˈɡriːdiənt",uz:"masalliq"},
+ {en:"container",pron:"kənˈteɪnər",uz:"idish"},
+ {en:"bottle",pron:"ˈbɑːtəl",uz:"shisha idish"},
+ {en:"nearly",pron:"ˈnɪrli",uz:"deyarli"},
+ {en:"available",pron:"əˈveɪləbəl",uz:"mavjud"},
+ {en:"convenient",pron:"kənˈviːniənt",uz:"qulay"}
+];
+
+function renderWords(){
+ const list=document.getElementById("wordList");
+ list.innerHTML="";
+ words.forEach((word,index)=>{
+  const row=document.createElement("div");
+  row.className="word";
+
+  const en=document.createElement("div");
+  const strong=document.createElement("strong");
+  strong.textContent=(index+1)+". "+word.en;
+  en.appendChild(strong);
+
+  const pron=document.createElement("div");
+  pron.textContent=word.pron;
+
+  const uz=document.createElement("div");
+  uz.textContent=word.uz;
+
+  const button=document.createElement("button");
+  button.textContent="🔊";
+  button.title="Listen";
+  button.onclick=()=>speak(word.en);
+
+  row.append(en,pron,uz,button);
+  list.appendChild(row);
+ });
+}
+
+renderWords();
+
+function speakWords(){
+ speak(words.map(w=>w.en).join(". "));
+}
+
+/* TEXT TO SPEECH */
+
+function speak(text){
+ if(!("speechSynthesis" in window)){
+  alert("Brauzeringiz audio funksiyasini qo‘llab-quvvatlamaydi.");
+  return;
+ }
+ stopSpeech();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang="en-US";
+ utterance.rate=.82;
+ utterance.pitch=1;
+ speechSynthesis.speak(utterance);
+}
+
+function stopSpeech(){
+ if("speechSynthesis" in window){
+  speechSynthesis.cancel();
+ }
+}
+
+const dialog1=
+"Anna: Welcome to my new apartment, Jack. " +
+"Jack: Thank you. It looks lovely. How many rooms are there? " +
+"Anna: There are three bedrooms, a living room and a kitchen. " +
+"Jack: Is there a balcony? " +
+"Anna: Yes, there is. There are some flowers on it. " +
+"Jack: That's wonderful. Is there much furniture? " +
+"Anna: Not really. There is a sofa, a table and a few chairs. " +
+"Jack: Is there a supermarket nearby? " +
+"Anna: Yes, there are two supermarkets near the apartment.";
+
+const dialog2=
+"Customer: Excuse me, is there any milk? " +
+"Assistant: Yes, there is some milk in the fridge. " +
+"Customer: Great. Are there any eggs? " +
+"Assistant: Yes, there are. We have a lot of fresh eggs. " +
+"Customer: How much is this bread? " +
+"Assistant: It is two euros. " +
+"Customer: How many apples are in this bag? " +
+"Assistant: There are six apples. " +
+"Customer: Do you have any rice? " +
+"Assistant: Yes, we have some rice near the pasta section.";
+
+/* QUIZ DATA */
+
+const quiz1=[
+ {
+  q:"There ___ a book on the table.",
+  a:["is","are","am","be"],
+  c:0,
+  e:"A book birlikdagi ot. Shuning uchun There is ishlatiladi."
+ },
+ {
+  q:"There ___ three windows in my room.",
+  a:["is","are","am","be"],
+  c:1,
+  e:"Three windows ko‘plik. There are ishlatiladi."
+ },
+ {
+  q:"___ there a bank near here?",
+  a:["Are","Is","Am","Be"],
+  c:1,
+  e:"A bank birlikdagi ot. So‘roq shakli Is there."
+ },
+ {
+  q:"There aren't ___ apples in the fridge.",
+  a:["some","a","any","much"],
+  c:2,
+  e:"Inkor gapda countable plural bilan any ishlatiladi."
+ },
+ {
+  q:"I need ___ water.",
+  a:["a","an","some","many"],
+  c:2,
+  e:"Water sanalmaydigan ot. Some ishlatilishi mumkin."
+ },
+ {
+  q:"How ___ students are there?",
+  a:["much","many","any","some"],
+  c:1,
+  e:"Students sanaladigan ko‘plik ot. Many ishlatiladi."
+ },
+ {
+  q:"How ___ milk do you need?",
+  a:["many","few","much","some"],
+  c:2,
+  e:"Milk sanalmaydigan ot. Much ishlatiladi."
+ },
+ {
+  q:"She has ___ umbrella.",
+  a:["a","an","the","some"],
+  c:1,
+  e:"Umbrella unli tovush bilan boshlanadi. An ishlatiladi."
+ },
+ {
+  q:"There is ___ university near my house.",
+  a:["an","a","some","many"],
+  c:1,
+  e:"University so‘zi 'yu' tovushi bilan boshlanadi. A ishlatiladi."
+ },
+ {
+  q:"I saw a cat. ___ cat was black.",
+  a:["A","An","The","Some"],
+  c:2,
+  e:"Ikkinchi gapda aynan qaysi mushuk ekani ma'lum. The ishlatiladi."
+ },
+ {
+  q:"There ___ some rice in the bowl.",
+  a:["are","is","am","be"],
+  c:1,
+  e:"Rice sanalmaydigan ot. Birlikdagi is ishlatiladi."
+ },
+ {
+  q:"There are ___ chairs in the room.",
+  a:["much","a little","a few","an"],
+  c:2,
+  e:"Chairs sanaladigan ko‘plik ot. A few ishlatiladi."
+ },
+ {
+  q:"There is ___ sugar in my tea.",
+  a:["a few","many","a little","an"],
+  c:2,
+  e:"Sugar sanalmaydigan ot. A little ishlatiladi."
+ },
+ {
+  q:"There ___ any shops here.",
+  a:["isn't","aren't","am not","not"],
+  c:1,
+  e:"Shops ko‘plik. There aren't any shops."
+ },
+ {
+  q:"___ there any bread?",
+  a:["Are","Is","Do","Does"],
+  c:1,
+  e:"Bread sanalmaydigan ot. Is there any bread?"
+ },
+ {
+  q:"I have ___ friends in this city.",
+  a:["much","a lot of","a little","an"],
+  c:1,
+  e:"A lot of countable plural nouns bilan ishlatiladi."
+ },
+ {
+  q:"Which noun is uncountable?",
+  a:["chair","apple","information","book"],
+  c:2,
+  e:"Information odatda sanalmaydigan ot."
+ },
+ {
+  q:"Which phrase is correct?",
+  a:["many money","much books","much information","an advice"],
+  c:2,
+  e:"Information sanalmaydigan ot. Much information to‘g‘ri."
+ },
+ {
+  q:"There is ___ orange on the table.",
+  a:["a","an","some","many"],
+  c:1,
+  e:"Orange unli tovush bilan boshlanadi. An orange."
+ },
+ {
+  q:"How ___ rooms are there in your house?",
+  a:["much","many","little","any"],
+  c:1,
+  e:"Rooms sanaladigan ko‘plik ot. How many."
+ }
+];
+
+const quiz2=[
+ {
+  q:"You want to ask about the number of chairs. Choose the correct question.",
+  a:["How much chairs are there?","How many chairs are there?","How many chair is there?","How much chair is there?"],
+  c:1,
+  e:"Chairs sanaladi. How many chairs are there?"
+ },
+ {
+  q:"Choose the correct sentence.",
+  a:["There are a sofa in the room.","There is a sofa in the room.","There be a sofa in the room.","There am a sofa in the room."],
+  c:1,
+  e:"A sofa birlikdagi ot. There is ishlatiladi."
+ },
+ {
+  q:"You are asking about water in a bottle.",
+  a:["How many water is there?","How much water is there?","How much waters are there?","How many waters is there?"],
+  c:1,
+  e:"Water sanalmaydi. How much water?"
+ },
+ {
+  q:"Choose the correct negative sentence.",
+  a:["There isn't any bread.","There aren't any bread.","There isn't many bread.","There aren't some bread."],
+  c:0,
+  e:"Bread sanalmaydigan ot. There isn't any bread."
+ },
+ {
+  q:"Which sentence is correct?",
+  a:["There are much people.","There is many people.","There are many people.","There is a people."],
+  c:2,
+  e:"People ko‘plik ma'nosida. Many people."
+ },
+ {
+  q:"You see a house for the first time. Choose the correct sentence.",
+  a:["There is the house near the river.","There is a house near the river.","There are a house near the river.","There is an house near the river."],
+  c:1,
+  e:"Birinchi marta tilga olingan birlikdagi sanaladigan ot: a house."
+ },
+ {
+  q:"Choose the correct article: ___ hour.",
+  a:["a","an","the only","some"],
+  c:1,
+  e:"Hour so‘zida h talaffuz qilinmaydi. An hour."
+ },
+ {
+  q:"Choose the correct sentence.",
+  a:["I need an information.","I need some information.","I need informations.","I need many information."],
+  c:1,
+  e:"Information sanalmaydigan ot."
+ },
+ {
+  q:"There are ___ eggs in the fridge. (positive sentence)",
+  a:["some","much","a little","an"],
+  c:0,
+  e:"Darak gapda ko‘plikdagi sanaladigan ot bilan some ishlatilishi mumkin."
+ },
+ {
+  q:"Choose the correct question.",
+  a:["Are there a supermarket?","Is there a supermarket?","Do there a supermarket?","There is a supermarket?"],
+  c:1,
+  e:"A supermarket birlik. Is there a supermarket?"
+ },
+ {
+  q:"Which phrase is correct?",
+  a:["a few milk","a little milk","many milk","an milk"],
+  c:1,
+  e:"Milk sanalmaydigan ot. A little milk."
+ },
+ {
+  q:"Choose the correct sentence.",
+  a:["There are some furniture.","There is some furniture.","There are a furniture.","There is many furniture."],
+  c:1,
+  e:"Furniture sanalmaydigan ot."
+ },
+ {
+  q:"You want to ask whether any shops exist. Choose:",
+  a:["Is there any shops?","Are there any shops?","Do there any shops?","There are any shops?"],
+  c:1,
+  e:"Shops ko‘plik. Are there any shops?"
+ },
+ {
+  q:"Choose the correct sentence.",
+  a:["There is an apple and two bananas.","There are an apple and two bananas.","There is two apples.","There are a apple."],
+  c:0,
+  e:"Bu gapda birinchi kelgan ot birlik: an apple."
+ },
+ {
+  q:"Which sentence uses The correctly?",
+  a:["I bought a book. A book is interesting.","I bought a book. The book is interesting.","I bought an book. The book interesting.","I bought the book. A book is interesting."],
+  c:1,
+  e:"Birinchi marta a book, keyin aniq bo‘lgan the book."
+ },
+ {
+  q:"Choose the correct phrase.",
+  a:["a lot of water","many water","a few water","an water"],
+  c:0,
+  e:"A lot of sanalmaydigan ot bilan ham ishlatiladi."
+ },
+ {
+  q:"There isn't ___ time.",
+  a:["many","a few","much","an"],
+  c:2,
+  e:"Time bu yerda sanalmaydigan ot. Much time."
+ },
+ {
+  q:"Which is countable?",
+  a:["rice","money","chair","advice"],
+  c:2,
+  e:"Chair dona-dona sanaladi."
+ },
+ {
+  q:"Choose the correct sentence.",
+  a:["There are two information.","There is two informations.","There is some information.","There are many information."],
+  c:2,
+  e:"Information sanalmaydigan ot."
+ },
+ {
+  q:"Your room has three windows. Choose:",
+  a:["There is three windows.","There are three windows.","There are a three windows.","There is a windows."],
+  c:1,
+  e:"Three windows ko‘plik. There are ishlatiladi."
+ }
+];
+
+/* QUIZ RENDERING */
+
+const answers={
+ 1:{},
+ 2:{}
+};
+
+const submitted={
+ 1:false,
+ 2:false
+};
+
+function renderQuiz(number,questions){
+ const container=document.getElementById("quiz"+number);
+ container.innerHTML="";
+
+ questions.forEach((question,index)=>{
+  const box=document.createElement("div");
+  box.className="quiz-question";
+  box.id="q"+number+"_"+index;
+
+  const title=document.createElement("p");
+  title.textContent=(index+1)+". "+question.q;
+  box.appendChild(title);
+
+  question.a.forEach((option,optionIndex)=>{
+   const button=document.createElement("button");
+   button.className="option";
+   button.textContent=String.fromCharCode(65+optionIndex)+". "+option;
+   button.onclick=()=>{
+    if(submitted[number]) return;
+    answers[number][index]=optionIndex;
+    box.querySelectorAll(".option").forEach(btn=>{
+     btn.classList.remove("selected");
+    });
+    button.classList.add("selected");
+   };
+   box.appendChild(button);
+  });
+
+  const explanation=document.createElement("div");
+  explanation.className="small-note";
+  explanation.id="explain"+number+"_"+index;
+  explanation.style.display="none";
+  box.appendChild(explanation);
+
+  container.appendChild(box);
+ });
+}
+
+renderQuiz(1,quiz1);
+renderQuiz(2,quiz2);
+
+function submitQuiz(number){
+ if(submitted[number]){
+  alert("Bu test allaqachon topshirilgan.");
+  return;
+ }
+
+ const questions=number===1?quiz1:quiz2;
+ let score=0;
+ let unanswered=0;
+
+ questions.forEach((question,index)=>{
+  if(answers[number][index]===undefined){
+   unanswered++;
+  }
+ });
+
+ if(unanswered>0){
+  const confirmSubmit=confirm(
+   unanswered+" ta savol javobsiz qoldi. Testni topshirasizmi?"
+  );
+  if(!confirmSubmit) return;
+ }
+
+ questions.forEach((question,index)=>{
+  const box=document.getElementById("q"+number+"_"+index);
+  const options=box.querySelectorAll(".option");
+  const selected=answers[number][index];
+
+  options.forEach((option,optionIndex)=>{
+   option.disabled=true;
+   if(optionIndex===question.c){
+    option.classList.add("correct");
+   }
+   if(selected===optionIndex && selected!==question.c){
+    option.classList.add("wrong");
+   }
+  });
+
+  if(selected===question.c) score++;
+
+  const explanation=document.getElementById("explain"+number+"_"+index);
+  explanation.style.display="block";
+  explanation.textContent=
+   "Izoh: "+question.e;
+ });
+
+ const percent=Math.round(score/questions.length*100);
+ const passed=percent>=80;
+
+ const result=document.getElementById("result"+number);
+ result.className="result "+(passed?"pass":"fail");
+ result.innerHTML=
+  "Natija: "+score+"/"+questions.length+
+  " ("+percent+"%)<br>"+
+  (passed?
+   "Ajoyib! Siz 80% yoki undan yuqori natijaga erishdingiz. 🎉":
+   "Yaxshi harakat! 80% ga yetmadi. Xatolarni tahlil qiling va mavzuni takrorlang."
+  );
+
+ submitted[number]=true;
+
+ localStorage.setItem(
+  "eu_l6_test"+number,
+  JSON.stringify({score:score,percent:percent,passed:passed})
+ );
+
+ updateProgress();
+}
+
+/* HOMEWORK CHECKLIST */
+
+function loadHomework(){
+ const checks=document.querySelectorAll(".hw");
+ checks.forEach((check,index)=>{
+  const saved=localStorage.getItem("eu_l6_hw_"+index);
+  check.checked=saved==="true";
+  check.addEventListener("change",()=>{
+   localStorage.setItem("eu_l6_hw_"+index,check.checked);
+   updateHomeworkProgress();
+   updateProgress();
+  });
+ });
+ updateHomeworkProgress();
+}
+
+function updateHomeworkProgress(){
+ const checks=[...document.querySelectorAll(".hw")];
+ const completed=checks.filter(c=>c.checked).length;
+ const total=checks.length;
+ const percent=Math.round(completed/total*100);
+
+ document.getElementById("hwProgress").style.width=percent+"%";
+ document.getElementById("hwProgressText").textContent=
+  completed+" / "+total+" completed";
+}
+
+loadHomework();
+
+/* GOAL CHECKLIST */
+
+function loadGoals(){
+ const goals=document.querySelectorAll(".goal");
+ goals.forEach((goal,index)=>{
+  goal.checked=
+   localStorage.getItem("eu_l6_goal_"+index)==="true";
+
+  goal.addEventListener("change",()=>{
+   localStorage.setItem(
+    "eu_l6_goal_"+index,
+    goal.checked
+   );
+   updateProgress();
+  });
+ });
+}
+
+loadGoals();
+
+/* PROGRESS */
+
+function updateProgress(){
+ const goals=[...document.querySelectorAll(".goal")];
+ const checkedGoals=goals.filter(g=>g.checked).length;
+
+ const hw=[...document.querySelectorAll(".hw")];
+ const checkedHw=hw.filter(h=>h.checked).length;
+
+ const test1=JSON.parse(localStorage.getItem("eu_l6_test1")||"null");
+ const test2=JSON.parse(localStorage.getItem("eu_l6_test2")||"null");
+
+ let points=0;
+ let total=goals.length+hw.length+2;
+
+ points+=checkedGoals;
+ points+=checkedHw;
+
+ if(test1 && test1.passed) points++;
+ if(test2 && test2.passed) points++;
+
+ const percent=Math.round(points/total*100);
+
+ document.getElementById("progressFill").style.width=percent+"%";
+ document.getElementById("progressText").textContent=percent+"% completed";
+
+ const motivation=document.getElementById("motivationText");
+
+ if(percent<25){
+  motivation.textContent="Boshlanishi yaxshi! Har bir kichik qadam muhim.";
+ }else if(percent<50){
+  motivation.textContent="Yaxshi davom etyapsiz. O‘rganishni to‘xtatmang!";
+ }else if(percent<75){
+  motivation.textContent="Ajoyib! Darsning katta qismini bajardingiz.";
+ }else if(percent<100){
+  motivation.textContent="Maqsadga juda yaqinsiz. Oxirigacha davom eting!";
+ }else{
+  motivation.textContent="Ajoyib mehnat! Darsdagi belgilangan vazifalar yakunlandi. 🏆";
+ }
+}
+
+/* RESTORE QUIZ RESULTS */
+
+function restoreQuizResults(){
+ [1,2].forEach(number=>{
+  const saved=JSON.parse(
+   localStorage.getItem("eu_l6_test"+number)||"null"
+  );
+  if(!saved) return;
+
+  submitted[number]=true;
+
+  const questions=number===1?quiz1:quiz2;
+
+  const result=document.getElementById("result"+number);
+  result.className="result "+(saved.passed?"pass":"fail");
+  result.innerHTML=
+   "Oldingi natija: "+saved.score+"/"+questions.length+
+   " ("+saved.percent+"%)<br>"+
+   (saved.passed?"Test muvaffaqiyatli topshirilgan.":"Testni qayta topshirish uchun sahifani yangilashdan oldin xatolarni o‘rganing.");
+
+  const button=document.querySelector(
+   "#"+(number===1?"test1":"test2")+" .action"
+  );
+  if(button) button.disabled=true;
+ });
+}
+
+restoreQuizResults();
+
+/* WRITING AUTOSAVE */
+
+const writingDraft=document.getElementById("writingDraft");
+
+if(writingDraft){
+ writingDraft.value=localStorage.getItem("eu_l6_writing")||"";
+ writingDraft.addEventListener("input",()=>{
+  localStorage.setItem("eu_l6_writing",writingDraft.value);
+ });
+}
+
+/* LISTENING ANSWER AUTOSAVE */
+
+["listen1Answers","listen2Answers"].forEach(id=>{
+ const field=document.getElementById(id);
+ if(!field) return;
+
+ field.value=localStorage.getItem("eu_l6_"+id)||"";
+ field.addEventListener("input",()=>{
+  localStorage.setItem("eu_l6_"+id,field.value);
+ });
+});
+
+/* INITIALIZE */
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
