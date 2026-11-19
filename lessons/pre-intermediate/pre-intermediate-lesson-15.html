@@ -1,1 +1,2365 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 15 — Gerunds & Infinitives | English Up</title>
+
+<style>
+:root {
+    --primary: #7047eb;
+    --primary-dark: #5632c7;
+    --primary-light: #f0ebff;
+    --bg: #f7f6fc;
+    --card: #ffffff;
+    --text: #242238;
+    --muted: #77758a;
+    --border: #e9e5f2;
+    --success: #16a36a;
+    --success-bg: #e8f8f0;
+    --danger: #e34d59;
+    --danger-bg: #fff0f0;
+    --warning: #e9a323;
+    --warning-bg: #fff7e6;
+    --shadow: 0 5px 22px rgba(55,35,100,.07);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    transition: .3s;
+}
+body.dark {
+    --bg: #151321;
+    --card: #211e30;
+    --text: #f3efff;
+    --muted: #aaa3bb;
+    --border: #383247;
+    --primary-light: #30264d;
+    --success-bg: #183c30;
+    --danger-bg: #44242b;
+    --warning-bg: #46391f;
+    --shadow: 0 5px 22px rgba(0,0,0,.2);
+}
+button, input, textarea, select {
+    font: inherit;
+}
+button {
+    cursor: pointer;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+.logo {
+    font-size: 21px;
+    font-weight: 900;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+.header-actions {
+    display: flex;
+    gap: 9px;
+}
+.icon-btn {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 12px;
+    padding: 9px 13px;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px 15px 60px;
+}
+.hero {
+    background: linear-gradient(135deg,#7047eb,#9a70f5);
+    color: white;
+    border-radius: 22px;
+    padding: 30px 23px;
+    margin: 16px 0 22px;
+    box-shadow: 0 10px 30px rgba(112,71,235,.2);
+}
+.hero-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    opacity: .9;
+}
+.hero h1 {
+    font-size: clamp(25px,5vw,36px);
+    line-height: 1.25;
+    margin: 12px 0;
+}
+.hero p {
+    font-size: 15px;
+    opacity: .95;
+}
+.hero-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 18px;
+}
+.hero-info span {
+    background: rgba(255,255,255,.18);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+.greeting {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 17px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+.greeting h2 {
+    color: var(--primary);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.greeting p {
+    color: var(--muted);
+}
+.motivation {
+    background: var(--primary-light);
+    border-left: 5px solid var(--primary);
+    border-radius: 12px;
+    padding: 17px;
+    margin: 20px 0;
+}
+.motivation strong {
+    color: var(--primary);
+}
+.progress-card {
+    background: var(--card);
+    padding: 17px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 9px;
+    font-weight: bold;
+    font-size: 13px;
+}
+.progress-track {
+    height: 10px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg,#7047eb,#a27df5);
+    border-radius: 20px;
+    transition: .4s;
+}
+.nav-menu {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 5px 0 15px;
+    margin-bottom: 10px;
+}
+.nav-menu a {
+    white-space: nowrap;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.nav-menu a:hover {
+    background: var(--primary);
+    color: white;
+}
+.section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    scroll-margin-top: 85px;
+}
+.section h2 {
+    color: var(--primary);
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+.section h3 {
+    font-size: 18px;
+    margin: 19px 0 10px;
+}
+.section p {
+    margin: 8px 0;
+}
+.section-intro {
+    color: var(--muted);
+    margin-bottom: 17px;
+}
+.lesson-box {
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 17px;
+    margin: 14px 0;
+    background: var(--bg);
+}
+.lesson-box h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+.formula {
+    background: var(--primary-light);
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--primary);
+    margin: 12px 0;
+}
+.example {
+    background: var(--card);
+    border-left: 4px solid var(--success);
+    padding: 11px 13px;
+    border-radius: 8px;
+    margin: 9px 0;
+}
+.example .en {
+    font-weight: bold;
+}
+.example .uz {
+    color: var(--muted);
+    font-size: 14px;
+}
+.note {
+    background: var(--warning-bg);
+    border-left: 4px solid var(--warning);
+    padding: 13px;
+    border-radius: 9px;
+    margin: 12px 0;
+}
+.tip {
+    background: var(--success-bg);
+    border-left: 4px solid var(--success);
+    padding: 13px;
+    border-radius: 9px;
+    margin: 12px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 13px 0;
+    font-size: 14px;
+}
+th, td {
+    border: 1px solid var(--border);
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+td {
+    background: var(--card);
+}
+.word-card {
+    border: 1px solid var(--border);
+    padding: 13px;
+    border-radius: 12px;
+    margin: 9px 0;
+    display: grid;
+    grid-template-columns: 35px 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+.word-number {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9px;
+    padding: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+.word-en {
+    font-weight: bold;
+}
+.word-pron {
+    color: var(--muted);
+    font-size: 12px;
+}
+.word-uz {
+    color: var(--muted);
+    font-size: 13px;
+}
+.audio-btn {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 9px;
+}
+.audio-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+.reading-text {
+    line-height: 2;
+    font-size: 16px;
+    padding: 17px;
+    background: var(--bg);
+    border-radius: 12px;
+    margin: 15px 0;
+}
+.reading-translation {
+    display: none;
+    padding: 15px;
+    background: var(--primary-light);
+    border-radius: 12px;
+    margin: 10px 0;
+}
+.btn {
+    display: inline-block;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    padding: 11px 17px;
+    font-weight: bold;
+    margin: 5px 3px 5px 0;
+}
+.btn:hover {
+    background: var(--primary-dark);
+}
+.btn-secondary {
+    background: var(--border);
+    color: var(--text);
+}
+.btn-success {
+    background: var(--success);
+}
+.btn-danger {
+    background: var(--danger);
+}
+.exercise {
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 15px;
+    margin: 14px 0;
+}
+.exercise p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.exercise label {
+    display: block;
+    background: var(--bg);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 7px 0;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.exercise label:has(input:checked) {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+.exercise input {
+    margin-right: 8px;
+    accent-color: var(--primary);
+}
+.feedback {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.correct {
+    color: var(--success);
+}
+.incorrect {
+    color: var(--danger);
+}
+.result-box {
+    background: var(--primary-light);
+    padding: 20px;
+    border-radius: 13px;
+    text-align: center;
+    margin-top: 17px;
+    display: none;
+}
+.result-number {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--primary);
+}
+.audio-panel {
+    background: var(--primary-light);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 13px 0;
+}
+.audio-panel button {
+    margin-top: 10px;
+}
+.transcript {
+    display: none;
+    background: var(--card);
+    padding: 13px;
+    margin-top: 10px;
+    border-radius: 9px;
+}
+textarea {
+    width: 100%;
+    min-height: 130px;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    resize: vertical;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--bg);
+    color: var(--text);
+}
+.homework-task {
+    padding: 15px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 12px 0;
+}
+.homework-task h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+.check-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+.check-row input {
+    margin-top: 7px;
+    accent-color: var(--primary);
+}
+footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--muted);
+}
+.hidden {
+    display: none !important;
+}
+@media(max-width:600px) {
+    .container {
+        padding: 12px 11px 45px;
+    }
+    .section {
+        padding: 16px;
+    }
+    .hero {
+        padding: 24px 18px;
+    }
+    .word-card {
+        grid-template-columns: 30px 1fr auto;
+    }
+    table {
+        font-size: 12px;
+    }
+    th, td {
+        padding: 7px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo">ENGLISH UP</div>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="history.back()">← Back</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeButton">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+    <div class="hero-label">ENGLISH UP — PRE-INTERMEDIATE</div>
+    <h1>Lesson 15 — Gerunds & Infinitives</h1>
+    <p>Learn when to use Verb + ing and when to use To + Verb.</p>
+    <div class="hero-info">
+        <span>📚 Grammar</span>
+        <span>🎧 Listening</span>
+        <span>🗣 Speaking</span>
+        <span>✍️ Writing</span>
+        <span>📝 40 Tests</span>
+    </div>
+</section>
+
+<section class="greeting">
+    <h2>Assalomu alaykum! Welcome to Lesson 15!</h2>
+    <p>
+        English Up kursining 15-darsiga xush kelibsiz!
+        Bugun biz ingliz tilidagi muhim grammatik mavzulardan biri —
+        Gerunds and Infinitives mavzusini o'rganamiz.
+    </p>
+    <p>
+        Dars davomida qaysi fe'llardan keyin -ing, qaysi fe'llardan
+        keyin to + verb ishlatilishini o'rganasiz.
+        Shoshilmasdan, har bir qoidani tushunib, misollarni daftaringizga yozing.
+    </p>
+</section>
+
+<div class="motivation">
+    <strong>🔥 Today's Motivation</strong>
+    <p>
+        Every new lesson takes you one step closer to your goal.
+        Don't study just to finish the lesson. Study to use English in real life.
+    </p>
+    <p>
+        Har kuni ozgina bo'lsa ham oldinga intiling.
+        Bugungi mehnatingiz ertangi muvaffaqiyatingizga asos bo'ladi!
+    </p>
+</div>
+
+<section class="progress-card">
+    <div class="progress-top">
+        <span>Lesson progress</span>
+        <span id="progressText">0%</span>
+    </div>
+    <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <p class="word-uz">Bo'limlarni o'qib, topshiriqlarni bajarganingiz sari dars jarayonini belgilang.</p>
+</section>
+
+<nav class="nav-menu">
+    <a href="#grammar">Grammar</a>
+    <a href="#practice">Practice</a>
+    <a href="#vocabulary">Vocabulary</a>
+    <a href="#listening">Listening</a>
+    <a href="#reading">Reading</a>
+    <a href="#writing">Writing</a>
+    <a href="#test1">Test 1</a>
+    <a href="#test2">Test 2</a>
+    <a href="#homework">Homework</a>
+</nav>
+
+<!-- GRAMMAR -->
+
+<section class="section" id="grammar">
+<h2>1. GRAMMAR — Gerunds & Infinitives</h2>
+<p class="section-intro">
+    Ushbu bo'limda mavzuni noldan boshlab bosqichma-bosqich o'rganamiz.
+    Har bir formulani daftaringizga yozing.
+</p>
+
+<div class="lesson-box">
+<h3>1.1. Gerund nima?</h3>
+<p>
+    Gerund — fe'lning -ing shakli bo'lib, gapda ko'pincha ot vazifasini bajaradi.
+    O'zbek tiliga ko'pincha "-ish" yoki "-sh" shaklida tarjima qilinadi.
+</p>
+<div class="formula">Verb + ING</div>
+<p><b>Formula qismlari:</b></p>
+<ul>
+<li><b>Verb</b> — fe'l, ya'ni harakatni bildiruvchi so'z.</li>
+<li><b>ING</b> — fe'lga qo'shiladigan qo'shimcha.</li>
+<li><b>Gerund</b> — hosil bo'lgan -ing shakli.</li>
+</ul>
+<div class="example">
+<div class="en">Reading is important.</div>
+<div class="uz">O'qish muhim.</div>
+</div>
+<div class="example">
+<div class="en">Swimming is healthy.</div>
+<div class="uz">Suzish sog'liq uchun foydali.</div>
+</div>
+<div class="note">
+    Eslab qoling: har bir -ing bilan tugagan so'z gerund bo'lavermaydi.
+    Uning gapdagi vazifasiga qarash kerak.
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.2. Gerundning yasalishi</h3>
+<p>Ko'pchilik fe'llarga shunchaki -ing qo'shiladi.</p>
+<table>
+<tr><th>Verb</th><th>Gerund</th><th>Tarjimasi</th></tr>
+<tr><td>Read</td><td>Reading</td><td>O'qish</td></tr>
+<tr><td>Play</td><td>Playing</td><td>O'ynash</td></tr>
+<tr><td>Work</td><td>Working</td><td>Ishlash</td></tr>
+<tr><td>Study</td><td>Studying</td><td>O'qish</td></tr>
+<tr><td>Cook</td><td>Cooking</td><td>Ovqat pishirish</td></tr>
+<tr><td>Watch</td><td>Watching</td><td>Tomosha qilish</td></tr>
+</table>
+<h3>Imlo qoidalari</h3>
+<p><b>1-qoida:</b> Odatdagi fe'llarga -ing qo'shiladi.</p>
+<div class="example">
+<div class="en">Walk → Walking</div>
+<div class="uz">Yurmoq → Yurish</div>
+</div>
+<p><b>2-qoida:</b> Oxirida jim e harfi bo'lsa, odatda e tushib qoladi.</p>
+<div class="example">
+<div class="en">Make → Making</div>
+<div class="uz">Yasamoq → Yasash</div>
+</div>
+<div class="example">
+<div class="en">Write → Writing</div>
+<div class="uz">Yozmoq → Yozish</div>
+</div>
+<p><b>3-qoida:</b> Ba'zi qisqa fe'llarda oxirgi undosh harf ikki marta yoziladi.</p>
+<div class="example">
+<div class="en">Run → Running</div>
+<div class="uz">Yugurmoq → Yugurish</div>
+</div>
+<div class="example">
+<div class="en">Sit → Sitting</div>
+<div class="uz">O'tirmoq → O'tirish</div>
+</div>
+<p><b>4-qoida:</b> Undosh + y bilan tugagan fe'llarda y saqlanadi.</p>
+<div class="example">
+<div class="en">Study → Studying</div>
+<div class="uz">O'qimoq → O'qish</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.3. Gerund gapda ega vazifasida</h3>
+<p>
+    Gerund gap boshida kelib, gapning egasi bo'lishi mumkin.
+    Bunda harakat yoki faoliyat haqida gapiriladi.
+</p>
+<div class="formula">Gerund + Verb + Complement</div>
+<p><b>Formula qismlari:</b></p>
+<ul>
+<li><b>Gerund</b> — -ing shaklidagi harakat.</li>
+<li><b>Verb</b> — gapning asosiy fe'li.</li>
+<li><b>Complement</b> — gapni to'ldiruvchi qism.</li>
+</ul>
+<div class="example">
+<div class="en">Learning English takes time.</div>
+<div class="uz">Ingliz tilini o'rganish vaqt talab qiladi.</div>
+</div>
+<div class="example">
+<div class="en">Cooking is my hobby.</div>
+<div class="uz">Ovqat pishirish mening sevimli mashg'ulotim.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.4. Gerund fe'ldan keyin kelishi</h3>
+<p>
+    Ayrim fe'llardan keyin keyingi fe'l -ing shaklida ishlatiladi.
+    Bu fe'llarni yodlab olish kerak.
+</p>
+<div class="formula">Subject + Verb + Gerund</div>
+<table>
+<tr><th>Fe'l</th><th>Ma'nosi</th></tr>
+<tr><td>Enjoy</td><td>Yoqtirmoq, zavqlanmoq</td></tr>
+<tr><td>Avoid</td><td>Qochmoq, chetlab o'tmoq</td></tr>
+<tr><td>Finish</td><td>Tugatmoq</td></tr>
+<tr><td>Suggest</td><td>Taklif qilmoq</td></tr>
+<tr><td>Mind</td><td>Qarshi bo'lmoq</td></tr>
+<tr><td>Keep</td><td>Davom ettirmoq</td></tr>
+<tr><td>Practice</td><td>Mashq qilmoq</td></tr>
+<tr><td>Consider</td><td>Ko'rib chiqmoq</td></tr>
+<tr><td>Imagine</td><td>Tasavvur qilmoq</td></tr>
+<tr><td>Admit</td><td>Tan olmoq</td></tr>
+</table>
+<h3>Enjoy + Gerund</h3>
+<div class="example">
+<div class="en">I enjoy reading books.</div>
+<div class="uz">Men kitob o'qishni yoqtiraman.</div>
+</div>
+<div class="example">
+<div class="en">She enjoys cooking dinner.</div>
+<div class="uz">U kechki ovqat tayyorlashni yoqtiradi.</div>
+</div>
+<h3>Avoid + Gerund</h3>
+<div class="example">
+<div class="en">He avoids eating fast food.</div>
+<div class="uz">U tez tayyorlanadigan ovqatlarni yeyishdan qochadi.</div>
+</div>
+<div class="example">
+<div class="en">We avoid making mistakes.</div>
+<div class="uz">Biz xato qilishdan qochamiz.</div>
+</div>
+<h3>Finish + Gerund</h3>
+<div class="example">
+<div class="en">I finished doing my homework.</div>
+<div class="uz">Men uy vazifamni bajarishni tugatdim.</div>
+</div>
+<div class="example">
+<div class="en">They finished cleaning the room.</div>
+<div class="uz">Ular xonani tozalashni tugatishdi.</div>
+</div>
+<h3>Suggest + Gerund</h3>
+<div class="example">
+<div class="en">She suggested going by bus.</div>
+<div class="uz">U avtobusda borishni taklif qildi.</div>
+</div>
+<div class="example">
+<div class="en">I suggest studying together.</div>
+<div class="uz">Men birga o'qishni taklif qilaman.</div>
+</div>
+<h3>Mind + Gerund</h3>
+<div class="example">
+<div class="en">Do you mind opening the window?</div>
+<div class="uz">Derazani ochishga qarshi emasmisiz?</div>
+</div>
+<div class="example">
+<div class="en">I don't mind helping you.</div>
+<div class="uz">Sizga yordam berishga qarshi emasman.</div>
+</div>
+<h3>Keep + Gerund</h3>
+<div class="example">
+<div class="en">Keep practicing English.</div>
+<div class="uz">Ingliz tilini mashq qilishda davom eting.</div>
+</div>
+<div class="example">
+<div class="en">He keeps asking questions.</div>
+<div class="uz">U savollar berishda davom etadi.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.5. Gerund predloglardan keyin</h3>
+<p>
+    Ingliz tilida predlogdan keyin fe'l ishlatilsa,
+    odatda uning -ing shakli keladi.
+</p>
+<div class="formula">Preposition + Gerund</div>
+<p><b>Preposition</b> — in, on, at, about, without, before, after, for kabi so'zlar.</p>
+<div class="example">
+<div class="en">She is good at drawing.</div>
+<div class="uz">U rasm chizishga yaxshi.</div>
+</div>
+<div class="example">
+<div class="en">Thank you for helping me.</div>
+<div class="uz">Menga yordam berganingiz uchun rahmat.</div>
+</div>
+<div class="example">
+<div class="en">He left without saying goodbye.</div>
+<div class="uz">U xayrlashmasdan ketdi.</div>
+</div>
+<div class="example">
+<div class="en">Before going to bed, I read a book.</div>
+<div class="uz">Uxlashga yotishdan oldin kitob o'qiyman.</div>
+</div>
+<div class="example">
+<div class="en">After finishing work, I went home.</div>
+<div class="uz">Ishni tugatgandan keyin uyga ketdim.</div>
+</div>
+<div class="note">
+    Muhim: "look forward to" iborasidagi to predlog hisoblanadi.
+    Shuning uchun undan keyin -ing ishlatiladi.
+</div>
+<div class="example">
+<div class="en">I look forward to meeting you.</div>
+<div class="uz">Siz bilan uchrashishni intiqlik bilan kutyapman.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.6. Infinitive nima?</h3>
+<p>
+    Infinitive — fe'lning boshlang'ich shakli oldidan to qo'shilishi
+    orqali hosil bo'ladigan shakl.
+</p>
+<div class="formula">TO + V1</div>
+<p><b>Formula qismlari:</b></p>
+<ul>
+<li><b>TO</b> — infinitive belgisi.</li>
+<li><b>V1</b> — fe'lning birinchi shakli.</li>
+<li><b>To learn</b> — o'rganmoq.</li>
+<li><b>To work</b> — ishlamoq.</li>
+</ul>
+<div class="example">
+<div class="en">I want to learn English.</div>
+<div class="uz">Men ingliz tilini o'rganishni xohlayman.</div>
+</div>
+<div class="example">
+<div class="en">She decided to study abroad.</div>
+<div class="uz">U chet elda o'qishga qaror qildi.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.7. Infinitive talab qiladigan fe'llar</h3>
+<p>
+    Ayrim fe'llardan keyin ikkinchi fe'l to + V1 shaklida keladi.
+</p>
+<div class="formula">Subject + Verb + TO + V1</div>
+<table>
+<tr><th>Fe'l</th><th>Ma'nosi</th></tr>
+<tr><td>Want</td><td>Xohlamoq</td></tr>
+<tr><td>Decide</td><td>Qaror qilmoq</td></tr>
+<tr><td>Hope</td><td>Umid qilmoq</td></tr>
+<tr><td>Plan</td><td>Rejalashtirmoq</td></tr>
+<tr><td>Promise</td><td>Va'da bermoq</td></tr>
+<tr><td>Agree</td><td>Rozi bo'lmoq</td></tr>
+<tr><td>Learn</td><td>O'rganmoq</td></tr>
+<tr><td>Expect</td><td>Kutmoq</td></tr>
+<tr><td>Need</td><td>Kerak bo'lmoq</td></tr>
+<tr><td>Manage</td><td>Eplay olmoq</td></tr>
+<tr><td>Offer</td><td>Taklif qilmoq</td></tr>
+<tr><td>Choose</td><td>Tanlamoq</td></tr>
+</table>
+<h3>Want + Infinitive</h3>
+<div class="example">
+<div class="en">I want to speak English.</div>
+<div class="uz">Men ingliz tilida gapirishni xohlayman.</div>
+</div>
+<div class="example">
+<div class="en">They want to travel abroad.</div>
+<div class="uz">Ular chet elga sayohat qilishni xohlashadi.</div>
+</div>
+<h3>Decide + Infinitive</h3>
+<div class="example">
+<div class="en">He decided to change his job.</div>
+<div class="uz">U ishini o'zgartirishga qaror qildi.</div>
+</div>
+<div class="example">
+<div class="en">We decided to stay at home.</div>
+<div class="uz">Biz uyda qolishga qaror qildik.</div>
+</div>
+<h3>Hope + Infinitive</h3>
+<div class="example">
+<div class="en">I hope to see you soon.</div>
+<div class="uz">Sizni tez orada ko'rishga umid qilaman.</div>
+</div>
+<div class="example">
+<div class="en">She hopes to pass the exam.</div>
+<div class="uz">U imtihondan o'tishga umid qilmoqda.</div>
+</div>
+<h3>Plan + Infinitive</h3>
+<div class="example">
+<div class="en">I plan to study tonight.</div>
+<div class="uz">Men bugun kechqurun o'qishni rejalashtiryapman.</div>
+</div>
+<div class="example">
+<div class="en">They plan to buy a new house.</div>
+<div class="uz">Ular yangi uy sotib olishni rejalashtirishmoqda.</div>
+</div>
+<h3>Promise + Infinitive</h3>
+<div class="example">
+<div class="en">I promise to help you.</div>
+<div class="uz">Men sizga yordam berishga va'da beraman.</div>
+</div>
+<div class="example">
+<div class="en">He promised to call me.</div>
+<div class="uz">U menga qo'ng'iroq qilishga va'da berdi.</div>
+</div>
+<h3>Agree + Infinitive</h3>
+<div class="example">
+<div class="en">She agreed to come early.</div>
+<div class="uz">U erta kelishga rozi bo'ldi.</div>
+</div>
+<div class="example">
+<div class="en">We agreed to work together.</div>
+<div class="uz">Biz birga ishlashga rozi bo'ldik.</div>
+</div>
+<h3>Manage + Infinitive</h3>
+<div class="example">
+<div class="en">I managed to finish the work.</div>
+<div class="uz">Men ishni tugatishga muvaffaq bo'ldim.</div>
+</div>
+<div class="example">
+<div class="en">He managed to find his keys.</div>
+<div class="uz">U kalitlarini topishga muvaffaq bo'ldi.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.8. Infinitive maqsadni bildirish uchun</h3>
+<p>
+    Biror ish nima maqsadda bajarilayotganini tushuntirish uchun
+    to + V1 ishlatiladi.
+</p>
+<div class="formula">Subject + Verb + TO + V1</div>
+<div class="example">
+<div class="en">I went to the shop to buy some bread.</div>
+<div class="uz">Men non sotib olish uchun do'konga bordim.</div>
+</div>
+<div class="example">
+<div class="en">She studies hard to pass the exam.</div>
+<div class="uz">U imtihondan o'tish uchun qattiq o'qiydi.</div>
+</div>
+<div class="example">
+<div class="en">He works to support his family.</div>
+<div class="uz">U oilasini ta'minlash uchun ishlaydi.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.9. Bare Infinitive — To'siz infinitive</h3>
+<p>
+    Ba'zi fe'llardan keyin to ishlatilmaydi.
+    Bunda fe'lning birinchi shakli keladi.
+</p>
+<div class="formula">Modal Verb + V1</div>
+<p>Can, could, should, must, may, might, will, would kabi modal fe'llardan keyin to qo'yilmaydi.</p>
+<div class="example">
+<div class="en">I can swim.</div>
+<div class="uz">Men suza olaman.</div>
+</div>
+<div class="example">
+<div class="en">You should study more.</div>
+<div class="uz">Siz ko'proq o'qishingiz kerak.</div>
+</div>
+<div class="example">
+<div class="en">She must leave now.</div>
+<div class="uz">U hozir ketishi kerak.</div>
+</div>
+<p><b>Make va let</b> fe'llaridan keyin ham obyekt bilan bare infinitive ishlatiladi.</p>
+<div class="example">
+<div class="en">My parents let me go out.</div>
+<div class="uz">Ota-onam tashqariga chiqishimga ruxsat berishadi.</div>
+</div>
+<div class="example">
+<div class="en">The teacher made us repeat the sentence.</div>
+<div class="uz">O'qituvchi bizga gapni takrorlatdi.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.10. Gerund va Infinitive ikkalasi ham ishlatiladigan fe'llar</h3>
+<p>
+    Ayrim fe'llardan keyin ham -ing, ham to + V1 ishlatilishi mumkin.
+    Ba'zilarida ma'no deyarli bir xil bo'ladi.
+</p>
+<table>
+<tr><th>Verb</th><th>Gerund</th><th>Infinitive</th></tr>
+<tr><td>Like</td><td>Like reading</td><td>Like to read</td></tr>
+<tr><td>Love</td><td>Love swimming</td><td>Love to swim</td></tr>
+<tr><td>Hate</td><td>Hate waiting</td><td>Hate to wait</td></tr>
+<tr><td>Prefer</td><td>Prefer walking</td><td>Prefer to walk</td></tr>
+<tr><td>Start</td><td>Start working</td><td>Start to work</td></tr>
+<tr><td>Begin</td><td>Begin raining</td><td>Begin to rain</td></tr>
+<tr><td>Continue</td><td>Continue studying</td><td>Continue to study</td></tr>
+</table>
+<div class="example">
+<div class="en">I like reading books.</div>
+<div class="uz">Men kitob o'qishni yoqtiraman.</div>
+</div>
+<div class="example">
+<div class="en">I like to read before sleeping.</div>
+<div class="uz">Men uxlashdan oldin kitob o'qishni yoqtiraman.</div>
+</div>
+<div class="note">
+    Like, love, hate va prefer fe'llarida ikkala shakl ko'pincha o'xshash ma'noda ishlatiladi.
+    Lekin ayrim vaziyatlarda uslubiy farq bo'lishi mumkin.
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.11. Ma'nosi o'zgaradigan fe'llar</h3>
+<p>
+    Bu qism juda muhim. Ba'zi fe'llardan keyin -ing yoki to + V1 ishlatilishi
+    gapning ma'nosini o'zgartiradi.
+</p>
+
+<h3>STOP + GERUND</h3>
+<p>Biror ishni butunlay to'xtatish.</p>
+<div class="example">
+<div class="en">He stopped smoking.</div>
+<div class="uz">U chekishni tashladi.</div>
+</div>
+<div class="example">
+<div class="en">She stopped talking.</div>
+<div class="uz">U gapirishni to'xtatdi.</div>
+</div>
+
+<h3>STOP + TO + VERB</h3>
+<p>Boshqa ishni bajarish uchun to'xtash.</p>
+<div class="example">
+<div class="en">He stopped to smoke.</div>
+<div class="uz">U chekish uchun to'xtadi.</div>
+</div>
+<div class="example">
+<div class="en">I stopped to answer the phone.</div>
+<div class="uz">Men telefonga javob berish uchun to'xtadim.</div>
+</div>
+
+<h3>REMEMBER + GERUND</h3>
+<p>O'tmishda sodir bo'lgan ishni eslash.</p>
+<div class="example">
+<div class="en">I remember meeting him.</div>
+<div class="uz">Men u bilan uchrashganimni eslayman.</div>
+</div>
+<div class="example">
+<div class="en">She remembers visiting London.</div>
+<div class="uz">U Londonga borganini eslaydi.</div>
+</div>
+
+<h3>REMEMBER + TO + VERB</h3>
+<p>Biror ishni bajarishni unutmaslik.</p>
+<div class="example">
+<div class="en">Remember to call your mother.</div>
+<div class="uz">Onangizga qo'ng'iroq qilishni unutmang.</div>
+</div>
+<div class="example">
+<div class="en">Remember to lock the door.</div>
+<div class="uz">Eshikni qulflashni unutmang.</div>
+</div>
+
+<h3>FORGET + GERUND</h3>
+<p>O'tmishda sodir bo'lgan ishni eslay olmaslik.</p>
+<div class="example">
+<div class="en">I will never forget meeting you.</div>
+<div class="uz">Siz bilan uchrashganimni hech qachon unutmayman.</div>
+</div>
+<div class="example">
+<div class="en">He forgot telling me the story.</div>
+<div class="uz">U menga hikoyani aytganini unutdi.</div>
+</div>
+
+<h3>FORGET + TO + VERB</h3>
+<p>Biror ishni bajarishni unutish.</p>
+<div class="example">
+<div class="en">I forgot to buy milk.</div>
+<div class="uz">Men sut sotib olishni unutdim.</div>
+</div>
+<div class="example">
+<div class="en">She forgot to send the email.</div>
+<div class="uz">U elektron xat yuborishni unutdi.</div>
+</div>
+
+<h3>TRY + GERUND</h3>
+<p>Muammoni hal qilish uchun biror usulni sinab ko'rish.</p>
+<div class="example">
+<div class="en">Try drinking some water.</div>
+<div class="uz">Biroz suv ichib ko'ring.</div>
+</div>
+<div class="example">
+<div class="en">Try using a dictionary.</div>
+<div class="uz">Lug'atdan foydalanib ko'ring.</div>
+</div>
+
+<h3>TRY + TO + VERB</h3>
+<p>Biror ishni bajarishga harakat qilish.</p>
+<div class="example">
+<div class="en">I tried to open the door.</div>
+<div class="uz">Men eshikni ochishga harakat qildim.</div>
+</div>
+<div class="example">
+<div class="en">She tried to understand the lesson.</div>
+<div class="uz">U darsni tushunishga harakat qildi.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.12. Need + Gerund / Infinitive</h3>
+<p>
+    Need odatda to + V1 bilan ishlatiladi.
+    Need + gerund esa ayrim vaziyatlarda passiv ma'noni bildiradi.
+</p>
+<div class="example">
+<div class="en">I need to clean my room.</div>
+<div class="uz">Men xonamni tozalashim kerak.</div>
+</div>
+<div class="example">
+<div class="en">The room needs cleaning.</div>
+<div class="uz">Xonani tozalash kerak.</div>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.13. Gerund va Infinitive taqqoslash</h3>
+<table>
+<tr><th>Gerund</th><th>Infinitive</th></tr>
+<tr><td>I enjoy reading.</td><td>I want to read.</td></tr>
+<tr><td>She avoids driving.</td><td>She plans to drive.</td></tr>
+<tr><td>He finished working.</td><td>He decided to work.</td></tr>
+<tr><td>We suggested walking.</td><td>We hope to walk.</td></tr>
+<tr><td>They keep learning.</td><td>They need to learn.</td></tr>
+</table>
+<div class="tip">
+    Esda saqlang: har bir fe'lning qaysi shaklni talab qilishini o'rganish kerak.
+    Faqat tarjimaga qarab -ing yoki to tanlab bo'lmaydi.
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>1.14. Eng ko'p uchraydigan xatolar</h3>
+<table>
+<tr><th>Noto'g'ri</th><th>To'g'ri</th></tr>
+<tr><td>I enjoy to read.</td><td>I enjoy reading.</td></tr>
+<tr><td>I want learning.</td><td>I want to learn.</td></tr>
+<tr><td>She decided going.</td><td>She decided to go.</td></tr>
+<tr><td>He avoids to drive.</td><td>He avoids driving.</td></tr>
+<tr><td>I look forward to meet you.</td><td>I look forward to meeting you.</td></tr>
+<tr><td>She can to swim.</td><td>She can swim.</td></tr>
+</table>
+</div>
+
+<div class="lesson-box">
+<h3>1.15. Grammar Summary</h3>
+<table>
+<tr><th>Qoida</th><th>Formula</th><th>Misol</th></tr>
+<tr><td>Gerund</td><td>Verb + ing</td><td>Reading is fun.</td></tr>
+<tr><td>Gerund after verbs</td><td>Enjoy + ing</td><td>I enjoy reading.</td></tr>
+<tr><td>After prepositions</td><td>Prep + ing</td><td>Good at drawing.</td></tr>
+<tr><td>Infinitive</td><td>To + V1</td><td>I want to learn.</td></tr>
+<tr><td>Purpose</td><td>To + V1</td><td>I study to improve.</td></tr>
+<tr><td>Bare infinitive</td><td>Modal + V1</td><td>I can swim.</td></tr>
+<tr><td>Meaning change</td><td>Stop + ing / to V1</td><td>Different meanings.</td></tr>
+</table>
+</div>
+
+</section>
+
+<!-- PRACTICE -->
+
+<section class="section" id="practice">
+<h2>2. GRAMMAR PRACTICE</h2>
+<p class="section-intro">Quyidagi mashqlarni daftaringizda bajaring.</p>
+
+<div class="exercise">
+<p>Exercise 1. Qavs ichidagi fe'lni to'g'ri shaklda yozing.</p>
+<ol>
+<li>I enjoy ______ (read) books.</li>
+<li>She wants ______ (learn) English.</li>
+<li>They finished ______ (clean) the house.</li>
+<li>He decided ______ (travel) abroad.</li>
+<li>We avoid ______ (make) mistakes.</li>
+<li>I hope ______ (see) you soon.</li>
+<li>She suggested ______ (go) by bus.</li>
+<li>He promised ______ (help) me.</li>
+<li>Do you mind ______ (open) the window?</li>
+<li>They plan ______ (buy) a new car.</li>
+</ol>
+</div>
+
+<div class="exercise">
+<p>Exercise 2. Gerund yoki Infinitive tanlang.</p>
+<ol>
+<li>I like ______ English.
+    <br>A) learning &nbsp; B) learn</li>
+<li>She agreed ______ us.
+    <br>A) helping &nbsp; B) to help</li>
+<li>He avoids ______ late.
+    <br>A) arriving &nbsp; B) to arrive</li>
+<li>We need ______ now.
+    <br>A) leaving &nbsp; B) to leave</li>
+<li>They enjoy ______ football.
+    <br>A) playing &nbsp; B) to play</li>
+</ol>
+</div>
+
+<div class="exercise">
+<p>Exercise 3. Ingliz tiliga tarjima qiling.</p>
+<ol>
+<li>Men kitob o'qishni yoqtiraman.</li>
+<li>U ingliz tilini o'rganishni xohlaydi.</li>
+<li>Biz xato qilishdan qochamiz.</li>
+<li>Ular birga ishlashga qaror qilishdi.</li>
+<li>Men sizga yordam berishga va'da beraman.</li>
+</ol>
+</div>
+
+<div class="exercise">
+<p>Exercise 4. Gaplarni davom ettiring.</p>
+<ol>
+<li>I enjoy ...</li>
+<li>I want to ...</li>
+<li>I decided to ...</li>
+<li>I avoid ...</li>
+<li>I hope to ...</li>
+</ol>
+</div>
+
+</section>
+
+<!-- VOCABULARY -->
+
+<section class="section" id="vocabulary">
+<h2>3. VOCABULARY — 30 New Words</h2>
+<p class="section-intro">
+    Har bir so'zni talaffuzi va tarjimasi bilan o'rganing.
+    Ovoz tugmasi orqali talaffuzni eshitishingiz mumkin.
+</p>
+<div id="vocabularyList"></div>
+</section>
+
+<!-- LISTENING -->
+
+<section class="section" id="listening">
+<h2>4. LISTENING PRACTICE</h2>
+<p class="section-intro">
+    Har bir matnni avval tinglang. Keyin qayta tinglab,
+    mazmunini tushunishga harakat qiling.
+</p>
+
+<div class="audio-panel">
+<h3>Listening 1 — Learning English</h3>
+<p>Daraja: Pre-Intermediate</p>
+<button class="btn" onclick="speakText(listening1)">▶ Listen</button>
+<button class="btn btn-secondary" onclick="toggleTranscript('transcript1')">Show / Hide Transcript</button>
+<div class="transcript" id="transcript1">
+    My name is Daniel. I enjoy learning English because I want to travel
+    around the world. Every morning, I spend thirty minutes reading
+    English books. I also practice speaking with my friends.
+    Sometimes I find grammar difficult, but I never stop trying.
+    My goal is to speak English confidently.
+</div>
+</div>
+
+<div class="audio-panel">
+<h3>Listening 2 — My Future Plans</h3>
+<p>Daraja: Pre-Intermediate</p>
+<button class="btn" onclick="speakText(listening2)">▶ Listen</button>
+<button class="btn btn-secondary" onclick="toggleTranscript('transcript2')">Show / Hide Transcript</button>
+<div class="transcript" id="transcript2">
+    Anna has many plans for the future. She wants to become a teacher.
+    She enjoys helping children and teaching new things.
+    She decided to study hard because she hopes to enter university.
+    She knows that learning takes time, so she keeps practicing every day.
+    She also plans to improve her English.
+</div>
+</div>
+
+<h3>Listening Questions</h3>
+<div class="exercise">
+<p>1. Why does Daniel enjoy learning English?</p>
+<label><input type="radio" name="l1" value="a"> Because he wants to travel.</label>
+<label><input type="radio" name="l1" value="b"> Because he dislikes books.</label>
+<label><input type="radio" name="l1" value="c"> Because he wants to sleep.</label>
+</div>
+<div class="exercise">
+<p>2. How long does Daniel read English books every morning?</p>
+<label><input type="radio" name="l2" value="a"> Ten minutes.</label>
+<label><input type="radio" name="l2" value="b"> Thirty minutes.</label>
+<label><input type="radio" name="l2" value="c"> Two hours.</label>
+</div>
+<div class="exercise">
+<p>3. What does Anna want to become?</p>
+<label><input type="radio" name="l3" value="a"> A doctor.</label>
+<label><input type="radio" name="l3" value="b"> A teacher.</label>
+<label><input type="radio" name="l3" value="c"> A driver.</label>
+</div>
+<div class="exercise">
+<p>4. Why does Anna study hard?</p>
+<label><input type="radio" name="l4" value="a"> To enter university.</label>
+<label><input type="radio" name="l4" value="b"> To avoid her friends.</label>
+<label><input type="radio" name="l4" value="c"> To stop learning.</label>
+</div>
+<button class="btn" onclick="checkListening()">Check Listening</button>
+<div class="result-box" id="listeningResult"></div>
+</section>
+
+<!-- READING -->
+
+<section class="section" id="reading">
+<h2>5. READING — The Importance of Learning</h2>
+<p class="section-intro">
+    Matnni avval mustaqil o'qing. Yangi grammatik shakllarni topishga harakat qiling.
+</p>
+
+<div class="reading-text">
+<h3>Learning Every Day</h3>
+<p>
+Learning a new language is an interesting journey.
+Many people enjoy studying English because it helps them communicate
+with people from different countries.
+</p>
+<p>
+Some students prefer reading books, while others like watching videos.
+Both methods can help people improve their language skills.
+However, it is important to practice every day.
+</p>
+<p>
+When I started learning English, I found speaking difficult.
+I was afraid of making mistakes.
+Then I decided to practice with my friends.
+I started listening to English conversations and reading short stories.
+</p>
+<p>
+I hope to become a confident English speaker.
+I know that improving my language skills takes time.
+I will continue studying because I want to achieve my goals.
+</p>
+<p>
+Learning English is not always easy, but it is worth trying.
+The most important thing is to keep learning and never give up.
+</p>
+</div>
+
+<button class="btn" onclick="toggleTranslation()">Show / Hide Uzbek Translation</button>
+
+<div class="reading-translation" id="readingTranslation">
+<h3>O'rganish — har kungi jarayon</h3>
+<p>
+Yangi til o'rganish qiziqarli sayohatdir.
+Ko'p odamlar ingliz tilini o'rganishni yoqtirishadi,
+chunki bu ularga turli mamlakatlardagi odamlar bilan muloqot qilishga yordam beradi.
+</p>
+<p>
+Ba'zi o'quvchilar kitob o'qishni afzal ko'rishadi,
+boshqalari esa video tomosha qilishni yoqtirishadi.
+Har ikkala usul ham til ko'nikmalarini yaxshilashga yordam beradi.
+Biroq har kuni mashq qilish muhim.
+</p>
+<p>
+Men ingliz tilini o'rganishni boshlaganimda, gapirishni qiyin deb topdim.
+Xato qilishdan qo'rqardim.
+Keyin do'stlarim bilan mashq qilishga qaror qildim.
+Inglizcha suhbatlarni tinglashni va qisqa hikoyalar o'qishni boshladim.
+</p>
+<p>
+Men ingliz tilida ishonch bilan gapiradigan bo'lishga umid qilaman.
+Til ko'nikmalarimni yaxshilash vaqt talab qilishini bilaman.
+Maqsadlarimga erishishni xohlaganim uchun o'qishni davom ettiraman.
+</p>
+<p>
+Ingliz tilini o'rganish har doim ham oson emas,
+lekin bunga harakat qilish arziydi.
+Eng muhimi — o'rganishda davom etish va hech qachon taslim bo'lmaslik.
+</p>
+</div>
+
+<h3>Reading Comprehension</h3>
+<div class="exercise">
+<p>1. Why do many people enjoy studying English?</p>
+<label><input type="radio" name="r1" value="a"> It helps them communicate.</label>
+<label><input type="radio" name="r1" value="b"> It helps them sleep.</label>
+<label><input type="radio" name="r1" value="c"> It is always easy.</label>
+</div>
+<div class="exercise">
+<p>2. What do some students prefer?</p>
+<label><input type="radio" name="r2" value="a"> Reading books.</label>
+<label><input type="radio" name="r2" value="b"> Avoiding practice.</label>
+<label><input type="radio" name="r2" value="c"> Stopping learning.</label>
+</div>
+<div class="exercise">
+<p>3. What was difficult for the writer?</p>
+<label><input type="radio" name="r3" value="a"> Cooking.</label>
+<label><input type="radio" name="r3" value="b"> Speaking.</label>
+<label><input type="radio" name="r3" value="c"> Walking.</label>
+</div>
+<div class="exercise">
+<p>4. What did the writer decide to do?</p>
+<label><input type="radio" name="r4" value="a"> Practice with friends.</label>
+<label><input type="radio" name="r4" value="b"> Stop studying.</label>
+<label><input type="radio" name="r4" value="c"> Forget English.</label>
+</div>
+<div class="exercise">
+<p>5. What is the most important thing?</p>
+<label><input type="radio" name="r5" value="a"> Never practicing.</label>
+<label><input type="radio" name="r5" value="b"> Keeping learning.</label>
+<label><input type="radio" name="r5" value="c"> Avoiding books.</label>
+</div>
+<button class="btn" onclick="checkReading()">Check Reading</button>
+<div class="result-box" id="readingResult"></div>
+</section>
+
+<!-- WRITING -->
+
+<section class="section" id="writing">
+<h2>6. WRITING PRACTICE</h2>
+<p class="section-intro">
+    Bu bo'limda o'rgangan grammatikamizni yozma nutqda qo'llaymiz.
+    Javoblaringizni daftarga ham yozing.
+</p>
+
+<div class="homework-task">
+<h3>Task 1 — Complete the sentences</h3>
+<p>Gaplarni o'zingiz haqingizdagi ma'lumotlar bilan to'ldiring.</p>
+<ol>
+<li>I enjoy ...</li>
+<li>I want to ...</li>
+<li>I avoid ...</li>
+<li>I decided to ...</li>
+<li>I hope to ...</li>
+<li>I am interested in ...</li>
+<li>I plan to ...</li>
+<li>I don't mind ...</li>
+</ol>
+</div>
+
+<div class="homework-task">
+<h3>Task 2 — Translation</h3>
+<p>Quyidagi gaplarni ingliz tiliga tarjima qiling.</p>
+<ol>
+<li>Men ingliz tilini o'rganishni yaxshi ko'raman.</li>
+<li>Men har kuni mashq qilishga harakat qilaman.</li>
+<li>U kitob o'qishni tugatdi.</li>
+<li>Biz ertaga sayohat qilishni rejalashtiryapmiz.</li>
+<li>U menga yordam berishga va'da berdi.</li>
+<li>Men xato qilishdan qo'rqmayman.</li>
+<li>U chekishni tashladi.</li>
+<li>Men siz bilan uchrashishni kutyapman.</li>
+</ol>
+</div>
+
+<div class="homework-task">
+<h3>Task 3 — Write a paragraph</h3>
+<p>
+    Write 100–120 words about your English-learning journey.
+    Use at least five gerunds and five infinitives.
+</p>
+<p><b>Topic:</b> Why I Want to Learn English</p>
+<textarea id="writingAnswer" placeholder="Write your paragraph here..."></textarea>
+<button class="btn" onclick="saveWriting()">Save My Writing</button>
+<div id="writingFeedback" class="feedback"></div>
+</div>
+
+<div class="homework-task">
+<h3>Task 4 — Speaking Preparation</h3>
+<p>Quyidagi savollarga ingliz tilida og'zaki javob bering.</p>
+<ol>
+<li>What do you enjoy doing in your free time?</li>
+<li>Why do you want to learn English?</li>
+<li>Do you prefer reading or watching videos?</li>
+<li>What do you plan to do next year?</li>
+<li>What do you avoid doing?</li>
+</ol>
+<p class="word-uz">Javoblaringizni ovoz chiqarib ayting va imkon bo'lsa yozib oling.</p>
+</div>
+</section>
+
+<!-- TEST 1 -->
+
+<section class="section" id="test1">
+<h2>7. TEST 1 — Grammar Test</h2>
+<p class="section-intro">20 ta savol. Har bir savol uchun bitta javobni tanlang.</p>
+<div id="quiz1"></div>
+<button class="btn" onclick="submitQuiz(1)">Submit Test 1</button>
+<button class="btn btn-secondary" onclick="resetQuiz(1)">Restart</button>
+<div class="result-box" id="result1"></div>
+</section>
+
+<!-- TEST 2 -->
+
+<section class="section" id="test2">
+<h2>8. TEST 2 — Mixed Grammar Test</h2>
+<p class="section-intro">20 ta savol. Gerund, Infinitive va ularning ma'no farqlarini tekshiring.</p>
+<div id="quiz2"></div>
+<button class="btn" onclick="submitQuiz(2)">Submit Test 2</button>
+<button class="btn btn-secondary" onclick="resetQuiz(2)">Restart</button>
+<div class="result-box" id="result2"></div>
+</section>
+
+<!-- HOMEWORK -->
+
+<section class="section" id="homework">
+<h2>9. HOMEWORK — Lesson 15</h2>
+<p class="section-intro">
+    Uy vazifasi darsning eng muhim qismidir.
+    Barcha topshiriqlarni mustaqil bajaring.
+</p>
+
+<div class="motivation">
+<strong>Homework Rule</strong>
+<p>
+    Har bir topshiriqni bajaring, javoblaringizni daftarga yozing
+    va ingliz tilida mustaqil gap tuzishga harakat qiling.
+</p>
+</div>
+
+<div class="homework-task">
+<h3>Homework 1 — Grammar</h3>
+<p>Quyidagi topshiriqlarni bajaring:</p>
+<ol>
+<li>Gerund haqida 5 ta gap yozing.</li>
+<li>Infinitive haqida 5 ta gap yozing.</li>
+<li>Preposition + Gerund bilan 5 ta gap tuzing.</li>
+<li>Stop, remember, forget va try fe'llari bilan 8 ta gap yozing.</li>
+<li>Gerund va Infinitive farqini o'z so'zlaringiz bilan tushuntiring.</li>
+</ol>
+</div>
+
+<div class="homework-task">
+<h3>Homework 2 — Vocabulary</h3>
+<ol>
+<li>30 ta yangi so'zni daftarga yozing.</li>
+<li>Har bir so'zning o'zbekcha tarjimasini yozing.</li>
+<li>Har bir so'z bilan bittadan gap tuzing.</li>
+<li>So'zlarni ovoz chiqarib uch marta takrorlang.</li>
+<li>Yangi so'zlarni ertasi kuni qayta takrorlang.</li>
+</ol>
+</div>
+
+<div class="homework-task">
+<h3>Homework 3 — Reading</h3>
+<p>
+    Reading matnini yana bir marta o'qing.
+    Undan 10 ta yangi yoki muhim iborani ajrating.
+    Matnni o'zbek tilida qisqacha qayta hikoya qiling.
+</p>
+</div>
+
+<div class="homework-task">
+<h3>Homework 4 — Listening</h3>
+<ol>
+<li>Listening 1 ni uch marta tinglang.</li>
+<li>Listening 2 ni uch marta tinglang.</li>
+<li>Har ikkala matndan 5 tadan gapni daftarga yozing.</li>
+<li>Gaplarni ovoz chiqarib takrorlang.</li>
+<li>Matnlarning mazmunini ingliz tilida aytib bering.</li>
+</ol>
+</div>
+
+<div class="homework-task">
+<h3>Homework 5 — Writing</h3>
+<p><b>Topic:</b> My Hobbies and Future Plans</p>
+<p>
+    120–150 so'zdan iborat matn yozing.
+    Unda kamida 5 ta Gerund va 5 ta Infinitive ishlating.
+</p>
+</div>
+
+<div class="homework-task">
+<h3>Homework 6 — Speaking</h3>
+<p>
+    "My English Learning Journey" mavzusida 2 daqiqa gapiring.
+    Quyidagi grammatik shakllardan foydalaning:
+</p>
+<ul>
+<li>I enjoy learning...</li>
+<li>I want to become...</li>
+<li>I decided to...</li>
+<li>I keep practicing...</li>
+<li>I hope to...</li>
+<li>I avoid making...</li>
+</ul>
+</div>
+
+<div class="homework-task">
+<h3>Homework Checklist</h3>
+<div id="homeworkChecklist">
+<label class="check-row"><input type="checkbox" onchange="saveChecklist()"> Grammar mashqlari bajarildi</label>
+<label class="check-row"><input type="checkbox" onchange="saveChecklist()"> 30 ta yangi so'z yozildi</label>
+<label class="check-row"><input type="checkbox" onchange="saveChecklist()"> Reading bajarildi</label>
+<label class="check-row"><input type="checkbox" onchange="saveChecklist()"> Listening bajarildi</label>
+<label class="check-row"><input type="checkbox" onchange="saveChecklist()"> Writing bajarildi</label>
+<label class="check-row"><input type="checkbox" onchange="saveChecklist()"> Speaking bajarildi</label>
+<label class="check-row"><input type="checkbox" onchange="saveChecklist()"> Testlar bajarildi</label>
+</div>
+<p id="homeworkProgress" class="feedback"></p>
+</div>
+
+<div class="motivation">
+<strong>🌟 Keep Going!</strong>
+<p>
+    You are not learning English in one day.
+    You are building a skill that can change your future.
+</p>
+<p>
+    Bugun o'rganganlaringizni ertaga takrorlang.
+    Har bir kichik qadam katta natijaga olib boradi!
+</p>
+</div>
+
+</section>
+
+<section class="section">
+<h2>10. LESSON COMPLETION</h2>
+<p>
+    Darsni tugatganingizdan so'ng quyidagi tugmani bosing.
+    Bu tugma dars tugaganini qurilmangiz xotirasida saqlaydi.
+</p>
+<button class="btn btn-success" onclick="completeLesson()">Complete Lesson 15 ✓</button>
+<div id="completionMessage" class="result-box"></div>
+</section>
+
+</main>
+
+<footer>
+    <h3>ENGLISH UP</h3>
+    <p>Learn today. Succeed tomorrow.</p>
+    <p>Pre-Intermediate — Lesson 15</p>
+</footer>
+
+<script>
+/* =========================================
+   ENGLISH UP — LESSON 15
+   GERUNDS & INFINITIVES
+========================================= */
+
+const listening1 = `My name is Daniel. I enjoy learning English because I want to travel around the world. Every morning, I spend thirty minutes reading English books. I also practice speaking with my friends. Sometimes I find grammar difficult, but I never stop trying. My goal is to speak English confidently.`;
+
+const listening2 = `Anna has many plans for the future. She wants to become a teacher. She enjoys helping children and teaching new things. She decided to study hard because she hopes to enter university. She knows that learning takes time, so she keeps practicing every day. She also plans to improve her English.`;
+
+/* THEME */
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    const dark = document.body.classList.contains("dark");
+    localStorage.setItem("euLesson15Theme", dark ? "dark" : "light");
+    document.getElementById("themeButton").textContent = dark ? "☀️" : "🌙";
+}
+
+if (localStorage.getItem("euLesson15Theme") === "dark") {
+    document.body.classList.add("dark");
+    document.getElementById("themeButton").textContent = "☀️";
+}
+
+/* TEXT TO SPEECH */
+
+function speakText(text) {
+    if (!("speechSynthesis" in window)) {
+        alert("Your browser does not support audio speech.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 0.82;
+    utterance.pitch = 1;
+
+    speechSynthesis.speak(utterance);
+}
+
+/* VOCABULARY */
+
+const vocabulary = [
+    ["Achieve","əˈtʃiːv","erishmoq"],
+    ["Improve","ɪmˈpruːv","yaxshilamoq"],
+    ["Practice","ˈpræk.tɪs","mashq qilmoq"],
+    ["Avoid","əˈvɔɪd","qochmoq"],
+    ["Enjoy","ɪnˈdʒɔɪ","zavqlanmoq"],
+    ["Decide","dɪˈsaɪd","qaror qilmoq"],
+    ["Promise","ˈprɒm.ɪs","va'da bermoq"],
+    ["Suggest","səˈdʒest","taklif qilmoq"],
+    ["Continue","kənˈtɪn.juː","davom ettirmoq"],
+    ["Remember","rɪˈmem.bər","eslamoq"],
+    ["Forget","fəˈɡet","unutmoq"],
+    ["Consider","kənˈsɪd.ər","ko'rib chiqmoq"],
+    ["Imagine","ɪˈmædʒ.ɪn","tasavvur qilmoq"],
+    ["Manage","ˈmæn.ɪdʒ","uddalamoq"],
+    ["Expect","ɪkˈspekt","kutmoq"],
+    ["Agree","əˈɡriː","rozi bo'lmoq"],
+    ["Refuse","rɪˈfjuːz","rad etmoq"],
+    ["Offer","ˈɒf.ər","taklif qilmoq"],
+    ["Choose","tʃuːz","tanlamoq"],
+    ["Hope","həʊp","umid qilmoq"],
+    ["Plan","plæn","rejalashtirmoq"],
+    ["Allow","əˈlaʊ","ruxsat bermoq"],
+    ["Admit","ədˈmɪt","tan olmoq"],
+    ["Finish","ˈfɪn.ɪʃ","tugatmoq"],
+    ["Mind","maɪnd","qarshi bo'lmoq"],
+    ["Keep","kiːp","davom ettirmoq"],
+    ["Learning","ˈlɜː.nɪŋ","o'rganish"],
+    ["Journey","ˈdʒɜː.ni","sayohat, jarayon"],
+    ["Confident","ˈkɒn.fɪ.dənt","o'ziga ishongan"],
+    ["Goal","ɡəʊl","maqsad"]
+];
+
+function renderVocabulary() {
+    const container = document.getElementById("vocabularyList");
+    container.innerHTML = "";
+
+    vocabulary.forEach((word,index) => {
+        const card = document.createElement("div");
+        card.className = "word-card";
+
+        const number = document.createElement("div");
+        number.className = "word-number";
+        number.textContent = index + 1;
+
+        const content = document.createElement("div");
+
+        const en = document.createElement("div");
+        en.className = "word-en";
+        en.textContent = word[0];
+
+        const pron = document.createElement("div");
+        pron.className = "word-pron";
+        pron.textContent = "/" + word[1] + "/";
+
+        const uz = document.createElement("div");
+        uz.className = "word-uz";
+        uz.textContent = word[2];
+
+        content.append(en,pron,uz);
+
+        const audio = document.createElement("button");
+        audio.className = "audio-btn";
+        audio.textContent = "🔊";
+        audio.type = "button";
+        audio.addEventListener("click",() => speakText(word[0]));
+
+        card.append(number,content,audio);
+        container.appendChild(card);
+    });
+}
+
+renderVocabulary();
+
+/* TRANSCRIPT */
+
+function toggleTranscript(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+function toggleTranslation() {
+    const el = document.getElementById("readingTranslation");
+    el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+/* LISTENING CHECK */
+
+function checkListening() {
+    const answers = {
+        l1:"a",
+        l2:"b",
+        l3:"b",
+        l4:"a"
+    };
+
+    let score = 0;
+
+    Object.keys(answers).forEach(name => {
+        const selected = document.querySelector(
+            'input[name="' + name + '"]:checked'
+        );
+
+        if (selected && selected.value === answers[name]) {
+            score++;
+        }
+    });
+
+    const result = document.getElementById("listeningResult");
+    result.style.display = "block";
+    result.innerHTML = `
+        <div class="result-number">${score}/4</div>
+        <p>Listening natijasi: ${score * 25}%</p>
+    `;
+}
+
+/* READING CHECK */
+
+function checkReading() {
+    const answers = {
+        r1:"a",
+        r2:"a",
+        r3:"b",
+        r4:"a",
+        r5:"b"
+    };
+
+    let score = 0;
+
+    Object.keys(answers).forEach(name => {
+        const selected = document.querySelector(
+            'input[name="' + name + '"]:checked'
+        );
+
+        if (selected && selected.value === answers[name]) {
+            score++;
+        }
+    });
+
+    const result = document.getElementById("readingResult");
+    result.style.display = "block";
+    result.innerHTML = `
+        <div class="result-number">${score}/5</div>
+        <p>Reading natijasi: ${score * 20}%</p>
+    `;
+}
+
+/* WRITING SAVE */
+
+function saveWriting() {
+    const value = document.getElementById("writingAnswer").value.trim();
+
+    if (!value) {
+        alert("Please write your paragraph first.");
+        return;
+    }
+
+    localStorage.setItem("euLesson15Writing",value);
+
+    document.getElementById("writingFeedback").textContent =
+        "Your writing has been saved on this device.";
+}
+
+const savedWriting = localStorage.getItem("euLesson15Writing");
+
+if (savedWriting) {
+    document.getElementById("writingAnswer").value = savedWriting;
+}
+
+/* QUIZ DATA */
+
+const quiz1 = [
+{
+q:"I enjoy ______ books.",
+o:["read","reading","to read","reads"],
+a:1,
+e:"Enjoy fe'lidan keyin Gerund ishlatiladi."
+},
+{
+q:"She wants ______ a doctor.",
+o:["becoming","become","to become","became"],
+a:2,
+e:"Want + to + V1."
+},
+{
+q:"He finished ______ his homework.",
+o:["doing","to do","do","does"],
+a:0,
+e:"Finish + Gerund."
+},
+{
+q:"They decided ______ home.",
+o:["staying","stay","to stay","stayed"],
+a:2,
+e:"Decide + to + V1."
+},
+{
+q:"I am interested in ______ English.",
+o:["learn","learning","to learn","learned"],
+a:1,
+e:"Predlog in dan keyin Gerund."
+},
+{
+q:"She avoids ______ mistakes.",
+o:["make","to make","making","made"],
+a:2,
+e:"Avoid + Gerund."
+},
+{
+q:"We hope ______ you soon.",
+o:["seeing","see","to see","saw"],
+a:2,
+e:"Hope + Infinitive."
+},
+{
+q:"Do you mind ______ the door?",
+o:["open","opening","to open","opened"],
+a:1,
+e:"Mind + Gerund."
+},
+{
+q:"He promised ______ me.",
+o:["helping","help","to help","helps"],
+a:2,
+e:"Promise + Infinitive."
+},
+{
+q:"I can ______ English.",
+o:["to speak","speaking","speak","spoke"],
+a:2,
+e:"Modal fe'ldan keyin bare infinitive."
+},
+{
+q:"She suggested ______ by bus.",
+o:["go","going","to go","goes"],
+a:1,
+e:"Suggest + Gerund."
+},
+{
+q:"I plan ______ abroad.",
+o:["travel","travelling","to travel","travelled"],
+a:2,
+e:"Plan + Infinitive."
+},
+{
+q:"He is good at ______ pictures.",
+o:["draw","drawing","to draw","drew"],
+a:1,
+e:"At predlogidan keyin Gerund."
+},
+{
+q:"They keep ______ English.",
+o:["practice","to practice","practicing","practiced"],
+a:2,
+e:"Keep + Gerund."
+},
+{
+q:"She agreed ______ early.",
+o:["coming","come","to come","came"],
+a:2,
+e:"Agree + Infinitive."
+},
+{
+q:"I look forward to ______ you.",
+o:["meet","meeting","to meet","met"],
+a:1,
+e:"Look forward to iborasida to predlog."
+},
+{
+q:"He finished ______ the room.",
+o:["clean","cleaning","to clean","cleans"],
+a:1,
+e:"Finish + Gerund."
+},
+{
+q:"We need ______ now.",
+o:["leaving","leave","to leave","left"],
+a:2,
+e:"Need + Infinitive."
+},
+{
+q:"She enjoys ______ music.",
+o:["listening to","to listen","listen","listened"],
+a:0,
+e:"Enjoy + Gerund."
+},
+{
+q:"You should ______ more.",
+o:["to study","studying","study","studied"],
+a:2,
+e:"Should + bare infinitive."
+}
+];
+
+const quiz2 = [
+{
+q:"He stopped ______ because it was unhealthy.",
+o:["to smoke","smoking","smoke","smoked"],
+a:1,
+e:"Stop + Gerund — odatni tashlash."
+},
+{
+q:"He stopped ______ some water.",
+o:["drinking","drink","to drink","drank"],
+a:2,
+e:"Stop + to infinitive — boshqa ish uchun to'xtash."
+},
+{
+q:"Remember ______ the door before you leave.",
+o:["locking","lock","to lock","locked"],
+a:2,
+e:"Remember + to infinitive — bajarishni unutmaslik."
+},
+{
+q:"I remember ______ him at school.",
+o:["meeting","to meet","meet","met"],
+a:0,
+e:"Remember + Gerund — o'tmishdagi voqeani eslash."
+},
+{
+q:"She forgot ______ the email.",
+o:["sending","send","to send","sent"],
+a:2,
+e:"Forget + to infinitive — yuborishni unutish."
+},
+{
+q:"I will never forget ______ my first teacher.",
+o:["to meet","meeting","meet","met"],
+a:1,
+e:"Forget + Gerund — o'tmishdagi uchrashuvni unutmaslik."
+},
+{
+q:"Try ______ more water if you feel tired.",
+o:["to drink","drinking","drink","drank"],
+a:1,
+e:"Try + Gerund — usulni sinab ko'rish."
+},
+{
+q:"I tried ______ the heavy box.",
+o:["lifting","to lift","lift","lifted"],
+a:1,
+e:"Try + Infinitive — harakat qilish."
+},
+{
+q:"She loves ______ books.",
+o:["read","reading","reads","to reading"],
+a:1,
+e:"Love dan keyin Gerund yoki Infinitive ishlatilishi mumkin."
+},
+{
+q:"They expect ______ tomorrow.",
+o:["arriving","arrive","to arrive","arrived"],
+a:2,
+e:"Expect + Infinitive."
+},
+{
+q:"He is afraid of ______ mistakes.",
+o:["making","make","to make","made"],
+a:0,
+e:"Of predlogidan keyin Gerund."
+},
+{
+q:"I decided ______ a new language.",
+o:["learning","learn","to learn","learned"],
+a:2,
+e:"Decide + Infinitive."
+},
+{
+q:"My parents let me ______ outside.",
+o:["to play","playing","play","played"],
+a:2,
+e:"Let + object + bare infinitive."
+},
+{
+q:"The teacher made us ______ the sentence.",
+o:["to repeat","repeating","repeat","repeated"],
+a:2,
+e:"Make + object + bare infinitive."
+},
+{
+q:"She suggested ______ earlier.",
+o:["to leave","leaving","leave","left"],
+a:1,
+e:"Suggest + Gerund."
+},
+{
+q:"I want ______ my English.",
+o:["improving","improve","to improve","improved"],
+a:2,
+e:"Want + Infinitive."
+},
+{
+q:"He is interested in ______ abroad.",
+o:["study","studying","to study","studied"],
+a:1,
+e:"In predlogidan keyin Gerund."
+},
+{
+q:"We agreed ______ together.",
+o:["working","work","to work","worked"],
+a:2,
+e:"Agree + Infinitive."
+},
+{
+q:"I enjoy ______ new people.",
+o:["meet","meeting","to meet","met"],
+a:1,
+e:"Enjoy + Gerund."
+},
+{
+q:"She managed ______ the problem.",
+o:["solving","solve","to solve","solved"],
+a:2,
+e:"Manage + Infinitive."
+}
+];
+
+/* QUIZ RENDER */
+
+function renderQuiz(number) {
+    const questions = number === 1 ? quiz1 : quiz2;
+    const container = document.getElementById("quiz" + number);
+
+    container.innerHTML = "";
+
+    questions.forEach((question,index) => {
+        const div = document.createElement("div");
+        div.className = "exercise";
+
+        const title = document.createElement("p");
+        title.textContent = (index + 1) + ". " + question.q;
+        div.appendChild(title);
+
+        question.o.forEach((option,optionIndex) => {
+            const label = document.createElement("label");
+
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = "quiz" + number + "_" + index;
+            input.value = optionIndex;
+
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(
+                String.fromCharCode(65 + optionIndex) + ") " + option
+            ));
+
+            div.appendChild(label);
+        });
+
+        const feedback = document.createElement("div");
+        feedback.className = "feedback";
+        feedback.id = "feedback" + number + "_" + index;
+        div.appendChild(feedback);
+
+        container.appendChild(div);
+    });
+}
+
+renderQuiz(1);
+renderQuiz(2);
+
+/* QUIZ SUBMISSION */
+
+function submitQuiz(number) {
+    const questions = number === 1 ? quiz1 : quiz2;
+
+    let score = 0;
+    let answered = 0;
+
+    questions.forEach((question,index) => {
+        const selected = document.querySelector(
+            'input[name="quiz' + number + '_' + index + '"]:checked'
+        );
+
+        const feedback = document.getElementById(
+            "feedback" + number + "_" + index
+        );
+
+        if (selected) {
+            answered++;
+
+            if (Number(selected.value) === question.a) {
+                score++;
+                feedback.className = "feedback correct";
+                feedback.textContent = "✓ Correct! " + question.e;
+            } else {
+                feedback.className = "feedback incorrect";
+                feedback.textContent =
+                    "✗ Correct answer: " +
+                    question.o[question.a] +
+                    ". " + question.e;
+            }
+        } else {
+            feedback.className = "feedback incorrect";
+            feedback.textContent =
+                "Not answered. Correct answer: " +
+                question.o[question.a] +
+                ". " + question.e;
+        }
+    });
+
+    const percent = Math.round(score / questions.length * 100);
+    const result = document.getElementById("result" + number);
+
+    result.style.display = "block";
+
+    let message = "";
+
+    if (percent >= 90) {
+        message = "Excellent! Ajoyib natija!";
+    } else if (percent >= 80) {
+        message = "Very good! Juda yaxshi!";
+    } else if (percent >= 60) {
+        message = "Good effort! Yana mashq qiling.";
+    } else {
+        message = "Mavzuni qayta takrorlang va yana urinib ko'ring.";
+    }
+
+    result.innerHTML = `
+        <div class="result-number">${score}/${questions.length}</div>
+        <h3>${percent}%</h3>
+        <p>${message}</p>
+        <p>Answered: ${answered}/${questions.length}</p>
+    `;
+
+    localStorage.setItem(
+        "euLesson15Test" + number,
+        JSON.stringify({score,percent})
+    );
+
+    updateProgress();
+}
+
+/* QUIZ RESET */
+
+function resetQuiz(number) {
+    if (!confirm("Testni qaytadan boshlaysizmi?")) {
+        return;
+    }
+
+    renderQuiz(number);
+
+    const result = document.getElementById("result" + number);
+    result.style.display = "none";
+
+    localStorage.removeItem("euLesson15Test" + number);
+    updateProgress();
+}
+
+/* HOMEWORK CHECKLIST */
+
+function saveChecklist() {
+    const checks = document.querySelectorAll(
+        "#homeworkChecklist input[type='checkbox']"
+    );
+
+    const values = Array.from(checks).map(item => item.checked);
+
+    localStorage.setItem(
+        "euLesson15Homework",
+        JSON.stringify(values)
+    );
+
+    const done = values.filter(Boolean).length;
+
+    document.getElementById("homeworkProgress").textContent =
+        "Completed: " + done + "/" + values.length;
+
+    updateProgress();
+}
+
+function loadChecklist() {
+    const saved = localStorage.getItem("euLesson15Homework");
+
+    if (!saved) return;
+
+    try {
+        const values = JSON.parse(saved);
+
+        const checks = document.querySelectorAll(
+            "#homeworkChecklist input[type='checkbox']"
+        );
+
+        checks.forEach((item,index) => {
+            item.checked = Boolean(values[index]);
+        });
+
+        const done = values.filter(Boolean).length;
+
+        document.getElementById("homeworkProgress").textContent =
+            "Completed: " + done + "/" + values.length;
+    } catch(error) {
+        console.error("Homework data error",error);
+    }
+}
+
+loadChecklist();
+
+/* PROGRESS */
+
+function updateProgress() {
+    let completed = 0;
+    const total = 7;
+
+    if (localStorage.getItem("euLesson15Test1")) completed++;
+    if (localStorage.getItem("euLesson15Test2")) completed++;
+
+    const homework = localStorage.getItem("euLesson15Homework");
+
+    if (homework) {
+        try {
+            const values = JSON.parse(homework);
+            if (values.every(Boolean)) completed++;
+        } catch(error) {}
+    }
+
+    if (localStorage.getItem("euLesson15Writing")) completed++;
+
+    const listening = document.getElementById("listeningResult");
+    if (listening && listening.style.display === "block") completed++;
+
+    const reading = document.getElementById("readingResult");
+    if (reading && reading.style.display === "block") completed++;
+
+    if (localStorage.getItem("euLesson15Completed") === "true") {
+        completed = total;
+    }
+
+    const percent = Math.round(completed / total * 100);
+
+    document.getElementById("progressFill").style.width = percent + "%";
+    document.getElementById("progressText").textContent = percent + "%";
+}
+
+/* LESSON COMPLETION */
+
+function completeLesson() {
+    const test1 = localStorage.getItem("euLesson15Test1");
+    const test2 = localStorage.getItem("euLesson15Test2");
+
+    if (!test1 || !test2) {
+        alert("Avval ikkala testni ham bajaring.");
+        return;
+    }
+
+    const first = JSON.parse(test1);
+    const second = JSON.parse(test2);
+
+    if (first.percent < 80 || second.percent < 80) {
+        alert("Har ikkala testdan kamida 80% natija olish kerak.");
+        return;
+    }
+
+    localStorage.setItem("euLesson15Completed","true");
+
+    const box = document.getElementById("completionMessage");
+    box.style.display = "block";
+
+    box.innerHTML = `
+        <div class="result-number">🎉</div>
+        <h3>Lesson 15 Completed!</h3>
+        <p>Congratulations! Siz ikkala testdan ham muvaffaqiyatli o'tdingiz.</p>
+        <p>Keep learning and never give up!</p>
+    `;
+
+    updateProgress();
+}
+
+/* INITIALIZE */
+
+updateProgress();
+
+/* SAVE SCROLL PROGRESS */
+
+document.querySelectorAll(".nav-menu a").forEach(link => {
+    link.addEventListener("click",() => {
+        const target = document.querySelector(link.getAttribute("href"));
+
+        if (target) {
+            setTimeout(() => {
+                target.scrollIntoView({behavior:"smooth"});
+            },50);
+        }
+    });
+});
+
+/* STOP AUDIO WHEN LEAVING */
+
+window.addEventListener("pagehide",() => {
+    if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+    }
+});
+
+/* END OF LESSON 15 */
+
+</script>
+
+</body>
+</html>
+
