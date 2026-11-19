@@ -1,1 +1,2966 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 19 — Reported Speech | English Up</title>
 
+<style>
+:root {
+  --primary:#7047eb;
+  --primary-dark:#5632c7;
+  --primary-light:#eee9ff;
+  --bg:#f7f6fc;
+  --card:#ffffff;
+  --text:#24213a;
+  --muted:#77738c;
+  --border:#e8e4f2;
+  --success:#168653;
+  --success-bg:#e7f8ef;
+  --warning:#a65b00;
+  --warning-bg:#fff4df;
+  --danger:#c43c51;
+  --shadow:0 8px 28px rgba(48,35,91,.08);
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+button,
+input,
+textarea {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+.topbar {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:12px 16px;
+}
+
+.topbar-inner {
+  max-width:1050px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.brand {
+  color:var(--primary);
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.top-actions {
+  display:flex;
+  gap:8px;
+}
+
+.small-btn {
+  border:0;
+  border-radius:10px;
+  padding:8px 12px;
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  font-weight:700;
+}
+
+.container {
+  max-width:1050px;
+  margin:24px auto;
+  padding:0 15px 60px;
+}
+
+.hero {
+  background:linear-gradient(135deg,#7047eb,#9678f5);
+  color:white;
+  padding:30px 22px;
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+
+.hero::after {
+  content:"19";
+  position:absolute;
+  right:12px;
+  bottom:-55px;
+  font-size:190px;
+  font-weight:900;
+  opacity:.09;
+}
+
+.eyebrow {
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  opacity:.9;
+}
+
+.hero h1 {
+  font-size:clamp(28px,6vw,43px);
+  line-height:1.2;
+  margin:10px 0;
+}
+
+.hero p {
+  max-width:700px;
+  font-size:15px;
+}
+
+.hero-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:20px;
+}
+
+.hero-meta span {
+  background:rgba(255,255,255,.17);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:30px;
+  padding:6px 12px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.notebook-alert {
+  margin:20px 0;
+  background:var(--warning-bg);
+  border:2px solid #f0c779;
+  border-left:7px solid #e69a20;
+  border-radius:15px;
+  padding:18px;
+}
+
+.notebook-alert h2 {
+  color:var(--warning);
+  font-size:19px;
+  margin-bottom:7px;
+}
+
+.notebook-alert p {
+  font-weight:600;
+}
+
+.notebook-alert ul {
+  padding-left:22px;
+  margin-top:8px;
+}
+
+.notebook-alert li {
+  margin:4px 0;
+}
+
+.progress-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  margin:18px 0;
+}
+
+.progress-top {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-weight:800;
+  margin-bottom:9px;
+}
+
+.progress-track {
+  height:10px;
+  border-radius:20px;
+  background:#ece9f5;
+  overflow:hidden;
+}
+
+.progress-fill {
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#7047eb,#a28bfa);
+  transition:width .3s;
+}
+
+.nav-list {
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:5px 0 15px;
+  margin:10px 0;
+}
+
+.nav-list a {
+  flex-shrink:0;
+  text-decoration:none;
+  color:var(--primary-dark);
+  background:white;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.section {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  margin:18px 0;
+  box-shadow:var(--shadow);
+}
+
+.section-heading {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:17px;
+}
+
+.section-number {
+  flex:0 0 38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  border-radius:12px;
+  font-weight:900;
+}
+
+.section-heading h2 {
+  font-size:22px;
+  line-height:1.3;
+}
+
+.section-heading p {
+  color:var(--muted);
+  font-size:13px;
+}
+
+.subheading {
+  color:var(--primary-dark);
+  font-size:18px;
+  margin:20px 0 9px;
+}
+
+.lesson-text {
+  margin:10px 0;
+}
+
+.note {
+  padding:13px 15px;
+  background:#f2efff;
+  border-left:4px solid var(--primary);
+  border-radius:10px;
+  margin:13px 0;
+}
+
+.success-note {
+  padding:13px 15px;
+  background:var(--success-bg);
+  border-left:4px solid var(--success);
+  border-radius:10px;
+  margin:13px 0;
+}
+
+.warning-note {
+  padding:13px 15px;
+  background:var(--warning-bg);
+  border-left:4px solid #e69a20;
+  border-radius:10px;
+  margin:13px 0;
+}
+
+.formula {
+  padding:15px;
+  background:#292342;
+  color:#fff;
+  border-radius:12px;
+  margin:12px 0;
+  text-align:center;
+  font-weight:800;
+  letter-spacing:.2px;
+}
+
+.example {
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:13px;
+  margin:10px 0;
+  background:#fff;
+}
+
+.example-en {
+  font-weight:800;
+  color:#28213f;
+}
+
+.example-uz {
+  color:var(--muted);
+  font-size:14px;
+  margin-top:3px;
+}
+
+.audio-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border:0;
+  border-radius:9px;
+  padding:6px 10px;
+  margin-top:8px;
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  font-size:12px;
+  font-weight:800;
+}
+
+.audio-btn:active {
+  transform:scale(.97);
+}
+
+.word-card {
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:13px;
+  margin:10px 0;
+  background:#fff;
+}
+
+.word-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.word-en {
+  font-size:18px;
+  font-weight:900;
+  color:var(--primary-dark);
+}
+
+.word-pron {
+  font-size:13px;
+  color:var(--muted);
+}
+
+.word-uz {
+  font-weight:700;
+  margin-top:3px;
+}
+
+.word-example {
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px dashed var(--border);
+  font-size:14px;
+}
+
+.word-example strong {
+  display:block;
+  color:#30284c;
+}
+
+.word-example small {
+  color:var(--muted);
+}
+
+.two-column {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.table-wrap {
+  overflow-x:auto;
+  margin:14px 0;
+}
+
+table {
+  border-collapse:collapse;
+  width:100%;
+  min-width:520px;
+}
+
+th,td {
+  border:1px solid var(--border);
+  padding:10px;
+  text-align:left;
+  font-size:14px;
+}
+
+th {
+  background:var(--primary-light);
+  color:var(--primary-dark);
+}
+
+.task-box {
+  background:#faf9ff;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:15px;
+  margin:13px 0;
+}
+
+.task-box h3 {
+  color:var(--primary-dark);
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.task-box ol,
+.task-box ul {
+  padding-left:22px;
+}
+
+.task-box li {
+  margin:7px 0;
+}
+
+.write-line {
+  display:block;
+  border-bottom:1px dashed #aaa3c0;
+  height:27px;
+  margin:5px 0;
+}
+
+.primary-btn {
+  border:0;
+  border-radius:11px;
+  background:var(--primary);
+  color:white;
+  padding:11px 17px;
+  font-weight:800;
+}
+
+.secondary-btn {
+  border:1px solid var(--border);
+  border-radius:11px;
+  background:white;
+  color:var(--primary-dark);
+  padding:10px 15px;
+  font-weight:800;
+}
+
+.quiz-question {
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:15px;
+  margin:13px 0;
+}
+
+.quiz-question p {
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.quiz-option {
+  display:block;
+  padding:9px 11px;
+  margin:6px 0;
+  background:#f7f5fc;
+  border:1px solid var(--border);
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.quiz-option input {
+  margin-right:8px;
+}
+
+.feedback {
+  margin-top:8px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.hidden {
+  display:none!important;
+}
+
+footer {
+  text-align:center;
+  color:var(--muted);
+  padding:25px 10px;
+  font-size:13px;
+}
+
+@media(max-width:650px) {
+  .container {
+    margin:14px auto;
+    padding:0 10px 40px;
+  }
+
+  .section {
+    padding:16px;
+  }
+
+  .section-heading h2 {
+    font-size:19px;
+  }
+
+  .two-column {
+    grid-template-columns:1fr;
+  }
+
+  .hero {
+    padding:25px 17px;
+  }
+
+  .hero::after {
+    font-size:130px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">ENGLISH UP</div>
+    <div class="top-actions">
+      <button class="small-btn" onclick="toggleTheme()">🌙 Theme</button>
+      <button class="small-btn" onclick="window.location.href='index.html'">← Back</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <div class="eyebrow">PRE-INTERMEDIATE • LESSON 19</div>
+  <h1>REPORTED SPEECH</h1>
+  <p>
+    Learn how to report what another person said, asked,
+    requested or told you. Bugun ingliz tilida birovning
+    gapini to‘g‘ri yetkazishni o‘rganamiz.
+  </p>
+  <div class="hero-meta">
+    <span>📘 Grammar</span>
+    <span>🔊 Pronunciation</span>
+    <span>🎧 Listening</span>
+    <span>🗣 Speaking</span>
+    <span>✍️ Writing</span>
+    <span>🎯 Practice</span>
+  </div>
+</section>
+
+<section class="notebook-alert">
+  <h2>✍️ DIQQAT! DAFTARGA YOZISH MAJBURIY!</h2>
+  <p>
+    Darsni shunchaki o‘qib chiqish yetarli emas.
+    Har bir muhim qoidani, formulani, yangi lug‘atni
+    va belgilangan misollarni daftaringga yozishing shart.
+  </p>
+  <ul>
+    <li>Har bir grammatika formulasini daftarga ko‘chir.</li>
+    <li>Har bir qoida uchun berilgan inglizcha misollarni yoz.</li>
+    <li>Yangi so‘zlarni tarjimasi va talaffuzi bilan yoz.</li>
+    <li>Har bir mashqni avval o‘zing bajar, keyin javobni tekshir.</li>
+    <li>Writing topshiriqlarini daftarda to‘liq bajar.</li>
+  </ul>
+  <p>
+    <strong>Qoidamiz:</strong> Daftarga yozilmagan bilim tez unutiladi.
+    Bugun faol o‘rganamiz!
+  </p>
+</section>
+
+<section class="progress-card">
+  <div class="progress-top">
+    <span>Lesson 19 progress</span>
+    <span id="progressPercent">0%</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <p class="word-pron" id="progressMessage">
+    Darsni boshlashga tayyormisan?
+  </p>
+</section>
+
+<nav class="nav-list">
+  <a href="#welcome">Start</a>
+  <a href="#objectives">Goals</a>
+  <a href="#grammar1">Grammar</a>
+  <a href="#vocabulary">Vocabulary</a>
+  <a href="#reading">Reading</a>
+  <a href="#listening">Listening</a>
+  <a href="#speaking">Speaking</a>
+  <a href="#writing">Writing</a>
+  <a href="#practice">Practice</a>
+</nav>
+
+<section class="section" id="welcome">
+  <div class="section-heading">
+    <div class="section-number">01</div>
+    <div>
+      <h2>Welcome to Lesson 19!</h2>
+      <p>Salomlashuv va darsga tayyorgarlik</p>
+    </div>
+  </div>
+
+  <h3 class="subheading">Assalomu alaykum! Welcome back!</h3>
+  <p class="lesson-text">
+    Welcome back to English Up! Bugun yana bir muhim
+    bosqichga yetib keldik. Sen 19-darsga yetib kelganing
+    o‘zi katta mehnat va davomiylik natijasidir.
+  </p>
+
+  <div class="example">
+    <div class="example-en">You are making progress every day.</div>
+    <div class="example-uz">Sen har kuni rivojlanib boryapsan.</div>
+    <button class="audio-btn" onclick="speak('You are making progress every day.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Every lesson makes you stronger.</div>
+    <div class="example-uz">Har bir dars seni yanada kuchli qiladi.</div>
+    <button class="audio-btn" onclick="speak('Every lesson makes you stronger.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Do not stop learning English.</div>
+    <div class="example-uz">Ingliz tilini o‘rganishni to‘xtatma.</div>
+    <button class="audio-btn" onclick="speak('Do not stop learning English.')">🔊 Listen</button>
+  </div>
+
+  <div class="note">
+    <strong>Today's message:</strong>
+    You do not need to be perfect. You need to keep improving.
+    <br>
+    Mukammal bo‘lishing shart emas. Muhimi, rivojlanishda davom et.
+    <button class="audio-btn" onclick="speak('You do not need to be perfect. You need to keep improving.')">🔊 Listen</button>
+  </div>
+
+  <p class="lesson-text">
+    Bugungi mavzu kundalik suhbatlarda juda ko‘p ishlatiladi.
+    Do‘sting senga biror gap aytdi. Sen esa bu gapni boshqa
+    odamga yetkazmoqchisan. Ana shu vaziyatda Reported Speech
+    kerak bo‘ladi.
+  </p>
+</section>
+
+<section class="section" id="objectives">
+  <div class="section-heading">
+    <div class="section-number">02</div>
+    <div>
+      <h2>Learning Objectives</h2>
+      <p>Dars oxirida nimalarni bilishing kerak?</p>
+    </div>
+  </div>
+
+  <p>Bugungi dars yakunida sen quyidagilarni bajara olishing kerak:</p>
+
+  <div class="task-box">
+    <ul>
+      <li>Direct Speech va Reported Speech farqini tushuntirish.</li>
+      <li>Present, Past va Future zamonlaridagi o‘zgarishlarni qo‘llash.</li>
+      <li>Olmoshlar va vaqt ifodalarini to‘g‘ri almashtirish.</li>
+      <li>Darak gaplarni o‘zlashtirma gapga aylantirish.</li>
+      <li>So‘roq gaplarni Reported Questions shaklida aytish.</li>
+      <li>Buyruq va iltimoslarni boshqalarga yetkazish.</li>
+      <li>Say va Tell fe'llarini farqlash.</li>
+      <li>Yangi lug‘at yordamida mustaqil gaplar tuzish.</li>
+    </ul>
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong>
+    “By the end of this lesson, I can use reported speech
+    to report statements, questions and commands.”
+    <br>
+    Tarjimasi: “Bu dars oxirida men darak gaplar, savollar
+    va buyruqlarni o‘zlashtirma gapda yetkaza olaman.”
+    <button class="audio-btn" onclick="speak('By the end of this lesson, I can use reported speech to report statements, questions and commands.')">🔊 Listen</button>
+  </div>
+</section>
+
+<section class="section" id="grammar1">
+  <div class="section-heading">
+    <div class="section-number">03</div>
+    <div>
+      <h2>Grammar 1 — Direct Speech</h2>
+      <p>Ko‘chirma gap nima?</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Direct Speech — bu odamning aynan o‘z so‘zlarini
+    o‘zgartirmasdan keltirishdir. Odatda qo‘shtirnoq
+    ichida yoziladi.
+  </p>
+
+  <div class="formula">
+    Subject + say/says + "exact words"
+  </div>
+
+  <div class="example">
+    <div class="example-en">Tom said, "I am tired."</div>
+    <div class="example-uz">Tom: “Men charchadim”, dedi.</div>
+    <button class="audio-btn" onclick="speak('Tom said, I am tired.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Anna said, "I like English."</div>
+    <div class="example-uz">Anna: “Men ingliz tilini yoqtiraman”, dedi.</div>
+    <button class="audio-btn" onclick="speak('Anna said, I like English.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">David said, "I live in London."</div>
+    <div class="example-uz">David: “Men Londonda yashayman”, dedi.</div>
+    <button class="audio-btn" onclick="speak('David said, I live in London.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="subheading">Direct Speech belgilarini eslab qol</h3>
+  <ul>
+    <li>Odamning aynan aytgan so‘zlari ishlatiladi.</li>
+    <li>Ko‘pincha qo‘shtirnoq ishlatiladi.</li>
+    <li>Gapning zamoni o‘zgartirilmaydi.</li>
+  </ul>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Direct Speech ta'rifini
+    va yuqoridagi uchta misolni ko‘chir.
+  </div>
+</section>
+
+<section class="section" id="grammar2">
+  <div class="section-heading">
+    <div class="section-number">04</div>
+    <div>
+      <h2>Grammar 2 — Reported Speech</h2>
+      <p>O‘zlashtirma gap nima?</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Reported Speech — boshqa odam aytgan gapni mazmunini
+    saqlagan holda o‘z so‘zimiz bilan yetkazishdir.
+    Bunda qo‘shtirnoq olib tashlanadi va ko‘pincha zamon
+    bir pog‘ona orqaga o‘zgaradi.
+  </p>
+
+  <div class="formula">
+    Subject + said (that) + reported clause
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: Tom said, "I am tired."</div>
+    <div class="example-uz">Tom: “Men charchadim”, dedi.</div>
+    <button class="audio-btn" onclick="speak('Tom said, I am tired.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: Tom said that he was tired.</div>
+    <div class="example-uz">Tom charchaganini aytdi.</div>
+    <button class="audio-btn" onclick="speak('Tom said that he was tired.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: Anna said, "I like English."</div>
+    <div class="example-uz">Anna: “Men ingliz tilini yoqtiraman”, dedi.</div>
+    <button class="audio-btn" onclick="speak('Anna said, I like English.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: Anna said that she liked English.</div>
+    <div class="example-uz">Anna ingliz tilini yoqtirishini aytdi.</div>
+    <button class="audio-btn" onclick="speak('Anna said that she liked English.')">🔊 Reported</button>
+  </div>
+
+  <div class="note">
+    <strong>That</strong> so‘zi ko‘pincha ishlatiladi,
+    lekin darak gaplarda uni tushirib qoldirish ham mumkin.
+    <br>
+    Tom said that he was tired.
+    <br>
+    Tom said he was tired.
+    <br>
+    Ikkala gap ham grammatik jihatdan to‘g‘ri.
+  </div>
+
+  <h3 class="subheading">Direct va Reported Speech farqi</h3>
+
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Direct Speech</th>
+        <th>Reported Speech</th>
+      </tr>
+      <tr>
+        <td>"I am happy."</td>
+        <td>He said he was happy.</td>
+      </tr>
+      <tr>
+        <td>"I work here."</td>
+        <td>She said she worked there.</td>
+      </tr>
+      <tr>
+        <td>"I have a car."</td>
+        <td>He said he had a car.</td>
+      </tr>
+      <tr>
+        <td>"I will come."</td>
+        <td>She said she would come.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Direct Speech va Reported
+    Speech ta'riflarini, formulani va jadvaldagi to‘rtta
+    misolni yozib ol.
+  </div>
+</section>
+
+<section class="section" id="grammar3">
+  <div class="section-heading">
+    <div class="section-number">05</div>
+    <div>
+      <h2>Grammar 3 — Tense Changes</h2>
+      <p>Zamonlarning o‘zgarishi</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Agar reporting verb o‘tgan zamonda bo‘lsa
+    (said, told, asked), ko‘pincha ichki gapning zamoni
+    bir pog‘ona orqaga suriladi. Bu hodisa
+    <strong>backshift</strong> deb ataladi.
+  </p>
+
+  <h3 class="subheading">1. Present Simple → Past Simple</h3>
+
+  <div class="formula">
+    am / is / are → was / were
+    <br>
+    work / works → worked
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I work every day."</div>
+    <div class="example-uz">“Men har kuni ishlayman.”</div>
+    <button class="audio-btn" onclick="speak('I work every day.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that he worked every day.</div>
+    <div class="example-uz">U har kuni ishlashini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that he worked every day.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "She is busy."</div>
+    <div class="example-uz">“U band.”</div>
+    <button class="audio-btn" onclick="speak('She is busy.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that she was busy.</div>
+    <div class="example-uz">U uning band ekanini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that she was busy.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="subheading">2. Present Continuous → Past Continuous</h3>
+
+  <div class="formula">
+    am / is / are + verb-ing
+    <br>
+    ↓
+    <br>
+    was / were + verb-ing
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I am studying English."</div>
+    <div class="example-uz">“Men ingliz tilini o‘rganyapman.”</div>
+    <button class="audio-btn" onclick="speak('I am studying English.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: She said that she was studying English.</div>
+    <div class="example-uz">U ingliz tilini o‘rganayotganini aytdi.</div>
+    <button class="audio-btn" onclick="speak('She said that she was studying English.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "They are waiting for us."</div>
+    <div class="example-uz">“Ular bizni kutishyapti.”</div>
+    <button class="audio-btn" onclick="speak('They are waiting for us.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that they were waiting for us.</div>
+    <div class="example-uz">U ularning bizni kutayotganini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that they were waiting for us.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="subheading">3. Present Perfect → Past Perfect</h3>
+
+  <div class="formula">
+    have / has + V3
+    <br>
+    ↓
+    <br>
+    had + V3
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I have finished my work."</div>
+    <div class="example-uz">“Men ishimni tugatdim.”</div>
+    <button class="audio-btn" onclick="speak('I have finished my work.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that he had finished his work.</div>
+    <div class="example-uz">U ishini tugatganini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that he had finished his work.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "She has lost her keys."</div>
+    <div class="example-uz">“U kalitlarini yo‘qotib qo‘ydi.”</div>
+    <button class="audio-btn" onclick="speak('She has lost her keys.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that she had lost her keys.</div>
+    <div class="example-uz">U uning kalitlarini yo‘qotib qo‘yganini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that she had lost her keys.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="subheading">4. Past Simple → Past Perfect</h3>
+
+  <div class="formula">
+    V2 → had + V3
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I bought a new phone."</div>
+    <div class="example-uz">“Men yangi telefon sotib oldim.”</div>
+    <button class="audio-btn" onclick="speak('I bought a new phone.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that he had bought a new phone.</div>
+    <div class="example-uz">U yangi telefon sotib olganini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that he had bought a new phone.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "We visited our uncle."</div>
+    <div class="example-uz">“Biz amakimiznikiga bordik.”</div>
+    <button class="audio-btn" onclick="speak('We visited our uncle.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: They said that they had visited their uncle.</div>
+    <div class="example-uz">Ular amakilarinikiga borganlarini aytishdi.</div>
+    <button class="audio-btn" onclick="speak('They said that they had visited their uncle.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="subheading">5. will → would</h3>
+
+  <div class="formula">
+    will + V1 → would + V1
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I will call you."</div>
+    <div class="example-uz">“Men senga qo‘ng‘iroq qilaman.”</div>
+    <button class="audio-btn" onclick="speak('I will call you.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that he would call me.</div>
+    <div class="example-uz">U menga qo‘ng‘iroq qilishini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that he would call me.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "We will help you."</div>
+    <div class="example-uz">“Biz senga yordam beramiz.”</div>
+    <button class="audio-btn" onclick="speak('We will help you.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: They said that they would help me.</div>
+    <div class="example-uz">Ular menga yordam berishlarini aytishdi.</div>
+    <button class="audio-btn" onclick="speak('They said that they would help me.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="subheading">6. Modal verbs o‘zgarishi</h3>
+
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Direct Speech</th>
+        <th>Reported Speech</th>
+      </tr>
+      <tr><td>can</td><td>could</td></tr>
+      <tr><td>may</td><td>might</td></tr>
+      <tr><td>will</td><td>would</td></tr>
+      <tr><td>shall</td><td>should / would</td></tr>
+      <tr><td>must</td><td>had to (majburiyat ma'nosida)</td></tr>
+      <tr><td>could</td><td>could (odatda o‘zgarmaydi)</td></tr>
+      <tr><td>should</td><td>should (odatda o‘zgarmaydi)</td></tr>
+      <tr><td>would</td><td>would (odatda o‘zgarmaydi)</td></tr>
+    </table>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I can swim."</div>
+    <div class="example-uz">“Men suza olaman.”</div>
+    <button class="audio-btn" onclick="speak('I can swim.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that he could swim.</div>
+    <div class="example-uz">U suza olishini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that he could swim.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "You must study."</div>
+    <div class="example-uz">“Sen o‘qishing shart.”</div>
+    <button class="audio-btn" onclick="speak('You must study.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that I had to study.</div>
+    <div class="example-uz">U mening o‘qishim shartligini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that I had to study.')">🔊 Listen</button>
+  </div>
+
+  <div class="success-note">
+    <strong>Yodda tut!</strong> Backshift har doim ham shart emas.
+    Agar gap hanuz haqiqat bo‘lsa yoki reporting verb hozirgi
+    zamonda bo‘lsa, zamon o‘zgarmasligi mumkin.
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "The Earth goes around the Sun."</div>
+    <div class="example-uz">“Yer Quyosh atrofida aylanadi.”</div>
+    <button class="audio-btn" onclick="speak('The Earth goes around the Sun.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: The teacher said that the Earth goes around the Sun.</div>
+    <div class="example-uz">O‘qituvchi Yer Quyosh atrofida aylanishini aytdi.</div>
+    <button class="audio-btn" onclick="speak('The teacher said that the Earth goes around the Sun.')">🔊 Listen</button>
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Barcha zamon o‘zgarishlari
+    jadvalini va har bir zamondan kamida bittadan misolni ko‘chir.
+  </div>
+</section>
+
+<section class="section" id="grammar4">
+  <div class="section-heading">
+    <div class="section-number">06</div>
+    <div>
+      <h2>Grammar 4 — Pronoun Changes</h2>
+      <p>Olmoshlarning o‘zgarishi</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Reported Speech ishlatilganda olmoshlar gapning ma'nosiga
+    qarab o‘zgaradi. Kim gapirganini va kim haqida gap
+    ketayotganini aniqlash juda muhim.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Direct</th>
+        <th>Reported (misolga qarab)</th>
+      </tr>
+      <tr><td>I</td><td>he / she</td></tr>
+      <tr><td>we</td><td>they</td></tr>
+      <tr><td>my</td><td>his / her</td></tr>
+      <tr><td>our</td><td>their</td></tr>
+      <tr><td>me</td><td>him / her</td></tr>
+      <tr><td>us</td><td>them</td></tr>
+      <tr><td>you</td><td>I / we / he / she / they</td></tr>
+    </table>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: Mary said, "I love my family."</div>
+    <div class="example-uz">Mary: “Men oilamni yaxshi ko‘raman”, dedi.</div>
+    <button class="audio-btn" onclick="speak('Mary said, I love my family.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: Mary said that she loved her family.</div>
+    <div class="example-uz">Mary oilasini yaxshi ko‘rishini aytdi.</div>
+    <button class="audio-btn" onclick="speak('Mary said that she loved her family.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: John said, "We are ready."</div>
+    <div class="example-uz">John: “Biz tayyormiz”, dedi.</div>
+    <button class="audio-btn" onclick="speak('John said, We are ready.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: John said that they were ready.</div>
+    <div class="example-uz">John ularning tayyor ekanini aytdi.</div>
+    <button class="audio-btn" onclick="speak('John said that they were ready.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: Peter said to me, "You are helpful."</div>
+    <div class="example-uz">Peter menga: “Sen yordam beruvchisan”, dedi.</div>
+    <button class="audio-btn" onclick="speak('Peter said to me, You are helpful.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: Peter told me that I was helpful.</div>
+    <div class="example-uz">Peter menga yordam beruvchi ekanimni aytdi.</div>
+    <button class="audio-btn" onclick="speak('Peter told me that I was helpful.')">🔊 Reported</button>
+  </div>
+
+  <div class="note">
+    Olmoshlarni mexanik tarzda almashtirma.
+    Har doim gapiruvchi va tinglovchini aniqlab ol.
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Jadvalni va uchta Direct /
+    Reported misol juftligini yoz. Keyin “I”, “my”, “we”
+    olmoshlari qatnashgan o‘zingning uchta gapingni tuz.
+  </div>
+</section>
+
+<section class="section" id="grammar5">
+  <div class="section-heading">
+    <div class="section-number">07</div>
+    <div>
+      <h2>Grammar 5 — Time and Place Changes</h2>
+      <p>Vaqt va joy ifodalarining o‘zgarishi</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Gap boshqa vaqtda yoki boshqa joyda yetkazilayotgan bo‘lsa,
+    ayrim vaqt va joy so‘zlari ham o‘zgarishi mumkin.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Direct Speech</th>
+        <th>Reported Speech</th>
+      </tr>
+      <tr><td>now</td><td>then</td></tr>
+      <tr><td>today</td><td>that day</td></tr>
+      <tr><td>yesterday</td><td>the day before</td></tr>
+      <tr><td>tomorrow</td><td>the next day / the following day</td></tr>
+      <tr><td>last week</td><td>the week before</td></tr>
+      <tr><td>next week</td><td>the following week</td></tr>
+      <tr><td>ago</td><td>before</td></tr>
+      <tr><td>here</td><td>there</td></tr>
+      <tr><td>this</td><td>that</td></tr>
+      <tr><td>these</td><td>those</td></tr>
+    </table>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I am busy now."</div>
+    <div class="example-uz">“Men hozir bandman.”</div>
+    <button class="audio-btn" onclick="speak('I am busy now.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: She said that she was busy then.</div>
+    <div class="example-uz">U o‘sha paytda band ekanini aytdi.</div>
+    <button class="audio-btn" onclick="speak('She said that she was busy then.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "I will see you tomorrow."</div>
+    <div class="example-uz">“Men seni ertaga ko‘raman.”</div>
+    <button class="audio-btn" onclick="speak('I will see you tomorrow.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that he would see me the next day.</div>
+    <div class="example-uz">U meni keyingi kuni ko‘rishini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that he would see me the next day.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "We came here yesterday."</div>
+    <div class="example-uz">“Biz kecha bu yerga keldik.”</div>
+    <button class="audio-btn" onclick="speak('We came here yesterday.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: They said that they had gone there the day before.</div>
+    <div class="example-uz">Ular oldingi kuni u yerga borganlarini aytishdi.</div>
+    <button class="audio-btn" onclick="speak('They said that they had gone there the day before.')">🔊 Reported</button>
+  </div>
+
+  <div class="success-note">
+    Bu o‘zgarishlar vaziyatga bog‘liq. Agar gap ayni joyda
+    va ayni vaqtda yetkazilsa, “here”, “today” yoki “tomorrow”
+    kabi so‘zlar o‘zgarmasligi ham mumkin.
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Vaqt va joy jadvalini
+    to‘liq ko‘chir. “today”, “tomorrow”, “here” so‘zlari
+    qatnashgan uchta yangi misol tuz.
+  </div>
+</section>
+
+<section class="section" id="grammar6">
+  <div class="section-heading">
+    <div class="section-number">08</div>
+    <div>
+      <h2>Grammar 6 — Reported Statements</h2>
+      <p>Darak gaplarni yetkazish</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Darak gaplarni Reported Speech shakliga aylantirishda
+    odatda said yoki told ishlatiladi.
+  </p>
+
+  <div class="formula">
+    Subject + said + (that) + subject + changed verb
+  </div>
+
+  <h3 class="subheading">Said bilan ishlatish</h3>
+
+  <div class="example">
+    <div class="example-en">She said, "I am hungry."</div>
+    <div class="example-uz">U: “Men ochman”, dedi.</div>
+    <button class="audio-btn" onclick="speak('She said, I am hungry.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">She said that she was hungry.</div>
+    <div class="example-uz">U ochligini aytdi.</div>
+    <button class="audio-btn" onclick="speak('She said that she was hungry.')">🔊 Reported</button>
+  </div>
+
+  <h3 class="subheading">Told bilan ishlatish</h3>
+
+  <div class="formula">
+    Subject + told + person + (that) + clause
+  </div>
+
+  <div class="example">
+    <div class="example-en">He told me, "I need help."</div>
+    <div class="example-uz">U menga: “Menga yordam kerak”, dedi.</div>
+    <button class="audio-btn" onclick="speak('He told me, I need help.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">He told me that he needed help.</div>
+    <div class="example-uz">U menga yordam kerakligini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He told me that he needed help.')">🔊 Reported</button>
+  </div>
+
+  <div class="note">
+    <strong>Muhim farq:</strong>
+    <br>
+    He said that he was tired. — To‘g‘ri.
+    <br>
+    He told that he was tired. — Noto‘g‘ri.
+    <br>
+    He told me that he was tired. — To‘g‘ri.
+  </div>
+
+  <h3 class="subheading">Yana ko‘proq misollar</h3>
+
+  <div class="example">
+    <div class="example-en">Direct: "I speak three languages."</div>
+    <div class="example-uz">“Men uchta tilda gaplashaman.”</div>
+    <button class="audio-btn" onclick="speak('I speak three languages.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: She said that she spoke three languages.</div>
+    <div class="example-uz">U uchta tilda gaplashishini aytdi.</div>
+    <button class="audio-btn" onclick="speak('She said that she spoke three languages.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "My brother is learning German."</div>
+    <div class="example-uz">“Akam nemis tilini o‘rganyapti.”</div>
+    <button class="audio-btn" onclick="speak('My brother is learning German.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He said that his brother was learning German.</div>
+    <div class="example-uz">U akasi nemis tilini o‘rganayotganini aytdi.</div>
+    <button class="audio-btn" onclick="speak('He said that his brother was learning German.')">🔊 Reported</button>
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Said va told formulalarini,
+    to‘g‘ri va noto‘g‘ri misollarni yoz. So‘ng o‘zing
+    uchta darak gapni Reported Speech shakliga aylantir.
+  </div>
+</section>
+
+<section class="section" id="grammar7">
+  <div class="section-heading">
+    <div class="section-number">09</div>
+    <div>
+      <h2>Grammar 7 — Reported Questions</h2>
+      <p>So‘roq gaplarni yetkazish</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Birovning bergan savolini boshqa odamga yetkazishda
+    Reported Questions ishlatiladi. Bu yerda savol tartibi
+    oddiy darak gap tartibiga o‘zgaradi.
+  </p>
+
+  <div class="formula">
+    asked + if / whether + subject + verb
+  </div>
+
+  <h3 class="subheading">1. Yes / No questions</h3>
+
+  <p>
+    Javobi “yes” yoki “no” bo‘ladigan savollarda
+    <strong>if</strong> yoki <strong>whether</strong> ishlatiladi.
+  </p>
+
+  <div class="example">
+    <div class="example-en">Direct: "Are you tired?"</div>
+    <div class="example-uz">“Sen charchadingmi?”</div>
+    <button class="audio-btn" onclick="speak('Are you tired?')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He asked me if I was tired.</div>
+    <div class="example-uz">U mendan charchaganimni so‘radi.</div>
+    <button class="audio-btn" onclick="speak('He asked me if I was tired.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "Do you speak English?"</div>
+    <div class="example-uz">“Sen ingliz tilida gaplashasanmi?”</div>
+    <button class="audio-btn" onclick="speak('Do you speak English?')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: She asked me whether I spoke English.</div>
+    <div class="example-uz">U mendan ingliz tilida gaplashishimni so‘radi.</div>
+    <button class="audio-btn" onclick="speak('She asked me whether I spoke English.')">🔊 Reported</button>
+  </div>
+
+  <h3 class="subheading">2. Wh- questions</h3>
+
+  <p>
+    What, where, when, why, who, how kabi savol so‘zlari
+    saqlanadi. Lekin gap ichida savol tartibi ishlatilmaydi.
+  </p>
+
+  <div class="formula">
+    asked + question word + subject + verb
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "Where do you live?"</div>
+    <div class="example-uz">“Sen qayerda yashaysan?”</div>
+    <button class="audio-btn" onclick="speak('Where do you live?')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He asked me where I lived.</div>
+    <div class="example-uz">U mendan qayerda yashashimni so‘radi.</div>
+    <button class="audio-btn" onclick="speak('He asked me where I lived.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "What are you doing?"</div>
+    <div class="example-uz">“Sen nima qilyapsan?”</div>
+    <button class="audio-btn" onclick="speak('What are you doing?')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: She asked me what I was doing.</div>
+    <div class="example-uz">U mendan nima qilayotganimni so‘radi.</div>
+    <button class="audio-btn" onclick="speak('She asked me what I was doing.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "Why did you leave early?"</div>
+    <div class="example-uz">“Nega erta ketding?”</div>
+    <button class="audio-btn" onclick="speak('Why did you leave early?')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He asked me why I had left early.</div>
+    <div class="example-uz">U mendan nega erta ketganimni so‘radi.</div>
+    <button class="audio-btn" onclick="speak('He asked me why I had left early.')">🔊 Reported</button>
+  </div>
+
+  <div class="warning-note">
+    <strong>Eng muhim xato:</strong>
+    <br>
+    He asked me where did I live. — Noto‘g‘ri.
+    <br>
+    He asked me where I lived. — To‘g‘ri.
+    <br>
+    Reported Question ichida do/does/did yordamchi fe'llari
+    odatda ishlatilmaydi.
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Yes/No Questions va Wh-Questions
+    formulalarini, barcha misollarni yoz. Ayniqsa savol tartibi
+    bilan darak gap tartibi o‘rtasidagi farqni belgilab qo‘y.
+  </div>
+</section>
+
+<section class="section" id="grammar8">
+  <div class="section-heading">
+    <div class="section-number">10</div>
+    <div>
+      <h2>Grammar 8 — Commands and Requests</h2>
+      <p>Buyruq va iltimoslarni yetkazish</p>
+    </div>
+  </div>
+
+  <p class="lesson-text">
+    Buyruq yoki iltimosni boshqalarga yetkazishda
+    <strong>tell / ask + object + to + verb</strong>
+    tuzilmasidan foydalanamiz.
+  </p>
+
+  <div class="formula">
+    told / asked + person + to + V1
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "Open the door."</div>
+    <div class="example-uz">“Eshikni och.”</div>
+    <button class="audio-btn" onclick="speak('Open the door.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He told me to open the door.</div>
+    <div class="example-uz">U menga eshikni ochishni buyurdi.</div>
+    <button class="audio-btn" onclick="speak('He told me to open the door.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "Please help me."</div>
+    <div class="example-uz">“Iltimos, menga yordam ber.”</div>
+    <button class="audio-btn" onclick="speak('Please help me.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: She asked me to help her.</div>
+    <div class="example-uz">U mendan unga yordam berishimni so‘radi.</div>
+    <button class="audio-btn" onclick="speak('She asked me to help her.')">🔊 Reported</button>
+  </div>
+
+  <h3 class="subheading">Negative commands</h3>
+
+  <div class="formula">
+    told / asked + person + not to + V1
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "Don't touch that."</div>
+    <div class="example-uz">“Anavi narsaga tegma.”</div>
+    <button class="audio-btn" onclick="speak('Do not touch that.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: He told me not to touch that.</div>
+    <div class="example-uz">U menga anavi narsaga tegmaslikni aytdi.</div>
+    <button class="audio-btn" onclick="speak('He told me not to touch that.')">🔊 Reported</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Direct: "Don't be late."</div>
+    <div class="example-uz">“Kech qolma.”</div>
+    <button class="audio-btn" onclick="speak('Do not be late.')">🔊 Direct</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">Reported: My teacher told me not to be late.</div>
+    <div class="example-uz">O‘qituvchim menga kech qolmaslikni aytdi.</div>
+    <button class="audio-btn" onclick="speak('My teacher told me not to be late.')">🔊 Reported</button>
+  </div>
+
+  <div class="note">
+    Buyruq uchun told, muloyim iltimos uchun asked ko‘p
+    ishlatiladi. Vaziyatga qarab ikkalasi ham qo‘llanishi mumkin.
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Ijobiy va inkor buyruqlar
+    formulalarini hamda to‘rtta misolni yoz.
+  </div>
+</section>
+
+<section class="section" id="grammar9">
+  <div class="section-heading">
+    <div class="section-number">11</div>
+    <div>
+      <h2>Grammar 9 — Say vs Tell</h2>
+      <p>Ikki fe'lning farqi</p>
+    </div>
+  </div>
+
+  <p>
+    Say va tell ikkalasi ham “aytmoq” ma'nosini beradi.
+    Lekin ularning gapdagi ishlatilishi farq qiladi.
+  </p>
+
+  <div class="two-column">
+    <div class="task-box">
+      <h3>SAY</h3>
+      <p>Odatda kimga aytilgani ko‘rsatilmaydi.</p>
+      <div class="example-en">She said that she was happy.</div>
+      <button class="audio-btn" onclick="speak('She said that she was happy.')">🔊 Listen</button>
+    </div>
+    <div class="task-box">
+      <h3>TELL</h3>
+      <p>Odatda kimga aytilgani ko‘rsatiladi.</p>
+      <div class="example-en">She told me that she was happy.</div>
+      <button class="audio-btn" onclick="speak('She told me that she was happy.')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Correct</th>
+        <th>Incorrect</th>
+      </tr>
+      <tr><td>He said hello.</td><td>He told hello.</td></tr>
+      <tr><td>He told me the truth.</td><td>He said me the truth.</td></tr>
+      <tr><td>She said that she was ill.</td><td>She told that she was ill.</td></tr>
+      <tr><td>She told us a story.</td><td>She said us a story.</td></tr>
+    </table>
+  </div>
+
+  <div class="example">
+    <div class="example-en">My father told me to be careful.</div>
+    <div class="example-uz">Otam menga ehtiyot bo‘lishni aytdi.</div>
+    <button class="audio-btn" onclick="speak('My father told me to be careful.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <div class="example-en">My father said that I should be careful.</div>
+    <div class="example-uz">Otam ehtiyot bo‘lishim kerakligini aytdi.</div>
+    <button class="audio-btn" onclick="speak('My father said that I should be careful.')">🔊 Listen</button>
+  </div>
+
+  <div class="warning-note">
+    <strong>Daftarga yoz:</strong> Say va Tell farqini,
+    jadvaldagi to‘g‘ri va noto‘g‘ri shakllarni yoz.
+    O‘zing ham har bir fe'l bilan ikkitadan gap tuz.
+  </div>
+</section>
+
+<section class="section" id="vocabulary">
+  <div class="section-heading">
+    <div class="section-number">12</div>
+    <div>
+      <h2>Vocabulary — Lesson 19</h2>
+      <p>Yangi so‘zlar, tarjima, talaffuz va misollar</p>
+    </div>
+  </div>
+
+  <div class="note">
+    Har bir so‘zni ovoz chiqarib tingla. Keyin inglizcha
+    so‘zni, talaffuzini, o‘zbekcha ma'nosini va misol gapni
+    daftaringga yoz. Misol gapning ham alohida audio tugmasi bor.
+  </div>
+
+  <div id="vocabularyList"></div>
+</section>
+<!-- 19-DARS DAVOMI: VOCABULARY, READING, LISTENING, WRITING, SPEAKING VA TESTLAR -->
+
+<section class="section" id="readingSection">
+  <h2>📖 10. Reading — A Conversation About a Surprise</h2>
+  <p class="notebook-note">📓 Daftaringizga matnni yozing. Har bir gapni o‘qing, tarjima qiling va Reported Speech shakllarini toping.</p>
+
+  <div class="card">
+    <h3>Read the text</h3>
+    <div class="reading-text">
+      <p>Last Friday, Anna met her friend Daniel at a café.</p>
+      <p>Anna said, "I have some exciting news."</p>
+      <p>Daniel asked, "What has happened?"</p>
+      <p>Anna replied, "My brother has got a new job."</p>
+      <p>Daniel said, "That is wonderful!"</p>
+      <p>Anna explained, "He will move to London next month."</p>
+      <p>Daniel asked, "Will he live alone?"</p>
+      <p>Anna answered, "No, he will share a flat with his friend."</p>
+      <p>Daniel said, "I hope he enjoys his new life."</p>
+    </div>
+    <button class="audio-btn" onclick="speak('Last Friday, Anna met her friend Daniel at a café. Anna said, I have some exciting news. Daniel asked, What has happened? Anna replied, My brother has got a new job. Daniel said, That is wonderful! Anna explained, He will move to London next month. Daniel asked, Will he live alone? Anna answered, No, he will share a flat with his friend. Daniel said, I hope he enjoys his new life.',0.85)">🔊 Listen to the whole text</button>
+  </div>
+
+  <div class="card">
+    <h3>Sentence-by-sentence pronunciation</h3>
+    <div class="sentence-row">
+      <p>1. Last Friday, Anna met her friend Daniel at a café.</p>
+      <button class="audio-btn" onclick="speak('Last Friday, Anna met her friend Daniel at a café.')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>2. Anna said, "I have some exciting news."</p>
+      <button class="audio-btn" onclick="speak('Anna said, I have some exciting news.')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>3. Daniel asked, "What has happened?"</p>
+      <button class="audio-btn" onclick="speak('Daniel asked, What has happened?')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>4. Anna replied, "My brother has got a new job."</p>
+      <button class="audio-btn" onclick="speak('Anna replied, My brother has got a new job.')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>5. Daniel said, "That is wonderful!"</p>
+      <button class="audio-btn" onclick="speak('Daniel said, That is wonderful!')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>6. Anna explained, "He will move to London next month."</p>
+      <button class="audio-btn" onclick="speak('Anna explained, He will move to London next month.')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>7. Daniel asked, "Will he live alone?"</p>
+      <button class="audio-btn" onclick="speak('Daniel asked, Will he live alone?')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>8. Anna answered, "No, he will share a flat with his friend."</p>
+      <button class="audio-btn" onclick="speak('Anna answered, No, he will share a flat with his friend.')">🔊</button>
+    </div>
+    <div class="sentence-row">
+      <p>9. Daniel said, "I hope he enjoys his new life."</p>
+      <button class="audio-btn" onclick="speak('Daniel said, I hope he enjoys his new life.')">🔊</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Reading comprehension</h3>
+    <p>1. When did Anna meet Daniel?</p>
+    <div class="option-list">
+      <label><input type="radio" name="read1" value="a"> Last Monday</label>
+      <label><input type="radio" name="read1" value="b"> Last Friday</label>
+      <label><input type="radio" name="read1" value="c"> Yesterday morning</label>
+    </div>
+    <p>2. What was Anna's exciting news?</p>
+    <div class="option-list">
+      <label><input type="radio" name="read2" value="a"> Her brother got a new job</label>
+      <label><input type="radio" name="read2" value="b"> She bought a new car</label>
+      <label><input type="radio" name="read2" value="c"> She moved to London</label>
+    </div>
+    <p>3. Where will her brother move?</p>
+    <div class="option-list">
+      <label><input type="radio" name="read3" value="a"> Paris</label>
+      <label><input type="radio" name="read3" value="b"> Manchester</label>
+      <label><input type="radio" name="read3" value="c"> London</label>
+    </div>
+    <p>4. Who will he share a flat with?</p>
+    <div class="option-list">
+      <label><input type="radio" name="read4" value="a"> His brother</label>
+      <label><input type="radio" name="read4" value="b"> His friend</label>
+      <label><input type="radio" name="read4" value="c"> Daniel</label>
+    </div>
+    <button class="primary-btn" onclick="checkReading()">Check reading answers</button>
+    <p id="readingResult" class="result-text"></p>
+  </div>
+</section>
+
+<section class="section" id="listeningSection">
+  <h2>🎧 11. Listening Practice</h2>
+  <p class="notebook-note">📓 Avval audioni tinglang. Keyin eshitgan ma’lumotlaringizni daftaringizga yozing. Birinchi marta matnga qaramasdan tinglashga harakat qiling.</p>
+
+  <div class="card">
+    <h3>Listening 1 — A Teacher's Announcement</h3>
+    <p class="muted">Mavzu: e’lonni boshqalarga yetkazish</p>
+    <p>Listen carefully. You can choose slow or normal speed.</p>
+    <div class="audio-controls">
+      <button class="audio-btn" onclick="playListening('listenOne',0.72)">🐢 Slow audio</button>
+      <button class="audio-btn" onclick="playListening('listenOne',0.95)">▶️ Normal audio</button>
+      <button class="audio-btn" onclick="stopAudio()">⏹ Stop</button>
+    </div>
+    <div class="transcript" id="listenOne">
+      The teacher said that the next lesson would start at nine o'clock.
+      She told the students that they had to bring their books.
+      She also explained that the classroom had changed.
+      One student asked where the new classroom was.
+      The teacher replied that it was on the second floor.
+      She reminded everyone that the test would take place on Friday.
+    </div>
+    <button class="secondary-btn" onclick="toggleTranscript('transcriptOne')">Show / hide transcript</button>
+    <div id="transcriptOne" class="hidden">
+      <p><strong>Transcript:</strong></p>
+      <p>The teacher said that the next lesson would start at nine o'clock.</p>
+      <p>She told the students that they had to bring their books.</p>
+      <p>She also explained that the classroom had changed.</p>
+      <p>One student asked where the new classroom was.</p>
+      <p>The teacher replied that it was on the second floor.</p>
+      <p>She reminded everyone that the test would take place on Friday.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Listening 1 — Questions</h3>
+    <p>1. What time would the next lesson start?</p>
+    <label><input type="radio" name="l1q1" value="a"> 8 o'clock</label>
+    <label><input type="radio" name="l1q1" value="b"> 9 o'clock</label>
+    <label><input type="radio" name="l1q1" value="c"> 10 o'clock</label>
+
+    <p>2. What did the students have to bring?</p>
+    <label><input type="radio" name="l1q2" value="a"> Their books</label>
+    <label><input type="radio" name="l1q2" value="b"> Their phones</label>
+    <label><input type="radio" name="l1q2" value="c"> Their food</label>
+
+    <p>3. Where was the new classroom?</p>
+    <label><input type="radio" name="l1q3" value="a"> On the first floor</label>
+    <label><input type="radio" name="l1q3" value="b"> On the second floor</label>
+    <label><input type="radio" name="l1q3" value="c"> In the library</label>
+
+    <p>4. When would the test take place?</p>
+    <label><input type="radio" name="l1q4" value="a"> Thursday</label>
+    <label><input type="radio" name="l1q4" value="b"> Friday</label>
+    <label><input type="radio" name="l1q4" value="c"> Saturday</label>
+    <button class="primary-btn" onclick="checkListeningOne()">Check answers</button>
+    <p id="listenOneResult" class="result-text"></p>
+  </div>
+
+  <div class="card">
+    <h3>Listening 2 — A Phone Conversation</h3>
+    <p class="muted">Mavzu: telefon orqali aytilgan gaplarni yetkazish</p>
+    <div class="audio-controls">
+      <button class="audio-btn" onclick="playListening('listenTwo',0.72)">🐢 Slow audio</button>
+      <button class="audio-btn" onclick="playListening('listenTwo',0.95)">▶️ Normal audio</button>
+      <button class="audio-btn" onclick="stopAudio()">⏹ Stop</button>
+    </div>
+    <div class="transcript" id="listenTwo">
+      Mark called Sarah and said that he was running late.
+      He explained that the bus had not arrived.
+      Sarah told him that she was already at the station.
+      Mark asked her to wait for him.
+      Sarah said that she would wait near the main entrance.
+      Mark thanked her and promised that he would arrive soon.
+    </div>
+    <button class="secondary-btn" onclick="toggleTranscript('transcriptTwo')">Show / hide transcript</button>
+    <div id="transcriptTwo" class="hidden">
+      <p><strong>Transcript:</strong></p>
+      <p>Mark called Sarah and said that he was running late.</p>
+      <p>He explained that the bus had not arrived.</p>
+      <p>Sarah told him that she was already at the station.</p>
+      <p>Mark asked her to wait for him.</p>
+      <p>Sarah said that she would wait near the main entrance.</p>
+      <p>Mark thanked her and promised that he would arrive soon.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Listening 2 — Questions</h3>
+    <p>1. Who called Sarah?</p>
+    <label><input type="radio" name="l2q1" value="a"> Daniel</label>
+    <label><input type="radio" name="l2q1" value="b"> Mark</label>
+    <label><input type="radio" name="l2q1" value="c"> Her teacher</label>
+
+    <p>2. Why was Mark late?</p>
+    <label><input type="radio" name="l2q2" value="a"> His car broke down</label>
+    <label><input type="radio" name="l2q2" value="b"> He missed the train</label>
+    <label><input type="radio" name="l2q2" value="c"> The bus had not arrived</label>
+
+    <p>3. Where was Sarah?</p>
+    <label><input type="radio" name="l2q3" value="a"> At the station</label>
+    <label><input type="radio" name="l2q3" value="b"> At home</label>
+    <label><input type="radio" name="l2q3" value="c"> At school</label>
+
+    <p>4. Where would Sarah wait?</p>
+    <label><input type="radio" name="l2q4" value="a"> Near the café</label>
+    <label><input type="radio" name="l2q4" value="b"> Near the main entrance</label>
+    <label><input type="radio" name="l2q4" value="c"> Outside the school</label>
+    <button class="primary-btn" onclick="checkListeningTwo()">Check answers</button>
+    <p id="listenTwoResult" class="result-text"></p>
+  </div>
+
+  <div class="card">
+    <h3>Listening 3 — Change the speaker</h3>
+    <p>Listen to the sentences and choose the correct reported version.</p>
+    <button class="audio-btn" onclick="speak('I am learning English because I want to study abroad.',0.82)">🔊 Play sentence 1</button>
+    <p>1. "I am learning English because I want to study abroad."</p>
+    <label><input type="radio" name="l3q1" value="a"> He said that he was learning English because he wanted to study abroad.</label>
+    <label><input type="radio" name="l3q1" value="b"> He said that I am learning English because I want to study abroad.</label>
+    <label><input type="radio" name="l3q1" value="c"> He told that he learning English.</label>
+
+    <button class="audio-btn" onclick="speak('We visited our grandparents yesterday.',0.82)">🔊 Play sentence 2</button>
+    <p>2. "We visited our grandparents yesterday."</p>
+    <label><input type="radio" name="l3q2" value="a"> They said that we visit our grandparents yesterday.</label>
+    <label><input type="radio" name="l3q2" value="b"> They said that they had visited their grandparents the day before.</label>
+    <label><input type="radio" name="l3q2" value="c"> They told that they visited tomorrow.</label>
+
+    <button class="audio-btn" onclick="speak('Can you help me with this exercise?',0.82)">🔊 Play sentence 3</button>
+    <p>3. "Can you help me with this exercise?"</p>
+    <label><input type="radio" name="l3q3" value="a"> She asked if I could help her with that exercise.</label>
+    <label><input type="radio" name="l3q3" value="b"> She asked can I help her this exercise.</label>
+    <label><input type="radio" name="l3q3" value="c"> She told me if I can help.</label>
+
+    <button class="primary-btn" onclick="checkListeningThree()">Check answers</button>
+    <p id="listenThreeResult" class="result-text"></p>
+  </div>
+</section>
+
+<section class="section" id="writingSection">
+  <h2>✍️ 12. Writing Skills</h2>
+  <p class="notebook-note">📓 Barcha javoblarni avval daftaringizga yozing. Keyin quyidagi interaktiv mashqlarda javoblaringizni tekshiring.</p>
+
+  <div class="card">
+    <h3>Task 1 — Rewrite the sentences</h3>
+    <p>Quyidagi gaplarni Reported Speech shakliga o‘zgartiring.</p>
+    <div class="writing-task">
+      <p>1. Tom said, "I am tired."</p>
+      <input id="write1" placeholder="Tom said that...">
+      <p>2. Mary said, "I have finished my homework."</p>
+      <input id="write2" placeholder="Mary said that...">
+      <p>3. Jack said, "I will call you tomorrow."</p>
+      <input id="write3" placeholder="Jack said that...">
+      <p>4. Lisa said, "I can swim."</p>
+      <input id="write4" placeholder="Lisa said that...">
+      <p>5. Peter said, "I bought a new phone yesterday."</p>
+      <input id="write5" placeholder="Peter said that...">
+      <button class="primary-btn" onclick="checkWritingTask()">Check my writing</button>
+      <p id="writingTaskResult" class="result-text"></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Task 2 — Reported Questions</h3>
+    <p>1. She asked, "Where do you live?"</p>
+    <input id="wq1" placeholder="She asked me...">
+    <p>2. He asked, "Are you busy?"</p>
+    <input id="wq2" placeholder="He asked me...">
+    <p>3. They asked, "When will the train arrive?"</p>
+    <input id="wq3" placeholder="They asked...">
+    <p>4. My mother asked, "Have you eaten?"</p>
+    <input id="wq4" placeholder="My mother asked...">
+    <button class="primary-btn" onclick="checkQuestionWriting()">Check answers</button>
+    <p id="questionWritingResult" class="result-text"></p>
+  </div>
+
+  <div class="card">
+    <h3>Task 3 — Write a short report</h3>
+    <p>Quyidagi vaziyat bo‘yicha 8–10 ta gapdan iborat kichik matn yozing.</p>
+    <blockquote>
+      Your friend told you about a new English course. He said that the lessons were interesting. He explained that the teacher used videos and speaking activities. He also said that students had to do homework every day.
+    </blockquote>
+    <p>Vazifa:</p>
+    <ul>
+      <li>Do‘stingiz nima deganini yozing.</li>
+      <li>Kamida 5 ta Reported Speech gap ishlating.</li>
+      <li>Kamida 2 ta reported question tuzing.</li>
+      <li>Gaplaringizda pronoun va time expression o‘zgarishlariga e’tibor bering.</li>
+    </ul>
+    <textarea id="freeWriting" rows="8" placeholder="Write your report here..."></textarea>
+    <button class="secondary-btn" onclick="saveWriting()">Save my writing</button>
+    <p id="freeWritingResult" class="result-text"></p>
+  </div>
+</section>
+
+<section class="section" id="speakingSection">
+  <h2>🗣️ 13. Speaking Practice</h2>
+  <p class="notebook-note">📓 Avval savolni tinglang. Keyin ovoz chiqarib javob bering. Javobingizda Reported Speech ishlating.</p>
+
+  <div class="card">
+    <h3>Speaking 1 — Report what people say</h3>
+    <div class="speaking-item">
+      <p>1. Your friend says: "I am very busy today."</p>
+      <button class="audio-btn" onclick="speak('Your friend says: I am very busy today.')">🔊 Listen</button>
+      <textarea rows="2" placeholder="He said that..."></textarea>
+    </div>
+    <div class="speaking-item">
+      <p>2. Your teacher says: "You must practise every day."</p>
+      <button class="audio-btn" onclick="speak('Your teacher says: You must practise every day.')">🔊 Listen</button>
+      <textarea rows="2" placeholder="The teacher said that..."></textarea>
+    </div>
+    <div class="speaking-item">
+      <p>3. Your sister says: "I have lost my keys."</p>
+      <button class="audio-btn" onclick="speak('Your sister says: I have lost my keys.')">🔊 Listen</button>
+      <textarea rows="2" placeholder="She said that..."></textarea>
+    </div>
+    <div class="speaking-item">
+      <p>4. Your friend asks: "Where are you going?"</p>
+      <button class="audio-btn" onclick="speak('Your friend asks: Where are you going?')">🔊 Listen</button>
+      <textarea rows="2" placeholder="He asked me..."></textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Speaking 2 — Interview</h3>
+    <p>Quyidagi savollarga ingliz tilida javob bering. Javoblaringizda boshqa odamlarning gaplarini ham yetkazing.</p>
+    <div class="speaking-item">
+      <p>1. What did your friend tell you recently?</p>
+      <button class="audio-btn" onclick="speak('What did your friend tell you recently?')">🔊 Listen</button>
+    </div>
+    <div class="speaking-item">
+      <p>2. What did your teacher ask you to do?</p>
+      <button class="audio-btn" onclick="speak('What did your teacher ask you to do?')">🔊 Listen</button>
+    </div>
+    <div class="speaking-item">
+      <p>3. Have you ever reported some exciting news?</p>
+      <button class="audio-btn" onclick="speak('Have you ever reported some exciting news?')">🔊 Listen</button>
+    </div>
+    <div class="speaking-item">
+      <p>4. What do your family members usually tell you?</p>
+      <button class="audio-btn" onclick="speak('What do your family members usually tell you?')">🔊 Listen</button>
+    </div>
+    <div class="speaking-item">
+      <p>5. Why is Reported Speech useful in everyday English?</p>
+      <button class="audio-btn" onclick="speak('Why is Reported Speech useful in everyday English?')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Speaking 3 — Role-play</h3>
+    <p><strong>Situation:</strong> Your friend missed a meeting. Tell another friend what happened.</p>
+    <p>Use these ideas:</p>
+    <ul>
+      <li>He said that he had forgotten the meeting.</li>
+      <li>He explained that his phone had stopped working.</li>
+      <li>He promised that he would come earlier next time.</li>
+      <li>He asked me to tell everyone that he was sorry.</li>
+    </ul>
+    <button class="audio-btn" onclick="speak('He said that he had forgotten the meeting. He explained that his phone had stopped working. He promised that he would come earlier next time. He asked me to tell everyone that he was sorry.',0.85)">🔊 Listen to the model</button>
+    <textarea rows="5" placeholder="Now create your own short conversation..."></textarea>
+  </div>
+</section>
+
+<section class="section" id="quizSection">
+  <h2>🧠 14. Interactive Grammar Tests</h2>
+  <p class="notebook-note">📓 Har bir savolni diqqat bilan o‘qing. Avval mustaqil javob bering, keyin natijangizni tekshiring.</p>
+
+  <div class="card">
+    <h3>Test 1 — Reported Speech Basics (20 questions)</h3>
+    <div id="quizOne"></div>
+    <button class="primary-btn" onclick="checkQuiz('quizOne','quizOneResult')">Submit Test 1</button>
+    <p id="quizOneResult" class="result-text"></p>
+  </div>
+
+  <div class="card">
+    <h3>Test 2 — Mixed Skills (20 questions)</h3>
+    <div id="quizTwo"></div>
+    <button class="primary-btn" onclick="checkQuiz('quizTwo','quizTwoResult')">Submit Test 2</button>
+    <p id="quizTwoResult" class="result-text"></p>
+  </div>
+
+  <div class="card">
+    <h3>Final score</h3>
+    <p id="finalScore">Hali testlar topshirilmadi.</p>
+    <div class="progress-track">
+      <div class="progress-fill" id="lessonProgress"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="lessonSummary">
+  <h2>🏁 15. Lesson Summary</h2>
+  <div class="card">
+    <h3>Today you learned:</h3>
+    <ul>
+      <li>Direct Speech va Reported Speech farqini.</li>
+      <li>Present va Past zamonlarning orqaga siljishini.</li>
+      <li>Pronoun va time expression o‘zgarishlarini.</li>
+      <li>Reported Statements tuzishni.</li>
+      <li>Reported Questions tuzishni.</li>
+      <li>Commands va Requests yetkazishni.</li>
+      <li>Say va Tell farqini.</li>
+      <li>Listening, Reading, Writing va Speaking ko‘nikmalarini.</li>
+    </ul>
+  </div>
+  <div class="card motivation-card">
+    <h3>🌟 Keep going!</h3>
+    <p>Every sentence you practise makes your English stronger.</p>
+    <p>Do not be afraid of mistakes. Learn from them, practise regularly and keep moving forward.</p>
+    <p><strong>Learn today. Succeed tomorrow.</strong></p>
+    <button class="primary-btn" onclick="speak('Every sentence you practise makes your English stronger. Do not be afraid of mistakes. Learn from them, practise regularly and keep moving forward. Learn today. Succeed tomorrow.',0.85)">🔊 Listen to motivation</button>
+  </div>
+</section>
+
+<script>
+/* ==========================================
+   19-DARS — REPORTED SPEECH
+   AUDIO, VOCABULARY, READING, LISTENING
+   WRITING, SPEAKING AND INTERACTIVE TESTS
+========================================== */
+
+let currentUtterance = null;
+let quizScores = {
+  quizOne: null,
+  quizTwo: null
+};
+
+function speak(text, rate = 0.9) {
+  if (!("speechSynthesis" in window)) {
+    alert("Brauzeringiz audio talaffuzni qo‘llab-quvvatlamaydi.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  currentUtterance = new SpeechSynthesisUtterance(text);
+  currentUtterance.lang = "en-US";
+  currentUtterance.rate = rate;
+  currentUtterance.pitch = 1;
+  window.speechSynthesis.speak(currentUtterance);
+}
+
+function stopAudio() {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+}
+
+function playListening(id, rate) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  speak(element.innerText, rate);
+}
+
+function toggleTranscript(id) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  element.classList.toggle("hidden");
+}
+
+function checkReading() {
+  const answers = {
+    read1: "b",
+    read2: "a",
+    read3: "c",
+    read4: "b"
+  };
+
+  let score = 0;
+
+  Object.keys(answers).forEach(key => {
+    const selected = document.querySelector('input[name="' + key + '"]:checked');
+    if (selected && selected.value === answers[key]) {
+      score++;
+    }
+  });
+
+  document.getElementById("readingResult").textContent =
+    "Natija: " + score + " / 4 (" + Math.round(score / 4 * 100) + "%)";
+}
+
+function checkListeningOne() {
+  const answers = {
+    l1q1: "b",
+    l1q2: "a",
+    l1q3: "b",
+    l1q4: "b"
+  };
+
+  let score = 0;
+
+  Object.keys(answers).forEach(key => {
+    const selected = document.querySelector('input[name="' + key + '"]:checked');
+    if (selected && selected.value === answers[key]) score++;
+  });
+
+  document.getElementById("listenOneResult").textContent =
+    "Listening 1: " + score + " / 4";
+}
+
+function checkListeningTwo() {
+  const answers = {
+    l2q1: "b",
+    l2q2: "c",
+    l2q3: "a",
+    l2q4: "b"
+  };
+
+  let score = 0;
+
+  Object.keys(answers).forEach(key => {
+    const selected = document.querySelector('input[name="' + key + '"]:checked');
+    if (selected && selected.value === answers[key]) score++;
+  });
+
+  document.getElementById("listenTwoResult").textContent =
+    "Listening 2: " + score + " / 4";
+}
+
+function checkListeningThree() {
+  const answers = {
+    l3q1: "a",
+    l3q2: "b",
+    l3q3: "a"
+  };
+
+  let score = 0;
+
+  Object.keys(answers).forEach(key => {
+    const selected = document.querySelector('input[name="' + key + '"]:checked');
+    if (selected && selected.value === answers[key]) score++;
+  });
+
+  document.getElementById("listenThreeResult").textContent =
+    "Listening 3: " + score + " / 3";
+}
+
+function normalizeAnswer(value) {
+  return value
+    .toLowerCase()
+    .replace(/[.!?,"]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function checkWritingTask() {
+  const expected = [
+    ["tom said that he was tired", "tom said he was tired"],
+    ["mary said that she had finished her homework", "mary said she had finished her homework"],
+    ["jack said that he would call me the next day", "jack said he would call me the next day"],
+    ["lisa said that she could swim", "lisa said she could swim"],
+    ["peter said that he had bought a new phone the day before", "peter said he had bought a new phone the day before"]
+  ];
+
+  let correct = 0;
+
+  expected.forEach((answers, index) => {
+    const input = document.getElementById("write" + (index + 1));
+    const userAnswer = normalizeAnswer(input.value);
+
+    if (answers.includes(userAnswer)) {
+      correct++;
+      input.style.borderColor = "#22a06b";
+    } else {
+      input.style.borderColor = "#e09b36";
+    }
+  });
+
+  document.getElementById("writingTaskResult").textContent =
+    "Mos kelgan javoblar: " + correct + " / 5. Sariq belgilangan javoblarni namuna bilan solishtiring.";
+}
+
+function checkQuestionWriting() {
+  const expected = [
+    ["she asked me where i lived", "she asked where i lived"],
+    ["he asked me if i was busy", "he asked if i was busy"],
+    ["they asked when the train would arrive"],
+    ["my mother asked if i had eaten"]
+  ];
+
+  let correct = 0;
+
+  expected.forEach((answers, index) => {
+    const input = document.getElementById("wq" + (index + 1));
+    const userAnswer = normalizeAnswer(input.value);
+
+    if (answers.includes(userAnswer)) {
+      correct++;
+      input.style.borderColor = "#22a06b";
+    } else {
+      input.style.borderColor = "#e09b36";
+    }
+  });
+
+  document.getElementById("questionWritingResult").textContent =
+    "To‘g‘ri javoblar: " + correct + " / 4.";
+}
+
+function saveWriting() {
+  const value = document.getElementById("freeWriting").value.trim();
+
+  if (!value) {
+    document.getElementById("freeWritingResult").textContent =
+      "Avval matn yozing.";
+    return;
+  }
+
+  try {
+    localStorage.setItem("englishUpLesson19Writing", value);
+    document.getElementById("freeWritingResult").textContent =
+      "Matningiz ushbu qurilmada saqlandi.";
+  } catch (error) {
+    document.getElementById("freeWritingResult").textContent =
+      "Saqlash imkoni bo‘lmadi. Matnni daftaringizga ham yozib qo‘ying.";
+  }
+}
+
+const lesson19Vocabulary = [
+  {
+    word: "report",
+    pronunciation: "/rɪˈpɔːrt/",
+    meaning: "xabar bermoq, yetkazmoq",
+    example: "She reported what her manager had said.",
+    exampleUz: "U menejeri aytgan gapni yetkazdi."
+  },
+  {
+    word: "statement",
+    pronunciation: "/ˈsteɪtmənt/",
+    meaning: "bayonot, darak gap",
+    example: "This statement is in the past tense.",
+    exampleUz: "Bu gap o‘tgan zamonda."
+  },
+  {
+    word: "conversation",
+    pronunciation: "/ˌkɑːnvərˈseɪʃən/",
+    meaning: "suhbat",
+    example: "I reported our conversation to my teacher.",
+    exampleUz: "Men suhbatimizni o‘qituvchimga yetkazdim."
+  },
+  {
+    word: "explain",
+    pronunciation: "/ɪkˈspleɪn/",
+    meaning: "tushuntirmoq",
+    example: "He explained that he was busy.",
+    exampleUz: "U band ekanini tushuntirdi."
+  },
+  {
+    word: "promise",
+    pronunciation: "/ˈprɑːmɪs/",
+    meaning: "va’da bermoq",
+    example: "She promised that she would help me.",
+    exampleUz: "U menga yordam berishga va’da berdi."
+  },
+  {
+    word: "admit",
+    pronunciation: "/ədˈmɪt/",
+    meaning: "tan olmoq",
+    example: "He admitted that he had made a mistake.",
+    exampleUz: "U xato qilganini tan oldi."
+  },
+  {
+    word: "deny",
+    pronunciation: "/dɪˈnaɪ/",
+    meaning: "inkor qilmoq",
+    example: "She denied that she had taken the book.",
+    exampleUz: "U kitobni olganini inkor qildi."
+  },
+  {
+    word: "suggest",
+    pronunciation: "/səˈdʒest/",
+    meaning: "taklif qilmoq",
+    example: "He suggested that we should leave early.",
+    exampleUz: "U erta ketishimizni taklif qildi."
+  },
+  {
+    word: "advise",
+    pronunciation: "/ədˈvaɪz/",
+    meaning: "maslahat bermoq",
+    example: "The doctor advised me to rest.",
+    exampleUz: "Shifokor menga dam olishni maslahat berdi."
+  },
+  {
+    word: "warn",
+    pronunciation: "/wɔːrn/",
+    meaning: "ogohlantirmoq",
+    example: "They warned us not to be late.",
+    exampleUz: "Ular bizni kech qolmaslik haqida ogohlantirishdi."
+  },
+  {
+    word: "request",
+    pronunciation: "/rɪˈkwest/",
+    meaning: "iltimos qilmoq, so‘rov",
+    example: "He requested me to wait outside.",
+    exampleUz: "U mendan tashqarida kutishimni iltimos qildi."
+  },
+  {
+    word: "order",
+    pronunciation: "/ˈɔːrdər/",
+    meaning: "buyurmoq",
+    example: "The officer ordered them to stop.",
+    exampleUz: "Ofitser ularga to‘xtashni buyurdi."
+  },
+  {
+    word: "reply",
+    pronunciation: "/rɪˈplaɪ/",
+    meaning: "javob bermoq",
+    example: "She replied that she was ready.",
+    exampleUz: "U tayyor ekanini aytib javob berdi."
+  },
+  {
+    word: "mention",
+    pronunciation: "/ˈmenʃən/",
+    meaning: "eslatib o‘tmoq",
+    example: "He mentioned that he knew my brother.",
+    exampleUz: "U akamni tanishini aytib o‘tdi."
+  },
+  {
+    word: "claim",
+    pronunciation: "/kleɪm/",
+    meaning: "da’vo qilmoq",
+    example: "He claimed that he was innocent.",
+    exampleUz: "U aybsiz ekanini da’vo qildi."
+  },
+  {
+    word: "wonder",
+    pronunciation: "/ˈwʌndər/",
+    meaning: "qiziqmoq, o‘ylab ko‘rmoq",
+    example: "She wondered why he was late.",
+    exampleUz: "U nega kech qolganiga qiziqdi."
+  },
+  {
+    word: "whether",
+    pronunciation: "/ˈweðər/",
+    meaning: "-mi yoki yo‘qmi",
+    example: "He asked whether I was ready.",
+    exampleUz: "U tayyor yoki tayyor emasligimni so‘radi."
+  },
+  {
+    word: "instead",
+    pronunciation: "/ɪnˈsted/",
+    meaning: "o‘rniga",
+    example: "She called me instead of sending a message.",
+    exampleUz: "U xabar yuborish o‘rniga menga qo‘ng‘iroq qildi."
+  },
+  {
+    word: "immediately",
+    pronunciation: "/ɪˈmiːdiətli/",
+    meaning: "darhol",
+    example: "He told me to come immediately.",
+    exampleUz: "U menga darhol kelishimni aytdi."
+  },
+  {
+    word: "eventually",
+    pronunciation: "/ɪˈventʃuəli/",
+    meaning: "oxir-oqibat",
+    example: "She eventually explained the whole story.",
+    exampleUz: "U oxir-oqibat butun voqeani tushuntirdi."
+  }
+];
+
+function renderVocabulary() {
+  const container = document.getElementById("vocabularyList");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  lesson19Vocabulary.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = "vocabulary-card";
+
+    const title = document.createElement("h3");
+    title.textContent = (index + 1) + ". " + item.word;
+
+    const pronunciation = document.createElement("p");
+    pronunciation.textContent = "Talaffuzi: " + item.pronunciation;
+
+    const meaning = document.createElement("p");
+    meaning.textContent = "Tarjimasi: " + item.meaning;
+
+    const wordAudio = document.createElement("button");
+    wordAudio.className = "audio-btn";
+    wordAudio.textContent = "🔊 So‘zni tinglash";
+    wordAudio.addEventListener("click", () => speak(item.word, 0.75));
+
+    const example = document.createElement("p");
+    example.textContent = "Example: " + item.example;
+
+    const exampleUz = document.createElement("p");
+    exampleUz.textContent = "Tarjimasi: " + item.exampleUz;
+
+    const exampleAudio = document.createElement("button");
+    exampleAudio.className = "audio-btn";
+    exampleAudio.textContent = "🔊 Misol gapni tinglash";
+    exampleAudio.addEventListener("click", () => speak(item.example, 0.85));
+
+    card.appendChild(title);
+    card.appendChild(pronunciation);
+    card.appendChild(meaning);
+    card.appendChild(wordAudio);
+    card.appendChild(example);
+    card.appendChild(exampleUz);
+    card.appendChild(exampleAudio);
+
+    container.appendChild(card);
+  });
+}
+
+const quizOneQuestions = [
+  {
+    q: 'He said, "I am tired."',
+    options: ["He said that he was tired.", "He said that I am tired.", "He told that he tired."],
+    answer: 0
+  },
+  {
+    q: 'She said, "I like coffee."',
+    options: ["She said she likes coffee yesterday.", "She said that she liked coffee.", "She told that she liked coffee."],
+    answer: 1
+  },
+  {
+    q: 'Tom said, "I have finished."',
+    options: ["Tom said he has finish.", "Tom said that he had finished.", "Tom told he finished tomorrow."],
+    answer: 1
+  },
+  {
+    q: 'Anna said, "I will call you."',
+    options: ["Anna said she would call me.", "Anna said she will called me.", "Anna told she would call you."],
+    answer: 0
+  },
+  {
+    q: 'He said, "I can drive."',
+    options: ["He said he can drove.", "He said that he could drive.", "He told he could drove."],
+    answer: 1
+  },
+  {
+    q: 'She said, "I saw him yesterday."',
+    options: ["She said she had seen him the day before.", "She said she sees him yesterday.", "She told she had saw him."],
+    answer: 0
+  },
+  {
+    q: 'He asked, "Are you ready?"',
+    options: ["He asked was I ready.", "He asked if I was ready.", "He asked that I ready."],
+    answer: 1
+  },
+  {
+    q: 'She asked, "Where do you work?"',
+    options: ["She asked where I worked.", "She asked where did I work.", "She told where I worked."],
+    answer: 0
+  },
+  {
+    q: 'He said, "I am studying now."',
+    options: ["He said he studied now.", "He said that he was studying then.", "He told that he is studying."],
+    answer: 1
+  },
+  {
+    q: 'They said, "We are happy."',
+    options: ["They said that they were happy.", "They said we are happy.", "They told that they happy."],
+    answer: 0
+  },
+  {
+    q: 'She said, "I must leave."',
+    options: ["She said she must leaving.", "She said that she had to leave.", "She told she had leave."],
+    answer: 1
+  },
+  {
+    q: 'He said, "I may come."',
+    options: ["He said that he might come.", "He said that he may came.", "He told that he might came."],
+    answer: 0
+  },
+  {
+    q: 'She said, "I bought it last week."',
+    options: ["She said she had bought it the week before.", "She said she buys it last week.", "She told she had buy it."],
+    answer: 0
+  },
+  {
+    q: 'He asked, "Do you speak English?"',
+    options: ["He asked did I speak English.", "He asked if I spoke English.", "He asked that I speak English."],
+    answer: 1
+  },
+  {
+    q: 'She asked, "Can you swim?"',
+    options: ["She asked if I could swim.", "She asked could I swam.", "She told if I can swim."],
+    answer: 0
+  },
+  {
+    q: 'He said, "This is my house."',
+    options: ["He said that this was my house.", "He said that that was his house.", "He told that is his house."],
+    answer: 1
+  },
+  {
+    q: 'She said, "I will see you tomorrow."',
+    options: ["She said she would see me the next day.", "She said she will see me yesterday.", "She told she would saw me."],
+    answer: 0
+  },
+  {
+    q: 'He asked, "Why are you crying?"',
+    options: ["He asked why was I crying.", "He asked why I was crying.", "He asked why am I crying."],
+    answer: 1
+  },
+  {
+    q: 'The teacher said, "Open your books."',
+    options: ["The teacher told us to open our books.", "The teacher said us open books.", "The teacher told that open books."],
+    answer: 0
+  },
+  {
+    q: 'Mother said, "Don’t be late."',
+    options: ["Mother told me to not late.", "Mother told me not to be late.", "Mother said me not be late."],
+    answer: 1
+  }
+];
+
+const quizTwoQuestions = [
+  {
+    q: 'Choose the correct reporting verb: "I am sorry," he said.',
+    options: ["He apologised.", "He ordered.", "He denied."],
+    answer: 0
+  },
+  {
+    q: 'She said, "I had already eaten."',
+    options: ["She said she had already eaten.", "She said she has already ate.", "She said she already eats."],
+    answer: 0
+  },
+  {
+    q: 'He asked, "Have you seen my bag?"',
+    options: ["He asked if I had seen his bag.", "He asked have I seen his bag.", "He asked that I saw my bag."],
+    answer: 0
+  },
+  {
+    q: 'They said, "We were waiting here."',
+    options: ["They said they had been waiting there.", "They said we are waiting here.", "They told they waited here."],
+    answer: 0
+  },
+  {
+    q: 'Choose the correct change for "today".',
+    options: ["that day", "tomorrow", "the day before"],
+    answer: 0
+  },
+  {
+    q: 'Choose the correct change for "yesterday".',
+    options: ["the next day", "the day before", "that day"],
+    answer: 1
+  },
+  {
+    q: 'Choose the correct change for "next week".',
+    options: ["the week before", "the previous week", "the following week"],
+    answer: 2
+  },
+  {
+    q: 'Choose the correct change for "here".',
+    options: ["there", "this", "now"],
+    answer: 0
+  },
+  {
+    q: 'Choose the correct sentence.',
+    options: ["She told me that she was ill.", "She told that she was ill.", "She said me she was ill."],
+    answer: 0
+  },
+  {
+    q: 'Choose the correct sentence.',
+    options: ["He said me to wait.", "He told me to wait.", "He told that wait."],
+    answer: 1
+  },
+  {
+    q: 'He asked, "Where have you been?"',
+    options: ["He asked where I had been.", "He asked where had I been.", "He asked where I have been."],
+    answer: 0
+  },
+  {
+    q: 'She said, "I would like some tea."',
+    options: ["She said she would like some tea.", "She said she will liked tea.", "She told she likes tea."],
+    answer: 0
+  },
+  {
+    q: 'The doctor said, "You should rest."',
+    options: ["The doctor said I should rest.", "The doctor said I should rested.", "The doctor told that I rest."],
+    answer: 0
+  },
+  {
+    q: 'He said, "I was working."',
+    options: ["He said he had been working.", "He said he is working.", "He told he works."],
+    answer: 0
+  },
+  {
+    q: 'She asked, "Will you help me?"',
+    options: ["She asked if I would help her.", "She asked will I helped her.", "She asked that I help me."],
+    answer: 0
+  },
+  {
+    q: 'Choose the correct reported command.',
+    options: ["He told us sit down.", "He told us to sit down.", "He said us to sit down."],
+    answer: 1
+  },
+  {
+    q: 'Choose the correct negative command.',
+    options: ["She told me not to touch it.", "She told me to not touched it.", "She said me don't touch it."],
+    answer: 0
+  },
+  {
+    q: 'Which verb is commonly followed by an object + to-infinitive?',
+    options: ["tell", "say", "mention"],
+    answer: 0
+  },
+  {
+    q: 'Which sentence reports a yes/no question correctly?',
+    options: ["He asked if I was free.", "He asked was I free.", "He asked that I free."],
+    answer: 0
+  },
+  {
+    q: 'Which sentence is correct?',
+    options: ["She asked me what I wanted.", "She asked me what did I want.", "She asked me what do I want."],
+    answer: 0
+  }
+];
+
+function renderQuiz(containerId, questions) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  questions.forEach((question, index) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "quiz-question";
+
+    const title = document.createElement("p");
+    title.innerHTML = "<strong>" + (index + 1) + ". " + question.q + "</strong>";
+    wrapper.appendChild(title);
+
+    question.options.forEach((option, optionIndex) => {
+      const label = document.createElement("label");
+      label.className = "quiz-option";
+
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = containerId + "_q" + index;
+      radio.value = optionIndex;
+
+      const span = document.createElement("span");
+      span.textContent = option;
+
+      label.appendChild(radio);
+      label.appendChild(span);
+      wrapper.appendChild(label);
+    });
+
+    container.appendChild(wrapper);
+  });
+}
+
+function checkQuiz(containerId, resultId) {
+  const questions = containerId === "quizOne"
+    ? quizOneQuestions
+    : quizTwoQuestions;
+
+  let score = 0;
+  let unanswered = 0;
+
+  questions.forEach((question, index) => {
+    const selected = document.querySelector(
+      'input[name="' + containerId + '_q' + index + '"]:checked'
+    );
+
+    const questionBox = document.querySelectorAll("#" + containerId + " .quiz-question")[index];
+
+    if (!selected) {
+      unanswered++;
+      if (questionBox) questionBox.style.borderColor = "#d99b38";
+      return;
+    }
+
+    if (Number(selected.value) === question.answer) {
+      score++;
+      if (questionBox) questionBox.style.borderColor = "#22a06b";
+    } else {
+      if (questionBox) questionBox.style.borderColor = "#d9534f";
+    }
+  });
+
+  const percent = Math.round(score / questions.length * 100);
+  quizScores[containerId] = percent;
+
+  let message = "Natija: " + score + " / " + questions.length + " — " + percent + "%.";
+
+  if (unanswered > 0) {
+    message += " Javobsiz savollar: " + unanswered + ".";
+  }
+
+  if (percent >= 80) {
+    message += " Ajoyib! 80% dan yuqori natija.";
+  } else {
+    message += " Qoidalarni qayta ko‘rib chiqing va yana urinib ko‘ring.";
+  }
+
+  document.getElementById(resultId).textContent = message;
+  updateFinalScore();
+}
+
+function updateFinalScore() {
+  const first = quizScores.quizOne;
+  const second = quizScores.quizTwo;
+
+  if (first === null || second === null) {
+    document.getElementById("finalScore").textContent =
+      "Ikkala testni ham topshiring. Hozircha yakuniy natija hisoblanmadi.";
+    return;
+  }
+
+  const average = Math.round((first + second) / 2);
+  document.getElementById("finalScore").textContent =
+    "Umumiy natija: " + average + "%. " +
+    (average >= 80
+      ? "Mavzuni yaxshi o‘zlashtirdingiz!"
+      : "Mavzuni yana takrorlang va testlarni qayta bajaring.");
+
+  document.getElementById("lessonProgress").style.width = average + "%";
+}
+
+function loadSavedWriting() {
+  try {
+    const saved = localStorage.getItem("englishUpLesson19Writing");
+    if (saved) {
+      document.getElementById("freeWriting").value = saved;
+    }
+  } catch (error) {
+    // Saqlangan matnni o‘qish imkoni bo‘lmasa, sahifa ishlashda davom etadi.
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  renderVocabulary();
+  renderQuiz("quizOne", quizOneQuestions);
+  renderQuiz("quizTwo", quizTwoQuestions);
+  loadSavedWriting();
+});
+</script>
+
+<style>
+/* ==========================================
+   LESSON 19 ADDITIONAL RESPONSIVE STYLES
+========================================== */
+
+.sentence-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border, #e5e5e5);
+}
+
+.sentence-row p {
+  flex: 1;
+  margin: 0;
+}
+
+.vocabulary-card {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border, #e5e5e5);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.vocabulary-card h3 {
+  color: var(--primary, #7047eb);
+  margin-top: 0;
+}
+
+.vocabulary-card p {
+  line-height: 1.6;
+}
+
+.audio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.transcript {
+  background: var(--soft, #f4f1ff);
+  padding: 14px;
+  border-radius: 12px;
+  line-height: 1.8;
+  margin: 14px 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.option-list {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 18px;
+}
+
+.option-list label,
+.card > label {
+  display: block;
+  padding: 9px;
+  border-radius: 9px;
+  background: var(--soft, #f4f1ff);
+  margin: 5px 0;
+}
+
+.quiz-question {
+  border: 1px solid var(--border, #e5e5e5);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 14px 0;
+  transition: border-color .2s ease;
+}
+
+.quiz-option {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 9px;
+  margin: 5px 0;
+  border-radius: 8px;
+  background: var(--soft, #f7f5ff);
+  cursor: pointer;
+}
+
+.quiz-option input {
+  margin-top: 4px;
+}
+
+.writing-task input,
+.card input[type="text"],
+.card textarea,
+.speaking-item textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 10px;
+  margin: 8px 0 16px;
+  font: inherit;
+  background: var(--card, #fff);
+  color: var(--text, #222);
+}
+
+.card textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.speaking-item {
+  border-bottom: 1px solid var(--border, #e5e5e5);
+  padding: 12px 0;
+}
+
+.speaking-item:last-child {
+  border-bottom: 0;
+}
+
+.result-text {
+  font-weight: 700;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background: var(--soft, #e9e4ff);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--primary, #7047eb);
+  border-radius: 20px;
+  transition: width .4s ease;
+}
+
+.motivation-card {
+  text-align: center;
+  padding: 24px;
+}
+
+.notebook-note {
+  background: #fff7df;
+  color: #684d0c;
+  border-left: 4px solid #e8b943;
+  border-radius: 8px;
+  padding: 12px;
+  line-height: 1.6;
+  margin: 12px 0 18px;
+}
+
+.primary-btn,
+.secondary-btn,
+.audio-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  margin: 5px 4px 5px 0;
+}
+
+.primary-btn {
+  background: var(--primary, #7047eb);
+  color: #fff;
+}
+
+.secondary-btn {
+  background: var(--soft, #eee9ff);
+  color: var(--primary, #7047eb);
+}
+
+.audio-btn {
+  background: var(--soft, #eee9ff);
+  color: var(--primary, #7047eb);
+}
+
+.primary-btn:active,
+.secondary-btn:active,
+.audio-btn:active {
+  transform: scale(.98);
+}
+
+@media (max-width: 600px) {
+  .sentence-row {
+    align-items: flex-start;
+  }
+
+  .audio-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .audio-controls button:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .quiz-question {
+    padding: 10px;
+  }
+
+  .vocabulary-card {
+    padding: 12px;
+  }
+}
+</style>
+
+</body>
+</html>
