@@ -1,1 +1,829 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 8 - Present Perfect | English Up</title>
+<style>
+:root{
+--purple:#7047eb;
+--purple2:#9274ff;
+--bg:#f5f3ff;
+--card:#ffffff;
+--text:#241d38;
+--muted:#77718a;
+--border:#e8e2f5;
+--green:#16a36a;
+--red:#e34d5b;
+--yellow:#ffbd45;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.65;
+}
+button,input,textarea{font:inherit}
+header{
+background:linear-gradient(135deg,#7047eb,#a18aff);
+color:white;
+padding:22px 16px;
+}
+.header-inner{max-width:1000px;margin:auto}
+.back{
+display:inline-block;
+color:white;
+text-decoration:none;
+margin-bottom:15px;
+font-weight:bold;
+}
+header h1{font-size:30px;margin:5px 0}
+header p{margin:5px 0;opacity:.95}
+.header-info{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:15px;
+}
+.header-info span{
+background:#ffffff25;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+}
+nav{
+background:white;
+padding:10px;
+display:flex;
+gap:8px;
+overflow-x:auto;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 3px 12px #241d3810;
+}
+nav a{
+text-decoration:none;
+white-space:nowrap;
+color:var(--purple);
+font-size:13px;
+font-weight:bold;
+padding:8px 12px;
+border-radius:20px;
+background:#f1edff;
+}
+main{max-width:1000px;margin:22px auto;padding:0 14px}
+section{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:17px;
+padding:20px;
+margin-bottom:18px;
+box-shadow:0 5px 18px #241d3808;
+}
+h2{font-size:22px;margin:0 0 15px}
+h3{font-size:18px;margin:17px 0 8px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.tag{
+display:inline-block;
+background:#eee8ff;
+color:var(--purple);
+border-radius:20px;
+padding:4px 11px;
+font-size:12px;
+font-weight:bold;
+}
+.formula{
+background:#f1edff;
+border-left:4px solid var(--purple);
+padding:12px;
+border-radius:8px;
+margin:10px 0;
+font-weight:bold;
+}
+.example{
+background:#f8f7fc;
+padding:12px;
+border-radius:10px;
+margin:9px 0;
+}
+.en{font-weight:bold;color:#35265f}
+.uz{color:#686078;font-size:14px}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:#f1edff;color:#4f35a4}
+.primary{
+background:var(--purple);
+color:white;
+border:0;
+padding:11px 17px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+.secondary{
+background:#eee8ff;
+color:var(--purple);
+border:0;
+padding:10px 15px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+button:active{transform:scale(.98)}
+input[type=text],textarea{
+width:100%;
+border:1px solid var(--border);
+border-radius:9px;
+padding:11px;
+background:#fff;
+color:var(--text);
+margin:6px 0 12px;
+}
+textarea{min-height:100px;resize:vertical}
+.quiz-question{
+padding:15px;
+border:1px solid var(--border);
+border-radius:12px;
+margin:12px 0;
+}
+.option{
+display:block;
+padding:9px;
+margin:7px 0;
+border-radius:8px;
+background:#f7f5fc;
+cursor:pointer;
+}
+.option input{margin-right:8px}
+.correct{background:#e4f8ed!important}
+.wrong{background:#ffebed!important}
+.result{
+padding:14px;
+border-radius:10px;
+margin-top:12px;
+font-weight:bold;
+}
+.progress-bg{
+height:12px;
+background:#eee9f8;
+border-radius:20px;
+overflow:hidden;
+}
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#7047eb,#a18aff);
+transition:.3s;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px;
+}
+.word-card{
+background:#f8f6ff;
+padding:13px;
+border-radius:11px;
+}
+.word-card strong{color:var(--purple)}
+footer{
+text-align:center;
+padding:25px;
+color:var(--muted);
+}
+.hidden{display:none}
+.highlight{
+background:#fff5d9;
+padding:13px;
+border-radius:10px;
+border-left:4px solid var(--yellow);
+}
+.homework-box{
+background:#f5f1ff;
+border:1px solid #e5dcff;
+padding:16px;
+border-radius:12px;
+margin:12px 0;
+}
+@media(max-width:600px){
+header h1{font-size:25px}
+section{padding:16px}
+table{font-size:13px}
+}
+</style>
+</head>
+<body>
 
+<header>
+<div class="header-inner">
+<a class="back" href="index.html">← Back to English Up</a>
+<h1>LESSON 8: PRESENT PERFECT</h1>
+<p>Pre-Intermediate English Course</p>
+<div class="header-info">
+<span>📚 Grammar</span>
+<span>🎧 Listening</span>
+<span>🗣️ Speaking</span>
+<span>✍️ Writing</span>
+<span>🎯 Interactive Tests</span>
+</div>
+</div>
+</header>
+
+<nav>
+<a href="#intro">Introduction</a>
+<a href="#rules">Rules</a>
+<a href="#verbs">V3 Verbs</a>
+<a href="#signal">Signal Words</a>
+<a href="#examples">Examples</a>
+<a href="#quiz">Test</a>
+<a href="#speaking">Speaking</a>
+<a href="#reading">Reading</a>
+<a href="#homework">Homework</a>
+</nav>
+
+<main>
+
+<section id="intro">
+<span class="tag">LESSON OBJECTIVE</span>
+<h2>🎯 Bugungi dars maqsadi</h2>
+<p>Bugun biz Present Perfect zamonini o‘rganamiz. Ushbu zamon ingliz tilida juda muhim hisoblanadi. U orqali o'tmishda sodir bo‘lgan, lekin hozirgi vaqt bilan aloqasi bor voqealar haqida gapiramiz.</p>
+<div class="highlight">
+<strong>Remember:</strong>
+<p>Present Perfect = Past action + Present connection.</p>
+<p>Ya'ni o'tmishda sodir bo'lgan ishning hozirgi vaqt bilan aloqasi mavjud.</p>
+</div>
+<h3>Bugun nimalarni o‘rganamiz?</h3>
+<ul>
+<li>Have va Has ishlatilishi.</li>
+<li>Fe'llarning uchinchi shakli — V3.</li>
+<li>Darak, inkor va so‘roq gaplar.</li>
+<li>Ever, Never, Already, Yet, Just.</li>
+<li>Since va For.</li>
+<li>Been va Gone farqi.</li>
+<li>Present Perfect va Past Simple farqi.</li>
+</ul>
+</section>
+
+<section id="rules">
+<h2>1. PRESENT PERFECT FORMULASI</h2>
+<p>Present Perfect zamonida asosiy yordamchi fe'llarimiz HAVE va HAS hisoblanadi.</p>
+<div class="formula">Subject + HAVE / HAS + V3 + Object</div>
+<table>
+<tr><th>Subject</th><th>Yordamchi fe'l</th></tr>
+<tr><td>I</td><td>Have</td></tr>
+<tr><td>You</td><td>Have</td></tr>
+<tr><td>We</td><td>Have</td></tr>
+<tr><td>They</td><td>Have</td></tr>
+<tr><td>He</td><td>Has</td></tr>
+<tr><td>She</td><td>Has</td></tr>
+<tr><td>It</td><td>Has</td></tr>
+</table>
+<h3>Positive — Darak gap</h3>
+<div class="formula">Subject + have/has + V3</div>
+<div class="example">
+<p class="en">I have finished my homework.</p>
+<p class="uz">Men uy vazifamni tugatdim.</p>
+</div>
+<div class="example">
+<p class="en">She has visited London.</p>
+<p class="uz">U Londonga tashrif buyurgan.</p>
+</div>
+<div class="example">
+<p class="en">They have bought a new car.</p>
+<p class="uz">Ular yangi mashina sotib olishgan.</p>
+</div>
+
+<h3>Negative — Inkor gap</h3>
+<div class="formula">Subject + have/has + not + V3</div>
+<div class="example">
+<p class="en">I have not finished my work.</p>
+<p class="uz">Men ishimni tugatmadim.</p>
+</div>
+<div class="example">
+<p class="en">He has not called me.</p>
+<p class="uz">U menga qo‘ng‘iroq qilmadi.</p>
+</div>
+<p>Qisqartmalar:</p>
+<ul>
+<li>Have not = Haven't</li>
+<li>Has not = Hasn't</li>
+</ul>
+
+<h3>Question — So‘roq gap</h3>
+<div class="formula">Have/Has + Subject + V3 + Object?</div>
+<div class="example">
+<p class="en">Have you finished your homework?</p>
+<p class="uz">Uy vazifangni tugatdingmi?</p>
+</div>
+<div class="example">
+<p class="en">Has she arrived?</p>
+<p class="uz">U yetib keldimi?</p>
+</div>
+<h3>Short Answers — Qisqa javoblar</h3>
+<div class="example">
+<p class="en">Have you eaten? — Yes, I have.</p>
+<p class="uz">Ovqatlandingmi? — Ha.</p>
+</div>
+<div class="example">
+<p class="en">Has he arrived? — No, he hasn't.</p>
+<p class="uz">U yetib keldimi? — Yo‘q.</p>
+</div>
+</section>
+
+<section id="verbs">
+<h2>2. VERB FORMS — V1, V2, V3</h2>
+<p>Present Perfect uchun fe'lning uchinchi shakli ishlatiladi. Buni yaxshilab eslab qoling.</p>
+<table>
+<tr><th>V1</th><th>V2</th><th>V3</th><th>Tarjimasi</th></tr>
+<tr><td>Go</td><td>Went</td><td>Gone</td><td>Bormoq</td></tr>
+<tr><td>Eat</td><td>Ate</td><td>Eaten</td><td>Yemoq</td></tr>
+<tr><td>See</td><td>Saw</td><td>Seen</td><td>Ko‘rmoq</td></tr>
+<tr><td>Write</td><td>Wrote</td><td>Written</td><td>Yozmoq</td></tr>
+<tr><td>Speak</td><td>Spoke</td><td>Spoken</td><td>Gapirmoq</td></tr>
+<tr><td>Take</td><td>Took</td><td>Taken</td><td>Olmoq</td></tr>
+<tr><td>Give</td><td>Gave</td><td>Given</td><td>Bermoq</td></tr>
+<tr><td>Come</td><td>Came</td><td>Come</td><td>Kelmoq</td></tr>
+<tr><td>Do</td><td>Did</td><td>Done</td><td>Qilmoq</td></tr>
+<tr><td>Make</td><td>Made</td><td>Made</td><td>Yasamoq</td></tr>
+<tr><td>Buy</td><td>Bought</td><td>Bought</td><td>Sotib olmoq</td></tr>
+<tr><td>Read</td><td>Read</td><td>Read</td><td>O‘qimoq</td></tr>
+<tr><td>Know</td><td>Knew</td><td>Known</td><td>Bilmoq</td></tr>
+<tr><td>Find</td><td>Found</td><td>Found</td><td>Topmoq</td></tr>
+<tr><td>Drink</td><td>Drank</td><td>Drunk</td><td>Ichmoq</td></tr>
+<tr><td>Begin</td><td>Began</td><td>Begun</td><td>Boshlamoq</td></tr>
+<tr><td>Break</td><td>Broke</td><td>Broken</td><td>Sindirmoq</td></tr>
+<tr><td>Choose</td><td>Chose</td><td>Chosen</td><td>Tanlamoq</td></tr>
+<tr><td>Forget</td><td>Forgot</td><td>Forgotten</td><td>Unutmoq</td></tr>
+<tr><td>Speak</td><td>Spoke</td><td>Spoken</td><td>Gapirmoq</td></tr>
+</table>
+<h3>Regular Verbs</h3>
+<p>Regular fe'llarda V3 odatda -ed qo‘shimchasi orqali hosil qilinadi.</p>
+<div class="grid">
+<div class="word-card"><strong>Work → Worked</strong><p>I have worked.</p></div>
+<div class="word-card"><strong>Play → Played</strong><p>She has played.</p></div>
+<div class="word-card"><strong>Clean → Cleaned</strong><p>We have cleaned.</p></div>
+<div class="word-card"><strong>Visit → Visited</strong><p>They have visited.</p></div>
+</div>
+<div class="highlight">
+<strong>Important:</strong> Har bir fe'lga -ed qo‘shib bo‘lmaydi. Irregular verbs shakllarini alohida o‘rganish kerak.
+</div>
+</section>
+
+<section id="signal">
+<h2>3. SIGNAL WORDS</h2>
+<p>Quyidagi so‘zlar Present Perfect bilan juda ko‘p ishlatiladi.</p>
+<div class="grid">
+<div class="word-card"><strong>Already</strong><p>Allaqachon</p><p class="en">I have already eaten.</p></div>
+<div class="word-card"><strong>Yet</strong><p>Hali / allaqachonmi</p><p class="en">Have you finished yet?</p></div>
+<div class="word-card"><strong>Just</strong><p>Hozirgina</p><p class="en">She has just arrived.</p></div>
+<div class="word-card"><strong>Ever</strong><p>Biror marta</p><p class="en">Have you ever travelled?</p></div>
+<div class="word-card"><strong>Never</strong><p>Hech qachon</p><p class="en">I have never smoked.</p></div>
+<div class="word-card"><strong>Recently</strong><p>Yaqinda</p><p class="en">I have recently moved.</p></div>
+<div class="word-card"><strong>So far</strong><p>Hozirgacha</p><p class="en">I have read three books so far.</p></div>
+<div class="word-card"><strong>Since</strong><p>...dan beri</p><p class="en">I have lived here since 2020.</p></div>
+<div class="word-card"><strong>For</strong><p>... davomida</p><p class="en">I have lived here for five years.</p></div>
+</div>
+<h3>Already va Yet farqi</h3>
+<p><strong>Already</strong> ko‘pincha darak gaplarda ishlatiladi.</p>
+<p><strong>Yet</strong> ko‘pincha inkor va so‘roq gaplarning oxirida keladi.</p>
+<div class="example">
+<p class="en">I have already done it.</p>
+<p class="uz">Men buni allaqachon bajardim.</p>
+</div>
+<div class="example">
+<p class="en">I haven't done it yet.</p>
+<p class="uz">Men buni hali bajarmadim.</p>
+</div>
+</section>
+
+<section>
+<h2>4. SINCE VA FOR</h2>
+<p>Bu ikki so‘z biror holat qancha vaqtdan beri davom etayotganini ifodalash uchun ishlatiladi.</p>
+<div class="formula">SINCE = boshlanish nuqtasi</div>
+<ul>
+<li>Since Monday — Dushanbadan beri.</li>
+<li>Since 2020 — 2020-yildan beri.</li>
+<li>Since yesterday — Kechadan beri.</li>
+<li>Since morning — Ertalabdan beri.</li>
+</ul>
+<div class="formula">FOR = vaqt davomiyligi</div>
+<ul>
+<li>For two days — Ikki kundan beri.</li>
+<li>For three years — Uch yildan beri.</li>
+<li>For an hour — Bir soatdan beri.</li>
+<li>For a long time — Uzoq vaqtdan beri.</li>
+</ul>
+<div class="example">
+<p class="en">I have studied English for six years.</p>
+<p class="uz">Men olti yildan beri ingliz tilini o‘rganaman.</p>
+</div>
+<div class="example">
+<p class="en">She has lived here since 2021.</p>
+<p class="uz">U 2021-yildan beri shu yerda yashaydi.</p>
+</div>
+</section>
+
+<section>
+<h2>5. BEEN VA GONE</h2>
+<div class="example">
+<p class="en">He has gone to London.</p>
+<p class="uz">U Londonga ketgan (hozir bu yerda emas).</p>
+</div>
+<div class="example">
+<p class="en">He has been to London.</p>
+<p class="uz">U Londonda bo‘lgan (tajribasi bor, qaytib kelgan).</p>
+</div>
+<p><strong>Been to:</strong> Biror joyga borib qaytgan tajriba.</p>
+<p><strong>Gone to:</strong> Biror joyga ketgan va hali qaytmagan.</p>
+</section>
+
+<section>
+<h2>6. PRESENT PERFECT VS PAST SIMPLE</h2>
+<table>
+<tr><th>Present Perfect</th><th>Past Simple</th></tr>
+<tr><td>Vaqt aniq ko‘rsatilmaydi</td><td>O‘tgan vaqt aniq ko‘rsatiladi</td></tr>
+<tr><td>Have/Has + V3</td><td>V2</td></tr>
+<tr><td>I have seen this film.</td><td>I saw this film yesterday.</td></tr>
+<tr><td>Men bu filmni ko‘rganman.</td><td>Men bu filmni kecha ko‘rdim.</td></tr>
+</table>
+<p>Yesterday, last week, two days ago kabi tugagan vaqt ko‘rsatkichlari bilan odatda Past Simple ishlatiladi.</p>
+</section>
+
+<section id="examples">
+<h2>7. 20 TA HAYOTIY MISOL</h2>
+<div id="exampleList"></div>
+</section>
+
+<section id="quiz">
+<h2>8. INTERACTIVE TEST — 30 QUESTIONS</h2>
+<p>Har bir savol uchun bitta javobni belgilang.</p>
+<div class="progress-bg"><div class="progress-bar" id="quizProgress"></div></div>
+<p id="questionCount" class="muted">0 / 30 javob belgilandi</p>
+<div id="quizContainer"></div>
+<button class="primary" onclick="checkQuiz()">TESTNI TEKSHIRISH</button>
+<button class="secondary" onclick="resetQuiz()">QAYTA ISHLASH</button>
+<div id="quizResult"></div>
+</section>
+
+<section>
+<h2>9. GAPNI TO‘LDIRING</h2>
+<p>Qavs ichidagi fe'lning to‘g‘ri shaklini yozing.</p>
+<div id="fillContainer"></div>
+<button class="primary" onclick="checkFill()">JAVOBLARNI TEKSHIRISH</button>
+<div id="fillResult"></div>
+</section>
+
+<section>
+<h2>10. TRANSLATION PRACTICE</h2>
+<p>Quyidagi gaplarni ingliz tiliga tarjima qiling.</p>
+<div id="translationList"></div>
+</section>
+
+<section id="speaking">
+<h2>11. SPEAKING PRACTICE</h2>
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir savolga kamida 3 ta gap bilan javob berishga harakat qiling.</p>
+<ol>
+<li>Have you ever visited another country?</li>
+<li>Have you learned anything new recently?</li>
+<li>How long have you studied English?</li>
+<li>Have you ever read an English book?</li>
+<li>What have you done today?</li>
+<li>Have you ever helped a stranger?</li>
+<li>What places have you visited?</li>
+<li>Have you finished your homework?</li>
+<li>What new words have you learned?</li>
+<li>Have you ever made a big mistake?</li>
+</ol>
+<div class="highlight">
+<strong>Speaking challenge:</strong>
+<p>Present Perfect yordamida o‘zingiz haqingizda 10 ta gap tuzing.</p>
+</div>
+</section>
+
+<section>
+<h2>12. LISTENING PRACTICE</h2>
+<p>Quyidagi matnni avval o‘zingiz o‘qing. Keyin telefoningizdagi matnni ovoz chiqarib o‘qish funksiyasidan foydalanib tinglang.</p>
+<div class="example">
+<p class="en">Hello! My name is Daniel. I have studied English for three years. I have learned many new words, and I have read several English books. I have also watched English videos. Recently, I have started speaking with my friends in English. I haven't become fluent yet, but I have improved a lot. I have never given up because I want to speak English confidently.</p>
+</div>
+<h3>Listening questions</h3>
+<ol>
+<li>How long has Daniel studied English?</li>
+<li>What has he read?</li>
+<li>What has he started recently?</li>
+<li>Has he become fluent yet?</li>
+<li>Why hasn't he given up?</li>
+</ol>
+</section>
+
+<section id="reading">
+<h2>13. READING PRACTICE</h2>
+<span class="tag">PRE-INTERMEDIATE STORY</span>
+<h3>A New Life</h3>
+<div class="example">
+<p class="en">Anna has always wanted to improve her life. She has worked hard for many years. Recently, she has decided to learn English because she wants to communicate with people from different countries.</p>
+<p class="en">She has already bought some English books. She has also downloaded a language-learning application. Every morning, she studies new words and reads short stories.</p>
+<p class="en">Anna hasn't learned everything yet, but she has made good progress. She has met some new friends who also study English. They have practiced speaking together several times.</p>
+<p class="en">Anna has understood one important thing: success doesn't happen in one day. She has decided to continue learning every day.</p>
+</div>
+<h3>Reading comprehension</h3>
+<ol>
+<li>Why has Anna decided to learn English?</li>
+<li>What has she already bought?</li>
+<li>When does she study new words?</li>
+<li>Who has she met?</li>
+<li>What important thing has Anna understood?</li>
+</ol>
+</section>
+
+<section>
+<h2>14. WRITING PRACTICE</h2>
+<p>Quyidagi mavzu bo‘yicha 120–150 ta so‘zdan iborat matn yozing.</p>
+<div class="highlight">
+<strong>Topic: My Life Experiences</strong>
+<p>Write about your experiences, achievements, learning journey and things you have done recently.</p>
+</div>
+<p>Shartlar:</p>
+<ul>
+<li>Kamida 8 ta Present Perfect gap.</li>
+<li>Already, Yet, Never, Ever so‘zlaridan foydalaning.</li>
+<li>Since yoki For ishlating.</li>
+<li>Kamida 5 ta irregular verb ishlating.</li>
+</ul>
+<textarea id="writingAnswer" placeholder="Write your paragraph here..."></textarea>
+<button class="secondary" onclick="saveWriting()">WRITINGNI SAQLASH</button>
+<span id="writingStatus"></span>
+</section>
+
+<section id="homework">
+<h2>15. HOMEWORK — UYGA VAZIFA</h2>
+<span class="tag">MANDATORY HOMEWORK</span>
+<h3>📚 Task 1 — Grammar</h3>
+<ul>
+<li>Present Perfect formulasini daftarga yozing.</li>
+<li>10 ta darak gap tuzing.</li>
+<li>10 ta inkor gap tuzing.</li>
+<li>10 ta so‘roq gap tuzing.</li>
+<li>20 ta irregular verbning V1, V2, V3 shakllarini yodlang.</li>
+</ul>
+<h3>✍️ Task 2 — Vocabulary</h3>
+<p>Quyidagi so‘zlarni yodlang:</p>
+<div class="grid">
+<div class="word-card">Experience — Tajriba</div>
+<div class="word-card">Improve — Yaxshilamoq</div>
+<div class="word-card">Achieve — Erishmoq</div>
+<div class="word-card">Recently — Yaqinda</div>
+<div class="word-card">Already — Allaqachon</div>
+<div class="word-card">Yet — Hali</div>
+<div class="word-card">Ever — Biror marta</div>
+<div class="word-card">Never — Hech qachon</div>
+<div class="word-card">Progress — Rivojlanish</div>
+<div class="word-card">Confident — O‘ziga ishongan</div>
+<div class="word-card">Decision — Qaror</div>
+<div class="word-card">Continue — Davom ettirmoq</div>
+<div class="word-card">Travel — Sayohat qilmoq</div>
+<div class="word-card">Discover — Kashf qilmoq</div>
+<div class="word-card">Complete — Tugatmoq</div>
+</div>
+
+<h3>🗣️ Task 3 — Speaking</h3>
+<p>O‘zingiz haqingizda Present Perfect yordamida 2 daqiqalik nutq tayyorlang va ovoz yozib oling.</p>
+
+<h3>🎧 Task 4 — Listening</h3>
+<p>Listening matnini kamida 3 marta tinglang. Mazmunini tushunishga harakat qiling.</p>
+
+<h3>📖 Task 5 — Reading</h3>
+<p>Reading matnini tarjima qiling va savollariga javob yozing.</p>
+
+<h3>✍️ Task 6 — WRITING</h3>
+<p>My Life Experiences mavzusida 120–150 so‘zli matn yozing.</p>
+
+<div class="homework-box">
+<h3>📜 Task 7 — EXTRA TRANSLATION</h3>
+<span class="tag">IMPORTANT EXTRA TASK</span>
+<p>Quyidagi inglizcha matnni o‘zbek tiliga tarjima qiling. Matnni shoshilmasdan o‘qing, har bir gapning mazmunini tushunishga harakat qiling.</p>
+<h3 class="en">The Importance of Never Giving Up</h3>
+<div class="example">
+<p class="en">Learning a new language is not always easy. Sometimes, people feel tired or disappointed because they cannot understand everything. However, successful learners never give up. They understand that every small step is important.</p>
+<p class="en">I have studied English for several years, and I have learned many useful things. I have made mistakes, but I have also improved my skills. I have discovered that practice is more important than simply reading grammar rules.</p>
+<p class="en">Recently, I have started spending more time on listening and speaking. I have watched English videos, listened to conversations and learned new expressions. I haven't reached my final goal yet, but I have made progress.</p>
+<p class="en">Everyone has a different learning journey. Some people learn quickly, while others need more time. The most important thing is to continue learning and believe in your progress. If you work consistently, you will achieve your goals one day.</p>
+</div>
+<div class="highlight">
+<strong>📌 TOPSHIRIQ:</strong>
+<p>Yuqoridagi matnni avval inglizchasini yozing va tarjimasini tagidan yozib, teacherga yuboring.</p>
+<p>Ya'ni har bir inglizcha gapni yozasiz, uning tagiga o‘zbekcha tarjimasini yozasiz.</p>
+<p>Matnni to‘liq tarjima qiling. Faqat alohida so‘zlarni emas, gaplarning mazmunini ham to‘g‘ri yetkazishga harakat qiling.</p>
+</div>
+<textarea id="extraTranslation" placeholder="Write the English text first, then write its Uzbek translation under each sentence..."></textarea>
+<button class="secondary" onclick="saveExtra()">TARJIMANI SAQLASH</button>
+<span id="extraStatus"></span>
+</div>
+
+<h3>⭐ Final Challenge</h3>
+<p>Present Perfect yordamida hayotingizdagi 15 ta tajriba haqida gap yozing.</p>
+</section>
+
+<section>
+<h2>16. DARSNI YAKUNLASH</h2>
+<p>Bugungi darsni tugatishdan oldin quyidagilarni tekshiring:</p>
+<div id="checklist">
+<label class="option"><input type="checkbox"> Present Perfect formulasini tushundim.</label>
+<label class="option"><input type="checkbox"> Have va Has farqini bilaman.</label>
+<label class="option"><input type="checkbox"> V3 shakllarini tushundim.</label>
+<label class="option"><input type="checkbox"> Since va For farqini bilaman.</label>
+<label class="option"><input type="checkbox"> Already va Yet farqini tushundim.</label>
+<label class="option"><input type="checkbox"> Testni ishladim.</label>
+<label class="option"><input type="checkbox"> Speaking mashqlarini bajardim.</label>
+<label class="option"><input type="checkbox"> Homeworkni bajarishga tayyorman.</label>
+</div>
+</section>
+
+</main>
+
+<footer>
+<strong>ENGLISH UP</strong>
+<p>Learn today. Succeed tomorrow. 💜</p>
+<p>Lesson 8 — Present Perfect</p>
+</footer>
+
+<script>
+const examples=[
+["I have finished my homework.","Men uy vazifamni tugatdim."],
+["She has cooked dinner.","U kechki ovqat tayyorladi."],
+["We have visited Samarkand.","Biz Samarqandga tashrif buyurganmiz."],
+["They have bought a new house.","Ular yangi uy sotib olishgan."],
+["He has lost his keys.","U kalitlarini yo‘qotib qo‘ygan."],
+["I have never seen snow.","Men hech qachon qor ko‘rmaganman."],
+["Have you ever been to Turkey?","Siz hech Turkiyada bo‘lganmisiz?"],
+["She has already left.","U allaqachon ketgan."],
+["I haven't eaten breakfast yet.","Men hali nonushta qilmadim."],
+["He has just arrived.","U hozirgina yetib keldi."],
+["We have known each other for years.","Biz bir-birimizni yillardan beri bilamiz."],
+["I have studied English since 2020.","Men 2020-yildan beri ingliz tilini o‘rganaman."],
+["Have they finished the project?","Ular loyihani tugatishdimi?"],
+["My brother has found a job.","Akam ish topdi."],
+["She has written three emails.","U uchta elektron xat yozdi."],
+["I have learned many new words.","Men ko‘plab yangi so‘zlarni o‘rgandim."],
+["The children have gone to school.","Bolalar maktabga ketishdi."],
+["Have you read this book?","Siz bu kitobni o‘qiganmisiz?"],
+["We have made a big mistake.","Biz katta xatoga yo‘l qo‘ydik."],
+["My English has improved recently.","Yaqinda ingliz tilim yaxshilandi."]
+];
+document.getElementById("exampleList").innerHTML=examples.map((x,i)=>`
+<div class="example">
+<strong>${i+1}.</strong>
+<p class="en">${x[0]}</p>
+<p class="uz">${x[1]}</p>
+</div>`).join("");
+
+const questions=[
+["She ___ finished her work.","has","have","had","having",0],
+["I ___ visited London.","have","has","am","was",0],
+["They have ___ dinner.","eat","ate","eaten","eating",2],
+["He has never ___ sushi.","try","tried","trying","tries",1],
+["___ you ever seen this film?","Has","Do","Have","Are",2],
+["She hasn't ___ yet.","arrived","arrive","arriving","arrives",0],
+["We have lived here ___ 2020.","for","since","during","at",1],
+["I have studied English ___ five years.","since","from","for","at",2],
+["He has ___ gone home.","already","yesterday","last","ago",0],
+["Have you finished your homework ___?","already","yet","since","for",1],
+["My father has just ___.","come","came","comes","coming",0],
+["She has ___ three books.","write","wrote","written","writing",2],
+["I have never ___ to Japan.","go","went","gone","going",2],
+["They ___ bought a car.","has","have","is","was",1],
+["Has he ___ his keys?","find","found","finding","finds",1],
+["We have ___ this movie before.","see","saw","seen","seeing",2],
+["She ___ worked here for two years.","have","has","is","are",1],
+["I haven't eaten breakfast ___.","already","just","yet","ever",2],
+["Have they ever ___ abroad?","travel","travelled","travelling","travels",1],
+["He has ___ his phone.","lose","lost","losing","loses",1],
+["I ___ never tried this food.","has","have","am","was",1],
+["She has ___ her room.","clean","cleaned","cleaning","cleans",1],
+["We have known him ___ 2019.","for","since","during","in",1],
+["My friends have ___ the task.","do","did","done","does",2],
+["___ she arrived yet?","Have","Do","Has","Is",2],
+["I have ___ learned this rule.","just","yesterday","ago","last",0],
+["He has been here ___ an hour.","since","for","at","from",1],
+["They haven't called me ___.","yet","already","just","ever",0],
+["I have ___ my wallet.","forget","forgot","forgotten","forgetting",2],
+["Which sentence is correct?","She have eaten.","She has eaten.","She is eaten.","She has eat.",1]
+];
+
+function renderQuiz(){
+const c=document.getElementById("quizContainer");
+c.innerHTML=questions.map((q,i)=>`
+<div class="quiz-question" id="q${i}">
+<strong>${i+1}. ${q[0]}</strong>
+${q.slice(1,5).map((a,j)=>`
+<label class="option">
+<input type="radio" name="q${i}" value="${j}" onchange="updateProgress()">
+${String.fromCharCode(65+j)}. ${a}
+</label>`).join("")}
+</div>`).join("");
+}
+function updateProgress(){
+let n=questions.filter((q,i)=>document.querySelector('input[name="q'+i+'"]:checked')).length;
+document.getElementById("questionCount").textContent=n+" / 30 javob belgilandi";
+document.getElementById("quizProgress").style.width=(n/30*100)+"%";
+}
+function checkQuiz(){
+let score=0,answered=0;
+questions.forEach((q,i)=>{
+const selected=document.querySelector('input[name="q'+i+'"]:checked');
+const box=document.getElementById("q"+i);
+box.querySelectorAll(".option").forEach(x=>x.classList.remove("correct","wrong"));
+if(selected){
+answered++;
+const choice=Number(selected.value);
+if(choice===q[5]){score++;box.querySelectorAll(".option")[choice].classList.add("correct");}
+else{
+box.querySelectorAll(".option")[choice].classList.add("wrong");
+box.querySelectorAll(".option")[q[5]].classList.add("correct");
+}
+}
+});
+let percent=Math.round(score/30*100);
+let message=percent>=80?"Ajoyib! Siz mavzuni yaxshi o‘zlashtirdingiz! 🎉":"Yaxshi harakat! Xatolarni ko‘rib chiqing va yana urinib ko‘ring.";
+document.getElementById("quizResult").innerHTML=`
+<div class="result" style="background:${percent>=80?'#e4f8ed':'#fff1df'}">
+Natija: ${score}/30 (${percent}%)<br>
+Javob berilgan: ${answered}/30<br>${message}
+</div>`;
+localStorage.setItem("euLesson8Quiz",JSON.stringify({score,percent,date:new Date().toISOString()}));
+}
+function resetQuiz(){
+renderQuiz();
+document.getElementById("quizResult").innerHTML="";
+updateProgress();
+}
+renderQuiz();
+
+const fill=[
+["I have ___ (finish) my work.","finished"],
+["She has ___ (go) home.","gone"],
+["They have ___ (eat) lunch.","eaten"],
+["He has ___ (write) a letter.","written"],
+["We have ___ (see) this film.","seen"],
+["I have ___ (buy) a book.","bought"],
+["She has ___ (do) her homework.","done"],
+["They have ___ (come) back.","come"],
+["He has ___ (drink) water.","drunk"],
+["I have ___ (read) this story.","read"]
+];
+document.getElementById("fillContainer").innerHTML=fill.map((x,i)=>`
+<div class="quiz-question">
+<label>${i+1}. ${x[0]}</label>
+<input type="text" id="fill${i}" placeholder="Write V3...">
+</div>`).join("");
+function checkFill(){
+let score=0;
+fill.forEach((x,i)=>{
+let el=document.getElementById("fill"+i);
+let ok=el.value.trim().toLowerCase()===x[1];
+el.style.borderColor=ok?"#16a36a":"#e34d5b";
+if(ok)score++;
+});
+document.getElementById("fillResult").innerHTML=`<div class="result">To‘g‘ri javoblar: ${score}/10</div>`;
+}
+
+const translations=[
+"Men ingliz tilini uch yildan beri o‘rganaman.",
+"U hali uy vazifasini bajarmadi.",
+"Sen hech qachon Londonda bo‘lganmisan?",
+"Biz allaqachon ovqatlandik.",
+"U hozirgina uyga keldi.",
+"Men bu kitobni hech qachon o‘qimaganman.",
+"Ular yangi mashina sotib olishdi.",
+"Men ko‘plab yangi so‘zlarni o‘rgandim.",
+"U 2022-yildan beri shu yerda yashaydi.",
+"Sen loyihani tugatdingmi?"
+];
+document.getElementById("translationList").innerHTML=translations.map((x,i)=>`
+<div class="quiz-question">
+<strong>${i+1}. ${x}</strong>
+<textarea placeholder="Write your English translation..."></textarea>
+</div>`).join("");
+
+function saveWriting(){
+localStorage.setItem("euLesson8Writing",document.getElementById("writingAnswer").value);
+document.getElementById("writingStatus").textContent=" Saqlandi!";
+}
+function saveExtra(){
+localStorage.setItem("euLesson8Extra",document.getElementById("extraTranslation").value);
+document.getElementById("extraStatus").textContent=" Saqlandi!";
+}
+window.addEventListener("load",()=>{
+const w=localStorage.getItem("euLesson8Writing");
+const e=localStorage.getItem("euLesson8Extra");
+if(w)document.getElementById("writingAnswer").value=w;
+if(e)document.getElementById("extraTranslation").value=e;
+});
+</script>
+</body>
+</html>
