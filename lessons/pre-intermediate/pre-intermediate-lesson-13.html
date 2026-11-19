@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -26,7 +27,7 @@
   padding:0;
 }
 body {
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
   line-height:1.7;
@@ -655,7 +656,7 @@ footer {
   <div class="example">
     <p class="en">If it rains, we won't go outside.</p>
     <p class="uz">Agar yomg‘ir yog‘sa, tashqariga chiqmaymiz.</p>
-    <button class="audio-btn" onclick="speak('If it rains, we won’t go outside.')">🔊</button>
+    <button class="audio-btn" onclick="speak('If it rains, we will not go outside.')">🔊</button>
   </div>
   <div class="example">
     <p class="en">If he doesn't study, he won't pass the exam.</p>
@@ -1191,6 +1192,8 @@ footer {
 </footer>
 
 <script>
+"use strict";
+
 /* ==============================
    ENGLISH UP — LESSON 13
    FIRST CONDITIONAL
@@ -1198,51 +1201,93 @@ footer {
 
 const $ = id => document.getElementById(id);
 
+/* THEME */
+
 function toggleTheme() {
   document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "euLesson13Theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
+  try {
+    localStorage.setItem(
+      "euLesson13Theme",
+      document.body.classList.contains("dark") ? "dark" : "light"
+    );
+  } catch(error) {
+    console.warn("Theme preference could not be saved.",error);
+  }
 }
 
-if(localStorage.getItem("euLesson13Theme")==="dark") {
-  document.body.classList.add("dark");
+try {
+  if(localStorage.getItem("euLesson13Theme")==="dark") {
+    document.body.classList.add("dark");
+  }
+} catch(error) {
+  console.warn("Theme preference could not be loaded.",error);
 }
+
+/* AUDIO */
 
 function speak(text) {
   if(!("speechSynthesis" in window)) {
     alert("Your browser does not support audio.");
     return;
   }
-  speechSynthesis.cancel();
+
+  window.speechSynthesis.cancel();
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "en-US";
   utterance.rate = 0.85;
-  speechSynthesis.speak(utterance);
+
+  window.speechSynthesis.speak(utterance);
 }
 
+/* NAVIGATION */
+
 function showSection(id,button) {
+  const target = $(id);
+
+  if(!target) {
+    console.error("Section not found:",id);
+    return;
+  }
+
   document.querySelectorAll(".section").forEach(section=>{
     section.classList.remove("active");
   });
+
   document.querySelectorAll(".tab").forEach(tab=>{
     tab.classList.remove("active");
   });
-  $(id).classList.add("active");
-  button.classList.add("active");
+
+  target.classList.add("active");
+
+  if(button) {
+    button.classList.add("active");
+  } else {
+    const matchingTab = [...document.querySelectorAll(".tab")]
+      .find(tab=>tab.getAttribute("onclick")?.includes("'" + id + "'"));
+
+    if(matchingTab) matchingTab.classList.add("active");
+  }
+
   window.scrollTo({top:0,behavior:"smooth"});
   updateProgress();
 }
+
+/* PROGRESS */
 
 const completedSections = new Set();
 
 function updateProgress() {
   const active = document.querySelector(".section.active");
-  if(active) completedSections.add(active.id);
+
+  if(active) {
+    completedSections.add(active.id);
+  }
+
   const percent = Math.round(completedSections.size / 9 * 100);
-  $("progressFill").style.width = percent+"%";
-  $("progressText").textContent = percent+"%";
+
+  $("progressFill").style.width = percent + "%";
+  $("progressText").textContent = percent + "%";
 }
 
 /* GRAMMAR PRACTICE */
@@ -1326,23 +1371,27 @@ function renderPractice() {
 }
 
 function checkPractice() {
-  let score=0;
+  let score = 0;
+
   practiceData.forEach((q,i)=>{
-    const selected=document.querySelector(`input[name="p${i}"]:checked`);
-    const result=$("pe"+i);
-    result.style.display="block";
-    if(selected && Number(selected.value)===q.correct) {
+    const selected = document.querySelector(`input[name="p${i}"]:checked`);
+    const result = $("pe"+i);
+
+    result.style.display = "block";
+
+    if(selected && Number(selected.value) === q.correct) {
       score++;
-      result.className="result correct";
-      result.textContent="Correct! "+q.explain;
+      result.className = "result correct";
+      result.textContent = "Correct! " + q.explain;
     } else {
-      result.className="result wrong";
-      result.textContent="Correct answer: "+q.a[q.correct]+". "+q.explain;
+      result.className = "result wrong";
+      result.textContent = "Correct answer: " + q.a[q.correct] + ". " + q.explain;
     }
   });
-  $("practiceResult").style.display="block";
-  $("practiceResult").className="result correct";
-  $("practiceResult").textContent=`Your score: ${score}/${practiceData.length}`;
+
+  $("practiceResult").style.display = "block";
+  $("practiceResult").className = "result correct";
+  $("practiceResult").textContent = `Your score: ${score}/${practiceData.length}`;
 }
 
 /* FILL IN THE BLANKS */
@@ -1356,18 +1405,21 @@ const fillAnswers = [
 ];
 
 function checkFill() {
-  let score=0;
+  let score = 0;
+
   fillAnswers.forEach((answer,i)=>{
-    const value=$("fill"+(i+1)).value.trim().toLowerCase();
-    if(value===answer) score++;
+    const value = $("fill"+(i+1)).value.trim().toLowerCase();
+
+    if(value === answer) score++;
   });
-  $("fillResult").style.display="block";
-  $("fillResult").className="result "+(score===5?"correct":"wrong");
-  $("fillResult").textContent=`Correct answers: ${score}/5`;
+
+  $("fillResult").style.display = "block";
+  $("fillResult").className = "result " + (score===5 ? "correct" : "wrong");
+  $("fillResult").textContent = `Correct answers: ${score}/5`;
 }
 
 function showTranslation() {
-  $("translationAnswers").style.display="block";
+  $("translationAnswers").style.display = "block";
 }
 
 /* VOCABULARY */
@@ -1416,12 +1468,12 @@ const words = [
 ];
 
 function renderWords() {
-  $("wordGrid").innerHTML=words.map((w,i)=>`
+  $("wordGrid").innerHTML = words.map((w,i)=>`
     <div class="word">
       <strong>${i+1}. ${w[0]}</strong>
       <small>Uzbek: ${w[1]}</small>
       <small>Pronunciation: ${w[2]}</small>
-      <button class="audio-btn" onclick="speak('${w[0]}')">🔊</button>
+      <button class="audio-btn" onclick="speak(${JSON.stringify(w[0])})">🔊</button>
     </div>
   `).join("");
 }
@@ -1441,33 +1493,38 @@ Tom, what will you do if you finish work early?
 If I finish work early, I will visit my friend.
 What will you do if you have more free time?
 I will practise English.
-And what will you do if you save enough money?
-I will travel abroad next year.
+Anna, what will you do if you save enough money?
+If I save enough money, I will travel abroad next year.
 That sounds wonderful.
 `;
 
 function checkListening1() {
-  let score=0;
-  if(document.querySelector('input[name="l1"]:checked')?.value==="a") score++;
-  if(document.querySelector('input[name="l2"]:checked')?.value==="b") score++;
+  let score = 0;
+
+  if(document.querySelector('input[name="l1"]:checked')?.value === "a") score++;
+  if(document.querySelector('input[name="l2"]:checked')?.value === "b") score++;
+
   showResult("listenResult1",score,2);
 }
 
 function checkListening2() {
-  let score=0;
-  if(document.querySelector('input[name="l3"]:checked')?.value==="a") score++;
-  if(document.querySelector('input[name="l4"]:checked')?.value==="b") score++;
+  let score = 0;
+
+  if(document.querySelector('input[name="l3"]:checked')?.value === "a") score++;
+  if(document.querySelector('input[name="l4"]:checked')?.value === "b") score++;
+
   showResult("listenResult2",score,2);
 }
 
 function showResult(id,score,total) {
-  const el=$(id);
-  el.style.display="block";
-  el.className="result "+(score===total?"correct":"wrong");
-  el.textContent=`Your score: ${score}/${total}`;
+  const el = $(id);
+
+  el.style.display = "block";
+  el.className = "result " + (score===total ? "correct" : "wrong");
+  el.textContent = `Your score: ${score}/${total}`;
 }
 
-/* READING */
+/* READING — FAQAT BITTA DECLARATION */
 
 const readingText = `
 If I get a better opportunity, I will try to improve my life.
@@ -1481,12 +1538,15 @@ If I continue working hard, I will achieve my goals.
 `;
 
 function checkReading() {
-  let score=0;
+  let score = 0;
+
   ["r1","r2","r3"].forEach((name,i)=>{
-    const answer=document.querySelector(`input[name="${name}"]:checked`);
-    const correct=["a","b","a"][i];
-    if(answer && answer.value===correct) score++;
+    const answer = document.querySelector(`input[name="${name}"]:checked`);
+    const correct = ["a","b","a"][i];
+
+    if(answer && answer.value === correct) score++;
   });
+
   showResult("readingResult",score,3);
 }
 
@@ -1516,10 +1576,10 @@ const speakingList = [
 ];
 
 function renderSpeaking() {
-  $("speakingQuestions").innerHTML=speakingList.map((q,i)=>`
+  $("speakingQuestions").innerHTML = speakingList.map((q,i)=>`
     <div class="task">
       <p><strong>${i+1}. ${q}</strong></p>
-      <button class="audio-btn" onclick="speak('${q.replace(/'/g,"\\'")}')">🔊</button>
+      <button class="audio-btn" onclick="speak(${JSON.stringify(q)})">🔊</button>
     </div>
   `).join("");
 }
@@ -1570,7 +1630,7 @@ const finalData = [
 ];
 
 function renderFinalTest() {
-  $("finalQuestions").innerHTML=finalData.map((q,i)=>`
+  $("finalQuestions").innerHTML = finalData.map((q,i)=>`
     <div class="question">
       <p><strong>${i+1}. ${q[0]}</strong></p>
       ${q[1].map((a,j)=>`
@@ -1584,45 +1644,56 @@ function renderFinalTest() {
 }
 
 function checkFinalTest() {
-  let score=0;
-  let unanswered=0;
+  let score = 0;
+  let unanswered = 0;
+
   finalData.forEach((q,i)=>{
-    const selected=document.querySelector(`input[name="f${i}"]:checked`);
+    const selected = document.querySelector(`input[name="f${i}"]:checked`);
+
     if(!selected) {
       unanswered++;
       return;
     }
-    if(Number(selected.value)===q[2]) score++;
+
+    if(Number(selected.value) === q[2]) score++;
   });
 
-  if(unanswered>0) {
-    $("finalResult").style.display="block";
-    $("finalResult").className="result wrong";
-    $("finalResult").textContent=`Please answer all questions. Unanswered: ${unanswered}`;
+  if(unanswered > 0) {
+    $("finalResult").style.display = "block";
+    $("finalResult").className = "result wrong";
+    $("finalResult").textContent = `Please answer all questions. Unanswered: ${unanswered}`;
     return;
   }
 
-  $("testScore").textContent=score+" / "+finalData.length;
-  const percent=Math.round(score/finalData.length*100);
-  const passed=percent>=80;
-  $("finalResult").style.display="block";
-  $("finalResult").className="result "+(passed?"correct":"wrong");
-  $("finalResult").innerHTML=`
-    <h3>${passed?"🎉 Congratulations!":"Keep practising!"}</h3>
+  $("testScore").textContent = score + " / " + finalData.length;
+
+  const percent = Math.round(score / finalData.length * 100);
+  const passed = percent >= 80;
+
+  $("finalResult").style.display = "block";
+  $("finalResult").className = "result " + (passed ? "correct" : "wrong");
+  $("finalResult").innerHTML = `
+    <h3>${passed ? "🎉 Congratulations!" : "Keep practising!"}</h3>
     <p>Your result: ${score}/${finalData.length}</p>
     <p>Percentage: ${percent}%</p>
-    <p>${passed?"You passed Lesson 13!":"You need at least 80% to pass."}</p>
+    <p>${passed ? "You passed Lesson 13!" : "You need at least 80% to pass."}</p>
   `;
-  localStorage.setItem("euLesson13Score",score);
-  localStorage.setItem("euLesson13Passed",passed?"true":"false");
+
+  try {
+    localStorage.setItem("euLesson13Score",score);
+    localStorage.setItem("euLesson13Passed",passed ? "true" : "false");
+  } catch(error) {
+    console.warn("Test result could not be saved.",error);
+  }
 }
 
 function resetFinalTest() {
-  document.querySelectorAll('#finalQuestions input').forEach(input=>{
-    input.checked=false;
+  document.querySelectorAll("#finalQuestions input").forEach(input=>{
+    input.checked = false;
   });
-  $("finalResult").style.display="none";
-  $("testScore").textContent="0 / 40";
+
+  $("finalResult").style.display = "none";
+  $("testScore").textContent = "0 / 40";
 }
 
 /* HOMEWORK CHECKLIST */
@@ -1638,45 +1709,59 @@ const homeworkItems = [
 ];
 
 function renderHomework() {
-  const saved=JSON.parse(
-    localStorage.getItem("euLesson13Homework")||"[]"
-  );
-  $("homeworkChecklist").innerHTML=homeworkItems.map((item,i)=>`
+  let saved = [];
+
+  try {
+    saved = JSON.parse(localStorage.getItem("euLesson13Homework") || "[]");
+
+    if(!Array.isArray(saved)) saved = [];
+  } catch(error) {
+    saved = [];
+  }
+
+  $("homeworkChecklist").innerHTML = homeworkItems.map((item,i)=>`
     <label class="option">
       <input type="checkbox" data-homework="${i}"
-        ${saved.includes(i)?"checked":""}>
+        ${saved.includes(i) ? "checked" : ""}>
       ${item}
     </label>
   `).join("");
+
   updateHomework();
 }
 
 function updateHomework() {
-  const checked=[...document.querySelectorAll("[data-homework]:checked")]
+  const checked = [...document.querySelectorAll("[data-homework]:checked")]
     .map(el=>Number(el.dataset.homework));
-  localStorage.setItem("euLesson13Homework",JSON.stringify(checked));
-  $("homeworkProgress").textContent=
+
+  try {
+    localStorage.setItem("euLesson13Homework",JSON.stringify(checked));
+  } catch(error) {
+    console.warn("Homework progress could not be saved.",error);
+  }
+
+  $("homeworkProgress").textContent =
     `${checked.length} / ${homeworkItems.length} completed`;
 }
+
+/* EVENT LISTENER */
 
 $("homeworkChecklist").addEventListener("change",updateHomework);
 
 /* INITIALIZATION */
 
-const readingText = `
-If I get a better opportunity, I will try to improve my life.
-I will learn new skills and work hard.
-If I improve my English, I will have more opportunities in the future.
-If I make mistakes, I will learn from them.
-If I practise every day, I will become more confident.
-`;
+function initializeLesson() {
+  renderPractice();
+  renderWords();
+  renderSpeaking();
+  renderFinalTest();
+  renderHomework();
+  updateProgress();
 
-renderPractice();
-renderWords();
-renderSpeaking();
-renderFinalTest();
-renderHomework();
-updateProgress();
+  console.log("English Up Lesson 13 loaded successfully.");
+}
+
+initializeLesson();
 
 </script>
 </body>
