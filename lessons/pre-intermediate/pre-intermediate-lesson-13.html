@@ -1,1 +1,1986 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 13 — First Conditional | English Up</title>
 
+<style>
+:root {
+  --primary:#7047eb;
+  --primary-dark:#5632c7;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --text:#24213a;
+  --muted:#77738c;
+  --border:#e8e3f5;
+  --success:#159b65;
+  --danger:#e34b5d;
+  --warning:#f0a52b;
+  --shadow:0 5px 20px rgba(60,40,120,.08);
+}
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+body {
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  transition:.3s;
+}
+body.dark {
+  --bg:#171526;
+  --card:#242138;
+  --text:#f5f2ff;
+  --muted:#b5aecb;
+  --border:#39334e;
+  --shadow:0 5px 20px rgba(0,0,0,.2);
+}
+button,input,textarea {
+  font:inherit;
+}
+button {
+  cursor:pointer;
+  border:none;
+}
+header {
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:13px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.logo {
+  font-weight:900;
+  font-size:21px;
+  color:var(--primary);
+}
+.header-actions {
+  display:flex;
+  gap:8px;
+}
+.header-btn {
+  padding:9px 13px;
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--text);
+}
+.container {
+  max-width:950px;
+  margin:auto;
+  padding:22px 15px 60px;
+}
+.hero {
+  background:linear-gradient(135deg,#7047eb,#9b70f5);
+  border-radius:20px;
+  padding:30px 23px;
+  color:white;
+  margin-bottom:22px;
+}
+.hero h1 {
+  font-size:29px;
+  margin-bottom:10px;
+}
+.hero p {
+  opacity:.95;
+}
+.hero-info {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:18px;
+}
+.hero-info span {
+  background:rgba(255,255,255,.18);
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:13px;
+}
+.progress-box {
+  background:var(--card);
+  border-radius:15px;
+  padding:16px;
+  margin-bottom:20px;
+  box-shadow:var(--shadow);
+}
+.progress-top {
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+.progress-track {
+  height:9px;
+  border-radius:20px;
+  background:var(--border);
+  overflow:hidden;
+}
+.progress-fill {
+  height:100%;
+  width:0;
+  background:var(--primary);
+  transition:.3s;
+}
+.tabs {
+  display:flex;
+  overflow-x:auto;
+  gap:8px;
+  margin-bottom:20px;
+  padding-bottom:5px;
+}
+.tab {
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 15px;
+  white-space:nowrap;
+}
+.tab.active {
+  background:var(--primary);
+  color:white;
+  border-color:var(--primary);
+}
+.section {
+  display:none;
+  animation:appear .3s ease;
+}
+.section.active {
+  display:block;
+}
+@keyframes appear {
+  from {opacity:0;transform:translateY(8px)}
+  to {opacity:1;transform:translateY(0)}
+}
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:16px;
+  box-shadow:var(--shadow);
+}
+.card h2 {
+  color:var(--primary);
+  font-size:21px;
+  margin-bottom:12px;
+}
+.card h3 {
+  margin:15px 0 8px;
+  font-size:17px;
+}
+p {
+  margin:8px 0;
+}
+ul,ol {
+  padding-left:23px;
+  margin:10px 0;
+}
+li {
+  margin:6px 0;
+}
+.formula {
+  background:var(--bg);
+  border-left:5px solid var(--primary);
+  border-radius:10px;
+  padding:15px;
+  margin:13px 0;
+  font-weight:bold;
+  overflow-wrap:anywhere;
+}
+.example {
+  background:var(--bg);
+  padding:13px;
+  border-radius:10px;
+  margin:10px 0;
+}
+.en {
+  font-weight:bold;
+  color:var(--primary);
+}
+.uz {
+  color:var(--muted);
+  font-size:14px;
+}
+.notebook {
+  border:2px dashed var(--warning);
+  background:rgba(240,165,43,.08);
+  padding:16px;
+  border-radius:13px;
+  margin:15px 0;
+}
+.notebook h3 {
+  color:var(--warning);
+  margin-top:0;
+}
+.notebook strong {
+  color:var(--warning);
+}
+.must-write {
+  display:inline-block;
+  background:var(--warning);
+  color:#fff;
+  padding:3px 9px;
+  border-radius:6px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+.task {
+  background:var(--bg);
+  border-radius:12px;
+  padding:15px;
+  margin:12px 0;
+}
+.btn {
+  background:var(--primary);
+  color:white;
+  padding:11px 18px;
+  border-radius:10px;
+  margin:5px 3px;
+  font-weight:bold;
+}
+.btn:hover {
+  background:var(--primary-dark);
+}
+.btn.secondary {
+  background:var(--bg);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+.btn.success {
+  background:var(--success);
+}
+.btn.danger {
+  background:var(--danger);
+}
+.audio-btn {
+  background:var(--primary);
+  color:white;
+  padding:7px 12px;
+  border-radius:8px;
+  margin-left:5px;
+}
+input[type="text"],textarea {
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--bg);
+  color:var(--text);
+  margin:7px 0;
+}
+.option {
+  display:block;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:11px;
+  margin:8px 0;
+  cursor:pointer;
+}
+.option:hover {
+  border-color:var(--primary);
+}
+.result {
+  margin-top:12px;
+  padding:12px;
+  border-radius:10px;
+  display:none;
+}
+.correct {
+  background:rgba(21,155,101,.12);
+  color:var(--success);
+}
+.wrong {
+  background:rgba(227,75,93,.12);
+  color:var(--danger);
+}
+.word-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:10px;
+}
+.word {
+  background:var(--bg);
+  padding:13px;
+  border-radius:10px;
+  border:1px solid var(--border);
+}
+.word strong {
+  color:var(--primary);
+  font-size:17px;
+}
+.word small {
+  display:block;
+  color:var(--muted);
+}
+.question {
+  padding:15px;
+  border-bottom:1px solid var(--border);
+}
+.question label {
+  display:block;
+  padding:7px;
+  cursor:pointer;
+}
+.score {
+  font-size:30px;
+  font-weight:900;
+  color:var(--primary);
+  text-align:center;
+}
+footer {
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+}
+.hidden {
+  display:none!important;
+}
+@media(max-width:600px) {
+  .hero h1 {font-size:23px}
+  .card {padding:15px}
+  header {padding:12px}
+  .logo {font-size:17px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ENGLISH UP</div>
+  <div class="header-actions">
+    <button class="header-btn" onclick="history.back()">← Back</button>
+    <button class="header-btn" onclick="toggleTheme()">🌙</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Lesson 13 — First Conditional</h1>
+  <p>Assalomu alaykum! English Up platformasining yangi darsiga xush kelibsiz!</p>
+  <p>Bugun biz kelajakdagi ehtimoliy vaziyatlar va ularning natijalari haqida ingliz tilida gapirishni o‘rganamiz.</p>
+  <div class="hero-info">
+    <span>Pre-Intermediate</span>
+    <span>B1 Grammar</span>
+    <span>40 Vocabulary</span>
+    <span>Listening</span>
+    <span>Speaking</span>
+  </div>
+</section>
+
+<div class="card">
+  <h2>💜 Darsimizga xush kelibsiz!</h2>
+  <p>Assalomu alaykum, aziz o‘quvchi!</p>
+  <p>Bugungi darsimiz juda muhim. Chunki kundalik hayotimizda biz doimo kelajak haqida qarorlar qilamiz, shartlar qo‘yamiz va natijalarni tasavvur qilamiz.</p>
+  <p>Masalan:</p>
+  <div class="example">
+    <div class="en">If it rains, I will stay at home.</div>
+    <div class="uz">Agar yomg‘ir yog‘sa, uyda qolaman.</div>
+  </div>
+  <p>Ushbu dars oxirida siz shunday gaplarni mustaqil tuza olasiz, suhbatlarda ishlata olasiz va kelajakdagi rejalaringiz haqida aniq gapira olasiz.</p>
+  <p><strong>Bugungi maqsadimiz — qoidani yodlash emas, uni hayotda ishlatishni o‘rganish!</strong></p>
+</div>
+
+<div class="card">
+  <h2>📚 Dars tartibi</h2>
+  <ol>
+    <li>Grammar — First Conditional</li>
+    <li>Formulalar va qoida tahlili</li>
+    <li>Misollar va ovozli mashqlar</li>
+    <li>Vocabulary — 40 ta yangi so‘z</li>
+    <li>Listening — 2 ta mashq</li>
+    <li>Reading — matn va tahlil</li>
+    <li>Writing — mustaqil yozish</li>
+    <li>Speaking — suhbat mashqlari</li>
+    <li>Final Test — 40 ta savol</li>
+    <li>Homework — uy vazifasi</li>
+  </ol>
+</div>
+
+<div class="card notebook">
+  <h3>📓 DAFTAR TUTISH QAT'IY TALABI</h3>
+  <p><strong>DIQQAT! Ushbu darsda daftar bilan ishlash majburiy.</strong></p>
+  <p>Har bir yangi qoida, formula, muhim izoh va misol gap daftarga yozilishi shart.</p>
+  <ol>
+    <li>Dars mavzusini yozing.</li>
+    <li>Har bir grammatik qoidani yozing.</li>
+    <li>Har bir formulani alohida yozing.</li>
+    <li>Formuladagi har bir belgining ma'nosini yozing.</li>
+    <li>Har bir qoida uchun misol gaplarni ko‘chiring.</li>
+    <li>Vocabulary so‘zlarini tarjimasi bilan yozing.</li>
+    <li>Listening va Reading bo‘yicha yangi iboralarni yozib boring.</li>
+    <li>Writing topshiriqlarini o‘zingiz bajaring.</li>
+  </ol>
+  <p><strong>Faqat o‘qib chiqish yetarli emas. Yozish, takrorlash va mustaqil gap tuzish talab qilinadi.</strong></p>
+</div>
+
+<div class="progress-box">
+  <div class="progress-top">
+    <span>📊 Darsdagi rivojlanish</span>
+    <span id="progressText">0%</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<nav class="tabs">
+  <button class="tab active" onclick="showSection('grammar',this)">Grammar</button>
+  <button class="tab" onclick="showSection('practice',this)">Practice</button>
+  <button class="tab" onclick="showSection('vocabulary',this)">Vocabulary</button>
+  <button class="tab" onclick="showSection('listening',this)">Listening</button>
+  <button class="tab" onclick="showSection('reading',this)">Reading</button>
+  <button class="tab" onclick="showSection('writing',this)">Writing</button>
+  <button class="tab" onclick="showSection('speaking',this)">Speaking</button>
+  <button class="tab" onclick="showSection('test',this)">Final Test</button>
+  <button class="tab" onclick="showSection('homework',this)">Homework</button>
+</nav>
+
+<!-- GRAMMAR -->
+
+<section class="section active" id="grammar">
+
+<div class="card">
+  <h2>1. What is First Conditional?</h2>
+  <p>First Conditional — kelajakda sodir bo‘lishi mumkin bo‘lgan vaziyatlar va ularning ehtimoliy natijalarini ifodalash uchun ishlatiladigan grammatik struktura.</p>
+  <h3>English explanation</h3>
+  <p>We use the First Conditional to talk about real and possible situations in the future and their likely results.</p>
+  <p><strong>O‘zbekcha:</strong> Kelajakda biror shart bajarilsa, qanday natija yuz berishini aytish uchun ishlatamiz.</p>
+
+  <div class="example">
+    <p class="en">If I study hard, I will pass the exam.</p>
+    <p class="uz">Agar qattiq o‘qisam, imtihondan o‘taman.</p>
+    <button class="audio-btn" onclick="speak('If I study hard, I will pass the exam.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p class="en">If she comes early, we will start the meeting.</p>
+    <p class="uz">Agar u erta kelsa, uchrashuvni boshlaymiz.</p>
+    <button class="audio-btn" onclick="speak('If she comes early, we will start the meeting.')">🔊 Listen</button>
+  </div>
+
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>First Conditional ta'rifini inglizcha va o‘zbekcha yozing.</p>
+    <p>Yuqoridagi ikkita misol gapni ham tarjimasi bilan ko‘chiring.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>2. When do we use First Conditional?</h2>
+  <p>We use the First Conditional when we talk about a possible future situation.</p>
+  <p>Biz First Conditionalni kelajakda amalga oshishi mumkin bo‘lgan holatlarda ishlatamiz.</p>
+
+  <h3>Situation 1 — Real possibility</h3>
+  <div class="example">
+    <p class="en">If it is sunny tomorrow, we will go to the park.</p>
+    <p class="uz">Agar ertaga havo quyoshli bo‘lsa, parkka boramiz.</p>
+    <button class="audio-btn" onclick="speak('If it is sunny tomorrow, we will go to the park.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If I have enough money, I will buy a new phone.</p>
+    <p class="uz">Agar yetarli pulim bo‘lsa, yangi telefon sotib olaman.</p>
+    <button class="audio-btn" onclick="speak('If I have enough money, I will buy a new phone.')">🔊</button>
+  </div>
+
+  <h3>Situation 2 — Future plans and decisions</h3>
+  <div class="example">
+    <p class="en">If I finish work early, I will visit my friend.</p>
+    <p class="uz">Agar ishimni erta tugatsam, do‘stimni ko‘rgani boraman.</p>
+    <button class="audio-btn" onclick="speak('If I finish work early, I will visit my friend.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If we have time, we will watch a movie.</p>
+    <p class="uz">Agar vaqtimiz bo‘lsa, kino tomosha qilamiz.</p>
+    <button class="audio-btn" onclick="speak('If we have time, we will watch a movie.')">🔊</button>
+  </div>
+
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>First Conditional ishlatiladigan ikkita asosiy vaziyatni yozing.</p>
+    <p>To‘rtta misol gapni ko‘chirib, har birining tarjimasini yozing.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>3. Main Formula</h2>
+  <p>First Conditionalning asosiy formulasi:</p>
+  <div class="formula">
+    IF + SUBJECT + PRESENT SIMPLE,
+    <br>
+    SUBJECT + WILL + V1
+  </div>
+
+  <h3>Formula qismlarini o‘rganamiz</h3>
+  <p><strong>IF</strong> — agar degan ma'noni bildiradi.</p>
+  <p><strong>SUBJECT (S)</strong> — ega, ya'ni ish-harakatni bajaruvchi shaxs yoki narsa.</p>
+  <p><strong>PRESENT SIMPLE</strong> — hozirgi oddiy zamon shakli.</p>
+  <p><strong>WILL</strong> — kelajakni ifodalashda yordam beruvchi modal fe'l.</p>
+  <p><strong>V1</strong> — fe'lning birinchi shakli.</p>
+
+  <div class="example">
+    <p class="en">If you work hard, you will succeed.</p>
+    <p class="uz">Agar qattiq ishlasang, muvaffaqiyatga erishasan.</p>
+    <button class="audio-btn" onclick="speak('If you work hard, you will succeed.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If they invite us, we will come.</p>
+    <p class="uz">Agar ular bizni taklif qilishsa, kelamiz.</p>
+    <button class="audio-btn" onclick="speak('If they invite us, we will come.')">🔊</button>
+  </div>
+
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Formulani to‘liq yozing.</p>
+    <p>S, IF, Present Simple, WILL va V1 izohlarini alohida yozing.</p>
+    <p>Ikki misol gapni tarjimasi bilan yozing.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>4. IF Clause — Present Simple</h2>
+  <p>If bilan boshlangan qism shartni bildiradi. First Conditionalda bu qism odatda Present Simple zamonida keladi.</p>
+  <div class="formula">
+    IF + SUBJECT + V1 / V(s/es)
+  </div>
+  <h3>I / You / We / They</h3>
+  <div class="example">
+    <p class="en">If I have time, I will call you.</p>
+    <p class="uz">Agar vaqtim bo‘lsa, senga qo‘ng‘iroq qilaman.</p>
+    <button class="audio-btn" onclick="speak('If I have time, I will call you.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If they arrive early, we will wait for them.</p>
+    <p class="uz">Agar ular erta yetib kelishsa, biz ularni kutamiz.</p>
+    <button class="audio-btn" onclick="speak('If they arrive early, we will wait for them.')">🔊</button>
+  </div>
+
+  <h3>He / She / It</h3>
+  <p>He, She, It bilan Present Simple fe'liga odatda -s yoki -es qo‘shiladi.</p>
+  <div class="example">
+    <p class="en">If he studies, he will pass the exam.</p>
+    <p class="uz">Agar u o‘qisa, imtihondan o‘tadi.</p>
+    <button class="audio-btn" onclick="speak('If he studies, he will pass the exam.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If she works hard, she will get a promotion.</p>
+    <p class="uz">Agar u qattiq ishlasa, lavozimi ko‘tariladi.</p>
+    <button class="audio-btn" onclick="speak('If she works hard, she will get a promotion.')">🔊</button>
+  </div>
+
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>I/You/We/They va He/She/It bilan fe'l ishlatilishidagi farqni yozing.</p>
+    <p>To‘rtta misol gapni ko‘chiring.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>5. Main Clause — WILL + V1</h2>
+  <p>Ikkinchi qism shart bajarilganda yuz beradigan natijani ifodalaydi.</p>
+  <div class="formula">
+    SUBJECT + WILL + V1
+  </div>
+  <p>WILL dan keyin fe'lning birinchi shakli ishlatiladi.</p>
+  <div class="example">
+    <p class="en">I will help you.</p>
+    <p class="uz">Men senga yordam beraman.</p>
+  </div>
+  <div class="example">
+    <p class="en">She will learn English.</p>
+    <p class="uz">U ingliz tilini o‘rganadi.</p>
+  </div>
+
+  <h3>First Conditional examples</h3>
+  <div class="example">
+    <p class="en">If you ask me, I will help you.</p>
+    <p class="uz">Agar mendan so‘rasang, senga yordam beraman.</p>
+    <button class="audio-btn" onclick="speak('If you ask me, I will help you.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If he calls, I will answer.</p>
+    <p class="uz">Agar u qo‘ng‘iroq qilsa, javob beraman.</p>
+    <button class="audio-btn" onclick="speak('If he calls, I will answer.')">🔊</button>
+  </div>
+
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>WILL + V1 formulasini yozing.</p>
+    <p>WILL dan keyin nima uchun V1 kelishini tushuntirib yozing.</p>
+    <p>Misollarni ko‘chiring.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>6. Positive Sentences — Darak gap</h2>
+  <div class="formula">
+    IF + S + V1(s/es), S + WILL + V1.
+  </div>
+  <div class="example">
+    <p class="en">If I wake up early, I will exercise.</p>
+    <p class="uz">Agar erta uyg‘onsam, mashq qilaman.</p>
+    <button class="audio-btn" onclick="speak('If I wake up early, I will exercise.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If she cooks dinner, we will eat together.</p>
+    <p class="uz">Agar u kechki ovqat tayyorlasa, birga ovqatlanamiz.</p>
+    <button class="audio-btn" onclick="speak('If she cooks dinner, we will eat together.')">🔊</button>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Darak gap formulasini va ikkita misolni yozing.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>7. Negative Sentences — Inkor gap</h2>
+  <p>Natija qismida WILL NOT yoki WON'T ishlatiladi.</p>
+  <div class="formula">
+    IF + S + PRESENT SIMPLE,
+    <br>
+    S + WILL NOT + V1.
+  </div>
+  <p>WILL NOT = WON'T</p>
+  <div class="example">
+    <p class="en">If it rains, we won't go outside.</p>
+    <p class="uz">Agar yomg‘ir yog‘sa, tashqariga chiqmaymiz.</p>
+    <button class="audio-btn" onclick="speak('If it rains, we won’t go outside.')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">If he doesn't study, he won't pass the exam.</p>
+    <p class="uz">Agar u o‘qimasa, imtihondan o‘ta olmaydi.</p>
+    <button class="audio-btn" onclick="speak('If he does not study, he will not pass the exam.')">🔊</button>
+  </div>
+  <p><strong>Eslatma:</strong> If qismidagi inkor shakli Present Simple qoidalari bilan yasaladi: don't / doesn't.</p>
+  <div class="example">
+    <p class="en">If she doesn't hurry, she will miss the bus.</p>
+    <p class="uz">Agar u shoshilmasa, avtobusga kechikadi.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>WILL NOT va WON'T farqini yozing.</p>
+    <p>Don't va Doesn't ishlatilishini takrorlang.</p>
+    <p>Uchta misol gapni ko‘chiring.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>8. Question Form — Savol shakli</h2>
+  <p>First Conditional savollarida WILL yordamida natija haqida savol berish mumkin.</p>
+  <div class="formula">
+    WHAT / WHERE / WHEN + WILL + S + V1
+    <br>
+    IF + S + PRESENT SIMPLE?
+  </div>
+  <div class="example">
+    <p class="en">What will you do if it rains?</p>
+    <p class="uz">Agar yomg‘ir yog‘sa, nima qilasan?</p>
+    <button class="audio-btn" onclick="speak('What will you do if it rains?')">🔊</button>
+  </div>
+  <div class="example">
+    <p class="en">Where will you go if you have a holiday?</p>
+    <p class="uz">Agar ta'tiling bo‘lsa, qayerga borasan?</p>
+    <button class="audio-btn" onclick="speak('Where will you go if you have a holiday?')">🔊</button>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Savol formulasini yozing.</p>
+    <p>What va Where bilan ikkita savol tuzing.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>9. If Clause at the Beginning</h2>
+  <p>If gapning boshida kelsa, ikki qism orasida vergul ishlatiladi.</p>
+  <div class="formula">
+    If + condition, result.
+  </div>
+  <div class="example">
+    <p class="en">If I am tired, I will go to bed early.</p>
+    <p class="uz">Agar charchagan bo‘lsam, erta uxlayman.</p>
+  </div>
+  <div class="example">
+    <p class="en">If we save money, we will travel next year.</p>
+    <p class="uz">Agar pul yig‘sak, kelasi yil sayohat qilamiz.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>If boshida kelganda vergul qo‘yilishini yozing.</p>
+    <p>Misollarni daftarga ko‘chiring.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>10. If Clause at the End</h2>
+  <p>If qismi gapning oxirida ham kelishi mumkin.</p>
+  <div class="formula">
+    Result + if + condition.
+  </div>
+  <p>Bu holatda odatda vergul qo‘yilmaydi.</p>
+  <div class="example">
+    <p class="en">I will go outside if the weather is nice.</p>
+    <p class="uz">Agar ob-havo yaxshi bo‘lsa, tashqariga chiqaman.</p>
+  </div>
+  <div class="example">
+    <p class="en">She will call you if she has time.</p>
+    <p class="uz">Agar vaqti bo‘lsa, u senga qo‘ng‘iroq qiladi.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Ikki xil gap tuzilishini yozing va vergul farqini tushuntiring.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>11. Other Modal Verbs in First Conditional</h2>
+  <p>Natija qismida faqat WILL emas, boshqa modal fe'llar ham ishlatilishi mumkin.</p>
+  <h3>CAN — qila olmoq</h3>
+  <div class="example">
+    <p class="en">If you finish early, you can go home.</p>
+    <p class="uz">Agar erta tugatsang, uyga ketishing mumkin.</p>
+  </div>
+  <h3>MAY — ehtimol</h3>
+  <div class="example">
+    <p class="en">If it rains, we may stay at home.</p>
+    <p class="uz">Agar yomg‘ir yog‘sa, uyda qolishimiz mumkin.</p>
+  </div>
+  <h3>MUST — shart</h3>
+  <div class="example">
+    <p class="en">If you want to improve, you must practise every day.</p>
+    <p class="uz">Agar rivojlanishni istasang, har kuni mashq qilishing shart.</p>
+  </div>
+  <h3>SHOULD — kerak</h3>
+  <div class="example">
+    <p class="en">If you feel sick, you should rest.</p>
+    <p class="uz">Agar o‘zingni kasal his qilsang, dam olishing kerak.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>CAN, MAY, MUST va SHOULD bilan tuzilgan gaplarni yozing.</p>
+    <p>Har bir modal fe'lning ma'nosini yozing.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>12. Common Mistakes</h2>
+  <p>Quyidagi xatolarga e'tibor bering.</p>
+  <div class="example">
+    <p style="color:var(--danger)">❌ If I will have time, I will call you.</p>
+    <p class="en">✅ If I have time, I will call you.</p>
+    <p class="uz">Agar vaqtim bo‘lsa, senga qo‘ng‘iroq qilaman.</p>
+  </div>
+  <div class="example">
+    <p style="color:var(--danger)">❌ If she study, she will pass.</p>
+    <p class="en">✅ If she studies, she will pass.</p>
+    <p class="uz">He/She/It bilan fe'lga -s qo‘shiladi.</p>
+  </div>
+  <div class="example">
+    <p style="color:var(--danger)">❌ If he comes, I will helps him.</p>
+    <p class="en">✅ If he comes, I will help him.</p>
+    <p class="uz">WILL dan keyin V1 ishlatiladi.</p>
+  </div>
+  <div class="example">
+    <p style="color:var(--danger)">❌ If it will rain, we will stay home.</p>
+    <p class="en">✅ If it rains, we will stay home.</p>
+    <p class="uz">If qismida odatda kelajak ma'nosi uchun Present Simple ishlatiladi.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>To‘rtta noto‘g‘ri va to‘g‘ri gapni yozing.</p>
+    <p>Har bir xatoning sababini tushuntiring.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>13. First Conditional vs Zero Conditional</h2>
+  <p>Bu ikkita mavzuni farqlash muhim.</p>
+  <h3>Zero Conditional</h3>
+  <p>Doimiy haqiqatlar, ilmiy faktlar va takrorlanadigan natijalar uchun.</p>
+  <div class="formula">IF + PRESENT SIMPLE, PRESENT SIMPLE</div>
+  <div class="example">
+    <p class="en">If you heat water to 100°C, it boils.</p>
+    <p class="uz">Suvni 100°C gacha qizdirsangiz, u qaynaydi.</p>
+  </div>
+  <h3>First Conditional</h3>
+  <p>Kelajakda sodir bo‘lishi mumkin bo‘lgan vaziyatlar uchun.</p>
+  <div class="formula">IF + PRESENT SIMPLE, WILL + V1</div>
+  <div class="example">
+    <p class="en">If it is hot tomorrow, I will swim.</p>
+    <p class="uz">Agar ertaga havo issiq bo‘lsa, suzaman.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Zero Conditional va First Conditional formulalarini yonma-yon yozing.</p>
+    <p>Ularning farqini o‘z so‘zlaringiz bilan tushuntiring.</p>
+  </div>
+</div>
+
+</section>
+
+<!-- PRACTICE -->
+
+<section class="section" id="practice">
+<div class="card">
+  <h2>✍️ Grammar Practice</h2>
+  <p>Quyidagi mashqlarni mustaqil bajaring. Javobni tanlaganingizdan keyin tekshirish tugmasini bosing.</p>
+</div>
+
+<div class="card">
+  <h2>Exercise 1 — Choose the correct answer</h2>
+  <div id="practiceQuestions"></div>
+  <button class="btn" onclick="checkPractice()">Check answers</button>
+  <div id="practiceResult" class="result"></div>
+</div>
+
+<div class="card">
+  <h2>Exercise 2 — Complete the sentences</h2>
+  <p>Bo‘sh joylarni to‘ldiring.</p>
+  <div class="task">
+    <p>1. If I ______ (study), I will pass.</p>
+    <input id="fill1" placeholder="Your answer">
+  </div>
+  <div class="task">
+    <p>2. If she ______ (come), I will call you.</p>
+    <input id="fill2" placeholder="Your answer">
+  </div>
+  <div class="task">
+    <p>3. If it ______ (rain), we will stay home.</p>
+    <input id="fill3" placeholder="Your answer">
+  </div>
+  <div class="task">
+    <p>4. If he ______ (work) hard, he will succeed.</p>
+    <input id="fill4" placeholder="Your answer">
+  </div>
+  <div class="task">
+    <p>5. If they ______ (arrive) early, we will start.</p>
+    <input id="fill5" placeholder="Your answer">
+  </div>
+  <button class="btn" onclick="checkFill()">Check</button>
+  <div id="fillResult" class="result"></div>
+</div>
+
+<div class="card">
+  <h2>Exercise 3 — Translation</h2>
+  <p>Quyidagi gaplarni ingliz tiliga tarjima qiling.</p>
+  <ol>
+    <li>Agar vaqtim bo‘lsa, senga yordam beraman.</li>
+    <li>Agar yomg‘ir yog‘sa, uyda qolamiz.</li>
+    <li>Agar u o‘qisa, imtihondan o‘tadi.</li>
+    <li>Agar pul yig‘sam, yangi telefon sotib olaman.</li>
+    <li>Agar ular kelsa, biz boshlaymiz.</li>
+  </ol>
+  <textarea rows="7" placeholder="Write your translations here..."></textarea>
+  <button class="btn" onclick="showTranslation()">Show sample answers</button>
+  <div id="translationAnswers" class="result">
+    <p>1. If I have time, I will help you.</p>
+    <p>2. If it rains, we will stay at home.</p>
+    <p>3. If he studies, he will pass the exam.</p>
+    <p>4. If I save money, I will buy a new phone.</p>
+    <p>5. If they come, we will start.</p>
+  </div>
+</div>
+</section>
+
+<!-- VOCABULARY -->
+
+<section class="section" id="vocabulary">
+<div class="card">
+  <h2>📚 Vocabulary — 40 Words</h2>
+  <p>Quyidagi so‘zlarni talaffuzi va tarjimasi bilan o‘rganing. Har bir so‘zni ovoz chiqarib takrorlang.</p>
+  <p><strong>Talab:</strong> Barcha 40 ta so‘zni daftarga yozing.</p>
+</div>
+<div class="card">
+  <div class="word-grid" id="wordGrid"></div>
+</div>
+</section>
+
+<!-- LISTENING -->
+
+<section class="section" id="listening">
+<div class="card">
+  <h2>🎧 Listening 1 — Weather and Plans</h2>
+  <p>Avval matnni tinglang. Keyin savollarga javob bering.</p>
+  <button class="btn" onclick="speak(listening1)">▶ Listen to the conversation</button>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Tinglagan suhbatdagi 5 ta muhim iborani yozing.</p>
+    <p>Ularning tarjimasini yozing.</p>
+  </div>
+  <h3>Listening Questions</h3>
+  <div class="task">
+    <p>1. What will they do if it rains?</p>
+    <label><input type="radio" name="l1" value="a"> They will stay at home.</label>
+    <label><input type="radio" name="l1" value="b"> They will go swimming.</label>
+  </div>
+  <div class="task">
+    <p>2. What will they do if the weather is sunny?</p>
+    <label><input type="radio" name="l2" value="a"> They will study.</label>
+    <label><input type="radio" name="l2" value="b"> They will go to the park.</label>
+  </div>
+  <button class="btn" onclick="checkListening1()">Check</button>
+  <div id="listenResult1" class="result"></div>
+</div>
+
+<div class="card">
+  <h2>🎧 Listening 2 — Future Decisions</h2>
+  <p>Ikkinchi suhbatni tinglang.</p>
+  <button class="btn" onclick="speak(listening2)">▶ Listen</button>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Suhbatdagi kelajak haqidagi rejalarni yozing.</p>
+    <p>Kamida 5 ta First Conditional gapni ajrating.</p>
+  </div>
+  <h3>Questions</h3>
+  <div class="task">
+    <p>1. What will Tom do if he finishes work early?</p>
+    <label><input type="radio" name="l3" value="a"> He will visit his friend.</label>
+    <label><input type="radio" name="l3" value="b"> He will go to sleep.</label>
+  </div>
+  <div class="task">
+    <p>2. What will Anna do if she has enough money?</p>
+    <label><input type="radio" name="l4" value="a"> Buy a car.</label>
+    <label><input type="radio" name="l4" value="b"> Travel abroad.</label>
+  </div>
+  <button class="btn" onclick="checkListening2()">Check</button>
+  <div id="listenResult2" class="result"></div>
+</div>
+</section>
+
+<!-- READING -->
+
+<section class="section" id="reading">
+<div class="card">
+  <h2>📖 Reading — If I Get a Better Opportunity</h2>
+  <p>Matnni avval mustaqil o‘qing. Keyin audio orqali tinglang.</p>
+  <button class="btn" onclick="speak(readingText)">🔊 Listen to the text</button>
+  <div class="example" style="line-height:2">
+    <p>If I get a better opportunity, I will try to improve my life. I will learn new skills and work hard. If I improve my English, I will have more opportunities in the future.</p>
+    <p>I know that success does not come easily. If I make mistakes, I will learn from them. If I practise every day, I will become more confident.</p>
+    <p>If I have enough time, I will read books and listen to English conversations. If I continue working hard, I will achieve my goals.</p>
+  </div>
+  <h3>O‘zbekcha tarjima</h3>
+  <p>Agar yaxshiroq imkoniyatga ega bo‘lsam, hayotimni yaxshilashga harakat qilaman. Yangi ko‘nikmalarni o‘rganaman va qattiq ishlayman. Agar ingliz tilimni yaxshilasam, kelajakda ko‘proq imkoniyatlarga ega bo‘laman.</p>
+  <p>Muvaffaqiyat osonlik bilan kelmasligini bilaman. Agar xatolarga yo‘l qo‘ysam, ulardan saboq olaman. Agar har kuni mashq qilsam, o‘zimga ishonchim ortadi.</p>
+  <p>Agar yetarli vaqtim bo‘lsa, kitob o‘qiyman va inglizcha suhbatlarni tinglayman. Agar qattiq ishlashda davom etsam, maqsadlarimga erishaman.</p>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Matndan 8 ta First Conditional gapni ajratib yozing.</p>
+    <p>Yangi so‘zlarni tarjimasi bilan yozing.</p>
+    <p>Matnning qisqacha mazmunini 5 ta gapda yozing.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Reading Comprehension</h2>
+  <div class="task">
+    <p>1. What will the writer do if they get a better opportunity?</p>
+    <label><input type="radio" name="r1" value="a"> Try to improve their life.</label>
+    <label><input type="radio" name="r1" value="b"> Stop learning.</label>
+  </div>
+  <div class="task">
+    <p>2. What will happen if the writer improves their English?</p>
+    <label><input type="radio" name="r2" value="a"> They will forget everything.</label>
+    <label><input type="radio" name="r2" value="b"> They will have more opportunities.</label>
+  </div>
+  <div class="task">
+    <p>3. What will the writer do if they make mistakes?</p>
+    <label><input type="radio" name="r3" value="a"> Learn from them.</label>
+    <label><input type="radio" name="r3" value="b"> Give up.</label>
+  </div>
+  <button class="btn" onclick="checkReading()">Check answers</button>
+  <div id="readingResult" class="result"></div>
+</div>
+</section>
+
+<!-- WRITING -->
+
+<section class="section" id="writing">
+<div class="card">
+  <h2>✍️ Writing — What Will You Do?</h2>
+  <p>Bugungi writing mashg‘ulotida kelajakdagi rejalaringiz haqida yozasiz.</p>
+  <h3>Part 1 — Sentence building</h3>
+  <p>Quyidagi boshlanishlardan foydalanib gaplarni davom ettiring:</p>
+  <ol>
+    <li>If I have more free time, ...</li>
+    <li>If I learn English well, ...</li>
+    <li>If I get a better job, ...</li>
+    <li>If I save enough money, ...</li>
+    <li>If I travel abroad, ...</li>
+  </ol>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Beshala gapni mustaqil tugating.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Part 2 — Translation</h2>
+  <p>Quyidagi gaplarni ingliz tiliga tarjima qiling.</p>
+  <ol>
+    <li>Agar ertaga vaqtim bo‘lsa, seni ko‘rgani boraman.</li>
+    <li>Agar u menga yordam bersa, ishni tugataman.</li>
+    <li>Agar biz erta chiqsak, avtobusga ulguramiz.</li>
+    <li>Agar ob-havo yaxshi bo‘lsa, sayr qilamiz.</li>
+    <li>Agar ko‘proq mashq qilsang, yaxshiroq gapirasan.</li>
+    <li>Agar u kelmasa, biz boshlamaymiz.</li>
+    <li>Agar men pul topsam, kitob sotib olaman.</li>
+    <li>Agar ular taklif qilishsa, biz boramiz.</li>
+    <li>Agar u shoshilsa, poyezdga ulguradi.</li>
+    <li>Agar sen tinglasang, hammasini tushunasan.</li>
+  </ol>
+  <textarea rows="10" placeholder="Write your English translations..."></textarea>
+</div>
+
+<div class="card">
+  <h2>Part 3 — Independent Writing</h2>
+  <h3>Topic: My Future Plans</h3>
+  <p>Write a paragraph of 100–120 words about your future plans. Use at least 8 First Conditional sentences.</p>
+  <textarea rows="10" placeholder="Write your paragraph here..."></textarea>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Mustaqil paragrafingizni daftarga yozing.</p>
+    <p>Kamida 8 ta First Conditional gap ishlating.</p>
+    <p>Yozgan ishingizni qayta o‘qib, xatolarni tekshiring.</p>
+  </div>
+</div>
+</section>
+
+<!-- SPEAKING -->
+
+<section class="section" id="speaking">
+<div class="card">
+  <h2>🗣️ Speaking Practice</h2>
+  <p>Har bir savolga kamida 3 ta gap bilan javob berishga harakat qiling.</p>
+  <p>Javoblaringizni ovoz chiqarib ayting va o‘zingizni yozib oling.</p>
+</div>
+
+<div class="card">
+  <h2>Part 1 — Personal Questions</h2>
+  <div id="speakingQuestions"></div>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>O‘zingiz uchun eng qiyin bo‘lgan 5 ta savolga yozma javob tayyorlang.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Part 2 — Long Speaking</h2>
+  <h3>Describe your future plans.</h3>
+  <p>You should say:</p>
+  <ul>
+    <li>What you want to achieve.</li>
+    <li>What you will do to achieve it.</li>
+    <li>What you will do if you face difficulties.</li>
+    <li>Why your goals are important.</li>
+  </ul>
+  <p><strong>Speaking time: 2 minutes.</strong></p>
+  <button class="btn" onclick="speak('Describe your future plans. What do you want to achieve? What will you do to achieve it? What will you do if you face difficulties?')">🔊 Listen to the questions</button>
+  <div class="notebook">
+    <span class="must-write">DAFTARGA YOZING</span>
+    <p>Monolog uchun reja tuzing.</p>
+    <p>Kamida 10 ta First Conditional gapdan foydalaning.</p>
+  </div>
+</div>
+</section>
+
+<!-- FINAL TEST -->
+
+<section class="section" id="test">
+<div class="card">
+  <h2>🏆 Final Test — 40 Questions</h2>
+  <p>Testda Grammar, Vocabulary, Reading va amaliy qo‘llash bo‘yicha savollar mavjud.</p>
+  <p><strong>O‘tish uchun kamida 32 ta to‘g‘ri javob talab qilinadi.</strong></p>
+  <div class="score" id="testScore">0 / 40</div>
+  <div id="finalQuestions"></div>
+  <button class="btn" onclick="checkFinalTest()">Submit Final Test</button>
+  <button class="btn secondary" onclick="resetFinalTest()">Restart Test</button>
+  <div id="finalResult" class="result"></div>
+</div>
+</section>
+
+<!-- HOMEWORK -->
+
+<section class="section" id="homework">
+<div class="card">
+  <h2>🏠 Homework — Lesson 13</h2>
+  <p>Uy vazifasi darsning eng muhim qismi hisoblanadi. Barcha topshiriqlarni mustaqil bajarish talab qilinadi.</p>
+  <div class="notebook">
+    <span class="must-write">MAJBURIY</span>
+    <h3>1. Grammar Notebook</h3>
+    <ol>
+      <li>First Conditional ta'rifini yozing.</li>
+      <li>Barcha asosiy formulalarni yozing.</li>
+      <li>Formula qismlarini izohlang.</li>
+      <li>Darak gapdan 5 ta misol yozing.</li>
+      <li>Inkor gapdan 5 ta misol yozing.</li>
+      <li>Savol shaklidan 5 ta misol yozing.</li>
+      <li>Modal fe'llar bilan 4 ta gap yozing.</li>
+      <li>Zero va First Conditional farqini yozing.</li>
+    </ol>
+  </div>
+  <div class="notebook">
+    <span class="must-write">MAJBURIY</span>
+    <h3>2. Vocabulary</h3>
+    <p>40 ta yangi so‘zni inglizcha, tarjimasi va talaffuzi bilan daftarga yozing.</p>
+    <p>Har bir so‘z bilan bittadan mustaqil gap tuzing.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">MAJBURIY</span>
+    <h3>3. Translation</h3>
+    <p>20 ta o‘zbekcha gapni ingliz tiliga tarjima qiling.</p>
+    <p>Har bir gapda grammatikani tekshiring.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">MAJBURIY</span>
+    <h3>4. Writing</h3>
+    <p>My Future Plans mavzusida 120–150 so‘zli paragraf yozing.</p>
+    <p>Kamida 10 ta First Conditional gap ishlating.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">MAJBURIY</span>
+    <h3>5. Listening</h3>
+    <p>Har ikkala listeningni kamida 3 martadan tinglang.</p>
+    <p>Yangi iboralarni daftarga yozing.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">MAJBURIY</span>
+    <h3>6. Speaking</h3>
+    <p>Kelajak rejalaringiz haqida 2 daqiqa ingliz tilida gapiring.</p>
+    <p>Ovoz yozib, talaffuzingizni tekshiring.</p>
+  </div>
+  <div class="notebook">
+    <span class="must-write">MAJBURIY</span>
+    <h3>7. Final Revision</h3>
+    <p>40 savollik testni bajaring.</p>
+    <p>Kamida 80% natijaga erishishga harakat qiling.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>✅ Homework Checklist</h2>
+  <p>Bajarilgan topshiriqlarni belgilang.</p>
+  <div id="homeworkChecklist"></div>
+  <p id="homeworkProgress">0 / 7 completed</p>
+</div>
+</section>
+
+<div class="card" style="text-align:center">
+  <h2>🌟 Keep Moving Forward!</h2>
+  <p>Bugun o‘rgangan bilimlaringiz ertangi muvaffaqiyatingiz uchun poydevor bo‘ladi.</p>
+  <p><strong>Don't stop learning. Don't stop growing. Your future starts today!</strong></p>
+  <p>Har kuni ozgina harakat — katta natijalarga olib keladi.</p>
+  <p style="color:var(--primary);font-weight:bold">Learn today. Succeed tomorrow. 💜</p>
+</div>
+
+</main>
+
+<footer>
+  ENGLISH UP — Learn today. Succeed tomorrow.
+  <p>Lesson 13 | First Conditional | Pre-Intermediate</p>
+</footer>
+
+<script>
+/* ==============================
+   ENGLISH UP — LESSON 13
+   FIRST CONDITIONAL
+================================ */
+
+const $ = id => document.getElementById(id);
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "euLesson13Theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+if(localStorage.getItem("euLesson13Theme")==="dark") {
+  document.body.classList.add("dark");
+}
+
+function speak(text) {
+  if(!("speechSynthesis" in window)) {
+    alert("Your browser does not support audio.");
+    return;
+  }
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US";
+  utterance.rate = 0.85;
+  speechSynthesis.speak(utterance);
+}
+
+function showSection(id,button) {
+  document.querySelectorAll(".section").forEach(section=>{
+    section.classList.remove("active");
+  });
+  document.querySelectorAll(".tab").forEach(tab=>{
+    tab.classList.remove("active");
+  });
+  $(id).classList.add("active");
+  button.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+  updateProgress();
+}
+
+const completedSections = new Set();
+
+function updateProgress() {
+  const active = document.querySelector(".section.active");
+  if(active) completedSections.add(active.id);
+  const percent = Math.round(completedSections.size / 9 * 100);
+  $("progressFill").style.width = percent+"%";
+  $("progressText").textContent = percent+"%";
+}
+
+/* GRAMMAR PRACTICE */
+
+const practiceData = [
+  {
+    q:"If I _____ time, I will visit you.",
+    a:["have","will have","has"],
+    correct:0,
+    explain:"If qismida Present Simple ishlatiladi."
+  },
+  {
+    q:"If she studies, she _____ the exam.",
+    a:["pass","passes","will pass"],
+    correct:2,
+    explain:"Natija qismida WILL + V1 ishlatiladi."
+  },
+  {
+    q:"If it _____ tomorrow, we will stay home.",
+    a:["rains","will rain","rain"],
+    correct:0,
+    explain:"If qismida Present Simple ishlatiladi."
+  },
+  {
+    q:"If he comes, I _____ him.",
+    a:["help","will help","helps"],
+    correct:1,
+    explain:"WILL + V1."
+  },
+  {
+    q:"If they _____ early, we will start.",
+    a:["arrive","arrives","will arrive"],
+    correct:0,
+    explain:"They bilan V1 ishlatiladi."
+  },
+  {
+    q:"If she doesn't hurry, she _____ the bus.",
+    a:["miss","misses","will miss"],
+    correct:2,
+    explain:"Natija qismida WILL + V1."
+  },
+  {
+    q:"If you practise, you _____ better.",
+    a:["will get","gets","getting"],
+    correct:0,
+    explain:"WILL + V1."
+  },
+  {
+    q:"If he _____ hard, he will succeed.",
+    a:["work","works","will work"],
+    correct:1,
+    explain:"He bilan works."
+  },
+  {
+    q:"If I am tired, I _____ early.",
+    a:["sleep","will sleep","sleeps"],
+    correct:1,
+    explain:"Natija qismida will sleep."
+  },
+  {
+    q:"If we save money, we _____ abroad.",
+    a:["travel","will travel","travels"],
+    correct:1,
+    explain:"WILL + V1."
+  }
+];
+
+function renderPractice() {
+  $("practiceQuestions").innerHTML = practiceData.map((q,i)=>`
+    <div class="question">
+      <p><strong>${i+1}. ${q.q}</strong></p>
+      ${q.a.map((a,j)=>`
+        <label>
+          <input type="radio" name="p${i}" value="${j}">
+          ${a}
+        </label>
+      `).join("")}
+      <div id="pe${i}" class="result"></div>
+    </div>
+  `).join("");
+}
+
+function checkPractice() {
+  let score=0;
+  practiceData.forEach((q,i)=>{
+    const selected=document.querySelector(`input[name="p${i}"]:checked`);
+    const result=$("pe"+i);
+    result.style.display="block";
+    if(selected && Number(selected.value)===q.correct) {
+      score++;
+      result.className="result correct";
+      result.textContent="Correct! "+q.explain;
+    } else {
+      result.className="result wrong";
+      result.textContent="Correct answer: "+q.a[q.correct]+". "+q.explain;
+    }
+  });
+  $("practiceResult").style.display="block";
+  $("practiceResult").className="result correct";
+  $("practiceResult").textContent=`Your score: ${score}/${practiceData.length}`;
+}
+
+/* FILL IN THE BLANKS */
+
+const fillAnswers = [
+  "study",
+  "comes",
+  "rains",
+  "works",
+  "arrive"
+];
+
+function checkFill() {
+  let score=0;
+  fillAnswers.forEach((answer,i)=>{
+    const value=$("fill"+(i+1)).value.trim().toLowerCase();
+    if(value===answer) score++;
+  });
+  $("fillResult").style.display="block";
+  $("fillResult").className="result "+(score===5?"correct":"wrong");
+  $("fillResult").textContent=`Correct answers: ${score}/5`;
+}
+
+function showTranslation() {
+  $("translationAnswers").style.display="block";
+}
+
+/* VOCABULARY */
+
+const words = [
+  ["opportunity","imkoniyat","op-er-tyu-ni-ti"],
+  ["weather","ob-havo","we-ther"],
+  ["sunny","quyoshli","san-i"],
+  ["cloudy","bulutli","klau-di"],
+  ["rainy","yomg‘irli","rey-ni"],
+  ["storm","bo‘ron","storm"],
+  ["forecast","ob-havo bashorati","for-kast"],
+  ["future","kelajak","fyu-cher"],
+  ["decision","qaror","di-si-jən"],
+  ["plan","reja","plen"],
+  ["goal","maqsad","goul"],
+  ["achieve","erishmoq","e-chiv"],
+  ["improve","yaxshilamoq","im-pruv"],
+  ["succeed","muvaffaqiyatga erishmoq","sak-sid"],
+  ["fail","muvaffaqiyatsizlikka uchramoq","feyl"],
+  ["practise","mashq qilmoq","prak-tis"],
+  ["prepare","tayyorlanmoq","pri-per"],
+  ["invite","taklif qilmoq","in-vayt"],
+  ["arrive","yetib kelmoq","e-rayv"],
+  ["leave","ketmoq","liv"],
+  ["hurry","shoshilmoq","ha-ri"],
+  ["wait","kutmoq","weyt"],
+  ["save","tejamoq","seyv"],
+  ["spend","sarflamoq","spend"],
+  ["earn","pul topmoq","ern"],
+  ["travel","sayohat qilmoq","tre-vəl"],
+  ["visit","tashrif buyurmoq","vi-zit"],
+  ["decide","qaror qilmoq","di-sayd"],
+  ["continue","davom ettirmoq","kon-tin-yu"],
+  ["believe","ishonmoq","bi-liv"],
+  ["confident","o‘ziga ishongan","kon-fi-dent"],
+  ["healthy","sog‘lom","hel-thi"],
+  ["careful","ehtiyotkor","ker-ful"],
+  ["dangerous","xavfli","deyn-jer-es"],
+  ["possible","mumkin","po-si-bəl"],
+  ["probably","ehtimol","pro-bəb-li"],
+  ["perhaps","balki","per-heps"],
+  ["unless","agar ... bo‘lmasa","an-les"],
+  ["result","natija","ri-zalt"],
+  ["choice","tanlov","choys"]
+];
+
+function renderWords() {
+  $("wordGrid").innerHTML=words.map((w,i)=>`
+    <div class="word">
+      <strong>${i+1}. ${w[0]}</strong>
+      <small>Uzbek: ${w[1]}</small>
+      <small>Pronunciation: ${w[2]}</small>
+      <button class="audio-btn" onclick="speak('${w[0]}')">🔊</button>
+    </div>
+  `).join("");
+}
+
+/* LISTENING SCRIPTS */
+
+const listening1 = `
+Hello, Anna. What will you do tomorrow?
+If the weather is sunny, I will go to the park.
+What will you do if it rains?
+If it rains, I will stay at home and read a book.
+That sounds like a good plan.
+`;
+
+const listening2 = `
+Tom, what will you do if you finish work early?
+If I finish work early, I will visit my friend.
+What will you do if you have more free time?
+I will practise English.
+And what will you do if you save enough money?
+I will travel abroad next year.
+That sounds wonderful.
+`;
+
+function checkListening1() {
+  let score=0;
+  if(document.querySelector('input[name="l1"]:checked')?.value==="a") score++;
+  if(document.querySelector('input[name="l2"]:checked')?.value==="b") score++;
+  showResult("listenResult1",score,2);
+}
+
+function checkListening2() {
+  let score=0;
+  if(document.querySelector('input[name="l3"]:checked')?.value==="a") score++;
+  if(document.querySelector('input[name="l4"]:checked')?.value==="b") score++;
+  showResult("listenResult2",score,2);
+}
+
+function showResult(id,score,total) {
+  const el=$(id);
+  el.style.display="block";
+  el.className="result "+(score===total?"correct":"wrong");
+  el.textContent=`Your score: ${score}/${total}`;
+}
+
+/* READING */
+
+const readingText = `
+If I get a better opportunity, I will try to improve my life.
+I will learn new skills and work hard.
+If I improve my English, I will have more opportunities in the future.
+I know that success does not come easily.
+If I make mistakes, I will learn from them.
+If I practise every day, I will become more confident.
+If I have enough time, I will read books and listen to English conversations.
+If I continue working hard, I will achieve my goals.
+`;
+
+function checkReading() {
+  let score=0;
+  ["r1","r2","r3"].forEach((name,i)=>{
+    const answer=document.querySelector(`input[name="${name}"]:checked`);
+    const correct=["a","b","a"][i];
+    if(answer && answer.value===correct) score++;
+  });
+  showResult("readingResult",score,3);
+}
+
+/* SPEAKING */
+
+const speakingList = [
+  "What will you do if it rains tomorrow?",
+  "What will you do if you pass your English exam?",
+  "Where will you go if you have a holiday?",
+  "What will you buy if you save enough money?",
+  "What will you do if you meet a famous person?",
+  "What will you do if you get a better job?",
+  "If you have free time, how will you spend it?",
+  "If you learn English well, how will your life change?",
+  "What will you do if your friend needs help?",
+  "What will you do if you lose your phone?",
+  "If you have a chance to travel, where will you go?",
+  "What will you do if you feel tired?",
+  "If you earn more money, what will you do?",
+  "What will you do if you cannot understand a lesson?",
+  "If you meet a foreigner, what will you talk about?",
+  "What will you do if you have an important exam?",
+  "If you practise every day, what will happen?",
+  "What will you do if your plans change?",
+  "If you become successful, how will you help others?",
+  "What will you do if you have more opportunities?"
+];
+
+function renderSpeaking() {
+  $("speakingQuestions").innerHTML=speakingList.map((q,i)=>`
+    <div class="task">
+      <p><strong>${i+1}. ${q}</strong></p>
+      <button class="audio-btn" onclick="speak('${q.replace(/'/g,"\\'")}')">🔊</button>
+    </div>
+  `).join("");
+}
+
+/* FINAL TEST */
+
+const finalData = [
+  ["If I _____ time, I will call you.",["have","will have","has"],0],
+  ["If she studies, she _____ the exam.",["passes","will pass","pass"],1],
+  ["If it _____, we will stay home.",["will rain","rains","rain"],1],
+  ["If he comes, I _____ him.",["help","will help","helps"],1],
+  ["If they _____ early, we will start.",["arrive","arrives","will arrive"],0],
+  ["If she _____ hard, she will succeed.",["work","works","will work"],1],
+  ["If I save money, I _____ a car.",["buy","will buy","buys"],1],
+  ["If you don't hurry, you _____ late.",["are","will be","be"],1],
+  ["If he _____, I will be happy.",["comes","will come","come"],0],
+  ["If we have time, we _____ you.",["visit","will visit","visits"],1],
+  ["WILL dan keyin qaysi shakl keladi?",["V1","V2","V-ing"],0],
+  ["IF so‘zining tarjimasi nima?",["chunki","agar","ammo"],1],
+  ["WON'T ning to‘liq shakli?",["would not","will not","do not"],1],
+  ["He _____ English if he practises.",["improve","improves","will improve"],2],
+  ["If I _____ tired, I will rest.",["am","will be","is"],0],
+  ["If she doesn't study, she _____ pass.",["doesn't","won't","isn't"],1],
+  ["If you ask me, I _____ help.",["will","am","do"],0],
+  ["If the weather is good, we _____ outside.",["play","will play","plays"],1],
+  ["If he _____ early, he will catch the bus.",["leave","leaves","will leave"],1],
+  ["If you practise, you _____ better.",["get","gets","will get"],2],
+  ["Opportunity ma'nosi?",["imkoniyat","muammo","natija"],0],
+  ["Achieve ma'nosi?",["unutmoq","erishmoq","kutmoq"],1],
+  ["Weather ma'nosi?",["ish","ob-havo","maktab"],1],
+  ["Improve ma'nosi?",["yaxshilamoq","sotib olmoq","ketmoq"],0],
+  ["Decision ma'nosi?",["safar","qaror","do‘st"],1],
+  ["If it rains, I _____ at home.",["stay","will stay","stays"],1],
+  ["If he _____ busy, he won't come.",["is","will be","are"],0],
+  ["If they invite me, I _____.",["come","will come","comes"],1],
+  ["If you heat ice, it _____.",["melts","will melt","melt"],0],
+  ["If I see him, I _____ him.",["tell","will tell","tells"],1],
+  ["First Conditional nimani ifodalaydi?",["o‘tmish","kelajakdagi ehtimoliy vaziyat","odat"],1],
+  ["If qismida odatda qaysi zamon ishlatiladi?",["Past Simple","Present Simple","Future Simple"],1],
+  ["Natija qismida odatda nima ishlatiladi?",["will + V1","will + V2","will + V-ing"],0],
+  ["If gap boshida kelsa, odatda nima qo‘yiladi?",["vergul","nuqta","hech narsa"],0],
+  ["If gap oxirida kelsa, odatda nima kerak emas?",["so‘roq belgisi","vergul","ega"],1],
+  ["If she _____ time, she will help.",["have","has","will have"],1],
+  ["If I don't practise, I _____ improve.",["won't","don't","am not"],0],
+  ["If we leave now, we _____ on time.",["arrive","will arrive","arrives"],1],
+  ["If you feel sick, you _____ rest.",["should","will to","must to"],0],
+  ["If I finish my work, I _____ home.",["go","will go","goes"],1]
+];
+
+function renderFinalTest() {
+  $("finalQuestions").innerHTML=finalData.map((q,i)=>`
+    <div class="question">
+      <p><strong>${i+1}. ${q[0]}</strong></p>
+      ${q[1].map((a,j)=>`
+        <label>
+          <input type="radio" name="f${i}" value="${j}">
+          ${a}
+        </label>
+      `).join("")}
+    </div>
+  `).join("");
+}
+
+function checkFinalTest() {
+  let score=0;
+  let unanswered=0;
+  finalData.forEach((q,i)=>{
+    const selected=document.querySelector(`input[name="f${i}"]:checked`);
+    if(!selected) {
+      unanswered++;
+      return;
+    }
+    if(Number(selected.value)===q[2]) score++;
+  });
+
+  if(unanswered>0) {
+    $("finalResult").style.display="block";
+    $("finalResult").className="result wrong";
+    $("finalResult").textContent=`Please answer all questions. Unanswered: ${unanswered}`;
+    return;
+  }
+
+  $("testScore").textContent=score+" / "+finalData.length;
+  const percent=Math.round(score/finalData.length*100);
+  const passed=percent>=80;
+  $("finalResult").style.display="block";
+  $("finalResult").className="result "+(passed?"correct":"wrong");
+  $("finalResult").innerHTML=`
+    <h3>${passed?"🎉 Congratulations!":"Keep practising!"}</h3>
+    <p>Your result: ${score}/${finalData.length}</p>
+    <p>Percentage: ${percent}%</p>
+    <p>${passed?"You passed Lesson 13!":"You need at least 80% to pass."}</p>
+  `;
+  localStorage.setItem("euLesson13Score",score);
+  localStorage.setItem("euLesson13Passed",passed?"true":"false");
+}
+
+function resetFinalTest() {
+  document.querySelectorAll('#finalQuestions input').forEach(input=>{
+    input.checked=false;
+  });
+  $("finalResult").style.display="none";
+  $("testScore").textContent="0 / 40";
+}
+
+/* HOMEWORK CHECKLIST */
+
+const homeworkItems = [
+  "Grammar qoidalarini daftarga yozdim.",
+  "Formulalarni va misollarni yozdim.",
+  "40 ta yangi so‘zni o‘rgandim.",
+  "Tarjima mashqlarini bajardim.",
+  "Writing topshirig‘ini bajardim.",
+  "Listening va Speakingni takrorladim.",
+  "Final Testni bajardim."
+];
+
+function renderHomework() {
+  const saved=JSON.parse(
+    localStorage.getItem("euLesson13Homework")||"[]"
+  );
+  $("homeworkChecklist").innerHTML=homeworkItems.map((item,i)=>`
+    <label class="option">
+      <input type="checkbox" data-homework="${i}"
+        ${saved.includes(i)?"checked":""}>
+      ${item}
+    </label>
+  `).join("");
+  updateHomework();
+}
+
+function updateHomework() {
+  const checked=[...document.querySelectorAll("[data-homework]:checked")]
+    .map(el=>Number(el.dataset.homework));
+  localStorage.setItem("euLesson13Homework",JSON.stringify(checked));
+  $("homeworkProgress").textContent=
+    `${checked.length} / ${homeworkItems.length} completed`;
+}
+
+$("homeworkChecklist").addEventListener("change",updateHomework);
+
+/* INITIALIZATION */
+
+const readingText = `
+If I get a better opportunity, I will try to improve my life.
+I will learn new skills and work hard.
+If I improve my English, I will have more opportunities in the future.
+If I make mistakes, I will learn from them.
+If I practise every day, I will become more confident.
+`;
+
+renderPractice();
+renderWords();
+renderSpeaking();
+renderFinalTest();
+renderHomework();
+updateProgress();
+
+</script>
+  <script>
+(function () {
+  const homeworkSection = document.getElementById("homework");
+  if (!homeworkSection) return;
+
+  const extraHomework = `
+  <div class="card" id="lesson13ExtraHomework">
+    <h2>📚 LESSON 13 — ADDITIONAL HOMEWORK</h2>
+    <p><strong>First Conditional — Qo‘shimcha uy vazifalari</strong></p>
+    <p>Har bir topshiriqni daftaringizga yozing. Javoblarni mustaqil bajaring va tugatganingizdan keyin belgilab boring.</p>
+
+    <div class="task">
+      <h3>1. Grammar Transformation — 20 ta gap</h3>
+      <p>Quyidagi gaplarni uch shaklda yozing: Positive, Negative va Question.</p>
+      <p>Namuna: If it rains, I will stay home.</p>
+      <ol>
+        <li>If I study hard, I will pass the exam.</li>
+        <li>If she comes early, we will start.</li>
+        <li>If they invite me, I will go.</li>
+        <li>If he works hard, he will succeed.</li>
+        <li>If we have time, we will visit you.</li>
+        <li>If you call me, I will answer.</li>
+        <li>If it is sunny, we will go outside.</li>
+        <li>If I see him, I will tell him.</li>
+        <li>If she feels better, she will come.</li>
+        <li>If they hurry, they will catch the bus.</li>
+        <li>If you practice, you will improve.</li>
+        <li>If he saves money, he will buy a car.</li>
+        <li>If we leave now, we will arrive early.</li>
+        <li>If I finish my work, I will watch TV.</li>
+        <li>If she studies English, she will speak better.</li>
+        <li>If they ask me, I will help them.</li>
+        <li>If you eat too much, you will feel sick.</li>
+        <li>If he misses the train, he will be late.</li>
+        <li>If we win the game, we will celebrate.</li>
+        <li>If I find your book, I will return it.</li>
+      </ol>
+      <textarea rows="6" placeholder="Javoblaringizni shu yerga yozing..." data-save="transform"></textarea>
+      <label><input type="checkbox" data-done="transform"> 1-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>2. Error Correction — 15 ta xatoni tuzating</h3>
+      <p>Har bir gapdagi grammatik xatoni toping va to‘g‘ri shaklini yozing.</p>
+      <ol>
+        <li>If it will rain, I will stay at home.</li>
+        <li>If she study, she will pass.</li>
+        <li>If he comes, I tell him.</li>
+        <li>If they will invite us, we will go.</li>
+        <li>If I has time, I will help you.</li>
+        <li>If you don't hurry, you will missed the bus.</li>
+        <li>If she will call, I answer.</li>
+        <li>If we are hungry, we will ate something.</li>
+        <li>If he don't work, he won't earn money.</li>
+        <li>If I see her, I will tells her.</li>
+        <li>If they comes late, we will start without them.</li>
+        <li>If you will practice, you improve.</li>
+        <li>If it snow, children will play outside.</li>
+        <li>If he doesn't studies, he will fail.</li>
+        <li>If we will leave now, we arrive early.</li>
+      </ol>
+      <textarea rows="5" placeholder="To‘g‘ri gaplarni yozing..." data-save="errors"></textarea>
+      <label><input type="checkbox" data-done="errors"> 2-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>3. Uzbek → English — 20 ta tarjima</h3>
+      <p>Gaplarni ingliz tiliga First Conditional yordamida tarjima qiling.</p>
+      <ol>
+        <li>Agar yomg‘ir yog‘sa, uyda qolaman.</li>
+        <li>Agar vaqtim bo‘lsa, senga yordam beraman.</li>
+        <li>Agar u kelsa, men unga aytaman.</li>
+        <li>Agar ko‘p o‘qisang, imtihondan o‘tasan.</li>
+        <li>Agar avtobusga kechiksak, taksi chaqiramiz.</li>
+        <li>Agar havo yaxshi bo‘lsa, sayr qilamiz.</li>
+        <li>Agar u qo‘ng‘iroq qilsa, javob beraman.</li>
+        <li>Agar pul topsam, yangi telefon sotib olaman.</li>
+        <li>Agar ular taklif qilishsa, biz boramiz.</li>
+        <li>Agar charchasang, dam olasan.</li>
+        <li>Agar men uni ko‘rsam, salom beraman.</li>
+        <li>Agar ertaroq tursam, nonushta tayyorlayman.</li>
+        <li>Agar u mashq qilsa, yaxshiroq gapiradi.</li>
+        <li>Agar biz hozir ketsak, vaqtida yetib boramiz.</li>
+        <li>Agar sen yordam so‘rasang, men yordam beraman.</li>
+        <li>Agar ular g‘alaba qozonishsa, xursand bo‘lishadi.</li>
+        <li>Agar ovqat pishirsam, seni ham chaqiraman.</li>
+        <li>Agar u kasal bo‘lsa, shifokorga boradi.</li>
+        <li>Agar bugun qor yog‘sa, bolalar tashqarida o‘ynashadi.</li>
+        <li>Agar uy vazifamni tugatsam, film ko‘raman.</li>
+      </ol>
+      <textarea rows="6" placeholder="Inglizcha tarjimalarni yozing..." data-save="uz-en"></textarea>
+      <label><input type="checkbox" data-done="uz-en"> 3-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>4. English → Uzbek — 15 ta tarjima</h3>
+      <p>Quyidagi gaplarni o‘zbek tiliga tarjima qiling.</p>
+      <ol>
+        <li>If I have enough money, I will buy a new laptop.</li>
+        <li>If you don't listen carefully, you will make mistakes.</li>
+        <li>If she finishes early, she will join us.</li>
+        <li>If we miss the train, we will take a bus.</li>
+        <li>If he doesn't sleep well, he will feel tired.</li>
+        <li>If they visit our town, we will show them around.</li>
+        <li>If you need anything, I will help you.</li>
+        <li>If it gets cold, I will close the window.</li>
+        <li>If I learn these words, I will remember them.</li>
+        <li>If she doesn't hurry, she will be late.</li>
+        <li>If we have a holiday, we will travel.</li>
+        <li>If you don't understand, I will explain it again.</li>
+        <li>If he practices every day, he will become better.</li>
+        <li>If they arrive on time, we will have dinner together.</li>
+        <li>If I see your brother, I will give him the message.</li>
+      </ol>
+      <textarea rows="5" placeholder="O‘zbekcha tarjimalarni yozing..." data-save="en-uz"></textarea>
+      <label><input type="checkbox" data-done="en-uz"> 4-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>5. Sentence Building — 15 ta gap tuzing</h3>
+      <p>Berilgan so‘zlardan to‘g‘ri First Conditional gaplar tuzing.</p>
+      <ol>
+        <li>if / I / be tired / go to bed early</li>
+        <li>if / she / study / pass the test</li>
+        <li>if / it / rain / take an umbrella</li>
+        <li>if / we / have time / visit our friends</li>
+        <li>if / he / not hurry / miss the bus</li>
+        <li>if / they / invite us / accept the invitation</li>
+        <li>if / you / practice / improve your English</li>
+        <li>if / I / see John / tell him the news</li>
+        <li>if / she / feel ill / stay at home</li>
+        <li>if / we / leave now / arrive early</li>
+        <li>if / he / save money / buy a bicycle</li>
+        <li>if / you / not eat breakfast / feel hungry</li>
+        <li>if / they / win / celebrate together</li>
+        <li>if / I / finish work / call you</li>
+        <li>if / the weather / be nice / go for a walk</li>
+      </ol>
+      <textarea rows="5" placeholder="To‘liq gaplarni yozing..." data-save="building"></textarea>
+      <label><input type="checkbox" data-done="building"> 5-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>6. Real-life Situations — 10 ta vaziyat</h3>
+      <p>Har bir vaziyatga First Conditional ishlatib, kamida bitta to‘liq gap bilan javob bering.</p>
+      <ol>
+        <li>Do‘stingiz sizni sayrga taklif qildi. Agar vaqtingiz bo‘lsa, nima qilasiz?</li>
+        <li>Ertaga yomg‘ir yog‘ishi mumkin. Agar yomg‘ir yog‘sa, nima qilasiz?</li>
+        <li>Imtihoningiz yaqin. Agar yaxshi tayyorlansangiz, nima bo‘ladi?</li>
+        <li>Avtobusga kechikyapsiz. Agar uni o‘tkazib yuborsangiz, nima qilasiz?</li>
+        <li>Do‘stingiz yordamga muhtoj. Agar u sizdan yordam so‘rasa, nima qilasiz?</li>
+        <li>Bugun bo‘sh vaqtingiz bor. Agar ishingizni tugatsangiz, nima qilasiz?</li>
+        <li>Havo sovib ketishi mumkin. Agar sovuq bo‘lsa, nima kiyasiz?</li>
+        <li>Ingliz tilini o‘rganyapsiz. Agar har kuni mashq qilsangiz, nima bo‘ladi?</li>
+        <li>Do‘stingiz sizga xabar yubordi. Agar xabarni ko‘rsangiz, nima qilasiz?</li>
+        <li>Dam olish kunlari yaqinlashmoqda. Agar pulingiz yetarli bo‘lsa, qayerga borasiz?</li>
+      </ol>
+      <textarea rows="6" placeholder="Vaziyatlarga javoblaringizni yozing..." data-save="situations"></textarea>
+      <label><input type="checkbox" data-done="situations"> 6-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>7. Speaking Challenge — 3 daqiqalik nutq</h3>
+      <p><strong>Mavzu:</strong> My Plans for the Future</p>
+      <p>Quyidagi savollardan foydalanib, ingliz tilida 3 daqiqa gapiring. Javoblaringizda First Conditional ishlating.</p>
+      <ul>
+        <li>What will you do if you have free time tomorrow?</li>
+        <li>What will you do if you learn English well?</li>
+        <li>Where will you go if you have a holiday?</li>
+        <li>What will you buy if you save enough money?</li>
+        <li>Who will you help if someone needs your help?</li>
+        <li>What will happen if you practice English every day?</li>
+      </ul>
+      <p>Avval nutqingizni rejalashtiring, keyin ovoz chiqarib gapiring. Imkon bo‘lsa, ovozingizni yozib, qayta tinglang.</p>
+      <textarea rows="4" placeholder="Nutqingiz uchun reja yoki kalit so‘zlarni yozing..." data-save="speaking"></textarea>
+      <label><input type="checkbox" data-done="speaking"> 7-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>8. Writing Challenge — 180–200 so‘z</h3>
+      <p><strong>Mavzu:</strong> What Will I Do If I Achieve My Goals?</p>
+      <p>180–200 so‘zdan iborat matn yozing. First Conditionaldan kamida 8 marta foydalaning.</p>
+      <p>Matningizda quyidagilar bo‘lsin:</p>
+      <ul>
+        <li>Kelajakdagi maqsadlaringiz.</li>
+        <li>Ingliz tilini yaxshi o‘rgansangiz, nimalar qilishingiz.</li>
+        <li>Yangi imkoniyatlarga ega bo‘lsangiz, qanday foydalanishingiz.</li>
+        <li>Oilangiz va do‘stlaringizga qanday yordam berishingiz.</li>
+        <li>Maqsadlaringizga erishish uchun bugun nima qilishingiz.</li>
+      </ul>
+      <textarea rows="10" placeholder="180–200 so‘zli matningizni yozing..." data-save="writing"></textarea>
+      <label><input type="checkbox" data-done="writing"> 8-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>9. Vocabulary Challenge — 40 ta so‘z</h3>
+      <p>Darsdagi 40 ta yangi so‘zni takrorlang. Har bir so‘z bilan bittadan inglizcha gap tuzing.</p>
+      <p>Talablar:</p>
+      <ul>
+        <li>Har bir so‘zning o‘zbekcha ma’nosini eslang.</li>
+        <li>Talaffuzini ovoz chiqarib ayting.</li>
+        <li>Har bir so‘z bilan yangi gap yozing.</li>
+        <li>Imkon qadar yangi gaplaringizda First Conditional ishlating.</li>
+      </ul>
+      <textarea rows="8" placeholder="40 ta so‘z va ular bilan tuzilgan gaplarni yozing..." data-save="vocabulary"></textarea>
+      <label><input type="checkbox" data-done="vocabulary"> 9-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>10. Mixed Grammar — First yoki Zero Conditional?</h3>
+      <p>Qavs ichidagi fe’llarni to‘g‘ri shaklda yozing. Har bir gap First Conditional yoki Zero Conditional ekanini aniqlang.</p>
+      <ol>
+        <li>If you heat water to 100°C, it (boil).</li>
+        <li>If it rains tomorrow, we (stay) at home.</li>
+        <li>If people don't drink water, they (get) thirsty.</li>
+        <li>If I see him tonight, I (tell) him.</li>
+        <li>If you mix blue and yellow, you (get) green.</li>
+        <li>If she studies hard, she (pass) the exam.</li>
+        <li>If you don't water plants, they (die).</li>
+        <li>If we finish early, we (go) shopping.</li>
+        <li>If ice gets warm, it (melt).</li>
+        <li>If he calls me, I (answer).</li>
+        <li>If you touch fire, it (burn) you.</li>
+        <li>If they invite us, we (come).</li>
+        <li>If the sun sets, it (get) dark.</li>
+        <li>If I have enough money, I (buy) a new bag.</li>
+        <li>If babies are hungry, they (cry).</li>
+        <li>If you practice daily, you (improve).</li>
+        <li>If you press this button, the machine (start).</li>
+        <li>If she arrives late, we (wait) for her.</li>
+        <li>If people eat too much, they sometimes (feel) sick.</li>
+        <li>If we leave now, we (arrive) on time.</li>
+      </ol>
+      <textarea rows="6" placeholder="Fe’llarni to‘g‘ri shaklda yozing va zamon turini belgilang..." data-save="mixed"></textarea>
+      <label><input type="checkbox" data-done="mixed"> 10-topshiriqni bajardim</label>
+    </div>
+
+    <div class="task">
+      <h3>✅ Homework Completion</h3>
+      <p>Barcha topshiriqlarni bajarganingizdan keyin quyidagi ro‘yxatni tekshiring.</p>
+      <div id="lesson13ExtraProgress">
+        <p>0 / 10 topshiriq bajarildi</p>
+        <div style="height:12px;background:#e5e7eb;border-radius:20px;overflow:hidden;">
+          <div id="lesson13ExtraProgressBar" style="height:100%;width:0%;background:#7047eb;transition:width .3s;"></div>
+        </div>
+      </div>
+      <p id="lesson13ExtraProgressText">Davom eting! Barcha topshiriqlarni bajarishga harakat qiling.</p>
+    </div>
+  </div>
+  `;
+
+  homeworkSection.insertAdjacentHTML("beforeend", extraHomework);
+
+  const storagePrefix = "euL13ExtraHW_";
+  const textareas = homeworkSection.querySelectorAll(
+    "#lesson13ExtraHomework textarea[data-save]"
+  );
+  const checkboxes = homeworkSection.querySelectorAll(
+    "#lesson13ExtraHomework input[data-done]"
+  );
+
+  textareas.forEach(function (field) {
+    const key = storagePrefix + field.dataset.save;
+    const saved = localStorage.getItem(key);
+    if (saved !== null) field.value = saved;
+
+    field.addEventListener("input", function () {
+      localStorage.setItem(key, field.value);
+    });
+  });
+
+  function updateExtraProgress() {
+    const total = checkboxes.length;
+    const completed = Array.from(checkboxes).filter(function (item) {
+      return item.checked;
+    }).length;
+
+    const percent = Math.round((completed / total) * 100);
+    document.getElementById("lesson13ExtraProgress").querySelector("p").textContent =
+      completed + " / " + total + " topshiriq bajarildi";
+
+    document.getElementById("lesson13ExtraProgressBar").style.width = percent + "%";
+
+    document.getElementById("lesson13ExtraProgressText").textContent =
+      completed === total
+        ? "Ajoyib! Barcha qo‘shimcha uy vazifalarini bajardingiz!"
+        : "Yana " + (total - completed) + " ta topshiriq qoldi.";
+
+  }
+
+  checkboxes.forEach(function (checkbox) {
+    const key = storagePrefix + "done_" + checkbox.dataset.done;
+    checkbox.checked = localStorage.getItem(key) === "true";
+
+    checkbox.addEventListener("change", function () {
+      localStorage.setItem(key, checkbox.checked);
+      updateExtraProgress();
+    });
+  });
+
+  updateExtraProgress();
+})();
+</script>
+</body>
+</html>
