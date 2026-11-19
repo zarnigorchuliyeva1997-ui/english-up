@@ -1,1 +1,1196 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 18 — Passive Voice | English Up</title>
 
+<style>
+:root{
+  --primary:#7047eb;
+  --primary-dark:#5632c7;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --text:#211b35;
+  --muted:#716b82;
+  --border:#e6e0f5;
+  --green:#159568;
+  --red:#d94b63;
+  --shadow:0 8px 25px rgba(54,35,100,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+body.dark{
+  --bg:#171326;
+  --card:#241d36;
+  --text:#f4efff;
+  --muted:#b9afcf;
+  --border:#3c3155;
+  --shadow:0 8px 25px rgba(0,0,0,.2);
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:12px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  color:var(--primary);
+  font-weight:900;
+  letter-spacing:1px;
+  font-size:19px;
+}
+.header-actions{display:flex;gap:8px}
+button,a.btn{
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  background:var(--primary);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  font-size:14px;
+}
+button:hover,a.btn:hover{background:var(--primary-dark)}
+button.secondary{
+  background:var(--card);
+  color:var(--primary);
+  border:1px solid var(--border);
+}
+button:disabled{opacity:.5;cursor:not-allowed}
+main{
+  width:min(920px,94%);
+  margin:20px auto 60px;
+}
+.hero{
+  padding:30px 22px;
+  border-radius:20px;
+  color:white;
+  background:linear-gradient(135deg,#7047eb,#9b72ff);
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.hero h1{font-size:clamp(26px,5vw,40px);margin:5px 0}
+.hero p{margin:8px 0}
+.hero .tag{
+  display:inline-block;
+  background:#ffffff25;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:13px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  margin:17px 0;
+  box-shadow:var(--shadow);
+}
+h2{font-size:23px;margin:0 0 12px;color:var(--primary)}
+h3{font-size:18px;margin:15px 0 8px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+.lesson-nav{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:12px 0;
+}
+.lesson-nav a{
+  white-space:nowrap;
+  color:var(--primary);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:7px 12px;
+  font-size:13px;
+  text-decoration:none;
+}
+.rule{
+  border-left:4px solid var(--primary);
+  background:rgba(112,71,235,.08);
+  padding:12px 15px;
+  margin:12px 0;
+  border-radius:8px;
+}
+.example{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  margin:9px 0;
+}
+.example strong{color:var(--primary)}
+.speak{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:6px 10px;
+  margin:4px 3px;
+  font-size:12px;
+  border-radius:20px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:12px;
+}
+.stat{
+  padding:14px;
+  background:var(--bg);
+  border-radius:12px;
+  text-align:center;
+}
+.stat b{display:block;color:var(--primary);font-size:24px}
+.progress-track{
+  height:10px;
+  background:var(--border);
+  border-radius:20px;
+  overflow:hidden;
+}
+.progress-fill{
+  width:0;
+  height:100%;
+  background:var(--primary);
+  transition:width .3s;
+}
+.question{
+  border:1px solid var(--border);
+  padding:14px;
+  margin:12px 0;
+  border-radius:12px;
+}
+.question label{
+  display:block;
+  padding:7px;
+  margin:5px 0;
+  border-radius:8px;
+  cursor:pointer;
+}
+.question label:hover{background:var(--bg)}
+input[type=radio],input[type=checkbox]{accent-color:var(--primary)}
+input[type=text],textarea,select{
+  width:100%;
+  padding:11px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--bg);
+  color:var(--text);
+  margin:6px 0;
+  font:inherit;
+}
+textarea{min-height:110px;resize:vertical}
+.result{
+  padding:12px;
+  margin:12px 0;
+  border-radius:10px;
+  display:none;
+}
+.result.show{display:block}
+.good{background:#d9f6e9;color:#126b4d}
+.bad{background:#ffe0e5;color:#9b263c}
+body.dark .good{background:#164c3a;color:#c4ffe4}
+body.dark .bad{background:#5b2634;color:#ffdce4}
+.word-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid var(--border);
+  padding:10px 0;
+}
+.word-card:last-child{border:0}
+.word-en{font-weight:800;color:var(--primary)}
+.word-uz{font-size:14px}
+.word-pron{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{padding:10px;border:1px solid var(--border);text-align:left}
+th{background:rgba(112,71,235,.1)}
+footer{text-align:center;color:var(--muted);padding:25px}
+.hidden{display:none}
+@media(max-width:600px){
+  .card{padding:15px}
+  .hero{padding:24px 15px}
+  h2{font-size:21px}
+  button{padding:9px 11px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="brand">ENGLISH UP</div>
+  <div class="header-actions">
+    <a class="btn secondary" href="index.html">← Back</a>
+    <button class="secondary" onclick="toggleTheme()">☾</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <span class="tag">PRE-INTERMEDIATE · LESSON 18</span>
+  <h1>PASSIVE VOICE</h1>
+  <p>Majhul nisbat — ishni kim bajargani emas, nima sodir bo‘lgani muhim bo‘lganda ishlatiladi.</p>
+  <p><b>Learn today. Succeed tomorrow.</b></p>
+</section>
+
+<nav class="lesson-nav">
+  <a href="#welcome">Start</a>
+  <a href="#grammar">Grammar</a>
+  <a href="#structures">Structures</a>
+  <a href="#vocabulary">Vocabulary</a>
+  <a href="#reading">Reading</a>
+  <a href="#listening">Listening</a>
+  <a href="#writing">Writing</a>
+  <a href="#speaking">Speaking</a>
+  <a href="#homework">Homework</a>
+  <a href="#final-test">Final test</a>
+</nav>
+
+<section class="card" id="welcome">
+  <h2>Welcome to Lesson 18!</h2>
+  <p>Assalomu alaykum! English Up platformasining 18-darsiga xush kelibsiz!</p>
+  <p>Bugun siz ingliz tilida juda ko‘p uchraydigan Passive Voice mavzusini o‘rganasiz. Bu mavzu yangiliklarda, kitoblarda, ilmiy matnlarda va kundalik suhbatlarda ishlatiladi.</p>
+  <div class="rule">
+    <b>Bugungi maqsad:</b> Active gaplarni Passive shaklga o‘zgartirish, turli zamonlarda Passive Voice ishlatish va o‘z fikringizni aniq ifodalash.
+  </div>
+  <div class="grid">
+    <div class="stat"><b>40</b><span>Vocabulary words</span></div>
+    <div class="stat"><b>4</b><span>Skills</span></div>
+    <div class="stat"><b>40</b><span>Practice questions</span></div>
+    <div class="stat"><b>80%</b><span>Target score</span></div>
+  </div>
+  <p class="muted">Darsni shoshilmasdan bajaring. Har bir yangi so‘zni tinglang, misollarni ovoz chiqarib takrorlang va mashqlarni mustaqil ishlang.</p>
+</section>
+
+<section class="card">
+  <h2>Lesson roadmap</h2>
+  <ol>
+    <li>Active Voice va Passive Voice farqi</li>
+    <li>Present Simple Passive</li>
+    <li>Past Simple Passive</li>
+    <li>Future Simple Passive</li>
+    <li>Present Perfect Passive</li>
+    <li>Negative va question forms</li>
+    <li>By + agent</li>
+    <li>Vocabulary, Reading, Listening</li>
+    <li>Writing, Speaking va Homework</li>
+  </ol>
+</section>
+
+<section class="card" id="grammar">
+  <h2>1. What is Passive Voice?</h2>
+  <p><b>Passive Voice</b> — gapda ish-harakatni bajarayotgan shaxsdan ko‘ra, ish-harakatning o‘zi yoki ta’sirlangan narsa muhim bo‘lgan grammatik shakl.</p>
+
+  <h3>Active Voice — aniq nisbat</h3>
+  <div class="rule">
+    <b>Subject + Verb + Object</b>
+    <p>Tom writes a letter.</p>
+    <p>Tom xat yozadi.</p>
+  </div>
+  <h3>Passive Voice — majhul nisbat</h3>
+  <div class="rule">
+    <b>Object + be + V3</b>
+    <p>A letter is written by Tom.</p>
+    <p>Xat Tom tomonidan yoziladi.</p>
+  </div>
+
+  <div class="example">
+    <strong>Active:</strong> The chef cooks the food.
+    <p><strong>Passive:</strong> The food is cooked by the chef.</p>
+    <button class="speak" onclick="speak('The chef cooks the food.')">🔊 Active</button>
+    <button class="speak" onclick="speak('The food is cooked by the chef.')">🔊 Passive</button>
+  </div>
+  <div class="example">
+    <strong>Active:</strong> People speak English here.
+    <p><strong>Passive:</strong> English is spoken here.</p>
+    <button class="speak" onclick="speak('People speak English here.')">🔊 Active</button>
+    <button class="speak" onclick="speak('English is spoken here.')">🔊 Passive</button>
+  </div>
+  <div class="example">
+    <strong>Active:</strong> My mother cleans the room.
+    <p><strong>Passive:</strong> The room is cleaned by my mother.</p>
+    <button class="speak" onclick="speak('My mother cleans the room.')">🔊 Active</button>
+    <button class="speak" onclick="speak('The room is cleaned by my mother.')">🔊 Passive</button>
+  </div>
+
+  <h3>Qachon Passive Voice ishlatiladi?</h3>
+  <ul>
+    <li>Ishni kim bajargani noma’lum bo‘lsa.</li>
+    <li>Ishni kim bajargani muhim bo‘lmasa.</li>
+    <li>Natija yoki hodisaning o‘zi muhim bo‘lsa.</li>
+    <li>Rasmiy, ilmiy yoki yangilik uslubida yozilganda.</li>
+  </ul>
+
+  <div class="example">
+    <p><b>My phone was stolen.</b> — Telefonim o‘g‘irlangan.</p>
+    <button class="speak" onclick="speak('My phone was stolen.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>The road is being repaired.</b> — Yo‘l ta’mirlanmoqda.</p>
+    <button class="speak" onclick="speak('The road is being repaired.')">🔊 Listen</button>
+  </div>
+</section>
+
+<section class="card" id="structures">
+  <h2>2. Passive Voice formula</h2>
+  <p>Passive Voice yasashda asosiy yordamchi fe’l — <b>BE</b>. Asosiy fe’l esa doimo <b>V3</b> shaklida keladi.</p>
+  <div class="rule">
+    <b>Subject + BE + Past Participle (V3)</b>
+    <p>BE zamonga qarab o‘zgaradi, V3 esa o‘zgarmaydi.</p>
+  </div>
+
+  <h3>V1 – V2 – V3 eslatma</h3>
+  <table>
+    <tr><th>V1</th><th>V2</th><th>V3</th><th>Tarjima</th></tr>
+    <tr><td>write</td><td>wrote</td><td>written</td><td>yozmoq</td></tr>
+    <tr><td>make</td><td>made</td><td>made</td><td>yasamoq</td></tr>
+    <tr><td>build</td><td>built</td><td>built</td><td>qurmoq</td></tr>
+    <tr><td>see</td><td>saw</td><td>seen</td><td>ko‘rmoq</td></tr>
+    <tr><td>do</td><td>did</td><td>done</td><td>bajarmoq</td></tr>
+    <tr><td>take</td><td>took</td><td>taken</td><td>olmoq</td></tr>
+    <tr><td>give</td><td>gave</td><td>given</td><td>bermoq</td></tr>
+    <tr><td>make</td><td>made</td><td>made</td><td>tayyorlamoq</td></tr>
+    <tr><td>teach</td><td>taught</td><td>taught</td><td>o‘qitmoq</td></tr>
+    <tr><td>send</td><td>sent</td><td>sent</td><td>yubormoq</td></tr>
+  </table>
+
+  <h3>Present Simple Passive</h3>
+  <div class="rule">
+    <b>am / is / are + V3</b>
+    <p>Biror ish muntazam bajarilishi yoki umumiy faktni ifodalaydi.</p>
+  </div>
+  <div class="example">
+    <p><b>The room is cleaned every day.</b></p>
+    <p>Xona har kuni tozalanadi.</p>
+    <button class="speak" onclick="speak('The room is cleaned every day.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>English is taught at this school.</b></p>
+    <p>Bu maktabda ingliz tili o‘qitiladi.</p>
+    <button class="speak" onclick="speak('English is taught at this school.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>These cars are made in Germany.</b></p>
+    <p>Bu mashinalar Germaniyada ishlab chiqariladi.</p>
+    <button class="speak" onclick="speak('These cars are made in Germany.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>Letters are delivered in the morning.</b></p>
+    <p>Xatlar ertalab yetkazib beriladi.</p>
+    <button class="speak" onclick="speak('Letters are delivered in the morning.')">🔊 Listen</button>
+  </div>
+
+  <h3>Present Simple — negative</h3>
+  <div class="rule"><b>am / is / are + not + V3</b></div>
+  <div class="example">
+    <p><b>This product is not sold here.</b> — Bu mahsulot bu yerda sotilmaydi.</p>
+    <button class="speak" onclick="speak('This product is not sold here.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>These rooms are not used.</b> — Bu xonalardan foydalanilmaydi.</p>
+    <button class="speak" onclick="speak('These rooms are not used.')">🔊 Listen</button>
+  </div>
+
+  <h3>Present Simple — questions</h3>
+  <div class="rule"><b>Am / Is / Are + subject + V3?</b></div>
+  <div class="example">
+    <p><b>Is English spoken here?</b> — Bu yerda ingliz tilida gaplashiladimi?</p>
+    <button class="speak" onclick="speak('Is English spoken here?')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>Are the windows cleaned every week?</b> — Derazalar har hafta tozalanadimi?</p>
+    <button class="speak" onclick="speak('Are the windows cleaned every week?')">🔊 Listen</button>
+  </div>
+
+  <h3>Past Simple Passive</h3>
+  <div class="rule"><b>was / were + V3</b></div>
+  <p>O‘tmishda bajarilgan ish-harakatni ifodalaydi.</p>
+  <div class="example">
+    <p><b>The bridge was built in 1990.</b></p>
+    <p>Ko‘prik 1990-yilda qurilgan.</p>
+    <button class="speak" onclick="speak('The bridge was built in nineteen ninety.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>My bag was found yesterday.</b></p>
+    <p>Sumkam kecha topildi.</p>
+    <button class="speak" onclick="speak('My bag was found yesterday.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>These pictures were taken last summer.</b></p>
+    <p>Bu rasmlar o‘tgan yozda olingan.</p>
+    <button class="speak" onclick="speak('These pictures were taken last summer.')">🔊 Listen</button>
+  </div>
+
+  <h3>Past Simple — negative</h3>
+  <div class="rule"><b>was / were + not + V3</b></div>
+  <div class="example">
+    <p><b>The letter was not sent.</b> — Xat yuborilmadi.</p>
+    <button class="speak" onclick="speak('The letter was not sent.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>The shops were not opened yesterday.</b> — Do‘konlar kecha ochilmadi.</p>
+    <button class="speak" onclick="speak('The shops were not opened yesterday.')">🔊 Listen</button>
+  </div>
+
+  <h3>Past Simple — questions</h3>
+  <div class="rule"><b>Was / Were + subject + V3?</b></div>
+  <div class="example">
+    <p><b>Was the house built in 2005?</b> — Uy 2005-yilda qurilganmi?</p>
+    <button class="speak" onclick="speak('Was the house built in two thousand and five?')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>Were the documents signed?</b> — Hujjatlar imzolanganmi?</p>
+    <button class="speak" onclick="speak('Were the documents signed?')">🔊 Listen</button>
+  </div>
+
+  <h3>Future Simple Passive</h3>
+  <div class="rule"><b>will be + V3</b></div>
+  <div class="example">
+    <p><b>The work will be finished tomorrow.</b></p>
+    <p>Ish ertaga tugatiladi.</p>
+    <button class="speak" onclick="speak('The work will be finished tomorrow.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>A new school will be built here.</b></p>
+    <p>Bu yerda yangi maktab quriladi.</p>
+    <button class="speak" onclick="speak('A new school will be built here.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>The results will be announced soon.</b></p>
+    <p>Natijalar tez orada e’lon qilinadi.</p>
+    <button class="speak" onclick="speak('The results will be announced soon.')">🔊 Listen</button>
+  </div>
+
+  <h3>Future Simple — negative and questions</h3>
+  <div class="rule"><b>will not be + V3</b></div>
+  <div class="example">
+    <p><b>The meeting will not be cancelled.</b> — Uchrashuv bekor qilinmaydi.</p>
+    <button class="speak" onclick="speak('The meeting will not be cancelled.')">🔊 Listen</button>
+  </div>
+  <div class="rule"><b>Will + subject + be + V3?</b></div>
+  <div class="example">
+    <p><b>Will the project be completed this year?</b> — Loyiha bu yil yakunlanadimi?</p>
+    <button class="speak" onclick="speak('Will the project be completed this year?')">🔊 Listen</button>
+  </div>
+
+  <h3>Present Perfect Passive</h3>
+  <div class="rule"><b>has / have been + V3</b></div>
+  <p>Natijasi hozirga aloqador bo‘lgan ish-harakatni ifodalaydi.</p>
+  <div class="example">
+    <p><b>The room has been cleaned.</b></p>
+    <p>Xona tozalangan.</p>
+    <button class="speak" onclick="speak('The room has been cleaned.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>The emails have been sent.</b></p>
+    <p>Elektron xatlar yuborilgan.</p>
+    <button class="speak" onclick="speak('The emails have been sent.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>The problem has been solved.</b></p>
+    <p>Muammo hal qilingan.</p>
+    <button class="speak" onclick="speak('The problem has been solved.')">🔊 Listen</button>
+  </div>
+
+  <h3>Present Perfect — negative and questions</h3>
+  <div class="rule"><b>has / have not been + V3</b></div>
+  <div class="example">
+    <p><b>The report has not been finished yet.</b> — Hisobot hali tugatilmagan.</p>
+    <button class="speak" onclick="speak('The report has not been finished yet.')">🔊 Listen</button>
+  </div>
+  <div class="rule"><b>Has / Have + subject + been + V3?</b></div>
+  <div class="example">
+    <p><b>Has the food been prepared?</b> — Ovqat tayyorlanganmi?</p>
+    <button class="speak" onclick="speak('Has the food been prepared?')">🔊 Listen</button>
+  </div>
+
+  <h3>Four main tenses — comparison</h3>
+  <table>
+    <tr><th>Tense</th><th>Formula</th><th>Example</th></tr>
+    <tr><td>Present Simple</td><td>am/is/are + V3</td><td>It is made.</td></tr>
+    <tr><td>Past Simple</td><td>was/were + V3</td><td>It was made.</td></tr>
+    <tr><td>Future Simple</td><td>will be + V3</td><td>It will be made.</td></tr>
+    <tr><td>Present Perfect</td><td>has/have been + V3</td><td>It has been made.</td></tr>
+  </table>
+</section>
+
+<section class="card">
+  <h2>3. How to change Active into Passive</h2>
+  <p>Active gapni Passive shaklga o‘zgartirish uchun quyidagi bosqichlarni bajaring:</p>
+  <ol>
+    <li>Active gapdagi Objectni toping.</li>
+    <li>Objectni gap boshiga olib chiqing.</li>
+    <li>Gap zamoniga mos BE fe’lini tanlang.</li>
+    <li>Asosiy fe’lni V3 shakliga o‘tkazing.</li>
+    <li>Kerak bo‘lsa, bajaruvchini <b>by</b> bilan yozing.</li>
+  </ol>
+  <div class="example">
+    <p><b>Active:</b> Sarah wrote the story.</p>
+    <p>1. Object: the story</p>
+    <p>2. New subject: The story</p>
+    <p>3. Past Simple BE: was</p>
+    <p>4. V3: written</p>
+    <p><b>Passive:</b> The story was written by Sarah.</p>
+    <button class="speak" onclick="speak('The story was written by Sarah.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>Active:</b> They will open the new shop.</p>
+    <p><b>Passive:</b> The new shop will be opened.</p>
+    <button class="speak" onclick="speak('The new shop will be opened.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>Active:</b> Someone has stolen my bicycle.</p>
+    <p><b>Passive:</b> My bicycle has been stolen.</p>
+    <button class="speak" onclick="speak('My bicycle has been stolen.')">🔊 Listen</button>
+  </div>
+</section>
+
+<section class="card">
+  <h2>4. Using BY</h2>
+  <p><b>By</b> ish-harakatni kim yoki nima bajarganini ko‘rsatadi. Bajaruvchi muhim bo‘lmasa, uni yozmaslik mumkin.</p>
+  <div class="example">
+    <p><b>The book was written by George Orwell.</b></p>
+    <p>Kitob George Orwell tomonidan yozilgan.</p>
+    <button class="speak" onclick="speak('The book was written by George Orwell.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>The window was broken by the boy.</b></p>
+    <p>Deraza bola tomonidan sindirilgan.</p>
+    <button class="speak" onclick="speak('The window was broken by the boy.')">🔊 Listen</button>
+  </div>
+  <div class="example">
+    <p><b>My wallet was found.</b></p>
+    <p>Hamyonim topildi.</p>
+    <button class="speak" onclick="speak('My wallet was found.')">🔊 Listen</button>
+  </div>
+  <div class="rule">
+    <b>Remember:</b> people, someone, they, everybody kabi bajaruvchilar noma’lum yoki umumiy bo‘lsa, Passive gapda ko‘pincha tushirib qoldiriladi.
+  </div>
+</section>
+
+<section class="card">
+  <h2>5. Common mistakes</h2>
+  <div class="example">
+    <p><span style="color:#d94b63">❌ The room is clean every day.</span></p>
+    <p><span style="color:#159568">✓ The room is cleaned every day.</span></p>
+    <p class="small">Passive shaklda BE + V3 kerak. Clean — bu yerda fe’lning V1 shakli.</p>
+  </div>
+  <div class="example">
+    <p><span style="color:#d94b63">❌ The house was build in 2010.</span></p>
+    <p><span style="color:#159568">✓ The house was built in 2010.</span></p>
+    <p class="small">Build fe’lining V3 shakli built.</p>
+  </div>
+  <div class="example">
+    <p><span style="color:#d94b63">❌ The work will finished tomorrow.</span></p>
+    <p><span style="color:#159568">✓ The work will be finished tomorrow.</span></p>
+    <p class="small">Future Passive formulasida will be + V3 ishlatiladi.</p>
+  </div>
+  <div class="example">
+    <p><span style="color:#d94b63">❌ The letters have sent.</span></p>
+    <p><span style="color:#159568">✓ The letters have been sent.</span></p>
+    <p class="small">Present Perfect Passive: have/has been + V3.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>6. Quick grammar check</h2>
+  <p>Quyidagi savollarga javob bering. Har bir savol uchun bitta variantni tanlang.</p>
+  <div id="quickQuiz"></div>
+  <button onclick="checkQuiz('quickQuiz','quickResult')">Check answers</button>
+  <div id="quickResult" class="result"></div>
+</section>
+<section class="card" id="vocabulary">
+  <h2>7. Vocabulary — 40 New Words</h2>
+  <p>Har bir yangi so‘zni tinglang, talaffuzini takrorlang va daftaringizga yozing.</p>
+  <div class="rule">
+    <b>DAFTARGA YOZISH QAT’IYIY!</b>
+    <p>40 ta so‘zning inglizchasini, o‘zbekcha tarjimasini va talaffuzini yozing. Har bir so‘z bilan bittadan gap tuzing.</p>
+  </div>
+  <div id="vocabularyList"></div>
+  <button onclick="speakVocabulary()">🔊 Listen to all words</button>
+</section>
+
+<section class="card" id="reading">
+  <h2>8. Reading — A New School</h2>
+  <p class="muted">Matnni avval o‘zingiz o‘qing. Keyin audio tugmasini bosib, tinglang.</p>
+  <div class="rule" id="readingText">
+    A new school was built in our town last year. It was designed by a local architect. The classrooms are cleaned every morning. New books are delivered to the school every month. The computers have been installed in the library. English is taught by two experienced teachers. Last week, a sports hall was opened. The students are very happy because many new activities will be organised next term. The school will be improved in the future.
+  </div>
+  <button onclick="speak(document.getElementById('readingText').innerText)">🔊 Listen to the reading</button>
+  <h3>Reading comprehension</h3>
+  <div id="readingQuestions"></div>
+  <button onclick="checkQuiz('readingQuestions','readingResult')">Check reading answers</button>
+  <div id="readingResult" class="result"></div>
+</section>
+
+<section class="card" id="listening">
+  <h2>9. Listening — The New Library</h2>
+  <p>Bu bo‘limni alohida e’tibor bilan bajaring. Audio matnni avval ko‘rmasdan tinglashga harakat qiling.</p>
+  <div class="rule">
+    <b>Listening tartibi:</b>
+    <ol>
+      <li>1-marta: matnni ko‘rmasdan tinglang.</li>
+      <li>2-marta: asosiy ma’lumotlarni tushunishga harakat qiling.</li>
+      <li>3-marta: savollarga javob bering.</li>
+      <li>Oxirida transcriptni ochib, xatolaringizni tekshiring.</li>
+    </ol>
+  </div>
+  <div class="example">
+    <h3>Audio 1 — Normal speed</h3>
+    <button onclick="playListening(1,1)">▶ Play listening</button>
+    <button class="secondary" onclick="playListening(1,0.85)">▶ Slow listening</button>
+    <button class="secondary" onclick="stopSpeech()">■ Stop</button>
+  </div>
+  <div class="example">
+    <h3>Audio 2 — Repeat and understand</h3>
+    <button onclick="playListening(2,1)">▶ Play listening</button>
+    <button class="secondary" onclick="playListening(2,0.8)">▶ Slow listening</button>
+    <button class="secondary" onclick="stopSpeech()">■ Stop</button>
+  </div>
+  <h3>Listening questions</h3>
+  <div id="listeningQuestions"></div>
+  <button onclick="checkQuiz('listeningQuestions','listeningResult')">Check listening answers</button>
+  <div id="listeningResult" class="result"></div>
+  <details class="example">
+    <summary><b>Open listening transcript</b></summary>
+    <p id="listeningTranscript"></p>
+    <button onclick="speak(document.getElementById('listeningTranscript').innerText)">🔊 Listen with transcript</button>
+  </details>
+</section>
+
+<section class="card" id="writing">
+  <h2>10. Writing — Build Your Sentences</h2>
+  <p>Bu topshiriqda Passive Voice yordamida mustaqil gaplar tuzasiz.</p>
+  <div class="rule">
+    <b>Daftarga yozish shart:</b>
+    <p>Quyidagi 10 ta gapni avval daftaringizga yozing. Keyin Active gaplarni Passive shaklga o‘zgartiring.</p>
+  </div>
+  <ol>
+    <li>People speak English in many countries.</li>
+    <li>My father repaired the car.</li>
+    <li>They will build a new hospital.</li>
+    <li>Someone has opened the door.</li>
+    <li>The teacher checks our homework.</li>
+    <li>They cleaned the classroom yesterday.</li>
+    <li>Someone will send the email tomorrow.</li>
+    <li>They have finished the project.</li>
+    <li>People grow rice in this region.</li>
+    <li>The company made these products.</li>
+  </ol>
+  <h3>Write your answers</h3>
+  <textarea id="writingAnswer" placeholder="1. English is spoken in many countries..."></textarea>
+  <button onclick="checkWriting()">Check my writing</button>
+  <div id="writingResult" class="result"></div>
+  <h3>Extra writing challenge</h3>
+  <p>O‘zingiz yashaydigan joy haqida Passive Voice ishlatib 8 ta gap yozing.</p>
+  <p>Masalan:</p>
+  <div class="example">
+    <p>Food is sold in local shops.</p>
+    <button class="speak" onclick="speak('Food is sold in local shops.')">🔊 Listen</button>
+  </div>
+  <textarea placeholder="Write 8 sentences about your town or village..."></textarea>
+  <p class="small">Yozgan matningizni saqlang. Keyingi darslarda ham qayta ko‘rib chiqasiz.</p>
+</section>
+
+<section class="card" id="speaking">
+  <h2>11. Speaking — Talk about your world</h2>
+  <p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir javob kamida 2–3 gapdan iborat bo‘lsin.</p>
+  <div class="example">
+    <b>1. What is made in your country?</b>
+    <p>Answer example: Many different products are made in my country.</p>
+    <button class="speak" onclick="speak('What is made in your country?')">🔊 Question</button>
+  </div>
+  <div class="example">
+    <b>2. What was built in your town recently?</b>
+    <p>Answer example: A new shopping centre was built in my town.</p>
+    <button class="speak" onclick="speak('What was built in your town recently?')">🔊 Question</button>
+  </div>
+  <div class="example">
+    <b>3. What is cleaned every day in your home?</b>
+    <p>Answer example: The kitchen is cleaned every day.</p>
+    <button class="speak" onclick="speak('What is cleaned every day in your home?')">🔊 Question</button>
+  </div>
+  <div class="example">
+    <b>4. What has been changed in your life recently?</b>
+    <p>Answer example: My daily routine has been changed recently.</p>
+    <button class="speak" onclick="speak('What has been changed in your life recently?')">🔊 Question</button>
+  </div>
+  <div class="example">
+    <b>5. What will be improved in your city?</b>
+    <p>Answer example: More roads will be improved in my city.</p>
+    <button class="speak" onclick="speak('What will be improved in your city?')">🔊 Question</button>
+  </div>
+  <div class="rule">
+    <b>Speaking challenge:</b>
+    <p>O‘zingiz haqingizda 1 daqiqalik nutq tayyorlang. Kamida 5 ta Passive Voice gap ishlating.</p>
+  </div>
+  <textarea placeholder="Write your speaking notes here..."></textarea>
+</section>
+
+<section class="card" id="homework">
+  <h2>12. HOMEWORK — Must be completed!</h2>
+  <p>Uy vazifasi darsning muhim qismidir. Barcha topshiriqlarni bajaring.</p>
+  <div class="rule">
+    <b>DAFTARGA YOZISH QAT’IYIY!</b>
+    <p>Grammar, Vocabulary va Writing mashqlarini daftarga yozing. Faqat ekranda o‘qib chiqish uy vazifasini bajarish hisoblanmaydi.</p>
+  </div>
+
+  <h3>Homework A — Grammar</h3>
+  <p>Quyidagi gaplarni Passive Voice shakliga o‘zgartiring.</p>
+  <ol>
+    <li>They make cars in this factory.</li>
+    <li>My sister washed the dishes.</li>
+    <li>They will announce the winner.</li>
+    <li>Someone has broken the window.</li>
+    <li>People use computers everywhere.</li>
+    <li>The police found the missing bag.</li>
+    <li>They will repair the road.</li>
+    <li>The manager has signed the documents.</li>
+    <li>They grow vegetables here.</li>
+    <li>Someone stole my bicycle.</li>
+  </ol>
+  <textarea placeholder="Write all 10 Passive sentences in your notebook..."></textarea>
+
+  <h3>Homework B — Vocabulary</h3>
+  <p>40 ta yangi so‘zdan foydalanib, 15 ta gap tuzing. Kamida 8 ta gapda Passive Voice ishlating.</p>
+  <textarea placeholder="Write your 15 sentences..."></textarea>
+
+  <h3>Homework C — Listening</h3>
+  <p>Quyidagi matnni 3 marta tinglang. Keyin daftaringizga eshitganingizdan 5 ta Passive Voice gap yozing.</p>
+  <button onclick="playListening(3,1)">▶ Homework audio</button>
+  <button class="secondary" onclick="playListening(3,0.8)">▶ Slow audio</button>
+  <button class="secondary" onclick="stopSpeech()">■ Stop</button>
+  <details class="example">
+    <summary>Open homework transcript</summary>
+    <p id="homeworkTranscript"></p>
+    <button onclick="speak(document.getElementById('homeworkTranscript').innerText)">🔊 Listen again</button>
+  </details>
+  <textarea placeholder="Write 5 sentences that you heard..."></textarea>
+
+  <h3>Homework D — Reading</h3>
+  <p>Reading matnini yana bir marta o‘qing. Undan 10 ta yangi yoki muhim so‘zni tanlab, tarjimasi bilan daftarga yozing.</p>
+
+  <h3>Homework E — Writing</h3>
+  <p><b>Topic:</b> How is your town changing?</p>
+  <p>100–120 so‘zdan iborat matn yozing. Kamida 8 ta Passive Voice gap ishlating.</p>
+  <textarea placeholder="Write your 100–120 word paragraph..."></textarea>
+
+  <h3>Homework F — Speaking</h3>
+  <p>Quyidagi mavzuda 1–2 daqiqa gapiring:</p>
+  <p><b>“Things that are made, built and used in my country.”</b></p>
+  <p>Nutqingizda Present Simple, Past Simple va Future Simple Passive shakllaridan foydalaning.</p>
+
+  <div class="rule">
+    <b>Homework checklist</b>
+    <p>Har bir ishni tugatganingizdan keyin belgilang.</p>
+    <label><input type="checkbox" class="homework-check"> 40 ta so‘zni daftarga yozdim.</label><br>
+    <label><input type="checkbox" class="homework-check"> 15 ta vocabulary gap tuzdim.</label><br>
+    <label><input type="checkbox" class="homework-check"> 10 ta grammar mashqini bajardim.</label><br>
+    <label><input type="checkbox" class="homework-check"> Listeningni 3 marta tingladim.</label><br>
+    <label><input type="checkbox" class="homework-check"> Reading matnini o‘qidim.</label><br>
+    <label><input type="checkbox" class="homework-check"> Writing matnini yozdim.</label><br>
+    <label><input type="checkbox" class="homework-check"> Speaking mashqini bajardim.</label>
+  </div>
+</section>
+
+<section class="card" id="final-test">
+  <h2>13. Final Test — 40 Questions</h2>
+  <p>Har bir savolga bitta to‘g‘ri javobni belgilang. Natijangizni oxirida tekshiring.</p>
+  <div class="grid">
+    <div class="stat"><b>40</b><span>Questions</span></div>
+    <div class="stat"><b>80%</b><span>Target score</span></div>
+    <div class="stat"><b>32</b><span>Required correct answers</span></div>
+  </div>
+  <div id="finalQuestions"></div>
+  <button onclick="checkQuiz('finalQuestions','finalResult')">Submit final test</button>
+  <div id="finalResult" class="result"></div>
+</section>
+
+<section class="card" id="progress">
+  <h2>14. My Lesson Progress</h2>
+  <p>Ushbu darsdagi mashqlaringizni belgilang.</p>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <p id="progressText" class="muted">0% completed</p>
+  <div class="grid">
+    <div class="stat"><b id="homeworkCount">0/7</b><span>Homework tasks</span></div>
+    <div class="stat"><b id="testScore">—</b><span>Final test</span></div>
+  </div>
+  <button onclick="updateProgress()">Update progress</button>
+</section>
+
+<section class="hero">
+  <h2 style="color:white">Lesson 18 Completed!</h2>
+  <p>Bugun siz Passive Voice mavzusining muhim qoidalarini o‘rgandingiz.</p>
+  <p>Har kuni oz-ozdan o‘rganing, lekin hech qachon to‘xtamang!</p>
+  <h2 style="color:white">Your future is built by your actions today.</h2>
+  <p>Kelajagingiz bugungi harakatlaringiz bilan quriladi.</p>
+  <p><b>ENGLISH UP — Learn today. Succeed tomorrow.</b></p>
+</section>
+</main>
+
+<footer>
+  English Up · Pre-Intermediate · Lesson 18
+  <br>Keep learning. Keep improving.
+</footer>
+
+<script>
+/* =========================================
+   ENGLISH UP — LESSON 18
+   PASSIVE VOICE
+========================================= */
+
+/* SPEECH ENGINE */
+let currentUtterance=null;
+
+function speak(text,rate=0.88){
+  if(!('speechSynthesis' in window)){
+    alert('Your browser does not support audio pronunciation.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  currentUtterance=new SpeechSynthesisUtterance(text);
+  currentUtterance.lang='en-US';
+  currentUtterance.rate=rate;
+  currentUtterance.pitch=1;
+  window.speechSynthesis.speak(currentUtterance);
+}
+
+function stopSpeech(){
+  if('speechSynthesis' in window){
+    window.speechSynthesis.cancel();
+  }
+}
+
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem(
+    'euLesson18Theme',
+    document.body.classList.contains('dark')?'dark':'light'
+  );
+}
+
+if(localStorage.getItem('euLesson18Theme')==='dark'){
+  document.body.classList.add('dark');
+}
+
+/* VOCABULARY DATA */
+const vocabulary=[
+ ['build','qurmoq','bild'],
+ ['repair','ta’mirlamoq','ri-per'],
+ ['deliver','yetkazib bermoq','di-li-ver'],
+ ['produce','ishlab chiqarmoq','pro-dyus'],
+ ['design','loyihalashtirmoq','di-zayn'],
+ ['create','yaratmoq','kri-eyt'],
+ ['invent','ixtiro qilmoq','in-vent'],
+ ['discover','kashf qilmoq','dis-ka-ver'],
+ ['prepare','tayyorlamoq','pri-per'],
+ ['complete','yakunlamoq','kam-plit'],
+ ['improve','yaxshilamoq','im-pruv'],
+ ['organise','tashkil qilmoq','or-ga-nayz'],
+ ['announce','e’lon qilmoq','e-nauns'],
+ ['publish','nashr qilmoq','pab-lish'],
+ ['deliver','yetkazib bermoq','di-li-ver'],
+ ['collect','to‘plamoq','ka-lekt'],
+ ['protect','himoya qilmoq','pro-tekt'],
+ ['invite','taklif qilmoq','in-vayt'],
+ ['choose','tanlamoq','chuz'],
+ ['send','yubormoq','send'],
+ ['receive','qabul qilmoq','ri-siv'],
+ ['sell','sotmoq','sel'],
+ ['buy','sotib olmoq','bay'],
+ ['grow','o‘stirmoq','grou'],
+ ['plant','ekmoq','plant'],
+ ['clean','tozalamoq','klin'],
+ ['check','tekshirmoq','chek'],
+ ['sign','imzolamoq','sayn'],
+ ['steal','o‘g‘irlamoq','stil'],
+ ['find','topmoq','faynd'],
+ ['break','sindirmoq','breyk'],
+ ['open','ochmoq','ou-pen'],
+ ['close','yopmoq','klouz'],
+ ['teach','o‘qitmoq','tich'],
+ ['learn','o‘rganmoq','lern'],
+ ['use','foydalanmoq','yuz'],
+ ['carry','ko‘tarmoq','ke-ri'],
+ ['wash','yuvmoq','vosh'],
+ ['paint','bo‘yamoq','peynt'],
+ ['include','o‘z ichiga olmoq','in-klud']
+];
+
+function renderVocabulary(){
+  const area=document.getElementById('vocabularyList');
+  area.innerHTML='';
+  vocabulary.forEach((word,index)=>{
+    const div=document.createElement('div');
+    div.className='word-card';
+    div.innerHTML=`
+      <div>
+        <div class="word-en">${index+1}. ${word[0]}</div>
+        <div class="word-uz">${word[1]}</div>
+        <div class="word-pron">Talaffuz: ${word[2]}</div>
+      </div>
+      <button class="speak" onclick="speak(${JSON.stringify(word[0])})">🔊</button>
+    `;
+    area.appendChild(div);
+  });
+}
+renderVocabulary();
+
+function speakVocabulary(){
+  let i=0;
+  function next(){
+    if(i>=vocabulary.length)return;
+    const item=vocabulary[i++];
+    speak(item[0],0.75);
+    currentUtterance.onend=()=>setTimeout(next,350);
+  }
+  stopSpeech();
+  next();
+}
+
+/* LISTENING TEXTS */
+const listeningTexts={
+  1:"A new library was opened in our town last month. It was built near the central park. Many books were brought into the library. The rooms are cleaned every morning. Computers have been installed for students. English books are also provided. The library will be visited by many people this year.",
+  2:"Last week, a new sports centre was opened. It was designed for young people. Many activities are organised there. The equipment is checked every day. A swimming pool has been built next to the gym. More classes will be introduced next month.",
+  3:"Our town is changing every year. New houses are being built, and old roads are being repaired. The local park was improved last summer. New trees have been planted near the school. More public transport will be provided in the future. The town is becoming a better place to live."
+};
+
+function playListening(number,rate){
+  speak(listeningTexts[number],rate);
+}
+
+document.getElementById('listeningTranscript').innerText=listeningTexts[1];
+document.getElementById('homeworkTranscript').innerText=listeningTexts[3];
+
+/* QUIZ BUILDER */
+const quickQuestions=[
+ {q:'English ___ in many countries.',o:['speak','is spoken','is speak'],a:1},
+ {q:'The house ___ in 1995.',o:['was built','is build','built'],a:0},
+ {q:'The work ___ tomorrow.',o:['will finish','will be finished','will finished'],a:1},
+ {q:'The letters have ___ sent.',o:['be','being','been'],a:2},
+ {q:'The room ___ every day.',o:['is cleaned','clean','is clean'],a:0},
+ {q:'The car was ___ yesterday.',o:['repair','repaired','repairing'],a:1},
+ {q:'These products ___ in Italy.',o:['are made','is made','made'],a:0},
+ {q:'The project has been ___.',o:['complete','completed','completing'],a:1},
+ {q:'The door ___ opened yet.',o:['has not been','have not','not has'],a:0},
+ {q:'___ the documents signed?',o:['Have','Has been','Have been'],a:0}
+];
+
+const readingData=[
+ {q:'When was the school built?',o:['Last year','Last week','Ten years ago'],a:0},
+ {q:'Who designed the school?',o:['A teacher','A local architect','A student'],a:1},
+ {q:'When are classrooms cleaned?',o:['Every evening','Every morning','Every month'],a:1},
+ {q:'Where have computers been installed?',o:['In the library','In the sports hall','In the garden'],a:0},
+ {q:'Who teaches English?',o:['One student','Two experienced teachers','The architect'],a:1},
+ {q:'When was the sports hall opened?',o:['Last year','Yesterday','Last week'],a:2},
+ {q:'What will happen next term?',o:['Activities will be organised','The school will close','Books will be removed'],a:0}
+];
+
+const listeningData=[
+ {q:'When was the library opened?',o:['Last month','Last year','Yesterday'],a:0},
+ {q:'Where was it built?',o:['Near the station','Near the central park','Near the school'],a:1},
+ {q:'What was brought into the library?',o:['New computers','New tables','Many books'],a:2},
+ {q:'When are the rooms cleaned?',o:['Every morning','Every Friday','Every evening'],a:0},
+ {q:'What has been installed?',o:['A swimming pool','Computers','A sports hall'],a:1},
+ {q:'What will happen this year?',o:['Many people will visit','The library will close','The books will be sold'],a:0},
+ {q:'What is also provided?',o:['English books','Food','Sports equipment'],a:0}
+];
+
+const finalQuestions=[
+ {q:'The food ___ every morning.',o:['is prepared','prepare','is prepare'],a:0},
+ {q:'The house ___ last year.',o:['build','was built','is build'],a:1},
+ {q:'The work will ___ tomorrow.',o:['be finished','finished','be finish'],a:0},
+ {q:'The emails have ___ sent.',o:['be','been','being'],a:1},
+ {q:'English ___ in this school.',o:['is taught','teaches','is teach'],a:0},
+ {q:'The window ___ yesterday.',o:['was broken','is broke','broken'],a:0},
+ {q:'These cars ___ in Japan.',o:['is made','are made','made'],a:1},
+ {q:'The project ___ completed soon.',o:['will be','will','is'],a:0},
+ {q:'The documents ___ signed yet.',o:['have not been','has not','not have'],a:0},
+ {q:'___ the room cleaned every day?',o:['Is','Does','Has'],a:0},
+ {q:'The books ___ by the teacher yesterday.',o:['were checked','are checked','check'],a:0},
+ {q:'The problem has been ___.',o:['solve','solved','solving'],a:1},
+ {q:'The new hospital ___ next year.',o:['will build','will be built','will built'],a:1},
+ {q:'The letters ___ every Monday.',o:['are delivered','is delivered','delivered'],a:0},
+ {q:'The car was repaired ___ my brother.',o:['from','with','by'],a:2},
+ {q:'The thief ___ by the police.',o:['was caught','caught','is catch'],a:0},
+ {q:'The room is not ___.',o:['clean','cleaned','cleaning'],a:1},
+ {q:'The results ___ announced tomorrow.',o:['will be','will','are'],a:0},
+ {q:'Has the food been ___?',o:['prepare','prepared','preparing'],a:1},
+ {q:'The school ___ in 2001.',o:['was built','is build','built'],a:0},
+ {q:'The computers ___ every week.',o:['are checked','is checked','checks'],a:0},
+ {q:'The package was ___ yesterday.',o:['deliver','delivered','delivering'],a:1},
+ {q:'A new bridge ___ at the moment.',o:['is built','is being built','was build'],a:1},
+ {q:'The room ___ before we arrived.',o:['had cleaned','had been cleaned','has clean'],a:1},
+ {q:'The meeting ___ cancelled.',o:['will not be','will not','not will'],a:0},
+ {q:'Were the photos ___ last week?',o:['take','taken','taking'],a:1},
+ {q:'The report ___ already been written.',o:['has','have','is'],a:0},
+ {q:'The vegetables ___ in this area.',o:['are grown','is grown','grows'],a:0},
+ {q:'The message was ___ by email.',o:['send','sent','sending'],a:1},
+ {q:'The shop ___ at 9 every morning.',o:['is opened','opens by','is open by'],a:0},
+ {q:'The tickets have been ___.',o:['buy','bought','buying'],a:1},
+ {q:'The room ___ yesterday.',o:['was painted','is paint','paint'],a:0},
+ {q:'This book ___ into many languages.',o:['has translated','has been translated','translated'],a:1},
+ {q:'The work ___ by Friday.',o:['will be completed','will completed','is complete'],a:0},
+ {q:'The door ___ by the wind.',o:['was opened','opened by','is open'],a:0},
+ {q:'The students ___ English by Mr Brown.',o:['teach','are taught','is taught'],a:1},
+ {q:'The documents ___ signed yet?',o:['have been','has','have'],a:0},
+ {q:'The old building ___ last month.',o:['was destroyed','is destroy','destroyed'],a:0},
+ {q:'The new rules ___ next week.',o:['will introduce','will be introduced','will introduced'],a:1},
+ {q:'The problem ___ solved already.',o:['has been','have been','is been'],a:0}
+];
+
+function renderQuiz(id,data){
+  const root=document.getElementById(id);
+  root.innerHTML='';
+  data.forEach((item,index)=>{
+    const box=document.createElement('div');
+    box.className='question';
+    let html=`<b>${index+1}. ${item.q}</b>`;
+    item.o.forEach((option,j)=>{
+      html+=`
+        <label>
+          <input type="radio" name="${id}_${index}" value="${j}">
+          ${String.fromCharCode(65+j)}. ${option}
+        </label>`;
+    });
+    box.innerHTML=html;
+    root.appendChild(box);
+  });
+}
+
+renderQuiz('quickQuiz',quickQuestions);
+renderQuiz('readingQuestions',readingData);
+renderQuiz('listeningQuestions',listeningData);
+renderQuiz('finalQuestions',finalQuestions);
+
+function checkQuiz(id,resultId){
+  let data;
+  if(id==='quickQuiz')data=quickQuestions;
+  else if(id==='readingQuestions')data=readingData;
+  else if(id==='listeningQuestions')data=listeningData;
+  else data=finalQuestions;
+
+  let correct=0;
+  let unanswered=0;
+  data.forEach((item,index)=>{
+    const selected=document.querySelector(
+      `input[name="${id}_${index}"]:checked`
+    );
+    if(!selected){
+      unanswered++;
+      return;
+    }
+    if(Number(selected.value)===item.a)correct++;
+  });
+
+  const percent=Math.round(correct/data.length*100);
+  const result=document.getElementById(resultId);
+  result.className='result show '+(percent>=80?'good':'bad');
+  result.innerHTML=`
+    <b>Result: ${correct}/${data.length} (${percent}%)</b><br>
+    Correct answers: ${correct}<br>
+    Incorrect or unanswered: ${data.length-correct}<br>
+    ${unanswered?`Unanswered: ${unanswered}<br>`:''}
+    ${percent>=80?'Excellent work! Keep going!':'Review the lesson and try again.'}
+  `;
+
+  if(id==='finalQuestions'){
+    localStorage.setItem('euLesson18FinalScore',percent);
+    document.getElementById('testScore').innerText=percent+'%';
+    updateProgress();
+  }
+}
+
+/* WRITING CHECK */
+const writingAnswers=[
+ 'english is spoken in many countries',
+ 'the car was repaired by my father',
+ 'a new hospital will be built',
+ 'the door has been opened',
+ 'our homework is checked by the teacher',
+ 'the classroom was cleaned yesterday',
+ 'the email will be sent tomorrow',
+ 'the project has been finished',
+ 'rice is grown in this region',
+ 'these products were made by the company'
+];
+
+function normalise(text){
+  return text.toLowerCase()
+    .replace(/[.,!?]/g,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function checkWriting(){
+  const raw=document.getElementById('writingAnswer').value;
+  const lines=raw.split('\n').map(normalise).filter(Boolean);
+  let matched=0;
+
+  writingAnswers.forEach(answer=>{
+    if(lines.some(line=>line.includes(answer)))matched++;
+  });
+
+  const result=document.getElementById('writingResult');
+  result.className='result show '+(matched>=8?'good':'bad');
+  result.innerHTML=`
+    <b>Writing review</b><br>
+    Recognised model answers: ${matched}/10<br>
+    ${matched>=8
+      ?'Good effort! Check spelling and grammar in your notebook.'
+      :'Keep practising. Write each answer as a separate line and check the lesson examples.'}
+    <p class="small">This is an automatic text check. Other grammatically correct answers may also be accepted by a teacher.</p>
+  `;
+}
+
+/* HOMEWORK PROGRESS */
+document.querySelectorAll('.homework-check').forEach(box=>{
+  box.addEventListener('change',updateProgress);
+});
+
+function updateProgress(){
+  const checks=[...document.querySelectorAll('.homework-check')];
+  const done=checks.filter(item=>item.checked).length;
+  document.getElementById('homeworkCount').innerText=done+'/7';
+
+  const score=Number(localStorage.getItem('euLesson18FinalScore')||0);
+  const testDone=score>0?1:0;
+  const percent=Math.round((done+testDone)/(checks.length+1)*100);
+
+  document.getElementById('progressFill').style.width=percent+'%';
+  document.getElementById('progressText').innerText=percent+'% completed';
+  if(testDone){
+    document.getElementById('testScore').innerText=score+'%';
+  }
+}
+
+/* RESTORE FINAL SCORE */
+const savedScore=localStorage.getItem('euLesson18FinalScore');
+if(savedScore!==null){
+  document.getElementById('testScore').innerText=savedScore+'%';
+}
+
+/* PROGRESS INITIALISE */
+updateProgress();
+
+/* STOP AUDIO WHEN LEAVING */
+window.addEventListener('pagehide',stopSpeech);
+</script>
+</body>
+</html>
