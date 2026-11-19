@@ -1,1 +1,3545 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 21 — Final Exam | English Up</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f3ff;color:#242039;font-family:Arial,sans-serif}
+header{background:#7047eb;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0;font-size:27px;letter-spacing:2px}
+header p{margin:8px 0 0}
+.container{max-width:850px;margin:auto;padding:16px}
+.card{background:white;border-radius:17px;padding:20px;margin:16px 0;box-shadow:0 4px 18px #30206012}
+h2{color:#7047eb;margin-top:0}
+.notice{background:#fff6df;border-left:5px solid #e6a52b;padding:14px;border-radius:9px;line-height:1.6}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.info div{background:#f1edff;padding:14px;border-radius:12px;text-align:center}
+.info strong{display:block;font-size:25px;color:#7047eb}
+button{border:0;border-radius:10px;background:#7047eb;color:white;padding:13px 19px;font-size:15px;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.5}
+button.secondary{background:#e9e3ff;color:#4e31ad}
+.question{border:1px solid #e9e5f5;border-radius:13px;padding:16px;margin:14px 0}
+.question h3{font-size:16px;margin:0 0 12px}
+.qtype{font-size:11px;color:#7047eb;font-weight:bold;text-transform:uppercase;margin-bottom:8px}
+.option{display:block;padding:10px;margin:7px 0;background:#f7f5fc;border-radius:9px;cursor:pointer}
+.option input{margin-right:8px}
+.answer{width:100%;padding:12px;border:1px solid #d7d0e9;border-radius:9px;font-size:16px;margin-top:7px}
+.answer:focus{outline:2px solid #7047eb}
+#testArea,#result{display:none}
+.progress{height:9px;background:#e8e3f5;border-radius:10px;overflow:hidden;margin:14px 0}
+#progressBar{height:100%;width:0;background:#7047eb;transition:.3s}
+.result-number{font-size:40px;color:#7047eb;font-weight:bold}
+.feedback{margin-top:8px;font-size:13px}
+.correct{color:#16834b}
+.wrong{color:#c33}
+footer{text-align:center;color:#777;padding:25px}
+@media(max-width:500px){.container{padding:10px}.card{padding:15px}.info{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>ENGLISH UP</h1>
+<p>Learn Today. Succeed Tomorrow.</p>
+</header>
+
+<main class="container">
+
+<section class="card" id="welcome">
+<h2>PRE-INTERMEDIATE — FINAL EXAM</h2>
+<h3>Assalomu alaykum, aziz o‘quvchi!</h3>
+<p>Siz Pre-Intermediate kursining 20 ta asosiy darsini yakunladingiz. Endi olgan bilimlaringizni sinovdan o'tkazish vaqti keldi!</p>
+<p>Ushbu yakuniy imtihon 6 ta bo‘limdan iborat. Har bir bo‘lim natijasi hisoblanadi va imtihon oxirida umumiy natijangiz avtomatik chiqariladi.</p>
+
+<div class="info">
+<div><strong>250</strong>Umumiy ball</div>
+<div><strong>6</strong>Imtihon bo‘limi</div>
+</div>
+
+<div class="notice">
+<strong>DIQQAT! IMTIHON BOSHLANISHIDAN OLDIN O‘QING!</strong>
+<p>Imtihondan 75% dan yuqori natija olgan o‘quvchilarga English Up tomonidan sertifikat va bir oylik bepul obuna taqdim etiladi.</p>
+<p>Natijangizning skrinshotini ism-familiyangiz bilan rasmiy English Up aloqa kanaliga shaxsiy tarzda yuborishingiz kerak. Nechanchi urinishda olganingiz muhim emas.</p>
+</div>
+
+<p><strong>Imtihon qoidalari:</strong></p>
+<ul>
+<li>Savollarga mustaqil javob bering.</li>
+<li>Yozma javoblarni ingliz tilida kiriting.</li>
+<li>Har bir savolga javob berishga harakat qiling.</li>
+<li>Natijangizni tekshirish uchun yakunlash tugmasini bosing.</li>
+</ul>
+<p>Omad tilaymiz! O‘zingizga ishoning!</p>
+<button onclick="startGrammar()">GRAMMAR TESTNI BOSHLASH</button>
+</section>
+
+<section class="card" id="testArea">
+<h2>GRAMMAR TEST — 80 QUESTIONS</h2>
+<p>To‘g‘ri javoblar soni: <strong id="answered">0</strong> / 80</p>
+<div class="progress"><div id="progressBar"></div></div>
+<div id="questions"></div>
+<button onclick="checkGrammar()">TESTNI YAKUNLASH</button>
+</section>
+
+<section class="card" id="result">
+<h2>GRAMMAR TEST NATIJASI</h2>
+<div class="result-number" id="score">0/80</div>
+<p id="percent"></p>
+<p id="correctCount"></p>
+<p id="wrongCount"></p>
+<div id="resultMessage"></div>
+<button onclick="showReview()" class="secondary">JAVOBLARNI KO‘RISH</button>
+<div id="review"></div>
+</section>
+
+</main>
+
+<footer>ENGLISH UP — Learn Today. Succeed Tomorrow.</footer>
+
+<script>
+const questions = [
+
+/* 1–20: MULTIPLE CHOICE */
+
+{t:"m",q:"My sister ___ a university student.",o:["am","is","are","be"],a:1},
+{t:"m",q:"He usually ___ to work by bus.",o:["go","goes","is going","went"],a:1},
+{t:"m",q:"Be quiet! The baby ___.",o:["sleeps","slept","is sleeping","sleep"],a:2},
+{t:"m",q:"We ___ a very interesting film last night.",o:["see","have seen","saw","are seeing"],a:2},
+{t:"m",q:"I think it ___ rain tomorrow.",o:["will","is","has","was"],a:0},
+{t:"m",q:"There isn't ___ milk in the fridge.",o:["many","a few","much","several"],a:2},
+{t:"m",q:"This is ___ most expensive restaurant in town.",o:["a","an","the","—"],a:2},
+{t:"m",q:"My new phone is ___ than my old one.",o:["good","better","best","the better"],a:1},
+{t:"m",q:"She ___ here since 2022.",o:["lives","lived","has lived","is living"],a:2},
+{t:"m",q:"I ___ him yesterday, but I haven't spoken to him today.",o:["have seen","saw","see","am seeing"],a:1},
+{t:"m",q:"At eight yesterday evening, I ___ dinner.",o:["cook","cooked","was cooking","have cooked"],a:2},
+{t:"m",q:"While I was walking home, it ___.",o:["starts raining","started raining","has started rain","start raining"],a:1},
+{t:"m",q:"You ___ wear a seat belt in a car.",o:["might","must","could","would"],a:1},
+{t:"m",q:"If you heat ice, it ___.",o:["melted","will melted","melts","would melt"],a:2},
+{t:"m",q:"If I have enough time tomorrow, I ___ you.",o:["help","helped","will help","would helped"],a:2},
+{t:"m",q:"She enjoys ___ books in her free time.",o:["read","to read","reading","reads"],a:2},
+{t:"m",q:"He speaks English ___.",o:["fluent","fluently","more fluent","fluency"],a:1},
+{t:"m",q:"The woman ___ lives next door is a doctor.",o:["which","where","who","when"],a:2},
+{t:"m",q:"The new bridge ___ last year.",o:["built","was built","is building","has build"],a:1},
+{t:"m",q:"She said that she ___ tired.",o:["is","was","has","will"],a:1},
+
+/* 21–40: FILL IN THE BLANK */
+
+{t:"f",q:"Complete: They ___ (be) very happy yesterday.",a:["were"]},
+{t:"f",q:"Complete: My father ___ (work) in a shop every day.",a:["works"]},
+{t:"f",q:"Complete: Look! The children ___ (play) outside.",a:["are playing"]},
+{t:"f",q:"Complete: I ___ (not / visit) my grandmother last week.",a:["did not visit","didn't visit"]},
+{t:"f",q:"Complete: We ___ (travel) to London next summer. Use 'going to'.",a:["are going to travel"]},
+{t:"f",q:"Complete: There ___ two books and a pen on the desk.",a:["are"]},
+{t:"f",q:"Complete: How ___ apples do we need?",a:["many"]},
+{t:"f",q:"Complete: This exercise is ___ (difficult) than the previous one.",a:["more difficult"]},
+{t:"f",q:"Complete: She ___ never ___ (be) to Italy.",a:["has never been"]},
+{t:"f",q:"Complete: I ___ (know) him for five years.",a:["have known"]},
+{t:"f",q:"Complete: They ___ (watch) TV when I arrived.",a:["were watching"]},
+{t:"f",q:"Complete: While she ___ (study), her brother was playing.",a:["was studying"]},
+{t:"f",q:"Complete: You ___ (should) drink more water. Write the full phrase.",a:["should"]},
+{t:"f",q:"Complete: If people don't eat, they ___ (get) hungry.",a:["get"]},
+{t:"f",q:"Complete: If she studies hard, she ___ (pass) the exam.",a:["will pass"]},
+{t:"f",q:"Complete: He decided ___ (learn) another language.",a:["to learn"]},
+{t:"f",q:"Complete: The students answered the questions ___. (correct)",a:["correctly"]},
+{t:"f",q:"Complete: The man ___ works here is my uncle.",a:["who","that"]},
+{t:"f",q:"Complete: English ___ (speak) in many countries.",a:["is spoken"]},
+{t:"f",q:"Complete: He told me that he ___ (need) help.",a:["needed"]},
+
+/* 41–60: CORRECT THE SENTENCE */
+
+{t:"e",q:"Correct the mistake: She are my best friend.",a:["she is my best friend"]},
+{t:"e",q:"Correct the mistake: He don't like coffee.",a:["he doesn't like coffee"]},
+{t:"e",q:"Correct the mistake: I am go to school every day.",a:["i go to school every day"]},
+{t:"e",q:"Correct the mistake: They was watching television.",a:["they were watching television"]},
+{t:"e",q:"Correct the mistake: We didn't went there yesterday.",a:["we didn't go there yesterday"]},
+{t:"e",q:"Correct the mistake: I will going to call you.",a:["i will call you","i am going to call you"]},
+{t:"e",q:"Correct the mistake: There is many people here.",a:["there are many people here"]},
+{t:"e",q:"Correct the mistake: She has a few money.",a:["she has a little money"]},
+{t:"e",q:"Correct the mistake: This is more better than that.",a:["this is better than that"]},
+{t:"e",q:"Correct the mistake: I have seen him yesterday.",a:["i saw him yesterday"]},
+{t:"e",q:"Correct the mistake: She has lived here since three years.",a:["she has lived here for three years"]},
+{t:"e",q:"Correct the mistake: When I arrived, they watched a film.",a:["when i arrived they were watching a film"]},
+{t:"e",q:"Correct the mistake: You must to finish your homework.",a:["you must finish your homework"]},
+{t:"e",q:"Correct the mistake: If it will rain, we will stay home.",a:["if it rains we will stay home"]},
+{t:"e",q:"Correct the mistake: If you heat water to 100°C, it will boils.",a:["if you heat water to 100°c it boils"]},
+{t:"e",q:"Correct the mistake: She suggested to go by train.",a:["she suggested going by train"]},
+{t:"e",q:"Correct the mistake: He drives very careful.",a:["he drives very carefully"]},
+{t:"e",q:"Correct the mistake: The book who I bought is interesting.",a:["the book which i bought is interesting","the book that i bought is interesting"]},
+{t:"e",q:"Correct the mistake: The letters sent yesterday.",a:["the letters were sent yesterday"]},
+{t:"e",q:"Correct the mistake: He said me that he was busy.",a:["he told me that he was busy"]},
+
+/* 61–80: SENTENCE TRANSFORMATION */
+
+{t:"f",q:"Rewrite in the past: 'She visits her aunt.' Begin: Yesterday, she ...",a:["yesterday she visited her aunt"]},
+{t:"f",q:"Make it negative: 'They are working now.'",a:["they are not working now","they aren't working now"]},
+{t:"f",q:"Make a question: 'He plays tennis every Sunday.'",a:["does he play tennis every sunday"]},
+{t:"f",q:"Rewrite using 'going to': 'I plan to buy a new laptop.'",a:["i am going to buy a new laptop"]},
+{t:"f",q:"Change to Present Perfect: 'I started living here in 2021.' Begin: I have ...",a:["i have lived here since 2021"]},
+{t:"f",q:"Join using 'because': 'She stayed home. She was ill.'",a:["she stayed home because she was ill"]},
+{t:"f",q:"Join using 'while': 'I cooked. My brother studied.'",a:["i was cooking while my brother was studying","while i was cooking my brother was studying"]},
+{t:"f",q:"Give advice using 'should': 'You have a headache.'",a:["you should rest","you should take a rest"]},
+{t:"f",q:"Rewrite with 'must': 'It is necessary for you to wear a uniform.'",a:["you must wear a uniform"]},
+{t:"f",q:"Complete the conditional: 'If I were rich, ...' Use 'travel around the world'.",a:["if i were rich i would travel around the world"]},
+{t:"f",q:"Rewrite using 'unless': 'If you don't hurry, you will miss the bus.'",a:["unless you hurry you will miss the bus"]},
+{t:"f",q:"Rewrite using a gerund: 'It is enjoyable to swim.' Begin: Swimming ...",a:["swimming is enjoyable"]},
+{t:"f",q:"Change the adjective to an adverb: 'He is a careful driver.' Begin: He drives ...",a:["he drives carefully"]},
+{t:"f",q:"Join using 'who': 'I met a woman. She teaches English.'",a:["i met a woman who teaches english"]},
+{t:"f",q:"Change to passive: 'They clean the rooms every day.'",a:["the rooms are cleaned every day"]},
+{t:"f",q:"Change to passive: 'Someone stole my bag.'",a:["my bag was stolen"]},
+{t:"f",q:"Change to reported speech: He said, 'I am tired.'",a:["he said that he was tired","he said he was tired"]},
+{t:"f",q:"Report the question: She asked, 'Where do you live?'",a:["she asked where i lived","she asked where i live"]},
+{t:"f",q:"Make a polite request using 'Could': 'Open the window.'",a:["could you open the window"]},
+{t:"f",q:"Give a suggestion using 'Why don't we': 'Let's watch a film.'",a:["why don't we watch a film"]}
+];
+
+let submitted=false;
+let lastResults=[];
+
+function startGrammar(){
+ document.getElementById("welcome").style.display="none";
+ document.getElementById("testArea").style.display="block";
+ renderQuestions();
+ window.scrollTo(0,0);
+}
+
+function renderQuestions(){
+ const area=document.getElementById("questions");
+ area.innerHTML="";
+ questions.forEach((q,i)=>{
+  const box=document.createElement("div");
+  box.className="question";
+  let html=`<div class="qtype">Question ${i+1} — ${
+   q.t==="m"?"Choose the correct answer":
+   q.t==="e"?"Correct the mistake":"Write your answer"
+  }</div><h3>${i+1}. ${q.q}</h3>`;
+  if(q.t==="m"){
+   q.o.forEach((opt,j)=>{
+    html+=`<label class="option"><input type="radio" name="q${i}" value="${j}" onchange="updateProgress()"> ${String.fromCharCode(65+j)}. ${opt}</label>`;
+   });
+  }else{
+   html+=`<input class="answer" id="q${i}" type="text" placeholder="Write your answer..." oninput="updateProgress()">`;
+  }
+  html+=`<div class="feedback" id="feedback${i}"></div>`;
+  box.innerHTML=html;
+  area.appendChild(box);
+ });
+}
+
+function updateProgress(){
+ let count=0;
+ questions.forEach((q,i)=>{
+  if(q.t==="m"){
+   if(document.querySelector(`input[name="q${i}"]:checked`))count++;
+  }else{
+   if(document.getElementById("q"+i).value.trim())count++;
+  }
+ });
+ document.getElementById("answered").textContent=count;
+ document.getElementById("progressBar").style.width=(count/80*100)+"%";
+}
+
+function normalize(s){
+ return s.toLowerCase()
+ .replace(/[’']/g,"'")
+ .replace(/[.,!?;:]/g,"")
+ .replace(/\s+/g," ")
+ .trim();
+}
+
+function checkGrammar(){
+ if(submitted)return;
+ let correct=0;
+ lastResults=[];
+ questions.forEach((q,i)=>{
+  let user="";
+  if(q.t==="m"){
+   const selected=document.querySelector(`input[name="q${i}"]:checked`);
+   user=selected?selected.value:"";
+  }else{
+   user=document.getElementById("q"+i).value;
+  }
+  let isCorrect=false;
+  if(q.t==="m"){
+   isCorrect=user!=="" && Number(user)===q.a;
+  }else{
+   isCorrect=q.a.some(ans=>normalize(user)===normalize(ans));
+  }
+  if(isCorrect)correct++;
+  lastResults.push({user,isCorrect,answer:q.t==="m"?q.o[q.a]:q.a[0]});
+  const feedback=document.getElementById("feedback"+i);
+  feedback.textContent=isCorrect?"✓ Correct":"✗ Correct answer: "+lastResults[i].answer;
+  feedback.className="feedback "+(isCorrect?"correct":"wrong");
+ });
+ submitted=true;
+ document.getElementById("score").textContent=correct+"/80";
+ document.getElementById("percent").textContent="Natija: "+(correct/80*100).toFixed(1)+"%";
+ document.getElementById("correctCount").textContent="To‘g‘ri javoblar: "+correct;
+ document.getElementById("wrongCount").textContent="Noto‘g‘ri yoki javobsiz: "+(80-correct);
+ document.getElementById("resultMessage").textContent=
+  correct/80>0.75?"Ajoyib! Siz 75% dan yuqori natija oldingiz!":"Yaxshi urinish! Mavzularni takrorlab, yana mashq qiling.";
+ document.getElementById("result").style.display="block";
+ document.querySelectorAll("#testArea input").forEach(el=>el.disabled=true);
+ document.querySelector("#testArea button").disabled=true;
+ document.getElementById("result").scrollIntoView({behavior:"smooth"});
+}
+
+function showReview(){
+ const box=document.getElementById("review");
+ box.innerHTML="";
+ lastResults.forEach((r,i)=>{
+  const div=document.createElement("p");
+  div.innerHTML=`<strong>${i+1}.</strong> ${r.isCorrect?"✓":"✗"} ${r.isCorrect?"Correct":"Correct answer: "+r.answer}`;
+  div.className=r.isCorrect?"correct":"wrong";
+  box.appendChild(div);
+ });
+}
+
+</script>
+ 
+<!-- ======================================
+     VOCABULARY TEST — 50 POINTS
+     PRE-INTERMEDIATE FINAL EXAM
+====================================== -->
+
+<section id="vocabularyExam" class="vocab-exam">
+  <div class="vocab-heading">
+    <span class="vocab-label">SECTION 2</span>
+    <h2>Vocabulary Test</h2>
+    <p>50 questions | 50 points</p>
+    <p>Choose the most suitable answer according to the context.</p>
+  </div>
+
+  <div class="vocab-progress">
+    <div id="vocabProgressBar"></div>
+  </div>
+  <p id="vocabProgressText">Answered: 0 / 50</p>
+
+  <div id="vocabQuestions"></div>
+
+  <button id="vocabSubmit" type="button" onclick="finishVocabularyExam()">
+    FINISH VOCABULARY TEST
+  </button>
+
+  <div id="vocabResult" class="vocab-result" hidden></div>
+</section>
+
+<style>
+.vocab-exam {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  color: #242039;
+  border-radius: 18px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 5px 22px #00000012;
+}
+.vocab-heading {
+  text-align: center;
+  padding: 15px 5px 22px;
+}
+.vocab-label {
+  display: inline-block;
+  background: #7047eb;
+  color: white;
+  padding: 7px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.vocab-heading h2 {
+  color: #7047eb;
+  margin: 15px 0 8px;
+}
+.vocab-heading p {
+  line-height: 1.6;
+}
+.vocab-progress {
+  height: 9px;
+  background: #eee9ff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+#vocabProgressBar {
+  height: 100%;
+  width: 0%;
+  background: #7047eb;
+  transition: width .3s;
+}
+#vocabProgressText {
+  text-align: center;
+  font-size: 13px;
+  color: #6c6482;
+}
+.vocab-question {
+  padding: 17px;
+  margin: 16px 0;
+  border: 1px solid #e8e2fa;
+  border-radius: 13px;
+}
+.vocab-question h3 {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 13px;
+}
+.vocab-question label {
+  display: block;
+  padding: 11px;
+  margin: 7px 0;
+  border: 1px solid #e9e5f2;
+  border-radius: 9px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.vocab-question label:has(input:checked) {
+  background: #f0ebff;
+  border-color: #7047eb;
+}
+.vocab-question input {
+  margin-right: 9px;
+  accent-color: #7047eb;
+}
+#vocabSubmit {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 25px;
+  border: 0;
+  border-radius: 11px;
+  background: #7047eb;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.vocab-result {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f1edff;
+  text-align: center;
+  line-height: 1.8;
+}
+.vocab-review {
+  text-align: left;
+  margin-top: 20px;
+}
+.vocab-review p {
+  padding: 10px;
+  border-bottom: 1px solid #ddd5f5;
+}
+.vocab-correct { color: #16834b; }
+.vocab-wrong { color: #c0392b; }
+</style>
+
+<script>
+(function () {
+"use strict";
+
+const vocabularyQuestions = [
+
+["The company wants to ______ its reputation by providing better customer service.",
+["maintain","avoid","assume","afford"],0],
+
+["She was ______ to accept the offer because the salary was quite low.",
+["reliable","reluctant","accurate","available"],1],
+
+["We cannot ______ that everyone agrees with this decision.",
+["provide","assume","reduce","achieve"],1],
+
+["The new system is more ______ because it saves both time and money.",
+["temporary","efficient","ordinary","likely"],1],
+
+["The final ______ of the project was better than we expected.",
+["outcome","approach","purpose","behavior"],0],
+
+["You should check the information to make sure it is ______.",
+["accurate","convenient","familiar","valuable"],0],
+
+["The manager tried to ______ the staff to work as a team.",
+["persuade","prevent","compare","establish"],0],
+
+["Our internet connection is not very ______; it often stops working.",
+["suitable","reliable","essential","aware"],1],
+
+["I cannot ______ to buy a new laptop at the moment.",
+["contribute","afford","recommend","support"],1],
+
+["The road closure is only ______; it will reopen next week.",
+["permanent","temporary","essential","valuable"],1],
+
+["The school provides an excellent ______ for students to develop their skills.",
+["opportunity","drawback","concern","decision"],0],
+
+["You should ______ making important decisions when you are angry.",
+["avoid","achieve","provide","establish"],0],
+
+["The teacher explained the topic again so that everyone could ______ it.",
+["understand","reduce","prevent","compare"],0],
+
+["One major ______ of living in a large city is the high cost of housing.",
+["benefit","drawback","purpose","support"],1],
+
+["Regular practice can help you ______ your pronunciation.",
+["improve","assume","require","avoid"],0],
+
+["The job will ______ good communication skills.",
+["require","reduce","encourage","provide"],0],
+
+["______ the weather was terrible, the event continued as planned.",
+["Although","Because of","Despite","Unless"],0],
+
+["______ being tired, he finished the assignment.",
+["Although","Despite","Because","Whereas"],1],
+
+["My brother prefers working alone, ______ I enjoy working in a team.",
+["therefore","whereas","despite","unless"],1],
+
+["The company reduced its prices. ______, more customers started buying its products.",
+["However","Consequently","Although","Despite"],1],
+
+["There are several ______ to learning a foreign language, including better career opportunities.",
+["benefits","drawbacks","concerns","approaches"],0],
+
+["We need a different ______ to solve this problem.",
+["approach","outcome","behavior","experience"],0],
+
+["Wearing a seat belt can help ______ serious injuries in an accident.",
+["prevent","achieve","contribute","establish"],0],
+
+["The government plans to ______ pollution in major cities.",
+["increase","reduce","assume","maintain"],1],
+
+["She worked hard to ______ her goal of becoming a teacher.",
+["achieve","avoid","require","afford"],0],
+
+["I have to ______ several tasks before the end of the day.",
+["manage","persuade","compare","prevent"],0],
+
+["Everyone should ______ to protecting the environment.",
+["contribute","assume","afford","avoid"],0],
+
+["I would ______ this book to anyone interested in history.",
+["recommend","require","reduce","establish"],0],
+
+["The town was already ______ to me because I had visited it before.",
+["familiar","temporary","accurate","essential"],0],
+
+["This course is ______ for people who want to improve their speaking skills.",
+["suitable","reluctant","likely","ordinary"],0],
+
+["Is the meeting room ______ at three o'clock?",
+["available","valuable","aware","efficient"],0],
+
+["Are you ______ of the changes to the school timetable?",
+["aware","suitable","reliable","temporary"],0],
+
+["It is ______ to rain later, so take an umbrella.",
+["likely","accurate","familiar","essential"],0],
+
+["The main ______ of this meeting is to discuss our future plans.",
+["purpose","outcome","drawback","behavior"],0],
+
+["Parents should ______ their children when they face difficulties.",
+["support","assume","reduce","compare"],0],
+
+["Learning a new language can be challenging, but it is a rewarding ______.",
+["experience","decision","concern","approach"],0],
+
+["Taking responsibility for your actions is an important part of good ______.",
+["behavior","opportunity","outcome","purpose"],0],
+
+["It was a difficult ______, but we finally chose the best option.",
+["decision","benefit","environment","support"],0],
+
+["It is ______ to have a basic knowledge of computers in many modern jobs.",
+["essential","temporary","reluctant","familiar"],0],
+
+["Online banking is very ______ because customers can use it at any time.",
+["convenient","accurate","ordinary","reluctant"],0],
+
+["The information in this report is extremely ______ for our research.",
+["valuable","temporary","likely","familiar"],0],
+
+["Teachers should ______ students to ask questions during lessons.",
+["encourage","prevent","assume","reduce"],0],
+
+["The organization plans to ______ a new training centre next year.",
+["establish","avoid","afford","compare"],0],
+
+["Before buying a product, you should ______ its price and quality.",
+["compare","persuade","maintain","contribute"],0],
+
+["The school will ______ free materials to all new students.",
+["provide","prevent","achieve","assume"],0],
+
+["He missed the bus. ______, he arrived late for work.",
+["As a result","In addition","For example","In contrast"],0],
+
+["The hotel was expensive. ______, the service was excellent.",
+["However","Therefore","Because","Unless"],0],
+
+["You should take an umbrella ______ the possibility of rain.",
+["because of","although","whereas","unless"],0],
+
+["She is responsible ______ organizing the weekly meetings.",
+["for","to","at","with"],0],
+
+["The new policy had a positive effect ______ the local community.",
+["on","at","for","with"],0]
+
+];
+
+const vocabContainer = document.getElementById("vocabQuestions");
+const vocabProgressText = document.getElementById("vocabProgressText");
+const vocabProgressBar = document.getElementById("vocabProgressBar");
+const vocabSubmit = document.getElementById("vocabSubmit");
+const vocabResult = document.getElementById("vocabResult");
+
+vocabularyQuestions.forEach((q, index) => {
+  const card = document.createElement("div");
+  card.className = "vocab-question";
+
+  const heading = document.createElement("h3");
+  heading.textContent = (index + 1) + ". " + q[0];
+  card.appendChild(heading);
+
+  q[1].forEach((option, optionIndex) => {
+    const label = document.createElement("label");
+    const radio = document.createElement("input");
+
+    radio.type = "radio";
+    radio.name = "vocabQuestion" + index;
+    radio.value = optionIndex;
+
+    radio.addEventListener("change", updateVocabularyProgress);
+
+    label.appendChild(radio);
+    label.appendChild(document.createTextNode(option));
+    card.appendChild(label);
+  });
+
+  vocabContainer.appendChild(card);
+});
+
+function updateVocabularyProgress() {
+  let answered = 0;
+
+  vocabularyQuestions.forEach((q, index) => {
+    if (document.querySelector(
+      'input[name="vocabQuestion' + index + '"]:checked'
+    )) {
+      answered++;
+    }
+  });
+
+  vocabProgressText.textContent =
+    "Answered: " + answered + " / 50";
+
+  vocabProgressBar.style.width = (answered / 50 * 100) + "%";
+}
+
+window.finishVocabularyExam = function () {
+  let score = 0;
+  let unanswered = 0;
+  let review = "";
+
+  vocabularyQuestions.forEach((q, index) => {
+    const selected = document.querySelector(
+      'input[name="vocabQuestion' + index + '"]:checked'
+    );
+
+    const correctAnswer = q[1][q[2]];
+
+    if (!selected) {
+      unanswered++;
+      review += '<p class="vocab-wrong">' +
+        (index + 1) + ". Not answered. Correct answer: <b>" +
+        correctAnswer + "</b></p>";
+      return;
+    }
+
+    const chosen = Number(selected.value);
+
+    if (chosen === q[2]) {
+      score++;
+      review += '<p class="vocab-correct">' +
+        (index + 1) + ". Correct — " + correctAnswer + "</p>";
+    } else {
+      review += '<p class="vocab-wrong">' +
+        (index + 1) + ". Your answer: " + q[1][chosen] +
+        " | Correct answer: <b>" + correctAnswer + "</b></p>";
+    }
+  });
+
+  if (unanswered > 0) {
+    const continueTest = confirm(
+      "You have " + unanswered +
+      " unanswered questions. Do you want to finish?"
+    );
+    if (!continueTest) return;
+  }
+
+  window.vocabularyScore = score;
+  window.vocabularyTotal = 50;
+
+  try {
+    localStorage.setItem("englishUpVocabularyScore", score);
+  } catch (error) {}
+
+  document.querySelectorAll(
+    '#vocabularyExam input[type="radio"]'
+  ).forEach(input => input.disabled = true);
+
+  vocabSubmit.disabled = true;
+  vocabSubmit.textContent = "TEST COMPLETED";
+
+  vocabResult.hidden = false;
+  vocabResult.innerHTML =
+    "<h2>Vocabulary Test Result</h2>" +
+    "<h1>" + score + " / 50</h1>" +
+    "<p>Percentage: " + (score * 2) + "%</p>" +
+    "<p>Correct answers: " + score + "</p>" +
+    "<p>Incorrect or unanswered: " + (50 - score) + "</p>" +
+    "<div class='vocab-review'><h3>Answer Review</h3>" +
+    review + "</div>";
+
+  vocabResult.scrollIntoView({behavior: "smooth"});
+};
+
+})();
+</script>
+
+<!-- =========================================
+     SECTION 3 — READING COMPREHENSION
+     6 TEXTS | 30 QUESTIONS | 30 POINTS
+========================================= -->
+
+<section id="readingExam" class="reading-exam">
+
+  <div class="reading-header">
+    <span>SECTION 3</span>
+    <h2>Reading Comprehension</h2>
+    <p>6 texts | 30 questions | 30 points</p>
+    <p>Read each text carefully and choose the best answer.</p>
+  </div>
+
+  <div class="reading-progress">
+    <div id="readingProgressBar"></div>
+  </div>
+  <p id="readingProgressText">Answered: 0 / 30</p>
+
+  <div id="readingContent"></div>
+
+  <button id="readingSubmit" type="button"
+    onclick="finishReadingExam()">
+    FINISH READING TEST
+  </button>
+
+  <div id="readingResult" hidden></div>
+
+</section>
+
+<style>
+.reading-exam {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  color: #29233d;
+  border-radius: 18px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 5px 22px #00000012;
+}
+
+.reading-header {
+  text-align: center;
+  padding: 15px 5px 20px;
+}
+
+.reading-header span {
+  display: inline-block;
+  background: #7047eb;
+  color: white;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.reading-header h2 {
+  color: #7047eb;
+  margin: 15px 0 8px;
+}
+
+.reading-header p {
+  line-height: 1.5;
+}
+
+.reading-progress {
+  height: 9px;
+  background: #eee9ff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#readingProgressBar {
+  width: 0%;
+  height: 100%;
+  background: #7047eb;
+  transition: width .3s;
+}
+
+#readingProgressText {
+  text-align: center;
+  color: #706985;
+  font-size: 13px;
+}
+
+.reading-passage {
+  background: #f8f6ff;
+  border-left: 4px solid #7047eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 28px 0 18px;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.reading-passage h3 {
+  color: #7047eb;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-top: 0;
+}
+
+.reading-passage p {
+  margin-bottom: 12px;
+}
+
+.reading-question {
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid #e8e2fa;
+  border-radius: 12px;
+}
+
+.reading-question h4 {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.reading-question label {
+  display: block;
+  padding: 11px;
+  margin: 7px 0;
+  border: 1px solid #e9e5f2;
+  border-radius: 9px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.reading-question label:has(input:checked) {
+  background: #f0ebff;
+  border-color: #7047eb;
+}
+
+.reading-question input {
+  accent-color: #7047eb;
+  margin-right: 8px;
+}
+
+#readingSubmit {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 25px;
+  background: #7047eb;
+  color: white;
+  border: none;
+  border-radius: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#readingSubmit:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+#readingResult {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f1edff;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.reading-review {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.reading-review p {
+  padding: 9px;
+  border-bottom: 1px solid #ddd5f5;
+}
+
+.reading-correct {
+  color: #16834b;
+}
+
+.reading-wrong {
+  color: #c0392b;
+}
+
+.reading-section-title {
+  color: #7047eb;
+  margin-top: 35px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eee9ff;
+}
+</style>
+
+<script>
+(function () {
+"use strict";
+
+const readingData = [
+
+{
+title: "TEXT 1 — THE IMPORTANCE OF TIME MANAGEMENT",
+text: `Many people believe that being busy means being productive. However, these two things are not always the same. Some individuals spend the entire day completing small tasks but make very little progress towards their main goals. This often happens because they do not organize their time effectively.
+
+Emma experienced this problem while preparing for an important professional examination. She studied whenever she had free time, but she frequently changed subjects and became distracted by social media. Although she spent several hours studying every day, her results were disappointing.
+
+Eventually, a friend suggested that she create a realistic weekly schedule. Emma began identifying her most important tasks and completing them before dealing with less urgent activities. She also divided difficult subjects into smaller sections and took short breaks between study periods.
+
+After several weeks, she noticed a significant improvement. She was not studying for longer hours, but she was using her time more effectively. Emma learned that successful time management is not about doing everything; it is about giving attention to what matters most.`,
+
+questions: [
+["What is the main difference between being busy and being productive?",
+["Being productive means completing meaningful tasks",
+ "Being busy always requires more energy",
+ "Productive people never take breaks",
+ "Busy people always achieve their goals"],0],
+
+["Why were Emma's examination results disappointing?",
+["She did not have enough books",
+ "She frequently changed subjects and became distracted",
+ "Her examination was cancelled",
+ "She studied only at weekends"],1],
+
+["What did Emma's friend recommend?",
+["Studying throughout the night",
+ "Avoiding difficult subjects",
+ "Creating a realistic weekly schedule",
+ "Giving up social media permanently"],2],
+
+["What does the phrase 'less urgent activities' refer to?",
+["Tasks that can be dealt with later",
+ "Activities that are impossible to complete",
+ "The most important examination subjects",
+ "Tasks that require professional help"],0],
+
+["What lesson did Emma learn?",
+["Longer study hours always produce better results",
+ "Planning and prioritizing can improve productivity",
+ "Breaks should never be taken during studying",
+ "Every task must be completed immediately"],1]
+]
+},
+
+{
+title: "TEXT 2 — A CHANGING WORKPLACE",
+text: `Technology has changed the way many companies operate. In the past, employees usually worked in the same office and communicated face to face. Today, however, online platforms allow people to cooperate with colleagues who live in different countries. This arrangement can save time and reduce travel expenses, but it also creates new challenges.
+
+A small design company introduced remote working two years ago. At first, some employees welcomed the opportunity because they could organize their working hours more freely. Others felt isolated because they missed everyday conversations with their colleagues.
+
+The company management realized that providing computers and internet access was not enough. Employees also needed clear instructions, regular feedback and opportunities to communicate. The company therefore introduced weekly online meetings and encouraged team members to share their progress.
+
+Gradually, cooperation improved. Employees became more confident about discussing problems and asking for assistance. Although the company still allows workers to choose where they work, it emphasizes responsibility and communication. Its experience suggests that technology can support teamwork, but successful cooperation still depends on people and their ability to work together.`,
+
+questions: [
+["What is one advantage of modern online working platforms?",
+["They completely remove workplace responsibilities",
+ "They can reduce travel expenses",
+ "They guarantee that everyone works faster",
+ "They prevent all communication problems"],1],
+
+["Why did some employees feel isolated?",
+["They had to travel every day",
+ "They received too many instructions",
+ "They missed everyday conversations with colleagues",
+ "They were not allowed to use computers"],2],
+
+["What did management discover?",
+["Internet access alone was not sufficient",
+ "Employees did not need feedback",
+ "Online meetings should be avoided",
+ "Remote work was impossible"],0],
+
+["What does 'isolated' most nearly mean in this text?",
+["Feeling separated from other people",
+ "Being extremely successful",
+ "Having too many responsibilities",
+ "Being physically tired"],0],
+
+["What is the main conclusion of the text?",
+["Technology is more important than people",
+ "Remote work should be compulsory",
+ "Successful teamwork also requires communication and responsibility",
+ "Employees should never choose their workplace"],2]
+]
+},
+
+{
+title: "TEXT 3 — PROTECTING THE ENVIRONMENT",
+text: `Environmental problems are becoming a growing concern in many parts of the world. Although large industries are responsible for a significant amount of pollution, individuals can also contribute to environmental protection through their everyday decisions.
+
+In one town, residents noticed that the amount of household waste was increasing. Plastic packaging, unwanted furniture and food were often thrown away without considering whether they could be reused or recycled. A local organization decided to introduce an educational campaign to change these habits.
+
+The campaign encouraged families to separate their rubbish, use reusable shopping bags and avoid buying products with unnecessary packaging. Local schools also organized activities to explain why natural resources should be protected. At first, some residents were reluctant to change because they believed individual actions would make little difference.
+
+However, participation gradually increased. Shops began offering reusable alternatives, and more families started separating recyclable materials. The town did not solve every environmental problem, but the campaign demonstrated that consistent small actions can produce meaningful improvements when a community works together.`,
+
+questions: [
+["What environmental problem was noticed by the residents?",
+["A shortage of public transport",
+ "An increase in household waste",
+ "A lack of schools",
+ "A decrease in local businesses"],1],
+
+["What was the purpose of the educational campaign?",
+["To encourage people to change their waste habits",
+ "To increase the use of plastic packaging",
+ "To close local shops",
+ "To prevent families from shopping"],0],
+
+["Why were some residents initially reluctant?",
+["They did not understand the local language",
+ "They believed individual actions would have little effect",
+ "They wanted to move to another town",
+ "They had already solved the problem"],1],
+
+["What does 'reusable' mean?",
+["Able to be used more than once",
+ "Impossible to repair",
+ "Made from expensive materials",
+ "Designed to be thrown away"],0],
+
+["Which statement best expresses the message of the text?",
+["Only governments can protect the environment",
+ "Environmental campaigns never produce results",
+ "Small actions can make a difference when people cooperate",
+ "Recycling is the only solution to pollution"],2]
+]
+},
+
+{
+title: "TEXT 4 — LEARNING FROM TRAVEL",
+text: `Travelling is often considered an enjoyable way to relax, but it can also provide valuable learning experiences. Visiting unfamiliar places allows people to discover different lifestyles, traditions and ways of thinking. It may also help travellers become more independent and confident.
+
+When Oliver travelled to another country for the first time, he expected everything to be easy because he had researched the destination carefully. However, he soon discovered that some situations were more complicated than he had imagined. He misunderstood public transport information, struggled to communicate with local residents and occasionally made incorrect decisions.
+
+Instead of allowing these experiences to discourage him, Oliver treated them as opportunities to learn. He began asking questions, checking information more carefully and observing how local people behaved in everyday situations. He also became more patient when things did not happen according to his plans.
+
+By the end of the journey, Oliver had developed a better understanding of the country and his own abilities. He realized that travelling successfully does not mean avoiding every problem. It means being prepared to adapt, learn from mistakes and respond positively to unfamiliar circumstances.`,
+
+questions: [
+["According to the text, what can travelling help people develop?",
+["Independence and confidence",
+ "A dislike of different cultures",
+ "A perfect memory",
+ "Professional qualifications"],0],
+
+["What did Oliver expect before his first journey?",
+["That he would need no preparation",
+ "That everything would be easy",
+ "That local people would speak his language",
+ "That he would never use public transport"],1],
+
+["How did Oliver respond to his difficulties?",
+["He immediately returned home",
+ "He stopped communicating with people",
+ "He treated them as opportunities to learn",
+ "He blamed local residents"],2],
+
+["What does 'adapt' mean in the final paragraph?",
+["To change your approach to suit a new situation",
+ "To refuse to accept new experiences",
+ "To repeat the same mistake",
+ "To avoid making decisions"],0],
+
+["What did Oliver understand by the end of the journey?",
+["A successful trip must be completely problem-free",
+ "Research is never useful",
+ "Mistakes should always be avoided",
+ "Travelling requires flexibility and a willingness to learn"],3]
+]
+},
+
+{
+title: "TEXT 5 — THE VALUE OF VOLUNTEERING",
+text: `Volunteering is an activity in which people offer their time and skills to help others without expecting payment. It can take many forms, such as supporting elderly residents, teaching children, protecting wildlife or helping organize community events.
+
+Sofia decided to volunteer at a local community centre because she wanted to gain experience and become more involved in her neighbourhood. Initially, she believed that her main responsibility would be helping visitors complete simple tasks. However, she soon discovered that the role required patience, communication and the ability to deal with unexpected situations.
+
+One afternoon, a visitor arrived who needed assistance with an online application. Sofia was not familiar with the process, so she asked an experienced volunteer for guidance. Together, they found the necessary information and helped the visitor complete the application successfully.
+
+This experience taught Sofia that asking for help is not a sign of weakness. She also realized that volunteering benefits both the people receiving assistance and those providing it. Volunteers can develop useful skills, build relationships and gain a stronger sense of responsibility towards their communities.`,
+
+questions: [
+["What is volunteering?",
+["Working only for professional qualifications",
+ "Offering time and skills to help without expecting payment",
+ "Organizing paid business activities",
+ "Providing services only to family members"],1],
+
+["Why did Sofia join the community centre?",
+["She wanted to avoid meeting new people",
+ "She needed a permanent office",
+ "She wanted experience and greater involvement in her neighbourhood",
+ "She was required to work there by her school"],2],
+
+["What did Sofia discover about her responsibilities?",
+["The role required more than completing simple tasks",
+ "She only needed to answer telephone calls",
+ "She did not need to communicate with visitors",
+ "The work was always predictable"],0],
+
+["What did Sofia do when she could not complete the application alone?",
+["She refused to help the visitor",
+ "She asked an experienced volunteer for guidance",
+ "She told the visitor to return another day",
+ "She guessed the answers"],1],
+
+["Which benefit of volunteering is mentioned in the text?",
+["It guarantees a high salary",
+ "It removes all personal responsibilities",
+ "It provides automatic professional promotion",
+ "It helps people develop skills and relationships"],3]
+]
+},
+
+{
+title: "TEXT 6 — THE CHALLENGE OF ONLINE INFORMATION",
+text: `The internet provides access to an enormous amount of information. Students can research almost any subject, compare different opinions and communicate with experts around the world. Nevertheless, having access to information does not automatically mean that people understand it or know whether it is trustworthy.
+
+A university student named Alex once used an online article for an important assignment. The article contained impressive statistics and confident statements, so he assumed that the information was accurate. Later, his teacher explained that the website had not provided reliable sources for its claims.
+
+Alex realized that he had focused too much on the appearance of the article instead of examining where its information came from. He began checking the author's background, publication dates and references. When possible, he compared information with other independent sources.
+
+This approach required additional time, but it helped him avoid misleading information. Alex also learned that different sources may present the same issue from different perspectives. Today, he believes that effective research involves asking questions, examining evidence and remaining open to changing one's opinion when stronger information becomes available.`,
+
+questions: [
+["What is the main warning about internet information?",
+["All online information is incorrect",
+ "Access to information does not guarantee that it is trustworthy",
+ "Students should avoid researching online",
+ "Experts never use the internet"],1],
+
+["Why did Alex initially trust the article?",
+["It had been recommended by his family",
+ "It was published by his university",
+ "It contained impressive statistics and confident statements",
+ "It included a personal interview"],2],
+
+["What did Alex's teacher explain?",
+["The website did not provide reliable sources",
+ "The article was too short",
+ "The statistics were too difficult to calculate",
+ "The assignment had already been completed"],0],
+
+["Which action did Alex begin taking?",
+["Using only the first website he found",
+ "Ignoring publication dates",
+ "Avoiding different opinions",
+ "Checking authors, dates and references"],3],
+
+["What is the main lesson of the text?",
+["Research should always be completed quickly",
+ "Critical thinking and checking evidence are essential when researching",
+ "The appearance of a website proves its reliability",
+ "People should never change their opinions"],1]
+]
+}
+];
+
+const content = document.getElementById("readingContent");
+const resultBox = document.getElementById("readingResult");
+let readingFinished = false;
+
+let questionIndex = 0;
+
+readingData.forEach((passage, passageIndex) => {
+
+  const title = document.createElement("h3");
+  title.className = "reading-section-title";
+  title.textContent = passage.title;
+  content.appendChild(title);
+
+  const textBox = document.createElement("article");
+  textBox.className = "reading-passage";
+
+  const paragraphs = passage.text.split("\n\n");
+
+  paragraphs.forEach(paragraph => {
+    const p = document.createElement("p");
+    p.textContent = paragraph;
+    textBox.appendChild(p);
+  });
+
+  content.appendChild(textBox);
+
+  passage.questions.forEach((question, localIndex) => {
+
+    const card = document.createElement("div");
+    card.className = "reading-question";
+
+    const heading = document.createElement("h4");
+    heading.textContent =
+      (questionIndex + 1) + ". " + question[0];
+
+    card.appendChild(heading);
+
+    question[1].forEach((option, optionIndex) => {
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+
+      input.type = "radio";
+      input.name = "readingQuestion" + questionIndex;
+      input.value = optionIndex;
+
+      input.addEventListener("change", updateReadingProgress);
+
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(option));
+      card.appendChild(label);
+    });
+
+    content.appendChild(card);
+    questionIndex++;
+  });
+});
+
+function updateReadingProgress() {
+  if (readingFinished) return;
+
+  let answered = 0;
+
+  for (let i = 0; i < 30; i++) {
+    if (document.querySelector(
+      'input[name="readingQuestion' + i + '"]:checked'
+    )) {
+      answered++;
+    }
+  }
+
+  document.getElementById("readingProgressText").textContent =
+    "Answered: " + answered + " / 30";
+
+  document.getElementById("readingProgressBar").style.width =
+    (answered / 30 * 100) + "%";
+}
+
+window.finishReadingExam = function () {
+
+  if (readingFinished) return;
+
+  let score = 0;
+  let unanswered = 0;
+  let review = "";
+  let number = 0;
+
+  readingData.forEach(passage => {
+
+    passage.questions.forEach(question => {
+
+      number++;
+
+      const selected = document.querySelector(
+        'input[name="readingQuestion' + (number - 1) + '"]:checked'
+      );
+
+      const correctIndex = question[1].length > 0
+        ? question[2]
+        : 0;
+
+      if (!selected) {
+        unanswered++;
+
+        review +=
+          '<p class="reading-wrong">' +
+          number +
+          ". Not answered. Please review this question.</p>";
+
+        return;
+      }
+
+      const chosen = Number(selected.value);
+
+      /*
+        Correct answers are stored separately below.
+      */
+
+      const answerIndex = readingAnswerKey[number - 1];
+
+      if (chosen === answerIndex) {
+        score++;
+
+        review +=
+          '<p class="reading-correct">' +
+          number + ". Correct — " +
+          question[1][answerIndex] +
+          "</p>";
+      } else {
+        review +=
+          '<p class="reading-wrong">' +
+          number + ". Your answer: " +
+          question[1][chosen] +
+          " | Correct answer: <b>" +
+          question[1][answerIndex] +
+          "</b></p>";
+      }
+    });
+  });
+
+  if (unanswered > 0) {
+    if (!confirm(
+      "You have " + unanswered +
+      " unanswered questions. Do you want to finish?"
+    )) {
+      return;
+    }
+  }
+
+  readingFinished = true;
+
+  window.readingScore = score;
+  window.readingTotal = 30;
+
+  try {
+    localStorage.setItem("englishUpReadingScore", score);
+  } catch (error) {}
+
+  document.querySelectorAll(
+    '#readingExam input[type="radio"]'
+  ).forEach(input => input.disabled = true);
+
+  const submit = document.getElementById("readingSubmit");
+  submit.disabled = true;
+  submit.textContent = "TEST COMPLETED";
+
+  resultBox.hidden = false;
+  resultBox.innerHTML =
+    "<h2>Reading Test Result</h2>" +
+    "<h1>" + score + " / 30</h1>" +
+    "<p>Percentage: " +
+    (score / 30 * 100).toFixed(1) + "%</p>" +
+    "<p>Correct answers: " + score + "</p>" +
+    "<p>Incorrect or unanswered: " +
+    (30 - score) + "</p>" +
+    "<div class='reading-review'>" +
+    "<h3>Answer Review</h3>" +
+    review +
+    "</div>";
+
+  resultBox.scrollIntoView({behavior: "smooth"});
+};
+
+/* Correct answer positions for all 30 questions */
+const readingAnswerKey = [
+  0,1,2,0,1,
+  1,2,0,0,2,
+  1,0,1,0,2,
+  0,1,2,0,3,
+  1,2,0,1,3,
+  1,2,0,3,1
+];
+
+})();
+</script>
+
+<!-- ==========================================
+     LISTENING TEST — 30 POINTS
+     6 AUDIO / 30 QUESTIONS
+     EACH AUDIO: MAXIMUM 5 PLAYS
+========================================== -->
+
+<section id="listeningExam" class="exam-section">
+  <style>
+    #listeningExam {
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 20px;
+      color: #25213a;
+      font-family: Arial, sans-serif;
+    }
+    #listeningExam .listen-card {
+      background: #fff;
+      border: 1px solid #e5ddff;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 18px 0;
+      box-shadow: 0 4px 14px rgba(60,30,120,.06);
+    }
+    #listeningExam h2,
+    #listeningExam h3 {
+      color: #7047eb;
+    }
+    #listeningExam .listen-intro {
+      background: #f5f1ff;
+      border-radius: 16px;
+      padding: 22px;
+      line-height: 1.7;
+    }
+    #listeningExam button {
+      background: #7047eb;
+      color: white;
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 7px 4px 7px 0;
+    }
+    #listeningExam button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    #listeningExam .listen-count {
+      color: #7047eb;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    #listeningExam .listen-question {
+      border-top: 1px solid #eee;
+      padding: 14px 0;
+      line-height: 1.6;
+    }
+    #listeningExam .listen-option {
+      display: block;
+      background: #f8f6ff;
+      padding: 10px;
+      margin: 7px 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #listeningExam .listen-option input {
+      margin-right: 8px;
+    }
+    #listeningExam .listen-status {
+      color: #7047eb;
+      font-weight: bold;
+      min-height: 24px;
+    }
+    #listeningExam .listen-result {
+      background: #f1edff;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 20px;
+      display: none;
+      line-height: 1.7;
+    }
+  </style>
+
+  <div class="listen-intro">
+    <h2>🎧 LISTENING — TINGLAB TUSHUNISH</h2>
+
+    <h3>Assalomu alaykum, aziz o‘quvchi!</h3>
+
+    <p>
+      English Up Pre-Intermediate yakuniy imtihonining
+      Listening bo‘limiga xush kelibsiz!
+    </p>
+
+    <p>
+      Ushbu bo‘limda siz 6 ta audio matnni tinglaysiz.
+      Har bir audio uchun 5 tadan savol beriladi.
+      Jami 30 ta savol va 30 ball.
+    </p>
+
+    <p><b>DIQQAT! TEST SHARTLARI:</b></p>
+
+    <ul>
+      <li>Har bir audioni ko‘pi bilan 5 marta tinglashingiz mumkin.</li>
+      <li>Har bir audio uchun urinishlar alohida hisoblanadi.</li>
+      <li>Qolgan tinglash imkoniyatlari ekranda ko‘rsatiladi.</li>
+      <li>Audio matn ekranda yozma shaklda ko‘rsatilmaydi.</li>
+      <li>Har bir savol uchun faqat bitta javob tanlang.</li>
+      <li>Testni yakunlaganingizdan so‘ng javoblaringiz avtomatik tekshiriladi.</li>
+    </ul>
+
+    <p>
+      O‘zingizga ishoning! Diqqat bilan tinglang va
+      bilimlaringizni namoyish eting.
+    </p>
+
+    <p><b>Remember: Listen carefully and do your best!</b></p>
+
+    <button type="button" id="startListening">
+      BISMILLAH — LISTENING TESTNI BOSHLASH
+    </button>
+  </div>
+
+  <div id="listeningContent" hidden>
+    <h2>🎧 Listening Test</h2>
+    <p><b>Umumiy savollar:</b> 30 ta | <b>Umumiy ball:</b> 30</p>
+    <p id="listeningStatus" class="listen-status">
+      Audio tanlang va tinglashni boshlang.
+    </p>
+
+    <div id="listeningTasks"></div>
+
+    <button type="button" id="finishListening">
+      TESTNI YAKUNLASH
+    </button>
+
+    <div id="listeningResult" class="listen-result"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  const listeningData = [
+    {
+      title: "Audio 1 — Daily Routine",
+      text: `Hello, my name is Daniel. I work in a small office in the city centre. 
+      On weekdays, I usually wake up at half past six. First, I take a shower 
+      and prepare breakfast. I normally have eggs, bread and a cup of tea. 
+      I leave home at eight o'clock and take the bus to work. The journey takes 
+      about thirty minutes. I start work at nine and finish at five. During 
+      my lunch break, I sometimes walk in a nearby park with my colleagues. 
+      After work, I usually go shopping or visit my parents. I enjoy cooking, 
+      so I prepare dinner at home most evenings. On Tuesdays and Thursdays, 
+      I attend an English class. It helps me communicate with people from 
+      different countries. At weekends, I get up later and spend more time 
+      with my family. I believe a good daily routine makes life easier.`,
+
+      questions: [
+        ["What time does Daniel usually wake up?", 
+          ["At six o'clock", "At half past six", "At seven o'clock", "At eight o'clock"], 1],
+        ["How does he travel to work?", 
+          ["By train", "By car", "By bus", "On foot"], 2],
+        ["How long does his journey take?", 
+          ["Thirty minutes", "Fifteen minutes", "One hour", "Forty-five minutes"], 0],
+        ["When does Daniel attend English classes?", 
+          ["Mondays and Fridays", "Every weekend", "Wednesdays and Fridays", "Tuesdays and Thursdays"], 3],
+        ["What does he usually do at weekends?", 
+          ["Works in the office", "Spends time with family", "Studies all day", "Visits colleagues"], 1]
+      ]
+    },
+
+    {
+      title: "Audio 2 — A Job Interview",
+      text: `Good morning, Mr Brown. Thank you for coming to the interview. 
+      Please sit down. First, could you tell me something about yourself? 
+      My name is James Wilson. I am twenty-six years old and I studied 
+      business management at university. After graduating, I worked for 
+      two years in a small company. My main responsibilities were answering 
+      customer questions, preparing reports and organising meetings. 
+      Why would you like to work for our company? I am interested in this 
+      position because your company has a good reputation and offers 
+      opportunities to learn new skills. What are your strongest qualities? 
+      I am organised, responsible and comfortable working in a team. 
+      I can also work independently when necessary. What do you find 
+      difficult at work? Sometimes I spend too much time checking small 
+      details because I want everything to be correct. I am learning 
+      to manage my time better. Thank you, James. We will contact you 
+      next week after we have interviewed the other candidates.`,
+
+      questions: [
+        ["How old is James?", 
+          ["Twenty-four", "Twenty-six", "Twenty-eight", "Thirty"], 1],
+        ["What did he study at university?", 
+          ["Engineering", "Medicine", "Business management", "History"], 2],
+        ["How long did he work in his previous company?", 
+          ["Two years", "One year", "Three years", "Five years"], 0],
+        ["What is one of his strongest qualities?", 
+          ["He avoids teamwork", "He never asks questions", "He dislikes learning", "He is responsible"], 3],
+        ["When will the company contact him?", 
+          ["Tomorrow", "Next week", "Next month", "This evening"], 1]
+      ]
+    },
+
+    {
+      title: "Audio 3 — Travelling Abroad",
+      text: `Last summer, my sister and I travelled to Italy for the first time. 
+      We stayed there for ten days. Before the trip, we booked our hotel 
+      online and bought our plane tickets. Our flight arrived in Rome 
+      early in the morning. The weather was sunny, but it was quite hot. 
+      We stayed in a small hotel near the city centre, so we could walk 
+      to many famous places. On the first day, we visited the Colosseum 
+      and took lots of photographs. The next day, we went to a local market 
+      where we bought fresh fruit, cheese and souvenirs. One afternoon, 
+      we missed our bus because we were looking at a map. Fortunately, 
+      a friendly local woman helped us find the correct bus stop. 
+      We also tried traditional Italian food. My favourite meal was 
+      pasta with tomato sauce. The trip was interesting because we learned 
+      about another culture and met helpful people. I would love to visit 
+      Italy again, but next time I want to explore smaller towns.`,
+
+      questions: [
+        ["How long did they stay in Italy?", 
+          ["Seven days", "Two weeks", "Ten days", "Five days"], 2],
+        ["Where was their hotel?", 
+          ["Near the city centre", "Near the airport", "In a small village", "Next to the beach"], 0],
+        ["What did they visit on the first day?", 
+          ["A museum", "A local market", "A beach", "The Colosseum"], 3],
+        ["Who helped them find the bus stop?", 
+          ["A hotel manager", "A local woman", "A taxi driver", "A tourist guide"], 1],
+        ["What would the speaker like to explore next time?", 
+          ["Large shopping centres", "Other countries", "Smaller towns", "Mountain villages"], 2]
+      ]
+    },
+
+    {
+      title: "Audio 4 — Health and Lifestyle",
+      text: `Many people want to live a healthier life, but they think 
+      it requires a lot of time and money. In fact, small changes can 
+      make a big difference. My name is Sarah, and I used to spend 
+      most of my free time sitting at home and watching television. 
+      I often felt tired because I did not move enough. Six months ago, 
+      I decided to change my habits. I started walking for twenty minutes 
+      every morning. At first, it was difficult to wake up early, 
+      but after a few weeks it became easier. I also began eating 
+      more vegetables and drinking more water. I did not stop eating 
+      my favourite food completely. Instead, I tried to make better 
+      choices most of the time. Another important change was going 
+      to bed earlier. Now I usually sleep for about eight hours. 
+      I feel more active and can concentrate better at work. 
+      My advice is to start with one small habit and continue it regularly. 
+      Healthy living is not about being perfect; it is about making 
+      better choices every day.`,
+
+      questions: [
+        ["What did Sarah use to do in her free time?", 
+          ["Go swimming", "Watch television", "Visit friends", "Play tennis"], 1],
+        ["How long does she walk every morning?", 
+          ["Twenty minutes", "Ten minutes", "One hour", "Thirty minutes"], 0],
+        ["What did she change about her eating habits?", 
+          ["She stopped eating all her favourite food", "She ate only fruit", "She drank less water", "She ate more vegetables"], 3],
+        ["How many hours does she usually sleep now?", 
+          ["Six hours", "Seven hours", "About eight hours", "Ten hours"], 2],
+        ["What is her main advice?", 
+          ["Change everything immediately", "Start with one small habit", "Avoid all exercise", "Buy expensive food"], 1]
+      ]
+    },
+
+    {
+      title: "Audio 5 — Education and Technology",
+      text: `Technology has changed the way students learn. In the past, 
+      most students depended on books and classroom lessons. Today, 
+      they can use computers, tablets and mobile phones to find information 
+      and practise new skills. My name is Emma, and I am a university student. 
+      I use the internet almost every day to study. For example, I watch 
+      educational videos when I do not understand a difficult subject. 
+      I also use online dictionaries to check the meaning and pronunciation 
+      of new words. However, studying online is not always easy. Sometimes 
+      social media and games take my attention away from my work. 
+      To solve this problem, I turn off notifications when I study 
+      and make a list of tasks for each day. I also believe that students 
+      should not depend only on technology. Reading books, asking teachers 
+      questions and discussing ideas with classmates are still important. 
+      Technology is a useful tool, but students must learn how to use it 
+      wisely. The best way to learn is to combine different methods.`,
+
+      questions: [
+        ["How did most students learn in the past?", 
+          ["Only through mobile phones", "Through games", "Through books and classroom lessons", "Through social media"], 2],
+        ["What does Emma use online dictionaries for?", 
+          ["To check meanings and pronunciation", "To watch films", "To write emails", "To play games"], 0],
+        ["What sometimes distracts Emma?", 
+          ["Her teachers", "Her books", "Her classmates", "Social media and games"], 3],
+        ["What does she do when she studies?", 
+          ["Keeps every notification on", "Turns off notifications", "Stops using books", "Studies without a plan"], 1],
+        ["What does Emma think is the best way to learn?", 
+          ["Using only technology", "Avoiding teachers", "Combining different methods", "Studying only at night"], 2]
+      ]
+    },
+
+    {
+      title: "Audio 6 — A Problem in the City",
+      text: `Good evening. This is a report about a traffic problem 
+      in Green Street. Local residents have complained about heavy traffic 
+      for several months. Every morning, many cars and buses use this road 
+      to reach the city centre. As a result, people often spend a long time 
+      travelling to work. The problem is especially serious between 
+      seven and nine o'clock. Parents are also worried because children 
+      have to cross the busy road when they go to school. Last month, 
+      the local council organised a meeting to discuss possible solutions. 
+      Residents suggested building a safer crossing, improving bus services 
+      and creating a cycle path. The council agreed to install new traffic 
+      lights near the school next month. They also plan to study whether 
+      a separate bus lane is possible. Some residents believe these changes 
+      will reduce traffic, while others think more action is necessary. 
+      The council has promised to review the situation again in six months. 
+      For now, drivers are being asked to slow down and pay special attention 
+      near the school.`,
+
+      questions: [
+        ["How long have residents complained about traffic?", 
+          ["Several months", "One week", "Two years", "One day"], 0],
+        ["When is the traffic problem especially serious?", 
+          ["At lunchtime", "Between seven and nine", "After midnight", "In the evening"], 1],
+        ["Why are parents worried?", 
+          ["There are no shops nearby", "The buses are expensive", "Children cross a busy road", "The school is closed"], 2],
+        ["What will the council install next month?", 
+          ["A new bridge", "A cycle shop", "A bus station", "New traffic lights"], 3],
+        ["When will the council review the situation again?", 
+          ["Next week", "In six months", "Tomorrow", "Next year"], 1]
+      ]
+    }
+  ];
+
+  const startButton = document.getElementById("startListening");
+  const content = document.getElementById("listeningContent");
+  const tasks = document.getElementById("listeningTasks");
+  const status = document.getElementById("listeningStatus");
+  const finishButton = document.getElementById("finishListening");
+  const result = document.getElementById("listeningResult");
+
+  let finished = false;
+  let activeAudio = false;
+  let currentUtterance = null;
+  const playCounts = Array(6).fill(0);
+
+  function renderListening() {
+    tasks.innerHTML = "";
+
+    listeningData.forEach((audio, audioIndex) => {
+      const card = document.createElement("div");
+      card.className = "listen-card";
+
+      const heading = document.createElement("h3");
+      heading.textContent = audio.title;
+      card.appendChild(heading);
+
+      const count = document.createElement("p");
+      count.className = "listen-count";
+      count.id = "listenCount" + audioIndex;
+      count.textContent = "Tinglash imkoniyati: 5 / 5";
+      card.appendChild(count);
+
+      const play = document.createElement("button");
+      play.type = "button";
+      play.textContent = "▶ AUDIONI TINGLASH";
+      play.addEventListener("click", () => playAudio(audioIndex));
+      card.appendChild(play);
+
+      const audioStatus = document.createElement("p");
+      audioStatus.className = "listen-status";
+      audioStatus.id = "audioStatus" + audioIndex;
+      audioStatus.textContent = "Audio hali tinglanmadi.";
+      card.appendChild(audioStatus);
+
+      audio.questions.forEach((q, questionIndex) => {
+        const question = document.createElement("div");
+        question.className = "listen-question";
+
+        const title = document.createElement("p");
+        title.innerHTML = "<b>" +
+          (audioIndex * 5 + questionIndex + 1) + ". " +
+          q[0] + "</b>";
+        question.appendChild(title);
+
+        q[1].forEach((option, optionIndex) => {
+          const label = document.createElement("label");
+          label.className = "listen-option";
+
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = "listeningAnswer" + audioIndex + "_" + questionIndex;
+          radio.value = optionIndex;
+
+          label.appendChild(radio);
+          label.appendChild(document.createTextNode(option));
+          question.appendChild(label);
+        });
+
+        card.appendChild(question);
+      });
+
+      tasks.appendChild(card);
+    });
+  }
+
+  function playAudio(index) {
+    if (finished || activeAudio) return;
+
+    if (!("speechSynthesis" in window)) {
+      status.textContent =
+        "Kechirasiz, ushbu brauzer ovozli o‘qishni qo‘llab-quvvatlamaydi.";
+      return;
+    }
+
+    if (playCounts[index] >= 5) {
+      document.getElementById("audioStatus" + index).textContent =
+        "Bu audio uchun 5 ta tinglash imkoniyati tugadi.";
+      return;
+    }
+
+    playCounts[index]++;
+    activeAudio = true;
+
+    document.querySelectorAll("#listeningTasks button").forEach(button => {
+      button.disabled = true;
+    });
+
+    const countElement = document.getElementById("listenCount" + index);
+    countElement.textContent =
+      "Tinglash imkoniyati: " + (5 - playCounts[index]) + " / 5";
+
+    const audioStatus = document.getElementById("audioStatus" + index);
+    audioStatus.textContent = "Audio ijro etilmoqda...";
+
+    status.textContent = "Iltimos, audioni diqqat bilan tinglang.";
+
+    currentUtterance = new SpeechSynthesisUtterance(
+      listeningData[index].text
+    );
+
+    currentUtterance.lang = "en-GB";
+    currentUtterance.rate = 0.88;
+    currentUtterance.pitch = 1;
+
+    const voices = window.speechSynthesis.getVoices();
+    const englishVoice =
+      voices.find(v => v.lang === "en-GB") ||
+      voices.find(v => v.lang.startsWith("en"));
+
+    if (englishVoice) {
+      currentUtterance.voice = englishVoice;
+    }
+
+    currentUtterance.onend = function () {
+      activeAudio = false;
+      audioStatus.textContent = "Audio tugadi.";
+
+      document.querySelectorAll("#listeningTasks button").forEach(button => {
+        button.disabled = false;
+      });
+
+      status.textContent =
+        "Audio tugadi. Qolgan savollarga javob berishingiz mumkin.";
+    };
+
+    currentUtterance.onerror = function () {
+      activeAudio = false;
+      audioStatus.textContent =
+        "Ovoz ijrosida xatolik yuz berdi. Qayta urinib ko‘ring.";
+
+      document.querySelectorAll("#listeningTasks button").forEach(button => {
+        button.disabled = false;
+      });
+
+      status.textContent = "Audio ijrosini tekshiring.";
+    };
+
+    window.speechSynthesis.speak(currentUtterance);
+  }
+
+  startButton.addEventListener("click", function () {
+    if (!("speechSynthesis" in window)) {
+      status.textContent =
+        "Brauzeringiz ovozli o‘qishni qo‘llab-quvvatlamaydi.";
+      return;
+    }
+
+    content.hidden = false;
+    startButton.disabled = true;
+    startButton.textContent = "LISTENING TEST BOSHLANDI";
+    renderListening();
+
+    content.scrollIntoView({ behavior: "smooth" });
+  });
+
+  finishButton.addEventListener("click", function () {
+    if (finished || activeAudio) {
+      if (activeAudio) {
+        status.textContent =
+          "Avval audio tugashini kuting, keyin testni yakunlang.";
+      }
+      return;
+    }
+
+    let score = 0;
+    let answered = 0;
+    let review = "";
+
+    listeningData.forEach((audio, audioIndex) => {
+      audio.questions.forEach((q, questionIndex) => {
+        const selected = document.querySelector(
+          'input[name="listeningAnswer' +
+          audioIndex + "_" + questionIndex + '"]:checked'
+        );
+
+        const questionNumber = audioIndex * 5 + questionIndex + 1;
+
+        if (selected) {
+          answered++;
+
+          if (Number(selected.value) === q[2]) {
+            score++;
+            review += "<p>✅ " + questionNumber +
+              ". To‘g‘ri javob</p>";
+          } else {
+            review += "<p>❌ " + questionNumber +
+              ". To‘g‘ri javob: " + q[1][q[2]] + "</p>";
+          }
+        } else {
+          review += "<p>⚠️ " + questionNumber +
+            ". Javob berilmadi. To‘g‘ri javob: " +
+            q[1][q[2]] + "</p>";
+        }
+      });
+    });
+
+    finished = true;
+    window.speechSynthesis.cancel();
+
+    const percentage = Math.round((score / 30) * 100);
+
+    window.listeningScore = score;
+    window.listeningTotal = 30;
+
+    try {
+      localStorage.setItem("englishUpListeningScore", score);
+    } catch (e) {}
+
+    result.style.display = "block";
+    result.innerHTML =
+      "<h2>🎉 Listening natijasi</h2>" +
+      "<h3>" + score + " / 30 ball</h3>" +
+      "<p>Foiz: " + percentage + "%</p>" +
+      "<p>Javob berilgan savollar: " + answered + " / 30</p>" +
+      "<hr><h3>Javoblar tahlili</h3>" + review;
+
+    finishButton.disabled = true;
+
+    document.querySelectorAll(
+      '#listeningTasks input, #listeningTasks button'
+    ).forEach(element => {
+      element.disabled = true;
+    });
+
+    status.textContent = "Listening testi yakunlandi.";
+    result.scrollIntoView({ behavior: "smooth" });
+  });
+
+})();
+</script>
+
+<!-- =========================================
+     ENGLISH UP — PRE-INTERMEDIATE WRITING
+     3 TASKS | 30 POINTS | AUTOMATIC RESULTS
+========================================= -->
+
+<section id="writingExam">
+<style>
+#writingExam {
+  font-family: Arial, sans-serif;
+  color: #29243b;
+  max-width: 850px;
+  margin: 25px auto;
+  padding: 18px;
+  line-height: 1.6;
+}
+#writingExam * { box-sizing: border-box; }
+#writingExam .w-card {
+  background: #fff;
+  border: 1px solid #e5defc;
+  border-radius: 15px;
+  padding: 18px;
+  margin: 15px 0;
+}
+#writingExam h2, #writingExam h3 {
+  color: #7047eb;
+}
+#writingExam .w-intro {
+  background: #f5f1ff;
+  border-radius: 14px;
+  padding: 20px;
+}
+#writingExam .w-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #7047eb;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#writingExam .w-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+#writingExam .w-finish {
+  background: #e36b45;
+}
+#writingExam .w-timer {
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+  color: #7047eb;
+  padding: 12px;
+  background: #f5f1ff;
+  border-radius: 10px;
+}
+#writingExam textarea {
+  width: 100%;
+  min-height: 230px;
+  padding: 14px;
+  border: 2px solid #ded5fa;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+  resize: vertical;
+}
+#writingExam textarea:focus {
+  outline: none;
+  border-color: #7047eb;
+}
+#writingExam table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+#writingExam th, #writingExam td {
+  border: 1px solid #e5defc;
+  padding: 9px;
+  text-align: left;
+}
+#writingExam th {
+  background: #f1ecff;
+}
+#writingExam .w-result {
+  background: #f0fff5;
+  border: 1px solid #bde8ca;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+#writingExam .w-muted {
+  color: #716b80;
+  font-size: 14px;
+}
+#writingExam .w-hidden { display: none; }
+#writingExam .w-score {
+  font-size: 25px;
+  font-weight: bold;
+  color: #7047eb;
+}
+</style>
+
+<div class="w-intro">
+  <h2>✍️ WRITING TEST</h2>
+  <h3>Pre-Intermediate Final Examination</h3>
+
+  <p>
+    Assalomu alaykum, aziz o‘quvchi!
+    English Up Writing imtihoniga xush kelibsiz.
+  </p>
+
+  <p>
+    Ushbu bo‘limda siz uchta yozma topshiriqni
+    bajarasiz. Har bir mavzuda o‘z fikringizni
+    ingliz tilida yozma ravishda ifodalashingiz kerak.
+  </p>
+
+  <ul>
+    <li>Jami 3 ta yozma mavzu.</li>
+    <li>Har bir mavzu alohida vaqt bilan bajariladi.</li>
+    <li>Har bir mavzu 10 ball.</li>
+    <li>Umumiy natija 30 ball.</li>
+    <li>So‘zlar soni avtomatik hisoblanadi.</li>
+    <li>Ayrim grammatik xatolar avtomatik aniqlanadi.</li>
+    <li>Vaqt tugaganda javob avtomatik yakunlanadi.</li>
+  </ul>
+
+  <h3>📌 Mavzular va vaqt</h3>
+  <table>
+    <tr>
+      <th>Mavzu</th>
+      <th>So‘z talabi</th>
+      <th>Vaqt</th>
+      <th>Ball</th>
+    </tr>
+    <tr>
+      <td>1-mavzu</td>
+      <td>120 so‘z</td>
+      <td>20 daqiqa</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2-mavzu</td>
+      <td>150 so‘z</td>
+      <td>30 daqiqa</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>3-mavzu</td>
+      <td>180 so‘z</td>
+      <td>40 daqiqa</td>
+      <td>10</td>
+    </tr>
+  </table>
+
+  <h3>📊 So‘zlar soni bo‘yicha baholash</h3>
+
+  <b>1-mavzu — 5 ball</b>
+  <table>
+    <tr><th>So‘zlar</th><th>Ball</th></tr>
+    <tr><td>1–49</td><td>0.5</td></tr>
+    <tr><td>50–69</td><td>1.5</td></tr>
+    <tr><td>70–89</td><td>3</td></tr>
+    <tr><td>90–120</td><td>5</td></tr>
+    <tr><td>120 dan ko‘p</td><td>5</td></tr>
+  </table>
+
+  <b>2-mavzu — 5 ball</b>
+  <table>
+    <tr><th>So‘zlar</th><th>Ball</th></tr>
+    <tr><td>1–49</td><td>0.5</td></tr>
+    <tr><td>50–69</td><td>1</td></tr>
+    <tr><td>70–99</td><td>2.5</td></tr>
+    <tr><td>100–150</td><td>5</td></tr>
+    <tr><td>150 dan ko‘p</td><td>5</td></tr>
+  </table>
+
+  <b>3-mavzu — 5 ball</b>
+  <table>
+    <tr><th>So‘zlar</th><th>Ball</th></tr>
+    <tr><td>1–69</td><td>0.5</td></tr>
+    <tr><td>70–99</td><td>1</td></tr>
+    <tr><td>100–129</td><td>2.5</td></tr>
+    <tr><td>130–180</td><td>5</td></tr>
+    <tr><td>180 dan ko‘p</td><td>5</td></tr>
+  </table>
+
+  <h3>📚 Grammatik xatolar bo‘yicha baholash</h3>
+  <table>
+    <tr><th>Aniqlangan xatolar</th><th>Ball</th></tr>
+    <tr><td>0–9</td><td>5</td></tr>
+    <tr><td>10–14</td><td>4</td></tr>
+    <tr><td>15–19</td><td>3</td></tr>
+    <tr><td>20–24</td><td>2</td></tr>
+    <tr><td>25–29</td><td>1</td></tr>
+    <tr><td>30 va undan ko‘p</td><td>0</td></tr>
+  </table>
+
+  <h3>⚠️ Imtihon qoidalari</h3>
+  <ol>
+    <li>Har bir mavzuni boshlash tugmasi orqali boshlang.</li>
+    <li>Vaqt boshlangach, matn yozishni boshlang.</li>
+    <li>Yakunlash tugmasi javobingizni topshiradi.</li>
+    <li>Vaqt tugasa, javob avtomatik yakunlanadi.</li>
+    <li>Yakunlangan matnni qayta tahrirlash mumkin emas.</li>
+    <li>Keyingi mavzu avvalgi mavzu tugagach ochiladi.</li>
+  </ol>
+
+  <p class="w-muted">
+    Eslatma: avtomatik grammatik tekshiruv ayrim keng
+    tarqalgan xatolarni aniqlaydi, barcha grammatik
+    xatolarni topishi kafolatlanmaydi.
+  </p>
+
+  <p><b>O‘zingizga ishoning! Siz bunga qodirsiz!</b></p>
+  <button class="w-btn" onclick="startWritingExam()">
+    BISMILLAH — WRITING TESTNI BOSHLASH
+  </button>
+</div>
+
+<div id="writingTasks" class="w-hidden">
+
+  <div class="w-card" id="writingTask0">
+    <h3>1-MAVZU: A BALANCED LIFE</h3>
+    <p><b>Talab:</b> 120 so‘z. Baholash normasi: 90–120 so‘z.</p>
+    <p><b>Vaqt:</b> 20 daqiqa.</p>
+    <p>
+      Write about how people can balance their daily
+      responsibilities, work or studies, and free time.
+      Explain why having a balanced life is important.
+      Give examples from everyday life.
+    </p>
+    <p class="w-muted">
+      You can write about daily routines, responsibilities,
+      healthy habits, family time and personal goals.
+    </p>
+    <button class="w-btn" id="startBtn0"
+      onclick="startWritingTask(0)">
+      1-MAVZUNI BOSHLASH
+    </button>
+    <div id="workArea0" class="w-hidden">
+      <div class="w-timer" id="timer0">20:00</div>
+      <p>So‘zlar soni: <b id="count0">0</b></p>
+      <textarea id="answer0"
+        placeholder="Write your answer here..."
+        oninput="saveWritingDraft(0)"></textarea>
+      <button class="w-btn w-finish"
+        onclick="finishWritingTask(0)">
+        1-MAVZUNI YAKUNLASH
+      </button>
+    </div>
+    <div id="result0"></div>
+  </div>
+
+  <div class="w-card" id="writingTask1">
+    <h3>2-MAVZU: ONLINE LEARNING OR CLASSROOM LEARNING?</h3>
+    <p><b>Talab:</b> 150 so‘z. Baholash normasi: 100–150 so‘z.</p>
+    <p><b>Vaqt:</b> 30 daqiqa.</p>
+    <p>
+      Some people prefer studying online, while others
+      believe that learning in a traditional classroom
+      is more effective. Compare these two ways of learning.
+      Explain their advantages and disadvantages and
+      give your own opinion.
+    </p>
+    <p class="w-muted">
+      Think about communication, technology, time,
+      convenience and learning difficulties.
+    </p>
+    <button class="w-btn" id="startBtn1" disabled
+      onclick="startWritingTask(1)">
+      2-MAVZUNI BOSHLASH
+    </button>
+    <div id="workArea1" class="w-hidden">
+      <div class="w-timer" id="timer1">30:00</div>
+      <p>So‘zlar soni: <b id="count1">0</b></p>
+      <textarea id="answer1"
+        placeholder="Write your answer here..."
+        oninput="saveWritingDraft(1)"></textarea>
+      <button class="w-btn w-finish"
+        onclick="finishWritingTask(1)">
+        2-MAVZUNI YAKUNLASH
+      </button>
+    </div>
+    <div id="result1"></div>
+  </div>
+
+  <div class="w-card" id="writingTask2">
+    <h3>3-MAVZU: IMPROVING LIFE IN OUR TOWNS</h3>
+    <p><b>Talab:</b> 180 so‘z. Baholash normasi: 130–180 so‘z.</p>
+    <p><b>Vaqt:</b> 40 daqiqa.</p>
+    <p>
+      Many towns are facing problems such as traffic,
+      pollution and a lack of public spaces. What problems
+      can these issues cause for local people? What
+      improvements should local communities and authorities
+      make to create a better place to live?
+    </p>
+    <p class="w-muted">
+      Explain your ideas, give reasons and examples,
+      and suggest practical solutions.
+    </p>
+    <button class="w-btn" id="startBtn2" disabled
+      onclick="startWritingTask(2)">
+      3-MAVZUNI BOSHLASH
+    </button>
+    <div id="workArea2" class="w-hidden">
+      <div class="w-timer" id="timer2">40:00</div>
+      <p>So‘zlar soni: <b id="count2">0</b></p>
+      <textarea id="answer2"
+        placeholder="Write your answer here..."
+        oninput="saveWritingDraft(2)"></textarea>
+      <button class="w-btn w-finish"
+        onclick="finishWritingTask(2)">
+        3-MAVZUNI YAKUNLASH
+      </button>
+    </div>
+    <div id="result2"></div>
+  </div>
+
+  <div id="writingFinal" class="w-card w-hidden">
+    <h2>🏆 WRITING TEST — YAKUNIY NATIJA</h2>
+    <div id="finalWritingScore"></div>
+  </div>
+</div>
+</section>
+
+<script>
+(function () {
+  const STORAGE_KEY = "englishUpPreIntermediateWritingV1";
+
+  const tasks = [
+    { minutes: 20 },
+    { minutes: 30 },
+    { minutes: 40 }
+  ];
+
+  let state = {
+    started: false,
+    active: -1,
+    unlocked: 0,
+    deadline: null,
+    answers: ["", "", ""],
+    completed: [false, false, false],
+    results: [null, null, null]
+  };
+
+  let timerInterval = null;
+
+  function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function loadState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (saved && Array.isArray(saved.answers)
+          && saved.answers.length === 3) {
+        state = saved;
+      }
+    } catch (e) {
+      console.warn("Writing progress could not be loaded.");
+    }
+  }
+
+  function wordCount(text) {
+    const clean = text.trim();
+    return clean ? clean.split(/\s+/).length : 0;
+  }
+
+  function wordScore(index, count) {
+    if (count === 0) return 0;
+
+    if (index === 0) {
+      if (count < 50) return 0.5;
+      if (count < 70) return 1.5;
+      if (count < 90) return 3;
+      return 5;
+    }
+
+    if (index === 1) {
+      if (count < 50) return 0.5;
+      if (count < 70) return 1;
+      if (count < 100) return 2.5;
+      return 5;
+    }
+
+    if (count < 70) return 0.5;
+    if (count < 100) return 1;
+    if (count < 130) return 2.5;
+    return 5;
+  }
+
+  function grammarCheck(text) {
+    if (!text.trim()) return 0;
+
+    const patterns = [
+      /\b(he|she|it)\s+(go|do|have|play|work|like|want|need|live|study|watch|eat|drink|speak|make|take|come|use|try)\b/gi,
+      /\b(he|she|it)\s+don't\b/gi,
+      /\b(i|you|we|they)\s+doesn't\b/gi,
+      /\bi\s+am\s+(agree|understand|know)\b/gi,
+      /\b(did)\s+(went|saw|ate|bought|came|wrote|took|made|spoke|had|got)\b/gi,
+      /\b(yesterday|last\s+(week|month|year|night))\s+[^.!?]{0,50}\b(go|eat|see|buy|come|write|take|make|have)\b/gi,
+      /\b(people|children)\s+is\b/gi,
+      /\b(there)\s+is\s+(many|several|two|three|four|five)\b/gi,
+      /\b(much)\s+(people|cars|books|students|problems|friends)\b/gi,
+      /\b(many)\s+(money|information|advice|water|furniture)\b/gi,
+      /\b(he|she|it)\s+are\b/gi,
+      /\b(i|you|we|they)\s+is\b/gi,
+      /\b(he|she|it)\s+were\b/gi,
+      /\b(i|he|she|it)\s+were\b/gi
+    ];
+
+    let matches = [];
+
+    patterns.forEach(function (pattern) {
+      const found = text.match(pattern);
+      if (found) matches = matches.concat(found);
+    });
+
+    return matches.length;
+  }
+
+  function grammarScore(errors, count) {
+    if (count === 0) return 0;
+    if (errors <= 9) return 5;
+    if (errors <= 14) return 4;
+    if (errors <= 19) return 3;
+    if (errors <= 24) return 2;
+    if (errors <= 29) return 1;
+    return 0;
+  }
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remaining = seconds % 60;
+    return String(minutes).padStart(2, "0") + ":" +
+      String(remaining).padStart(2, "0");
+  }
+
+  function showTaskState() {
+    for (let i = 0; i < 3; i++) {
+      const startBtn = document.getElementById("startBtn" + i);
+      const area = document.getElementById("workArea" + i);
+      const textarea = document.getElementById("answer" + i);
+      const result = document.getElementById("result" + i);
+
+      textarea.value = state.answers[i] || "";
+      document.getElementById("count" + i).textContent =
+        wordCount(textarea.value);
+
+      if (state.completed[i]) {
+        startBtn.disabled = true;
+        startBtn.textContent = "MAVZU YAKUNLANDI";
+        area.classList.add("w-hidden");
+        textarea.disabled = true;
+        showTaskResult(i);
+      } else if (state.active === i) {
+        startBtn.classList.add("w-hidden");
+        area.classList.remove("w-hidden");
+        textarea.disabled = false;
+      } else {
+        startBtn.classList.remove("w-hidden");
+        area.classList.add("w-hidden");
+        textarea.disabled = false;
+        startBtn.disabled = i !== state.unlocked || !state.started;
+      }
+    }
+
+    if (state.completed.every(Boolean)) {
+      showFinalResult();
+    }
+  }
+
+  window.startWritingExam = function () {
+    state.started = true;
+    saveState();
+
+    document.querySelector("#writingExam .w-intro")
+      .classList.add("w-hidden");
+    document.getElementById("writingTasks")
+      .classList.remove("w-hidden");
+
+    showTaskState();
+  };
+
+  window.startWritingTask = function (index) {
+    if (!state.started || index !== state.unlocked ||
+        state.active !== -1 || state.completed[index]) return;
+
+    state.active = index;
+    state.deadline = Date.now() + tasks[index].minutes * 60 * 1000;
+
+    saveState();
+    showTaskState();
+    startTimer();
+  };
+
+  window.saveWritingDraft = function (index) {
+    if (state.active !== index) return;
+
+    const text = document.getElementById("answer" + index).value;
+    state.answers[index] = text;
+
+    document.getElementById("count" + index).textContent =
+      wordCount(text);
+
+    saveState();
+  };
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    updateTimer();
+
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  function updateTimer() {
+    if (state.active === -1 || !state.deadline) {
+      clearInterval(timerInterval);
+      return;
+    }
+
+    const remaining = Math.max(
+      0, Math.ceil((state.deadline - Date.now()) / 1000)
+    );
+
+    document.getElementById("timer" + state.active).textContent =
+      formatTime(remaining);
+
+    if (remaining <= 0) {
+      finishWritingTask(state.active, true);
+    }
+  }
+
+  window.finishWritingTask = function (index, automatic) {
+    if (state.active !== index || state.completed[index]) return;
+
+    if (!automatic &&
+        !confirm("Matnni yakunlab topshirmoqchimisiz? Keyin uni tahrirlab bo‘lmaydi.")) {
+      return;
+    }
+
+    clearInterval(timerInterval);
+
+    const text = document.getElementById("answer" + index).value;
+    state.answers[index] = text;
+
+    const count = wordCount(text);
+    const errors = grammarCheck(text);
+    const wScore = wordScore(index, count);
+    const gScore = grammarScore(errors, count);
+
+    state.results[index] = {
+      words: count,
+      errors: errors,
+      wordScore: wScore,
+      grammarScore: gScore,
+      total: wScore + gScore
+    };
+
+    state.completed[index] = true;
+    state.active = -1;
+    state.deadline = null;
+    state.unlocked = Math.min(index + 1, 3);
+
+    saveState();
+    showTaskState();
+  };
+
+  function showTaskResult(index) {
+    const r = state.results[index];
+    if (!r) return;
+
+    const result = document.getElementById("result" + index);
+
+    result.innerHTML =
+      '<div class="w-result">' +
+      '<h3>' + (index + 1) + '-MAVZU — NATIJA</h3>' +
+      '<p>Siz bu matnda <b>' + r.words +
+      '</b> ta so‘z ishlatdingiz.</p>' +
+      '<p>So‘zlar uchun: <b>' + r.wordScore +
+      ' / 5 ball</b></p>' +
+      '<p>Sizning matningizda <b>' + r.errors +
+      '</b> ta grammatik xato aniqlandi.</p>' +
+      '<p>Grammatika uchun: <b>' + r.grammarScore +
+      ' / 5 ball</b></p>' +
+      '<hr>' +
+      '<div class="w-score">Jami: ' + r.total +
+      ' / 10 ball</div>' +
+      (index < 2
+        ? '<p>Keyingi mavzu boshlash uchun ochildi.</p>'
+        : '<p>Uchala mavzu yakunlandi!</p>') +
+      '</div>';
+  }
+
+  function showFinalResult() {
+    const box = document.getElementById("writingFinal");
+    box.classList.remove("w-hidden");
+
+    let total = 0;
+    let details = "";
+
+    state.results.forEach(function (r, i) {
+      if (!r) return;
+      total += r.total;
+
+      details +=
+        "<p><b>" + (i + 1) + "-mavzu:</b> " +
+        r.total + " / 10 ball</p>";
+    });
+
+    document.getElementById("finalWritingScore").innerHTML =
+      details +
+      "<hr><div class='w-score'>" +
+      "UMUMIY NATIJA: " + total +
+      " / 30 BALL</div>";
+  }
+
+  loadState();
+
+  if (state.started) {
+    document.querySelector("#writingExam .w-intro")
+      .classList.add("w-hidden");
+    document.getElementById("writingTasks")
+      .classList.remove("w-hidden");
+  }
+
+  showTaskState();
+
+  if (state.active !== -1 && state.deadline) {
+    if (Date.now() >= state.deadline) {
+      finishWritingTask(state.active, true);
+    } else {
+      startTimer();
+    }
+  }
+})();
+</script>
+
+<!-- =========================================
+     ENGLISH UP — PRE-INTERMEDIATE SPEAKING TEST
+     3 TOPICS | 30 POINTS | 40 MINUTE DELAY
+========================================= -->
+
+<style>
+#euSpeaking {
+  max-width: 850px;
+  margin: 25px auto;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  color: inherit;
+}
+#euSpeaking .sp-card {
+  border: 1px solid #d9d4ed;
+  border-radius: 14px;
+  padding: 17px;
+  margin: 16px 0;
+  background: rgba(128,100,220,.045);
+}
+#euSpeaking h2,
+#euSpeaking h3 {
+  text-align: center;
+}
+#euSpeaking .sp-intro {
+  line-height: 1.7;
+}
+#euSpeaking .sp-warning {
+  background: #fff3d6;
+  color: #714900;
+  border: 1px solid #e8c36c;
+  border-radius: 10px;
+  padding: 13px;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+#euSpeaking .sp-questions {
+  line-height: 1.9;
+  padding-left: 23px;
+}
+#euSpeaking button {
+  border: 0;
+  border-radius: 9px;
+  padding: 13px 17px;
+  margin: 5px 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+#euSpeaking button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+#euSpeaking .sp-start {
+  background: #7047eb;
+  color: white;
+}
+#euSpeaking .sp-stop {
+  background: #d83c4b;
+  color: white;
+}
+#euSpeaking .sp-status {
+  padding: 12px;
+  border-radius: 9px;
+  background: rgba(128,100,220,.10);
+  margin: 10px 0;
+  line-height: 1.7;
+}
+#euSpeaking .sp-time {
+  font-size: 27px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+#euSpeaking .sp-result {
+  background: rgba(35,160,100,.09);
+  border: 1px solid #65b58b;
+  padding: 13px;
+  border-radius: 10px;
+  margin-top: 12px;
+  line-height: 1.8;
+}
+#euSpeaking .sp-muted {
+  color: #777;
+  font-size: 13px;
+}
+#euSpeaking .sp-center {
+  text-align: center;
+}
+#euSpeaking table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+}
+#euSpeaking th,
+#euSpeaking td {
+  border: 1px solid #ccc;
+  padding: 9px;
+  text-align: center;
+}
+#euSpeaking th {
+  background: rgba(112,71,235,.12);
+}
+#euSpeaking .sp-hidden {
+  display: none !important;
+}
+</style>
+
+<section id="euSpeaking">
+
+  <div class="sp-card">
+    <h2>ENGLISH UP</h2>
+    <h2>SPEAKING TEST</h2>
+    <h3>30 POINTS</h3>
+
+    <div class="sp-intro">
+      <p><b>Welcome to the English Up Speaking Test!</b></p>
+
+      <p>
+        Hurmatli o‘quvchi! Speaking imtihonida siz uchta
+        mavzu bo‘yicha ingliz tilida mustaqil gapirishingiz kerak.
+        Har bir mavzu 10 ball bilan baholanadi.
+      </p>
+
+      <ul>
+        <li>Har bir mavzuda 4 ta savol mavjud.</li>
+        <li>Javoblaringiz mikrofon orqali yozib olinadi.</li>
+        <li>Nutqingiz matnga aylantiriladi.</li>
+        <li>So‘zlar soni va gapirish vaqti hisoblanadi.</li>
+        <li>Har bir mavzu yakunlangach 40 daqiqa kutish kerak.</li>
+        <li>Uchala mavzu jami 30 ball.</li>
+      </ul>
+    </div>
+
+    <div class="sp-warning">
+      <b>DIQQAT! MUHIM OGOHLANTIRISH</b><br>
+      Boshlashdan oldin barcha mavzular va savollar bilan
+      diqqat bilan tanishib oling. Ushbu imtihonda faqat
+      bir martalik urinish imkoniyati mavjud!
+      Boshlangan imtihonni qayta boshlash yoki javoblarni
+      almashtirish mumkin emas.
+    </div>
+
+    <p class="sp-muted">
+      Mikrofon ruxsatini bering. Imtihon davomida sahifani
+      yopmaslik tavsiya etiladi. Javoblar qurilmangizda saqlanadi.
+    </p>
+  </div>
+
+  <div class="sp-card">
+    <h3>BAHOLASH MEZONLARI</h3>
+
+    <b>1. So‘zlar soni — 5 ball</b>
+    <table>
+      <tr><th>So‘zlar soni</th><th>Ball</th></tr>
+      <tr><td>50 tadan kam</td><td>0</td></tr>
+      <tr><td>50–64</td><td>1</td></tr>
+      <tr><td>65–79</td><td>2</td></tr>
+      <tr><td>80–94</td><td>3</td></tr>
+      <tr><td>95–109</td><td>4</td></tr>
+      <tr><td>110 va undan ko‘p</td><td>5</td></tr>
+    </table>
+
+    <b>2. Gapirish vaqti — 5 ball</b>
+    <table>
+      <tr><th>Vaqt</th><th>Ball</th></tr>
+      <tr><td>40 soniyadan kam</td><td>0</td></tr>
+      <tr><td>40–59 soniya</td><td>1</td></tr>
+      <tr><td>1:00–1:29</td><td>2</td></tr>
+      <tr><td>1:30–1:59</td><td>3</td></tr>
+      <tr><td>2:00–2:29</td><td>4</td></tr>
+      <tr><td>2:30 va undan ko‘p</td><td>5</td></tr>
+    </table>
+
+    <p class="sp-muted">
+      Har bir mavzuda maksimal 10 ball. 3 daqiqa atrofida
+      gapirish tavsiya etiladi. 3 daqiqadan ortiq gapirish
+      qo‘shimcha ball bermaydi.
+    </p>
+  </div>
+
+  <div id="spSystemMessage" class="sp-status">
+    Imtihon boshlanishiga tayyor.
+  </div>
+
+  <div id="spTopics"></div>
+
+  <div class="sp-card">
+    <h3>YAKUNIY SPEAKING NATIJASI</h3>
+    <div id="spFinalResult" class="sp-center">
+      Uchala mavzuni yakunlaganingizdan va barcha
+      kutish muddatlari tugaganidan so‘ng natija chiqadi.
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function () {
+"use strict";
+
+/* =========================================
+   1. ASOSIY SOZLAMALAR
+========================================= */
+
+const SP_KEY = "englishUpSpeakingExamV1";
+const SP_SCORE_KEY = "englishUpSpeakingScore";
+const SP_DB_NAME = "EnglishUpSpeakingAudio";
+const SP_DB_STORE = "recordings";
+
+const SP_WAIT = 40 * 60 * 1000;
+const SP_MAX_ACTIVE_SECONDS = 180;
+
+const spTopics = [
+  {
+    title: "My Hobby",
+    questions: [
+      "What is your favourite hobby?",
+      "When did you start this hobby?",
+      "Why do you enjoy it?",
+      "How much time do you spend on it?"
+    ]
+  },
+  {
+    title: "My Future Plans",
+    questions: [
+      "What are your main goals for the future?",
+      "What do you want to achieve in the next five years?",
+      "What are you doing to achieve your goals?",
+      "How will learning English help you?"
+    ]
+  },
+  {
+    title: "My Last Weekend",
+    questions: [
+      "What did you do last weekend?",
+      "Where did you go?",
+      "Who did you spend time with?",
+      "What was the most interesting part of your weekend?"
+    ]
+  }
+];
+
+/* =========================================
+   2. MA'LUMOTLARNI SAQLASH
+========================================= */
+
+function spLoadState() {
+  try {
+    const saved = localStorage.getItem(SP_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch(e) {}
+
+  return {
+    attemptUsed: false,
+    activeTopic: -1,
+    recording: false,
+    topics: [
+      { done:false },
+      { done:false },
+      { done:false }
+    ]
+  };
+}
+
+let spState = spLoadState();
+
+function spSaveState() {
+  localStorage.setItem(SP_KEY, JSON.stringify(spState));
+}
+
+function spOpenDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(SP_DB_NAME, 1);
+
+    request.onupgradeneeded = function() {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(SP_DB_STORE)) {
+        db.createObjectStore(SP_DB_STORE);
+      }
+    };
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function spDBPut(key, value) {
+  const db = await spOpenDB();
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(SP_DB_STORE, "readwrite");
+    tx.objectStore(SP_DB_STORE).put(value, key);
+    tx.oncomplete = () => {
+      db.close();
+      resolve(true);
+    };
+    tx.onerror = () => {
+      db.close();
+      reject(tx.error);
+    };
+  });
+}
+
+async function spDBGet(key) {
+  const db = await spOpenDB();
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(SP_DB_STORE, "readonly");
+    const request = tx.objectStore(SP_DB_STORE).get(key);
+
+    request.onsuccess = () => {
+      const value = request.result || [];
+      db.close();
+      resolve(value);
+    };
+
+    request.onerror = () => {
+      db.close();
+      reject(request.error);
+    };
+  });
+}
+
+/* =========================================
+   3. BALL HISOBLASH
+========================================= */
+
+function spCountWords(text) {
+  const words = text.match(
+    /[\p{L}\p{N}]+(?:['’][\p{L}]+)?/gu
+  );
+  return words ? words.length : 0;
+}
+
+function spWordScore(count) {
+  if (count < 50) return 0;
+  if (count < 65) return 1;
+  if (count < 80) return 2;
+  if (count < 95) return 3;
+  if (count < 110) return 4;
+  return 5;
+}
+
+function spTimeScore(seconds) {
+  if (seconds < 40) return 0;
+  if (seconds < 60) return 1;
+  if (seconds < 90) return 2;
+  if (seconds < 120) return 3;
+  if (seconds < 150) return 4;
+  return 5;
+}
+
+function spFormatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+
+  return String(mins).padStart(2,"0") + ":" +
+         String(secs).padStart(2,"0");
+}
+
+/* =========================================
+   4. OVOZ YOZISH HOLATI
+========================================= */
+
+let spRecorder = null;
+let spRecognition = null;
+let spStream = null;
+let spAudioContext = null;
+let spAnalyser = null;
+let spVoiceTimer = null;
+let spMonitorFrame = null;
+let spChunks = [];
+let spActiveSeconds = 0;
+let spLastVoiceCheck = 0;
+let spCurrentTopic = -1;
+let spFinalizing = false;
+
+const spSpeechAPI =
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
+
+function spMessage(message) {
+  document.getElementById("spSystemMessage").textContent =
+    message;
+}
+
+function spStopRecognition() {
+  if (spRecognition) {
+    try {
+      spRecognition.onend = null;
+      spRecognition.stop();
+    } catch(e) {}
+  }
+  spRecognition = null;
+}
+
+function spStopMonitor() {
+  if (spMonitorFrame) {
+    cancelAnimationFrame(spMonitorFrame);
+    spMonitorFrame = null;
+  }
+
+  if (spVoiceTimer) {
+    clearInterval(spVoiceTimer);
+    spVoiceTimer = null;
+  }
+
+  if (spAudioContext) {
+    try { spAudioContext.close(); } catch(e) {}
+    spAudioContext = null;
+  }
+
+  if (spStream) {
+    spStream.getTracks().forEach(track => track.stop());
+    spStream = null;
+  }
+}
+
+/* =========================================
+   5. GAPIRISH VAQTINI ANIQLASH
+   Ovoz balandligiga asoslangan taxminiy
+   faol nutq vaqti hisoblanadi.
+========================================= */
+
+function spStartVoiceMonitor(stream) {
+  const AudioContextClass =
+    window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioContextClass) {
+    throw new Error("AudioContext mavjud emas.");
+  }
+
+  spAudioContext = new AudioContextClass();
+  const source = spAudioContext.createMediaStreamSource(stream);
+
+  spAnalyser = spAudioContext.createAnalyser();
+  spAnalyser.fftSize = 1024;
+
+  source.connect(spAnalyser);
+
+  const data = new Uint8Array(spAnalyser.fftSize);
+  spLastVoiceCheck = performance.now();
+
+  function monitor() {
+    if (spCurrentTopic < 0 || spFinalizing) return;
+
+    spAnalyser.getByteTimeDomainData(data);
+
+    let sum = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const value = (data[i] - 128) / 128;
+      sum += value * value;
+    }
+
+    const rms = Math.sqrt(sum / data.length);
+    const now = performance.now();
+    const delta = Math.min((now - spLastVoiceCheck) / 1000, 0.2);
+
+    spLastVoiceCheck = now;
+
+    if (rms > 0.025) {
+      spActiveSeconds += delta;
+    }
+
+    if (spActiveSeconds >= SP_MAX_ACTIVE_SECONDS) {
+      spActiveSeconds = SP_MAX_ACTIVE_SECONDS;
+      spUpdateClock();
+      spFinishTopic();
+      return;
+    }
+
+    spUpdateClock();
+    spMonitorFrame = requestAnimationFrame(monitor);
+  }
+
+  monitor();
+}
+
+/* =========================================
+   6. NUTQNI MATNGA AYLANTIRISH
+========================================= */
+
+function spStartRecognition() {
+  spRecognition = new spSpeechAPI();
+
+  spRecognition.lang = "en-US";
+  spRecognition.continuous = true;
+  spRecognition.interimResults = true;
+
+  spRecognition.onresult = function(event) {
+    let finalText = "";
+
+    for (let i = 0; i < event.results.length; i++) {
+      if (event.results[i].isFinal) {
+        finalText += event.results[i][0].transcript + " ";
+      }
+    }
+
+    if (finalText.trim()) {
+      const topic = spState.topics[spCurrentTopic];
+
+      topic.transcript = finalText.trim();
+
+      spSaveState();
+      spUpdateTopicDisplay(spCurrentTopic);
+    }
+  };
+
+  spRecognition.onerror = function(event) {
+    spMessage(
+      "Nutqni matnga aylantirish xatosi: " +
+      event.error +
+      ". Audio yozuv davom etishi mumkin, ammo matn to‘liq bo‘lmasligi mumkin."
+    );
+  };
+
+  spRecognition.onend = function() {
+    if (
+      spCurrentTopic >= 0 &&
+      !spFinalizing &&
+      spState.recording
+    ) {
+      try {
+        spRecognition.start();
+      } catch(e) {}
+    }
+  };
+
+  spRecognition.start();
+}
+
+/* =========================================
+   7. SOATNI YANGILASH
+========================================= */
+
+function spUpdateClock() {
+  if (spCurrentTopic < 0) return;
+
+  const el = document.getElementById(
+    "sp-clock-" + spCurrentTopic
+  );
+
+  if (el) {
+    el.textContent = spFormatTime(
+      Math.floor(spActiveSeconds)
+    );
+  }
+}
+
+/* =========================================
+   8. MAVZUNI BOSHLASH
+========================================= */
+
+async function spStartTopic(index) {
+  if (spState.topics[index].done) return;
+  if (spState.recording || spCurrentTopic !== -1) return;
+
+  if (!navigator.mediaDevices ||
+      !navigator.mediaDevices.getUserMedia ||
+      !window.MediaRecorder) {
+    spMessage(
+      "Qurilmangizda audio yozish imkoniyati mavjud emas."
+    );
+    return;
+  }
+
+  if (!spSpeechAPI) {
+    spMessage(
+      "Brauzeringizda inglizcha nutqni matnga aylantirish imkoniyati topilmadi. Chrome brauzerining yangilangan versiyasidan foydalaning."
+    );
+    return;
+  }
+
+  try {
+    spMessage("Mikrofon ruxsati so‘ralmoqda...");
+
+    spStream = await navigator.mediaDevices.getUserMedia({
+      audio: true
+    });
+
+    spChunks = [];
+    spActiveSeconds = 0;
+    spCurrentTopic = index;
+    spFinalizing = false;
+
+    await spDBPut(index, []);
+
+    spRecorder = new MediaRecorder(spStream);
+
+    spRecorder.ondataavailable = async function(event) {
+      if (event.data && event.data.size > 0) {
+        spChunks.push(event.data);
+
+        try {
+          await spDBPut(index, spChunks);
+        } catch(e) {
+          spMessage("Audio saqlashda xatolik yuz berdi.");
+        }
+      }
+    };
+
+    spRecorder.onstop = async function() {
+      await spCompleteTopic(index);
+    };
+
+    spState.attemptUsed = true;
+    spState.activeTopic = index;
+    spState.recording = true;
+    spState.topics[index].transcript = "";
+    spState.topics[index].activeSeconds = 0;
+
+    spSaveState();
+
+    spRecorder.start(1000);
+
+    spStartRecognition();
+    spStartVoiceMonitor(spStream);
+
+    spMessage(
+      "Mikrofon yozmoqda. Ingliz tilida gapirishni boshlang."
+    );
+
+    spRenderTopics();
+
+  } catch(error) {
+    spStopRecognition();
+    spStopMonitor();
+
+    spCurrentTopic = -1;
+    spState.recording = false;
+    spState.activeTopic = -1;
+    spSaveState();
+
+    spMessage(
+      "Mikrofonni ishga tushirib bo‘lmadi. Brauzer sozlamalarida mikrofon ruxsatini tekshiring."
+    );
+  }
+}
+
+/* =========================================
+   9. MAVZUNI YAKUNLASH
+========================================= */
+
+function spFinishTopic() {
+  if (spCurrentTopic < 0 || spFinalizing) return;
+
+  spFinalizing = true;
+
+  const index = spCurrentTopic;
+
+  spStopRecognition();
+  spStopMonitor();
+
+  spState.topics[index].activeSeconds =
+    Math.floor(spActiveSeconds);
+
+  spState.recording = false;
+  spSaveState();
+
+  if (spRecorder && spRecorder.state !== "inactive") {
+    spRecorder.stop();
+  } else {
+    spCompleteTopic(index);
+  }
+
+  spMessage(
+    "Javob saqlanmoqda. Mavzu yakunlanmoqda..."
+  );
+}
+
+/* =========================================
+   10. NATIJANI SAQLASH
+========================================= */
+
+async function spCompleteTopic(index) {
+  if (spState.topics[index].done) return;
+
+  try {
+    if (spChunks.length) {
+      await spDBPut(index, spChunks);
+    }
+
+    const topic = spState.topics[index];
+
+    const transcript = topic.transcript || "";
+    const words = spCountWords(transcript);
+    const seconds = Math.floor(
+      topic.activeSeconds || 0
+    );
+
+    const wordPoints = spWordScore(words);
+    const timePoints = spTimeScore(seconds);
+
+    const total = wordPoints + timePoints;
+
+    topic.done = true;
+    topic.words = words;
+    topic.seconds = seconds;
+    topic.wordPoints = wordPoints;
+    topic.timePoints = timePoints;
+    topic.score = total;
+    topic.finishedAt = Date.now();
+    topic.readyAt = Date.now() + SP_WAIT;
+
+    spState.recording = false;
+    spState.activeTopic = -1;
+
+    spCurrentTopic = -1;
+    spRecorder = null;
+    spChunks = [];
+    spFinalizing = false;
+
+    spSaveState();
+    spRenderTopics();
+
+    spMessage(
+      "Javob saqlandi. 40 daqiqalik kutish boshlandi."
+    );
+
+  } catch(error) {
+    spMessage(
+      "Javobni saqlashda xatolik yuz berdi. Brauzer xotirasini tekshiring."
+    );
+  }
+}
+
+/* =========================================
+   11. QAYTA KIRGANDA UZILGAN YOZUV
+========================================= */
+
+async function spRecoverInterrupted() {
+  if (!spState.recording) return;
+
+  const index = spState.activeTopic;
+
+  if (index < 0 || index > 2) return;
+
+  spState.recording = false;
+
+  try {
+    spChunks = await spDBGet(index);
+  } catch(e) {
+    spChunks = [];
+  }
+
+  spActiveSeconds =
+    spState.topics[index].activeSeconds || 0;
+
+  spCurrentTopic = index;
+  spFinalizing = false;
+
+  spSaveState();
+
+  spMessage(
+    "Oldingi yozuv to‘xtab qolgan. Saqlangan javobni yakunlash tugmasini bosing. Yangi urinish berilmaydi."
+  );
+
+  spRenderTopics();
+}
+
+/* =========================================
+   12. MAVZULARNI CHIQARISH
+========================================= */
+
+function spRenderTopics() {
+  const container = document.getElementById("spTopics");
+  let html = "";
+
+  spTopics.forEach((topic, index) => {
+    const data = spState.topics[index] || {};
+    const previousDone =
+      index === 0 || spState.topics[index - 1].done;
+
+    const isCurrent =
+      spCurrentTopic === index;
+
+    const canStart =
+      previousDone &&
+      !data.done &&
+      !spState.recording &&
+      spCurrentTopic === -1 &&
+      !data.interrupted;
+
+    let status = "Hali boshlanmagan";
+
+    if (data.done) status = "Javob topshirilgan";
+    else if (isCurrent) status = "Yozuv davom etmoqda";
+    else if (!previousDone) status = "Oldingi mavzuni yakunlang";
+
+    html += `
+      <div class="sp-card">
+        <h3>${index + 1}-MAVZU: ${topic.title}</h3>
+
+        <ol class="sp-questions">
+          ${topic.questions.map(q => `<li>${q}</li>`).join("")}
+        </ol>
+
+        <div class="sp-status">
+          <b>Holati:</b> ${status}
+        </div>
+
+        <div class="sp-time" id="sp-clock-${index}">
+          ${isCurrent ? spFormatTime(Math.floor(spActiveSeconds)) : "00:00"}
+        </div>
+
+        ${
+          data.interrupted && !data.done
+          ? `<button class="sp-stop"
+              onclick="spFinishTopic()">
+              SAQLANGAN YOZUVNI YAKUNLASH
+             </button>`
+          : `
+            <button class="sp-start"
+              ${canStart ? "" : "disabled"}
+              onclick="spStartTopic(${index})">
+              BOSHLASH
+            </button>
+
+            <button class="sp-stop"
+              ${isCurrent ? "" : "disabled"}
+              onclick="spFinishTopic()">
+              TAMOMLASH
+            </button>
+          `
+        }
+
+        <div id="sp-result-${index}">
+          ${data.done ? spResultHTML(index) : ""}
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+/* =========================================
+   13. MAVZU NATIJASI VA 40 DAQIQA
+========================================= */
+
+function spResultHTML(index) {
+  const data = spState.topics[index];
+
+  if (!data || !data.done) return "";
+
+  const remaining = data.readyAt - Date.now();
+
+  if (remaining > 0) {
+    const minutes = Math.floor(remaining / 60000);
+    const seconds = Math.floor(
+      (remaining % 60000) / 1000
+    );
+
+    return `
+      <div class="sp-status">
+        <b>Javob qabul qilindi.</b><br>
+        Natija ${String(minutes).padStart(2,"0")}:
+        ${String(seconds).padStart(2,"0")} dan keyin ochiladi.
+      </div>
+    `;
+  }
+
+  return `
+    <div class="sp-result">
+      <b>${spTopics[index].title} — NATIJA</b><br>
+      So‘zlar soni: <b>${data.words}</b><br>
+      So‘zlar uchun: <b>${data.wordPoints}/5</b><br>
+      Gapirish vaqti: <b>${spFormatTime(data.seconds)}</b><br>
+      Vaqt uchun: <b>${data.timePoints}/5</b><hr>
+      <b>Jami: ${data.score}/10 ball</b>
+
+      <details>
+        <summary>Matnga aylantirilgan javob</summary>
+        <p>${spEscapeHTML(data.transcript || "Matn aniqlanmadi.")}</p>
+      </details>
+    </div>
+  `;
+}
+
+function spEscapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, function(char) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[char];
+  });
+}
+
+/* =========================================
+   14. YAKUNIY 30 BALL
+========================================= */
+
+function spUpdateFinal() {
+  const allDone = spState.topics.every(t => t.done);
+
+  if (!allDone) return;
+
+  const allReady = spState.topics.every(
+    t => Date.now() >= t.readyAt
+  );
+
+  if (!allReady) {
+    document.getElementById("spFinalResult").innerHTML =
+      "Uchala mavzu topshirildi. Barcha 40 daqiqalik kutish muddatlari tugagach, yakuniy natija ochiladi.";
+    return;
+  }
+
+  const total = spState.topics.reduce(
+    (sum, t) => sum + t.score, 0
+  );
+
+  localStorage.setItem(SP_SCORE_KEY, String(total));
+
+  document.getElementById("spFinalResult").innerHTML = `
+    <div class="sp-result">
+      <h2>SPEAKING TEST YAKUNLANDI</h2>
+      <h2>${total} / 30 BALL</h2>
+      My Hobby: ${spState.topics[0].score}/10<br>
+      My Future Plans: ${spState.topics[1].score}/10<br>
+      My Last Weekend: ${spState.topics[2].score}/10<br>
+      <b>Natija umumiy imtihonga saqlandi.</b>
+    </div>
+  `;
+}
+
+/* =========================================
+   15. VAQTNI YANGILASH
+========================================= */
+
+function spRefresh() {
+  spRenderTopics();
+  spUpdateFinal();
+}
+
+setInterval(spRefresh, 1000);
+
+/* =========================================
+   16. DASTLABKI ISHGA TUSHIRISH
+========================================= */
+
+if (spState.recording) {
+  spRecoverInterrupted();
+} else {
+  spRenderTopics();
+}
+
+spUpdateFinal();
+
+})();
+</script>
+<!-- END ENGLISH UP SPEAKING TEST -->
+ 
+</body>
+</html>
+
