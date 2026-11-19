@@ -2961,6 +2961,704 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 }
 </style>
+<!-- ==========================================
+     19-DARS — HOMEWORK
+     REPORTED SPEECH
+========================================== -->
 
+<section id="lesson19Homework" class="section" style="margin-top:30px;">
+
+<style>
+#lesson19Homework .hw-card{
+  background:var(--card-bg,#fff);
+  border:1px solid rgba(112,71,235,.2);
+  border-radius:16px;
+  padding:18px;
+  margin:18px 0;
+}
+#lesson19Homework h2,
+#lesson19Homework h3{color:var(--primary,#7047eb)}
+#lesson19Homework .hw-task{
+  padding:13px;
+  margin:12px 0;
+  border-radius:12px;
+  background:rgba(112,71,235,.07);
+}
+#lesson19Homework input,
+#lesson19Homework textarea{
+  width:100%;
+  padding:11px;
+  margin:7px 0;
+  border:1px solid #aaa;
+  border-radius:9px;
+  box-sizing:border-box;
+  font:inherit;
+}
+#lesson19Homework button{
+  background:var(--primary,#7047eb);
+  color:white;
+  border:0;
+  border-radius:9px;
+  padding:10px 15px;
+  margin:5px 3px;
+  cursor:pointer;
+}
+#lesson19Homework .hw-result{
+  font-weight:bold;
+  margin-top:10px;
+}
+#lesson19Homework .hw-correct{color:#159447}
+#lesson19Homework .hw-wrong{color:#d04444}
+#lesson19Homework .hw-progress{
+  height:12px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+}
+#lesson19Homework .hw-progress div{
+  height:100%;
+  width:0%;
+  background:var(--primary,#7047eb);
+  transition:.3s;
+}
+</style>
+
+<div class="hw-card">
+  <h2>📚 LESSON 19 — HOMEWORK</h2>
+  <h3>Reported Speech — Uyga vazifalar</h3>
+  <p>
+    Excellent work! Endi bilimlaringni mustahkamlash va
+    Reported Speech mavzusini mustaqil ishlatish vaqti keldi.
+  </p>
+  <p><b>Daftaringga yoz:</b> barcha topshiriqlarni bajar,
+    yangi so‘zlarni takrorla va javoblaringni tekshir.
+  </p>
+  <div class="hw-progress">
+    <div id="hw19Progress"></div>
+  </div>
+  <p id="hw19ProgressText">Homework progress: 0%</p>
+</div>
+
+<!-- GRAMMAR HOMEWORK -->
+<div class="hw-card">
+  <h3>✍️ TASK 1 — GRAMMAR PRACTICE</h3>
+  <p>Quyidagi gaplarni Reported Speech shakliga o‘zgartir.</p>
+
+  <div class="hw-task">
+    <p>1. He said, "I am tired."</p>
+    <input id="hw19g1" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>2. She said, "I live in London."</p>
+    <input id="hw19g2" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>3. Tom said, "I have finished my work."</p>
+    <input id="hw19g3" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>4. He said, "I will call you tomorrow."</p>
+    <input id="hw19g4" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>5. Mary said, "I can speak English."</p>
+    <input id="hw19g5" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>6. She said, "I went to school yesterday."</p>
+    <input id="hw19g6" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>7. He said, "I am studying now."</p>
+    <input id="hw19g7" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>8. They said, "We have been busy."</p>
+    <input id="hw19g8" placeholder="Your answer...">
+  </div>
+
+  <button onclick="hw19CheckGrammar()">Check Grammar</button>
+  <div id="hw19GrammarResult" class="hw-result"></div>
+</div>
+
+<!-- QUESTIONS AND COMMANDS -->
+<div class="hw-card">
+  <h3>❓ TASK 2 — QUESTIONS & COMMANDS</h3>
+  <p>Gaplarni Reported Speech shakliga o‘zgartir.</p>
+
+  <div class="hw-task">
+    <p>1. He asked, "Where do you live?"</p>
+    <input id="hw19q1" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>2. She asked, "Are you happy?"</p>
+    <input id="hw19q2" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>3. The teacher said, "Open your books."</p>
+    <input id="hw19q3" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>4. My mother said, "Don't be late."</p>
+    <input id="hw19q4" placeholder="Your answer...">
+  </div>
+  <div class="hw-task">
+    <p>5. He asked, "What are you doing?"</p>
+    <input id="hw19q5" placeholder="Your answer...">
+  </div>
+
+  <button onclick="hw19CheckQuestions()">Check Answers</button>
+  <div id="hw19QuestionResult" class="hw-result"></div>
+</div>
+
+<!-- VOCABULARY -->
+<div class="hw-card">
+  <h3>📖 TASK 3 — VOCABULARY REVISION</h3>
+  <p>So‘zlarni ovoz chiqarib o‘qi, tarjimasini ayt va daftaringga yoz.</p>
+
+  <div id="hw19Vocabulary"></div>
+</div>
+
+<!-- VOCABULARY TEST -->
+<div class="hw-card">
+  <h3>🧠 TASK 4 — VOCABULARY TEST</h3>
+  <div id="hw19VocabQuiz"></div>
+  <button onclick="hw19CheckVocab()">Check Vocabulary</button>
+  <div id="hw19VocabResult" class="hw-result"></div>
+</div>
+
+<!-- READING -->
+<div class="hw-card">
+  <h3>📘 TASK 5 — READING</h3>
+  <h3>A Conversation About Learning English</h3>
+
+  <p>
+    Daniel told his friend that he was learning English.
+    He said that he had started studying six months earlier.
+    His friend asked him why he was learning English.
+    Daniel explained that he wanted to communicate with people
+    from different countries.
+  </p>
+  <p>
+    He also said that English was important for his future.
+    His teacher had told him that regular practice was necessary.
+    Daniel explained that he studied vocabulary every morning
+    and listened to English conversations in the evening.
+  </p>
+
+  <button onclick="hw19SpeakReading()">🔊 Listen to Reading</button>
+
+  <div class="hw-task">
+    <p><b>1.</b> What was Daniel learning?</p>
+    <label><input type="radio" name="hw19r1" value="a"> French</label>
+    <label><input type="radio" name="hw19r1" value="b"> English</label>
+    <label><input type="radio" name="hw19r1" value="c"> German</label>
+  </div>
+
+  <div class="hw-task">
+    <p><b>2.</b> How long had he been studying?</p>
+    <label><input type="radio" name="hw19r2" value="a"> Two months</label>
+    <label><input type="radio" name="hw19r2" value="b"> One year</label>
+    <label><input type="radio" name="hw19r2" value="c"> Six months</label>
+  </div>
+
+  <div class="hw-task">
+    <p><b>3.</b> Why was he learning English?</p>
+    <label><input type="radio" name="hw19r3" value="a"> To communicate with people</label>
+    <label><input type="radio" name="hw19r3" value="b"> To become a doctor</label>
+    <label><input type="radio" name="hw19r3" value="c"> To travel by train</label>
+  </div>
+
+  <div class="hw-task">
+    <p><b>4.</b> When did he study vocabulary?</p>
+    <label><input type="radio" name="hw19r4" value="a"> At night</label>
+    <label><input type="radio" name="hw19r4" value="b"> Every morning</label>
+    <label><input type="radio" name="hw19r4" value="c"> At lunchtime</label>
+  </div>
+
+  <button onclick="hw19CheckReading()">Check Reading</button>
+  <div id="hw19ReadingResult" class="hw-result"></div>
+</div>
+
+<!-- LISTENING -->
+<div class="hw-card">
+  <h3>🎧 TASK 6 — LISTENING PRACTICE</h3>
+  <p>Avval matnni tingla. Keyin savollarga javob ber.</p>
+
+  <div class="hw-task">
+    <p><b>Listening 1</b></p>
+    <button onclick="hw19Listen(0.75)">🐢 Slow Audio</button>
+    <button onclick="hw19Listen(1)">▶ Normal Audio</button>
+    <button onclick="hw19Stop()">⏹ Stop</button>
+  </div>
+
+  <div class="hw-task">
+    <p><b>1.</b> What did Anna say?</p>
+    <label><input type="radio" name="hw19l1" value="a"> She was busy.</label>
+    <label><input type="radio" name="hw19l1" value="b"> She was hungry.</label>
+  </div>
+
+  <div class="hw-task">
+    <p><b>2.</b> What did she say she had bought?</p>
+    <label><input type="radio" name="hw19l2" value="a"> A new phone</label>
+    <label><input type="radio" name="hw19l2" value="b"> A new book</label>
+  </div>
+
+  <div class="hw-task">
+    <p><b>3.</b> What did her brother ask?</p>
+    <label><input type="radio" name="hw19l3" value="a"> Where she was going</label>
+    <label><input type="radio" name="hw19l3" value="b"> What she was reading</label>
+  </div>
+
+  <button onclick="hw19CheckListening()">Check Listening</button>
+  <div id="hw19ListeningResult" class="hw-result"></div>
+</div>
+
+<!-- WRITING -->
+<div class="hw-card">
+  <h3>✍️ TASK 7 — WRITING</h3>
+  <p>
+    Quyidagi topshiriqlarni ingliz tilida bajaring.
+    Javoblaringizni daftaringizga ham yozing.
+  </p>
+
+  <div class="hw-task">
+    <p><b>1.</b> Write five sentences using Reported Statements.</p>
+    <textarea id="hw19Writing1" rows="5" placeholder="Write your five sentences..."></textarea>
+  </div>
+
+  <div class="hw-task">
+    <p><b>2.</b> Write three Reported Questions.</p>
+    <textarea id="hw19Writing2" rows="4" placeholder="Write your questions..."></textarea>
+  </div>
+
+  <div class="hw-task">
+    <p><b>3.</b> Write a short paragraph (80–100 words) about a conversation you had recently. Use Reported Speech.</p>
+    <textarea id="hw19Writing3" rows="7" placeholder="Write your paragraph..."></textarea>
+  </div>
+
+  <button onclick="hw19SaveWriting()">Save Writing</button>
+  <div id="hw19WritingResult" class="hw-result"></div>
+</div>
+
+<!-- SPEAKING -->
+<div class="hw-card">
+  <h3>🗣️ TASK 8 — SPEAKING</h3>
+  <p>Har bir savolga ingliz tilida ovoz chiqarib javob ber.</p>
+
+  <div class="hw-task">
+    <p>1. What did your teacher tell you yesterday?</p>
+    <button onclick="hw19SayPrompt(0)">🔊 Listen</button>
+  </div>
+  <div class="hw-task">
+    <p>2. What did your friend ask you recently?</p>
+    <button onclick="hw19SayPrompt(1)">🔊 Listen</button>
+  </div>
+  <div class="hw-task">
+    <p>3. What did your family tell you last week?</p>
+    <button onclick="hw19SayPrompt(2)">🔊 Listen</button>
+  </div>
+  <div class="hw-task">
+    <p>4. Report a conversation between two people.</p>
+    <button onclick="hw19SayPrompt(3)">🔊 Listen</button>
+  </div>
+
+  <p><b>Challenge:</b> Kamida 1 daqiqa davomida Reported Speech ishlatib gapir.</p>
+</div>
+
+<!-- FINAL TEST -->
+<div class="hw-card">
+  <h3>🏆 TASK 9 — FINAL HOMEWORK TEST</h3>
+  <p>20 ta savol. Har bir to‘g‘ri javob — 1 ball.</p>
+  <div id="hw19FinalQuiz"></div>
+  <button onclick="hw19CheckFinal()">Submit Final Test</button>
+  <div id="hw19FinalResult" class="hw-result"></div>
+</div>
+
+<!-- FINAL HOMEWORK CHECKLIST -->
+<div class="hw-card">
+  <h3>✅ TASK 10 — HOMEWORK CHECKLIST</h3>
+  <p>Barcha vazifalarni bajarganingdan keyin belgilab chiq.</p>
+
+  <label><input type="checkbox" class="hw19Done"> Grammar exercises completed</label><br>
+  <label><input type="checkbox" class="hw19Done"> Vocabulary revised</label><br>
+  <label><input type="checkbox" class="hw19Done"> Reading completed</label><br>
+  <label><input type="checkbox" class="hw19Done"> Listening completed</label><br>
+  <label><input type="checkbox" class="hw19Done"> Writing completed</label><br>
+  <label><input type="checkbox" class="hw19Done"> Speaking completed</label><br>
+  <label><input type="checkbox" class="hw19Done"> Final test completed</label><br>
+
+  <p id="hw19CompleteText" class="hw-result">
+    Keep going! You can do it!
+  </p>
+</div>
+
+<div class="hw-card" style="text-align:center;">
+  <h2>🌟 YOU ARE MAKING PROGRESS!</h2>
+  <p>
+    Every sentence you write, every word you learn,
+    and every conversation you practise brings you closer
+    to your English goal.
+  </p>
+  <h3>Learn today. Succeed tomorrow!</h3>
+</div>
+
+</section>
+
+<script>
+/* ==========================================
+   LESSON 19 HOMEWORK JAVASCRIPT
+========================================== */
+
+(function(){
+
+const hw19GrammarAnswers = [
+  ["he said that he was tired"],
+  ["she said that she lived in london"],
+  ["tom said that he had finished his work"],
+  ["he said that he would call me the next day",
+   "he said that he would call you the next day"],
+  ["mary said that she could speak english"],
+  ["she said that she had gone to school the day before"],
+  ["he said that he was studying then"],
+  ["they said that they had been busy"]
+];
+
+const hw19QuestionAnswers = [
+  ["he asked where i lived",
+   "he asked where you lived"],
+  ["she asked if i was happy",
+   "she asked whether i was happy"],
+  ["the teacher told us to open our books",
+   "the teacher told them to open their books"],
+  ["my mother told me not to be late",
+   "my mother told us not to be late"],
+  ["he asked what i was doing",
+   "he asked what you were doing"]
+];
+
+function hw19Normalize(value){
+  return value.toLowerCase()
+    .replace(/[.,!?'"“”]/g,"")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function hw19SetResult(id,score,total){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.textContent="Your score: "+score+" / "+total;
+  el.className="hw-result "+(score===total?"hw-correct":"hw-wrong");
+  hw19UpdateProgress();
+}
+
+window.hw19CheckGrammar=function(){
+  let score=0;
+  hw19GrammarAnswers.forEach((answers,i)=>{
+    const input=document.getElementById("hw19g"+(i+1));
+    if(input && answers.includes(hw19Normalize(input.value)))score++;
+  });
+  hw19SetResult("hw19GrammarResult",score,8);
+};
+
+window.hw19CheckQuestions=function(){
+  let score=0;
+  hw19QuestionAnswers.forEach((answers,i)=>{
+    const input=document.getElementById("hw19q"+(i+1));
+    if(input && answers.includes(hw19Normalize(input.value)))score++;
+  });
+  hw19SetResult("hw19QuestionResult",score,5);
+};
+
+/* VOCABULARY */
+
+const hw19Words=[
+  ["report","xabar bermoq","ri-PORT"],
+  ["statement","darak gap","STEYT-ment"],
+  ["question","savol","KWES-chən"],
+  ["command","buyruq","kə-MAND"],
+  ["request","iltimos","ri-KWEST"],
+  ["explain","tushuntirmoq","ik-SPLEYN"],
+  ["mention","eslatib o‘tmoq","MEN-shən"],
+  ["promise","va’da bermoq","PROM-is"],
+  ["suggest","taklif qilmoq","sə-JEST"],
+  ["admit","tan olmoq","əd-MIT"],
+  ["deny","inkor qilmoq","di-NAI"],
+  ["reply","javob bermoq","ri-PLAI"],
+  ["answer","javob bermoq","AN-sər"],
+  ["conversation","suhbat","kon-vər-SEY-shən"],
+  ["message","xabar","MES-ij"],
+  ["information","ma’lumot","in-fər-MEY-shən"],
+  ["advice","maslahat","əd-VAIS"],
+  ["truth","haqiqat","TRUTH"],
+  ["reason","sabab","REE-zən"],
+  ["decision","qaror","di-SI-zhən"]
+];
+
+const vocabBox=document.getElementById("hw19Vocabulary");
+if(vocabBox){
+  hw19Words.forEach((word,i)=>{
+    const item=document.createElement("div");
+    item.className="hw-task";
+    const title=document.createElement("b");
+    title.textContent=(i+1)+". "+word[0];
+    const meaning=document.createElement("p");
+    meaning.textContent="Uzbek: "+word[1];
+    const pronunciation=document.createElement("p");
+    pronunciation.textContent="Pronunciation: "+word[2];
+    const audio=document.createElement("button");
+    audio.textContent="🔊 Listen";
+    audio.onclick=()=>hw19Speak(word[0]);
+    item.append(title,meaning,pronunciation,audio);
+    vocabBox.appendChild(item);
+  });
+}
+
+/* VOCABULARY QUIZ */
+
+const hw19VocabQuestions=[
+  ["report","xabar bermoq","a","b","c"],
+  ["statement","darak gap","a","b","c"],
+  ["request","iltimos","a","b","c"],
+  ["explain","tushuntirmoq","a","b","c"],
+  ["promise","va’da bermoq","a","b","c"],
+  ["deny","inkor qilmoq","a","b","c"],
+  ["reply","javob bermoq","a","b","c"],
+  ["conversation","suhbat","a","b","c"]
+];
+
+const hw19VocabOptions=[
+  ["xabar bermoq","unutmoq","yugurmoq"],
+  ["darak gap","buyruq","sabab"],
+  ["iltimos","qaror","haqiqat"],
+  ["tushuntirmoq","sotib olmoq","uxlamoq"],
+  ["va’da bermoq","inkor qilmoq","kutmoq"],
+  ["inkor qilmoq","yordam bermoq","o‘rganmoq"],
+  ["javob bermoq","yashamoq","yugurmoq"],
+  ["suhbat","maktab","oila"]
+];
+
+const hw19VocabBox=document.getElementById("hw19VocabQuiz");
+if(hw19VocabBox){
+  hw19VocabQuestions.forEach((q,i)=>{
+    const div=document.createElement("div");
+    div.className="hw-task";
+    div.innerHTML="<p><b>"+(i+1)+". "+q[0]+"</b></p>";
+    hw19VocabOptions[i].forEach((option,j)=>{
+      const label=document.createElement("label");
+      const radio=document.createElement("input");
+      radio.type="radio";
+      radio.name="hw19v"+i;
+      radio.value=String(j);
+      label.append(radio,document.createTextNode(" "+option));
+      div.appendChild(label);
+      div.appendChild(document.createElement("br"));
+    });
+    hw19VocabBox.appendChild(div);
+  });
+}
+
+window.hw19CheckVocab=function(){
+  const correct=[0,0,0,0,0,0,0,0];
+  let score=0;
+  correct.forEach((answer,i)=>{
+    const selected=document.querySelector('input[name="hw19v'+i+'"]:checked');
+    if(selected && Number(selected.value)===answer)score++;
+  });
+  hw19SetResult("hw19VocabResult",score,8);
+};
+
+/* READING */
+
+window.hw19CheckReading=function(){
+  const answers=["b","c","a","b"];
+  let score=0;
+  answers.forEach((answer,i)=>{
+    const selected=document.querySelector('input[name="hw19r'+(i+1)+'"]:checked');
+    if(selected && selected.value===answer)score++;
+  });
+  hw19SetResult("hw19ReadingResult",score,4);
+};
+
+window.hw19SpeakReading=function(){
+  hw19Speak(
+    "Daniel told his friend that he was learning English. "+
+    "He said that he had started studying six months earlier. "+
+    "His friend asked him why he was learning English. "+
+    "Daniel explained that he wanted to communicate with people "+
+    "from different countries. He also said that English was "+
+    "important for his future. His teacher had told him that "+
+    "regular practice was necessary."
+  );
+};
+
+/* LISTENING */
+
+const hw19ListeningText=
+"Anna said that she was busy. She also said that she had bought "+
+"a new phone. Her brother asked her where she was going.";
+
+window.hw19Listen=function(rate){
+  hw19Speak(hw19ListeningText,rate);
+};
+
+window.hw19Stop=function(){
+  if("speechSynthesis" in window)window.speechSynthesis.cancel();
+};
+
+window.hw19CheckListening=function(){
+  const answers=["a","a","a"];
+  let score=0;
+  answers.forEach((answer,i)=>{
+    const selected=document.querySelector('input[name="hw19l'+(i+1)+'"]:checked');
+    if(selected && selected.value===answer)score++;
+  });
+  hw19SetResult("hw19ListeningResult",score,3);
+};
+
+/* WRITING */
+
+window.hw19SaveWriting=function(){
+  const a=document.getElementById("hw19Writing1").value;
+  const b=document.getElementById("hw19Writing2").value;
+  const c=document.getElementById("hw19Writing3").value;
+  try{
+    localStorage.setItem("englishUpLesson19HomeworkWriting",
+      JSON.stringify({statements:a,questions:b,paragraph:c}));
+    document.getElementById("hw19WritingResult").textContent=
+      "Your writing has been saved on this device.";
+    document.getElementById("hw19WritingResult").className=
+      "hw-result hw-correct";
+  }catch(error){
+    document.getElementById("hw19WritingResult").textContent=
+      "Could not save. Please copy your writing into your notebook.";
+  }
+};
+
+/* SPEAKING */
+
+const hw19Prompts=[
+  "What did your teacher tell you yesterday?",
+  "What did your friend ask you recently?",
+  "What did your family tell you last week?",
+  "Report a conversation between two people."
+];
+
+window.hw19SayPrompt=function(index){
+  hw19Speak(hw19Prompts[index]);
+};
+
+/* FINAL TEST */
+
+const hw19FinalQuestions=[
+  ["He said, I am happy. Choose the correct form.","He said that he was happy.","He said that he is happy.","He said he happy.",0],
+  ["She said, I work here.","She said she worked there.","She said she works here.","She said she work there.",0],
+  ["Will changes to:","would","will","can",0],
+  ["Can changes to:","could","can","should",0],
+  ["Yesterday changes to:","the day before","tomorrow","next day",0],
+  ["Now changes to:","then","today","there",0],
+  ["This changes to:","that","these","here",0],
+  ["Here changes to:","there","this","now",0],
+  ["He asked, Where do you live?","He asked where I lived.","He asked where did I live.","He asked where I live?",0],
+  ["She asked, Are you ready?","She asked if I was ready.","She asked was I ready.","She asked that I ready.",0],
+  ["He told me ___ quiet.","to be","be","being",0],
+  ["She told him ___ shout.","not to","don't","to not",0],
+  ["Choose the correct reporting verb for advice.","advised","asked","replied",0],
+  ["Choose the correct reporting verb for a promise.","promised","denied","asked",0],
+  ["Say is usually followed by:","that + clause","someone + object","to + person",0],
+  ["Tell is usually followed by:","an object/person","only that","an adjective",0],
+  ["I have finished changes to:","I had finished","I have finish","I finished tomorrow",0],
+  ["I am studying changes to:","I was studying","I am study","I had study",0],
+  ["They said, We can help.","They said they could help.","They said we can help.","They said they help.",0],
+  ["He said, I will come tomorrow.","He said he would come the next day.","He said he will come yesterday.","He said he came tomorrow.",0]
+];
+
+const hw19FinalBox=document.getElementById("hw19FinalQuiz");
+if(hw19FinalBox){
+  hw19FinalQuestions.forEach((q,i)=>{
+    const div=document.createElement("div");
+    div.className="hw-task";
+    const p=document.createElement("p");
+    p.innerHTML="<b>"+(i+1)+". "+q[0]+"</b>";
+    div.appendChild(p);
+    for(let j=1;j<=3;j++){
+      const label=document.createElement("label");
+      const radio=document.createElement("input");
+      radio.type="radio";
+      radio.name="hw19f"+i;
+      radio.value=String(j-1);
+      label.append(radio,document.createTextNode(" "+q[j]));
+      div.appendChild(label);
+      div.appendChild(document.createElement("br"));
+    }
+    hw19FinalBox.appendChild(div);
+  });
+}
+
+window.hw19CheckFinal=function(){
+  let score=0;
+  hw19FinalQuestions.forEach((q,i)=>{
+    const selected=document.querySelector('input[name="hw19f'+i+'"]:checked');
+    if(selected && Number(selected.value)===q[4])score++;
+  });
+  const result=document.getElementById("hw19FinalResult");
+  result.textContent="Final score: "+score+"/20 — "+
+    (score>=16?"Excellent! You passed the homework test!":
+    "Keep practising. You need at least 16/20.");
+  result.className="hw-result "+(score>=16?"hw-correct":"hw-wrong");
+  hw19UpdateProgress();
+};
+
+/* TEXT TO SPEECH */
+
+function hw19Speak(text,rate=0.9){
+  if(!("speechSynthesis" in window)){
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance=new SpeechSynthesisUtterance(text);
+  utterance.lang="en-US";
+  utterance.rate=rate;
+  window.speechSynthesis.speak(utterance);
+}
+
+/* PROGRESS */
+
+function hw19UpdateProgress(){
+  const checks=[
+    document.getElementById("hw19GrammarResult"),
+    document.getElementById("hw19QuestionResult"),
+    document.getElementById("hw19VocabResult"),
+    document.getElementById("hw19ReadingResult"),
+    document.getElementById("hw19ListeningResult"),
+    document.getElementById("hw19FinalResult")
+  ];
+  let completed=0;
+  checks.forEach(el=>{
+    if(el && el.textContent.trim())completed++;
+  });
+  const percent=Math.round(completed/checks.length*100);
+  const bar=document.getElementById("hw19Progress");
+  const text=document.getElementById("hw19ProgressText");
+  if(bar)bar.style.width=percent+"%";
+  if(text)text.textContent="Homework progress: "+percent+"%";
+}
+
+document.querySelectorAll("#lesson19Homework .hw19Done").forEach(box=>{
+  box.addEventListener("change",()=>{
+    const all=document.querySelectorAll("#lesson19Homework .hw19Done");
+    const checked=document.querySelectorAll("#lesson19Homework .hw19Done:checked");
+    const message=document.getElementById("hw19CompleteText");
+    if(message){
+      message.textContent=checked.length===all.length
+        ?"🎉 All homework tasks completed! Great job!"
+        :"Completed: "+checked.length+" / "+all.length;
+    }
+  });
+});
+
+})();
+</script>
 </body>
 </html>
