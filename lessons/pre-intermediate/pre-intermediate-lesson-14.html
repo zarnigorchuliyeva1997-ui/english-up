@@ -1,1 +1,1799 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 14 — Zero Conditional | English Up</title>
 
+<style>
+:root {
+  --primary:#7047eb;
+  --primary-dark:#5632c8;
+  --primary-light:#eee9ff;
+  --background:#f7f6fc;
+  --surface:#ffffff;
+  --text:#25213a;
+  --muted:#77738a;
+  --border:#e8e4f1;
+  --success:#16a36a;
+  --danger:#e34d62;
+  --shadow:0 5px 22px rgba(65,42,120,.08);
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--background);
+  color:var(--text);
+  line-height:1.65;
+}
+
+button,input,textarea {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+header {
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo {
+  color:var(--primary);
+  font-weight:900;
+  font-size:21px;
+  letter-spacing:1px;
+}
+
+.header-right {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.header-right button {
+  border:0;
+  background:var(--primary-light);
+  color:var(--primary);
+  padding:9px 13px;
+  border-radius:10px;
+}
+
+.container {
+  max-width:1050px;
+  margin:auto;
+  padding:22px 15px 60px;
+}
+
+.hero {
+  background:linear-gradient(135deg,#7047eb,#9a78fa);
+  color:white;
+  border-radius:22px;
+  padding:30px 22px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+}
+
+.hero h1 {
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.hero p {
+  opacity:.95;
+}
+
+.hero-tag {
+  display:inline-block;
+  background:rgba(255,255,255,.2);
+  border-radius:30px;
+  padding:5px 13px;
+  margin-bottom:15px;
+  font-size:13px;
+}
+
+.welcome {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:22px;
+}
+
+.welcome h2 {
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+.section {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:20px;
+  box-shadow:var(--shadow);
+}
+
+.section-title {
+  color:var(--primary);
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+.sub-title {
+  font-size:18px;
+  margin:20px 0 10px;
+}
+
+p {
+  margin:8px 0;
+}
+
+ul,ol {
+  padding-left:23px;
+  margin:10px 0;
+}
+
+li {
+  margin:6px 0;
+}
+
+.note {
+  background:var(--primary-light);
+  border-left:4px solid var(--primary);
+  padding:13px;
+  border-radius:9px;
+  margin:12px 0;
+}
+
+.warning {
+  background:#fff5e5;
+  border-left:4px solid #edaa37;
+  padding:13px;
+  border-radius:9px;
+  margin:12px 0;
+}
+
+.formula {
+  background:#f1edff;
+  border:1px solid #ded4ff;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+  font-size:19px;
+  font-weight:bold;
+  margin:12px 0;
+  color:#5632c8;
+}
+
+.example {
+  background:#faf9ff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:13px;
+  margin:10px 0;
+}
+
+.example strong {
+  color:var(--primary);
+}
+
+.translation {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.btn {
+  background:var(--primary);
+  color:white;
+  border:0;
+  padding:11px 17px;
+  border-radius:10px;
+  font-weight:bold;
+  margin:5px 3px;
+}
+
+.btn:hover {
+  background:var(--primary-dark);
+}
+
+.btn-light {
+  background:var(--primary-light);
+  color:var(--primary);
+}
+
+.btn-success {
+  background:var(--success);
+}
+
+.btn-danger {
+  background:var(--danger);
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:13px;
+}
+
+.word-card {
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:15px;
+  background:var(--surface);
+}
+
+.word-card h3 {
+  color:var(--primary);
+  font-size:20px;
+}
+
+.word-number {
+  color:var(--muted);
+  font-size:12px;
+}
+
+.audio-row {
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:10px 0;
+}
+
+.audio-row button {
+  font-size:12px;
+}
+
+.progress-track {
+  background:#e9e5f1;
+  height:10px;
+  border-radius:20px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.progress-fill {
+  background:var(--primary);
+  height:100%;
+  width:0%;
+  transition:.3s;
+}
+
+.tabs {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.tab {
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  padding:9px 13px;
+  border-radius:10px;
+}
+
+.tab.active {
+  background:var(--primary);
+  color:white;
+  border-color:var(--primary);
+}
+
+.question {
+  padding:16px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin:13px 0;
+}
+
+.question label {
+  display:block;
+  padding:8px;
+  margin:5px 0;
+  border:1px solid var(--border);
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.question label:hover {
+  background:var(--primary-light);
+}
+
+input[type="radio"] {
+  margin-right:8px;
+}
+
+textarea {
+  width:100%;
+  min-height:100px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  resize:vertical;
+}
+
+select {
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--surface);
+}
+
+.hidden {
+  display:none!important;
+}
+
+.result {
+  padding:15px;
+  border-radius:12px;
+  margin-top:15px;
+  background:var(--primary-light);
+}
+
+.dialogue-line {
+  padding:12px;
+  border-bottom:1px solid var(--border);
+}
+
+.dialogue-line:last-child {
+  border-bottom:0;
+}
+
+.dialogue-speaker {
+  font-weight:bold;
+  color:var(--primary);
+}
+
+.motivation {
+  background:linear-gradient(135deg,#5632c8,#9874f6);
+  color:white;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+}
+
+.motivation h2 {
+  margin-bottom:10px;
+}
+
+footer {
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+}
+
+@media(max-width:600px) {
+  .hero h1 {
+    font-size:24px;
+  }
+
+  .section {
+    padding:16px;
+  }
+
+  .section-title {
+    font-size:20px;
+  }
+}
+
+body.dark {
+  --background:#171522;
+  --surface:#242131;
+  --text:#f4f0ff;
+  --muted:#aaa4bc;
+  --border:#39344c;
+  --primary-light:#352b51;
+  --shadow:0 5px 22px rgba(0,0,0,.2);
+}
+
+body.dark .example {
+  background:#29253a;
+}
+
+body.dark .formula {
+  background:#352b51;
+  border-color:#50416f;
+  color:#c9b8ff;
+}
+
+body.dark .progress-track {
+  background:#39344c;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ENGLISH UP</div>
+  <div class="header-right">
+    <button onclick="toggleTheme()" aria-label="Change theme">🌙</button>
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <span class="hero-tag">PRE-INTERMEDIATE • LESSON 14</span>
+  <h1>ZERO CONDITIONAL</h1>
+  <p>General truths, scientific facts and things that always happen.</p>
+  <p>Umumiy haqiqatlar, ilmiy faktlar va doimiy takrorlanadigan holatlar.</p>
+</section>
+
+<section class="welcome">
+  <h2>Assalomu alaykum! Welcome to English Up!</h2>
+
+  <p>14-darsimizga xush kelibsiz! Bugun ingliz tilidagi muhim grammatik mavzulardan biri — Zero Conditional bilan tanishamiz.</p>
+
+  <p>Bu mavzu orqali siz tabiat qonunlari, ilmiy faktlar, kundalik hayotdagi odatiy holatlar va doimiy natijalar haqida ingliz tilida gapirishni o‘rganasiz.</p>
+
+  <div class="note">
+    <strong>Bugungi darsdagi maqsadimiz:</strong>
+    Qoidani yodlash bilan cheklanmaymiz. Uni tinglash, o‘qish, yozish va mustaqil gapirishda qo‘llashni o‘rganamiz.
+  </div>
+
+  <h3 class="sub-title">Dars davomida bajariladigan ishlar</h3>
+  <ul>
+    <li>Grammatika qoidalarini o‘rganish.</li>
+    <li>40 ta yangi so‘zni o‘zlashtirish.</li>
+    <li>Listening mashqlarini bajarish.</li>
+    <li>2 ta dialogni tinglash va tushunish.</li>
+    <li>Reading matnini o‘qish.</li>
+    <li>Speaking va Writing mashqlarini bajarish.</li>
+    <li>40 ta interaktiv test savoliga javob berish.</li>
+    <li>Uy vazifasini bajarish.</li>
+  </ul>
+
+  <div class="warning">
+    <strong>MUHIM!</strong>
+    Dars davomida yoningizda ikkita daftar bo‘lsin: lug‘at daftari va grammatika daftari. Barcha yozma topshiriqlarni bajaring.
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">📚 1. GRAMMAR — ZERO CONDITIONAL</h2>
+
+  <h3 class="sub-title">1.1. What is Zero Conditional?</h3>
+
+  <p><strong>English explanation:</strong> We use the Zero Conditional to talk about general truths, scientific facts and situations that are always true.</p>
+
+  <p><strong>O‘zbekcha izoh:</strong> Zero Conditional biror shart bajarilganda doimo yoki odatda sodir bo‘ladigan natijani ifodalash uchun ishlatiladi.</p>
+
+  <div class="formula">
+    IF + PRESENT SIMPLE, PRESENT SIMPLE
+  </div>
+
+  <p><strong>Formula tarkibi:</strong></p>
+  <ul>
+    <li><strong>If</strong> — agar.</li>
+    <li><strong>S (Subject)</strong> — ega.</li>
+    <li><strong>V1 (Verb)</strong> — fe'lning birinchi shakli.</li>
+    <li><strong>O (Object)</strong> — to‘ldiruvchi.</li>
+  </ul>
+
+  <div class="example">
+    <strong>If you heat water, it boils.</strong>
+    <p class="translation">Agar suvni isitsangiz, u qaynaydi.</p>
+    <button class="btn btn-light" onclick="speak('If you heat water, it boils.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>If plants don't get water, they die.</strong>
+    <p class="translation">Agar o‘simliklar suv olmasa, ular nobud bo‘ladi.</p>
+    <button class="btn btn-light" onclick="speak('If plants do not get water, they die.')">🔊 Listen</button>
+  </div>
+
+  <div class="note">
+    <strong>Daftarga yozing!</strong>
+    Zero Conditional ta'rifi, inglizcha qoida, formula va yuqoridagi ikkita misolni grammatik daftaringizga yozing.
+  </div>
+
+  <h3 class="sub-title">1.2. When do we use Zero Conditional?</h3>
+
+  <p>Zero Conditional quyidagi holatlarda ishlatiladi:</p>
+
+  <h3 class="sub-title">A. General truths — Umumiy haqiqatlar</h3>
+
+  <div class="example">
+    <strong>If you don't eat, you get hungry.</strong>
+    <p class="translation">Agar ovqat yem asangiz, qorningiz ochadi.</p>
+    <button class="btn btn-light" onclick="speak('If you do not eat, you get hungry.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>If people exercise, they feel better.</strong>
+    <p class="translation">Agar odamlar mashq qilsa, o‘zlarini yaxshiroq his qilishadi.</p>
+    <button class="btn btn-light" onclick="speak('If people exercise, they feel better.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="sub-title">B. Scientific facts — Ilmiy faktlar</h3>
+
+  <div class="example">
+    <strong>If ice gets warm, it melts.</strong>
+    <p class="translation">Agar muz isisa, u eriydi.</p>
+    <button class="btn btn-light" onclick="speak('If ice gets warm, it melts.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>If you heat ice, it melts.</strong>
+    <p class="translation">Agar muzni qizdirsangiz, u eriydi.</p>
+    <button class="btn btn-light" onclick="speak('If you heat ice, it melts.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="sub-title">C. Repeated situations — Takrorlanadigan holatlar</h3>
+
+  <div class="example">
+    <strong>If I drink coffee at night, I can't sleep.</strong>
+    <p class="translation">Agar kechasi qahva ichsam, uxlay olmayman.</p>
+    <button class="btn btn-light" onclick="speak('If I drink coffee at night, I cannot sleep.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>If my brother studies, he learns new things.</strong>
+    <p class="translation">Agar akam dars qilsa, yangi narsalarni o‘rganadi.</p>
+    <button class="btn btn-light" onclick="speak('If my brother studies, he learns new things.')">🔊 Listen</button>
+  </div>
+
+  <div class="note">
+    <strong>Daftarga yozing!</strong>
+    General truths, scientific facts va repeated situations bo‘limlarining izohlarini hamda barcha misollarini yozing.
+  </div>
+
+  <h3 class="sub-title">1.3. Affirmative sentences — Darak gaplar</h3>
+
+  <p><strong>English explanation:</strong> We use the Present Simple in both parts of the Zero Conditional sentence.</p>
+
+  <p><strong>O‘zbekcha:</strong> Zero Conditional darak gapida If qatnashgan qismda ham, natijani bildirgan qismda ham Present Simple ishlatiladi.</p>
+
+  <div class="formula">
+    If + S + V1(s/es) + O, S + V1(s/es) + O.
+  </div>
+
+  <p><strong>Formulaning izohi:</strong></p>
+  <ul>
+    <li>If — shartni bildiradi.</li>
+    <li>S — ega.</li>
+    <li>V1 — fe'lning birinchi shakli.</li>
+    <li>s/es — he, she, it bilan qo‘shiladi.</li>
+    <li>O — to‘ldiruvchi.</li>
+  </ul>
+
+  <div class="example">
+    <strong>If he works hard, he earns money.</strong>
+    <p class="translation">Agar u qattiq ishlasa, pul topadi.</p>
+    <button class="btn btn-light" onclick="speak('If he works hard, he earns money.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>If water reaches 100 degrees Celsius, it boils.</strong>
+    <p class="translation">Agar suv 100 darajaga yetsa, qaynaydi.</p>
+    <button class="btn btn-light" onclick="speak('If water reaches one hundred degrees Celsius, it boils.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="sub-title">1.4. Negative sentences — Inkor gaplar</h3>
+
+  <p><strong>English explanation:</strong> We use do not or does not to make negative sentences in the Present Simple.</p>
+
+  <p><strong>O‘zbekcha:</strong> Inkor gaplarda yordamchi fe'llar do not (don't) yoki does not (doesn't) ishlatiladi. Does bilan asosiy fe'lga s/es qo‘shilmaydi.</p>
+
+  <div class="formula">
+    If + S + don't/doesn't + V1, S + don't/doesn't + V1.
+  </div>
+
+  <div class="example">
+    <strong>If you don't water flowers, they don't grow well.</strong>
+    <p class="translation">Agar gullarni sug‘ormasangiz, ular yaxshi o‘smaydi.</p>
+    <button class="btn btn-light" onclick="speak('If you do not water flowers, they do not grow well.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>If she doesn't sleep enough, she feels tired.</strong>
+    <p class="translation">Agar u yetarlicha uxlamasa, charchoq his qiladi.</p>
+    <button class="btn btn-light" onclick="speak('If she does not sleep enough, she feels tired.')">🔊 Listen</button>
+  </div>
+
+  <div class="note">
+    <strong>Eslab qoling:</strong>
+    Doesn't dan keyin fe'lga s yoki es qo‘shilmaydi. Masalan: doesn't work — to‘g‘ri; doesn't works — noto‘g‘ri.
+  </div>
+
+  <h3 class="sub-title">1.5. Questions — So‘roq gaplar</h3>
+
+  <p><strong>English explanation:</strong> We use do or does to form Present Simple questions.</p>
+
+  <p><strong>O‘zbekcha:</strong> Zero Conditional so‘roq gaplarida Do yoki Does yordamchi fe'llari ishlatiladi.</p>
+
+  <div class="formula">
+    What happens if + S + V1?
+  </div>
+
+  <div class="example">
+    <strong>What happens if you heat water?</strong>
+    <p class="translation">Suvni isitsangiz nima sodir bo‘ladi?</p>
+    <button class="btn btn-light" onclick="speak('What happens if you heat water?')">🔊 Listen</button>
+  </div>
+
+  <div class="formula">
+    Do/Does + S + V1 + if + S + V1?
+  </div>
+
+  <div class="example">
+    <strong>Do you feel tired if you sleep late?</strong>
+    <p class="translation">Kech uxlasangiz, charchoq his qilasizmi?</p>
+    <button class="btn btn-light" onclick="speak('Do you feel tired if you sleep late?')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>Does he get hungry if he skips breakfast?</strong>
+    <p class="translation">Agar u nonushta qilmasa, qorni ochadimi?</p>
+    <button class="btn btn-light" onclick="speak('Does he get hungry if he skips breakfast?')">🔊 Listen</button>
+  </div>
+
+  <h3 class="sub-title">1.6. If and When — farqi</h3>
+
+  <p><strong>If</strong> — agar. Shartni ifodalaydi.</p>
+  <p><strong>When</strong> — qachonki. Odatda sodir bo‘lishi kutiladigan holatni ifodalaydi.</p>
+
+  <div class="example">
+    <strong>If I see him, I say hello.</strong>
+    <p class="translation">Agar uni ko‘rsam, salom beraman.</p>
+    <button class="btn btn-light" onclick="speak('If I see him, I say hello.')">🔊 Listen</button>
+  </div>
+
+  <div class="example">
+    <strong>When I get home, I take off my shoes.</strong>
+    <p class="translation">Uyga kelganimda, oyoq kiyimimni yechaman.</p>
+    <button class="btn btn-light" onclick="speak('When I get home, I take off my shoes.')">🔊 Listen</button>
+  </div>
+
+  <h3 class="sub-title">1.7. Comma — Vergul qoidasi</h3>
+
+  <p>Agar If bilan boshlangan qism gap boshida kelsa, undan keyin vergul qo‘yiladi.</p>
+
+  <div class="example">
+    <strong>If it rains, the ground gets wet.</strong>
+    <p class="translation">Agar yomg‘ir yog‘sa, yer ho‘l bo‘ladi.</p>
+  </div>
+
+  <p>Agar If qismi gap oxirida kelsa, odatda vergul qo‘yilmaydi.</p>
+
+  <div class="example">
+    <strong>The ground gets wet if it rains.</strong>
+    <p class="translation">Agar yomg‘ir yog‘sa, yer ho‘l bo‘ladi.</p>
+  </div>
+
+  <h3 class="sub-title">1.8. If clause at the beginning and at the end</h3>
+
+  <div class="example">
+    <strong>If you mix blue and yellow, you get green.</strong>
+    <p class="translation">Agar ko‘k va sariq ranglarni aralashtirsangiz, yashil rang hosil bo‘ladi.</p>
+  </div>
+
+  <div class="example">
+    <strong>You get green if you mix blue and yellow.</strong>
+    <p class="translation">Ko‘k va sariq ranglarni aralashtirsangiz, yashil rang hosil bo‘ladi.</p>
+  </div>
+
+  <h3 class="sub-title">1.9. Zero Conditional vs First Conditional</h3>
+
+  <div class="formula">
+    ZERO: If + Present Simple, Present Simple
+  </div>
+
+  <p>Umumiy haqiqatlar va odatiy natijalar uchun.</p>
+
+  <div class="formula">
+    FIRST: If + Present Simple, will + V1
+  </div>
+
+  <p>Kelajakda sodir bo‘lishi mumkin bo‘lgan vaziyatlar uchun.</p>
+
+  <div class="example">
+    <strong>Zero:</strong> If you heat ice, it melts.
+    <p class="translation">Muzni isitsangiz, eriydi.</p>
+  </div>
+
+  <div class="example">
+    <strong>First:</strong> If it rains tomorrow, I will stay home.
+    <p class="translation">Ertaga yomg‘ir yog‘sa, uyda qolaman.</p>
+  </div>
+
+  <div class="note">
+    <strong>GRAMMAR DAFTAR TOPSHIRIG‘I:</strong>
+    1-bo‘limdagi barcha qoidalar, formulalar, formulalar izohi va misol gaplarni daftaringizga to‘liq yozing. O‘zingiz ham har bir struktura uchun bittadan yangi gap tuzing.
+  </div>
+</section>
+
+<section class="section" id="vocabulary">
+  <h2 class="section-title">📖 2. VOCABULARY — 40 NEW WORDS</h2>
+
+  <p>Bugun Zero Conditional mavzusiga mos 40 ta yangi so‘z o‘rganamiz.</p>
+
+  <div class="warning">
+    <strong>DAFTAR BUYRUG‘I:</strong>
+    Har bir so‘zni lug‘at daftaringizga inglizchasi, tarjimasi va talaffuzi bilan yozing. Har bir so‘zning tayyor misol gapini grammatik daftaringizga yozing. Bundan tashqari, har bir so‘z bilan yana bittadan o‘zingiz mustaqil gap tuzing.
+  </div>
+
+  <div class="progress-track">
+    <div class="progress-fill" id="vocabProgress"></div>
+  </div>
+  <p id="vocabCount">O‘rganilgan so‘zlar: 0 / 40</p>
+
+  <div class="grid" id="vocabularyGrid"></div>
+</section>
+
+<section class="section" id="listening">
+  <h2 class="section-title">🎧 3. LISTENING — EVERYDAY FACTS</h2>
+
+  <h3 class="sub-title">Listening 1: Everyday Facts</h3>
+
+  <p><strong>Ko‘rsatma:</strong> Avval matnni ko‘rmasdan tinglashga harakat qiling. Keyin matnni o‘qing va yana bir marta tinglang.</p>
+
+  <button class="btn" onclick="speak(listeningOne)">▶ Listen to the full text</button>
+
+  <div class="note">
+    <strong>Full listening transcript:</strong>
+    <p id="listeningOneText"></p>
+  </div>
+
+  <h3 class="sub-title">Matn tarjimasi</h3>
+  <p id="listeningOneUz"></p>
+
+  <h3 class="sub-title">Listening 1 — Questions</h3>
+  <div id="listeningOneQuestions"></div>
+
+  <button class="btn" onclick="checkListeningOne()">Check answers</button>
+  <div id="listeningOneResult" class="result hidden"></div>
+
+  <hr style="margin:25px 0;border:0;border-top:1px solid var(--border)">
+
+  <h3 class="sub-title">Listening 2: Science and Nature</h3>
+
+  <p>Endi tabiat va ilmiy faktlar haqidagi ikkinchi matnni tinglang.</p>
+
+  <button class="btn" onclick="speak(listeningTwo)">▶ Listen to the full text</button>
+
+  <div class="note">
+    <strong>Full listening transcript:</strong>
+    <p id="listeningTwoText"></p>
+  </div>
+
+  <h3 class="sub-title">Matn tarjimasi</h3>
+  <p id="listeningTwoUz"></p>
+
+  <h3 class="sub-title">Listening 2 — Questions</h3>
+  <div id="listeningTwoQuestions"></div>
+
+  <button class="btn" onclick="checkListeningTwo()">Check answers</button>
+  <div id="listeningTwoResult" class="result hidden"></div>
+</section>
+
+<section class="section" id="dialogues">
+  <h2 class="section-title">🗣️ 4. DIALOGUES — TWO CONVERSATIONS</h2>
+
+  <h3 class="sub-title">Dialogue 1: Everyday Facts</h3>
+
+  <p>Ikki do‘st kundalik hayotdagi odatlar va umumiy haqiqatlar haqida suhbatlashmoqda.</p>
+
+  <button class="btn" onclick="speak(dialogueOneAudio)">▶ Listen to the full dialogue</button>
+
+  <div id="dialogueOne"></div>
+
+  <h3 class="sub-title">Dialogue 1 — Questions</h3>
+  <div id="dialogueOneQuestions"></div>
+  <button class="btn" onclick="checkDialogueOne()">Check answers</button>
+  <div id="dialogueOneResult" class="result hidden"></div>
+
+  <hr style="margin:25px 0;border:0;border-top:1px solid var(--border)">
+
+  <h3 class="sub-title">Dialogue 2: Science and Nature</h3>
+
+  <p>Ikki o‘quvchi tabiat va ilmiy faktlar haqida suhbatlashmoqda.</p>
+
+  <button class="btn" onclick="speak(dialogueTwoAudio)">▶ Listen to the full dialogue</button>
+
+  <div id="dialogueTwo"></div>
+
+  <h3 class="sub-title">Dialogue 2 — Questions</h3>
+  <div id="dialogueTwoQuestions"></div>
+  <button class="btn" onclick="checkDialogueTwo()">Check answers</button>
+  <div id="dialogueTwoResult" class="result hidden"></div>
+</section>
+
+<section class="section" id="reading">
+  <h2 class="section-title">📘 5. READING — NATURE AND DAILY LIFE</h2>
+
+  <h3 class="sub-title">A Simple Story About Nature</h3>
+
+  <button class="btn" onclick="speak(readingText)">🔊 Listen to the story</button>
+
+  <div class="note">
+    <p id="readingEnglish"></p>
+  </div>
+
+  <h3 class="sub-title">O‘zbekcha tarjima</h3>
+  <p id="readingUzbek"></p>
+
+  <h3 class="sub-title">Reading comprehension</h3>
+  <div id="readingQuestions"></div>
+  <button class="btn" onclick="checkReading()">Check answers</button>
+  <div id="readingResult" class="result hidden"></div>
+</section>
+
+<section class="section" id="speaking">
+  <h2 class="section-title">🎤 6. SPEAKING — LET'S SPEAK ENGLISH</h2>
+
+  <p>Quyidagi savollarni ovozli tinglang. Har bir savolga ingliz tilida to‘liq javob berishga harakat qiling.</p>
+
+  <div id="speakingQuestions"></div>
+
+  <div class="note">
+    <strong>Daftar topshirig‘i:</strong>
+    15 ta savolning har biriga o‘zingiz javob yozing. Keyin javoblaringizni ovoz chiqarib o‘qing.
+  </div>
+
+  <h3 class="sub-title">Independent speaking</h3>
+  <p>Quyidagi mavzuda 1–2 daqiqa davomida mustaqil gapiring:</p>
+  <div class="formula">Things That Always Happen in My Life</div>
+  <textarea placeholder="Write your speaking notes here..."></textarea>
+</section>
+
+<section class="section" id="writing">
+  <h2 class="section-title">✍️ 7. WRITING — LET'S WRITE</h2>
+
+  <h3 class="sub-title">Task 1 — Make sentences</h3>
+  <p>Zero Conditional yordamida 15 ta mustaqil gap tuzing.</p>
+
+  <h3 class="sub-title">Task 2 — Translation</h3>
+  <p>Quyidagi 10 ta gapni ingliz tiliga tarjima qiling.</p>
+  <ol id="writingTranslations"></ol>
+
+  <h3 class="sub-title">Task 3 — Correct the mistakes</h3>
+  <p>Quyidagi gaplardagi grammatik xatolarni toping va tuzating.</p>
+  <ol id="writingCorrections"></ol>
+
+  <h3 class="sub-title">Task 4 — Independent Writing</h3>
+  <p><strong>Topic:</strong> General Truths in Our Daily Life.</p>
+  <p>100–120 so‘zdan iborat mustaqil matn yozing. Zero Conditional strukturalaridan foydalaning.</p>
+  <textarea placeholder="Write your paragraph here..."></textarea>
+  <div class="note">
+    <strong>Daftarga yozish majburiy!</strong>
+    Bu topshiriqlarning barchasini grammatik daftaringizda bajaring.
+  </div>
+</section>
+
+<section class="section" id="tests">
+  <h2 class="section-title">📝 8. INTERACTIVE TESTS</h2>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTest('grammarTest',this)">Grammar Test</button>
+    <button class="tab" onclick="showTest('vocabTest',this)">Vocabulary Test</button>
+  </div>
+
+  <div id="grammarTest">
+    <h3 class="sub-title">Grammar Test — 20 Questions</h3>
+    <div id="grammarQuestions"></div>
+    <button class="btn" onclick="checkTest('grammarQuestions','grammarResult')">Submit Grammar Test</button>
+    <div id="grammarResult" class="result hidden"></div>
+  </div>
+
+  <div id="vocabTest" class="hidden">
+    <h3 class="sub-title">Vocabulary Test — 20 Questions</h3>
+    <div id="vocabQuestions"></div>
+    <button class="btn" onclick="checkTest('vocabQuestions','vocabResult')">Submit Vocabulary Test</button>
+    <div id="vocabResult" class="result hidden"></div>
+  </div>
+</section>
+
+<section class="section" id="homework">
+  <h2 class="section-title">🏠 9. HOMEWORK — YOUR MISSION</h2>
+
+  <p>Bugungi darsni mustahkamlash uchun quyidagi topshiriqlarni to‘liq bajaring.</p>
+
+  <ol>
+    <li>Zero Conditional bo‘yicha 20 ta yangi gap yozing.</li>
+    <li>15 ta tarjima mashqini bajaring.</li>
+    <li>10 ta noto‘g‘ri gapni tuzating.</li>
+    <li>150–180 so‘zli mustaqil Writing yozing.</li>
+    <li>10 ta Speaking savoliga ovozli javob bering.</li>
+    <li>40 ta yangi so‘zni takrorlang.</li>
+    <li>Ikki dialogni qayta tinglang.</li>
+    <li>Listening matnlarini qayta o‘qing va tinglang.</li>
+  </ol>
+
+  <h3 class="sub-title">Homework checklist</h3>
+  <div id="homeworkChecklist"></div>
+  <div class="progress-track">
+    <div class="progress-fill" id="homeworkProgress"></div>
+  </div>
+  <p id="homeworkCount">0 / 8 completed</p>
+</section>
+
+<section class="motivation">
+  <h2>🌟 NEVER STOP LEARNING!</h2>
+
+  <p>Har kuni o‘rgangan bitta yangi so‘zingiz, yozgan bitta gapingiz va qilgan bitta mashqingiz sizni maqsadingizga yaqinlashtiradi.</p>
+
+  <p>Ingliz tilini bir kunda mukammal o‘rganib bo‘lmaydi. Ammo har kuni astoydil harakat qilsangiz, bugun qiyin tuyulgan narsalar ertaga osonlashadi.</p>
+
+  <h3 style="margin-top:18px">Believe in yourself. Keep learning. Never give up!</h3>
+
+  <p style="margin-top:12px">Learn today. Succeed tomorrow. 💜</p>
+</section>
+
+</main>
+
+<footer>
+  ENGLISH UP — Your journey to success starts today.
+</footer>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "eu14theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+if(localStorage.getItem("eu14theme")==="dark") {
+  document.body.classList.add("dark");
+}
+
+function speak(text) {
+  if(!("speechSynthesis" in window)) {
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US";
+  utterance.rate = 0.85;
+  speechSynthesis.speak(utterance);
+}
+
+function speakUz(text) {
+  if(!("speechSynthesis" in window)) return;
+
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "uz-UZ";
+  utterance.rate = 0.85;
+  speechSynthesis.speak(utterance);
+}
+
+const vocabulary = [
+  {
+    word:"heat",
+    pronunciation:"/hiːt/",
+    meaning:"isitmoq",
+    example:"If you heat water, it boils.",
+    translation:"Agar suvni isitsangiz, u qaynaydi."
+  },
+  {
+    word:"boil",
+    pronunciation:"/bɔɪl/",
+    meaning:"qaynamoq",
+    example:"Water boils if it gets hot enough.",
+    translation:"Suv yetarlicha qizisa, qaynaydi."
+  },
+  {
+    word:"melt",
+    pronunciation:"/melt/",
+    meaning:"erimoq",
+    example:"Ice melts if you leave it in the sun.",
+    translation:"Muzni quyoshda qoldirsangiz, eriydi."
+  },
+  {
+    word:"freeze",
+    pronunciation:"/friːz/",
+    meaning:"muzlamoq",
+    example:"Water freezes if it gets very cold.",
+    translation:"Suv juda sovuq bo‘lsa, muzlaydi."
+  },
+  {
+    word:"grow",
+    pronunciation:"/ɡrəʊ/",
+    meaning:"o‘smoq",
+    example:"Plants grow if they get enough water.",
+    translation:"O‘simliklar yetarli suv olsa, o‘sadi."
+  },
+  {
+    word:"rain",
+    pronunciation:"/reɪn/",
+    meaning:"yomg‘ir yog‘moq",
+    example:"The ground gets wet if it rains.",
+    translation:"Yomg‘ir yog‘sa, yer ho‘l bo‘ladi."
+  },
+  {
+    word:"shine",
+    pronunciation:"/ʃaɪn/",
+    meaning:"porlamoq",
+    example:"The sun shines during the day.",
+    translation:"Quyosh kunduzi porlaydi."
+  },
+  {
+    word:"dry",
+    pronunciation:"/draɪ/",
+    meaning:"qurimoq",
+    example:"Clothes dry if the sun shines.",
+    translation:"Quyosh chiqsa, kiyimlar quriydi."
+  },
+  {
+    word:"mix",
+    pronunciation:"/mɪks/",
+    meaning:"aralashtirmoq",
+    example:"If you mix blue and yellow, you get green.",
+    translation:"Ko‘k va sariqni aralashtirsangiz, yashil hosil bo‘ladi."
+  },
+  {
+    word:"melted",
+    pronunciation:"/ˈmeltɪd/",
+    meaning:"erigan",
+    example:"Chocolate gets soft if it gets warm.",
+    translation:"Shokolad isisa, yumshaydi."
+  },
+  {
+    word:"water",
+    pronunciation:"/ˈwɔːtə(r)/",
+    meaning:"suv; sug‘ormoq",
+    example:"Flowers grow well if you water them.",
+    translation:"Gullarni sug‘orsangiz, yaxshi o‘sadi."
+  },
+  {
+    word:"flower",
+    pronunciation:"/ˈflaʊə(r)/",
+    meaning:"gul",
+    example:"A flower dies if it gets no water.",
+    translation:"Gul suv olmasa, nobud bo‘ladi."
+  },
+  {
+    word:"soil",
+    pronunciation:"/sɔɪl/",
+    meaning:"tuproq",
+    example:"Plants grow in good soil.",
+    translation:"O‘simliklar yaxshi tuproqda o‘sadi."
+  },
+  {
+    word:"air",
+    pronunciation:"/eə(r)/",
+    meaning:"havo",
+    example:"People need air to live.",
+    translation:"Odamlar yashash uchun havoga muhtoj."
+  },
+  {
+    word:"light",
+    pronunciation:"/laɪt/",
+    meaning:"yorug‘lik",
+    example:"Plants need light to grow.",
+    translation:"O‘simliklar o‘sish uchun yorug‘likka muhtoj."
+  },
+  {
+    word:"dark",
+    pronunciation:"/dɑːk/",
+    meaning:"qorong‘i",
+    example:"It gets dark when the sun goes down.",
+    translation:"Quyosh botganda qorong‘i tushadi."
+  },
+  {
+    word:"temperature",
+    pronunciation:"/ˈtemprətʃə(r)/",
+    meaning:"harorat",
+    example:"Ice melts if the temperature rises.",
+    translation:"Harorat ko‘tarilsa, muz eriydi."
+  },
+  {
+    word:"cold",
+    pronunciation:"/kəʊld/",
+    meaning:"sovuq",
+    example:"Water freezes if it gets cold enough.",
+    translation:"Suv yetarlicha sovuq bo‘lsa, muzlaydi."
+  },
+  {
+    word:"warm",
+    pronunciation:"/wɔːm/",
+    meaning:"iliq",
+    example:"Butter gets soft if it gets warm.",
+    translation:"Sariyog‘ iliq joyda yumshaydi."
+  },
+  {
+    word:"healthy",
+    pronunciation:"/ˈhelθi/",
+    meaning:"sog‘lom",
+    example:"People stay healthy if they eat well.",
+    translation:"Odamlar yaxshi ovqatlansa, sog‘lom bo‘lishadi."
+  },
+  {
+    word:"exercise",
+    pronunciation:"/ˈeksəsaɪz/",
+    meaning:"mashq qilmoq",
+    example:"If I exercise, I feel better.",
+    translation:"Mashq qilsam, o‘zimni yaxshiroq his qilaman."
+  },
+  {
+    word:"hungry",
+    pronunciation:"/ˈhʌŋɡri/",
+    meaning:"och",
+    example:"People get hungry if they don't eat.",
+    translation:"Odamlar ovqat yemasa, qorni ochadi."
+  },
+  {
+    word:"thirsty",
+    pronunciation:"/ˈθɜːsti/",
+    meaning:"chanqagan",
+    example:"I get thirsty if I walk in hot weather.",
+    translation:"Issiq havoda yursam, chanqayman."
+  },
+  {
+    word:"tired",
+    pronunciation:"/ˈtaɪəd/",
+    meaning:"charchagan",
+    example:"I feel tired if I sleep late.",
+    translation:"Kech uxlasam, charchoq his qilaman."
+  },
+  {
+    word:"sleep",
+    pronunciation:"/sliːp/",
+    meaning:"uxlamoq",
+    example:"Children grow if they sleep well.",
+    translation:"Bolalar yaxshi uxlasa, o‘sadi."
+  },
+  {
+    word:"wake",
+    pronunciation:"/weɪk/",
+    meaning:"uyg‘onmoq",
+    example:"I wake up early if I go to bed early.",
+    translation:"Erta yotsam, erta uyg‘onaman."
+  },
+  {
+    word:"breathe",
+    pronunciation:"/briːð/",
+    meaning:"nafas olmoq",
+    example:"People breathe faster if they run.",
+    translation:"Odamlar yugursa, tezroq nafas oladi."
+  },
+  {
+    word:"melted",
+    pronunciation:"/ˈmeltɪd/",
+    meaning:"erigan",
+    example:"Ice cream melts if it gets warm.",
+    translation:"Muzqaymoq isisa, eriydi."
+  },
+  {
+    word:"boiling",
+    pronunciation:"/ˈbɔɪlɪŋ/",
+    meaning:"qaynayotgan",
+    example:"Water is boiling when it reaches its boiling point.",
+    translation:"Suv qaynash haroratiga yetganda qaynaydi."
+  },
+  {
+    word:"environment",
+    pronunciation:"/ɪnˈvaɪrənmənt/",
+    meaning:"atrof-muhit",
+    example:"The environment changes if people pollute it.",
+    translation:"Odamlar ifloslantirsa, atrof-muhit o‘zgaradi."
+  },
+  {
+    word:"pollute",
+    pronunciation:"/pəˈluːt/",
+    meaning:"ifloslantirmoq",
+    example:"Factories pollute the air if they release smoke.",
+    translation:"Zavodlar tutun chiqarsa, havoni ifloslantiradi."
+  },
+  {
+    word:"smoke",
+    pronunciation:"/sməʊk/",
+    meaning:"tutun",
+    example:"Smoke makes the air dirty.",
+    translation:"Tutun havoni iflos qiladi."
+  },
+  {
+    word:"melt",
+    pronunciation:"/melt/",
+    meaning:"erimoq",
+    example:"Snow melts when the weather gets warm.",
+    translation:"Havo isiganda qor eriydi."
+  },
+  {
+    word:"earth",
+    pronunciation:"/ɜːθ/",
+    meaning:"Yer",
+    example:"The Earth moves around the Sun.",
+    translation:"Yer Quyosh atrofida aylanadi."
+  },
+  {
+    word:"moon",
+    pronunciation:"/muːn/",
+    meaning:"oy",
+    example:"The Moon looks bright at night.",
+    translation:"Oy tunda yorqin ko‘rinadi."
+  },
+  {
+    word:"sun",
+    pronunciation:"/sʌn/",
+    meaning:"quyosh",
+    example:"Plants need sunlight to grow.",
+    translation:"O‘simliklar o‘sishi uchun quyosh nuriga muhtoj."
+  },
+  {
+    word:"energy",
+    pronunciation:"/ˈenədʒi/",
+    meaning:"energiya",
+    example:"People get energy if they eat healthy food.",
+    translation:"Odamlar sog‘lom ovqat yesa, energiya oladi."
+  },
+  {
+    word:"habit",
+    pronunciation:"/ˈhæbɪt/",
+    meaning:"odat",
+    example:"A good habit helps you learn.",
+    translation:"Yaxshi odat o‘rganishingizga yordam beradi."
+  },
+  {
+    word:"result",
+    pronunciation:"/rɪˈzʌlt/",
+    meaning:"natija",
+    example:"You get good results if you study regularly.",
+    translation:"Muntazam o‘qisangiz, yaxshi natijalarga erishasiz."
+  },
+  {
+    word:"fact",
+    pronunciation:"/fækt/",
+    meaning:"fakt, haqiqat",
+    example:"It is a fact that the Earth moves around the Sun.",
+    translation:"Yer Quyosh atrofida aylanishi haqiqatdir."
+  }
+];
+
+let completedWords = JSON.parse(
+  localStorage.getItem("eu14words") || "[]"
+);
+
+function renderVocabulary() {
+  const grid = document.getElementById("vocabularyGrid");
+
+  grid.innerHTML = vocabulary.map((item,index)=>`
+    <article class="word-card">
+      <div class="word-number">WORD ${index+1} / 40</div>
+      <h3>${item.word}</h3>
+      <p><strong>Pronunciation:</strong> ${item.pronunciation}</p>
+      <p><strong>Tarjima:</strong> ${item.meaning}</p>
+
+      <div class="audio-row">
+        <button class="btn btn-light" onclick="speak('${item.word}')">🔊 English</button>
+        <button class="btn btn-light" onclick="speakUz('${item.meaning}')">🔊 Uzbek</button>
+      </div>
+
+      <p><strong>Example:</strong> ${item.example}</p>
+      <p class="translation">${item.translation}</p>
+
+      <button class="btn btn-light" onclick="speak('${item.example}')">🔊 Example</button>
+
+      <button class="btn ${completedWords.includes(index)?'btn-success':'btn-light'}"
+        onclick="toggleWord(${index})">
+        ${completedWords.includes(index)?'✓ Learned':'Mark as learned'}
+      </button>
+    </article>
+  `).join("");
+
+  updateVocabularyProgress();
+}
+
+function toggleWord(index) {
+  if(completedWords.includes(index)) {
+    completedWords = completedWords.filter(x=>x!==index);
+  } else {
+    completedWords.push(index);
+  }
+
+  localStorage.setItem("eu14words",JSON.stringify(completedWords));
+  renderVocabulary();
+}
+
+function updateVocabularyProgress() {
+  const count=completedWords.length;
+  document.getElementById("vocabCount").textContent =
+    `O‘rganilgan so‘zlar: ${count} / 40`;
+
+  document.getElementById("vocabProgress").style.width =
+    (count/40*100)+"%";
+}
+
+const listeningOne =
+"People do many things every day. If we wake up early, we have more time. If we eat healthy food, we feel better. If we exercise regularly, our bodies become stronger. If we do not drink enough water, we get thirsty. If we study every day, we learn new things. Good habits help us have a better life.";
+
+const listeningOneUz =
+"Odamlar har kuni ko‘p ishlarni bajarishadi. Agar erta uyg‘onsak, ko‘proq vaqtimiz bo‘ladi. Agar sog‘lom ovqat yesak, o‘zimizni yaxshiroq his qilamiz. Muntazam mashq qilsak, tanamiz kuchliroq bo‘ladi. Yetarli suv ichmasak, chanqaymiz. Har kuni o‘qisak, yangi narsalarni o‘rganamiz. Yaxshi odatlar yaxshiroq hayot kechirishimizga yordam beradi.";
+
+const listeningTwo =
+"Nature follows many simple rules. If the sun heats water, the water evaporates. If water gets very cold, it freezes. If ice gets warm, it melts. Plants need sunlight, water and good soil. If plants do not get enough light, they do not grow well. These facts help us understand our environment.";
+
+const listeningTwoUz =
+"Tabiat ko‘plab oddiy qoidalarga amal qiladi. Quyosh suvni isitsa, suv bug‘lanadi. Suv juda sovuq bo‘lsa, muzlaydi. Muz isisa, eriydi. O‘simliklarga quyosh nuri, suv va yaxshi tuproq kerak. O‘simliklar yetarli yorug‘lik olmasa, yaxshi o‘smaydi. Bu faktlar atrof-muhitni tushunishimizga yordam beradi.";
+
+document.getElementById("listeningOneText").textContent=listeningOne;
+document.getElementById("listeningOneUz").textContent=listeningOneUz;
+document.getElementById("listeningTwoText").textContent=listeningTwo;
+document.getElementById("listeningTwoUz").textContent=listeningTwoUz;
+
+const listeningOneData=[
+  {
+    q:"What happens if we wake up early?",
+    a:["We have more time","We get hungry","We sleep all day"],
+    c:0
+  },
+  {
+    q:"What happens if we eat healthy food?",
+    a:["We feel worse","We feel better","We get thirsty"],
+    c:1
+  },
+  {
+    q:"What makes our bodies stronger?",
+    a:["Watching TV","Sleeping late","Regular exercise"],
+    c:2
+  },
+  {
+    q:"What happens if we do not drink enough water?",
+    a:["We get thirsty","We get cold","We get sleepy"],
+    c:0
+  },
+  {
+    q:"How do we learn new things?",
+    a:["By avoiding books","By studying every day","By sleeping"],
+    c:1
+  }
+];
+
+const listeningTwoData=[
+  {
+    q:"What happens if the sun heats water?",
+    a:["It freezes","It evaporates","It becomes ice"],
+    c:1
+  },
+  {
+    q:"What happens if water gets very cold?",
+    a:["It freezes","It boils","It disappears"],
+    c:0
+  },
+  {
+    q:"What happens if ice gets warm?",
+    a:["It grows","It freezes","It melts"],
+    c:2
+  },
+  {
+    q:"What do plants need?",
+    a:["Only smoke","Sunlight, water and good soil","Only cold air"],
+    c:1
+  },
+  {
+    q:"What happens if plants do not get enough light?",
+    a:["They grow faster","They do not grow well","They become animals"],
+    c:1
+  }
+];
+
+function renderQuestions(data,id) {
+  document.getElementById(id).innerHTML=data.map((item,index)=>`
+    <div class="question">
+      <strong>${index+1}. ${item.q}</strong>
+      ${item.a.map((answer,i)=>`
+        <label>
+          <input type="radio" name="${id}_${index}" value="${i}">
+          ${answer}
+        </label>
+      `).join("")}
+    </div>
+  `).join("");
+}
+
+function checkData(data,id,resultId) {
+  let score=0;
+
+  data.forEach((item,index)=>{
+    const selected=document.querySelector(
+      `input[name="${id}_${index}"]:checked`
+    );
+
+    if(selected && Number(selected.value)===item.c) {
+      score++;
+    }
+  });
+
+  const result=document.getElementById(resultId);
+  result.classList.remove("hidden");
+  result.innerHTML=`<strong>Natija: ${score}/${data.length}</strong>
+    <p>${score>=4?"Ajoyib! Yaxshi ishladingiz!":"Yana bir marta tinglang va qayta urinib ko‘ring."}</p>`;
+}
+
+function checkListeningOne() {
+  checkData(listeningOneData,"listeningOneQuestions","listeningOneResult");
+}
+
+function checkListeningTwo() {
+  checkData(listeningTwoData,"listeningTwoQuestions","listeningTwoResult");
+}
+
+renderQuestions(listeningOneData,"listeningOneQuestions");
+renderQuestions(listeningTwoData,"listeningTwoQuestions");
+
+const dialogueOne=[
+  {
+    speaker:"Ali",
+    english:"What do you do if you feel tired?",
+    uzbek:"Charchoq his qilsang nima qilasan?"
+  },
+  {
+    speaker:"Tom",
+    english:"If I feel tired, I take a short break.",
+    uzbek:"Agar charchasam, qisqa tanaffus qilaman."
+  },
+  {
+    speaker:"Ali",
+    english:"What happens if you don't sleep enough?",
+    uzbek:"Yetarlicha uxlamasang nima bo‘ladi?"
+  },
+  {
+    speaker:"Tom",
+    english:"If I don't sleep enough, I feel sleepy during the day.",
+    uzbek:"Yetarlicha uxlamasam, kunduzi uyqum keladi."
+  },
+  {
+    speaker:"Ali",
+    english:"Do you feel better if you exercise?",
+    uzbek:"Mashq qilsang, o‘zingni yaxshiroq his qilasanmi?"
+  },
+  {
+    speaker:"Tom",
+    english:"Yes. If I exercise regularly, I feel stronger.",
+    uzbek:"Ha. Muntazam mashq qilsam, o‘zimni kuchliroq his qilaman."
+  }
+];
+
+const dialogueTwo=[
+  {
+    speaker:"Teacher",
+    english:"What happens if water gets very cold?",
+    uzbek:"Suv juda sovuq bo‘lsa, nima sodir bo‘ladi?"
+  },
+  {
+    speaker:"Student",
+    english:"If water gets very cold, it freezes.",
+    uzbek:"Suv juda sovuq bo‘lsa, muzlaydi."
+  },
+  {
+    speaker:"Teacher",
+    english:"What happens if ice gets warm?",
+    uzbek:"Muz isisa, nima sodir bo‘ladi?"
+  },
+  {
+    speaker:"Student",
+    english:"If ice gets warm, it melts.",
+    uzbek:"Muz isisa, eriydi."
+  },
+  {
+    speaker:"Teacher",
+    english:"What do plants need to grow?",
+    uzbek:"O‘simliklar o‘sishi uchun nimaga muhtoj?"
+  },
+  {
+    speaker:"Student",
+    english:"If plants get enough water and sunlight, they grow well.",
+    uzbek:"O‘simliklar yetarli suv va quyosh nuri olsa, yaxshi o‘sadi."
+  }
+];
+
+function renderDialogue(data,id) {
+  document.getElementById(id).innerHTML=data.map((line,index)=>`
+    <div class="dialogue-line">
+      <div class="dialogue-speaker">${line.speaker}</div>
+      <p>${line.english}</p>
+      <p class="translation">${line.uzbek}</p>
+      <button class="btn btn-light" onclick="speak(${JSON.stringify(line.english).replace(/'/g,"&#39;")})">🔊 Listen</button>
+    </div>
+  `).join("");
+}
+
+const dialogueOneAudio=dialogueOne.map(x=>x.speaker+". "+x.english).join(". ");
+const dialogueTwoAudio=dialogueTwo.map(x=>x.speaker+". "+x.english).join(". ");
+
+renderDialogue(dialogueOne,"dialogueOne");
+renderDialogue(dialogueTwo,"dialogueTwo");
+
+const dialogueOneQuestions=[
+  {q:"What does Tom do if he feels tired?",a:["He takes a short break","He runs","He drinks coffee"],c:0},
+  {q:"What happens if Tom does not sleep enough?",a:["He feels happy","He feels sleepy","He feels hungry"],c:1},
+  {q:"When does Tom feel stronger?",a:["When he watches TV","When he sleeps late","When he exercises regularly"],c:2},
+  {q:"Who asks the questions?",a:["Tom","Ali","The teacher"],c:1},
+  {q:"What is the dialogue mainly about?",a:["Daily habits","Travelling","Shopping"],c:0}
+];
+
+const dialogueTwoQuestions=[
+  {q:"What happens if water gets very cold?",a:["It freezes","It burns","It grows"],c:0},
+  {q:"What happens if ice gets warm?",a:["It gets bigger","It melts","It freezes"],c:1},
+  {q:"What do plants need?",a:["Sunlight and water","Only smoke","Only stones"],c:0},
+  {q:"Who explains the facts?",a:["The student","The teacher","Ali"],c:1},
+  {q:"Which grammar is used?",a:["Past Perfect","Zero Conditional","Future Continuous"],c:1}
+];
+
+renderQuestions(dialogueOneQuestions,"dialogueOneQuestions");
+renderQuestions(dialogueTwoQuestions,"dialogueTwoQuestions");
+
+function checkDialogueOne() {
+  checkData(dialogueOneQuestions,"dialogueOneQuestions","dialogueOneResult");
+}
+
+function checkDialogueTwo() {
+  checkData(dialogueTwoQuestions,"dialogueTwoQuestions","dialogueTwoResult");
+}
+
+const readingText=
+"Nature is very important in our lives. The sun gives us light and heat. If the sun shines, plants get energy. If plants get enough water, they grow well. If the weather gets very cold, some water freezes. When the weather becomes warm, ice melts. People also follow daily habits. If we eat healthy food, we feel better. If we exercise regularly, our bodies become stronger. If we study every day, we learn more. We can understand the world better if we observe nature and ask questions.";
+
+const readingUzbek=
+"Tabiat hayotimizda juda muhim. Quyosh bizga yorug‘lik va issiqlik beradi. Quyosh nur sochsa, o‘simliklar energiya oladi. O‘simliklar yetarli suv olsa, yaxshi o‘sadi. Havo juda sovuq bo‘lsa, suv muzlaydi. Havo isiganda, muz eriydi. Odamlar ham kundalik odatlarga amal qiladi. Sog‘lom ovqat yesak, o‘zimizni yaxshiroq his qilamiz. Muntazam mashq qilsak, tanamiz kuchliroq bo‘ladi. Har kuni o‘qisak, ko‘proq o‘rganamiz. Tabiatni kuzatib, savollar bersak, dunyoni yaxshiroq tushunamiz.";
+
+document.getElementById("readingEnglish").textContent=readingText;
+document.getElementById("readingUzbek").textContent=readingUzbek;
+
+const readingQuestions=[
+  {q:"What does the sun give us?",a:["Rain and snow","Light and heat","Food"],c:1},
+  {q:"What happens if plants get enough water?",a:["They grow well","They freeze","They disappear"],c:0},
+  {q:"When does ice melt?",a:["When it gets warm","When it gets colder","When it gets dark"],c:0},
+  {q:"What helps our bodies become stronger?",a:["Eating sweets only","Regular exercise","Watching television"],c:1},
+  {q:"How can we understand the world better?",a:["By avoiding questions","By sleeping all day","By observing nature and asking questions"],c:2},
+  {q:"Which sentence is Zero Conditional?",a:["I went home yesterday.","If plants get water, they grow.","I will travel tomorrow."],c:1},
+  {q:"What do plants get from sunlight?",a:["Energy","Shoes","Books"],c:0},
+  {q:"What happens if we study every day?",a:["We learn more","We forget everything","We stop learning"],c:0},
+  {q:"What is the main topic?",a:["Nature and daily habits","Sports","Shopping"],c:0},
+  {q:"What happens when the weather becomes warm?",a:["Ice melts","Water freezes","Plants disappear"],c:0}
+];
+
+renderQuestions(readingQuestions,"readingQuestions");
+
+function checkReading() {
+  checkData(readingQuestions,"readingQuestions","readingResult");
+}
+
+const speakingData=[
+  "What happens if you wake up early?",
+  "What do you do if you feel tired?",
+  "What happens if people do not drink water?",
+  "What happens if ice gets warm?",
+  "What do plants need to grow?",
+  "What happens if you study every day?",
+  "What do you do when it rains?",
+  "What happens if people eat too much?",
+  "What happens if water freezes?",
+  "What do you do if you feel hungry?",
+  "What happens if the sun goes down?",
+  "What happens if you do not sleep enough?",
+  "What happens if you mix blue and yellow?",
+  "What do you do when you get home?",
+  "What good habits help people learn English?"
+];
+
+document.getElementById("speakingQuestions").innerHTML=
+  speakingData.map((q,i)=>`
+    <div class="question">
+      <strong>${i+1}. ${q}</strong>
+      <button class="btn btn-light" onclick="speak(${JSON.stringify(q)})">🔊 Listen</button>
+      <textarea placeholder="Write your answer..."></textarea>
+    </div>
+  `).join("");
+
+const writingTranslations=[
+  "Agar suvni isitsangiz, u qaynaydi.",
+  "Agar muz isisa, eriydi.",
+  "Agar yomg‘ir yog‘sa, yer ho‘l bo‘ladi.",
+  "Agar men erta tursam, ko‘proq vaqtim bo‘ladi.",
+  "Agar odamlar mashq qilsa, sog‘lom bo‘lishadi.",
+  "Agar o‘simliklar suv olmasa, ular quriydi.",
+  "Agar havo sovuq bo‘lsa, suv muzlaydi.",
+  "Agar kech uxlasam, charchayman.",
+  "Agar ko‘k va sariqni aralashtirsangiz, yashil hosil bo‘ladi.",
+  "Agar har kuni o‘qisangiz, ko‘proq o‘rganasiz."
+];
+
+document.getElementById("writingTranslations").innerHTML=
+  writingTranslations.map(x=>`<li>${x}</li>`).join("");
+
+const writingCorrections=[
+  "If water heat, it boil.",
+  "If she don't sleep, she feels tired.",
+  "If plants gets water, they grow.",
+  "If it rain, the ground gets wet.",
+  "If he study, he learns.",
+  "If ice get warm, it melts.",
+  "If I doesn't eat, I get hungry.",
+  "If people exercises, they feel better.",
+  "If water freeze, it becomes ice.",
+  "If the sun shine, it gets warm."
+];
+
+document.getElementById("writingCorrections").innerHTML=
+  writingCorrections.map(x=>`<li>${x}</li>`).join("");
+
+const grammarTestData=[
+  {q:"Which formula is correct?",a:["If + Past Simple, will","If + Present Simple, Present Simple","If + Present Perfect, would"],c:1},
+  {q:"If water reaches 100°C, it ____.",a:["boil","boils","boiling"],c:1},
+  {q:"If ice gets warm, it ____.",a:["melt","melts","melting"],c:1},
+  {q:"Which auxiliary is used with he in negative Present Simple?",a:["do not","does not","did not"],c:1},
+  {q:"Choose the correct sentence.",a:["If she study, she learns.","If she studies, she learns.","If she studies, she learn."],c:1},
+  {q:"What does Zero Conditional describe?",a:["General truths","Only past events","Unreal past"],c:0},
+  {q:"If you don't eat, you ____ hungry.",a:["gets","got","get"],c:2},
+  {q:"Choose the correct negative sentence.",a:["If he doesn't work, he doesn't earn money.","If he don't works, he doesn't earns money.","If he not work, he no earn money."],c:0},
+  {q:"Which word means 'agar'?",a:["When","If","Because"],c:1},
+  {q:"What happens if water freezes?",a:["It becomes ice.","It becomes fire.","It becomes air."],c:0},
+  {q:"If plants don't get water, they ____.",a:["dies","die","dying"],c:1},
+  {q:"Which sentence is correct?",a:["If I am tired, I rest.","If I tired, I rests.","If I be tired, I rest."],c:0},
+  {q:"Which tense is used in both parts?",a:["Present Simple","Past Simple","Future Simple"],c:0},
+  {q:"If you mix red and blue, you ____ purple.",a:["gets","get","getting"],c:1},
+  {q:"Choose the correct question.",a:["Does he gets tired?","Do he get tired?","Does he get tired?"],c:2},
+  {q:"Where do we put a comma?",a:["Usually after an opening If-clause","After every verb","Never"],c:0},
+  {q:"Which sentence uses Zero Conditional?",a:["If it rains tomorrow, I will stay home.","If water gets cold, it freezes.","I went home yesterday."],c:1},
+  {q:"When can we use 'when'?",a:["For repeated situations","Only for the past","Only for commands"],c:0},
+  {q:"If she doesn't study, she ____ the information.",a:["don't understand","doesn't understand","doesn't understands"],c:1},
+  {q:"Choose the correct sentence.",a:["The ground gets wet if it rains.","The ground get wet if it rains.","The ground getting wet if it rain."],c:0}
+];
+
+const vocabTestData=[
+  {q:"What does 'heat' mean?",a:["sovutmoq","isitmoq","yuvmoq"],c:1},
+  {q:"What does 'boil' mean?",a:["qaynamoq","muzlamoq","qurimoq"],c:0},
+  {q:"What does 'melt' mean?",a:["o‘smoq","erimoq","uchmoq"],c:1},
+  {q:"What does 'freeze' mean?",a:["muzlamoq","aralashtirmoq","porlamoq"],c:0},
+  {q:"What does 'grow' mean?",a:["uxlamoq","o‘smoq","ichmoq"],c:1},
+  {q:"What does 'shine' mean?",a:["porlamoq","yugurmoq","yemoq"],c:0},
+  {q:"What does 'soil' mean?",a:["havo","tuproq","suv"],c:1},
+  {q:"What does 'light' mean?",a:["yorug‘lik","qorong‘ilik","tutun"],c:0},
+  {q:"What does 'temperature' mean?",a:["natija","harorat","odat"],c:1},
+  {q:"What does 'healthy' mean?",a:["sog‘lom","och","charchagan"],c:0},
+  {q:"What does 'hungry' mean?",a:["chanqagan","och","sog‘lom"],c:1},
+  {q:"What does 'thirsty' mean?",a:["chanqagan","charchagan","uyquchan"],c:0},
+  {q:"What does 'breathe' mean?",a:["aralashtirmoq","nafas olmoq","qizdirmoq"],c:1},
+  {q:"What does 'environment' mean?",a:["atrof-muhit","energiya","harorat"],c:0},
+  {q:"What does 'pollute' mean?",a:["sug‘ormoq","ifloslantirmoq","o‘stirmoq"],c:1},
+  {q:"What does 'earth' mean?",a:["Yer","Oy","Quyosh"],c:0},
+  {q:"What does 'energy' mean?",a:["odat","energiya","natija"],c:1},
+  {q:"What does 'habit' mean?",a:["odat","fakt","havo"],c:0},
+  {q:"What does 'result' mean?",a:["tuproq","natija","gul"],c:1},
+  {q:"What does 'fact' mean?",a:["haqiqat","qorong‘i","tutun"],c:0}
+];
+
+function renderTest(data,id) {
+  document.getElementById(id).innerHTML=data.map((item,index)=>`
+    <div class="question">
+      <strong>${index+1}. ${item.q}</strong>
+      ${item.a.map((a,i)=>`
+        <label>
+          <input type="radio" name="${id}_${index}" value="${i}">
+          ${a}
+        </label>
+      `).join("")}
+    </div>
+  `).join("");
+}
+
+renderTest(grammarTestData,"grammarQuestions");
+renderTest(vocabTestData,"vocabQuestions");
+
+function checkTest(id,resultId) {
+  const data=id==="grammarQuestions"?grammarTestData:vocabTestData;
+  let score=0;
+  let unanswered=0;
+
+  data.forEach((item,index)=>{
+    const selected=document.querySelector(
+      `input[name="${id}_${index}"]:checked`
+    );
+
+    if(!selected) {
+      unanswered++;
+    } else if(Number(selected.value)===item.c) {
+      score++;
+    }
+  });
+
+  const percentage=Math.round(score/data.length*100);
+  const result=document.getElementById(resultId);
+
+  result.classList.remove("hidden");
+  result.innerHTML=`
+    <h3>Test natijasi</h3>
+    <p><strong>${score} / ${data.length}</strong></p>
+    <p>Foiz: ${percentage}%</p>
+    <p>${unanswered>0?"Javob berilmagan savollar: "+unanswered:"Barcha savollarga javob berdingiz!"}</p>
+    <p>${percentage>=80?"Ajoyib natija! Davom eting!":"Yana takrorlang va qayta urinib ko‘ring."}</p>
+  `;
+}
+
+function showTest(id,button) {
+  document.getElementById("grammarTest").classList.add("hidden");
+  document.getElementById("vocabTest").classList.add("hidden");
+  document.getElementById(id).classList.remove("hidden");
+
+  document.querySelectorAll(".tabs .tab").forEach(tab=>{
+    tab.classList.remove("active");
+  });
+
+  button.classList.add("active");
+}
+
+const homeworkItems=[
+  "20 ta Zero Conditional gap yozdim.",
+  "15 ta tarjima mashqini bajardim.",
+  "10 ta xatoni tuzatdim.",
+  "150–180 so‘zli Writing yozdim.",
+  "10 ta Speaking savoliga javob berdim.",
+  "40 ta yangi so‘zni takrorladim.",
+  "Ikki dialogni qayta tingladim.",
+  "Listening matnlarini qayta o‘qidim."
+];
+
+let homeworkDone=JSON.parse(
+  localStorage.getItem("eu14homework")||"[]"
+);
+
+function renderHomework() {
+  document.getElementById("homeworkChecklist").innerHTML=
+    homeworkItems.map((item,index)=>`
+      <label style="display:block;padding:10px;border-bottom:1px solid var(--border)">
+        <input type="checkbox"
+          ${homeworkDone.includes(index)?"checked":""}
+          onchange="toggleHomework(${index},this.checked)">
+        ${item}
+      </label>
+    `).join("");
+
+  const count=homeworkDone.length;
+  document.getElementById("homeworkCount").textContent=
+    `${count} / 8 completed`;
+
+  document.getElementById("homeworkProgress").style.width=
+    (count/8*100)+"%";
+}
+
+function toggleHomework(index,checked) {
+  if(checked && !homeworkDone.includes(index)) {
+    homeworkDone.push(index);
+  }
+
+  if(!checked) {
+    homeworkDone=homeworkDone.filter(x=>x!==index);
+  }
+
+  localStorage.setItem("eu14homework",JSON.stringify(homeworkDone));
+  renderHomework();
+}
+
+renderVocabulary();
+renderHomework();
+
+</script>
+
+</body>
+</html>
