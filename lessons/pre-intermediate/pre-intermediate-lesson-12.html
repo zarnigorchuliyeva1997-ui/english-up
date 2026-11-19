@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -7,346 +8,215 @@
 <title>Lesson 12 — Modal Verbs | English Up</title>
 
 <style>
-:root {
-  --primary:#7047eb;
-  --primary-dark:#5632c7;
-  --bg:#f5f3ff;
-  --card:#ffffff;
-  --text:#24213a;
-  --muted:#77738c;
-  --border:#e6e1f5;
-  --success:#168653;
-  --danger:#d94343;
-  --warning:#f2a900;
-  --shadow:0 5px 22px rgba(60,40,120,.09);
+:root{
+ --primary:#7047eb;
+ --primary-dark:#5632c8;
+ --bg:#f5f3ff;
+ --card:#ffffff;
+ --text:#24213a;
+ --muted:#77738b;
+ --border:#e7e2f5;
+ --success:#159b68;
+ --danger:#e34c63;
+ --warning:#e69b28;
+ --shadow:0 5px 20px rgba(75,50,140,.08);
 }
-
-body.dark {
-  --bg:#171526;
-  --card:#242137;
-  --text:#f4f1ff;
-  --muted:#b5aecb;
-  --border:#39344f;
-  --shadow:0 5px 22px rgba(0,0,0,.2);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.7;
 }
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{
+ background:linear-gradient(135deg,#7047eb,#9877ff);
+ color:white;
+ padding:22px 16px;
+ text-align:center;
 }
-
-body {
-  font-family:Arial, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
-  transition:.25s;
+header h1{margin:0;font-size:27px}
+header p{margin:6px 0 0;font-size:14px}
+.container{
+ max-width:950px;
+ margin:auto;
+ padding:15px;
 }
-
-button {
-  cursor:pointer;
-  border:none;
-  font:inherit;
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:16px;
+ padding:19px;
+ margin-bottom:17px;
+ box-shadow:var(--shadow);
 }
-
-header {
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  padding:14px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  position:sticky;
-  top:0;
-  z-index:20;
+h2{font-size:21px;margin-top:0;color:var(--primary)}
+h3{font-size:18px;color:var(--primary-dark)}
+p{margin:9px 0}
+.nav{
+ display:flex;
+ gap:8px;
+ overflow-x:auto;
+ padding:12px;
+ background:white;
+ position:sticky;
+ top:0;
+ z-index:10;
+ border-bottom:1px solid var(--border);
 }
-
-.logo {
-  font-size:21px;
-  font-weight:900;
-  color:var(--primary);
-  letter-spacing:1px;
+.nav button{
+ flex-shrink:0;
+ border:0;
+ background:#f0ebff;
+ color:var(--primary-dark);
+ padding:9px 14px;
+ border-radius:20px;
+ font-size:13px;
+ font-weight:bold;
 }
-
-.header-actions {
-  display:flex;
-  gap:8px;
+.nav button:hover{background:var(--primary);color:white}
+.badge{
+ display:inline-block;
+ background:#eee8ff;
+ color:#603ac9;
+ border-radius:20px;
+ padding:4px 11px;
+ font-size:12px;
+ font-weight:bold;
 }
-
-.header-actions button {
-  padding:9px 13px;
-  border-radius:10px;
-  background:var(--bg);
-  color:var(--text);
+.rule{
+ background:#f4f0ff;
+ border-left:4px solid var(--primary);
+ padding:13px;
+ border-radius:8px;
+ margin:12px 0;
 }
-
-.container {
-  width:min(1000px,92%);
-  margin:25px auto;
+.formula{
+ background:#25213b;
+ color:#fff;
+ padding:13px;
+ border-radius:9px;
+ text-align:center;
+ font-weight:bold;
+ margin:10px 0;
 }
-
-.hero {
-  background:linear-gradient(135deg,#7047eb,#9a72f5);
-  color:white;
-  padding:35px 25px;
-  border-radius:22px;
-  box-shadow:var(--shadow);
-  margin-bottom:25px;
+.example{
+ background:#f7f5ff;
+ border:1px solid #e6dfff;
+ padding:12px;
+ border-radius:9px;
+ margin:9px 0;
 }
-
-.hero h1 {
-  font-size:clamp(27px,5vw,40px);
-  margin-bottom:10px;
+.example strong{color:var(--primary-dark)}
+.translation{color:var(--muted);font-size:14px}
+.write{
+ background:#fff9e9;
+ border-left:4px solid var(--warning);
+ padding:13px;
+ border-radius:8px;
+ margin:12px 0;
 }
-
-.hero p {
-  opacity:.95;
+.note{
+ background:#eaf8f1;
+ border-left:4px solid var(--success);
+ padding:12px;
+ border-radius:8px;
+ margin:12px 0;
 }
-
-.hero-tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:18px;
+.warning{
+ background:#fff0f1;
+ border-left:4px solid var(--danger);
+ padding:12px;
+ border-radius:8px;
+ margin:12px 0;
 }
-
-.hero-tags span {
-  background:rgba(255,255,255,.2);
-  padding:6px 12px;
-  border-radius:30px;
-  font-size:13px;
+.primary-btn{
+ background:var(--primary);
+ color:white;
+ border:0;
+ border-radius:9px;
+ padding:11px 17px;
+ font-weight:bold;
 }
-
-.progress-card {
-  background:var(--card);
-  padding:18px;
-  border-radius:16px;
-  margin-bottom:22px;
-  box-shadow:var(--shadow);
+.secondary-btn{
+ background:#eee8ff;
+ color:var(--primary-dark);
+ border:0;
+ border-radius:9px;
+ padding:10px 15px;
+ font-weight:bold;
 }
-
-.progress-line {
-  height:10px;
-  background:var(--border);
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:10px;
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:12px;
 }
-
-.progress-fill {
-  width:0%;
-  height:100%;
-  background:var(--primary);
-  transition:.3s;
+.structure{
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:13px;
+ background:white;
 }
-
-.section {
-  background:var(--card);
-  padding:24px;
-  border:1px solid var(--border);
-  border-radius:18px;
-  margin-bottom:22px;
-  box-shadow:var(--shadow);
+.structure h3{margin-top:0}
+table{
+ width:100%;
+ border-collapse:collapse;
+ margin:12px 0;
+ font-size:14px;
 }
-
-.section h2 {
-  color:var(--primary);
-  margin-bottom:15px;
-  font-size:24px;
+th,td{
+ border:1px solid var(--border);
+ padding:10px;
+ text-align:left;
 }
-
-.section h3 {
-  margin:20px 0 10px;
-  font-size:19px;
+th{background:#eee8ff;color:#5632c8}
+.lesson-section{scroll-margin-top:75px}
+.hidden{display:none}
+.progress-track{
+ background:#e9e3f8;
+ height:9px;
+ border-radius:10px;
+ overflow:hidden;
 }
-
-.section p {
-  margin:9px 0;
+.progress-bar{
+ height:100%;
+ width:0%;
+ background:var(--primary);
+ transition:.3s;
 }
-
-.rule {
-  background:var(--bg);
-  border-left:5px solid var(--primary);
-  padding:15px;
-  border-radius:10px;
-  margin:13px 0;
+.quiz-option{
+ display:block;
+ width:100%;
+ text-align:left;
+ padding:12px;
+ border:1px solid var(--border);
+ background:white;
+ border-radius:9px;
+ margin:8px 0;
 }
-
-.formula {
-  background:#eee8ff;
-  color:#4826a7;
-  padding:13px;
-  border-radius:10px;
-  font-weight:bold;
-  text-align:center;
-  margin:12px 0;
-  overflow-wrap:anywhere;
+.quiz-option:hover{border-color:var(--primary)}
+.quiz-option.correct{background:#e5f8ef;border-color:var(--success)}
+.quiz-option.wrong{background:#fff0f1;border-color:var(--danger)}
+input[type=text]{
+ width:100%;
+ padding:12px;
+ border:1px solid var(--border);
+ border-radius:8px;
+ margin:7px 0;
 }
-
-body.dark .formula {
-  background:#352b55;
-  color:#e1d5ff;
+footer{
+ text-align:center;
+ padding:25px;
+ color:var(--muted);
+ font-size:13px;
 }
-
-.note {
-  background:#fff4d9;
-  color:#674800;
-  padding:15px;
-  border-radius:12px;
-  margin:15px 0;
-}
-
-body.dark .note {
-  background:#493c20;
-  color:#ffe5a1;
-}
-
-.example {
-  padding:12px 14px;
-  background:var(--bg);
-  border-radius:10px;
-  margin:10px 0;
-}
-
-.example strong {
-  color:var(--primary);
-}
-
-.translation {
-  color:var(--muted);
-  font-size:14px;
-}
-
-.write-box {
-  border:2px dashed var(--primary);
-  padding:16px;
-  border-radius:12px;
-  margin:15px 0;
-}
-
-.write-box strong {
-  color:var(--primary);
-}
-
-.action {
-  background:var(--primary);
-  color:white;
-  padding:10px 16px;
-  border-radius:10px;
-  margin:6px 3px 6px 0;
-}
-
-.action:hover {
-  background:var(--primary-dark);
-}
-
-.secondary {
-  background:var(--bg);
-  color:var(--text);
-  border:1px solid var(--border);
-}
-
-.word-grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-}
-
-.word {
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:12px;
-}
-
-.word b {
-  color:var(--primary);
-}
-
-.word small {
-  display:block;
-  color:var(--muted);
-}
-
-.quiz-question {
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:16px;
-  margin:14px 0;
-}
-
-.quiz-question p {
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
-.option {
-  display:block;
-  padding:9px 12px;
-  margin:7px 0;
-  background:var(--bg);
-  border-radius:9px;
-  cursor:pointer;
-}
-
-.option input {
-  margin-right:8px;
-}
-
-.feedback {
-  font-size:14px;
-  margin-top:8px;
-  font-weight:bold;
-}
-
-.correct {
-  color:var(--success);
-}
-
-.incorrect {
-  color:var(--danger);
-}
-
-textarea, input[type="text"] {
-  width:100%;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--bg);
-  color:var(--text);
-  font:inherit;
-  margin:8px 0;
-}
-
-footer {
-  text-align:center;
-  padding:30px 10px;
-  color:var(--muted);
-}
-
-@media(max-width:600px) {
-  .container {
-    width:94%;
-    margin:15px auto;
-  }
-
-  .section {
-    padding:17px;
-  }
-
-  .word-grid {
-    grid-template-columns:1fr;
-  }
-
-  .hero {
-    padding:25px 18px;
-  }
-
-  header {
-    padding:12px 3%;
-  }
+@media(max-width:600px){
+ header h1{font-size:23px}
+ .card{padding:15px}
+ h2{font-size:19px}
 }
 </style>
 </head>
@@ -354,2297 +224,1294 @@ footer {
 <body>
 
 <header>
-  <div class="logo">ENGLISH UP</div>
-  <div class="header-actions">
-    <button onclick="history.back()">← Back</button>
-    <button onclick="toggleTheme()">🌙</button>
-  </div>
+ <span class="badge">ENGLISH UP • PRE-INTERMEDIATE</span>
+ <h1>LESSON 12 — MODAL VERBS</h1>
+ <p>Should • Must • Have to • Might • May</p>
+ <p>Grammar | Vocabulary | Listening | Reading | Writing | Speaking</p>
 </header>
+
+<nav class="nav">
+ <button onclick="go('intro')">Introduction</button>
+ <button onclick="go('grammar')">Grammar</button>
+ <button onclick="go('comparison')">Comparison</button>
+ <button onclick="go('vocabulary')">Vocabulary</button>
+ <button onclick="go('listening')">Listening</button>
+ <button onclick="go('reading')">Reading</button>
+ <button onclick="go('writing')">Writing</button>
+ <button onclick="go('speaking')">Speaking</button>
+ <button onclick="go('finaltest')">Final Test</button>
+</nav>
 
 <main class="container">
 
-<section class="hero">
-  <h1>Lesson 12: Modal Verbs</h1>
-  <p>Should • Must • Have to • Might</p>
-  <p>Bugungi darsda maslahat berish, majburiyatni ifodalash va ehtimol haqida gapirishni o‘rganamiz.</p>
-  <div class="hero-tags">
-    <span>Pre-Intermediate</span>
-    <span>Grammar</span>
-    <span>Vocabulary</span>
-    <span>4 Skills</span>
-    <span>Interactive Tests</span>
-  </div>
+<section id="intro" class="card lesson-section">
+ <h2>Welcome to Lesson 12!</h2>
+
+ <p>Assalomu alaykum! English Up platformasining 12-darsiga xush kelibsiz!</p>
+
+ <p>Bugungi darsimizda ingliz tilidagi juda muhim grammatik mavzulardan biri — <strong>Modal Verbs</strong>ni o‘rganamiz.</p>
+
+ <div class="rule">
+  Modal verbs — bu asosiy fe'lga qo‘shimcha ma'no beradigan yordamchi fe'llardir.
+  Ular maslahat, majburiyat, ruxsat, taqiq, imkoniyat va ehtimollikni ifodalashda ishlatiladi.
+ </div>
+
+ <h3>Nima uchun bu mavzu muhim?</h3>
+
+ <p>Kundalik hayotda biz doimo quyidagi fikrlarni bildiramiz:</p>
+
+ <div class="example">
+  <strong>You should study every day.</strong>
+  <p class="translation">Sen har kuni o‘qishing kerak (maslahat).</p>
+ </div>
+
+ <div class="example">
+  <strong>You must follow the rules.</strong>
+  <p class="translation">Sen qoidalarga rioya qilishing shart.</p>
+ </div>
+
+ <div class="example">
+  <strong>I might visit my friend tomorrow.</strong>
+  <p class="translation">Men ertaga do‘stimnikiga borishim mumkin.</p>
+ </div>
+
+ <h3>Bugungi dars maqsadlari</h3>
+ <ul>
+  <li>Modal verbs grammatikasini tushunish.</li>
+  <li>Har bir strukturani mustaqil tuza olish.</li>
+  <li>Ingliz tilidagi qoidalarni daftarga yozish.</li>
+  <li>Maslahat va majburiyatlarni ifodalash.</li>
+  <li>Ehtimollik haqida gapirish.</li>
+  <li>Real hayotdagi suhbatlarda modal verbs ishlatish.</li>
+ </ul>
+
+ <div class="write">
+  <strong>DAFTARGA YOZING!</strong>
+  <p>Modal verbs are auxiliary verbs that express ability, possibility, permission, advice, obligation and necessity.</p>
+  <p class="translation">Modal fe'llar qobiliyat, ehtimollik, ruxsat, maslahat, majburiyat va zaruratni ifodalovchi yordamchi fe'llardir.</p>
+ </div>
 </section>
 
-<section class="progress-card">
-  <strong>📊 Darsdagi rivojlanishingiz</strong>
-  <p id="progressText">0% bajarildi</p>
-  <div class="progress-line">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
+<section id="grammar" class="lesson-section">
+
+<div class="card">
+ <h2>PART 1 — GRAMMAR</h2>
+ <p>Har bir strukturani alohida o‘rganamiz. Formulalarni daftarga yozing va misollarni ovoz chiqarib o‘qing.</p>
+</div>
+
+<div class="card">
+ <h2>1. SHOULD — Maslahat berish</h2>
+
+ <span class="badge">Advice • Recommendation</span>
+
+ <h3>1.1. Should nima?</h3>
+
+ <p><strong>Should</strong> biror kishiga maslahat berish, tavsiya qilish yoki to‘g‘ri deb hisoblangan ishni aytish uchun ishlatiladi.</p>
+
+ <div class="rule">
+  We use SHOULD to give advice or make recommendations.
+  <p class="translation">Biz SHOULD dan maslahat berish yoki tavsiya qilish uchun foydalanamiz.</p>
+ </div>
+
+ <h3>1.2. Positive structure — Darak gap</h3>
+
+ <div class="formula">
+  Subject + SHOULD + V1 + Object
+ </div>
+
+ <p><strong>Formula izohi:</strong></p>
+ <ul>
+  <li><strong>Subject</strong> — ega (I, You, He, She, We, They).</li>
+  <li><strong>Should</strong> — maslahat bildiruvchi modal fe'l.</li>
+  <li><strong>V1</strong> — fe'lning birinchi shakli.</li>
+  <li><strong>Object</strong> — gapning to‘ldiruvchisi.</li>
+ </ul>
+
+ <div class="example">
+  <strong>1. You should drink more water.</strong>
+  <p class="translation">Sen ko‘proq suv ichishing kerak.</p>
+  <button class="secondary-btn" onclick="speak('You should drink more water.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. She should study English every day.</strong>
+  <p class="translation">U har kuni ingliz tilini o‘rganishi kerak.</p>
+  <button class="secondary-btn" onclick="speak('She should study English every day.')">🔊 Listen</button>
+ </div>
+
+ <h3>1.3. Negative structure — Inkor gap</h3>
+
+ <div class="formula">
+  Subject + SHOULD NOT + V1 + Object
+ </div>
+
+ <p>Should not qisqartirilgan shaklda shouldn't bo‘ladi.</p>
+
+ <div class="example">
+  <strong>1. You shouldn't eat too much fast food.</strong>
+  <p class="translation">Sen juda ko‘p tez tayyorlanadigan ovqat yemasliging kerak.</p>
+  <button class="secondary-btn" onclick="speak('You should not eat too much fast food.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. He shouldn't go to bed late.</strong>
+  <p class="translation">U kech uxlashga yotmasligi kerak.</p>
+  <button class="secondary-btn" onclick="speak('He should not go to bed late.')">🔊 Listen</button>
+ </div>
+
+ <h3>1.4. Question structure — So‘roq gap</h3>
+
+ <div class="formula">
+  SHOULD + Subject + V1 + Object + ?
+ </div>
+
+ <p>Should gap boshiga chiqadi va maslahat so‘rash uchun ishlatiladi.</p>
+
+ <div class="example">
+  <strong>1. Should I call the doctor?</strong>
+  <p class="translation">Men shifokorga qo‘ng‘iroq qilishim kerakmi?</p>
+  <button class="secondary-btn" onclick="speak('Should I call the doctor?')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. Should we start now?</strong>
+  <p class="translation">Biz hozir boshlashimiz kerakmi?</p>
+  <button class="secondary-btn" onclick="speak('Should we start now?')">🔊 Listen</button>
+ </div>
+
+ <h3>1.5. Short answers — Qisqa javoblar</h3>
+
+ <div class="formula">
+  Yes, Subject + should.
+  <br>
+  No, Subject + shouldn't.
+ </div>
+
+ <div class="example">
+  <strong>Should I learn new words?</strong>
+  <p>Yes, you should.</p>
+  <p class="translation">Ha, o‘rganishing kerak.</p>
+ </div>
+
+ <div class="example">
+  <strong>Should he drive so fast?</strong>
+  <p>No, he shouldn't.</p>
+  <p class="translation">Yo‘q, u bunday tez haydamasligi kerak.</p>
+ </div>
+
+ <div class="write">
+  <strong>DAFTARGA YOZING!</strong>
+  <p>We use should to give advice, make suggestions and express what is a good idea.</p>
+  <p>Structure: Subject + should + V1.</p>
+  <p>Negative: Subject + shouldn't + V1.</p>
+  <p>Question: Should + Subject + V1?</p>
+ </div>
+
+ <div class="warning">
+  <strong>MUHIM GRAMMATIK QOIDA!</strong>
+  <p>Should dan keyin fe'l doimo V1 shaklida keladi. He, She, It bilan ham fe'lga -s qo‘shilmaydi.</p>
+  <p><strong>Correct:</strong> She should work.</p>
+  <p><strong>Incorrect:</strong> She should works.</p>
+ </div>
+</div>
+
+<div class="card">
+ <h2>2. MUST — Kuchli majburiyat</h2>
+
+ <span class="badge">Strong Obligation</span>
+
+ <h3>2.1. Must nima?</h3>
+
+ <p><strong>Must</strong> kuchli majburiyat, zarurat yoki so‘zlovchi uchun juda muhim bo‘lgan talabni ifodalashda ishlatiladi.</p>
+
+ <div class="rule">
+  We use MUST to express strong obligation or necessity.
+  <p class="translation">Biz MUST dan kuchli majburiyat yoki zaruratni ifodalash uchun foydalanamiz.</p>
+ </div>
+
+ <h3>2.2. Positive structure — Darak gap</h3>
+
+ <div class="formula">
+  Subject + MUST + V1 + Object
+ </div>
+
+ <p><strong>Formula izohi:</strong></p>
+ <ul>
+  <li><strong>Subject</strong> — ish-harakatni bajaruvchi ega.</li>
+  <li><strong>Must</strong> — qat'iy majburiyat bildiradi.</li>
+  <li><strong>V1</strong> — fe'lning birinchi shakli.</li>
+  <li><strong>Object</strong> — to‘ldiruvchi.</li>
+ </ul>
+
+ <div class="example">
+  <strong>1. You must respect your parents.</strong>
+  <p class="translation">Sen ota-onangni hurmat qilishing shart.</p>
+  <button class="secondary-btn" onclick="speak('You must respect your parents.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. Students must complete their homework.</strong>
+  <p class="translation">O‘quvchilar uy vazifalarini bajarishlari shart.</p>
+  <button class="secondary-btn" onclick="speak('Students must complete their homework.')">🔊 Listen</button>
+ </div>
+
+ <h3>2.3. Negative structure — Qat'iy taqiq</h3>
+
+ <div class="formula">
+  Subject + MUST NOT + V1 + Object
+ </div>
+
+ <p>Must not qisqartirilgan shaklda mustn't bo‘ladi.</p>
+
+ <div class="warning">
+  <strong>DIQQAT!</strong>
+  <p>Mustn't — biror ishni qilish qat'iyan taqiqlanganini bildiradi. Bu don't have to bilan bir xil emas.</p>
+ </div>
+
+ <div class="example">
+  <strong>1. You mustn't smoke here.</strong>
+  <p class="translation">Bu yerda chekish qat'iyan taqiqlangan.</p>
+  <button class="secondary-btn" onclick="speak('You must not smoke here.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. Children mustn't play in the road.</strong>
+  <p class="translation">Bolalar yo‘lda o‘ynamasliklari kerak.</p>
+  <button class="secondary-btn" onclick="speak('Children must not play in the road.')">🔊 Listen</button>
+ </div>
+
+ <h3>2.4. Question structure — So‘roq gap</h3>
+
+ <div class="formula">
+  MUST + Subject + V1 + Object + ?
+ </div>
+
+ <div class="example">
+  <strong>1. Must I finish this work today?</strong>
+  <p class="translation">Men bu ishni bugun tugatishim shartmi?</p>
+  <button class="secondary-btn" onclick="speak('Must I finish this work today?')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. Must we wear uniforms?</strong>
+  <p class="translation">Biz forma kiyishimiz shartmi?</p>
+  <button class="secondary-btn" onclick="speak('Must we wear uniforms?')">🔊 Listen</button>
+ </div>
+
+ <h3>2.5. Short answers — Qisqa javoblar</h3>
+
+ <div class="formula">
+  Yes, Subject + must.
+  <br>
+  No, Subject + needn't.
+ </div>
+
+ <div class="example">
+  <strong>Must I attend the meeting?</strong>
+  <p>Yes, you must.</p>
+  <p class="translation">Ha, qatnashishing shart.</p>
+ </div>
+
+ <div class="example">
+  <strong>Must we leave now?</strong>
+  <p>No, you needn't.</p>
+  <p class="translation">Yo‘q, hozir ketishingiz shart emas.</p>
+ </div>
+
+ <div class="write">
+  <strong>DAFTARGA YOZING!</strong>
+  <p>We use must to express strong obligation, necessity and rules.</p>
+  <p>Structure: Subject + must + V1.</p>
+  <p>Negative: Subject + mustn't + V1.</p>
+  <p>Question: Must + Subject + V1?</p>
+ </div>
+
+ <div class="warning">
+  <strong>ESLAB QOLING!</strong>
+  <p>Must dan keyin do, does yoki did ishlatilmaydi.</p>
+  <p>Correct: He must study.</p>
+  <p>Incorrect: He must to study.</p>
+  <p>Incorrect: He must studies.</p>
+ </div>
+</div>
+
+<div class="card">
+ <h2>3. HAVE TO — Majburiyat va zarurat</h2>
+
+ <span class="badge">Obligation • Necessity</span>
+
+ <h3>3.1. Have to nima?</h3>
+
+ <p><strong>Have to</strong> tashqi qoida, ish, maktab, qonun yoki vaziyat sababli bajarilishi kerak bo‘lgan majburiyatni ifodalaydi.</p>
+
+ <div class="rule">
+  We use HAVE TO to talk about obligations and necessities, especially when they come from outside circumstances.
+  <p class="translation">Biz HAVE TO dan tashqi sharoit yoki qoidalar sababli yuzaga keladigan majburiyat va zaruratlarni ifodalash uchun foydalanamiz.</p>
+ </div>
+
+ <h3>3.2. Positive structure — Darak gap</h3>
+
+ <div class="formula">
+  I / You / We / They + HAVE TO + V1
+  <br>
+  He / She / It + HAS TO + V1
+ </div>
+
+ <p><strong>Formula izohi:</strong></p>
+ <ul>
+  <li><strong>I, You, We, They</strong> — HAVE TO ishlatadi.</li>
+  <li><strong>He, She, It</strong> — HAS TO ishlatadi.</li>
+  <li><strong>V1</strong> — fe'lning birinchi shakli.</li>
+ </ul>
+
+ <div class="example">
+  <strong>1. I have to wake up early every morning.</strong>
+  <p class="translation">Men har kuni ertalab erta uyg‘onishim kerak.</p>
+  <button class="secondary-btn" onclick="speak('I have to wake up early every morning.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. She has to wear a uniform at school.</strong>
+  <p class="translation">U maktabda forma kiyishi kerak.</p>
+  <button class="secondary-btn" onclick="speak('She has to wear a uniform at school.')">🔊 Listen</button>
+ </div>
+
+ <h3>3.3. Negative structure — Inkor gap</h3>
+
+ <div class="formula">
+  I / You / We / They + DON'T HAVE TO + V1
+  <br>
+  He / She / It + DOESN'T HAVE TO + V1
+ </div>
+
+ <p><strong>Don't have to</strong> va <strong>doesn't have to</strong> majburiyat yo‘qligini bildiradi.</p>
+
+ <div class="example">
+  <strong>1. I don't have to work on Sunday.</strong>
+  <p class="translation">Men yakshanba kuni ishlashim shart emas.</p>
+  <button class="secondary-btn" onclick="speak('I do not have to work on Sunday.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. He doesn't have to cook dinner today.</strong>
+  <p class="translation">U bugun kechki ovqat tayyorlashi shart emas.</p>
+  <button class="secondary-btn" onclick="speak('He does not have to cook dinner today.')">🔊 Listen</button>
+ </div>
+
+ <h3>3.4. Question structure — So‘roq gap</h3>
+
+ <div class="formula">
+  DO + I / YOU / WE / THEY + HAVE TO + V1?
+  <br>
+  DOES + HE / SHE / IT + HAVE TO + V1?
+ </div>
+
+ <div class="example">
+  <strong>1. Do you have to study tonight?</strong>
+  <p class="translation">Bugun kechqurun o‘qishing kerakmi?</p>
+  <button class="secondary-btn" onclick="speak('Do you have to study tonight?')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. Does she have to work tomorrow?</strong>
+  <p class="translation">U ertaga ishlashi kerakmi?</p>
+  <button class="secondary-btn" onclick="speak('Does she have to work tomorrow?')">🔊 Listen</button>
+ </div>
+
+ <h3>3.5. Short answers — Qisqa javoblar</h3>
+
+ <div class="formula">
+  Yes, I do. / No, I don't.
+  <br>
+  Yes, she does. / No, she doesn't.
+ </div>
+
+ <div class="example">
+  <strong>Do you have to get up early?</strong>
+  <p>Yes, I do.</p>
+  <p class="translation">Ha, shunday qilishim kerak.</p>
+ </div>
+
+ <div class="example">
+  <strong>Does he have to wear a uniform?</strong>
+  <p>No, he doesn't.</p>
+  <p class="translation">Yo‘q, unga forma kiyish shart emas.</p>
+ </div>
+
+ <div class="write">
+  <strong>DAFTARGA YOZING!</strong>
+  <p>We use have to to express obligations and necessities.</p>
+  <p>Positive: I have to work. / She has to work.</p>
+  <p>Negative: I don't have to work. / She doesn't have to work.</p>
+  <p>Question: Do you have to work? / Does she have to work?</p>
+ </div>
+
+ <div class="warning">
+  <strong>MUHIM!</strong>
+  <p>Doesn't dan keyin has to emas, have to ishlatiladi.</p>
+  <p>Correct: She doesn't have to go.</p>
+  <p>Incorrect: She doesn't has to go.</p>
+ </div>
+</div>
+
+<div class="card">
+ <h2>4. MIGHT — Ehtimollik</h2>
+
+ <span class="badge">Possibility</span>
+
+ <h3>4.1. Might nima?</h3>
+
+ <p><strong>Might</strong> kelajakda yoki hozir biror hodisa sodir bo‘lishi ehtimoli borligini, lekin bunga ishonch to‘liq emasligini ifodalaydi.</p>
+
+ <div class="rule">
+  We use MIGHT to talk about something that is possible but not certain.
+  <p class="translation">Biz MIGHT dan sodir bo‘lishi mumkin, lekin aniq bo‘lmagan vaziyatlarni ifodalash uchun foydalanamiz.</p>
+ </div>
+
+ <h3>4.2. Positive structure — Darak gap</h3>
+
+ <div class="formula">
+  Subject + MIGHT + V1 + Object
+ </div>
+
+ <p><strong>Formula izohi:</strong></p>
+ <ul>
+  <li><strong>Subject</strong> — ega.</li>
+  <li><strong>Might</strong> — ehtimollik bildiradi.</li>
+  <li><strong>V1</strong> — fe'lning birinchi shakli.</li>
+  <li><strong>Object</strong> — to‘ldiruvchi.</li>
+ </ul>
+
+ <div class="example">
+  <strong>1. It might rain tomorrow.</strong>
+  <p class="translation">Ertaga yomg‘ir yog‘ishi mumkin.</p>
+  <button class="secondary-btn" onclick="speak('It might rain tomorrow.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. I might visit my uncle this weekend.</strong>
+  <p class="translation">Men shu dam olish kunlari amakimnikiga borishim mumkin.</p>
+  <button class="secondary-btn" onclick="speak('I might visit my uncle this weekend.')">🔊 Listen</button>
+ </div>
+
+ <h3>4.3. Negative structure — Inkor gap</h3>
+
+ <div class="formula">
+  Subject + MIGHT NOT + V1 + Object
+ </div>
+
+ <div class="example">
+  <strong>1. She might not come to the party.</strong>
+  <p class="translation">U ziyofatga kelmasligi mumkin.</p>
+  <button class="secondary-btn" onclick="speak('She might not come to the party.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. We might not have enough time.</strong>
+  <p class="translation">Bizda yetarli vaqt bo‘lmasligi mumkin.</p>
+  <button class="secondary-btn" onclick="speak('We might not have enough time.')">🔊 Listen</button>
+ </div>
+
+ <h3>4.4. Question structure — So‘roq gap</h3>
+
+ <div class="formula">
+  MIGHT + Subject + V1 + Object + ?
+ </div>
+
+ <div class="example">
+  <strong>1. Might he be late?</strong>
+  <p class="translation">U kechikishi mumkinmi?</p>
+  <button class="secondary-btn" onclick="speak('Might he be late?')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. Might they need our help?</strong>
+  <p class="translation">Ularga bizning yordamimiz kerak bo‘lishi mumkinmi?</p>
+  <button class="secondary-btn" onclick="speak('Might they need our help?')">🔊 Listen</button>
+ </div>
+
+ <h3>4.5. Might be + noun/adjective</h3>
+
+ <div class="formula">
+  Subject + MIGHT BE + Noun / Adjective
+ </div>
+
+ <div class="example">
+  <strong>1. He might be tired.</strong>
+  <p class="translation">U charchagan bo‘lishi mumkin.</p>
+ </div>
+
+ <div class="example">
+  <strong>2. She might be a teacher.</strong>
+  <p class="translation">U o‘qituvchi bo‘lishi mumkin.</p>
+ </div>
+
+ <div class="write">
+  <strong>DAFTARGA YOZING!</strong>
+  <p>We use might to express possibility and uncertainty.</p>
+  <p>Positive: Subject + might + V1.</p>
+  <p>Negative: Subject + might not + V1.</p>
+  <p>Question: Might + Subject + V1?</p>
+ </div>
+
+ <div class="warning">
+  <strong>ESLAB QOLING!</strong>
+  <p>Might dan keyin to yoki fe'lning -s shakli ishlatilmaydi.</p>
+  <p>Correct: He might come.</p>
+  <p>Incorrect: He might to come.</p>
+  <p>Incorrect: He might comes.</p>
+ </div>
+</div>
+
+<div class="card">
+ <h2>5. MAY — Ehtimollik va ruxsat</h2>
+
+ <span class="badge">Possibility • Permission</span>
+
+ <h3>5.1. May nima?</h3>
+
+ <p><strong>May</strong> ikki asosiy ma'noda ishlatiladi:</p>
+ <ul>
+  <li>Ehtimollik — biror narsa sodir bo‘lishi mumkin.</li>
+  <li>Ruxsat — biror ishni qilishga ruxsat so‘rash yoki berish.</li>
+ </ul>
+
+ <h3>5.2. Positive structure — Darak gap</h3>
+
+ <div class="formula">
+  Subject + MAY + V1 + Object
+ </div>
+
+ <div class="example">
+  <strong>1. It may snow tonight.</strong>
+  <p class="translation">Bugun kechasi qor yog‘ishi mumkin.</p>
+  <button class="secondary-btn" onclick="speak('It may snow tonight.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. I may travel next month.</strong>
+  <p class="translation">Men keyingi oy sayohat qilishim mumkin.</p>
+  <button class="secondary-btn" onclick="speak('I may travel next month.')">🔊 Listen</button>
+ </div>
+
+ <h3>5.3. Negative structure — Inkor gap</h3>
+
+ <div class="formula">
+  Subject + MAY NOT + V1 + Object
+ </div>
+
+ <div class="example">
+  <strong>1. He may not know the answer.</strong>
+  <p class="translation">U javobni bilmasligi mumkin.</p>
+ </div>
+
+ <div class="example">
+  <strong>2. They may not arrive today.</strong>
+  <p class="translation">Ular bugun yetib kelmasliklari mumkin.</p>
+ </div>
+
+ <h3>5.4. Question structure — Ruxsat so‘rash</h3>
+
+ <div class="formula">
+  MAY + Subject + V1 + Object + ?
+ </div>
+
+ <div class="example">
+  <strong>1. May I come in?</strong>
+  <p class="translation">Kirsam maylimi?</p>
+  <button class="secondary-btn" onclick="speak('May I come in?')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. May I use your phone?</strong>
+  <p class="translation">Telefoningizdan foydalansam maylimi?</p>
+  <button class="secondary-btn" onclick="speak('May I use your phone?')">🔊 Listen</button>
+ </div>
+
+ <h3>5.5. Permission — Ruxsat berish</h3>
+
+ <div class="formula">
+  Subject + MAY + V1
+ </div>
+
+ <div class="example">
+  <strong>1. You may leave now.</strong>
+  <p class="translation">Siz hozir ketishingiz mumkin (ruxsat).</p>
+ </div>
+
+ <div class="example">
+  <strong>2. Students may use dictionaries.</strong>
+  <p class="translation">O‘quvchilar lug‘atlardan foydalanishlari mumkin.</p>
+ </div>
+
+ <div class="write">
+  <strong>DAFTARGA YOZING!</strong>
+  <p>We use may to express possibility and formal permission.</p>
+  <p>Positive: Subject + may + V1.</p>
+  <p>Negative: Subject + may not + V1.</p>
+  <p>Question: May + Subject + V1?</p>
+ </div>
+</div>
+
 </section>
 
-<section class="section" id="intro">
-  <h2>1. Welcome to today's lesson!</h2>
-
-  <p>Assalomu alaykum! English Up platformasining 12-darsiga xush kelibsiz!</p>
-
-  <p>Bugun biz ingliz tilida juda ko‘p ishlatiladigan modal fe'llarni o‘rganamiz.</p>
-
-  <p>Modal verbs kundalik suhbatlarda, ishda, o‘qishda va turli vaziyatlarda fikrimizni aniq ifodalashga yordam beradi.</p>
-
-  <h3>Bugungi darsning maqsadlari</h3>
-
-  <ul>
-    <li>Should yordamida maslahat berish.</li>
-    <li>Must yordamida kuchli majburiyatni ifodalash.</li>
-    <li>Have to yordamida zarurat va majburiyatni aytish.</li>
-    <li>Might yordamida ehtimolni ifodalash.</li>
-    <li>Modal fe'llar bilan darak, inkor va so‘roq gaplar tuzish.</li>
-    <li>Yangi so‘zlarni gaplarda ishlatish.</li>
-    <li>Reading, Listening, Speaking va Writing ko‘nikmalarini mashq qilish.</li>
-  </ul>
-
-  <div class="note">
-    <strong>📓 MUHIM TALAB:</strong>
-    Har bir grammatika qoidasini, formulasini va misollarni daftaringizga yozing.
-    Faqat o‘qib ketmang. Yozish bilimni mustahkamlashga yordam beradi.
-  </div>
-</section>
-
-<section class="section">
-  <h2>2. What are Modal Verbs?</h2>
-
-  <p><strong>English rule:</strong> We use modal verbs to express ability, possibility, permission, advice, obligation and necessity.</p>
-
-  <p><strong>O‘zbekcha izoh:</strong> Modal fe'llar asosiy fe'lga qo‘shimcha ma'no beradi. Masalan, maslahat, majburiyat, ruxsat yoki ehtimolni bildiradi.</p>
-
-  <div class="example">
-    <strong>You should study every day.</strong>
-    <div class="translation">Siz har kuni o‘qishingiz kerak (maslahat).</div>
-  </div>
-
-  <div class="example">
-    <strong>She might come tomorrow.</strong>
-    <div class="translation">U ertaga kelishi mumkin (ehtimol).</div>
-  </div>
-
-  <h3>Modal verbs haqida muhim qoidalar</h3>
-
-  <div class="rule">
-    Ko‘pchilik modal fe'llardan keyin fe'lning birinchi shakli — V1 ishlatiladi.
-  </div>
-
-  <div class="formula">Subject + Modal Verb + V1 + Object</div>
-
-  <p><strong>Subject:</strong> gapning egasi — I, You, He, She, It, We, They.</p>
-  <p><strong>Modal Verb:</strong> should, must, might kabi modal fe'l.</p>
-  <p><strong>V1:</strong> fe'lning birinchi shakli — go, study, work, read.</p>
-  <p><strong>Object:</strong> harakat ta'sir qiladigan shaxs yoki narsa.</p>
-
-  <div class="example">
-    <strong>We should learn English.</strong>
-    <div class="translation">Biz ingliz tilini o‘rganishimiz kerak.</div>
-  </div>
-
-  <div class="example">
-    <strong>He must finish his work.</strong>
-    <div class="translation">U ishini tugatishi shart.</div>
-  </div>
-
-  <div class="note">
-    Eslab qoling: should, must va might dan keyin odatda “to” qo‘yilmaydi.
-    Masalan: “She should study”, “She should to study” emas.
-  </div>
-
-  <div class="write-box">
-    <strong>📓 Daftarga yozing:</strong>
-    Modal verbs ta'rifi, asosiy formulasi va yuqoridagi ikkita misolni ko‘chirib yozing.
-  </div>
-</section>
-
-<section class="section">
-  <h2>3. SHOULD — Advice and Suggestions</h2>
-
-  <p><strong>English rule:</strong> We use should to give advice, suggestions and recommendations.</p>
-
-  <p><strong>O‘zbekcha izoh:</strong> Should kimlargadir maslahat berish yoki biror ishni bajarish foydali ekanini aytish uchun ishlatiladi.</p>
-
-  <h3>1. Affirmative — Darak gap</h3>
-
-  <div class="formula">Subject + should + V1 + Object</div>
-
-  <p><strong>Formula qismlari:</strong></p>
-  <ul>
-    <li>Subject — gapning egasi.</li>
-    <li>Should — maslahat bildiruvchi modal fe'l.</li>
-    <li>V1 — fe'lning birinchi shakli.</li>
-    <li>Object — gapning to‘ldiruvchisi.</li>
-  </ul>
-
-  <div class="example">
-    <strong>You should drink more water.</strong>
-    <div class="translation">Siz ko‘proq suv ichishingiz kerak.</div>
-    <button class="action secondary" onclick="speak('You should drink more water.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>He should visit his parents.</strong>
-    <div class="translation">U ota-onasini ko‘rgani borishi kerak.</div>
-    <button class="action secondary" onclick="speak('He should visit his parents.')">🔊 Listen</button>
-  </div>
-
-  <h3>2. Negative — Inkor gap</h3>
-
-  <p><strong>English rule:</strong> We use should not or shouldn't to say that something is not a good idea.</p>
-
-  <div class="formula">Subject + should not + V1 + Object</div>
-
-  <p>Should not qisqartirilgan shaklda shouldn't bo‘ladi.</p>
-
-  <div class="example">
-    <strong>You should not eat too much sugar.</strong>
-    <div class="translation">Siz juda ko‘p shakar yemasligingiz kerak.</div>
-    <button class="action secondary" onclick="speak('You should not eat too much sugar.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>They shouldn't be late.</strong>
-    <div class="translation">Ular kech qolmasliklari kerak.</div>
-    <button class="action secondary" onclick="speak('They should not be late.')">🔊 Listen</button>
-  </div>
-
-  <h3>3. Question — So‘roq gap</h3>
-
-  <p><strong>English rule:</strong> We put should before the subject to make a question.</p>
-
-  <div class="formula">Should + Subject + V1 + Object + ?</div>
-
-  <div class="example">
-    <strong>Should I call the doctor?</strong>
-    <div class="translation">Men shifokorga qo‘ng‘iroq qilishim kerakmi?</div>
-    <button class="action secondary" onclick="speak('Should I call the doctor?')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>Should we leave now?</strong>
-    <div class="translation">Biz hozir ketishimiz kerakmi?</div>
-    <button class="action secondary" onclick="speak('Should we leave now?')">🔊 Listen</button>
-  </div>
-
-  <h3>Should bilan javob berish</h3>
-
-  <div class="formula">Yes, Subject + should.</div>
-  <div class="formula">No, Subject + shouldn't.</div>
-
-  <div class="example">
-    <strong>Should I study tonight?</strong>
-    <div class="translation">Bugun kechqurun o‘qishim kerakmi?</div>
-    <strong>Yes, you should.</strong>
-    <div class="translation">Ha, o‘qishingiz kerak.</div>
-  </div>
-
-  <div class="write-box">
-    <strong>📓 Daftarga yozing:</strong>
-    Should ning darak, inkor va so‘roq formulalarini yozing. Har biriga o‘zingiz 2 tadan misol tuzing.
-  </div>
-</section>
-
-<section class="section">
-  <h2>4. MUST — Strong Obligation</h2>
-
-  <p><strong>English rule:</strong> We use must to express a strong obligation, necessity or an important rule.</p>
-
-  <p><strong>O‘zbekcha izoh:</strong> Must kuchli majburiyatni yoki bajarilishi juda muhim bo‘lgan ishni bildiradi. Ko‘pincha gapiruvchi biror ishni juda zarur deb hisoblaydi.</p>
-
-  <h3>1. Affirmative — Darak gap</h3>
-
-  <div class="formula">Subject + must + V1 + Object</div>
-
-  <p><strong>Subject:</strong> ishni bajaruvchi shaxs.</p>
-  <p><strong>Must:</strong> kuchli majburiyat.</p>
-  <p><strong>V1:</strong> fe'lning birinchi shakli.</p>
-  <p><strong>Object:</strong> harakatga tegishli narsa yoki shaxs.</p>
-
-  <div class="example">
-    <strong>You must wear a seat belt.</strong>
-    <div class="translation">Siz xavfsizlik kamarini taqishingiz shart.</div>
-    <button class="action secondary" onclick="speak('You must wear a seat belt.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>Students must respect their teachers.</strong>
-    <div class="translation">O‘quvchilar o‘qituvchilarini hurmat qilishlari shart.</div>
-    <button class="action secondary" onclick="speak('Students must respect their teachers.')">🔊 Listen</button>
-  </div>
-
-  <h3>2. Negative — Inkor gap</h3>
-
-  <p><strong>English rule:</strong> We use must not or mustn't to express prohibition.</p>
-
-  <div class="formula">Subject + must not + V1 + Object</div>
-
-  <p><strong>Muhim:</strong> Mustn't — biror ishni qilish mumkin emas, taqiqlangan degani.</p>
-
-  <div class="example">
-    <strong>You mustn't smoke here.</strong>
-    <div class="translation">Bu yerda chekish mumkin emas.</div>
-    <button class="action secondary" onclick="speak('You must not smoke here.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>Children must not play with dangerous objects.</strong>
-    <div class="translation">Bolalar xavfli buyumlar bilan o‘ynamasliklari kerak.</div>
-    <button class="action secondary" onclick="speak('Children must not play with dangerous objects.')">🔊 Listen</button>
-  </div>
-
-  <h3>3. Question — So‘roq gap</h3>
-
-  <div class="formula">Must + Subject + V1 + Object + ?</div>
-
-  <div class="example">
-    <strong>Must I finish this today?</strong>
-    <div class="translation">Men buni bugun tugatishim shartmi?</div>
-    <button class="action secondary" onclick="speak('Must I finish this today?')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>Must we bring our books?</strong>
-    <div class="translation">Biz kitoblarimizni olib kelishimiz shartmi?</div>
-    <button class="action secondary" onclick="speak('Must we bring our books?')">🔊 Listen</button>
-  </div>
-
-  <div class="note">
-    Mustn't va don't have to bir xil emas.
-    Mustn't — taqiqlangan.
-    Don't have to — qilish majburiy emas.
-  </div>
-
-  <div class="write-box">
-    <strong>📓 Daftarga yozing:</strong>
-    Must ning uchta formulasini va mustn't bilan don't have to o‘rtasidagi farqni yozing.
-  </div>
-</section>
-
-<section class="section">
-  <h2>5. HAVE TO — Necessity and Obligation</h2>
-
-  <p><strong>English rule:</strong> We use have to to talk about rules, duties and situations when something is necessary.</p>
-
-  <p><strong>O‘zbekcha izoh:</strong> Have to tashqi sabab, qoida, ish yoki vaziyat tufayli bajarilishi kerak bo‘lgan majburiyatni ifodalaydi.</p>
-
-  <h3>1. Affirmative — Darak gap</h3>
-
-  <div class="formula">I / You / We / They + have to + V1</div>
-  <div class="formula">He / She / It + has to + V1</div>
-
-  <p>Have to I, you, we, they bilan ishlatiladi.</p>
-  <p>Has to he, she, it bilan ishlatiladi.</p>
-
-  <div class="example">
-    <strong>I have to work tomorrow.</strong>
-    <div class="translation">Men ertaga ishlashim kerak.</div>
-    <button class="action secondary" onclick="speak('I have to work tomorrow.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>She has to study for her exam.</strong>
-    <div class="translation">U imtihoniga tayyorlanishi kerak.</div>
-    <button class="action secondary" onclick="speak('She has to study for her exam.')">🔊 Listen</button>
-  </div>
-
-  <h3>2. Negative — Inkor gap</h3>
-
-  <p><strong>English rule:</strong> We use don't have to or doesn't have to when something is not necessary.</p>
-
-  <div class="formula">I / You / We / They + don't have to + V1</div>
-  <div class="formula">He / She / It + doesn't have to + V1</div>
-
-  <div class="example">
-    <strong>You don't have to come early.</strong>
-    <div class="translation">Siz erta kelishingiz shart emas.</div>
-    <button class="action secondary" onclick="speak('You do not have to come early.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>He doesn't have to cook today.</strong>
-    <div class="translation">U bugun ovqat pishirishi shart emas.</div>
-    <button class="action secondary" onclick="speak('He does not have to cook today.')">🔊 Listen</button>
-  </div>
-
-  <h3>3. Question — So‘roq gap</h3>
-
-  <div class="formula">Do + I / you / we / they + have to + V1?</div>
-  <div class="formula">Does + he / she / it + have to + V1?</div>
-
-  <div class="example">
-    <strong>Do you have to work on Sunday?</strong>
-    <div class="translation">Yakshanba kuni ishlashingiz kerakmi?</div>
-    <button class="action secondary" onclick="speak('Do you have to work on Sunday?')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>Does she have to wear a uniform?</strong>
-    <div class="translation">U forma kiyishi kerakmi?</div>
-    <button class="action secondary" onclick="speak('Does she have to wear a uniform?')">🔊 Listen</button>
-  </div>
-
-  <div class="note">
-    So‘roq va inkor gaplarda does ishlatilganda has to emas, have to ishlatiladi.
-    Masalan: Does he have to go?
-  </div>
-
-  <div class="write-box">
-    <strong>📓 Daftarga yozing:</strong>
-    Have to va has to farqini, inkor va so‘roq formulalarini yozing.
-  </div>
-</section>
-
-<section class="section">
-  <h2>6. MIGHT — Possibility</h2>
-
-  <p><strong>English rule:</strong> We use might to talk about something that is possible but not certain.</p>
-
-  <p><strong>O‘zbekcha izoh:</strong> Might biror hodisa sodir bo‘lishi mumkinligini, lekin bunga to‘liq ishonch yo‘qligini bildiradi.</p>
-
-  <h3>1. Affirmative — Darak gap</h3>
-
-  <div class="formula">Subject + might + V1 + Object</div>
-
-  <div class="example">
-    <strong>It might rain tomorrow.</strong>
-    <div class="translation">Ertaga yomg‘ir yog‘ishi mumkin.</div>
-    <button class="action secondary" onclick="speak('It might rain tomorrow.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>We might visit our friends.</strong>
-    <div class="translation">Biz do‘stlarimiznikiga borishimiz mumkin.</div>
-    <button class="action secondary" onclick="speak('We might visit our friends.')">🔊 Listen</button>
-  </div>
-
-  <h3>2. Negative — Inkor gap</h3>
-
-  <div class="formula">Subject + might not + V1 + Object</div>
-
-  <div class="example">
-    <strong>He might not come today.</strong>
-    <div class="translation">U bugun kelmasligi mumkin.</div>
-    <button class="action secondary" onclick="speak('He might not come today.')">🔊 Listen</button>
-  </div>
-
-  <div class="example">
-    <strong>They might not understand the question.</strong>
-    <div class="translation">Ular savolni tushunmasliklari mumkin.</div>
-    <button class="action secondary" onclick="speak('They might not understand the question.')">🔊 Listen</button>
-  </div>
-
-  <h3>3. Question — So‘roq gap</h3>
-
-  <p>Might bilan so‘roq gap tuzish mumkin, lekin kundalik suhbatda ehtimol haqida savol berish uchun boshqa shakllar ham ko‘p ishlatiladi.</p>
-
-  <div class="formula">Might + Subject + V1 + Object + ?</div>
-
-  <div class="example">
-    <strong>Might it rain tonight?</strong>
-    <div class="translation">Bugun kechasi yomg‘ir yog‘ishi mumkinmi?</div>
-  </div>
-
-  <div class="example">
-    <strong>Might she need some help?</strong>
-    <div class="translation">Unga yordam kerak bo‘lishi mumkinmi?</div>
-  </div>
-
-  <div class="write-box">
-    <strong>📓 Daftarga yozing:</strong>
-    Might ning darak, inkor va so‘roq formulalarini yozing. Ehtimolni ifodalovchi 3 ta gap tuzing.
-  </div>
-</section>
-
-<section class="section">
-  <h2>7. Comparison — Modal Verbs</h2>
-
-  <p>Endi to‘rtta modal shaklning ma'nosini taqqoslaymiz.</p>
-
-  <h3>SHOULD</h3>
-  <p>Maslahat yoki tavsiya.</p>
-  <div class="example">
-    You should sleep early.
-    <div class="translation">Siz erta uxlashingiz kerak (maslahat).</div>
-  </div>
-
-  <h3>MUST</h3>
-  <p>Kuchli majburiyat yoki qat'iy qoida.</p>
-  <div class="example">
-    You must follow the rules.
-    <div class="translation">Siz qoidalarga amal qilishingiz shart.</div>
-  </div>
-
-  <h3>HAVE TO</h3>
-  <p>Vaziyat yoki tashqi talab tufayli zarurat.</p>
-  <div class="example">
-    I have to go to work.
-    <div class="translation">Men ishga borishim kerak.</div>
-  </div>
-
-  <h3>MIGHT</h3>
-  <p>Ehtimol, aniq bo‘lmagan imkoniyat.</p>
-  <div class="example">
-    She might be busy.
-    <div class="translation">U band bo‘lishi mumkin.</div>
-  </div>
-
-  <div class="note">
-    <strong>Esda tuting:</strong><br>
-    Should = maslahat.<br>
-    Must = kuchli majburiyat.<br>
-    Have to = zarurat yoki tashqi talab.<br>
-    Might = ehtimol.
-  </div>
-
-  <div class="write-box">
-    <strong>📓 Daftarga yozing:</strong>
-    Har bir modal fe'lning ma'nosini va o‘zingiz tuzgan bittadan misol gapni yozing.
-  </div>
-</section>
-
-<section class="section">
-  <h2>8. Vocabulary — 40 Useful Words</h2>
-  <p>Quyidagi so‘zlarni o‘rganing. Talaffuzni eshitish uchun 🔊 tugmasini bosing.</p>
-
-  <div class="word-grid" id="vocabulary"></div>
-</section>
-
-<section class="section">
-  <h2>9. Reading Practice</h2>
-
-  <h3>A Busy Week</h3>
-
-  <p>
-    Daniel is a student. He has a busy week. He has to go to school every morning.
-    He must do his homework and respect his teachers.
-    He should read English books every day because he wants to improve his English.
-    Sometimes he feels tired, so he might take a short break.
-    His parents say that he should sleep early and eat healthy food.
-    On Saturday, he doesn't have to go to school.
-    He might visit his grandparents or play football with his friends.
-  </p>
-
-  <button class="action" onclick="speakReading()">🔊 Listen to the text</button>
-
-  <h3>Reading Questions</h3>
-
-  <div class="quiz-question">
-    <p>1. What does Daniel have to do every morning?</p>
-    <label class="option"><input type="radio" name="r1" value="a"> Visit his grandparents</label>
-    <label class="option"><input type="radio" name="r1" value="b"> Go to school</label>
-    <label class="option"><input type="radio" name="r1" value="c"> Play football</label>
-  </div>
-
-  <div class="quiz-question">
-    <p>2. Why should Daniel read English books?</p>
-    <label class="option"><input type="radio" name="r2" value="a"> To improve his English</label>
-    <label class="option"><input type="radio" name="r2" value="b"> To become a teacher</label>
-    <label class="option"><input type="radio" name="r2" value="c"> To sleep early</label>
-  </div>
-
-  <div class="quiz-question">
-    <p>3. What might Daniel do when he feels tired?</p>
-    <label class="option"><input type="radio" name="r3" value="a"> Take a short break</label>
-    <label class="option"><input type="radio" name="r3" value="b"> Go to school</label>
-    <label class="option"><input type="radio" name="r3" value="c"> Cook dinner</label>
-  </div>
-
-  <div class="quiz-question">
-    <p>4. Does Daniel have to go to school on Saturday?</p>
-    <label class="option"><input type="radio" name="r4" value="a"> Yes, always</label>
-    <label class="option"><input type="radio" name="r4" value="b"> No</label>
-    <label class="option"><input type="radio" name="r4" value="c"> We don't know</label>
-  </div>
-
-  <button class="action" onclick="checkReading()">Check Reading</button>
-  <p id="readingResult"></p>
-</section>
-
-<section class="section">
-  <h2>10. Listening Practice</h2>
-
-  <h3>Listening 1 — At School</h3>
-
-  <p><strong>Dialogue:</strong></p>
-
-  <div class="rule">
-    Teacher: You must arrive on time.<br>
-    Student: I understand. Should I bring my notebook?<br>
-    Teacher: Yes, you should. You have to write the new words.<br>
-    Student: Okay. I might ask some questions after the lesson.
-  </div>
-
-  <button class="action" onclick="speakDialogue1()">🔊 Play Listening 1</button>
-
-  <h3>Listening 2 — Weekend Plans</h3>
-
-  <div class="rule">
-    Anna: What are you going to do this weekend?<br>
-    Mark: I might visit my uncle.<br>
-    Anna: Do you have to work on Saturday?<br>
-    Mark: No, I don't. But I must finish my homework first.<br>
-    Anna: You should finish it today.<br>
-    Mark: That's a good idea!
-  </div>
-
-  <button class="action" onclick="speakDialogue2()">🔊 Play Listening 2</button>
-
-  <h3>Listening Check</h3>
-
-  <div class="quiz-question">
-    <p>1. What must the student do?</p>
-    <label class="option"><input type="radio" name="l1" value="a"> Arrive late</label>
-    <label class="option"><input type="radio" name="l1" value="b"> Arrive on time</label>
-    <label class="option"><input type="radio" name="l1" value="c"> Leave early</label>
-  </div>
-
-  <div class="quiz-question">
-    <p>2. What might Mark do at the weekend?</p>
-    <label class="option"><input type="radio" name="l2" value="a"> Visit his uncle</label>
-    <label class="option"><input type="radio" name="l2" value="b"> Visit his teacher</label>
-    <label class="option"><input type="radio" name="l2" value="c"> Go to school</label>
-  </div>
-
-  <button class="action" onclick="checkListening()">Check Listening</button>
-  <p id="listeningResult"></p>
-</section>
-
-<section class="section">
-  <h2>11. Speaking Practice</h2>
-
-  <p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering. Har bir savolga kamida 2 ta gap aytishga harakat qiling.</p>
-
-  <ol>
-    <li>What should people do to stay healthy?</li>
-    <li>What must students do at school?</li>
-    <li>Do you have to work or study every day?</li>
-    <li>What might you do next weekend?</li>
-    <li>What should people do to learn English?</li>
-    <li>What must people do to be successful?</li>
-    <li>What don't you have to do on Sunday?</li>
-    <li>Where might you travel in the future?</li>
-  </ol>
-
-  <h3>Speaking Answer Practice</h3>
-
-  <p>Quyidagi namunani tinglang:</p>
-
-  <div class="example">
-    <strong>I should practise English every day. I have to learn new words. I must work hard to achieve my goals.</strong>
-    <div class="translation">Men har kuni ingliz tilini mashq qilishim kerak. Yangi so‘zlarni o‘rganishim kerak. Maqsadlarimga erishish uchun qattiq ishlashim shart.</div>
-    <button class="action secondary" onclick="speak('I should practise English every day. I have to learn new words. I must work hard to achieve my goals.')">🔊 Listen</button>
-  </div>
-
-  <textarea id="speakingNotes" rows="5" placeholder="O‘z javoblaringizni shu yerga yozib oling..."></textarea>
-  <button class="action" onclick="saveText('speakingNotes')">Save my answers</button>
-</section>
-
-<section class="section">
-  <h2>12. Writing Practice</h2>
-
-  <p>Quyidagi topshiriqlarni bajaring. Har bir gapda bugungi modal fe'llardan foydalaning.</p>
-
-  <h3>Task 1 — Complete the sentences</h3>
-
-  <ol>
-    <li>You ______ study every day. (maslahat)</li>
-    <li>We ______ follow the rules. (qat'iy majburiyat)</li>
-    <li>She ______ work tomorrow. (zarurat)</li>
-    <li>It ______ rain tonight. (ehtimol)</li>
-    <li>He ______ eat too much sugar. (maslahat bermaslik)</li>
-    <li>They ______ come early. (majbur emas)</li>
-  </ol>
-
-  <h3>Task 2 — Translate into English</h3>
-
-  <ol>
-    <li>Sen ko‘proq kitob o‘qishing kerak.</li>
-    <li>Biz qoidalarga amal qilishimiz shart.</li>
-    <li>U ertaga ishlashi kerak.</li>
-    <li>Bugun yomg‘ir yog‘ishi mumkin.</li>
-    <li>Siz bu yerda yugurmasligingiz kerak.</li>
-    <li>Men bugun kelishim shart emas.</li>
-  </ol>
-
-  <textarea id="writingAnswers" rows="9" placeholder="Javoblaringizni yozing..."></textarea>
-  <button class="action" onclick="saveText('writingAnswers')">Save Writing</button>
-</section>
-
-<section class="section">
-  <h2>13. Grammar Test — 20 Questions</h2>
-
-  <p>Har bir savolda bitta to‘g‘ri javob bor. Barcha savollarga javob berganingizdan keyin natijani tekshiring.</p>
-
-  <div id="mainQuiz"></div>
-
-  <button class="action" onclick="checkMainQuiz()">Submit Test</button>
-  <button class="action secondary" onclick="resetMainQuiz()">Try Again</button>
-
-  <div id="mainQuizResult"></div>
-</section>
-
-<section class="section">
-  <h2>14. Lesson Summary</h2>
-
-  <p>Bugun to‘rtta modal shaklni o‘rgandingiz:</p>
-
-  <ul>
-    <li><strong>Should:</strong> maslahat va tavsiya.</li>
-    <li><strong>Must:</strong> kuchli majburiyat va taqiq (mustn't).</li>
-    <li><strong>Have to:</strong> zarurat va tashqi talab.</li>
-    <li><strong>Might:</strong> ehtimol.</li>
-  </ul>
-
-  <div class="note">
-    <strong>📓 Yakuniy daftar vazifasi:</strong>
-    Bugungi barcha formulalarni bir marta qayta yozing. Har bir modal fe'lga 3 tadan yangi gap tuzing.
-  </div>
-
-  <p>O‘zingizni baholang: qaysi modal fe'lni ishlatish sizga oson, qaysi biri ustida yana mashq qilish kerak?</p>
-
-  <textarea id="reflection" rows="4" placeholder="Bugungi darsdan nimalarni o‘rgandingiz?"></textarea>
-  <button class="action" onclick="saveText('reflection')">Save Reflection</button>
-
-  <button class="action" onclick="finishLesson()">Complete Lesson</button>
-  <p id="finishMessage"></p>
-</section>
+<!-- LESSON 12 — PART 2 -->
+
+<div class="card lesson-section" id="comparison">
+ <h2>PART 2 — GRAMMAR COMPARISON</h2>
+ <p>Endi modal fe'llarning ma'nolari va ishlatilishidagi farqlarni o‘rganamiz.</p>
+
+ <h3>1. SHOULD vs MUST</h3>
+ <table>
+  <tr><th>SHOULD</th><th>MUST</th></tr>
+  <tr><td>Maslahat</td><td>Kuchli majburiyat</td></tr>
+  <tr><td>You should study.</td><td>You must study.</td></tr>
+  <tr><td>O‘qishing kerak (maslahat).</td><td>O‘qishing shart.</td></tr>
+ </table>
+
+ <div class="example">
+  <strong>1. You should exercise regularly.</strong>
+  <p class="translation">Sen muntazam mashq qilishing kerak (maslahat).</p>
+ </div>
+ <div class="example">
+  <strong>2. You must wear a seat belt.</strong>
+  <p class="translation">Sen xavfsizlik kamarini taqishing shart.</p>
+ </div>
+
+ <h3>2. MUST vs HAVE TO</h3>
+ <p>Must ko‘pincha so‘zlovchi his qilayotgan kuchli majburiyatni bildiradi. Have to esa tashqi qoida yoki vaziyat tufayli yuzaga kelgan majburiyatni bildiradi.</p>
+
+ <table>
+  <tr><th>MUST</th><th>HAVE TO</th></tr>
+  <tr><td>I must call my mother.</td><td>I have to wear a uniform.</td></tr>
+  <tr><td>Men onamga qo‘ng‘iroq qilishim shart.</td><td>Men forma kiyishim kerak.</td></tr>
+ </table>
+
+ <div class="example">
+  <strong>1. I must remember to buy some bread.</strong>
+  <p class="translation">Men non sotib olishni eslab qolishim kerak.</p>
+ </div>
+ <div class="example">
+  <strong>2. We have to show our tickets at the entrance.</strong>
+  <p class="translation">Biz kirishda chiptalarimizni ko‘rsatishimiz kerak.</p>
+ </div>
+
+ <h3>3. MUSTN'T vs DON'T HAVE TO</h3>
+ <div class="warning">
+  <strong>Bu ikki strukturani adashtirmang!</strong>
+  <p>Mustn't — qilish taqiqlangan.</p>
+  <p>Don't have to — qilish majburiy emas.</p>
+ </div>
+
+ <div class="example">
+  <strong>1. You mustn't use your phone during the exam.</strong>
+  <p class="translation">Imtihon paytida telefon ishlatish taqiqlangan.</p>
+ </div>
+ <div class="example">
+  <strong>2. You don't have to bring food.</strong>
+  <p class="translation">Ovqat olib kelishing shart emas.</p>
+ </div>
+
+ <h3>4. MIGHT vs MAY</h3>
+ <p>Ikkalasi ham ehtimollikni bildiradi. Ko‘p vaziyatlarda bir-birining o‘rnida ishlatilishi mumkin. Might ba'zan kamroq ishonchni bildiradi, lekin bu qat'iy foiz qoidasi emas.</p>
+
+ <div class="example">
+  <strong>1. It might rain this evening.</strong>
+  <p class="translation">Bugun kechqurun yomg‘ir yog‘ishi mumkin.</p>
+ </div>
+ <div class="example">
+  <strong>2. It may rain this evening.</strong>
+  <p class="translation">Bugun kechqurun yomg‘ir yog‘ishi mumkin.</p>
+ </div>
+
+ <h3>5. SHOULD vs HAVE TO</h3>
+ <div class="example">
+  <strong>1. You should read more books.</strong>
+  <p class="translation">Sen ko‘proq kitob o‘qishing kerak (maslahat).</p>
+ </div>
+ <div class="example">
+  <strong>2. You have to attend the meeting.</strong>
+  <p class="translation">Sen yig‘ilishda qatnashishing kerak (majburiyat).</p>
+ </div>
+</div>
+
+<div class="card lesson-section" id="vocabulary">
+ <h2>PART 3 — VOCABULARY</h2>
+ <p>Quyidagi 40 ta so‘zni o‘rganing. Har bir so‘zni ovoz chiqarib o‘qing va daftarga yozing.</p>
+
+ <div class="progress-track"><div class="progress-bar" id="vocabProgress"></div></div>
+ <p id="vocabCount">0 / 40 ta so‘z o‘rganildi</p>
+
+ <div id="vocabList"></div>
+</div>
+
+<div class="card lesson-section" id="listening">
+ <h2>PART 4 — LISTENING</h2>
+ <p>Matnlarni avval audio orqali tinglang. Keyin matnni o‘qing va savollarga javob bering.</p>
+
+ <h3>Listening 1 — Giving Advice</h3>
+ <button class="primary-btn" onclick="speak(listeningOne)">🔊 Play Listening 1</button>
+
+ <div class="rule">
+  <p id="listeningOneText" class="hidden"></p>
+  <button class="secondary-btn" onclick="toggleText('listeningOneText')">Show / Hide Transcript</button>
+ </div>
+
+ <h3>Listening 1 — Questions</h3>
+ <div id="listenQuiz1"></div>
+
+ <h3>Listening 2 — Rules and Responsibilities</h3>
+ <button class="primary-btn" onclick="speak(listeningTwo)">🔊 Play Listening 2</button>
+
+ <div class="rule">
+  <p id="listeningTwoText" class="hidden"></p>
+  <button class="secondary-btn" onclick="toggleText('listeningTwoText')">Show / Hide Transcript</button>
+ </div>
+
+ <h3>Listening 2 — Questions</h3>
+ <div id="listenQuiz2"></div>
+</div>
+
+<div class="card lesson-section" id="reading">
+ <h2>PART 5 — READING</h2>
+ <h3>A Responsible Student</h3>
+
+ <p>Tom is a responsible student. He gets up early every morning because he has to arrive at school on time. He must prepare his books and homework before leaving home.</p>
+
+ <p>Tom's teacher often gives him useful advice. She says that students should read books every day and shouldn't spend too much time playing computer games. Tom follows her advice because he wants to improve his English.</p>
+
+ <p>At school, students must follow the rules. They mustn't run in the corridors or make too much noise during lessons. However, they may ask questions whenever they need help.</p>
+
+ <p>Tom sometimes studies with his friends after school. They might visit the library or work together on a project. Tom believes that everyone should work hard and help each other.</p>
+
+ <button class="primary-btn" onclick="speak(readingText)">🔊 Listen to Reading</button>
+
+ <h3>Vocabulary from the text</h3>
+ <table>
+  <tr><th>Word</th><th>Uzbek meaning</th></tr>
+  <tr><td>Responsible</td><td>Mas'uliyatli</td></tr>
+  <tr><td>Arrive</td><td>Yetib kelmoq</td></tr>
+  <tr><td>Prepare</td><td>Tayyorlamoq</td></tr>
+  <tr><td>Follow</td><td>Amal qilmoq, ergashmoq</td></tr>
+  <tr><td>Improve</td><td>Yaxshilamoq</td></tr>
+  <tr><td>Corridor</td><td>Yo‘lak</td></tr>
+  <tr><td>Whenever</td><td>Qachonki, har safar</td></tr>
+  <tr><td>Believe</td><td>Ishonmoq</td></tr>
+ </table>
+
+ <h3>Reading comprehension</h3>
+ <div id="readingQuiz"></div>
+</div>
+
+<div class="card lesson-section" id="writing">
+ <h2>PART 6 — WRITING</h2>
+ <p>Quyidagi topshiriqlarni daftaringizga bajaring. Har bir strukturaga alohida e'tibor bering.</p>
+
+ <h3>Exercise 1 — Complete the sentences</h3>
+ <p>Qavs ichidagi modal fe'llardan mosini tanlang.</p>
+ <ol>
+  <li>You ______ drink enough water. (should / might)</li>
+  <li>Students ______ follow school rules. (must / might)</li>
+  <li>She ______ work tomorrow. (has to / have to)</li>
+  <li>It ______ snow tonight. (might / mustn't)</li>
+  <li>You ______ park here. (mustn't / don't have to)</li>
+  <li>I ______ get up early tomorrow. (have to / has to)</li>
+  <li>He ______ visit us this weekend. (might / mustn't)</li>
+  <li>We ______ waste our time. (shouldn't / has to)</li>
+  <li>She ______ wear a uniform at work. (has to / have to)</li>
+  <li>You ______ bring your dictionary. (should / mustn't)</li>
+ </ol>
+
+ <h3>Exercise 2 — Correct the mistakes</h3>
+ <p>Har bir gapdagi grammatik xatoni toping va to‘g‘rilang.</p>
+ <ol>
+  <li>She should studies every day.</li>
+  <li>He must to finish his work.</li>
+  <li>Does she has to go?</li>
+  <li>You mustn't to smoke here.</li>
+  <li>They might comes tomorrow.</li>
+  <li>He don't have to work.</li>
+  <li>Should I to call him?</li>
+  <li>She might goes home.</li>
+  <li>Does he have to wears a uniform?</li>
+  <li>You should not to worry.</li>
+ </ol>
+
+ <h3>Exercise 3 — Translate into English</h3>
+ <ol>
+  <li>Sen ko‘proq kitob o‘qishing kerak.</li>
+  <li>Biz qoidalarga amal qilishimiz shart.</li>
+  <li>U ertaga kelmasligi mumkin.</li>
+  <li>Men bugun ishlashim shart emas.</li>
+  <li>Bu yerda telefon ishlatish taqiqlangan.</li>
+  <li>Men derazani ochsam maylimi?</li>
+  <li>U har kuni erta turishi kerak.</li>
+  <li>Sen juda ko‘p shirinlik yemasliging kerak.</li>
+  <li>Ular bugun bizga yordam berishlari mumkin.</li>
+  <li>Biz ertaga maktabga borishimiz kerak.</li>
+ </ol>
+
+ <h3>Exercise 4 — Make your own sentences</h3>
+ <p>Har bir strukturadan foydalanib, kamida 2 tadan mustaqil gap tuzing.</p>
+ <ul>
+  <li>Should — maslahat.</li>
+  <li>Shouldn't — salbiy maslahat.</li>
+  <li>Must — majburiyat.</li>
+  <li>Mustn't — taqiq.</li>
+  <li>Have to — zarurat.</li>
+  <li>Don't have to — majburiyat yo‘qligi.</li>
+  <li>Might — ehtimollik.</li>
+  <li>May — ehtimollik yoki ruxsat.</li>
+ </ul>
+
+ <h3>Exercise 5 — Writing task</h3>
+ <div class="rule">
+  **Topic: Rules and Responsibilities in My Life**
+  <p>Hayotingizdagi qoidalar va majburiyatlar haqida 100–120 ta so‘zdan iborat inglizcha matn yozing.</p>
+  <p>Quyidagi modal fe'llardan foydalaning: should, shouldn't, must, have to, don't have to, might.</p>
+ </div>
+
+ <textarea id="writingAnswer" rows="7" placeholder="Write your paragraph here..." style="width:100%;padding:12px;border:1px solid var(--border);border-radius:9px"></textarea>
+ <button class="primary-btn" onclick="saveWriting()">Save My Writing</button>
+ <p id="writingMessage"></p>
+</div>
+
+<div class="card lesson-section" id="speaking">
+ <h2>PART 7 — SPEAKING</h2>
+ <p>Savollarga ingliz tilida ovoz chiqarib javob bering. Har bir savolga kamida 2–3 ta gap bilan javob berishga harakat qiling.</p>
+
+ <div id="speakingQuestions"></div>
+
+ <h3>Dialogue 1 — At the Doctor</h3>
+ <div class="example">
+  <p><strong>Doctor:</strong> You should drink more water.</p>
+  <p class="translation">Shifokor: Sen ko‘proq suv ichishing kerak.</p>
+  <p><strong>Patient:</strong> Should I take any medicine?</p>
+  <p class="translation">Bemor: Biror dori ichishim kerakmi?</p>
+  <p><strong>Doctor:</strong> You should follow the instructions.</p>
+  <p class="translation">Shifokor: Ko‘rsatmalarga amal qilishing kerak.</p>
+ </div>
+ <button class="secondary-btn" onclick="speak('Doctor: You should drink more water. Patient: Should I take any medicine? Doctor: You should follow the instructions.')">🔊 Listen to Dialogue</button>
+
+ <h3>Dialogue 2 — At School</h3>
+ <div class="example">
+  <p><strong>Teacher:</strong> You must arrive on time.</p>
+  <p class="translation">O‘qituvchi: Sen vaqtida kelishing shart.</p>
+  <p><strong>Student:</strong> Do we have to bring our books?</p>
+  <p class="translation">O‘quvchi: Kitoblarimizni olib kelishimiz kerakmi?</p>
+  <p><strong>Teacher:</strong> Yes, you do. You must also do your homework.</p>
+  <p class="translation">O‘qituvchi: Ha. Uy vazifangizni ham bajarishingiz shart.</p>
+ </div>
+ <button class="secondary-btn" onclick="speak('Teacher: You must arrive on time. Student: Do we have to bring our books? Teacher: Yes, you do. You must also do your homework.')">🔊 Listen to Dialogue</button>
+</div>
+
+<div class="card lesson-section" id="finaltest">
+ <h2>PART 8 — FINAL TEST</h2>
+ <p>60 ta savoldan iborat yakuniy test. Har bir savolga bitta javob tanlang.</p>
+
+ <div class="progress-track"><div class="progress-bar" id="testProgress"></div></div>
+ <p id="testCounter">Question 0 / 60</p>
+
+ <div id="testArea"></div>
+ <button id="nextQuestion" class="primary-btn" onclick="nextTestQuestion()">Next Question →</button>
+ <div id="testResult" class="hidden"></div>
+ <button class="secondary-btn" onclick="restartTest()">Restart Test</button>
+</div>
+
+<div class="card">
+ <h2>LESSON 12 — HOMEWORK REMINDER</h2>
+ <p>Asosiy dars yakunlandi. Quyidagi vazifalarni bajarish orqali mavzuni mustahkamlang.</p>
+ <ul>
+  <li>Grammar qoidalarini daftarga yozish.</li>
+  <li>40 ta yangi so‘zni yodlash.</li>
+  <li>Listening matnlarini qayta tinglash.</li>
+  <li>Reading matnini ovoz chiqarib o‘qish.</li>
+  <li>Writing topshirig‘ini tugatish.</li>
+  <li>Speaking savollariga mustaqil javob berish.</li>
+  <li>Final testni bajarish.</li>
+ </ul>
+ <div class="note">
+  **Learn today. Succeed tomorrow.**
+  <p>Har kuni oz-ozdan o‘rganing, lekin hech qachon to‘xtamang!</p>
+ </div>
+</div>
 
 </main>
 
 <footer>
-  <strong>ENGLISH UP</strong>
-  <p>Learn today. Succeed tomorrow.</p>
-  <p>Lesson 12 — Modal Verbs</p>
+ <strong>ENGLISH UP</strong>
+ <p>Learn today. Succeed tomorrow.</p>
+ <p>Lesson 12 — Modal Verbs</p>
 </footer>
 
 <script>
-function toggleTheme() {
-  document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "euLesson12Theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
+function go(id){
+ document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-if (localStorage.getItem("euLesson12Theme") === "dark") {
-  document.body.classList.add("dark");
+function speak(text){
+ if(!("speechSynthesis" in window)){
+  alert("Audio is not supported in this browser.");
+  return;
+ }
+ speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang="en-US";
+ utterance.rate=0.82;
+ speechSynthesis.speak(utterance);
 }
 
-function speak(text) {
-  if (!("speechSynthesis" in window)) {
-    alert("Your browser does not support text-to-speech.");
-    return;
-  }
-
-  speechSynthesis.cancel();
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US";
-  utterance.rate = 0.85;
-  utterance.pitch = 1;
-
-  speechSynthesis.speak(utterance);
+function toggleText(id){
+ document.getElementById(id).classList.toggle("hidden");
 }
 
-function speakReading() {
-  speak(
-    "Daniel is a student. He has a busy week. " +
-    "He has to go to school every morning. " +
-    "He must do his homework and respect his teachers. " +
-    "He should read English books every day because he wants to improve his English. " +
-    "Sometimes he feels tired, so he might take a short break. " +
-    "His parents say that he should sleep early and eat healthy food. " +
-    "On Saturday, he doesn't have to go to school. " +
-    "He might visit his grandparents or play football with his friends."
-  );
-}
-
-function speakDialogue1() {
-  speak(
-    "Teacher: You must arrive on time. " +
-    "Student: I understand. Should I bring my notebook? " +
-    "Teacher: Yes, you should. You have to write the new words. " +
-    "Student: Okay. I might ask some questions after the lesson."
-  );
-}
-
-function speakDialogue2() {
-  speak(
-    "Anna: What are you going to do this weekend? " +
-    "Mark: I might visit my uncle. " +
-    "Anna: Do you have to work on Saturday? " +
-    "Mark: No, I don't. But I must finish my homework first. " +
-    "Anna: You should finish it today. " +
-    "Mark: That's a good idea!"
-  );
-}
-
-const words = [
-  ["advice","maslahat","əd-vाइस","You should listen to good advice."],
-  ["rule","qoida","ruul","You must follow the rule."],
-  ["obligation","majburiyat","ob-li-gey-shən","This is an important obligation."],
-  ["necessary","zarur","ne-sə-se-ri","Water is necessary for life."],
-  ["possibility","ehtimol","po-si-bi-li-ti","There is a possibility of rain."],
-  ["suggestion","taklif, maslahat","səg-jes-chən","Thank you for your suggestion."],
-  ["healthy","sog‘lom","hel-thi","You should eat healthy food."],
-  ["habit","odat","he-bit","Reading is a good habit."],
-  ["improve","yaxshilamoq","im-pruuv","I want to improve my English."],
-  ["respect","hurmat qilmoq","ri-spekt","We must respect others."],
-  ["arrive","yetib kelmoq","ə-rayv","You should arrive early."],
-  ["prepare","tayyorlanmoq","pri-per","I have to prepare for my exam."],
-  ["appointment","uchrashuv","ə-point-mənt","I have an appointment today."],
-  ["uniform","forma","yu-ni-form","Students have to wear a uniform."],
-  ["permission","ruxsat","per-mi-shən","You need permission."],
-  ["allowed","ruxsat berilgan","ə-laud","You are allowed to enter."],
-  ["forbidden","taqiqlangan","fə-bi-dən","Smoking is forbidden here."],
-  ["careful","ehtiyotkor","ker-fəl","You should be careful."],
-  ["dangerous","xavfli","deyn-cə-rəs","This road is dangerous."],
-  ["safe","xavfsiz","seyf","This place is safe."],
-  ["perhaps","balki","pər-haps","Perhaps he will come."],
-  ["probably","ehtimol, balki","pro-bə-bli","She will probably call."],
-  ["certain","aniq, ishonchli","sər-tən","I am not certain."],
-  ["chance","imkoniyat","chans","There is a chance."],
-  ["decision","qaror","di-si-zhən","It is your decision."],
-  ["choice","tanlov","choys","You have a choice."],
-  ["explain","tushuntirmoq","ik-spleyn","Can you explain this rule?"],
-  ["continue","davom ettirmoq","kən-tin-yu","You should continue learning."],
-  ["complete","tugatmoq","kəm-pliit","I must complete my work."],
-  ["attend","qatnashmoq","ə-tend","I have to attend a meeting."],
-  ["borrow","qarzga olmoq","bo-rou","May I borrow your pen?"],
-  ["return","qaytarmoq","ri-tərn","You should return the book."],
-  ["invite","taklif qilmoq","in-vayt","We might invite our friends."],
-  ["cancel","bekor qilmoq","kan-səl","They might cancel the meeting."],
-  ["remain","qolmoq","ri-meyn","You should remain calm."],
-  ["solve","hal qilmoq","solv","We must solve this problem."],
-  ["avoid","chetlab o‘tmoq","ə-voyd","You should avoid mistakes."],
-  ["protect","himoya qilmoq","prə-tekt","We must protect nature."],
-  ["achieve","erishmoq","ə-chiiv","You can achieve your goals."],
-  ["opportunity","imkoniyat","o-pər-tu-ni-ti","This is a good opportunity."]
+const vocabulary=[
+ ["Advice","Maslahat","ədˈvaɪs","noun"],
+ ["Advice","Maslahat","ədˈvaɪs","noun"],
+ ["Obligation","Majburiyat","ˌɒblɪˈɡeɪʃən","noun"],
+ ["Necessity","Zarurat","nəˈsesəti","noun"],
+ ["Permission","Ruxsat","pəˈmɪʃən","noun"],
+ ["Possibility","Ehtimollik","ˌpɒsəˈbɪləti","noun"],
+ ["Responsibility","Mas'uliyat","rɪˌspɒnsəˈbɪləti","noun"],
+ ["Rule","Qoida","ruːl","noun"],
+ ["Requirement","Talab","rɪˈkwaɪəmənt","noun"],
+ ["Suggestion","Taklif","səˈdʒestʃən","noun"],
+ ["Recommend","Tavsiya qilmoq","ˌrekəˈmend","verb"],
+ ["Allow","Ruxsat bermoq","əˈlaʊ","verb"],
+ ["Require","Talab qilmoq","rɪˈkwaɪə","verb"],
+ ["Avoid","Qochmoq, chetlab o‘tmoq","əˈvɔɪd","verb"],
+ ["Improve","Yaxshilamoq","ɪmˈpruːv","verb"],
+ ["Prepare","Tayyorlamoq","prɪˈpeə","verb"],
+ ["Follow","Amal qilmoq","ˈfɒləʊ","verb"],
+ ["Complete","Tugatmoq","kəmˈpliːt","verb"],
+ ["Attend","Qatnashmoq","əˈtend","verb"],
+ ["Respect","Hurmat qilmoq","rɪˈspekt","verb"],
+ ["Healthy","Sog‘lom","ˈhelθi","adjective"],
+ ["Necessary","Zarur","ˈnesəsəri","adjective"],
+ ["Possible","Mumkin","ˈpɒsəbl","adjective"],
+ ["Important","Muhim","ɪmˈpɔːtənt","adjective"],
+ ["Careful","Ehtiyotkor","ˈkeəfl","adjective"],
+ ["Responsible","Mas'uliyatli","rɪˈspɒnsəbl","adjective"],
+ ["Available","Mavjud","əˈveɪləbl","adjective"],
+ ["Late","Kech","leɪt","adjective"],
+ ["Early","Erta","ˈɜːli","adverb"],
+ ["Regularly","Muntazam ravishda","ˈreɡjələli","adverb"],
+ ["Perhaps","Balki","pəˈhæps","adverb"],
+ ["Probably","Ehtimol","ˈprɒbəbli","adverb"],
+ ["Certainly","Albatta","ˈsɜːtnli","adverb"],
+ ["Immediately","Darhol","ɪˈmiːdiətli","adverb"],
+ ["Instead","Buning o‘rniga","ɪnˈsted","adverb"],
+ ["During","Davomida","ˈdjʊərɪŋ","preposition"],
+ ["Without","-siz","wɪˈðaʊt","preposition"],
+ ["Until","-gacha","ənˈtɪl","preposition"],
+ ["Although","Garchi","ɔːlˈðəʊ","conjunction"],
+ ["However","Biroq","haʊˈevə","adverb"]
 ];
 
-const vocabulary = document.getElementById("vocabulary");
+let learnedWords=JSON.parse(localStorage.getItem("lesson12Words")||"[]");
 
-words.forEach((word, index) => {
-  const card = document.createElement("div");
-  card.className = "word";
-
-  card.innerHTML =
-    "<b>" + (index + 1) + ". " + word[0] + "</b>" +
-    "<div>" + word[1] + "</div>" +
-    "<small>Pronunciation: " + word[2] + "</small>" +
-    "<small>" + word[3] + "</small>" +
-    '<button class="action secondary" onclick="speak(' +
-    JSON.stringify(word[0]) + ')">🔊</button>';
-
-  vocabulary.appendChild(card);
-});
-
-const readingAnswers = {
-  r1:"b",
-  r2:"a",
-  r3:"a",
-  r4:"b"
-};
-
-function checkGroup(answers, prefix, resultId) {
-  let score = 0;
-  let total = Object.keys(answers).length;
-
-  for (const key in answers) {
-    const selected = document.querySelector(
-      'input[name="' + key + '"]:checked'
-    );
-
-    if (selected && selected.value === answers[key]) {
-      score++;
-    }
-  }
-
-  document.getElementById(resultId).innerHTML =
-    "<strong>Natija: " + score + " / " + total + "</strong>";
-
-  updateProgress();
-  return score;
+function renderVocabulary(){
+ const list=document.getElementById("vocabList");
+ list.innerHTML="";
+ vocabulary.forEach((w,i)=>{
+  const div=document.createElement("div");
+  div.className="structure";
+  div.style.marginBottom="9px";
+  div.innerHTML=`
+   <strong>${i+1}. ${w[0]}</strong>
+   <p class="translation">${w[1]} • ${w[2]} • ${w[3]}</p>
+   <button class="secondary-btn" onclick="speak('${w[0]}')">🔊 Listen</button>
+   <label style="margin-left:10px">
+    <input type="checkbox" ${learnedWords.includes(i)?"checked":""}
+     onchange="markWord(${i},this.checked)"> Learned
+   </label>`;
+  list.appendChild(div);
+ });
+ updateVocabularyProgress();
 }
 
-function checkReading() {
-  const score = checkGroup(
-    readingAnswers,
-    "r",
-    "readingResult"
-  );
-
-  document.getElementById("readingResult").innerHTML +=
-    score === 4
-      ? " — Ajoyib! Barcha javoblar to‘g‘ri."
-      : " — Matnni yana bir marta o‘qib ko‘ring.";
+function markWord(i,checked){
+ if(checked&&!learnedWords.includes(i))learnedWords.push(i);
+ if(!checked)learnedWords=learnedWords.filter(x=>x!==i);
+ localStorage.setItem("lesson12Words",JSON.stringify(learnedWords));
+ updateVocabularyProgress();
 }
 
-const listeningAnswers = {
-  l1:"b",
-  l2:"a"
-};
-
-function checkListening() {
-  const score = checkGroup(
-    listeningAnswers,
-    "l",
-    "listeningResult"
-  );
-
-  document.getElementById("listeningResult").innerHTML +=
-    score === 2
-      ? " — Excellent!"
-      : " — Dialoglarni yana tinglang.";
+function updateVocabularyProgress(){
+ document.getElementById("vocabCount").textContent=
+ learnedWords.length+" / "+vocabulary.length+" ta so‘z o‘rganildi";
+ document.getElementById("vocabProgress").style.width=
+ (learnedWords.length/vocabulary.length*100)+"%";
 }
 
-const quizData = [
-  {
-    q:"You ______ study more. It is good advice.",
-    a:["mustn't","should","might not"],
-    c:1,
-    e:"Should maslahat berish uchun ishlatiladi."
-  },
-  {
-    q:"Students ______ follow school rules.",
-    a:["must","might","shouldn't"],
-    c:0,
-    e:"Must kuchli majburiyatni ifodalaydi."
-  },
-  {
-    q:"It ______ rain tomorrow.",
-    a:["must","has to","might"],
-    c:2,
-    e:"Might ehtimolni ifodalaydi."
-  },
-  {
-    q:"She ______ go to work every day.",
-    a:["have to","has to","must to"],
-    c:1,
-    e:"She bilan has to ishlatiladi."
-  },
-  {
-    q:"You ______ smoke here. It is forbidden.",
-    a:["mustn't","don't have to","might"],
-    c:0,
-    e:"Mustn't taqiqni bildiradi."
-  },
-  {
-    q:"I ______ wear a uniform at my school.",
-    a:["has to","have to","having to"],
-    c:1,
-    e:"I bilan have to ishlatiladi."
-  },
-  {
-    q:"He ______ eat so much fast food.",
-    a:["shouldn't","doesn't should","not should"],
-    c:0,
-    e:"Should not maslahat bermaslikni bildiradi."
-  },
-  {
-    q:"______ you have to work tomorrow?",
-    a:["Does","Do","Are"],
-    c:1,
-    e:"You bilan Do ishlatiladi."
-  },
-  {
-    q:"She doesn't ______ cook today.",
-    a:["has to","have to","having to"],
-    c:1,
-    e:"Doesn't dan keyin have to ishlatiladi."
-  },
-  {
-    q:"______ I call you later?",
-    a:["Should","Do should","Am should"],
-    c:0,
-    e:"Should so‘roq gap boshida keladi."
-  },
-  {
-    q:"We ______ visit our uncle this weekend. We are not sure.",
-    a:["must","might","have to"],
-    c:1,
-    e:"Might noaniq ehtimolni bildiradi."
-  },
-  {
-    q:"You ______ be rude to people.",
-    a:["shouldn't","might","has to"],
-    c:0,
-    e:"Shouldn't noto‘g‘ri ishni qilmaslik haqida maslahat."
-  },
-  {
-    q:"Does he ______ study tonight?",
-    a:["has to","have to","must to"],
-    c:1,
-    e:"Does bilan have to ishlatiladi."
-  },
-  {
-    q:"I ______ finish this work. It is my responsibility.",
-    a:["must","might not","shouldn't"],
-    c:0,
-    e:"Must kuchli majburiyatni bildiradi."
-  },
-  {
-    q:"They ______ come early. It is not necessary.",
-    a:["mustn't","don't have to","should"],
-    c:1,
-    e:"Don't have to majbur emas degani."
-  },
-  {
-    q:"Choose the correct sentence.",
-    a:[
-      "He should to study.",
-      "He should studies.",
-      "He should study."
-    ],
-    c:2,
-    e:"Modal fe'ldan keyin V1 ishlatiladi."
-  },
-  {
-    q:"Choose the correct negative sentence.",
-    a:[
-      "She doesn't has to go.",
-      "She doesn't have to go.",
-      "She not have to go."
-    ],
-    c:1,
-    e:"Doesn't dan keyin have to keladi."
-  },
-  {
-    q:"What does might express?",
-    a:["Strong obligation","Advice","Possibility"],
-    c:2,
-    e:"Might ehtimolni bildiradi."
-  },
-  {
-    q:"What does mustn't mean?",
-    a:["It is forbidden","It is not necessary","It is possible"],
-    c:0,
-    e:"Mustn't — qilish taqiqlangan."
-  },
-  {
-    q:"Choose the correct question.",
-    a:[
-      "Do she have to work?",
-      "Does she have to work?",
-      "Does she has to work?"
-    ],
-    c:1,
-    e:"Does + she + have to + V1."
-  }
+const listeningOne=
+"Hello, my name is Anna. I want to improve my English. My teacher says I should practise every day. I should read books and listen to English conversations. I shouldn't be afraid of making mistakes. I have to learn new words regularly. I might join an English club next month. I believe that everyone should work hard to achieve their goals.";
+
+const listeningTwo=
+"Students must follow the school rules. They have to arrive on time and bring their books. They mustn't make noise during lessons. They don't have to wear special clothes on Fridays. They may ask the teacher questions. Students should respect each other and help their classmates.";
+
+const readingText=
+"Tom is a responsible student. He gets up early every morning because he has to arrive at school on time. He must prepare his books and homework before leaving home. Tom's teacher often gives him useful advice. She says that students should read books every day and shouldn't spend too much time playing computer games. Tom follows her advice because he wants to improve his English. At school, students must follow the rules. They mustn't run in the corridors or make too much noise during lessons. However, they may ask questions whenever they need help. Tom sometimes studies with his friends after school. They might visit the library or work together on a project. Tom believes that everyone should work hard and help each other.";
+
+const listeningQuestions1=[
+ ["What does Anna want to improve?",["Her English","Her cooking","Her driving"],0],
+ ["What should Anna do every day?",["Watch films only","Practise English","Play games"],1],
+ ["What shouldn't she be afraid of?",["Teachers","Books","Making mistakes"],2],
+ ["What does Anna have to learn?",["New words","New songs","New rules"],0],
+ ["What might Anna join?",["A sports team","An English club","A music class"],1]
 ];
 
-const mainQuiz = document.getElementById("mainQuiz");
-
-quizData.forEach((item, index) => {
-  const div = document.createElement("div");
-  div.className = "quiz-question";
-
-  let html = "<p>" + (index + 1) + ". " + item.q + "</p>";
-
-  item.a.forEach((answer, optionIndex) => {
-    html +=
-      '<label class="option">' +
-      '<input type="radio" name="q' + index +
-      '" value="' + optionIndex + '">' +
-      answer +
-      "</label>";
-  });
-
-  html += '<div class="feedback" id="feedback' + index + '"></div>';
-
-  div.innerHTML = html;
-  mainQuiz.appendChild(div);
-});
-
-function checkMainQuiz() {
-  let score = 0;
-  let answered = 0;
-
-  quizData.forEach((item, index) => {
-    const selected = document.querySelector(
-      'input[name="q' + index + '"]:checked'
-    );
-
-    const feedback = document.getElementById(
-      "feedback" + index
-    );
-
-    if (!selected) {
-      feedback.innerHTML = "Javob tanlanmagan.";
-      feedback.className = "feedback incorrect";
-      return;
-    }
-
-    answered++;
-
-    if (Number(selected.value) === item.c) {
-      score++;
-      feedback.innerHTML = "✓ To‘g‘ri! " + item.e;
-      feedback.className = "feedback correct";
-    } else {
-      feedback.innerHTML =
-        "✗ To‘g‘ri javob: " + item.a[item.c] +
-        ". " + item.e;
-      feedback.className = "feedback incorrect";
-    }
-  });
-
-  const percent = Math.round(score / quizData.length * 100);
-
-  document.getElementById("mainQuizResult").innerHTML =
-    "<h3>Natija: " + score + " / " + quizData.length +
-    " (" + percent + "%)</h3>" +
-    "<p>Javob berilgan savollar: " + answered +
-    " / " + quizData.length + "</p>" +
-    (percent >= 80
-      ? "<p>Excellent! Juda yaxshi natija!</p>"
-      : "<p>Yana mashq qiling. Siz uddalaysiz!</p>");
-
-  localStorage.setItem("euLesson12QuizScore", score);
-  updateProgress();
-}
-
-function resetMainQuiz() {
-  document.querySelectorAll(
-    '#mainQuiz input[type="radio"]'
-  ).forEach(input => {
-    input.checked = false;
-  });
-
-  document.querySelectorAll(
-    '[id^="feedback"]'
-  ).forEach(item => {
-    item.innerHTML = "";
-  });
-
-  document.getElementById("mainQuizResult").innerHTML = "";
-}
-
-function saveText(id) {
-  const value = document.getElementById(id).value;
-
-  localStorage.setItem("euLesson12_" + id, value);
-
-  alert("Javoblaringiz saqlandi!");
-}
-
-["speakingNotes","writingAnswers","reflection"].forEach(id => {
-  const saved = localStorage.getItem("euLesson12_" + id);
-
-  if (saved) {
-    document.getElementById(id).value = saved;
-  }
-});
-
-function updateProgress() {
-  const tasks = [
-    "readingResult",
-    "listeningResult",
-    "mainQuizResult"
-  ];
-
-  let completed = 0;
-
-  tasks.forEach(id => {
-    if (document.getElementById(id).innerText.trim()) {
-      completed++;
-    }
-  });
-
-  const percent = Math.round(completed / tasks.length * 100);
-
-  document.getElementById("progressFill").style.width =
-    percent + "%";
-
-  document.getElementById("progressText").innerText =
-    percent + "% bajarildi";
-}
-
-function finishLesson() {
-  const score = Number(
-    localStorage.getItem("euLesson12QuizScore") || 0
-  );
-
-  if (!localStorage.getItem("euLesson12QuizScore")) {
-    document.getElementById("finishMessage").innerText =
-      "Avval asosiy testni bajaring.";
-    return;
-  }
-
-  document.getElementById("finishMessage").innerText =
-    "Dars yakunlandi! Test natijangiz: " +
-    score + " / " + quizData.length +
-    ". Endi alohida Homework faylini bajaring.";
-
-  localStorage.setItem("euLesson12Completed","true");
-  updateProgress();
-}
-
-updateProgress();
-</script>
-:root {
-  --primary:#7047eb;
-  --bg:#f5f3ff;
-  --card:#ffffff;
-  --text:#25213b;
-  --muted:#77738c;
-  --border:#e5e0f3;
-  --green:#168653;
-  --red:#d94343;
-}
-body.dark {
-  --bg:#171526;
-  --card:#242137;
-  --text:#f4f1ff;
-  --muted:#b5aecb;
-  --border:#39344f;
-}
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-body {
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,sans-serif;
-  line-height:1.7;
-}
-button {
-  cursor:pointer;
-  border:0;
-  font:inherit;
-}
-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 5%;
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.logo {
-  color:var(--primary);
-  font-weight:900;
-  font-size:21px;
-}
-header button {
-  padding:9px 13px;
-  border-radius:9px;
-  background:var(--bg);
-  color:var(--text);
-}
-.container {
-  width:min(950px,94%);
-  margin:22px auto;
-}
-.hero {
-  background:linear-gradient(135deg,#7047eb,#9c79f5);
-  color:white;
-  padding:30px 22px;
-  border-radius:20px;
-  margin-bottom:22px;
-}
-.hero h1 {
-  font-size:32px;
-}
-.hero p {
-  margin-top:8px;
-}
-.section {
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:20px;
-}
-h2 {
-  color:var(--primary);
-  margin-bottom:13px;
-}
-h3 {
-  margin:18px 0 8px;
-}
-p {
-  margin:8px 0;
-}
-li {
-  margin:7px 0 7px 22px;
-}
-.rule {
-  background:var(--bg);
-  padding:13px;
-  border-left:4px solid var(--primary);
-  border-radius:9px;
-  margin:12px 0;
-}
-.formula {
-  background:#eee8ff;
-  color:#4826a7;
-  padding:12px;
-  border-radius:9px;
-  text-align:center;
-  font-weight:bold;
-  margin:10px 0;
-}
-body.dark .formula {
-  background:#352b55;
-  color:#e1d5ff;
-}
-.note {
-  background:#fff3d5;
-  color:#654900;
-  border-radius:10px;
-  padding:14px;
-  margin:13px 0;
-}
-body.dark .note {
-  background:#493c20;
-  color:#ffe5a1;
-}
-.task {
-  padding:13px;
-  border:1px solid var(--border);
-  border-radius:11px;
-  margin:12px 0;
-}
-textarea,input[type="text"] {
-  width:100%;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  background:var(--bg);
-  color:var(--text);
-  font:inherit;
-  margin:8px 0;
-}
-.action {
-  background:var(--primary);
-  color:white;
-  border-radius:9px;
-  padding:10px 16px;
-  margin:5px 3px 5px 0;
-}
-.secondary {
-  background:var(--bg);
-  color:var(--text);
-  border:1px solid var(--border);
-}
-.option {
-  display:block;
-  padding:9px;
-  margin:6px 0;
-  background:var(--bg);
-  border-radius:8px;
-}
-.feedback {
-  font-weight:bold;
-  font-size:14px;
-  margin-top:6px;
-}
-.correct {
-  color:var(--green);
-}
-.incorrect {
-  color:var(--red);
-}
-.progress {
-  height:10px;
-  background:var(--border);
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:10px;
-}
-.progress div {
-  width:0%;
-  height:100%;
-  background:var(--primary);
-  transition:.3s;
-}
-footer {
-  text-align:center;
-  color:var(--muted);
-  padding:25px;
-}
-@media(max-width:600px) {
-  .section {
-    padding:16px;
-  }
-  .hero h1 {
-    font-size:26px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">ENGLISH UP</div>
-  <div>
-    <button onclick="history.back()">← Back</button>
-    <button onclick="toggleTheme()">🌙</button>
-  </div>
-</header>
-
-<main class="container">
-
-<section class="hero">
-  <h1>Lesson 12 — Homework</h1>
-  <p>Modal Verbs: Should, Must, Have to, Might</p>
-  <p>Bugungi bilimlaringizni mustahkamlang va mustaqil ishlash orqali ingliz tilingizni rivojlantiring.</p>
-</section>
-
-<section class="section">
-  <h2>📊 Homework Progress</h2>
-  <p id="progressText">0% bajarildi</p>
-  <div class="progress">
-    <div id="progressFill"></div>
-  </div>
-  <p>Vazifalarni birma-bir bajaring. Javoblaringiz qurilmangizda saqlanadi.</p>
-</section>
-
-<section class="section">
-  <h2>1. Grammar Revision</h2>
-
-  <p>Avval asosiy darsdagi grammatik qoidalarni takrorlang.</p>
-
-  <h3>Should — Advice</h3>
-  <div class="formula">Subject + should + V1</div>
-  <p>Maslahat berish uchun ishlatiladi.</p>
-  <div class="rule">
-    You should practise every day.<br>
-    Siz har kuni mashq qilishingiz kerak.
-  </div>
-
-  <h3>Must — Strong obligation</h3>
-  <div class="formula">Subject + must + V1</div>
-  <p>Kuchli majburiyatni bildiradi.</p>
-  <div class="rule">
-    We must respect the rules.<br>
-    Biz qoidalarni hurmat qilishimiz shart.
-  </div>
-
-  <h3>Have to — Necessity</h3>
-  <div class="formula">Subject + have / has to + V1</div>
-  <p>Zarurat yoki tashqi talabni bildiradi.</p>
-  <div class="rule">
-    She has to work today.<br>
-    U bugun ishlashi kerak.
-  </div>
-
-  <h3>Might — Possibility</h3>
-  <div class="formula">Subject + might + V1</div>
-  <p>Ehtimolni bildiradi.</p>
-  <div class="rule">
-    They might come later.<br>
-    Ular keyinroq kelishlari mumkin.
-  </div>
-
-  <div class="note">
-    📓 Daftarga yozing: har bir modal fe'lning formulasini va o‘zingiz tuzgan ikkita misol gapni yozing.
-  </div>
-</section>
-
-<section class="section">
-  <h2>2. Grammar Exercises</h2>
-
-  <h3>Task A — Choose the correct modal verb</h3>
-
-  <div class="task">
-    1. You ______ drink more water.
-    <input type="text" id="ga1" placeholder="Your answer">
-  </div>
-
-  <div class="task">
-    2. Students ______ follow school rules.
-    <input type="text" id="ga2" placeholder="Your answer">
-  </div>
-
-  <div class="task">
-    3. It ______ snow tomorrow.
-    <input type="text" id="ga3" placeholder="Your answer">
-  </div>
-
-  <div class="task">
-    4. He ______ go to work every day.
-    <input type="text" id="ga4" placeholder="Your answer">
-  </div>
-
-  <div class="task">
-    5. You ______ use your phone during the exam.
-    <input type="text" id="ga5" placeholder="Your answer">
-  </div>
-
-  <div class="task">
-    6. She ______ come to the party, but she isn't sure.
-    <input type="text" id="ga6" placeholder="Your answer">
-  </div>
-
-  <div class="task">
-    7. We ______ be late for the meeting.
-    <input type="text" id="ga7" placeholder="Your answer">
-  </div>
-
-  <div class="task">
-    8. I ______ finish this work today. It is necessary.
-    <input type="text" id="ga8" placeholder="Your answer">
-  </div>
-
-  <button class="action" onclick="checkFill()">Check Answers</button>
-  <p id="fillResult"></p>
-
-  <h3>Task B — Make the sentences negative</h3>
-
-  <p>Quyidagi gaplarni inkor shakliga o'tkazing.</p>
-
-  <ol>
-    <li>You should eat too much sugar.</li>
-    <li>He must use this door.</li>
-    <li>She has to work on Sunday.</li>
-    <li>They might come today.</li>
-    <li>We have to buy a new book.</li>
-  </ol>
-
-  <textarea id="negativeAnswers" rows="7" placeholder="1. You shouldn't ..."></textarea>
-
-  <h3>Task C — Make questions</h3>
-
-  <ol>
-    <li>You should call your mother.</li>
-    <li>He has to wear a uniform.</li>
-    <li>They might visit us.</li>
-    <li>We have to finish this work.</li>
-    <li>She should study harder.</li>
-  </ol>
-
-  <textarea id="questionAnswers" rows="7" placeholder="1. Should you ...?"></textarea>
-
-  <button class="action" onclick="saveAll()">Save Grammar Work</button>
-</section>
-
-<section class="section">
-  <h2>3. Translation Practice</h2>
-
-  <h3>Uzbek → English</h3>
-
-  <p>Gaplarni ingliz tiliga tarjima qiling. Modal fe'llarni to‘g‘ri tanlang.</p>
-
-  <ol>
-    <li>Sen ko‘proq inglizcha kitob o‘qishing kerak.</li>
-    <li>Biz qoidalarga amal qilishimiz shart.</li>
-    <li>U ertaga ishga borishi kerak.</li>
-    <li>Bugun yomg‘ir yog‘ishi mumkin.</li>
-    <li>Siz bu yerda baland ovozda gapirmasligingiz kerak.</li>
-    <li>Men yakshanba kuni ishlashim shart emas.</li>
-    <li>Ular kechikmasliklari kerak.</li>
-    <li>U bugun bizga yordam berishi mumkin.</li>
-    <li>Sen imtihonga tayyorlanishing kerak.</li>
-    <li>Bolalar yo‘l harakati qoidalariga amal qilishlari shart.</li>
-  </ol>
-
-  <textarea id="translationAnswers" rows="12" placeholder="1. You should read more English books..."></textarea>
-
-  <h3>English → Uzbek</h3>
-
-  <ol>
-    <li>You should take a short break.</li>
-    <li>We must protect the environment.</li>
-    <li>She has to attend a meeting.</li>
-    <li>They might arrive late.</li>
-    <li>He doesn't have to work today.</li>
-    <li>You mustn't touch this machine.</li>
-    <li>Should I ask the teacher?</li>
-    <li>It might be difficult.</li>
-  </ol>
-
-  <textarea id="uzbekAnswers" rows="10" placeholder="1. Sen qisqa tanaffus qilishing kerak..."></textarea>
-
-  <button class="action" onclick="saveAll()">Save Translation</button>
-</section>
-
-<section class="section">
-  <h2>4. Vocabulary Homework</h2>
-
-  <p>Quyidagi so‘zlarni daftaringizga yozing va har biri bilan bittadan gap tuzing.</p>
-
-  <div id="vocabHomework"></div>
-
-  <textarea id="vocabSentences" rows="12" placeholder="Write your own sentences with the new words..."></textarea>
-
-  <button class="action" onclick="saveAll()">Save Vocabulary Work</button>
-</section>
-
-<section class="section">
-  <h2>5. Reading Homework</h2>
-
-  <h3>A New Opportunity</h3>
-
-  <p>
-    Emma wants to improve her English because she hopes to study abroad one day.
-    She knows that she should practise every day.
-    She has to attend English classes twice a week.
-    Her teacher says that students must complete their assignments on time.
-    Emma sometimes feels nervous when she speaks English.
-    However, she knows that mistakes are a normal part of learning.
-    This weekend, she might join an English conversation club.
-    Her friend says she should try it because it could help her become more confident.
-    Emma doesn't have to be perfect.
-    She only has to keep learning and practising.
-  </p>
-
-  <button class="action secondary" onclick="speakReading()">🔊 Listen</button>
-
-  <h3>Answer the questions</h3>
-
-  <div class="task">
-    1. Why does Emma want to improve her English?
-    <textarea id="read1" rows="2"></textarea>
-  </div>
-
-  <div class="task">
-    2. How often does she attend English classes?
-    <textarea id="read2" rows="2"></textarea>
-  </div>
-
-  <div class="task">
-    3. What must students do according to the teacher?
-    <textarea id="read3" rows="2"></textarea>
-  </div>
-
-  <div class="task">
-    4. What might Emma do this weekend?
-    <textarea id="read4" rows="2"></textarea>
-  </div>
-
-  <div class="task">
-    5. Why should she join the conversation club?
-    <textarea id="read5" rows="2"></textarea>
-  </div>
-
-  <button class="action" onclick="saveAll()">Save Reading Answers</button>
-</section>
-
-<section class="section">
-  <h2>6. Listening Homework</h2>
-
-  <h3>Listening A — At Work</h3>
-
-  <div class="rule">
-    John: Do you have to work tomorrow?<br>
-    Peter: Yes, I do. I must finish an important project.<br>
-    John: You should take a break sometimes.<br>
-    Peter: You're right. I might go for a walk after work.<br>
-    John: That sounds like a good idea.
-  </div>
-
-  <button class="action" onclick="speakListeningA()">🔊 Play Audio A</button>
-
-  <h3>Listening B — Travel Plans</h3>
-
-  <div class="rule">
-    Sara: We might travel to London next month.<br>
-    Tom: That sounds exciting! Do you have to book tickets now?<br>
-    Sara: Yes, we do. We must plan everything carefully.<br>
-    Tom: You should also check the weather.<br>
-    Sara: Good idea. It might rain there.
-  </div>
-
-  <button class="action" onclick="speakListeningB()">🔊 Play Audio B</button>
-
-  <h3>Listening Questions</h3>
-
-  <div id="listeningQuestions"></div>
-
-  <button class="action" onclick="checkListening()">Check Listening</button>
-  <p id="listeningResult"></p>
-</section>
-
-<section class="section">
-  <h2>7. Speaking Homework</h2>
-
-  <p>Quyidagi mavzularda ingliz tilida gapiring. Javoblaringizni ovoz chiqarib ayting.</p>
-
-  <h3>Topic 1 — My Daily Responsibilities</h3>
-  <ul>
-    <li>What do you have to do every day?</li>
-    <li>What must you do at work or school?</li>
-    <li>What should you do to improve yourself?</li>
-  </ul>
-
-  <h3>Topic 2 — Giving Advice</h3>
-  <ul>
-    <li>What should a beginner do to learn English?</li>
-    <li>What should people do to stay healthy?</li>
-    <li>What shouldn't students do during lessons?</li>
-  </ul>
-
-  <h3>Topic 3 — Future Possibilities</h3>
-  <ul>
-    <li>Where might you travel in the future?</li>
-    <li>What might you learn next year?</li>
-    <li>What might happen if you practise every day?</li>
-  </ul>
-
-  <div class="note">
-    Speaking talabi: har bir mavzu bo‘yicha kamida 5 ta inglizcha gap ayting.
-    Javoblaringizda should, must, have to va might dan foydalaning.
-  </div>
-
-  <textarea id="speakingHomework" rows="8" placeholder="Write your speaking notes here..."></textarea>
-
-  <button class="action" onclick="saveAll()">Save Speaking</button>
-</section>
-
-<section class="section">
-  <h2>8. Writing Homework</h2>
-
-  <p><strong>Writing Task:</strong> Write about your responsibilities and future plans.</p>
-
-  <p>Mavzu: <strong>My Responsibilities and Future Plans</strong></p>
-
-  <p>Matningizda quyidagilar bo‘lishi kerak:</p>
-
-  <ul>
-    <li>Har kuni nima qilishingiz kerakligi haqida yozing.</li>
-    <li>Nimalarni bajarishingiz shartligini tushuntiring.</li>
-    <li>Odamlarga qanday maslahat berishingizni yozing.</li>
-    <li>Kelajakda nimalar sodir bo‘lishi mumkinligini ayting.</li>
-  </ul>
-
-  <p><strong>Talab:</strong> 120–150 ta so‘z.</p>
-
-  <div class="note">
-    Kamida 3 ta should, 3 ta must yoki have to va 2 ta might ishlating.
-  </div>
-
-  <textarea id="writingHomework" rows="14" placeholder="My Responsibilities and Future Plans..."></textarea>
-
-  <button class="action" onclick="saveAll()">Save Writing</button>
-</section>
-
-<section class="section">
-  <h2>9. Final Homework Test</h2>
-
-  <p>Quyidagi 25 ta savolga javob bering. Har bir savol uchun bitta javobni tanlang.</p>
-
-  <div id="finalQuiz"></div>
-
-  <button class="action" onclick="checkFinal()">Submit Final Test</button>
-  <button class="action secondary" onclick="resetFinal()">Try Again</button>
-
-  <div id="finalResult"></div>
-</section>
-
-<section class="section">
-  <h2>10. Final Checklist</h2>
-
-  <p>Homework tugagach, quyidagilarni tekshiring:</p>
-
-  <label class="option"><input type="checkbox" class="done"> Grammatika mashqlarini bajardim.</label>
-  <label class="option"><input type="checkbox" class="done"> Tarjima mashqlarini bajardim.</label>
-  <label class="option"><input type="checkbox" class="done"> Yangi so‘zlarni daftarga yozdim.</label>
-  <label class="option"><input type="checkbox" class="done"> Reading matnini o‘qidim.</label>
-  <label class="option"><input type="checkbox" class="done"> Listening matnlarini tingladim.</label>
-  <label class="option"><input type="checkbox" class="done"> Speaking topshiriqlarini bajardim.</label>
-  <label class="option"><input type="checkbox" class="done"> Writing matnini yozdim.</label>
-  <label class="option"><input type="checkbox" class="done"> Yakuniy testni bajardim.</label>
-
-  <button class="action" onclick="finishHomework()">Finish Homework</button>
-  <p id="finishMessage"></p>
-</section>
-
-</main>
-
-<footer>
-  <strong>ENGLISH UP</strong>
-  <p>Learn today. Succeed tomorrow.</p>
-  <p>Lesson 12 — Homework</p>
-</footer>
-
-<script>
-function toggleTheme() {
-  document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "eu12HomeworkTheme",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
-}
-
-if (localStorage.getItem("eu12HomeworkTheme") === "dark") {
-  document.body.classList.add("dark");
-}
-
-function speak(text) {
-  if (!("speechSynthesis" in window)) {
-    alert("Audio is not supported in this browser.");
-    return;
-  }
-
-  speechSynthesis.cancel();
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US";
-  utterance.rate = 0.85;
-
-  speechSynthesis.speak(utterance);
-}
-
-function speakReading() {
-  speak(
-    "Emma wants to improve her English because she hopes to study abroad one day. " +
-    "She knows that she should practise every day. " +
-    "She has to attend English classes twice a week. " +
-    "Her teacher says that students must complete their assignments on time. " +
-    "Emma sometimes feels nervous when she speaks English. " +
-    "However, she knows that mistakes are a normal part of learning. " +
-    "This weekend, she might join an English conversation club. " +
-    "Her friend says she should try it because it could help her become more confident. " +
-    "Emma doesn't have to be perfect. " +
-    "She only has to keep learning and practising."
-  );
-}
-
-function speakListeningA() {
-  speak(
-    "John: Do you have to work tomorrow? " +
-    "Peter: Yes, I do. I must finish an important project. " +
-    "John: You should take a break sometimes. " +
-    "Peter: You're right. I might go for a walk after work. " +
-    "John: That sounds like a good idea."
-  );
-}
-
-function speakListeningB() {
-  speak(
-    "Sara: We might travel to London next month. " +
-    "Tom: That sounds exciting! Do you have to book tickets now? " +
-    "Sara: Yes, we do. We must plan everything carefully. " +
-    "Tom: You should also check the weather. " +
-    "Sara: Good idea. It might rain there."
-  );
-}
-
-const fillAnswers = {
-  ga1:"should",
-  ga2:"must",
-  ga3:"might",
-  ga4:"has to",
-  ga5:"mustn't",
-  ga6:"might",
-  ga7:"shouldn't",
-  ga8:"have to"
-};
-
-function checkFill() {
-  let score = 0;
-
-  Object.keys(fillAnswers).forEach(id => {
-    const value = document.getElementById(id)
-      .value.trim().toLowerCase()
-      .replace(/\s+/g," ");
-
-    if (value === fillAnswers[id]) {
-      score++;
-    }
-  });
-
-  document.getElementById("fillResult").innerHTML =
-    "Natija: " + score + " / 8";
-
-  saveProgress();
-}
-
-const vocab = [
-  ["advice","maslahat"],
-  ["rule","qoida"],
-  ["obligation","majburiyat"],
-  ["necessary","zarur"],
-  ["possibility","ehtimol"],
-  ["suggestion","taklif"],
-  ["healthy","sog‘lom"],
-  ["habit","odat"],
-  ["improve","yaxshilamoq"],
-  ["respect","hurmat qilmoq"],
-  ["arrive","yetib kelmoq"],
-  ["prepare","tayyorlanmoq"],
-  ["appointment","uchrashuv"],
-  ["uniform","forma"],
-  ["permission","ruxsat"],
-  ["allowed","ruxsat berilgan"],
-  ["forbidden","taqiqlangan"],
-  ["careful","ehtiyotkor"],
-  ["dangerous","xavfli"],
-  ["safe","xavfsiz"],
-  ["perhaps","balki"],
-  ["probably","ehtimol"],
-  ["certain","aniq"],
-  ["chance","imkoniyat"],
-  ["decision","qaror"],
-  ["choice","tanlov"],
-  ["explain","tushuntirmoq"],
-  ["continue","davom ettirmoq"],
-  ["complete","tugatmoq"],
-  ["attend","qatnashmoq"],
-  ["borrow","qarzga olmoq"],
-  ["return","qaytarmoq"],
-  ["invite","taklif qilmoq"],
-  ["cancel","bekor qilmoq"],
-  ["remain","qolmoq"],
-  ["solve","hal qilmoq"],
-  ["avoid","chetlab o‘tmoq"],
-  ["protect","himoya qilmoq"],
-  ["achieve","erishmoq"],
-  ["opportunity","imkoniyat"]
+const listeningQuestions2=[
+ ["What must students follow?",["School rules","TV programmes","Sports news"],0],
+ ["When do students have to arrive?",["Late","On time","At night"],1],
+ ["What mustn't students do?",["Ask questions","Read books","Make noise"],2],
+ ["What don't students have to wear on Fridays?",["Special clothes","Shoes","Uniforms at home"],0],
+ ["What may students do?",["Leave school forever","Ask the teacher questions","Ignore rules"],1]
 ];
 
-const vocabBox = document.getElementById("vocabHomework");
+function renderSimpleQuiz(containerId,questions){
+ const container=document.getElementById(containerId);
+ questions.forEach((q,i)=>{
+  const div=document.createElement("div");
+  div.className="structure";
+  div.style.marginBottom="12px";
+  div.innerHTML=`<strong>${i+1}. ${q[0]}</strong>`;
+  q[1].forEach((option,j)=>{
+   const label=document.createElement("label");
+   label.style.display="block";
+   label.style.margin="7px 0";
+   label.innerHTML=`<input type="radio" name="${containerId}_${i}" value="${j}"> ${option}`;
+   div.appendChild(label);
+  });
+  const result=document.createElement("p");
+  result.id=containerId+"_result_"+i;
+  div.appendChild(result);
+  const btn=document.createElement("button");
+  btn.className="secondary-btn";
+  btn.textContent="Check";
+  btn.onclick=()=>{
+   const chosen=div.querySelector("input:checked");
+   if(!chosen){result.textContent="Choose an answer.";return;}
+   const correct=Number(chosen.value)===q[2];
+   result.textContent=correct?"Correct! ✓":"Incorrect. Correct answer: "+q[1][q[2]];
+   result.style.color=correct?"green":"red";
+  };
+  div.appendChild(btn);
+  container.appendChild(div);
+ });
+}
 
-vocab.forEach((item,index) => {
-  const div = document.createElement("div");
-  div.className = "task";
-  div.innerHTML =
-    "<strong>" + (index+1) + ". " + item[0] +
-    "</strong> — " + item[1];
-  vocabBox.appendChild(div);
-});
-
-const listeningData = [
-  {
-    q:"What does Peter have to do?",
-    a:["Finish a project","Visit his uncle","Buy a ticket"],
-    c:0
-  },
-  {
-    q:"What might Peter do after work?",
-    a:["Go shopping","Go for a walk","Go to school"],
-    c:1
-  },
-  {
-    q:"Where might Sara travel?",
-    a:["Paris","London","Rome"],
-    c:1
-  },
-  {
-    q:"What must Sara and Tom do?",
-    a:["Plan everything carefully","Cancel the trip","Stay at home"],
-    c:0
-  },
-  {
-    q:"What should they check?",
-    a:["The weather","Their homework","The school rules"],
-    c:0
-  }
+const readingQuestions=[
+ ["Why does Tom get up early?",["He has to arrive at school on time","He wants to watch TV","He works at night"],0],
+ ["What must Tom prepare?",["His clothes only","His books and homework","His lunch only"],1],
+ ["What does his teacher recommend?",["Playing games","Reading books every day","Sleeping in class"],1],
+ ["What mustn't students do?",["Ask questions","Help friends","Run in corridors"],2],
+ ["What may students do?",["Ask questions","Break all rules","Leave every lesson"],0],
+ ["Where might Tom go with friends?",["The cinema","The library","The airport"],1],
+ ["What does responsible mean?",["Mas'uliyatli","Dangasa","Shovqinli"],0],
+ ["Why does Tom follow advice?",["He wants to improve his English","He wants to stop studying","He dislikes school"],0],
+ ["What should students do?",["Work hard","Ignore teachers","Make noise"],0],
+ ["What do students have to do?",["Arrive at school on time","Sleep at school","Avoid books"],0]
 ];
 
-function renderQuiz(data,containerId,prefix) {
-  const box = document.getElementById(containerId);
-
-  data.forEach((item,index) => {
-    const div = document.createElement("div");
-    div.className = "task";
-
-    let html = "<p><strong>" +
-      (index+1) + ". " + item.q +
-      "</strong></p>";
-
-    item.a.forEach((answer,optionIndex) => {
-      html +=
-        '<label class="option">' +
-        '<input type="radio" name="' + prefix + index +
-        '" value="' + optionIndex + '">' +
-        answer +
-        "</label>";
-    });
-
-    html += '<div id="' + prefix + 'feedback' +
-      index + '" class="feedback"></div>';
-
-    div.innerHTML = html;
-    box.appendChild(div);
-  });
-}
-
-renderQuiz(
-  listeningData,
-  "listeningQuestions",
-  "listen"
-);
-
-function checkListening() {
-  let score = 0;
-
-  listeningData.forEach((item,index) => {
-    const selected = document.querySelector(
-      'input[name="listen' + index + '"]:checked'
-    );
-
-    const feedback = document.getElementById(
-      "listenfeedback" + index
-    );
-
-    if (selected && Number(selected.value) === item.c) {
-      score++;
-      feedback.innerText = "✓ Correct";
-      feedback.className = "feedback correct";
-    } else {
-      feedback.innerText =
-        "✗ Correct answer: " + item.a[item.c];
-      feedback.className = "feedback incorrect";
-    }
-  });
-
-  document.getElementById("listeningResult").innerText =
-    "Listening score: " + score + " / " + listeningData.length;
-
-  saveProgress();
-}
-
-const finalData = [
-  {
-    q:"You ______ study every day.",
-    a:["should","might not","has to"],
-    c:0,
-    e:"Should maslahat bildiradi."
-  },
-  {
-    q:"Students ______ respect their teachers.",
-    a:["might","must","shouldn't"],
-    c:1,
-    e:"Must kuchli majburiyat."
-  },
-  {
-    q:"It ______ rain tonight.",
-    a:["has to","mustn't","might"],
-    c:2,
-    e:"Might ehtimol."
-  },
-  {
-    q:"She ______ work tomorrow.",
-    a:["have to","has to","having to"],
-    c:1,
-    e:"She bilan has to."
-  },
-  {
-    q:"You ______ park here. It is forbidden.",
-    a:["mustn't","don't have to","might"],
-    c:0,
-    e:"Mustn't taqiq."
-  },
-  {
-    q:"I ______ go to work every morning.",
-    a:["has to","have to","must to"],
-    c:1,
-    e:"I bilan have to."
-  },
-  {
-    q:"He ______ eat too much fast food.",
-    a:["shouldn't","doesn't should","not should"],
-    c:0,
-    e:"Shouldn't maslahat bermaslik."
-  },
-  {
-    q:"______ you have to study tonight?",
-    a:["Does","Do","Are"],
-    c:1,
-    e:"You bilan Do."
-  },
-  {
-    q:"She doesn't ______ to cook today.",
-    a:["has","have","having"],
-    c:1,
-    e:"Doesn't have to."
-  },
-  {
-    q:"______ I call the doctor?",
-    a:["Should","Do","Am"],
-    c:0,
-    e:"Should so‘roq gap boshida."
-  },
-  {
-    q:"They ______ visit us later. They are not sure.",
-    a:["must","might","have to"],
-    c:1,
-    e:"Might ehtimol."
-  },
-  {
-    q:"We ______ be rude to other people.",
-    a:["shouldn't","might","has to"],
-    c:0,
-    e:"Shouldn't."
-  },
-  {
-    q:"Does he ______ wear a uniform?",
-    a:["has to","have to","must to"],
-    c:1,
-    e:"Does + have to."
-  },
-  {
-    q:"I ______ finish this today. It is my duty.",
-    a:["must","might not","shouldn't"],
-    c:0,
-    e:"Must kuchli majburiyat."
-  },
-  {
-    q:"You ______ come early. It isn't necessary.",
-    a:["mustn't","don't have to","should"],
-    c:1,
-    e:"Don't have to — majbur emas."
-  },
-  {
-    q:"Choose the correct sentence.",
-    a:[
-      "She should to study.",
-      "She should studies.",
-      "She should study."
-    ],
-    c:2,
-    e:"Modal + V1."
-  },
-  {
-    q:"Choose the correct negative sentence.",
-    a:[
-      "He doesn't has to go.",
-      "He doesn't have to go.",
-      "He not have to go."
-    ],
-    c:1,
-    e:"Doesn't have to."
-  },
-  {
-    q:"What does might express?",
-    a:["Advice","Possibility","Prohibition"],
-    c:1,
-    e:"Might — ehtimol."
-  },
-  {
-    q:"What does mustn't mean?",
-    a:["It is forbidden","It is not necessary","It is possible"],
-    c:0,
-    e:"Mustn't — taqiqlangan."
-  },
-  {
-    q:"Choose the correct question.",
-    a:[
-      "Does she has to work?",
-      "Does she have to work?",
-      "Do she have to work?"
-    ],
-    c:1,
-    e:"Does + she + have to."
-  },
-  {
-    q:"Which modal verb is used for advice?",
-    a:["Should","Might","Mustn't"],
-    c:0,
-    e:"Should — maslahat."
-  },
-  {
-    q:"Which phrase means 'majbur emas'?",
-    a:["Mustn't","Don't have to","Must"],
-    c:1,
-    e:"Don't have to."
-  },
-  {
-    q:"Choose the correct sentence.",
-    a:[
-      "He might comes.",
-      "He might to come.",
-      "He might come."
-    ],
-    c:2,
-    e:"Might dan keyin V1."
-  },
-  {
-    q:"Which sentence expresses prohibition?",
-    a:[
-      "You mustn't enter.",
-      "You might enter.",
-      "You should enter."
-    ],
-    c:0,
-    e:"Mustn't taqiq."
-  },
-  {
-    q:"Which sentence expresses possibility?",
-    a:[
-      "I have to work.",
-      "She might arrive late.",
-      "You must stop."
-    ],
-    c:1,
-    e:"Might ehtimol."
-  }
+const speaking=[
+ "What should people do to stay healthy?",
+ "What shouldn't students do in class?",
+ "What must you do every day?",
+ "What do you have to do at work or school?",
+ "What don't you have to do on weekends?",
+ "What might you do next summer?",
+ "May I ask you a question? How would you answer politely?",
+ "Should children read books every day? Why?",
+ "What rules must people follow in public places?",
+ "What should a good friend do?",
+ "What might happen if people don't study?",
+ "Do you have to wake up early every morning?",
+ "What mustn't people do in a library?",
+ "What should someone do when they make a mistake?",
+ "What might you learn in the future?"
 ];
 
-renderQuiz(finalData,"finalQuiz","final");
-
-function checkFinal() {
-  let score = 0;
-  let answered = 0;
-
-  finalData.forEach((item,index) => {
-    const selected = document.querySelector(
-      'input[name="final' + index + '"]:checked'
-    );
-
-    const feedback = document.getElementById(
-      "finalfeedback" + index
-    );
-
-    if (!selected) {
-      feedback.innerText = "Javob tanlanmagan.";
-      feedback.className = "feedback incorrect";
-      return;
-    }
-
-    answered++;
-
-    if (Number(selected.value) === item.c) {
-      score++;
-      feedback.innerText = "✓ To‘g‘ri. " + item.e;
-      feedback.className = "feedback correct";
-    } else {
-      feedback.innerText =
-        "✗ To‘g‘ri javob: " + item.a[item.c] +
-        ". " + item.e;
-      feedback.className = "feedback incorrect";
-    }
-  });
-
-  const percent = Math.round(score / finalData.length * 100);
-
-  document.getElementById("finalResult").innerHTML =
-    "<h3>Natija: " + score + " / " +
-    finalData.length + " (" + percent + "%)</h3>" +
-    "<p>Javob berilgan savollar: " +
-    answered + " / " + finalData.length + "</p>" +
-    (percent >= 80
-      ? "<p>Excellent! Juda yaxshi!</p>"
-      : "<p>Qoidalarni qayta ko‘rib chiqing va yana urinib ko‘ring.</p>");
-
-  localStorage.setItem("eu12HomeworkScore",score);
-  saveProgress();
+function renderSpeaking(){
+ const box=document.getElementById("speakingQuestions");
+ speaking.forEach((q,i)=>{
+  const div=document.createElement("div");
+  div.className="example";
+  div.innerHTML=`<strong>${i+1}. ${q}</strong><br><button class="secondary-btn" onclick="speak(${JSON.stringify(q)})">🔊 Listen</button>`;
+  box.appendChild(div);
+ });
 }
 
-function resetFinal() {
-  document.querySelectorAll(
-    '#finalQuiz input[type="radio"]'
-  ).forEach(input => input.checked = false);
-
-  document.querySelectorAll(
-    '[id^="finalfeedback"]'
-  ).forEach(item => item.innerText = "");
-
-  document.getElementById("finalResult").innerHTML = "";
+function saveWriting(){
+ const value=document.getElementById("writingAnswer").value;
+ localStorage.setItem("lesson12Writing",value);
+ document.getElementById("writingMessage").textContent="Your writing has been saved.";
 }
 
-function saveAll() {
-  const fields = document.querySelectorAll(
-    "textarea,input[type=text]"
-  );
+document.getElementById("writingAnswer").value=
+ localStorage.getItem("lesson12Writing")||"";
 
-  fields.forEach(field => {
-    if (field.id) {
-      localStorage.setItem(
-        "eu12homework_" + field.id,
-        field.value
-      );
-    }
-  });
+renderVocabulary();
+renderSimpleQuiz("listenQuiz1",listeningQuestions1);
+renderSimpleQuiz("listenQuiz2",listeningQuestions2);
+renderSimpleQuiz("readingQuiz",readingQuestions);
+renderSpeaking();
 
-  alert("Ishlaringiz saqlandi!");
+const testQuestions=[
+ ["You ___ study harder.",["should","might","mustn't"],0],
+ ["You ___ smoke here. It is forbidden.",["don't have to","mustn't","might"],1],
+ ["She ___ work tomorrow.",["have to","has to","having to"],1],
+ ["It ___ rain later.",["might","mustn't","has"],0],
+ ["___ I open the window?",["Mustn't","May","Has"],1],
+ ["He should ___ more.",["studies","studying","study"],2],
+ ["They ___ wear uniforms at school.",["has to","have to","having"],1],
+ ["She ___ have to cook today.",["doesn't","don't","isn't"],0],
+ ["You ___ worry about it.",["shouldn't","mustn't to","doesn't"],0],
+ ["___ you have to work today?",["Does","Do","Are"],1],
+ ["He might ___ late.",["is","be","being"],1],
+ ["Students must ___ the rules.",["follow","follows","following"],0],
+ ["You ___ bring food. It is optional.",["mustn't","don't have to","must"],1],
+ ["___ we leave now?",["Should","Do should","Are should"],0],
+ ["She may ___ tomorrow.",["comes","coming","come"],2],
+ ["I ___ get up early every day.",["has to","have to","having"],1],
+ ["He ___ play football today.",["might","might to","might plays"],0],
+ ["You ___ respect other people.",["should","should to","shoulds"],0],
+ ["We ___ make noise here.",["mustn't","don't have to","might"],0],
+ ["Does he ___ study English?",["has to","have to","having to"],1],
+ ["She shouldn't ___ so much sugar.",["eats","eating","eat"],2],
+ ["It ___ be difficult.",["may","may to","mays"],0],
+ ["___ I use your pen?",["May","Do may","Am"],0],
+ ["You ___ arrive on time.",["must","must to","musts"],0],
+ ["They ___ not come tonight.",["might","might to","might comes"],0],
+ ["He ___ have to work today.",["don't","doesn't","isn't"],1],
+ ["We should ___ our English.",["improves","improve","improving"],1],
+ ["You ___ park here. It is prohibited.",["don't have to","mustn't","might"],1],
+ ["She ___ to go to school every day.",["have","has","having"],1],
+ ["___ he have to wear a uniform?",["Do","Does","Is"],1],
+ ["You ___ eat more vegetables.",["should","mustn't","might not"],0],
+ ["He might ___ a doctor.",["is","be","being"],1],
+ ["I don't ___ to work tomorrow.",["has","have","having"],1],
+ ["Students ___ ask questions.",["may","mustn't","shouldn't to"],0],
+ ["She must ___ her homework.",["finishes","finish","finishing"],1],
+ ["You ___ use your phone during the exam.",["mustn't","don't have to","might"],0],
+ ["___ they have to leave now?",["Do","Does","Are"],0],
+ ["It may ___ tomorrow.",["rains","raining","rain"],2],
+ ["We ___ follow the instructions.",["has to","have to","having"],1],
+ ["You should ___ careful.",["be","are","being"],0],
+ ["He ___ not know the answer.",["might","might to","mights"],0],
+ ["She ___ wear a uniform at work.",["have to","has to","have"],1],
+ ["You ___ come if you are busy.",["mustn't","don't have to","shouldn't"],1],
+ ["___ I ask a question?",["May","Does","Has"],0],
+ ["He shouldn't ___ late.",["arrives","arrive","arriving"],1],
+ ["They might ___ us.",["visits","visiting","visit"],2],
+ ["I ___ remember to call my mother.",["must","must to","musts"],0],
+ ["She doesn't have to ___ today.",["works","working","work"],2],
+ ["You ___ take a break.",["should","should to","shoulds"],0],
+ ["The students mustn't ___ during the test.",["talk","talks","talking"],0],
+ ["___ you have to study tonight?",["Does","Do","Are"],1],
+ ["It ___ snow tonight.",["might","mustn't to","has"],0],
+ ["He has to ___ early.",["gets up","getting up","get up"],2],
+ ["You ___ be polite.",["should","should to","shoulds"],0],
+ ["We may ___ the museum.",["visits","visit","visiting"],1],
+ ["She ___ not arrive on time.",["might","might to","mights"],0],
+ ["You ___ follow the safety rules.",["must","must to","musts"],0],
+ ["They don't have to ___ uniforms.",["wears","wear","wearing"],1],
+ ["___ he come to the party?",["Might","Does might","Is might"],0],
+ ["Students should ___ their teachers.",["respect","respects","respecting"],0]
+];
+
+let testIndex=0;
+let testScore=0;
+let testAnswered=false;
+let testResponses=[];
+
+function renderTest(){
+ const q=testQuestions[testIndex];
+ const area=document.getElementById("testArea");
+ area.innerHTML=`<h3>Question ${testIndex+1}</h3><p><strong>${q[0]}</strong></p>`;
+ q[1].forEach((option,i)=>{
+  const btn=document.createElement("button");
+  btn.className="quiz-option";
+  btn.textContent=String.fromCharCode(65+i)+". "+option;
+  btn.onclick=()=>answerTest(i,btn);
+  area.appendChild(btn);
+ });
+ document.getElementById("testCounter").textContent=
+ "Question "+(testIndex+1)+" / "+testQuestions.length;
+ document.getElementById("testProgress").style.width=
+ (testIndex/testQuestions.length*100)+"%";
+ document.getElementById("nextQuestion").disabled=true;
+ testAnswered=false;
 }
 
-function loadSaved() {
-  document.querySelectorAll(
-    "textarea,input[type=text]"
-  ).forEach(field => {
-    if (!field.id) return;
-
-    const value = localStorage.getItem(
-      "eu12homework_" + field.id
-    );
-
-    if (value !== null) {
-      field.value = value;
-    }
-  });
+function answerTest(choice,button){
+ if(testAnswered)return;
+ testAnswered=true;
+ const correct=choice===testQuestions[testIndex][2];
+ if(correct)testScore++;
+ testResponses.push({question:testIndex,choice,correct});
+ document.querySelectorAll("#testArea .quiz-option").forEach((btn,i)=>{
+  btn.disabled=true;
+  if(i===testQuestions[testIndex][2])btn.classList.add("correct");
+  else if(i===choice)btn.classList.add("wrong");
+ });
+ const feedback=document.createElement("p");
+ feedback.textContent=correct?"Correct answer! ✓":"Incorrect. Correct answer: "+testQuestions[testIndex][1][testQuestions[testIndex][2]];
+ feedback.style.color=correct?"green":"red";
+ document.getElementById("testArea").appendChild(feedback);
+ document.getElementById("nextQuestion").disabled=false;
 }
 
-function saveProgress() {
-  const checks = document.querySelectorAll(".done");
-  let completed = 0;
-
-  checks.forEach((check,index) => {
-    const saved = localStorage.getItem(
-      "eu12homework_check_" + index
-    ) === "true";
-
-    check.checked = saved;
-
-    if (check.checked) completed++;
-  });
-
-  const percent = Math.round(
-    completed / checks.length * 100
-  );
-
-  document.getElementById("progressFill").style.width =
-    percent + "%";
-
-  document.getElementById("progressText").innerText =
-    percent + "% bajarildi";
+function nextTestQuestion(){
+ if(!testAnswered)return;
+ testIndex++;
+ if(testIndex<testQuestions.length){
+  renderTest();
+ }else{
+  showTestResult();
+ }
 }
 
-document.querySelectorAll(".done").forEach((check,index) => {
-  check.addEventListener("change",() => {
-    localStorage.setItem(
-      "eu12homework_check_" + index,
-      check.checked
-    );
-
-    saveProgress();
-  });
-});
-
-function finishHomework() {
-  const checked = document.querySelectorAll(".done:checked").length;
-  const total = document.querySelectorAll(".done").length;
-  const score = localStorage.getItem("eu12HomeworkScore");
-
-  if (checked < total) {
-    document.getElementById("finishMessage").innerText =
-      "Barcha checklist vazifalarini belgilang. " +
-      checked + " / " + total + " bajarildi.";
-    return;
-  }
-
-  if (score === null) {
-    document.getElementById("finishMessage").innerText =
-      "Avval yakuniy testni bajaring.";
-    return;
-  }
-
-  document.getElementById("finishMessage").innerText =
-    "Homework yakunlandi! Test natijangiz: " +
-    score + " / " + finalData.length +
-    ". Ajoyib mehnat!";
-
-  localStorage.setItem("eu12HomeworkCompleted","true");
+function showTestResult(){
+ document.getElementById("testArea").innerHTML="";
+ document.getElementById("nextQuestion").classList.add("hidden");
+ document.getElementById("testCounter").textContent="Test completed!";
+ document.getElementById("testProgress").style.width="100%";
+ const percent=Math.round(testScore/testQuestions.length*100);
+ const result=document.getElementById("testResult");
+ result.classList.remove("hidden");
+ result.innerHTML=`
+  <h2>YOUR RESULT</h2>
+  <p style="font-size:35px;color:var(--primary);font-weight:bold">${percent}%</p>
+  <p>Correct answers: ${testScore} / ${testQuestions.length}</p>
+  <p>${percent>=80?"Excellent work! You have successfully completed Lesson 12.":"Keep practising! Review the grammar and try again."}</p>
+  <h3>Review your answers</h3>
+  <div id="testReview"></div>`;
+ testResponses.forEach(r=>{
+  const q=testQuestions[r.question];
+  const item=document.createElement("div");
+  item.className="example";
+  item.innerHTML=`<strong>${r.question+1}. ${q[0]}</strong><p>${r.correct?"✓ Correct":"✗ Incorrect"}</p><p>Correct answer: ${q[1][q[2]]}</p>`;
+  document.getElementById("testReview").appendChild(item);
+ });
+ localStorage.setItem("lesson12TestResult",JSON.stringify({
+  score:testScore,
+  total:testQuestions.length,
+  percent:percent
+ }));
 }
 
-loadSaved();
-saveProgress();
+function restartTest(){
+ testIndex=0;
+ testScore=0;
+ testAnswered=false;
+ testResponses=[];
+ document.getElementById("testResult").classList.add("hidden");
+ document.getElementById("nextQuestion").classList.remove("hidden");
+ renderTest();
+}
+
+renderTest();
 </script>
 
 </body>
