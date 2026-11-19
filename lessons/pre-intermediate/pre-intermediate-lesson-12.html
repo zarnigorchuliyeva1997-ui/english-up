@@ -1,4 +1,4 @@
-
+up by
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -1513,6 +1513,543 @@ function restartTest(){
 
 renderTest();
 </script>
+
+<!-- =====================================================
+     LESSON 12 — HOMEWORK
+     OLD CODE DAVOMI
+===================================================== -->
+
+<section class="card lesson-section" id="homework">
+  <h2>📝 Lesson 12 — Homework</h2>
+  <p>Modal Verbs: SHOULD, MUST, HAVE TO, MIGHT, MAY</p>
+
+  <div class="card">
+    <h3>📌 Homework instructions</h3>
+    <p>Har bir topshiriqni avval mustaqil bajaring. Javoblarni daftaringizga ham yozing. Mashqlarni tugatgach, tekshirish tugmasini bosing.</p>
+    <ul>
+      <li>Grammar — 30 ta mashq</li>
+      <li>Vocabulary — 40 ta so‘z</li>
+      <li>Translation — 20 ta gap</li>
+      <li>Reading — 2 ta matn</li>
+      <li>Listening — 2 ta mashq</li>
+      <li>Writing — 15 ta topshiriq</li>
+      <li>Speaking — 10 ta topshiriq</li>
+      <li>Final Test — 20 ta savol</li>
+    </ul>
+  </div>
+
+  <!-- GRAMMAR HOMEWORK -->
+  <div class="card">
+    <h3>1. Grammar — 30 Exercises</h3>
+    <p>Bo‘sh joylarni SHOULD, MUST, HAVE TO, MIGHT yoki MAY bilan to‘ldiring.</p>
+
+    <div id="hwGrammar"></div>
+    <button onclick="checkHWGrammar()">Check Grammar</button>
+    <p id="hwGrammarResult"></p>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="card">
+    <h3>2. Vocabulary — 40 Words</h3>
+    <p>Quyidagi so‘zlarni daftaringizga inglizcha va o‘zbekcha tarjimasi bilan yozing. Har bir so‘z bilan bittadan gap tuzing.</p>
+
+    <div id="hwVocabulary"></div>
+    <button onclick="showHWVocab()">Show / Hide Vocabulary</button>
+    <div id="hwVocabExtra" style="display:none;"></div>
+  </div>
+
+  <!-- TRANSLATION -->
+  <div class="card">
+    <h3>3. Translation — 20 Sentences</h3>
+    <p>Gaplarni ingliz tiliga tarjima qiling. Modal fe’llardan to‘g‘ri foydalaning.</p>
+
+    <ol>
+      <li>Sen ko‘proq suv ichishing kerak.</li>
+      <li>Biz hozir ketishimiz kerak.</li>
+      <li>U bugun ishlashi kerak.</li>
+      <li>Men ertaga kelishim mumkin.</li>
+      <li>Ular kech qolishlari mumkin.</li>
+      <li>Siz bu qoidaga amal qilishingiz shart.</li>
+      <li>Sen shifokorga borishing kerak.</li>
+      <li>Men bugun uyda qolishim kerak.</li>
+      <li>U ingliz tilida gapira olishi mumkin.</li>
+      <li>Biz bu ishni bugun tugatishimiz kerak.</li>
+      <li>U hozir band bo‘lishi mumkin.</li>
+      <li>Siz bu yerda kutishingiz kerak.</li>
+      <li>Men ertaga maktabga borishim kerak.</li>
+      <li>U ko‘proq mashq qilishi kerak.</li>
+      <li>Biz unga yordam berishimiz kerak.</li>
+      <li>Ular bugun kelmasligi mumkin.</li>
+      <li>Sen bu kitobni o‘qishing kerak.</li>
+      <li>Men hozir telefon qilishim kerak.</li>
+      <li>U uyda bo‘lishi mumkin.</li>
+      <li>Siz bu savolga javob berishingiz shart.</li>
+    </ol>
+  </div>
+
+  <!-- READING -->
+  <div class="card">
+    <h3>4. Reading — Text 1</h3>
+    <h4>A Healthy Lifestyle</h4>
+    <p>
+      Everyone should have a healthy lifestyle. We should eat fresh food
+      and drink enough water. People should do exercise regularly.
+      We must take care of our health. Sometimes we have to change
+      our daily habits. We might feel tired after a long day, but
+      we should get enough sleep. A healthy lifestyle may help us
+      feel better and have more energy.
+    </p>
+
+    <h4>Answer the questions:</h4>
+    <ol>
+      <li>What should people drink?</li>
+      <li>Why must we take care of our health?</li>
+      <li>What should people do regularly?</li>
+      <li>When might people feel tired?</li>
+      <li>What may a healthy lifestyle help us do?</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Reading — Text 2</h3>
+    <h4>Learning English</h4>
+    <p>
+      Learning English takes time and effort. Students should study
+      every day. They must practise listening, speaking, reading and
+      writing. Sometimes learners have to repeat new words many times.
+      They may make mistakes, but they should not stop learning.
+      A student might find grammar difficult at first. However,
+      regular practice can make learning easier.
+    </p>
+
+    <h4>Answer the questions:</h4>
+    <ol>
+      <li>What should students do every day?</li>
+      <li>Which four skills must students practise?</li>
+      <li>What might learners find difficult?</li>
+      <li>Should students stop learning after making mistakes?</li>
+      <li>What can make learning easier?</li>
+    </ol>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="card">
+    <h3>5. Listening — Exercise 1</h3>
+    <p>Matnni audio orqali tinglang. Keyin savollarga javob bering.</p>
+    <button onclick="speakHWListening(1)">▶ Listen to Text 1</button>
+    <p>
+      1. What should Anna do every morning?<br>
+      2. What must she remember?<br>
+      3. What might she do after school?
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Listening — Exercise 2</h3>
+    <button onclick="speakHWListening(2)">▶ Listen to Text 2</button>
+    <p>
+      1. Where does Tom have to go?<br>
+      2. What should he take with him?<br>
+      3. What might happen in the evening?
+    </p>
+  </div>
+
+  <!-- WRITING -->
+  <div class="card">
+    <h3>6. Writing — 15 Tasks</h3>
+    <p>Har bir mavzu bo‘yicha kamida 5 ta gap yozing. Modal fe’llardan foydalaning.</p>
+    <ol>
+      <li>Write about things students should do.</li>
+      <li>Write about rules at your home.</li>
+      <li>Write about things people must not do.</li>
+      <li>Write about your daily responsibilities.</li>
+      <li>Write about what you have to do every day.</li>
+      <li>Give advice to someone who wants to learn English.</li>
+      <li>Write about healthy habits.</li>
+      <li>Write about your plans for tomorrow.</li>
+      <li>Describe what might happen next week.</li>
+      <li>Write about things you may do this weekend.</li>
+      <li>Give advice to a tired student.</li>
+      <li>Write five school rules using must.</li>
+      <li>Write five sentences using have to.</li>
+      <li>Write five sentences using might or may.</li>
+      <li>Write a short paragraph: “What should I do to improve my English?”</li>
+    </ol>
+  </div>
+
+  <!-- SPEAKING -->
+  <div class="card">
+    <h3>7. Speaking — 10 Tasks</h3>
+    <p>Har bir savolga ovoz chiqarib, kamida 4 ta gap bilan javob bering.</p>
+    <ol>
+      <li>What should people do to stay healthy?</li>
+      <li>What must students do at school?</li>
+      <li>What do you have to do every morning?</li>
+      <li>What should a good friend do?</li>
+      <li>What might you do next weekend?</li>
+      <li>What may happen if people do not study?</li>
+      <li>What rules must people follow in your town?</li>
+      <li>What should beginners do to learn English?</li>
+      <li>What do you have to do at work or at home?</li>
+      <li>What might your life be like in five years?</li>
+    </ol>
+  </div>
+
+  <!-- FINAL TEST -->
+  <div class="card">
+    <h3>8. Final Homework Test — 20 Questions</h3>
+    <p>To‘g‘ri javobni tanlang. Har bir savol 1 ball.</p>
+
+    <div id="hwFinalTest"></div>
+    <button onclick="checkHWFinal()">Submit Final Test</button>
+    <p id="hwFinalResult"></p>
+  </div>
+
+</section>
+
+<script>
+/* ================================
+   GRAMMAR EXERCISES
+================================ */
+
+const hwGrammarQuestions = [
+  ["You ___ drink more water.", "should"],
+  ["We ___ wear a seat belt in a car.", "must"],
+  ["I ___ get up early tomorrow because I have an exam.", "have to"],
+  ["She ___ be at home. I'm not sure.", "might"],
+  ["___ I ask you a question?", "may"],
+  ["You ___ study harder if you want to improve.", "should"],
+  ["Students ___ follow the school rules.", "must"],
+  ["He ___ work on Saturdays.", "has to"],
+  ["It ___ rain this evening.", "might"],
+  ["___ I use your phone?", "may"],
+  ["You ___ see a doctor.", "should"],
+  ["We ___ finish this work today.", "must"],
+  ["She ___ take the bus to work every day.", "has to"],
+  ["They ___ come to the party.", "might"],
+  ["You ___ leave now if you want.", "may"],
+  ["He ___ eat too much fast food.", "shouldn't"],
+  ["You ___ touch that machine. It is dangerous.", "mustn't"],
+  ["I ___ wear a uniform at work.", "have to"],
+  ["She ___ be busy right now.", "might"],
+  ["___ we open the window?", "may"],
+  ["You ___ practise speaking every day.", "should"],
+  ["People ___ obey traffic laws.", "must"],
+  ["My brother ___ study tonight.", "has to"],
+  ["We ___ visit our grandparents tomorrow.", "might"],
+  ["You ___ take a break.", "should"],
+  ["You ___ park here. It is prohibited.", "mustn't"],
+  ["He ___ go to the dentist tomorrow.", "has to"],
+  ["The shop ___ be closed today.", "might"],
+  ["___ I come in?", "may"],
+  ["You ___ be rude to other people.", "shouldn't"]
+];
+
+const hwGrammarContainer = document.getElementById("hwGrammar");
+
+hwGrammarQuestions.forEach((item, index) => {
+  hwGrammarContainer.innerHTML += `
+    <div class="question">
+      <p><b>${index + 1}.</b> ${item[0]}</p>
+      <input type="text" id="hwg${index}" placeholder="Your answer">
+    </div>
+  `;
+});
+
+function checkHWGrammar() {
+  let score = 0;
+
+  hwGrammarQuestions.forEach((item, index) => {
+    const answer = document.getElementById("hwg" + index)
+      .value.trim().toLowerCase()
+      .replace(/\s+/g, " ");
+
+    if (answer === item[1]) {
+      score++;
+      document.getElementById("hwg" + index).style.border =
+        "2px solid green";
+    } else {
+      document.getElementById("hwg" + index).style.border =
+        "2px solid red";
+    }
+  });
+
+  document.getElementById("hwGrammarResult").innerHTML =
+    "Your score: " + score + " / 30";
+}
+
+/* ================================
+   VOCABULARY — 40 WORDS
+================================ */
+
+const hwVocabulary = [
+  ["advice", "maslahat"],
+  ["advice", "maslahat"],
+  ["rule", "qoida"],
+  ["reason", "sabab"],
+  ["health", "sog‘liq"],
+  ["healthy", "sog‘lom"],
+  ["dangerous", "xavfli"],
+  ["safe", "xavfsiz"],
+  ["careful", "ehtiyotkor"],
+  ["carefully", "ehtiyotkorlik bilan"],
+  ["important", "muhim"],
+  ["necessary", "zarur"],
+  ["possible", "mumkin"],
+  ["impossible", "imkonsiz"],
+  ["probably", "ehtimol"],
+  ["perhaps", "balki"],
+  ["tomorrow", "ertaga"],
+  ["tonight", "bugun kechqurun"],
+  ["weekend", "dam olish kunlari"],
+  ["exam", "imtihon"],
+  ["homework", "uy vazifasi"],
+  ["uniform", "forma"],
+  ["permission", "ruxsat"],
+  ["problem", "muammo"],
+  ["mistake", "xato"],
+  ["improve", "yaxshilamoq"],
+  ["practise", "mashq qilmoq"],
+  ["follow", "amal qilmoq"],
+  ["obey", "bo‘ysunmoq"],
+  ["protect", "himoya qilmoq"],
+  ["remember", "eslab qolmoq"],
+  ["forget", "unutmoq"],
+  ["prepare", "tayyorlanmoq"],
+  ["decide", "qaror qilmoq"],
+  ["continue", "davom ettirmoq"],
+  ["repeat", "takrorlamoq"],
+  ["borrow", "qarzga olmoq"],
+  ["return", "qaytarmoq"],
+  ["allow", "ruxsat bermoq"],
+  ["refuse", "rad etmoq"]
+];
+
+const hwVocabContainer = document.getElementById("hwVocabulary");
+
+hwVocabulary.forEach((word, index) => {
+  hwVocabContainer.innerHTML += `
+    <p>${index + 1}. <b>${word[0]}</b> — ${word[1]}</p>
+  `;
+});
+
+function showHWVocab() {
+  const box = document.getElementById("hwVocabExtra");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+
+  box.innerHTML = `
+    <h4>Vocabulary homework</h4>
+    <p>1. Har bir so‘zni daftaringizga yozing.</p>
+    <p>2. O‘zbekcha tarjimasini yodlang.</p>
+    <p>3. Har bir so‘z bilan inglizcha gap tuzing.</p>
+    <p>4. Ertasi kuni tarjimasini yopib, o‘zingizni tekshiring.</p>
+  `;
+}
+
+/* ================================
+   LISTENING TEXTS
+================================ */
+
+const hwListeningTexts = {
+  1: "Anna should wake up early every morning. She must eat breakfast before school. After school, she might visit her friend or do her homework. She has to prepare her school bag every evening.",
+  2: "Tom has to go to the library tomorrow. He should take his notebook and a pen. He may meet his teacher there. In the evening, he might study English with his brother."
+};
+
+function speakHWListening(number) {
+  if (!("speechSynthesis" in window)) {
+    alert("Audio is not supported by this browser.");
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const speech = new SpeechSynthesisUtterance(
+    hwListeningTexts[number]
+  );
+
+  speech.lang = "en-US";
+  speech.rate = 0.8;
+  speech.pitch = 1;
+
+  speechSynthesis.speak(speech);
+}
+
+/* ================================
+   FINAL TEST
+================================ */
+
+const hwFinalQuestions = [
+  {
+    q: "You ___ respect your parents.",
+    a: ["might", "should", "may"],
+    c: 1
+  },
+  {
+    q: "You ___ smoke in this hospital.",
+    a: ["mustn't", "might", "should"],
+    c: 0
+  },
+  {
+    q: "I ___ work tomorrow. It is my duty.",
+    a: ["may", "have to", "might"],
+    c: 1
+  },
+  {
+    q: "She ___ be at school. I'm not certain.",
+    a: ["must", "has to", "might"],
+    c: 2
+  },
+  {
+    q: "___ I come in?",
+    a: ["May", "Must", "Should"],
+    c: 0
+  },
+  {
+    q: "You look tired. You ___ rest.",
+    a: ["should", "mustn't", "might"],
+    c: 0
+  },
+  {
+    q: "All passengers ___ wear seat belts.",
+    a: ["might", "must", "may"],
+    c: 1
+  },
+  {
+    q: "He ___ get up early every day for work.",
+    a: ["have to", "has to", "might"],
+    c: 1
+  },
+  {
+    q: "It ___ snow tonight.",
+    a: ["mustn't", "might", "shouldn't"],
+    c: 1
+  },
+  {
+    q: "You ___ be late for the exam.",
+    a: ["mustn't", "may", "might"],
+    c: 0
+  },
+  {
+    q: "We ___ help people in need.",
+    a: ["should", "might", "may"],
+    c: 0
+  },
+  {
+    q: "She ___ speak three languages. It is possible.",
+    a: ["mustn't", "may", "has to"],
+    c: 1
+  },
+  {
+    q: "I ___ finish this task before 5 p.m.",
+    a: ["have to", "might", "may"],
+    c: 0
+  },
+  {
+    q: "You ___ eat so much sugar.",
+    a: ["shouldn't", "must", "may"],
+    c: 0
+  },
+  {
+    q: "___ I borrow your book?",
+    a: ["Must", "May", "Should"],
+    c: 1
+  },
+  {
+    q: "Students ___ listen to their teachers.",
+    a: ["should", "might", "may"],
+    c: 0
+  },
+  {
+    q: "He ___ come later. He is not sure.",
+    a: ["must", "might", "has to"],
+    c: 1
+  },
+  {
+    q: "We ___ follow the law.",
+    a: ["must", "might", "may"],
+    c: 0
+  },
+  {
+    q: "My sister ___ study tonight because she has a test.",
+    a: ["has to", "may", "might"],
+    c: 0
+  },
+  {
+    q: "You ___ ask your teacher for help.",
+    a: ["should", "mustn't", "might not"],
+    c: 0
+  }
+];
+
+const hwFinalContainer = document.getElementById("hwFinalTest");
+
+hwFinalQuestions.forEach((question, index) => {
+  let html = `
+    <div class="question">
+      <p><b>${index + 1}. ${question.q}</b></p>
+  `;
+
+  question.a.forEach((answer, answerIndex) => {
+    html += `
+      <label style="display:block; margin:8px 0;">
+        <input type="radio"
+          name="hwfinal${index}"
+          value="${answerIndex}">
+        ${answer}
+      </label>
+    `;
+  });
+
+  html += "</div>";
+  hwFinalContainer.innerHTML += html;
+});
+
+function checkHWFinal() {
+  let score = 0;
+  let answered = 0;
+
+  hwFinalQuestions.forEach((question, index) => {
+    const selected = document.querySelector(
+      'input[name="hwfinal' + index + '"]:checked'
+    );
+
+    if (selected) {
+      answered++;
+
+      if (Number(selected.value) === question.c) {
+        score++;
+      }
+    }
+  });
+
+  const result = document.getElementById("hwFinalResult");
+
+  if (answered < hwFinalQuestions.length) {
+    result.innerHTML =
+      "Please answer all questions. Answered: " +
+      answered + " / 20";
+    return;
+  }
+
+  const percent = Math.round(score / 20 * 100);
+
+  let message = "";
+
+  if (percent >= 80) {
+    message = "Excellent work! You passed the homework test.";
+  } else if (percent >= 60) {
+    message = "Good effort! Review the grammar and try again.";
+  } else {
+    message = "Keep practising. Review Lesson 12 and try again.";
+  }
+
+  result.innerHTML =
+    "<b>Your result: " + score + " / 20 (" +
+    percent + "%)</b><br>" + message;
+}
+</script>
+
+<!-- END OF LESSON 12 HOMEWORK -->
 
 </body>
 </html>
