@@ -1,1 +1,1323 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>Lesson 9 | Present Perfect vs Past Simple — English Up</title>
 
+<style>
+:root{
+ --primary:#7047eb;
+ --primary-dark:#5632c9;
+ --bg:#f5f3ff;
+ --card:#ffffff;
+ --text:#211b35;
+ --muted:#77718b;
+ --border:#e7e1f5;
+ --success:#159b65;
+ --danger:#dc4444;
+ --warning:#f2a900;
+ --shadow:0 5px 22px rgba(60,35,120,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;
+ line-height:1.65;
+ transition:.25s;
+}
+body.dark{
+ --bg:#171426;
+ --card:#241f35;
+ --text:#f5f1ff;
+ --muted:#b5accb;
+ --border:#39314f;
+ --shadow:0 5px 22px rgba(0,0,0,.2);
+}
+header{
+ background:linear-gradient(135deg,#7047eb,#4d2db5);
+ color:white;
+ padding:22px 15px;
+ text-align:center;
+}
+header h1{margin:0;font-size:25px}
+header p{margin:6px 0 0;font-size:14px;opacity:.9}
+.top-actions{
+ display:flex;
+ justify-content:center;
+ gap:10px;
+ margin-top:14px;
+ flex-wrap:wrap;
+}
+.top-actions button{
+ background:rgba(255,255,255,.16);
+ border:1px solid rgba(255,255,255,.4);
+ color:white;
+ padding:9px 15px;
+ border-radius:20px;
+ cursor:pointer;
+}
+.container{
+ width:min(100% - 24px,950px);
+ margin:20px auto 60px;
+}
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:17px;
+ padding:19px;
+ margin:17px 0;
+ box-shadow:var(--shadow);
+}
+h2{
+ color:var(--primary);
+ margin:0 0 13px;
+ font-size:21px;
+}
+h3{margin:17px 0 8px;font-size:17px}
+p{margin:9px 0}
+.muted{color:var(--muted)}
+.hero{
+ background:linear-gradient(135deg,#7047eb,#9a7cf5);
+ color:white;
+ border-radius:18px;
+ padding:22px;
+ text-align:center;
+}
+.hero h2{color:white;font-size:25px}
+.hero p{margin:6px 0}
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:9px;
+ margin-top:17px;
+}
+.stat{
+ background:rgba(255,255,255,.17);
+ border-radius:12px;
+ padding:11px 5px;
+}
+.stat strong{display:block;font-size:21px}
+.stat span{font-size:12px}
+.notice{
+ border-left:4px solid var(--primary);
+ background:rgba(112,71,235,.08);
+ padding:13px;
+ border-radius:8px;
+ margin:13px 0;
+}
+.important{
+ border-left:4px solid var(--warning);
+ background:rgba(242,169,0,.09);
+ padding:13px;
+ border-radius:8px;
+ margin:13px 0;
+}
+.success-box{
+ border-left:4px solid var(--success);
+ background:rgba(21,155,101,.08);
+ padding:13px;
+ border-radius:8px;
+ margin:13px 0;
+}
+.formula{
+ background:rgba(112,71,235,.09);
+ border:1px dashed var(--primary);
+ border-radius:12px;
+ padding:13px;
+ margin:10px 0;
+ text-align:center;
+ font-weight:bold;
+}
+.example{
+ border:1px solid var(--border);
+ border-radius:11px;
+ padding:12px;
+ margin:9px 0;
+}
+.example .en{font-weight:bold}
+.example .uz{color:var(--muted);font-size:14px}
+button,.btn{
+ border:0;
+ border-radius:10px;
+ background:var(--primary);
+ color:white;
+ padding:10px 15px;
+ cursor:pointer;
+ font-weight:bold;
+}
+button:hover,.btn:hover{background:var(--primary-dark)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.audio-btn{
+ padding:6px 10px;
+ margin:4px;
+ font-size:13px;
+}
+.grid-two{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px;
+}
+.word-card{
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:12px;
+}
+.word-card strong{font-size:16px}
+.word-card small{display:block;color:var(--muted)}
+.table-wrap{overflow-x:auto}
+table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:520px;
+}
+th,td{
+ border:1px solid var(--border);
+ padding:10px;
+ text-align:left;
+}
+th{background:rgba(112,71,235,.1)}
+.progress-track{
+ height:9px;
+ border-radius:20px;
+ background:var(--border);
+ overflow:hidden;
+ margin:10px 0;
+}
+.progress-fill{
+ height:100%;
+ width:0;
+ background:var(--primary);
+ transition:.3s;
+}
+.question{
+ border:1px solid var(--border);
+ padding:14px;
+ border-radius:12px;
+ margin:12px 0;
+}
+.question p{font-weight:bold}
+.options{
+ display:grid;
+ gap:7px;
+}
+.option{
+ text-align:left;
+ background:var(--bg);
+ color:var(--text);
+ border:1px solid var(--border);
+ font-weight:normal;
+}
+.option.selected{
+ border:2px solid var(--primary);
+ background:rgba(112,71,235,.12);
+}
+.option.correct{
+ border:2px solid var(--success);
+ background:rgba(21,155,101,.1);
+}
+.option.wrong{
+ border:2px solid var(--danger);
+ background:rgba(220,68,68,.1);
+}
+.result{
+ padding:14px;
+ border-radius:12px;
+ margin-top:13px;
+ display:none;
+}
+.result.show{display:block}
+.score{font-size:24px;font-weight:bold}
+.lesson-nav{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin:15px 0;
+}
+.lesson-nav a{
+ text-decoration:none;
+ color:var(--primary);
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:7px 12px;
+ font-size:13px;
+}
+textarea,input[type="text"]{
+ width:100%;
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:12px;
+ background:var(--bg);
+ color:var(--text);
+ font:inherit;
+}
+textarea{min-height:120px;resize:vertical}
+footer{
+ text-align:center;
+ padding:25px;
+ color:var(--muted);
+}
+@media(max-width:600px){
+ .grid-two{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(3,1fr)}
+ .card{padding:15px}
+ header h1{font-size:21px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <h1>ENGLISH UP</h1>
+ <p>Pre-Intermediate Course · Lesson 9</p>
+ <div class="top-actions">
+  <button onclick="history.back()">← Back</button>
+  <button onclick="toggleTheme()">🌙 Theme</button>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+ </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+ <h2>LESSON 9</h2>
+ <h3>Present Perfect vs Past Simple</h3>
+ <p>O‘tmishdagi voqealar va ularning hozirgi vaqt bilan aloqasi</p>
+ <div class="stats">
+  <div class="stat"><strong>40</strong><span>New Words</span></div>
+  <div class="stat"><strong>20</strong><span>Comparisons</span></div>
+  <div class="stat"><strong>60</strong><span>Test Questions</span></div>
+ </div>
+</section>
+
+<nav class="lesson-nav">
+ <a href="#intro">Introduction</a>
+ <a href="#grammar">Grammar</a>
+ <a href="#comparison">Comparison</a>
+ <a href="#vocabulary">Vocabulary</a>
+ <a href="#listening">Listening</a>
+ <a href="#reading">Reading</a>
+ <a href="#writing">Writing</a>
+ <a href="#tests">Tests</a>
+ <a href="#homework">Homework</a>
+</nav>
+
+<section class="card" id="intro">
+ <h2>👋 Assalomu alaykum!</h2>
+ <p>Welcome to the ninth lesson of English Up!</p>
+ <p>Bugungi darsimizda ingliz tilidagi ikkita juda muhim zamonni bir-biridan farqlashni o‘rganamiz: <strong>Present Perfect</strong> va <strong>Past Simple</strong>.</p>
+ <p>Bu ikki zamon o‘quvchilar orasida ko‘p chalkashadigan mavzulardan biridir. Chunki ikkalasi ham o‘tmishda sodir bo‘lgan voqealar haqida gapirishda ishlatiladi. Ammo ularning ishlatilishida muhim farq bor.</p>
+
+ <div class="notice">
+  <strong>🎯 Bugungi asosiy maqsad:</strong>
+  <p>Qachon Present Perfect, qachon Past Simple ishlatishni tushunish, ularni gaplarda to‘g‘ri qo‘llash va o‘z fikrimizni ingliz tilida aniq ifodalash.</p>
+ </div>
+
+ <h3>📌 Nima uchun bu mavzu muhim?</h3>
+ <p>Present Perfect va Past Simple kundalik suhbatlarda, hikoya qilishda, tajribalar haqida gapirishda va IELTS imtihonida juda ko‘p uchraydi.</p>
+ <p>Masalan, kimdir sizdan quyidagilarni so‘rashi mumkin:</p>
+
+ <div class="example">
+  <div class="en">Have you ever visited London?</div>
+  <div class="uz">Siz hech Londonga borganmisiz?</div>
+  <button class="audio-btn" onclick="speak('Have you ever visited London?')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">When did you visit London?</div>
+  <div class="uz">Londonga qachon borgansiz?</div>
+  <button class="audio-btn" onclick="speak('When did you visit London?')">🔊 Listen</button>
+ </div>
+
+ <p>Birinchi savolda insonning hayotiy tajribasi so‘ralmoqda. Ikkinchi savolda esa aniq vaqt so‘ralmoqda.</p>
+
+ <div class="success-box">
+  <strong>📖 Daftaringizni tayyorlang!</strong>
+  <p>Bugungi darsdagi qoidalar, formulalar, misollar va yangi so‘zlarni daftaringizga yozib boring. Faqat o‘qish bilan cheklanib qolmang. Yozish bilimni mustahkamlaydi.</p>
+ </div>
+</section>
+
+<section class="card" id="grammar">
+ <h2>1. GRAMMAR — PRESENT PERFECT</h2>
+
+ <h3>Present Perfect nima?</h3>
+ <p>Present Perfect — o‘tmishda sodir bo‘lgan, lekin natijasi yoki aloqasi hozirgi vaqt bilan bog‘liq bo‘lgan ish-harakatni ifodalash uchun ishlatiladigan zamon.</p>
+
+ <div class="notice">
+  <strong>📘 English definition — Daftarga yozing:</strong>
+  <p><em>We use the Present Perfect to talk about past actions that have a connection with the present.</em></p>
+  <p>Biz Present Perfect zamonidan o‘tmishda sodir bo‘lgan va hozirgi vaqt bilan aloqasi mavjud bo‘lgan ish-harakatlar haqida gapirish uchun foydalanamiz.</p>
+ </div>
+
+ <h3>✅ Present Perfect formulasi</h3>
+ <div class="formula">Subject + HAVE / HAS + V3</div>
+
+ <p><strong>Subject</strong> — ega.</p>
+ <p><strong>Have / Has</strong> — yordamchi fe’l.</p>
+ <p><strong>V3</strong> — fe’lning uchinchi shakli (Past Participle).</p>
+
+ <div class="table-wrap">
+  <table>
+   <tr><th>Subject</th><th>Yordamchi fe’l</th><th>Misol</th></tr>
+   <tr><td>I</td><td>have</td><td>I have worked.</td></tr>
+   <tr><td>You</td><td>have</td><td>You have worked.</td></tr>
+   <tr><td>We</td><td>have</td><td>We have worked.</td></tr>
+   <tr><td>They</td><td>have</td><td>They have worked.</td></tr>
+   <tr><td>He</td><td>has</td><td>He has worked.</td></tr>
+   <tr><td>She</td><td>has</td><td>She has worked.</td></tr>
+   <tr><td>It</td><td>has</td><td>It has worked.</td></tr>
+  </table>
+ </div>
+
+ <h3>🟢 Positive — Darak gap</h3>
+ <div class="formula">Subject + have / has + V3</div>
+
+ <div class="example">
+  <div class="en">I have finished my homework.</div>
+  <div class="uz">Men uy vazifamni tugatdim.</div>
+  <button class="audio-btn" onclick="speak('I have finished my homework.')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">She has visited Samarkand.</div>
+  <div class="uz">U Samarqandga tashrif buyurgan.</div>
+  <button class="audio-btn" onclick="speak('She has visited Samarkand.')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">They have bought a new car.</div>
+  <div class="uz">Ular yangi mashina sotib olishgan.</div>
+  <button class="audio-btn" onclick="speak('They have bought a new car.')">🔊 Listen</button>
+ </div>
+
+ <h3>🔴 Negative — Inkor gap</h3>
+ <div class="formula">Subject + have / has + NOT + V3</div>
+ <p>Have not = haven't</p>
+ <p>Has not = hasn't</p>
+
+ <div class="example">
+  <div class="en">I have not seen this film.</div>
+  <div class="uz">Men bu filmni ko‘rmaganman.</div>
+  <button class="audio-btn" onclick="speak('I have not seen this film.')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">He hasn't finished his work.</div>
+  <div class="uz">U ishini tugatmagan.</div>
+  <button class="audio-btn" onclick="speak('He has not finished his work.')">🔊 Listen</button>
+ </div>
+
+ <h3>🔵 Question — So‘roq gap</h3>
+ <div class="formula">Have / Has + Subject + V3?</div>
+
+ <div class="example">
+  <div class="en">Have you ever travelled abroad?</div>
+  <div class="uz">Siz hech chet elga sayohat qilganmisiz?</div>
+  <button class="audio-btn" onclick="speak('Have you ever travelled abroad?')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">Has she arrived?</div>
+  <div class="uz">U yetib keldimi?</div>
+  <button class="audio-btn" onclick="speak('Has she arrived?')">🔊 Listen</button>
+ </div>
+
+ <h3>📌 Present Perfect qachon ishlatiladi?</h3>
+
+ <div class="example">
+  <strong>1. Life experiences — Hayotiy tajribalar</strong>
+  <p>We use the Present Perfect to talk about experiences in our lives when the exact time is not important.</p>
+  <p>Hayotimizdagi tajribalar haqida aniq vaqtni aytmasdan gapirganda ishlatamiz.</p>
+  <p><strong>I have visited Turkey.</strong> — Men Turkiyaga borganman.</p>
+  <button class="audio-btn" onclick="speak('I have visited Turkey.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>2. Recently completed actions — Yaqinda tugagan ishlar</strong>
+  <p>We use the Present Perfect for actions that have recently finished.</p>
+  <p>Yaqinda tugagan ish-harakatlar haqida gapirganda ishlatamiz.</p>
+  <p><strong>She has just cleaned the room.</strong> — U hozirgina xonani tozaladi.</p>
+  <button class="audio-btn" onclick="speak('She has just cleaned the room.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>3. Present result — Hozirgi natija</strong>
+  <p>We use the Present Perfect when a past action has a result in the present.</p>
+  <p>O‘tmishdagi ishning hozirgi natijasi mavjud bo‘lsa ishlatamiz.</p>
+  <p><strong>I have lost my keys.</strong> — Kalitlarimni yo‘qotib qo‘ydim.</p>
+  <button class="audio-btn" onclick="speak('I have lost my keys.')">🔊 Listen</button>
+ </div>
+
+ <div class="example">
+  <strong>4. Unfinished time — Tugamagan vaqt</strong>
+  <p>We use the Present Perfect with unfinished time periods such as today, this week and this year.</p>
+  <p>Bugun, shu hafta yoki shu yil kabi hali tugamagan vaqt oralig‘ida ishlatamiz.</p>
+  <p><strong>I have read two books this month.</strong> — Men shu oy ikkita kitob o‘qidim.</p>
+  <button class="audio-btn" onclick="speak('I have read two books this month.')">🔊 Listen</button>
+ </div>
+
+ <h3>⭐ Present Perfect bilan ishlatiladigan so‘zlar</h3>
+ <div class="grid-two">
+  <div class="word-card"><strong>Ever</strong><small>Hech — Have you ever been there?</small></div>
+  <div class="word-card"><strong>Never</strong><small>Hech qachon — I have never tried it.</small></div>
+  <div class="word-card"><strong>Just</strong><small>Hozirgina — She has just arrived.</small></div>
+  <div class="word-card"><strong>Already</strong><small>Allaqachon — I have already eaten.</small></div>
+  <div class="word-card"><strong>Yet</strong><small>Hali — Have you finished yet?</small></div>
+  <div class="word-card"><strong>Recently</strong><small>Yaqinda — I have recently moved.</small></div>
+  <div class="word-card"><strong>So far</strong><small>Hozirgacha — We have done well so far.</small></div>
+  <div class="word-card"><strong>Since</strong><small>...dan beri — since 2020</small></div>
+  <div class="word-card"><strong>For</strong><small>...davomida — for three years</small></div>
+  <div class="word-card"><strong>Up to now</strong><small>Hozirgacha — Up to now, I have learned a lot.</small></div>
+ </div>
+
+ <h3>Since va For farqi</h3>
+ <div class="formula">SINCE + boshlanish vaqti</div>
+ <p>Since 2020, since Monday, since January, since yesterday.</p>
+ <div class="formula">FOR + vaqt davomiyligi</div>
+ <p>For two days, for three years, for a week, for five hours.</p>
+
+ <div class="example">
+  <div class="en">I have lived here since 2020.</div>
+  <div class="uz">Men bu yerda 2020-yildan beri yashayman.</div>
+ </div>
+ <div class="example">
+  <div class="en">I have lived here for six years.</div>
+  <div class="uz">Men bu yerda olti yildan beri yashayman.</div>
+ </div>
+</section>
+
+<section class="card">
+ <h2>2. GRAMMAR — PAST SIMPLE</h2>
+
+ <h3>Past Simple nima?</h3>
+ <p>Past Simple — o‘tmishda sodir bo‘lgan va tugagan ish-harakatlarni ifodalash uchun ishlatiladigan zamon.</p>
+
+ <div class="notice">
+  <strong>📘 English definition — Daftarga yozing:</strong>
+  <p><em>We use the Past Simple to talk about completed actions at a definite time in the past.</em></p>
+  <p>Biz Past Simple zamonidan o‘tmishda aniq bir vaqtda sodir bo‘lgan va tugagan ish-harakatlar haqida gapirish uchun foydalanamiz.</p>
+ </div>
+
+ <h3>✅ Past Simple formulasi</h3>
+ <div class="formula">Subject + V2</div>
+ <p>Regular verbs — fe’lga -ed qo‘shiladi.</p>
+ <p>Irregular verbs — fe’lning ikkinchi shakli ishlatiladi.</p>
+
+ <div class="table-wrap">
+  <table>
+   <tr><th>V1</th><th>V2</th><th>Uzbek</th></tr>
+   <tr><td>work</td><td>worked</td><td>ishlamoq</td></tr>
+   <tr><td>play</td><td>played</td><td>o‘ynamoq</td></tr>
+   <tr><td>visit</td><td>visited</td><td>tashrif buyurmoq</td></tr>
+   <tr><td>go</td><td>went</td><td>bormoq</td></tr>
+   <tr><td>see</td><td>saw</td><td>ko‘rmoq</td></tr>
+   <tr><td>eat</td><td>ate</td><td>yemoq</td></tr>
+   <tr><td>write</td><td>wrote</td><td>yozmoq</td></tr>
+   <tr><td>buy</td><td>bought</td><td>sotib olmoq</td></tr>
+   <tr><td>come</td><td>came</td><td>kelmoq</td></tr>
+   <tr><td>take</td><td>took</td><td>olmoq</td></tr>
+  </table>
+ </div>
+
+ <h3>🟢 Positive — Darak gap</h3>
+ <div class="formula">Subject + V2 + Object</div>
+
+ <div class="example">
+  <div class="en">I visited my grandmother yesterday.</div>
+  <div class="uz">Men kecha buvimni ko‘rgani bordim.</div>
+  <button class="audio-btn" onclick="speak('I visited my grandmother yesterday.')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">He bought a new phone last week.</div>
+  <div class="uz">U o‘tgan hafta yangi telefon sotib oldi.</div>
+  <button class="audio-btn" onclick="speak('He bought a new phone last week.')">🔊 Listen</button>
+ </div>
+
+ <h3>🔴 Negative — Inkor gap</h3>
+ <div class="formula">Subject + DID NOT + V1</div>
+ <p>Did not = didn't.</p>
+ <p>Diqqat: did ishlatilganda asosiy fe’l V1 shakliga qaytadi.</p>
+
+ <div class="example">
+  <div class="en">I didn't go to school yesterday.</div>
+  <div class="uz">Men kecha maktabga bormadim.</div>
+  <button class="audio-btn" onclick="speak('I did not go to school yesterday.')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">She didn't buy the dress.</div>
+  <div class="uz">U ko‘ylakni sotib olmadi.</div>
+  <button class="audio-btn" onclick="speak('She did not buy the dress.')">🔊 Listen</button>
+ </div>
+
+ <h3>🔵 Question — So‘roq gap</h3>
+ <div class="formula">DID + Subject + V1?</div>
+
+ <div class="example">
+  <div class="en">Did you watch the film?</div>
+  <div class="uz">Siz filmni tomosha qildingizmi?</div>
+  <button class="audio-btn" onclick="speak('Did you watch the film?')">🔊 Listen</button>
+ </div>
+ <div class="example">
+  <div class="en">Did they arrive yesterday?</div>
+  <div class="uz">Ular kecha yetib kelishdimi?</div>
+  <button class="audio-btn" onclick="speak('Did they arrive yesterday?')">🔊 Listen</button>
+ </div>
+
+ <h3>📌 Past Simple qachon ishlatiladi?</h3>
+
+ <div class="example">
+  <strong>1. Completed actions — Tugagan ishlar</strong>
+  <p>We use the Past Simple for actions that started and finished in the past.</p>
+  <p>O‘tmishda boshlangan va o‘sha vaqtda tugagan ishlar uchun ishlatamiz.</p>
+  <p><strong>I cleaned my room.</strong> — Men xonamni tozaladim.</p>
+ </div>
+
+ <div class="example">
+  <strong>2. Specific past time — Aniq o‘tgan vaqt</strong>
+  <p>We use the Past Simple when we mention a definite time in the past.</p>
+  <p>Aniq o‘tgan vaqt ko‘rsatilganda ishlatamiz.</p>
+  <p><strong>She called me yesterday.</strong> — U menga kecha qo‘ng‘iroq qildi.</p>
+ </div>
+
+ <div class="example">
+  <strong>3. Past habits — O‘tmishdagi odatlar</strong>
+  <p>We use the Past Simple to describe habits or repeated actions in the past.</p>
+  <p>O‘tmishda takrorlangan odatlar va ishlar haqida gapirganda ishlatamiz.</p>
+  <p><strong>When I was a child, I played football every day.</strong></p>
+  <p>Men bolaligimda har kuni futbol o‘ynardim.</p>
+ </div>
+
+ <h3>⭐ Past Simple bilan ishlatiladigan vaqt ko‘rsatkichlari</h3>
+ <div class="grid-two">
+  <div class="word-card"><strong>Yesterday</strong><small>Kecha</small></div>
+  <div class="word-card"><strong>Last week</strong><small>O‘tgan hafta</small></div>
+  <div class="word-card"><strong>Last month</strong><small>O‘tgan oy</small></div>
+  <div class="word-card"><strong>Last year</strong><small>O‘tgan yil</small></div>
+  <div class="word-card"><strong>Two days ago</strong><small>Ikki kun oldin</small></div>
+  <div class="word-card"><strong>In 2020</strong><small>2020-yilda</small></div>
+  <div class="word-card"><strong>When I was young</strong><small>Yoshligimda</small></div>
+  <div class="word-card"><strong>Yesterday morning</strong><small>Kecha ertalab</small></div>
+ </div>
+</section>
+
+<section class="card" id="comparison">
+ <h2>3. PRESENT PERFECT VS PAST SIMPLE</h2>
+ <p>Endi ikkala zamonning eng muhim farqini o‘rganamiz.</p>
+
+ <div class="notice">
+  <strong>Asosiy qoida:</strong>
+  <p>Present Perfect — aniq o‘tgan vaqt muhim bo‘lmagan yoki hozirgi vaqt bilan aloqa mavjud bo‘lgan vaziyat.</p>
+  <p>Past Simple — ish-harakat qachon sodir bo‘lganini aniq aytadigan vaziyat.</p>
+ </div>
+
+ <div class="table-wrap">
+  <table>
+   <tr><th>Present Perfect</th><th>Past Simple</th></tr>
+   <tr><td>I have seen this film.</td><td>I saw this film yesterday.</td></tr>
+   <tr><td>She has visited London.</td><td>She visited London in 2022.</td></tr>
+   <tr><td>We have finished our work.</td><td>We finished our work at 5.</td></tr>
+   <tr><td>He has lost his keys.</td><td>He lost his keys last night.</td></tr>
+  </table>
+ </div>
+
+ <h3>20 ta taqqoslash misoli</h3>
+ <div id="comparisonList"></div>
+</section>
+
+<section class="card" id="vocabulary">
+ <h2>4. VOCABULARY — 40 NEW WORDS</h2>
+ <p>Quyidagi yangi so‘zlarni o‘rganing. Har bir so‘zning tarjimasi, talaffuzi va namunaviy gapiga e’tibor bering.</p>
+ <div class="notice">📌 Tavsiya: so‘zlarni daftaringizga yozing va har biriga o‘zingiz yangi gap tuzing.</div>
+ <div id="vocabularyList" class="grid-two"></div>
+</section>
+
+<section class="card" id="listening">
+ <h2>5. LISTENING PRACTICE</h2>
+ <p>Ikki matnni tinglang. Avval matnni ko‘rmasdan tinglashga harakat qiling. Keyin matnni o‘qib, savollarga javob bering.</p>
+
+ <div class="example">
+  <h3>🎧 Listening 1 — My Life Experience</h3>
+  <button onclick="speakText('listenText1')">🔊 Listen to the text</button>
+  <p id="listenText1">I have always wanted to travel to different countries. I have visited several beautiful places in my country. Last summer, I went to Samarkand with my family. We stayed there for three days. We visited historical buildings and took many photos. I have learned a lot about the history of my country. I have never forgotten that wonderful trip. Last year, I also travelled to another city. It was an exciting experience. I have met many interesting people during my travels.</p>
+ </div>
+
+ <h3>Listening 1 — Questions</h3>
+ <div id="listeningQuestions1"></div>
+
+ <div class="example">
+  <h3>🎧 Listening 2 — A Busy Week</h3>
+  <button onclick="speakText('listenText2')">🔊 Listen to the text</button>
+  <p id="listenText2">This week has been very busy for me. I have studied English every morning. I have learned many new words and practised grammar. On Monday, I visited my friend. We talked about our plans for the future. Yesterday, I went to the library and borrowed two books. I have already read one of them. I haven't finished the second book yet. Today, I have done my homework and cleaned my room. I feel happy because I have made good progress this week.</p>
+ </div>
+
+ <h3>Listening 2 — Questions</h3>
+ <div id="listeningQuestions2"></div>
+</section>
+
+<section class="card" id="reading">
+ <h2>6. READING PRACTICE</h2>
+
+ <h3>Reading 1 — An Unforgettable Journey</h3>
+ <p>Last year, I travelled to a beautiful city with my family. We left home early in the morning and arrived there at noon. We visited a famous museum and walked around the city centre. I took many photographs and bought some souvenirs. It was a wonderful day.</p>
+ <p>I have travelled to several cities in my life, but that journey was special. I have learned that travelling is a great way to discover new places and understand different cultures. Since that trip, I have become more interested in history and geography.</p>
+
+ <h3>Reading 2 — Learning English</h3>
+ <p>I started learning English several years ago. At first, it was difficult for me to understand new words and grammar rules. I studied every day and tried to practise speaking. Last month, I joined an English learning group. I met new students and talked with them in English.</p>
+ <p>Since then, I have improved my speaking skills. I have learned many useful expressions and read several short stories. I haven't reached all my goals yet, but I am making progress. I believe that regular practice is the key to success.</p>
+
+ <div class="notice">
+  <strong>Reading task:</strong>
+  <p>Har ikkala matnni o‘qing. Present Perfect va Past Simple zamonida yozilgan gaplarni toping va daftaringizga ko‘chiring.</p>
+ </div>
+</section>
+
+<section class="card" id="writing">
+ <h2>7. WRITING PRACTICE</h2>
+ <p>Quyidagi 30 ta gapni daftaringizga yozing. Har bir gapning tarjimasini tushunib oling. Qaysi zamon ishlatilganiga e’tibor bering.</p>
+ <div id="writingSentences"></div>
+ <div class="notice">
+  <strong>✍️ Mustaqil mashq:</strong>
+  <p>Ushbu gaplardan foydalanib, o‘zingiz haqingizda 10 ta yangi gap yozing. Kamida 5 ta Present Perfect va 5 ta Past Simple gap bo‘lsin.</p>
+ </div>
+</section>
+
+<section class="card" id="tests">
+ <h2>8. INTERACTIVE TESTS</h2>
+ <p>Har bir zamon uchun alohida 30 tadan savol. Jami 60 ta savol.</p>
+ <div class="lesson-nav">
+  <a href="#presentTest">Present Perfect Test</a>
+  <a href="#pastTest">Past Simple Test</a>
+ </div>
+
+ <div id="presentTest">
+  <h3>🟣 Test 1 — Present Perfect (30 questions)</h3>
+  <div id="presentQuestions"></div>
+  <button onclick="checkTest('present')">Check Present Perfect Test</button>
+  <div id="presentResult" class="result"></div>
+ </div>
+
+ <hr style="border:0;border-top:1px solid var(--border);margin:25px 0">
+
+ <div id="pastTest">
+  <h3>🔵 Test 2 — Past Simple (30 questions)</h3>
+  <div id="pastQuestions"></div>
+  <button onclick="checkTest('past')">Check Past Simple Test</button>
+  <div id="pastResult" class="result"></div>
+ </div>
+
+ <div class="success-box">
+  <strong>🎯 Maqsad:</strong>
+  <p>Har bir testdan kamida 24/30 natija olishga harakat qiling. Xatolaringizni tahlil qiling va noto‘g‘ri javoblarni qayta o‘rganing.</p>
+ </div>
+</section>
+
+<!-- HOMEWORK SECTION WILL BE ADDED IN THE NEXT PART -->
+
+<script>
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem("euLessonTheme",document.body.classList.contains("dark")?"dark":"light");
+}
+if(localStorage.getItem("euLessonTheme")==="dark"){
+ document.body.classList.add("dark");
+}
+
+function speak(text){
+ if(!("speechSynthesis" in window)){
+  alert("Audio playback is not supported in this browser.");
+  return;
+ }
+ speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang="en-US";
+ utterance.rate=.85;
+ speechSynthesis.speak(utterance);
+}
+function speakText(id){
+ const el=document.getElementById(id);
+ if(el)speak(el.innerText);
+}
+
+const comparisons=[
+ ["I have visited London.","I visited London in 2022.","Men Londonga borganman.","Men 2022-yilda Londonga bordim."],
+ ["She has finished her homework.","She finished her homework yesterday.","U uy vazifasini tugatgan.","U kecha uy vazifasini tugatdi."],
+ ["We have eaten lunch.","We ate lunch at 1 o'clock.","Biz tushlik qilganmiz.","Biz soat birda tushlik qildik."],
+ ["He has lost his phone.","He lost his phone last week.","U telefonini yo‘qotib qo‘ygan.","U o‘tgan hafta telefonini yo‘qotdi."],
+ ["I have read this book.","I read this book last month.","Men bu kitobni o‘qiganman.","Men bu kitobni o‘tgan oy o‘qidim."],
+ ["They have bought a car.","They bought a car two days ago.","Ular mashina sotib olishgan.","Ular ikki kun oldin mashina sotib olishdi."],
+ ["She has seen this movie.","She saw this movie last night.","U bu filmni ko‘rgan.","U bu filmni kecha ko‘rdi."],
+ ["I have met your brother.","I met your brother yesterday.","Men akangiz bilan tanishganman.","Men akangizni kecha uchratdim."],
+ ["We have visited that museum.","We visited that museum in May.","Biz o‘sha muzeyga borganmiz.","Biz o‘sha muzeyga may oyida bordik."],
+ ["He has written three emails.","He wrote three emails this morning.","U uchta elektron xat yozgan.","U bugun ertalab uchta xat yozdi."],
+ ["I have never tried sushi.","I tried sushi last year.","Men hech qachon sushi tatib ko‘rmaganman.","Men o‘tgan yili sushi tatib ko‘rdim."],
+ ["Have you ever travelled abroad?","Did you travel abroad last year?","Siz hech chet elga sayohat qilganmisiz?","Siz o‘tgan yili chet elga sayohat qildingizmi?"],
+ ["She has just arrived.","She arrived ten minutes ago.","U hozirgina yetib keldi.","U o‘n daqiqa oldin yetib keldi."],
+ ["I have already cleaned my room.","I cleaned my room on Sunday.","Men xonamni allaqachon tozaladim.","Men xonamni yakshanba kuni tozaladim."],
+ ["They haven't called me yet.","They didn't call me yesterday.","Ular hali menga qo‘ng‘iroq qilishmadi.","Ular kecha menga qo‘ng‘iroq qilishmadi."],
+ ["He has worked here for five years.","He worked there in 2020.","U bu yerda besh yildan beri ishlaydi.","U 2020-yilda u yerda ishlagan."],
+ ["I have known her since 2019.","I met her in 2019.","Men uni 2019-yildan beri taniyman.","Men u bilan 2019-yilda tanishganman."],
+ ["We have learned many new words.","We learned ten words yesterday.","Biz ko‘plab yangi so‘zlarni o‘rgandik.","Biz kecha o‘nta so‘z o‘rgandik."],
+ ["My father has repaired the car.","My father repaired the car last Friday.","Dadam mashinani tuzatdi.","Dadam mashinani o‘tgan juma kuni tuzatdi."],
+ ["I have done my work.","I did my work two hours ago.","Men ishimni bajardim.","Men ishimni ikki soat oldin bajardim."]
+];
+
+document.getElementById("comparisonList").innerHTML=comparisons.map((x,i)=>`
+<div class="example">
+ <strong>${i+1}. Present Perfect</strong>
+ <p class="en">${x[0]}</p>
+ <p class="uz">${x[2]}</p>
+ <button class="audio-btn" onclick="speak('${x[0]}')">🔊 Listen</button>
+ <strong>Past Simple</strong>
+ <p class="en">${x[1]}</p>
+ <p class="uz">${x[3]}</p>
+ <button class="audio-btn" onclick="speak('${x[1]}')">🔊 Listen</button>
+</div>`).join("");
+
+const vocabulary=[
+ ["Experience","/ɪkˈspɪəriəns/","tajriba","I have a lot of experience."],
+ ["Journey","/ˈdʒɜːni/","sayohat","We had a wonderful journey."],
+ ["Recently","/ˈriːsəntli/","yaqinda","I have recently moved here."],
+ ["Already","/ɔːlˈredi/","allaqachon","She has already finished."],
+ ["Yet","/jet/","hali","I haven't eaten yet."],
+ ["Ever","/ˈevə/","hech","Have you ever been there?"],
+ ["Never","/ˈnevə/","hech qachon","I have never seen it."],
+ ["Since","/sɪns/","...dan beri","I have lived here since 2020."],
+ ["For","/fɔː/","...davomida","I have worked here for years."],
+ ["Improve","/ɪmˈpruːv/","yaxshilamoq","My English has improved."],
+ ["Achieve","/əˈtʃiːv/","erishmoq","She has achieved her goal."],
+ ["Discover","/dɪˈskʌvə/","kashf qilmoq","We discovered a new place."],
+ ["Explore","/ɪkˈsplɔː/","o‘rganib chiqmoq","They explored the city."],
+ ["Borrow","/ˈbɒrəʊ/","qarzga olmoq","I borrowed a book yesterday."],
+ ["Return","/rɪˈtɜːn/","qaytarmoq","He returned the book."],
+ ["Attend","/əˈtend/","qatnashmoq","I attended the meeting."],
+ ["Prepare","/prɪˈpeə/","tayyorlanmoq","We prepared for the test."],
+ ["Continue","/kənˈtɪnjuː/","davom ettirmoq","She continued her studies."],
+ ["Decide","/dɪˈsaɪd/","qaror qilmoq","They decided to travel."],
+ ["Forget","/fəˈɡet/","unutmoq","I have forgotten his name."],
+ ["Remember","/rɪˈmembə/","eslamoq","I remember that day."],
+ ["Receive","/rɪˈsiːv/","qabul qilmoq","I received your message."],
+ ["Send","/send/","yubormoq","She sent me an email."],
+ ["Choose","/tʃuːz/","tanlamoq","We have chosen a new topic."],
+ ["Become","/bɪˈkʌm/","bo‘lmoq","He has become a teacher."],
+ ["Begin","/bɪˈɡɪn/","boshlamoq","The lesson began at nine."],
+ ["Finish","/ˈfɪnɪʃ/","tugatmoq","I finished my work."],
+ ["Understand","/ˌʌndəˈstænd/","tushunmoq","I have understood the rule."],
+ ["Believe","/bɪˈliːv/","ishonmoq","I believed his story."],
+ ["Spend","/spend/","sarflamoq","We spent two days there."],
+ ["Save","/seɪv/","saqlamoq","I have saved some money."],
+ ["Travel","/ˈtrævəl/","sayohat qilmoq","They travelled last summer."],
+ ["Invite","/ɪnˈvaɪt/","taklif qilmoq","She invited her friends."],
+ ["Celebrate","/ˈselɪbreɪt/","nishonlamoq","We celebrated his birthday."],
+ ["Change","/tʃeɪndʒ/","o‘zgartirmoq","Things have changed."],
+ ["Grow","/ɡrəʊ/","o‘smoq","The children have grown."],
+ ["Build","/bɪld/","qurmoq","They built a new house."],
+ ["Meet","/miːt/","uchrashmoq","I met him last year."],
+ ["Teach","/tiːtʃ/","o‘rgatmoq","She has taught English for years."],
+ ["Learn","/lɜːn/","o‘rganmoq","I learned a new rule yesterday."]
+];
+
+document.getElementById("vocabularyList").innerHTML=vocabulary.map((w,i)=>`
+<div class="word-card">
+ <strong>${i+1}. ${w[0]}</strong>
+ <small>${w[1]}</small>
+ <p>${w[2]}</p>
+ <small>${w[3]}</small>
+ <button class="audio-btn" onclick="speak('${w[0]}')">🔊 Pronunciation</button>
+ <button class="audio-btn" onclick="speak('${w[3]}')">▶ Example</button>
+</div>`).join("");
+
+const listen1=[
+ ["Where did the speaker travel last summer?","Samarkand","London","Paris","Tokyo",0],
+ ["Who travelled with the speaker?","Friends","Family","Teachers","Colleagues",1],
+ ["How long did they stay there?","One day","Two days","Three days","One week",2],
+ ["What did they visit?","A museum","Historical buildings","A school","A hospital",1],
+ ["What did the speaker take?","Books","Photos","Gifts","Tickets",1],
+ ["Has the speaker forgotten the trip?","Yes","No","Not mentioned","Maybe",1],
+ ["What has the speaker learned about?","Science","History","Cooking","Music",1]
+];
+const listen2=[
+ ["How has the speaker's week been?","Quiet","Busy","Boring","Difficult",1],
+ ["When does the speaker study English?","Every morning","Every evening","At midnight","At weekends",0],
+ ["Who did the speaker visit on Monday?","A teacher","A friend","A doctor","A cousin",1],
+ ["Where did the speaker go yesterday?","The park","The library","The market","The station",1],
+ ["How many books did the speaker borrow?","One","Two","Three","Four",1],
+ ["Has the speaker finished the second book?","Yes","No","Not mentioned","Maybe",1],
+ ["How does the speaker feel?","Sad","Angry","Happy","Tired",2]
+];
+
+function renderListening(data,id){
+ document.getElementById(id).innerHTML=data.map((q,i)=>`
+ <div class="question">
+  <p>${i+1}. ${q[0]}</p>
+  <div class="options">
+  ${q.slice(1,5).map((a,j)=>`<button class="option" data-answer="${j}" onclick="selectOption(this)">${String.fromCharCode(65+j)}. ${a}</button>`).join("")}
+  </div>
+  <input type="hidden" class="correct-answer" value="${q[5]}">
+ </div>`).join("");
+}
+function selectOption(btn){
+ const parent=btn.parentElement;
+ parent.querySelectorAll(".option").forEach(b=>b.classList.remove("selected"));
+ btn.classList.add("selected");
+}
+renderListening(listen1,"listeningQuestions1");
+renderListening(listen2,"listeningQuestions2");
+
+const writing=[
+ ["I have finished my homework.","Men uy vazifamni tugatdim."],
+ ["She visited her aunt yesterday.","U kecha xolasini ko‘rgani bordi."],
+ ["We have learned many new words.","Biz ko‘plab yangi so‘zlarni o‘rgandik."],
+ ["He bought a new bag last week.","U o‘tgan hafta yangi sumka sotib oldi."],
+ ["Have you ever visited Bukhara?","Siz hech Buxoroga borganmisiz?"],
+ ["I didn't watch television last night.","Men kecha kechqurun televizor ko‘rmadim."],
+ ["They have already eaten dinner.","Ular allaqachon kechki ovqatni yeyishgan."],
+ ["My brother went to school yesterday.","Akam kecha maktabga bordi."],
+ ["She has never travelled abroad.","U hech qachon chet elga sayohat qilmagan."],
+ ["We played football two days ago.","Biz ikki kun oldin futbol o‘ynadik."],
+ ["I have known him for five years.","Men uni besh yildan beri taniyman."],
+ ["He called me an hour ago.","U menga bir soat oldin qo‘ng‘iroq qildi."],
+ ["Have you finished your work yet?","Ishingizni hali tugatdingizmi?"],
+ ["They moved to this city in 2021.","Ular bu shaharga 2021-yilda ko‘chib kelishdi."],
+ ["I have just cleaned the kitchen.","Men hozirgina oshxonani tozaladim."],
+ ["She wrote a letter last Sunday.","U o‘tgan yakshanba kuni xat yozdi."],
+ ["We haven't seen this film.","Biz bu filmni ko‘rmaganmiz."],
+ ["Did you meet your teacher yesterday?","Kecha o‘qituvchingiz bilan uchrashdingizmi?"],
+ ["My parents have bought a new house.","Ota-onam yangi uy sotib olishdi."],
+ ["He started learning English last year.","U o‘tgan yili ingliz tilini o‘rganishni boshladi."],
+ ["I have read three books this month.","Men shu oy uchta kitob o‘qidim."],
+ ["She didn't come to work yesterday.","U kecha ishga kelmadi."],
+ ["Have they arrived yet?","Ular hali yetib kelishdimi?"],
+ ["We visited our grandparents last weekend.","Biz o‘tgan dam olish kunlari buvi-buvamiznikiga bordik."],
+ ["He has changed his job recently.","U yaqinda ishini o‘zgartirdi."],
+ ["I saw an interesting programme last night.","Men kecha kechqurun qiziqarli ko‘rsatuv ko‘rdim."],
+ ["She has worked here since 2020.","U bu yerda 2020-yildan beri ishlaydi."],
+ ["They didn't understand the question.","Ular savolni tushunishmadi."],
+ ["I have never eaten this food before.","Men avval bu taomni hech qachon yemaganman."],
+ ["We went to the mountains last summer.","Biz o‘tgan yozda tog‘larga bordik."]
+];
+document.getElementById("writingSentences").innerHTML=writing.map((s,i)=>`
+<div class="example">
+ <strong>${i+1}. ${s[0]}</strong>
+ <p class="uz">${s[1]}</p>
+ <button class="audio-btn" onclick="speak('${s[0]}')">🔊 Listen</button>
+</div>`).join("");
+
+const presentQuiz=[
+ ["She ___ finished her homework.","have","has","had","having",1],
+ ["I ___ never been to London.","has","have","did","am",1],
+ ["They have ___ their work.","finish","finished","finishing","finishes",1],
+ ["___ you ever seen this film?","Did","Has","Have","Do",2],
+ ["He hasn't ___ his breakfast yet.","eat","ate","eaten","eating",2],
+ ["We have lived here ___ 2020.","for","since","ago","during",1],
+ ["She has worked here ___ five years.","since","for","from","at",1],
+ ["I have ___ finished my task.","yet","ever","just","ago",2],
+ ["Have they arrived ___?","already","yet","ever","since",1],
+ ["He has ___ visited Paris.","never","yesterday","ago","last",0],
+ ["My father ___ bought a new car.","have","has","is","did",1],
+ ["I have ___ this book before.","read","reads","reading","readed",0],
+ ["She ___ already left.","have","has","did","does",1],
+ ["We haven't ___ the answer.","know","knew","known","knowing",2],
+ ["Have you ___ your keys?","find","found","finding","finds",1],
+ ["They have studied English ___ 2021.","for","since","ago","last",1],
+ ["I ___ never tried sushi.","has","have","did","was",1],
+ ["He has ___ his phone.","lose","lost","losing","loses",1],
+ ["The train has just ___.","arrive","arrived","arriving","arrives",1],
+ ["She hasn't called me ___.","already","just","yet","ever",2],
+ ["___ he finished the report?","Have","Has","Did","Do",1],
+ ["I have known her ___ a long time.","since","for","ago","at",1],
+ ["We have ___ many places.","visit","visited","visiting","visits",1],
+ ["He ___ become a teacher.","have","has","is","did",1],
+ ["Have you ever ___ abroad?","travel","travelled","travelling","travels",1],
+ ["I have not ___ that movie.","see","saw","seen","seeing",2],
+ ["She has ___ her room.","clean","cleaned","cleaning","cleans",1],
+ ["They ___ already eaten.","has","have","did","are",1],
+ ["My English has ___.","improve","improved","improving","improves",1],
+ ["We have not finished ___.","already","yet","since","ever",1]
+];
+
+const pastQuiz=[
+ ["I ___ to school yesterday.","go","gone","went","going",2],
+ ["She ___ a new dress last week.","buy","buys","bought","buying",2],
+ ["They ___ football yesterday.","play","played","playing","plays",1],
+ ["He didn't ___ to work.","went","go","gone","going",1],
+ ["___ you see him yesterday?","Have","Has","Did","Do",2],
+ ["We ___ dinner at seven.","eat","eaten","ate","eating",2],
+ ["I ___ my friend last Sunday.","visit","visited","visiting","visits",1],
+ ["She ___ a letter two days ago.","write","wrote","written","writes",1],
+ ["They didn't ___ the question.","understood","understand","understanding","understands",1],
+ ["He ___ home late last night.","come","came","comes","coming",1],
+ ["I ___ a new phone in 2022.","buy","bought","buying","buys",1],
+ ["We ___ a film yesterday.","watch","watched","watching","watches",1],
+ ["Did she ___ you?","called","call","calling","calls",1],
+ ["My father ___ the car last week.","repair","repaired","repairing","repairs",1],
+ ["They ___ in London in 2019.","live","lived","living","lives",1],
+ ["He didn't ___ breakfast.","ate","eaten","eat","eating",2],
+ ["I ___ him at the station.","meet","met","meeting","meets",1],
+ ["She ___ up early yesterday.","wake","woke","woken","waking",1],
+ ["We ___ to the mountains last year.","go","went","gone","going",1],
+ ["Did they ___ the game?","won","win","winning","wins",1],
+ ["I ___ my keys yesterday.","lose","lost","losing","loses",1],
+ ["He ___ English at school.","study","studied","studying","studies",1],
+ ["They ___ a new house in 2020.","build","built","building","builds",1],
+ ["She didn't ___ the bus.","missed","miss","missing","misses",1],
+ ["I ___ the book last month.","read","reads","reading","readed",0],
+ ["We ___ our grandparents yesterday.","see","saw","seen","seeing",1],
+ ["He ___ me an email last night.","send","sent","sending","sends",1],
+ ["Did you ___ the door?","opened","open","opening","opens",1],
+ ["She ___ very happy yesterday.","is","are","was","be",2],
+ ["They ___ tired after work.","was","were","is","be",1]
+];
+
+function renderQuiz(data,id,type){
+ document.getElementById(id).innerHTML=data.map((q,i)=>`
+ <div class="question" data-type="${type}" data-index="${i}">
+  <p>${i+1}. ${q[0]}</p>
+  <div class="options">
+  ${q.slice(1,5).map((a,j)=>`
+   <button class="option" data-answer="${j}" onclick="selectOption(this)">
+    ${String.fromCharCode(65+j)}. ${a}
+   </button>`).join("")}
+  </div>
+  <input type="hidden" class="correct-answer" value="${q[5]}">
+ </div>`).join("");
+}
+renderQuiz(presentQuiz,"presentQuestions","present");
+renderQuiz(pastQuiz,"pastQuestions","past");
+
+function checkTest(type){
+ const container=document.getElementById(type+"Questions");
+ const questions=container.querySelectorAll(".question");
+ let score=0;
+ questions.forEach(q=>{
+  const answer=Number(q.querySelector(".correct-answer").value);
+  const selected=q.querySelector(".option.selected");
+  q.querySelectorAll(".option").forEach((b,i)=>{
+   b.disabled=true;
+   if(i===answer)b.classList.add("correct");
+   if(selected&&b===selected&&i!==answer)b.classList.add("wrong");
+  });
+  if(selected&&Number(selected.dataset.answer)===answer)score++;
+ });
+ const result=document.getElementById(type+"Result");
+ const percent=Math.round(score/questions.length*100);
+ result.className="result show";
+ result.innerHTML=`
+ <div class="score">${score} / ${questions.length}</div>
+ <p>Natija: ${percent}%</p>
+ <p>${percent>=80?"Ajoyib! Siz mavzuni yaxshi o‘zlashtirdingiz.":"Yaxshi harakat! Xatolarni ko‘rib chiqing va mavzuni yana takrorlang."}</p>`;
+ result.style.background=percent>=80?"rgba(21,155,101,.12)":"rgba(242,169,0,.12)";
+ result.scrollIntoView({behavior:"smooth",block:"center"});
+}
+</script>
+  <!-- =========================================
+     9-DARS — HOMEWORK SECTION
+     Oldingi koddagi HOMEWORK izohidan boshlab
+     ushbu qismni joylashtiring.
+========================================= -->
+
+<section class="card" id="homework">
+ <h2>9. HOMEWORK — UYGA VAZIFA</h2>
+
+ <div class="hero">
+  <h2>🏆 Your Mission Starts Now!</h2>
+  <p>Today's lesson becomes tomorrow's success.</p>
+  <p>Bugungi bilim — ertangi muvaffaqiyat!</p>
+ </div>
+
+ <div class="notice">
+  <strong>📌 MUHIM QOIDA:</strong>
+  <p>Uy vazifalarini shunchaki bajarish emas, balki tushunib bajarish kerak. Barcha yozma topshiriqlarni daftaringizga yozing. Javoblaringizni tekshirib, xatolaringiz ustida ishlang.</p>
+ </div>
+
+ <h3>✍️ TASK 1 — GRAMMAR WRITING</h3>
+ <p>Quyidagi 15 ta gapni Present Simple zamonida ingliz tiliga tarjima qiling.</p>
+ <p><strong>Namuna:</strong> Men har kuni ingliz tilini o‘rganaman.</p>
+ <p><em>I learn English every day.</em></p>
+
+ <div id="simpleHomework"></div>
+
+ <div class="important">
+  <strong>Diqqat!</strong>
+  <p>Bu topshiriqda Present Simple ishlating. Bugungi mavzudagi Present Perfect yoki Past Simple bilan aralashtirmang.</p>
+ </div>
+
+ <h3>📝 TASK 2 — VERB FORMS</h3>
+ <p>Quyidagi fe'llarni daftaringizga uchta shaklda yozing: V1 — V2 — V3 va o‘zbekcha tarjimasini qo‘shing.</p>
+
+ <div id="verbHomework"></div>
+
+ <div class="notice">
+  <strong>Vazifa:</strong>
+  <p>Har bir fe'l bilan ikkita gap tuzing: bittasi Present Perfect, ikkinchisi Past Simple zamonida.</p>
+ </div>
+
+ <h3>📖 TASK 3 — SENTENCE TRANSLATION</h3>
+ <p>Quyidagi gaplarni ingliz tiliga tarjima qiling. Kerakli zamonni o‘zingiz tanlang.</p>
+ <div id="translationHomework"></div>
+
+ <h3>🎧 TASK 4 — LISTENING</h3>
+ <p>Quyidagi matnni kamida uch marta tinglang. Birinchi marta umumiy mazmunini tushunishga, ikkinchi marta muhim ma'lumotlarni eslab qolishga, uchinchi marta esa matn bilan birga talaffuz qilishga harakat qiling.</p>
+
+ <div class="example">
+  <h3>Listening Homework — A New Experience</h3>
+  <button onclick="speakText('homeworkListening')">🔊 Play Audio</button>
+  <p id="homeworkListening">Last year, I decided to learn something new. I joined an English course and started studying every day. At first, I found it difficult, but I didn't give up. I learned new words, read short stories and listened to English conversations. I have improved my English since I started the course. I have also made some new friends. Yesterday, I talked to one of my classmates about our future plans. We decided to practise speaking together every week. I haven't achieved all my goals yet, but I am happy with my progress.</p>
+ </div>
+
+ <p><strong>Listening questions:</strong></p>
+ <div id="homeworkListeningQuestions"></div>
+
+ <h3>📚 TASK 5 — READING</h3>
+ <p>Matnni o‘qing va savollarga ingliz tilida javob yozing.</p>
+
+ <div class="example">
+  <h3>My English Learning Journey</h3>
+  <p>I started learning English because I wanted to communicate with people from different countries. In the beginning, I didn't know many words. I studied grammar and learned basic expressions. Every day, I spent some time reading and listening to English.</p>
+  <p>Last year, I joined an online English group. I met many students there and practised speaking with them. We discussed different topics and helped each other. Since then, my confidence has improved.</p>
+  <p>I have learned that learning a language takes time and patience. I haven't become fluent yet, but I am getting better every day. My next goal is to speak English more confidently.</p>
+ </div>
+
+ <div id="readingHomeworkQuestions"></div>
+
+ <h3>✍️ TASK 6 — WRITING</h3>
+ <p><strong>Topic: My Life Experiences</strong></p>
+ <p>O‘z hayotingizdagi tajribalar haqida 120–150 ta so‘zdan iborat matn yozing.</p>
+ <p>Quyidagi savollardan foydalanishingiz mumkin:</p>
+ <ul>
+  <li>What interesting places have you visited?</li>
+  <li>What new things have you learned?</li>
+  <li>Have you ever met an interesting person?</li>
+  <li>What did you do last weekend?</li>
+  <li>What did you learn last year?</li>
+  <li>What goals have you achieved?</li>
+  <li>What haven't you done yet?</li>
+ </ul>
+
+ <div class="notice">
+  <strong>Talablar:</strong>
+  <ul>
+   <li>Kamida 5 ta Present Perfect gap.</li>
+   <li>Kamida 5 ta Past Simple gap.</li>
+   <li>Matnda kamida 10 ta yangi vocabulary so‘zi.</li>
+   <li>Matnni yozgandan keyin xatolarni tekshiring.</li>
+  </ul>
+ </div>
+
+ <h3>🗣️ TASK 7 — SPEAKING</h3>
+ <p>Quyidagi savollarga ovoz chiqarib ingliz tilida javob bering. Har bir savolga kamida 3–4 ta gap bilan javob berishga harakat qiling.</p>
+
+ <div id="speakingHomework"></div>
+
+ <div class="important">
+  <strong>Speaking challenge:</strong>
+  <p>Telefoningizdagi ovoz yozish funksiyasidan foydalanib, 1–2 daqiqalik nutqingizni yozib oling. Keyin uni tinglab, talaffuz va grammatikangizni tekshiring.</p>
+ </div>
+
+ <h3>🎯 TASK 8 — FINAL CHALLENGE</h3>
+ <p>Quyidagi topshiriqlarni bajaring:</p>
+ <ul>
+  <li>Present Perfect haqida 5 ta yangi gap tuzing.</li>
+  <li>Past Simple haqida 5 ta yangi gap tuzing.</li>
+  <li>Present Perfect va Past Simple farqini o‘z so‘zlaringiz bilan tushuntiring.</li>
+  <li>Bugungi 40 ta vocabulary so‘zini takrorlang.</li>
+  <li>Har ikkala testda kamida 80% natijaga erishishga harakat qiling.</li>
+ </ul>
+
+ <div class="success-box">
+  <h3>🌟 Remember!</h3>
+  <p>Don't study only to pass a test. Study to use English in real life.</p>
+  <p>Faqat testdan o'tish uchun emas, ingliz tilini haqiqiy hayotda ishlata olish uchun o‘rganing.</p>
+ </div>
+
+ <h3>✅ HOMEWORK CHECKLIST</h3>
+ <div id="homeworkChecklist"></div>
+
+ <div class="progress-track">
+  <div class="progress-fill" id="homeworkProgress"></div>
+ </div>
+ <p id="homeworkProgressText">0 / 8 tasks completed</p>
+
+ <button onclick="resetHomework()">Reset checklist</button>
+</section>
+
+<section class="card">
+ <h2>🎓 LESSON 9 — FINAL MOTIVATION</h2>
+ <p>Bugun siz ingliz tilidagi ikkita muhim zamon — Present Perfect va Past Simple mavzularini o‘rgandingiz.</p>
+ <p>Esingizda bo‘lsin: til o‘rganish bir kunlik ish emas. Har kuni ozgina bo‘lsa ham harakat qilsangiz, natijaga erishasiz.</p>
+
+ <div class="hero">
+  <h2>LEARN TODAY.</h2>
+  <h2>SUCCEED TOMORROW.</h2>
+  <p>English Up — Your Journey to Success!</p>
+ </div>
+</section>
+
+<footer>
+ <strong>ENGLISH UP</strong>
+ <p>Learn today. Succeed tomorrow.</p>
+ <p>Pre-Intermediate Course · Lesson 9</p>
+</footer>
+
+<script>
+const simpleHomework=[
+ "Men har kuni ertalab soat yettida uyg‘onaman.",
+ "U maktabga avtobusda boradi.",
+ "Biz har kuni ingliz tilini o‘rganamiz.",
+ "Mening akam futbol o‘ynaydi.",
+ "Ular yakshanba kunlari ishlashmaydi.",
+ "Onam mazali ovqat tayyorlaydi.",
+ "Men kechqurun kitob o‘qiyman.",
+ "U ingliz tilida yaxshi gapiradi.",
+ "Biz har hafta yangi so‘zlarni takrorlaymiz.",
+ "Otam har kuni ishga boradi.",
+ "Men qahva ichmayman.",
+ "U televizorni kechqurun tomosha qiladi.",
+ "Siz har kuni ingliz tilini mashq qilasizmi?",
+ "Ular bu shaharda yashashadi.",
+ "Mening do‘stim ingliz tilini yaxshi ko‘radi."
+];
+
+document.getElementById("simpleHomework").innerHTML=
+simpleHomework.map((s,i)=>`<div class="example">${i+1}. ${s}</div>`).join("");
+
+const verbHomework=[
+ ["go","went","gone","bormoq"],
+ ["see","saw","seen","ko‘rmoq"],
+ ["eat","ate","eaten","yemoq"],
+ ["write","wrote","written","yozmoq"],
+ ["buy","bought","bought","sotib olmoq"],
+ ["come","came","come","kelmoq"],
+ ["take","took","taken","olmoq"],
+ ["give","gave","given","bermoq"],
+ ["speak","spoke","spoken","gapirmoq"],
+ ["choose","chose","chosen","tanlamoq"],
+ ["begin","began","begun","boshlamoq"],
+ ["break","broke","broken","sindirmoq"],
+ ["forget","forgot","forgotten","unutmoq"],
+ ["know","knew","known","bilmoq"],
+ ["make","made","made","yasamoq"]
+];
+
+document.getElementById("verbHomework").innerHTML=
+`<div class="table-wrap"><table>
+<tr><th>V1</th><th>V2</th><th>V3</th><th>Uzbek</th></tr>
+${verbHomework.map(v=>`<tr>${v.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}
+</table></div>`;
+
+const translationHomework=[
+ "Men bu filmni hech qachon ko‘rmaganman.",
+ "Men kecha do‘stim bilan uchrashdim.",
+ "U allaqachon uy vazifasini tugatgan.",
+ "Biz o‘tgan hafta yangi uy sotib oldik.",
+ "Siz hech Londonga borganmisiz?",
+ "U menga ikki soat oldin qo‘ng‘iroq qildi.",
+ "Men bu yerda 2021-yildan beri yashayman.",
+ "Ular kecha maktabga kelishmadi.",
+ "Men bugun uchta yangi so‘z o‘rgandim.",
+ "Siz kecha nima qildingiz?"
+];
+
+document.getElementById("translationHomework").innerHTML=
+translationHomework.map((s,i)=>`<div class="example">${i+1}. ${s}</div>`).join("");
+
+const homeworkListening=[
+ ["Why did the speaker start learning English?","To travel","To communicate with people","To teach grammar","To watch films",1],
+ ["What did the speaker do every day?","Studied English","Played football","Watched TV","Went shopping",0],
+ ["When did the speaker join an online group?","Last week","Last month","Last year","Yesterday",2],
+ ["What did the speaker practise?","Driving","Cooking","Speaking","Swimming",2],
+ ["Has the speaker achieved all goals?","Yes","No","Not mentioned","Maybe",1],
+ ["What is the next goal?","To write a book","To speak confidently","To move abroad","To teach children",1]
+];
+
+renderListening(homeworkListening,"homeworkListeningQuestions");
+
+const readingQuestions=[
+ ["Why did the writer start learning English?","To communicate with people","To become a doctor","To travel by train","To play games",0],
+ ["When did the writer join an online group?","Last year","Yesterday","Last week","Ten years ago",0],
+ ["What did the students do together?","Cooked food","Practised speaking","Played football","Watched films",1],
+ ["What has improved since joining the group?","Confidence","Cooking","Driving","Drawing",0],
+ ["Has the writer become fluent?","Yes","No","Not mentioned","Maybe",1]
+];
+
+renderListening(readingQuestions,"readingHomeworkQuestions");
+
+const speakingQuestions=[
+ "Have you ever visited another city? Tell me about it.",
+ "What have you learned recently?",
+ "What did you do yesterday?",
+ "Have you ever helped someone?",
+ "What was your favourite subject at school?",
+ "What have you achieved this year?",
+ "Where did you go last weekend?",
+ "What haven't you done yet but want to do?",
+ "Have you ever read an interesting book?",
+ "What did you learn when you were younger?"
+];
+
+document.getElementById("speakingHomework").innerHTML=
+speakingQuestions.map((q,i)=>`
+<div class="example">
+ <strong>${i+1}. ${q}</strong>
+ <br>
+ <button class="audio-btn" onclick="speak('${q.replace(/'/g,"\\'")}')">🔊 Listen</button>
+</div>`).join("");
+
+const checklistLabels=[
+ "Grammar writing — 15 sentences",
+ "Verb forms — 15 verbs",
+ "Sentence translation — 10 sentences",
+ "Listening — audio and questions",
+ "Reading — text and questions",
+ "Writing — 120–150 words",
+ "Speaking — 10 questions",
+ "Final challenge — revision"
+];
+
+const checklistKey="englishUpLesson9Homework";
+
+function getHomeworkState(){
+ try{
+  return JSON.parse(localStorage.getItem(checklistKey))||[];
+ }catch(e){return [];}
+}
+
+function renderHomeworkChecklist(){
+ const saved=getHomeworkState();
+ document.getElementById("homeworkChecklist").innerHTML=
+ checklistLabels.map((label,i)=>`
+ <div class="example">
+  <label>
+   <input type="checkbox" ${saved.includes(i)?"checked":""}
+    onchange="toggleHomework(${i},this.checked)">
+   ${label}
+  </label>
+ </div>`).join("");
+ updateHomeworkProgress();
+}
+
+function toggleHomework(index,checked){
+ let saved=getHomeworkState();
+ if(checked&&!saved.includes(index))saved.push(index);
+ if(!checked)saved=saved.filter(x=>x!==index);
+ localStorage.setItem(checklistKey,JSON.stringify(saved));
+ updateHomeworkProgress();
+}
+
+function updateHomeworkProgress(){
+ const count=getHomeworkState().length;
+ const percent=Math.round(count/checklistLabels.length*100);
+ document.getElementById("homeworkProgress").style.width=percent+"%";
+ document.getElementById("homeworkProgressText").textContent=
+ count+" / "+checklistLabels.length+" tasks completed — "+percent+"%";
+}
+
+function resetHomework(){
+ if(confirm("Barcha belgilangan vazifalarni qayta boshlaysizmi?")){
+  localStorage.removeItem(checklistKey);
+  renderHomeworkChecklist();
+ }
+}
+
+renderHomeworkChecklist();
+</script>
