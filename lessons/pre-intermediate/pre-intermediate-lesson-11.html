@@ -1,1 +1,2641 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7047eb">
+<title>English Up | 11-dars</title>
 
+<style>
+:root{
+ --primary:#7047eb;
+ --primary-dark:#5632c5;
+ --bg:#f5f3ff;
+ --card:#ffffff;
+ --text:#24213a;
+ --muted:#716d85;
+ --border:#e7e1fa;
+ --success:#159957;
+ --danger:#d94152;
+ --warning:#e89b20;
+}
+*{
+ box-sizing:border-box;
+}
+html{
+ scroll-behavior:smooth;
+}
+body{
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.65;
+}
+body.dark{
+ --bg:#171426;
+ --card:#242037;
+ --text:#f6f2ff;
+ --muted:#c0b9d4;
+ --border:#403657;
+}
+header{
+ background:linear-gradient(135deg,#7047eb,#9b70ff);
+ color:white;
+ padding:25px 16px;
+ text-align:center;
+}
+header h1{
+ margin:5px 0;
+ font-size:27px;
+}
+header p{
+ margin:5px 0;
+}
+nav{
+ position:sticky;
+ top:0;
+ z-index:10;
+ display:flex;
+ gap:8px;
+ overflow-x:auto;
+ padding:10px;
+ background:var(--card);
+ border-bottom:1px solid var(--border);
+}
+nav a{
+ flex-shrink:0;
+ text-decoration:none;
+ color:var(--primary);
+ background:var(--bg);
+ padding:8px 12px;
+ border-radius:20px;
+ font-size:13px;
+ font-weight:bold;
+}
+main{
+ max-width:950px;
+ margin:auto;
+ padding:14px;
+}
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:16px;
+ padding:18px;
+ margin:15px 0;
+ box-shadow:0 3px 12px #34216b0b;
+}
+h2{
+ color:var(--primary);
+ font-size:22px;
+ margin-top:0;
+}
+h3{
+ color:var(--primary);
+ margin-bottom:8px;
+}
+p{
+ margin:8px 0;
+}
+.note{
+ background:#fff6d9;
+ color:#674b08;
+ padding:12px;
+ border-radius:10px;
+ margin:12px 0;
+ font-weight:bold;
+}
+.dark .note{
+ background:#4a3b1b;
+ color:#ffe5a0;
+}
+.write-rule{
+ border:2px dashed var(--primary);
+ border-radius:12px;
+ padding:12px;
+ margin:12px 0;
+ background:#7047eb0c;
+}
+.write-rule strong{
+ color:var(--primary);
+}
+.formula{
+ background:var(--bg);
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:12px;
+ margin:10px 0;
+ font-weight:bold;
+ overflow-wrap:anywhere;
+}
+.example{
+ background:var(--bg);
+ padding:12px;
+ border-radius:10px;
+ margin:9px 0;
+}
+.example button{
+ margin-top:7px;
+}
+button{
+ border:0;
+ border-radius:9px;
+ background:var(--primary);
+ color:white;
+ padding:10px 14px;
+ font-weight:bold;
+ cursor:pointer;
+}
+button:active{
+ transform:scale(.98);
+}
+button.secondary{
+ background:#8b7ba8;
+}
+button.success{
+ background:var(--success);
+}
+button.danger{
+ background:var(--danger);
+}
+input[type="text"],textarea,select{
+ width:100%;
+ padding:11px;
+ border:1px solid var(--border);
+ border-radius:9px;
+ background:var(--bg);
+ color:var(--text);
+ margin:6px 0;
+ font-size:15px;
+}
+textarea{
+ min-height:100px;
+ resize:vertical;
+}
+.task{
+ border:1px solid var(--border);
+ border-radius:11px;
+ padding:12px;
+ margin:12px 0;
+}
+.task label{
+ display:block;
+ padding:5px 0;
+}
+.feedback{
+ margin-top:7px;
+ font-weight:bold;
+}
+.correct{
+ color:var(--success);
+}
+.incorrect{
+ color:var(--danger);
+}
+.word-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:9px;
+}
+.word{
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:10px;
+ background:var(--bg);
+}
+.word strong{
+ color:var(--primary);
+}
+.small{
+ font-size:13px;
+ color:var(--muted);
+}
+.progress{
+ height:12px;
+ background:var(--border);
+ border-radius:20px;
+ overflow:hidden;
+}
+.progress div{
+ height:100%;
+ width:0%;
+ background:var(--primary);
+ transition:.3s;
+}
+footer{
+ text-align:center;
+ color:var(--muted);
+ padding:25px;
+}
+hr{
+ border:0;
+ border-top:1px solid var(--border);
+ margin:20px 0;
+}
+@media(max-width:600px){
+ main{
+  padding:9px;
+ }
+ .card{
+  padding:14px;
+ }
+ header h1{
+  font-size:23px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<p>ENGLISH UP • PRE-INTERMEDIATE</p>
+<h1>11-DARS</h1>
+<h2 style="color:white">Past Simple vs Past Continuous</h2>
+<p>O‘tmishda sodir bo‘lgan voqealarni to‘g‘ri ifodalash</p>
+<p>Grammar • Vocabulary • Listening • Reading • Writing • Speaking</p>
+</header>
+
+<nav>
+<a href="#intro">Kirish</a>
+<a href="#rules">Grammar</a>
+<a href="#practice">Practice</a>
+<a href="#vocabulary">Vocabulary</a>
+<a href="#listening">Listening</a>
+<a href="#reading">Reading</a>
+<a href="#writing">Writing</a>
+<a href="#speaking">Speaking</a>
+<a href="#test">Test</a>
+</nav>
+
+<main>
+
+<section class="card" id="intro">
+<h2>1. Darsga xush kelibsiz!</h2>
+
+<p>Assalomu alaykum! English Up platformasining 11-darsiga xush kelibsiz!</p>
+
+<p>Bugungi darsimizda ingliz tilidagi ikkita muhim zamonni birgalikda o‘rganamiz: Past Simple va Past Continuous.</p>
+
+<p>Bu ikki zamon kundalik suhbatlarda, hikoya qilishda, voqealarni tasvirlashda va IELTS Speaking imtihonida juda foydali.</p>
+
+<h3>Bugungi darsning maqsadi</h3>
+<ul>
+<li>Past Simple zamonini mustahkamlash.</li>
+<li>Past Continuous zamonini mustahkamlash.</li>
+<li>Ikki zamon o‘rtasidagi farqni tushunish.</li>
+<li>When va While so‘zlaridan foydalanish.</li>
+<li>O‘tmishdagi voqealarni bir-biriga bog‘lab aytish.</li>
+<li>Mustaqil gaplar va kichik hikoyalar tuzish.</li>
+</ul>
+
+<div class="note">
+DAFTAR QOIDASI: Dars davomida berilgan qoida, formula, yangi so‘z, misol va mashqlarni daftaringizga yozish majburiy. Faqat o‘qib chiqish yetarli emas!
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>11-DARS: PAST SIMPLE VS PAST CONTINUOUS</p>
+<p>Lesson objective: To describe completed actions and actions in progress in the past.</p>
+<p>Tarjimasi: O‘tmishda tugallangan va davom etayotgan harakatlarni tasvirlash.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>2. Darsdan oldingi bilimlarni esga olish</h2>
+<p>Yangi mavzuga kirishdan oldin oldingi darslarni eslaymiz.</p>
+
+<h3>Past Simple haqida</h3>
+<p>Past Simple o‘tmishda sodir bo‘lgan va tugagan harakatlar uchun ishlatiladi.</p>
+<div class="example">
+<p>I visited my grandmother yesterday.</p>
+<p>Men kecha buvimni ko‘rgani bordim.</p>
+<button onclick="speak('I visited my grandmother yesterday')">🔊 Tinglash</button>
+</div>
+
+<h3>Past Continuous haqida</h3>
+<p>Past Continuous o‘tmishdagi ma’lum bir vaqtda davom etayotgan harakat uchun ishlatiladi.</p>
+<div class="example">
+<p>I was studying at 8 o'clock yesterday.</p>
+<p>Men kecha soat sakkizda o‘qiyotgan edim.</p>
+<button onclick="speak('I was studying at eight o clock yesterday')">🔊 Tinglash</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Past Simple: I watched TV yesterday.</p>
+<p>Past Continuous: I was watching TV at 8 pm.</p>
+<p>Har bir gapning o‘zbekcha tarjimasini ham yozing.</p>
+</div>
+</section>
+
+<section class="card" id="rules">
+<h2>3. Grammar — asosiy tushuntirish</h2>
+
+<h3>3.1. Past Simple nima?</h3>
+<p>Past Simple — o‘tmishda sodir bo‘lgan va hozirga kelib tugagan harakatlarni ifodalovchi zamon.</p>
+
+<p>Biz bu zamonni quyidagi holatlarda ishlatamiz:</p>
+<ul>
+<li>Kecha sodir bo‘lgan harakatlar.</li>
+<li>O‘tgan hafta sodir bo‘lgan voqealar.</li>
+<li>O‘tgan yili sodir bo‘lgan ishlar.</li>
+<li>O‘tmishda aniq vaqtda bajarilgan harakatlar.</li>
+</ul>
+
+<div class="example">
+<strong>Example 1:</strong>
+<p>She cooked dinner yesterday.</p>
+<p>U kecha kechki ovqat tayyorladi.</p>
+<button onclick="speak('She cooked dinner yesterday')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<strong>Example 2:</strong>
+<p>They visited London last year.</p>
+<p>Ular o‘tgan yili Londonga tashrif buyurishdi.</p>
+<button onclick="speak('They visited London last year')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Past Simple is used for completed actions in the past.</p>
+<p>Past Simple o‘tmishda tugallangan harakatlar uchun ishlatiladi.</p>
+<p>Yuqoridagi ikkita misolni tarjimasi bilan ko‘chiring.</p>
+</div>
+
+<h3>3.2. Past Simple — darak gap</h3>
+<div class="formula">
+Subject + V2 + Object / Complement
+</div>
+
+<p>Endi formuladagi har bir qismni alohida o‘rganamiz.</p>
+
+<div class="task">
+<strong>S — Subject</strong>
+<p>Subject — gapning egasi. Harakatni kim bajarayotganini bildiradi.</p>
+<p>I, You, He, She, It, We, They yoki ism bo‘lishi mumkin.</p>
+<div class="example">
+<p>I played football yesterday.</p>
+<p>Men kecha futbol o‘ynadim.</p>
+<button onclick="speak('I played football yesterday')">🔊 Audio</button>
+</div>
+<p>Bu gapda I — Subject.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Subject = gapning egasi.</p>
+<p>Misol: I played football.</p>
+</div>
+</div>
+
+<div class="task">
+<strong>V2 — Verb 2</strong>
+<p>V2 — fe’lning ikkinchi shakli. Past Simple darak gapida asosiy fe’l odatda V2 shaklida keladi.</p>
+<p>Regular verbs: play → played, work → worked.</p>
+<p>Irregular verbs: go → went, eat → ate.</p>
+<div class="example">
+<p>He went to school.</p>
+<p>U maktabga bordi.</p>
+<button onclick="speak('He went to school')">🔊 Audio</button>
+</div>
+<p>Bu gapda went — V2.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>V2 = fe’lning ikkinchi shakli.</p>
+<p>go → went; eat → ate; play → played.</p>
+</div>
+</div>
+
+<div class="task">
+<strong>Object — To‘ldiruvchi</strong>
+<p>Object harakat kimga yoki nimaga qaratilganini bildirishi mumkin.</p>
+<div class="example">
+<p>She bought a new phone.</p>
+<p>U yangi telefon sotib oldi.</p>
+<button onclick="speak('She bought a new phone')">🔊 Audio</button>
+</div>
+<p>Bu gapda a new phone — Object.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Object = to‘ldiruvchi.</p>
+<p>Misol: She bought a book.</p>
+</div>
+</div>
+
+<h3>3.3. Past Simple — inkor gap</h3>
+<div class="formula">
+Subject + did not (didn't) + V1 + Object
+</div>
+
+<p>Inkor gapda did not yoki didn't ishlatiladi. Did yordamchi fe’li ishlatilganda asosiy fe’l V1 shaklida bo‘ladi.</p>
+
+<div class="example">
+<p>I did not watch TV yesterday.</p>
+<p>Men kecha televizor ko‘rmadim.</p>
+<button onclick="speak('I did not watch TV yesterday')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<p>She didn't go to work.</p>
+<p>U ishga bormadi.</p>
+<button onclick="speak('She did not go to work')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Subject = ega.</p>
+<p>did not = inkor yordamchi fe’li.</p>
+<p>V1 = fe’lning birinchi shakli.</p>
+<p>Misol: They didn't play football.</p>
+</div>
+
+<div class="note">
+Eslab qoling: Did not ishlatilganda fe’lga -ed qo‘shilmaydi va V2 ishlatilmaydi.
+</div>
+
+<h3>3.4. Past Simple — so‘roq gap</h3>
+<div class="formula">
+Did + Subject + V1 + Object?
+</div>
+
+<p>So‘roq gapda Did gap boshiga chiqadi.</p>
+
+<div class="example">
+<p>Did you visit your friend?</p>
+<p>Sen do‘stingni ko‘rgani bordingmi?</p>
+<button onclick="speak('Did you visit your friend')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<p>Did they finish their homework?</p>
+<p>Ular uy vazifasini tugatishdimi?</p>
+<button onclick="speak('Did they finish their homework')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Did = so‘roq yordamchi fe’li.</p>
+<p>Subject = ega.</p>
+<p>V1 = asosiy fe’lning birinchi shakli.</p>
+<p>Misol: Did she call you?</p>
+</div>
+
+<hr>
+
+<h3>3.5. Past Continuous nima?</h3>
+<p>Past Continuous — o‘tmishdagi ma’lum bir vaqtda davom etayotgan harakatni ifodalovchi zamon.</p>
+
+<p>Bu zamon harakatning aynan o‘sha vaqtda jarayonda bo‘lganini ko‘rsatadi.</p>
+
+<div class="example">
+<strong>Example 1:</strong>
+<p>I was reading a book at 9 pm.</p>
+<p>Men kechki soat 9 da kitob o‘qiyotgan edim.</p>
+<button onclick="speak('I was reading a book at nine pm')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<strong>Example 2:</strong>
+<p>They were playing football at that time.</p>
+<p>Ular o‘sha vaqtda futbol o‘ynayotgan edilar.</p>
+<button onclick="speak('They were playing football at that time')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Past Continuous is used for an action in progress at a particular time in the past.</p>
+<p>Tarjimasi: O‘tmishdagi ma’lum vaqtda davom etayotgan harakat uchun ishlatiladi.</p>
+<p>Ikki misolni tarjimasi bilan yozing.</p>
+</div>
+
+<h3>3.6. Past Continuous — darak gap</h3>
+<div class="formula">
+Subject + was / were + V-ing + Object
+</div>
+
+<div class="task">
+<strong>S — Subject</strong>
+<p>Subject — harakatni bajarayotgan shaxs yoki narsa.</p>
+<div class="example">
+<p>She was cooking dinner.</p>
+<p>U kechki ovqat tayyorlayotgan edi.</p>
+<button onclick="speak('She was cooking dinner')">🔊 Audio</button>
+</div>
+<p>She — Subject.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Subject = ega.</p>
+<p>Misol: She was reading.</p>
+</div>
+</div>
+
+<div class="task">
+<strong>Was</strong>
+<p>Was yordamchi fe’li I, He, She, It bilan ishlatiladi.</p>
+<div class="example">
+<p>He was sleeping.</p>
+<p>U uxlayotgan edi.</p>
+<button onclick="speak('He was sleeping')">🔊 Audio</button>
+</div>
+<p>Was — yordamchi fe’l.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Was: I / He / She / It bilan.</p>
+<p>Misol: I was working.</p>
+</div>
+</div>
+
+<div class="task">
+<strong>Were</strong>
+<p>Were yordamchi fe’li You, We, They bilan ishlatiladi.</p>
+<div class="example">
+<p>They were studying.</p>
+<p>Ular o‘qiyotgan edilar.</p>
+<button onclick="speak('They were studying')">🔊 Audio</button>
+</div>
+<p>Were — yordamchi fe’l.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Were: You / We / They bilan.</p>
+<p>Misol: We were learning English.</p>
+</div>
+</div>
+
+<div class="task">
+<strong>V-ing</strong>
+<p>Asosiy fe’lga -ing qo‘shimchasi qo‘shiladi.</p>
+<p>read → reading; play → playing; work → working.</p>
+<div class="example">
+<p>She was reading a story.</p>
+<p>U hikoya o‘qiyotgan edi.</p>
+<button onclick="speak('She was reading a story')">🔊 Audio</button>
+</div>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>V-ing = fe’l + ing.</p>
+<p>Misol: They were playing.</p>
+</div>
+</div>
+
+<h3>3.7. Past Continuous — inkor gap</h3>
+<div class="formula">
+Subject + was / were + not + V-ing
+</div>
+
+<p>Inkor gapda was yoki were dan keyin not qo‘shiladi.</p>
+
+<div class="example">
+<p>I was not sleeping.</p>
+<p>Men uxlamayotgan edim.</p>
+<button onclick="speak('I was not sleeping')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<p>They weren't watching TV.</p>
+<p>Ular televizor ko‘rmayotgan edilar.</p>
+<button onclick="speak('They were not watching TV')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Was not = wasn't.</p>
+<p>Were not = weren't.</p>
+<p>Misol: She wasn't working.</p>
+<p>Misol: We weren't sleeping.</p>
+</div>
+
+<h3>3.8. Past Continuous — so‘roq gap</h3>
+<div class="formula">
+Was / Were + Subject + V-ing?
+</div>
+
+<div class="example">
+<p>Were you studying at 7 pm?</p>
+<p>Sen kechki soat 7 da o‘qiyotganmiding?</p>
+<button onclick="speak('Were you studying at seven pm')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<p>Was she cooking dinner?</p>
+<p>U kechki ovqat tayyorlayotgan edimi?</p>
+<button onclick="speak('Was she cooking dinner')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Was + I / He / She / It + V-ing?</p>
+<p>Were + You / We / They + V-ing?</p>
+<p>Misol: Was he sleeping?</p>
+<p>Misol: Were they working?</p>
+</div>
+</section>
+
+<section class="card">
+<h2>4. Past Simple va Past Continuous farqi</h2>
+
+<p>Bu darsning eng muhim qismi. Ikkala zamon ham o‘tmish haqida gapiradi, ammo ular harakatni turlicha tasvirlaydi.</p>
+
+<div class="formula">
+Past Simple = tugallangan harakat
+</div>
+<div class="example">
+<p>I watched a film yesterday.</p>
+<p>Men kecha film ko‘rdim.</p>
+<button onclick="speak('I watched a film yesterday')">🔊 Audio</button>
+</div>
+
+<div class="formula">
+Past Continuous = o‘tmishda davom etayotgan harakat
+</div>
+<div class="example">
+<p>I was watching a film at 8 pm.</p>
+<p>Men soat 8 da film ko‘rayotgan edim.</p>
+<button onclick="speak('I was watching a film at eight pm')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Past Simple — What happened? (Nima sodir bo‘ldi?)</p>
+<p>Past Continuous — What was happening? (Nima sodir bo‘layotgan edi?)</p>
+<p>Yuqoridagi ikkita misolni yozing va farqini o‘z so‘zingiz bilan tushuntiring.</p>
+</div>
+
+<h3>4.1. Bir harakat davom etayotganida boshqa harakat sodir bo‘lishi</h3>
+<p>Bu holatda odatda Past Continuous davom etayotgan harakatni, Past Simple esa uning orasida sodir bo‘lgan qisqa harakatni ifodalaydi.</p>
+
+<div class="example">
+<p>I was sleeping when the phone rang.</p>
+<p>Telefon jiringlaganida men uxlayotgan edim.</p>
+<button onclick="speak('I was sleeping when the phone rang')">🔊 Audio</button>
+</div>
+
+<p>Bu gapda:</p>
+<ul>
+<li>I was sleeping — davom etayotgan harakat.</li>
+<li>The phone rang — sodir bo‘lgan qisqa harakat.</li>
+</ul>
+
+<div class="example">
+<p>She was cooking when I arrived.</p>
+<p>Men yetib kelganimda u ovqat tayyorlayotgan edi.</p>
+<button onclick="speak('She was cooking when I arrived')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Past Continuous + when + Past Simple.</p>
+<p>Misol: I was reading when he called.</p>
+<p>Tarjima: U qo‘ng‘iroq qilganida men kitob o‘qiyotgan edim.</p>
+</div>
+
+<h3>4.2. When ishlatilishi</h3>
+<p>When — “qachon”, “-ganda” ma’nolarini beradi. Bir harakat boshqa harakat sodir bo‘lgan vaqtni bildirishi mumkin.</p>
+
+<div class="example">
+<p>I was walking when it started to rain.</p>
+<p>Yomg‘ir yog‘a boshlaganida men yurayotgan edim.</p>
+<button onclick="speak('I was walking when it started to rain')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<p>When I came home, my mother was cooking.</p>
+<p>Men uyga kelganimda onam ovqat tayyorlayotgan edi.</p>
+<button onclick="speak('When I came home my mother was cooking')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>When = qachon / -ganda.</p>
+<p>When I arrived, they were eating.</p>
+<p>When she called, I was studying.</p>
+</div>
+
+<h3>4.3. While ishlatilishi</h3>
+<p>While — “paytida”, “davomida” ma’nolarini beradi. Ko‘pincha davom etayotgan harakatni ifodalaydi.</p>
+
+<div class="example">
+<p>While I was studying, my brother was watching TV.</p>
+<p>Men o‘qiyotgan paytimda akam televizor ko‘rayotgan edi.</p>
+<button onclick="speak('While I was studying my brother was watching TV')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<p>While she was cooking, I was cleaning the room.</p>
+<p>U ovqat tayyorlayotgan paytda men xonani tozalayotgan edim.</p>
+<button onclick="speak('While she was cooking I was cleaning the room')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>While = paytida / davomida.</p>
+<p>While + Subject + was/were + V-ing.</p>
+<p>While I was reading, he was writing.</p>
+</div>
+
+<h3>4.4. When va While farqi</h3>
+<p>When ko‘pincha sodir bo‘lgan voqea yoki vaqtni ko‘rsatadi. While esa davom etayotgan jarayonni ta’kidlaydi.</p>
+
+<div class="example">
+<p>I was having breakfast when he arrived.</p>
+<p>U kelganida men nonushta qilayotgan edim.</p>
+<button onclick="speak('I was having breakfast when he arrived')">🔊 Audio</button>
+</div>
+
+<div class="example">
+<p>While I was having breakfast, he was reading.</p>
+<p>Men nonushta qilayotgan paytimda u kitob o‘qiyotgan edi.</p>
+<button onclick="speak('While I was having breakfast he was reading')">🔊 Audio</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>When — ko‘pincha qisqa sodir bo‘lgan voqea bilan.</p>
+<p>While — ko‘pincha davom etayotgan jarayon bilan.</p>
+<p>Bu umumiy qoida ekanini unutmang: when va while turli grammatik holatlarda ham ishlatilishi mumkin.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>5. V-ing yozilish qoidalari</h2>
+
+<p>Past Continuous zamonida fe’lga -ing qo‘shiladi. Biroq ayrim fe’llarda imlo o‘zgarishi mavjud.</p>
+
+<h3>1-qoida: Oddiy holatda -ing qo‘shiladi</h3>
+<p>work → working</p>
+<p>read → reading</p>
+<p>play → playing</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>work — working</p>
+<p>read — reading</p>
+<p>play — playing</p>
+</div>
+
+<h3>2-qoida: Oxiridagi -e tushib qoladi</h3>
+<p>make → making</p>
+<p>write → writing</p>
+<p>come → coming</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>make — making</p>
+<p>write — writing</p>
+<p>come — coming</p>
+</div>
+
+<h3>3-qoida: Ayrim qisqa fe’llarda oxirgi undosh ikki marta yoziladi</h3>
+<p>run → running</p>
+<p>sit → sitting</p>
+<p>swim → swimming</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>run — running</p>
+<p>sit — sitting</p>
+<p>swim — swimming</p>
+</div>
+
+<h3>4-qoida: -ie bilan tugagan fe’llar</h3>
+<p>lie → lying</p>
+<p>die → dying</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>lie — lying</p>
+<p>die — dying</p>
+</div>
+</section>
+
+<section class="card">
+<h2>6. Signal words — vaqt ko‘rsatkichlari</h2>
+
+<h3>Past Simple bilan ko‘p ishlatiladigan iboralar</h3>
+<ul>
+<li>Yesterday — kecha</li>
+<li>Last night — kecha kechasi</li>
+<li>Last week — o‘tgan hafta</li>
+<li>Last month — o‘tgan oy</li>
+<li>Last year — o‘tgan yil</li>
+<li>Two days ago — ikki kun oldin</li>
+<li>In 2020 — 2020-yilda</li>
+</ul>
+
+<h3>Past Continuous bilan ko‘p ishlatiladigan iboralar</h3>
+<ul>
+<li>At 7 o'clock yesterday — kecha soat 7 da</li>
+<li>At that moment — o‘sha paytda</li>
+<li>This time yesterday — kecha shu vaqtda</li>
+<li>While — paytida</li>
+<li>When — qachon / -ganda</li>
+<li>All evening — butun kech davomida</li>
+</ul>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Har ikkala zamon uchun kamida 5 tadan signal iborani tarjimasi bilan yozing.</p>
+<p>So‘ng har bir zamon uchun 3 tadan mustaqil gap tuzing.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>7. Ko‘p uchraydigan xatolar</h2>
+
+<div class="task">
+<p><strong>Wrong:</strong> I was go to school.</p>
+<p><strong>Correct:</strong> I was going to school.</p>
+<p>Sabab: was dan keyin Past Continuous da V-ing ishlatiladi.</p>
+<button onclick="speak('I was going to school')">🔊 To‘g‘ri gapni tinglash</button>
+</div>
+
+<div class="task">
+<p><strong>Wrong:</strong> She didn't went home.</p>
+<p><strong>Correct:</strong> She didn't go home.</p>
+<p>Sabab: didn't dan keyin V1 ishlatiladi.</p>
+<button onclick="speak('She did not go home')">🔊 To‘g‘ri gapni tinglash</button>
+</div>
+
+<div class="task">
+<p><strong>Wrong:</strong> They was playing.</p>
+<p><strong>Correct:</strong> They were playing.</p>
+<p>Sabab: They bilan were ishlatiladi.</p>
+<button onclick="speak('They were playing')">🔊 To‘g‘ri gapni tinglash</button>
+</div>
+
+<div class="task">
+<p><strong>Wrong:</strong> Did you watched TV?</p>
+<p><strong>Correct:</strong> Did you watch TV?</p>
+<p>Sabab: Did bilan V1 ishlatiladi.</p>
+<button onclick="speak('Did you watch TV')">🔊 To‘g‘ri gapni tinglash</button>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>4 ta noto‘g‘ri gapni va ularning to‘g‘ri variantlarini yozing.</p>
+<p>Har bir xatoning sababini ham yozing.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>8. 20 ta namunaviy gap</h2>
+<p>Quyidagi gaplarni tinglang, ma’nosini tushuning va daftaringizga ko‘chiring.</p>
+
+<div id="exampleSentences"></div>
+
+<div class="write-rule">
+<strong>DAFTAR TOPSHIRIG‘I:</strong>
+<p>20 ta gapni inglizcha va o‘zbekcha yozing.</p>
+<p>Past Simple gaplarini bir rangda, Past Continuous gaplarini boshqa rangda belgilang.</p>
+</div>
+</section>
+
+<section class="card" id="practice">
+<h2>9. Grammar Practice — mashqlar</h2>
+<p>Har bir mashqni avval daftarda bajaring. Keyin javobingizni saytda tekshiring.</p>
+
+<div class="note">
+QAT’IY TALAB: Javobni darhol bosmang. Avval daftarga yozing, keyin tekshiring.
+</div>
+
+<h3>9.1. Bo‘sh joylarni to‘ldiring</h3>
+<div id="fillQuestions"></div>
+<button onclick="checkFill()">Javoblarni tekshirish</button>
+<p id="fillResult" class="feedback"></p>
+
+<hr>
+
+<h3>9.2. To‘g‘ri variantni tanlang</h3>
+<div id="choiceQuestions"></div>
+<button onclick="checkChoices()">Javoblarni tekshirish</button>
+<p id="choiceResult" class="feedback"></p>
+
+<hr>
+
+<h3>9.3. Xatolarni tuzating</h3>
+<p>Quyidagi gaplarda grammatik xato bor. To‘g‘ri gapni daftarga yozing.</p>
+<div id="correctionQuestions"></div>
+<button onclick="showCorrections()">To‘g‘ri javoblarni ko‘rish</button>
+<div id="correctionAnswers"></div>
+
+<hr>
+
+<h3>9.4. Ingliz tiliga tarjima qiling</h3>
+<p>Quyidagi gaplarni daftaringizda ingliz tiliga tarjima qiling.</p>
+<ol>
+<li>Men kecha futbol o‘ynadim.</li>
+<li>U soat 8 da kitob o‘qiyotgan edi.</li>
+<li>Men ovqat tayyorlayotganimda u keldi.</li>
+<li>Ular kecha maktabga borishmadi.</li>
+<li>Sen men qo‘ng‘iroq qilganimda uxlayotganmiding?</li>
+<li>Yomg‘ir yog‘a boshlaganida biz yurayotgan edik.</li>
+<li>U kecha yangi telefon sotib oldi.</li>
+<li>Biz televizor ko‘rmayotgan edik.</li>
+<li>Onam ovqat tayyorlayotgan paytda men xonani tozalayotgan edim.</li>
+<li>Ular kecha uy vazifasini tugatishdimi?</li>
+</ol>
+
+<div class="write-rule">
+<strong>DAFTARDA BAJARING:</strong>
+<p>10 ta gapning barchasini tarjima qiling.</p>
+<p>Har bir gapda qaysi zamon ishlatilganini yozing.</p>
+</div>
+</section>
+
+<section class="card" id="vocabulary">
+<h2>10. Vocabulary — 40 ta yangi so‘z</h2>
+<p>Har bir so‘zni tinglang, tarjimasini o‘rganing va daftaringizga yozing.</p>
+<p>Har bir so‘z bilan bittadan sodda gap tuzishga harakat qiling.</p>
+
+<div class="note">
+YANGI SO‘ZLARNI DAFTARGA YOZISH MAJBURIY: inglizcha so‘z, talaffuz, o‘zbekcha tarjima va misol gap.
+</div>
+
+<div id="vocabularyList" class="word-grid"></div>
+</section>
+
+<section class="card" id="listening">
+<h2>11. Listening — tinglab tushunish</h2>
+<p>Matnni avval audio orqali tinglang. Keyin matnni o‘qing va savollarga javob bering.</p>
+
+<h3>Listening 1 — A Busy Morning</h3>
+<p class="small">Audio matnni tinglashdan oldin matnni ko‘rmaslikka harakat qiling.</p>
+<button onclick="speak(listeningTexts[0].text)">🔊 Matnni tinglash</button>
+<button class="secondary" onclick="toggleText('listenText1')">Matnni ko‘rsatish / yashirish</button>
+
+<div id="listenText1" style="display:none">
+<p>Yesterday morning, I woke up at seven o'clock. I went to the kitchen and made breakfast. While I was eating, my brother was getting ready for school. My mother was making tea. Suddenly, the phone rang. My father answered it. It was his friend. After breakfast, I went to work.</p>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Listening 1 matnidan 5 ta yangi yoki foydali gapni ko‘chiring.</p>
+<p>Ularning o‘zbekcha tarjimasini yozing.</p>
+</div>
+
+<div id="listeningQuestions1"></div>
+<button onclick="checkListening1()">Listening 1 javoblarini tekshirish</button>
+<p id="listenResult1" class="feedback"></p>
+
+<hr>
+
+<h3>Listening 2 — An Unexpected Visit</h3>
+<button onclick="speak(listeningTexts[1].text)">🔊 Matnni tinglash</button>
+<button class="secondary" onclick="toggleText('listenText2')">Matnni ko‘rsatish / yashirish</button>
+
+<div id="listenText2" style="display:none">
+<p>Last Sunday, I was reading a book in my room. My sister was listening to music. It was raining outside. Suddenly, someone knocked on the door. I opened it and saw my cousin. He came to visit us. While my mother was preparing lunch, we were talking in the living room. We had a wonderful afternoon together.</p>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Listening 2 matnidan 5 ta gapni ko‘chiring.</p>
+<p>Past Simple va Past Continuous fe’llarini ajratib belgilang.</p>
+</div>
+
+<div id="listeningQuestions2"></div>
+<button onclick="checkListening2()">Listening 2 javoblarini tekshirish</button>
+<p id="listenResult2" class="feedback"></p>
+</section>
+
+<section class="card" id="reading">
+<h2>12. Reading — o‘qib tushunish</h2>
+<h3>A Day I Will Never Forget</h3>
+
+<p>Last Saturday was a very interesting day. I woke up early because I wanted to visit my friend. The weather was beautiful, and the sun was shining.</p>
+
+<p>At ten o'clock, I was walking to the bus stop when I saw an old friend. We were very happy to see each other. We talked for a few minutes and then went to a small café.</p>
+
+<p>While we were drinking coffee, my friend told me about his new job. He started working at a big company two months ago. He really enjoys his work.</p>
+
+<p>After that, we walked around the city. People were shopping, children were playing in the park, and some musicians were performing in the street.</p>
+
+<p>In the evening, I returned home. My family was having dinner when I arrived. I told them about my wonderful day.</p>
+
+<p>It was a simple day, but I will always remember it.</p>
+
+<button onclick="speak('Last Saturday was a very interesting day. I woke up early because I wanted to visit my friend. The weather was beautiful and the sun was shining. At ten o clock, I was walking to the bus stop when I saw an old friend. We were very happy to see each other. We talked for a few minutes and then went to a small cafe. While we were drinking coffee, my friend told me about his new job. He started working at a big company two months ago. He really enjoys his work. After that, we walked around the city. People were shopping, children were playing in the park, and some musicians were performing in the street. In the evening, I returned home. My family was having dinner when I arrived. I told them about my wonderful day. It was a simple day, but I will always remember it.')">🔊 Hikoyani tinglash</button>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Hikoyani diqqat bilan o‘qing.</p>
+<p>Undan 10 ta foydali so‘z yoki iborani yozing.</p>
+<p>Hikoyaning qisqa mazmunini 5 ta inglizcha gap bilan yozing.</p>
+</div>
+
+<h3>Reading comprehension</h3>
+<div id="readingQuestions"></div>
+<button onclick="checkReading()">Javoblarni tekshirish</button>
+<p id="readingResult" class="feedback"></p>
+
+<hr>
+
+<h3>True or False</h3>
+<div id="trueFalseQuestions"></div>
+<button onclick="checkTrueFalse()">Tekshirish</button>
+<p id="trueFalseResult" class="feedback"></p>
+</section>
+
+<section class="card" id="writing">
+<h2>13. Writing — yozish ko‘nikmasi</h2>
+
+<p>Bugun Past Simple va Past Continuous yordamida o‘tmishdagi voqealarni tasvirlashni o‘rganamiz.</p>
+
+<h3>Task 1 — My Yesterday</h3>
+<p>Kecha nima qilganingiz haqida 8–10 ta gap yozing.</p>
+<p>Kamida 5 ta Past Simple gap ishlating.</p>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZISH SHART:</strong>
+<p>Avval matnni daftarda yozing. Keyin quyidagi maydonga o‘zingiz yozgan matnni kiriting.</p>
+</div>
+
+<textarea id="writing1" placeholder="Yesterday, I woke up at..."></textarea>
+
+<h3>Task 2 — What Were You Doing?</h3>
+<p>Kecha soat 8 da nima qilayotgan edingiz? Oila a’zolaringiz nima qilayotgan edi? 8–10 ta gap yozing.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Kamida 5 ta Past Continuous gap ishlating.</p>
+</div>
+<textarea id="writing2" placeholder="At 8 pm yesterday, I was..."></textarea>
+
+<h3>Task 3 — An Unexpected Event</h3>
+<p>Biror kutilmagan voqea haqida 100–120 so‘zli kichik hikoya yozing.</p>
+<p>Hikoyada when va while dan foydalaning.</p>
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Hikoyangizda kamida 3 ta Past Simple va 3 ta Past Continuous gap bo‘lsin.</p>
+</div>
+<textarea id="writing3" placeholder="One day, I was walking..."></textarea>
+
+<button onclick="saveWriting()">Yozganlarimni saqlash</button>
+<p id="writingMessage" class="feedback"></p>
+</section>
+
+<section class="card" id="speaking">
+<h2>14. Speaking — gapirish ko‘nikmasi</h2>
+
+<p>Quyidagi savollarga ingliz tilida ovoz chiqarib javob bering.</p>
+<p>Avval savolni daftaringizga yozing. Keyin javobingizni ham daftarda tayyorlang. So‘ng ovoz chiqarib gapiring.</p>
+
+<div class="note">
+SPEAKING QOIDASI: Savollarga faqat ichingizda javob bermang. Har bir savolga kamida 2–3 ta inglizcha gap bilan ovoz chiqarib javob bering.
+</div>
+
+<div id="speakingQuestions"></div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Kamida 10 ta savolga yozma javob tayyorlang.</p>
+<p>So‘ng barcha 20 ta savolga ovoz chiqarib javob berishga harakat qiling.</p>
+</div>
+</section>
+
+<section class="card" id="test">
+<h2>15. Final Test — 30 ta savol</h2>
+<p>Test Past Simple va Past Continuous mavzularini qanchalik tushunganingizni tekshiradi.</p>
+
+<div class="note">
+Avval barcha savollarni daftarda ishlang. Keyin testni belgilang. Har bir savolga faqat bitta javob tanlang.
+</div>
+
+<div class="progress">
+<div id="testProgress"></div>
+</div>
+<p id="answeredCount">Javob berilgan: 0 / 30</p>
+
+<div id="finalQuestions"></div>
+
+<button onclick="finishTest()">Testni yakunlash</button>
+<div id="testResult"></div>
+</section>
+
+<section class="card">
+<h2>16. Dars yakuni</h2>
+
+<p>Bugun siz Past Simple va Past Continuous zamonlarining ishlatilishi, formulalari va farqlarini o‘rgandingiz.</p>
+
+<h3>O‘zingizni tekshiring</h3>
+<ul>
+<li>Past Simple formulasini yoddan ayta olasizmi?</li>
+<li>Past Continuous formulasini tushuntira olasizmi?</li>
+<li>Was va Were farqini bilasizmi?</li>
+<li>Did dan keyin nima ishlatilishini bilasizmi?</li>
+<li>When va While farqini tushuntira olasizmi?</li>
+<li>Ikki zamon yordamida hikoya tuza olasizmi?</li>
+</ul>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Bugungi darsdan o‘rgangan 5 ta eng muhim qoidani o‘z so‘zingiz bilan yozing.</p>
+<p>O‘zingiz uchun 5 ta yangi misol gap tuzing.</p>
+</div>
+
+<p>Ingliz tilini o‘rganish — har kuni kichik qadamlar tashlashdir. Bugun yozgan har bir gapingiz ertangi ravon nutqingizga xizmat qiladi!</p>
+</section>
+
+</main>
+
+<footer>
+<strong>ENGLISH UP</strong>
+<p>Learn today. Succeed tomorrow.</p>
+<p>11-dars • Past Simple vs Past Continuous</p>
+</footer>
+
+<script>
+/* ==========================================
+   ENGLISH UP — 11-DARS
+   PAST SIMPLE VS PAST CONTINUOUS
+   MAIN LESSON JAVASCRIPT
+========================================== */
+
+function speak(text){
+ if(!('speechSynthesis' in window)){
+  alert('Qurilmangizda ovozli o‘qish qo‘llab-quvvatlanmayapti.');
+  return;
+ }
+ window.speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang='en-US';
+ utterance.rate=0.82;
+ utterance.pitch=1;
+ window.speechSynthesis.speak(utterance);
+}
+
+function toggleText(id){
+ const element=document.getElementById(id);
+ if(element){
+  element.style.display=element.style.display==='none'?'block':'none';
+ }
+}
+
+/* ==========================================
+   20 EXAMPLE SENTENCES
+========================================== */
+
+const examples=[
+ {
+  en:'I visited my uncle last weekend.',
+  uz:'Men o‘tgan dam olish kunlari amakimni ko‘rgani bordim.',
+  type:'Past Simple'
+ },
+ {
+  en:'She bought a beautiful dress yesterday.',
+  uz:'U kecha chiroyli ko‘ylak sotib oldi.',
+  type:'Past Simple'
+ },
+ {
+  en:'We watched a film last night.',
+  uz:'Biz kecha kechqurun film tomosha qildik.',
+  type:'Past Simple'
+ },
+ {
+  en:'He finished his homework two hours ago.',
+  uz:'U uy vazifasini ikki soat oldin tugatdi.',
+  type:'Past Simple'
+ },
+ {
+  en:'They travelled to another city last year.',
+  uz:'Ular o‘tgan yili boshqa shaharga sayohat qilishdi.',
+  type:'Past Simple'
+ },
+ {
+  en:'I was reading a book at nine o’clock.',
+  uz:'Men soat to‘qqizda kitob o‘qiyotgan edim.',
+  type:'Past Continuous'
+ },
+ {
+  en:'My father was working in the garden.',
+  uz:'Otam bog‘da ishlayotgan edi.',
+  type:'Past Continuous'
+ },
+ {
+  en:'The children were playing outside.',
+  uz:'Bolalar tashqarida o‘ynayotgan edilar.',
+  type:'Past Continuous'
+ },
+ {
+  en:'She was talking to her teacher.',
+  uz:'U o‘qituvchisi bilan gaplashayotgan edi.',
+  type:'Past Continuous'
+ },
+ {
+  en:'We were waiting for the bus.',
+  uz:'Biz avtobus kutayotgan edik.',
+  type:'Past Continuous'
+ },
+ {
+  en:'I was sleeping when you called.',
+  uz:'Sen qo‘ng‘iroq qilganingda men uxlayotgan edim.',
+  type:'Both'
+ },
+ {
+  en:'She was cooking when I arrived.',
+  uz:'Men kelganimda u ovqat tayyorlayotgan edi.',
+  type:'Both'
+ },
+ {
+  en:'They were walking when it started to rain.',
+  uz:'Yomg‘ir yog‘a boshlaganida ular yurayotgan edilar.',
+  type:'Both'
+ },
+ {
+  en:'While I was studying, my brother was playing.',
+  uz:'Men o‘qiyotgan paytimda akam o‘ynayotgan edi.',
+  type:'Both'
+ },
+ {
+  en:'He was driving when he saw the accident.',
+  uz:'U avariyani ko‘rganida mashina haydayotgan edi.',
+  type:'Both'
+ },
+ {
+  en:'I cleaned my room yesterday.',
+  uz:'Men kecha xonamni tozaladim.',
+  type:'Past Simple'
+ },
+ {
+  en:'My mother was making dinner at six.',
+  uz:'Onam soat oltida kechki ovqat tayyorlayotgan edi.',
+  type:'Past Continuous'
+ },
+ {
+  en:'While we were watching TV, the lights went out.',
+  uz:'Biz televizor ko‘rayotganimizda chiroqlar o‘chib qoldi.',
+  type:'Both'
+ },
+ {
+  en:'He opened the window and looked outside.',
+  uz:'U derazani ochdi va tashqariga qaradi.',
+  type:'Past Simple'
+ },
+ {
+  en:'I was doing my homework when my friend arrived.',
+  uz:'Do‘stim kelganida men uy vazifamni bajarayotgan edim.',
+  type:'Both'
+ }
+];
+
+function renderExamples(){
+ const container=document.getElementById('exampleSentences');
+ container.innerHTML='';
+ examples.forEach((item,index)=>{
+  const div=document.createElement('div');
+  div.className='example';
+  div.innerHTML=`
+   <strong>${index+1}. ${item.type}</strong>
+   <p>${item.en}</p>
+   <p>${item.uz}</p>
+   <button onclick="speak(${JSON.stringify(item.en)})">🔊 Tinglash</button>
+  `;
+  container.appendChild(div);
+ });
+}
+renderExamples();
+
+/* ==========================================
+   GRAMMAR FILL QUESTIONS
+========================================== */
+
+const fillData=[
+ {q:'I _____ football yesterday.',a:'played'},
+ {q:'She _____ cooking at 7 pm.',a:'was'},
+ {q:'They _____ watching TV when I came.',a:'were'},
+ {q:'He did not _____ to school.',a:'go'},
+ {q:'We _____ sleeping when the phone rang.',a:'were'},
+ {q:'My mother _____ dinner last night.',a:'cooked'},
+ {q:'I _____ reading when he called.',a:'was'},
+ {q:'Did you _____ the film?',a:'watch'},
+ {q:'While she was studying, I _____ working.',a:'was'},
+ {q:'The children _____ playing outside.',a:'were'},
+ {q:'He _____ his homework two hours ago.',a:'finished'},
+ {q:'It _____ raining when we arrived.',a:'was'},
+ {q:'They did not _____ the question.',a:'understand'},
+ {q:'She _____ a new bag last week.',a:'bought'},
+ {q:'What _____ you doing at 8 pm?',a:'were'}
+];
+
+function renderFill(){
+ const container=document.getElementById('fillQuestions');
+ container.innerHTML='';
+ fillData.forEach((item,index)=>{
+  container.innerHTML+=`
+   <div class="task">
+    <p>${index+1}. ${item.q}</p>
+    <input type="text" id="fill${index}" placeholder="Javobingizni yozing">
+    <p id="fillFeedback${index}" class="feedback"></p>
+   </div>
+  `;
+ });
+}
+renderFill();
+
+function checkFill(){
+ let score=0;
+ fillData.forEach((item,index)=>{
+  const value=document.getElementById('fill'+index).value.trim().toLowerCase();
+  const feedback=document.getElementById('fillFeedback'+index);
+  if(value===item.a){
+   score++;
+   feedback.textContent='To‘g‘ri!';
+   feedback.className='feedback correct';
+  }else{
+   feedback.textContent='Noto‘g‘ri. To‘g‘ri javob: '+item.a;
+   feedback.className='feedback incorrect';
+  }
+ });
+ document.getElementById('fillResult').textContent='Natija: '+score+' / '+fillData.length;
+}
+
+/* ==========================================
+   MULTIPLE CHOICE PRACTICE
+========================================== */
+
+const choiceData=[
+ {
+  q:'She _____ to school yesterday.',
+  options:['go','went','was go'],
+  answer:1
+ },
+ {
+  q:'I _____ dinner when you called.',
+  options:['cooked','was cooking','cook'],
+  answer:1
+ },
+ {
+  q:'They _____ playing at 5 pm.',
+  options:['was','were','did'],
+  answer:1
+ },
+ {
+  q:'Did he _____ you?',
+  options:['called','calling','call'],
+  answer:2
+ },
+ {
+  q:'While I _____, my sister was singing.',
+  options:['was reading','readed','am reading'],
+  answer:0
+ },
+ {
+  q:'We _____ a film last night.',
+  options:['watch','watched','were watch'],
+  answer:1
+ },
+ {
+  q:'He _____ sleeping when I arrived.',
+  options:['were','did','was'],
+  answer:2
+ },
+ {
+  q:'She did not _____ breakfast.',
+  options:['ate','eating','eat'],
+  answer:2
+ },
+ {
+  q:'The phone rang while I _____.',
+  options:['was studying','study','studied'],
+  answer:0
+ },
+ {
+  q:'What _____ they doing?',
+  options:['was','were','did'],
+  answer:1
+ },
+ {
+  q:'I _____ my friend two days ago.',
+  options:['visited','was visit','visiting'],
+  answer:0
+ },
+ {
+  q:'While they were walking, it _____.',
+  options:['rained','was rain','started to rain'],
+  answer:2
+ }
+];
+
+function renderChoices(){
+ const container=document.getElementById('choiceQuestions');
+ container.innerHTML='';
+ choiceData.forEach((item,index)=>{
+  let options='';
+  item.options.forEach((option,j)=>{
+   options+=`
+    <label>
+     <input type="radio" name="choice${index}" value="${j}" style="width:auto">
+     ${String.fromCharCode(65+j)}. ${option}
+    </label>
+   `;
+  });
+  container.innerHTML+=`
+   <div class="task">
+    <strong>${index+1}. ${item.q}</strong>
+    ${options}
+    <p id="choiceFeedback${index}" class="feedback"></p>
+   </div>
+  `;
+ });
+}
+renderChoices();
+
+function checkChoices(){
+ let score=0;
+ choiceData.forEach((item,index)=>{
+  const selected=document.querySelector('input[name="choice'+index+'"]:checked');
+  const feedback=document.getElementById('choiceFeedback'+index);
+  if(selected && Number(selected.value)===item.answer){
+   score++;
+   feedback.textContent='To‘g‘ri javob!';
+   feedback.className='feedback correct';
+  }else{
+   feedback.textContent='To‘g‘ri javob: '+item.options[item.answer];
+   feedback.className='feedback incorrect';
+  }
+ });
+ document.getElementById('choiceResult').textContent='Natija: '+score+' / '+choiceData.length;
+}
+
+/* ==========================================
+   CORRECTION PRACTICE
+========================================== */
+
+const corrections=[
+ {
+  wrong:'I was go to the market.',
+  correct:'I was going to the market.'
+ },
+ {
+  wrong:'She didn’t went home.',
+  correct:'She didn’t go home.'
+ },
+ {
+  wrong:'They was playing football.',
+  correct:'They were playing football.'
+ },
+ {
+  wrong:'Did you watched TV?',
+  correct:'Did you watch TV?'
+ },
+ {
+  wrong:'He were sleeping.',
+  correct:'He was sleeping.'
+ },
+ {
+  wrong:'I were reading a book.',
+  correct:'I was reading a book.'
+ },
+ {
+  wrong:'She was cook dinner.',
+  correct:'She was cooking dinner.'
+ },
+ {
+  wrong:'We didn’t saw him.',
+  correct:'We didn’t see him.'
+ },
+ {
+  wrong:'Was they working?',
+  correct:'Were they working?'
+ },
+ {
+  wrong:'He was played football.',
+  correct:'He was playing football.'
+ }
+];
+
+function renderCorrections(){
+ const container=document.getElementById('correctionQuestions');
+ container.innerHTML='';
+ corrections.forEach((item,index)=>{
+  container.innerHTML+=`
+   <div class="task">
+    <p>${index+1}. ${item.wrong}</p>
+    <p class="small">To‘g‘ri gapni daftaringizga yozing.</p>
+   </div>
+  `;
+ });
+}
+renderCorrections();
+
+function showCorrections(){
+ const container=document.getElementById('correctionAnswers');
+ container.innerHTML='<h3>To‘g‘ri javoblar</h3>';
+ corrections.forEach((item,index)=>{
+  container.innerHTML+=`
+   <div class="example">
+    <p>${index+1}. ${item.correct}</p>
+    <button onclick="speak(${JSON.stringify(item.correct)})">🔊 Tinglash</button>
+   </div>
+  `;
+ });
+}
+
+/* ==========================================
+   VOCABULARY — 40 WORDS
+========================================== */
+
+const vocabulary=[
+ {en:'arrive',pron:'əˈraɪv',uz:'yetib kelmoq',example:'I arrived home late.',translation:'Men uyga kech yetib keldim.'},
+ {en:'leave',pron:'liːv',uz:'ketmoq, tark etmoq',example:'He left the office.',translation:'U ofisdan ketdi.'},
+ {en:'suddenly',pron:'ˈsʌdənli',uz:'to‘satdan',example:'Suddenly, the phone rang.',translation:'To‘satdan telefon jiringladi.'},
+ {en:'continue',pron:'kənˈtɪnjuː',uz:'davom etmoq',example:'She continued working.',translation:'U ishlashda davom etdi.'},
+ {en:'happen',pron:'ˈhæpən',uz:'sodir bo‘lmoq',example:'What happened yesterday?',translation:'Kecha nima sodir bo‘ldi?'},
+ {en:'while',pron:'waɪl',uz:'paytida',example:'While I was reading, he came.',translation:'Men o‘qiyotgan paytimda u keldi.'},
+ {en:'moment',pron:'ˈməʊmənt',uz:'lahza, payt',example:'At that moment, I was sleeping.',translation:'O‘sha paytda men uxlayotgan edim.'},
+ {en:'knock',pron:'nɒk',uz:'taqillatmoq',example:'Someone knocked on the door.',translation:'Kimdir eshikni taqillatdi.'},
+ {en:'notice',pron:'ˈnəʊtɪs',uz:'payqamoq',example:'I noticed a small mistake.',translation:'Men kichik xatoni payqadim.'},
+ {en:'remember',pron:'rɪˈmembə',uz:'eslamoq',example:'I remember that day.',translation:'Men o‘sha kunni eslayman.'},
+ {en:'forget',pron:'fəˈɡet',uz:'unutmoq',example:'I forgot his name.',translation:'Men uning ismini unutdim.'},
+ {en:'explain',pron:'ɪkˈspleɪn',uz:'tushuntirmoq',example:'He explained the problem.',translation:'U muammoni tushuntirdi.'},
+ {en:'prepare',pron:'prɪˈpeə',uz:'tayyorlamoq',example:'My mother prepared lunch.',translation:'Onam tushlik tayyorladi.'},
+ {en:'decide',pron:'dɪˈsaɪd',uz:'qaror qilmoq',example:'We decided to stay home.',translation:'Biz uyda qolishga qaror qildik.'},
+ {en:'expect',pron:'ɪkˈspekt',uz:'kutmoq, umid qilmoq',example:'I expected his visit.',translation:'Men uning tashrifini kutgandim.'},
+ {en:'follow',pron:'ˈfɒləʊ',uz:'ergashmoq',example:'The dog followed me.',translation:'It menga ergashdi.'},
+ {en:'return',pron:'rɪˈtɜːn',uz:'qaytmoq',example:'I returned home early.',translation:'Men uyga erta qaytdim.'},
+ {en:'search',pron:'sɜːtʃ',uz:'qidirmoq',example:'She searched for her keys.',translation:'U kalitlarini qidirdi.'},
+ {en:'carry',pron:'ˈkæri',uz:'ko‘tarmoq, olib yurmoq',example:'He carried a heavy bag.',translation:'U og‘ir sumkani ko‘tardi.'},
+ {en:'during',pron:'ˈdjʊərɪŋ',uz:'davomida',example:'I slept during the journey.',translation:'Men safar davomida uxladim.'},
+ {en:'journey',pron:'ˈdʒɜːni',uz:'sayohat, safar',example:'The journey was long.',translation:'Safar uzoq bo‘ldi.'},
+ {en:'weather',pron:'ˈweðə',uz:'ob-havo',example:'The weather was cold.',translation:'Ob-havo sovuq edi.'},
+ {en:'rain',pron:'reɪn',uz:'yomg‘ir',example:'It rained yesterday.',translation:'Kecha yomg‘ir yog‘di.'},
+ {en:'storm',pron:'stɔːm',uz:'bo‘ron',example:'A storm started at night.',translation:'Kechasi bo‘ron boshlandi.'},
+ {en:'quiet',pron:'ˈkwaɪət',uz:'tinch, sokin',example:'The street was quiet.',translation:'Ko‘cha tinch edi.'},
+ {en:'crowded',pron:'ˈkraʊdɪd',uz:'gavjum',example:'The market was crowded.',translation:'Bozor gavjum edi.'},
+ {en:'carefully',pron:'ˈkeəfəli',uz:'ehtiyotkorlik bilan',example:'She opened the box carefully.',translation:'U qutini ehtiyotkorlik bilan ochdi.'},
+ {en:'quickly',pron:'ˈkwɪkli',uz:'tezda',example:'He quickly closed the door.',translation:'U eshikni tezda yopdi.'},
+ {en:'slowly',pron:'ˈsləʊli',uz:'sekin',example:'The bus was moving slowly.',translation:'Avtobus sekin harakatlanayotgan edi.'},
+ {en:'fortunately',pron:'ˈfɔːtʃənətli',uz:'yaxshiyamki',example:'Fortunately, nobody was hurt.',translation:'Yaxshiyamki, hech kim jarohatlanmadi.'},
+ {en:'unfortunately',pron:'ʌnˈfɔːtʃənətli',uz:'afsuski',example:'Unfortunately, I missed the bus.',translation:'Afsuski, avtobusga ulgurmadim.'},
+ {en:'noise',pron:'nɔɪz',uz:'shovqin',example:'I heard a strange noise.',translation:'Men g‘alati shovqin eshitdim.'},
+ {en:'sound',pron:'saʊnd',uz:'tovush',example:'I heard a loud sound.',translation:'Men baland tovush eshitdim.'},
+ {en:'strange',pron:'streɪndʒ',uz:'g‘alati',example:'It was a strange day.',translation:'Bu g‘alati kun edi.'},
+ {en:'experience',pron:'ɪkˈspɪəriəns',uz:'tajriba, boshdan kechirilgan voqea',example:'It was a good experience.',translation:'Bu yaxshi tajriba bo‘ldi.'},
+ {en:'instead',pron:'ɪnˈsted',uz:'o‘rniga',example:'I stayed home instead.',translation:'Buning o‘rniga uyda qoldim.'},
+ {en:'perhaps',pron:'pəˈhæps',uz:'ehtimol',example:'Perhaps he was sleeping.',translation:'Ehtimol, u uxlayotgan edi.'},
+ {en:'although',pron:'ɔːlˈðəʊ',uz:'garchi',example:'Although it was raining, we went out.',translation:'Yomg‘ir yog‘ayotgan bo‘lsa-da, biz tashqariga chiqdik.'},
+ {en:'finally',pron:'ˈfaɪnəli',uz:'nihoyat, oxiri',example:'Finally, we arrived home.',translation:'Nihoyat, biz uyga yetib keldik.'}
+];
+
+function renderVocabulary(){
+ const container=document.getElementById('vocabularyList');
+ container.innerHTML='';
+ vocabulary.forEach((item,index)=>{
+  const div=document.createElement('div');
+  div.className='word';
+  div.innerHTML=`
+   <strong>${index+1}. ${item.en}</strong>
+   <p class="small">/${item.pron}/</p>
+   <p>${item.uz}</p>
+   <p><em>${item.example}</em></p>
+   <p class="small">${item.translation}</p>
+   <button onclick="speak(${JSON.stringify(item.en)})">🔊 So‘z</button>
+   <button class="secondary" onclick="speak(${JSON.stringify(item.example)})">🔊 Gap</button>
+  `;
+  container.appendChild(div);
+ });
+}
+renderVocabulary();
+
+/* ==========================================
+   LISTENING QUESTIONS
+========================================== */
+
+const listeningTexts=[
+ {
+  text:'Yesterday morning, I woke up at seven o clock. I went to the kitchen and made breakfast. While I was eating, my brother was getting ready for school. My mother was making tea. Suddenly, the phone rang. My father answered it. It was his friend. After breakfast, I went to work.'
+ },
+ {
+  text:'Last Sunday, I was reading a book in my room. My sister was listening to music. It was raining outside. Suddenly, someone knocked on the door. I opened it and saw my cousin. He came to visit us. While my mother was preparing lunch, we were talking in the living room. We had a wonderful afternoon together.'
+ }
+];
+
+const listeningData1=[
+ {
+  q:'What time did the speaker wake up?',
+  options:['At six','At seven','At eight'],
+  a:1
+ },
+ {
+  q:'What was the brother doing?',
+  options:['Getting ready for school','Watching TV','Sleeping'],
+  a:0
+ },
+ {
+  q:'What was the mother making?',
+  options:['Lunch','Coffee','Tea'],
+  a:2
+ },
+ {
+  q:'What happened suddenly?',
+  options:['The door opened','The phone rang','It started snowing'],
+  a:1
+ },
+ {
+  q:'Where did the speaker go after breakfast?',
+  options:['To school','To work','To the park'],
+  a:1
+ }
+];
+
+const listeningData2=[
+ {
+  q:'What was the speaker doing?',
+  options:['Reading a book','Cooking','Sleeping'],
+  a:0
+ },
+ {
+  q:'What was the sister doing?',
+  options:['Studying','Listening to music','Cleaning'],
+  a:1
+ },
+ {
+  q:'What was the weather like?',
+  options:['Sunny','Snowy','Rainy'],
+  a:2
+ },
+ {
+  q:'Who came to visit?',
+  options:['A cousin','A teacher','A neighbour'],
+  a:0
+ },
+ {
+  q:'What was the mother doing?',
+  options:['Preparing lunch','Watching TV','Reading'],
+  a:0
+ }
+];
+
+function renderListening(data,id){
+ const container=document.getElementById(id);
+ container.innerHTML='';
+ data.forEach((item,index)=>{
+  let html=`<div class="task"><strong>${index+1}. ${item.q}</strong>`;
+  item.options.forEach((option,j)=>{
+   html+=`
+    <label>
+     <input type="radio" name="${id}_${index}" value="${j}" style="width:auto">
+     ${String.fromCharCode(65+j)}. ${option}
+    </label>
+   `;
+  });
+  html+='</div>';
+  container.innerHTML+=html;
+ });
+}
+renderListening(listeningData1,'listeningQuestions1');
+renderListening(listeningData2,'listeningQuestions2');
+
+function checkListening(data,id,resultId){
+ let score=0;
+ data.forEach((item,index)=>{
+  const selected=document.querySelector('input[name="'+id+'_'+index+'"]:checked');
+  if(selected && Number(selected.value)===item.a) score++;
+ });
+ document.getElementById(resultId).textContent='Natija: '+score+' / '+data.length;
+}
+function checkListening1(){
+ checkListening(listeningData1,'listeningQuestions1','listenResult1');
+}
+function checkListening2(){
+ checkListening(listeningData2,'listeningQuestions2','listenResult2');
+}
+
+/* ==========================================
+   READING QUESTIONS
+========================================== */
+
+const readingData=[
+ {
+  q:'When did the story happen?',
+  options:['Last Saturday','Last Monday','Last Friday'],
+  a:0
+ },
+ {
+  q:'Why did the speaker wake up early?',
+  options:['To go shopping','To visit a friend','To go to work'],
+  a:1
+ },
+ {
+  q:'What was the weather like?',
+  options:['Rainy','Cold','Beautiful'],
+  a:2
+ },
+ {
+  q:'Who did the speaker see?',
+  options:['An old friend','A teacher','A cousin'],
+  a:0
+ },
+ {
+  q:'Where did they go?',
+  options:['To a library','To a café','To a school'],
+  a:1
+ },
+ {
+  q:'What was the friend talking about?',
+  options:['His family','His new job','His holiday'],
+  a:1
+ },
+ {
+  q:'What were children doing in the park?',
+  options:['Playing','Sleeping','Reading'],
+  a:0
+ },
+ {
+  q:'What was the family doing when the speaker arrived?',
+  options:['Watching a film','Having dinner','Cleaning'],
+  a:1
+ }
+];
+
+function renderReading(){
+ const container=document.getElementById('readingQuestions');
+ container.innerHTML='';
+ readingData.forEach((item,index)=>{
+  let html=`<div class="task"><strong>${index+1}. ${item.q}</strong>`;
+  item.options.forEach((option,j)=>{
+   html+=`
+    <label>
+     <input type="radio" name="reading${index}" value="${j}" style="width:auto">
+     ${String.fromCharCode(65+j)}. ${option}
+    </label>
+   `;
+  });
+  html+='</div>';
+  container.innerHTML+=html;
+ });
+}
+renderReading();
+
+function checkReading(){
+ let score=0;
+ readingData.forEach((item,index)=>{
+  const selected=document.querySelector('input[name="reading'+index+'"]:checked');
+  if(selected && Number(selected.value)===item.a) score++;
+ });
+ document.getElementById('readingResult').textContent='Natija: '+score+' / '+readingData.length;
+}
+
+/* ==========================================
+   TRUE / FALSE
+========================================== */
+
+const trueFalseData=[
+ {q:'The speaker woke up late on Saturday.',a:false},
+ {q:'The speaker wanted to visit a friend.',a:true},
+ {q:'The weather was beautiful.',a:true},
+ {q:'The speaker saw an old friend.',a:true},
+ {q:'They went to a restaurant for dinner.',a:false},
+ {q:'The friend started a new job two months ago.',a:true},
+ {q:'Children were playing in the park.',a:true},
+ {q:'The family was having breakfast when the speaker arrived.',a:false}
+];
+
+function renderTrueFalse(){
+ const container=document.getElementById('trueFalseQuestions');
+ container.innerHTML='';
+ trueFalseData.forEach((item,index)=>{
+  container.innerHTML+=`
+   <div class="task">
+    <strong>${index+1}. ${item.q}</strong>
+    <label><input type="radio" name="tf${index}" value="true" style="width:auto"> True</label>
+    <label><input type="radio" name="tf${index}" value="false" style="width:auto"> False</label>
+   </div>
+  `;
+ });
+}
+renderTrueFalse();
+
+function checkTrueFalse(){
+ let score=0;
+ trueFalseData.forEach((item,index)=>{
+  const selected=document.querySelector('input[name="tf'+index+'"]:checked');
+  if(selected && (selected.value==='true')===item.a) score++;
+ });
+ document.getElementById('trueFalseResult').textContent='Natija: '+score+' / '+trueFalseData.length;
+}
+
+/* ==========================================
+   WRITING SAVE
+========================================== */
+
+function saveWriting(){
+ const data={
+  task1:document.getElementById('writing1').value,
+  task2:document.getElementById('writing2').value,
+  task3:document.getElementById('writing3').value
+ };
+ try{
+  localStorage.setItem('englishUpLesson11Writing',JSON.stringify(data));
+  document.getElementById('writingMessage').textContent='Yozganlaringiz ushbu qurilmada saqlandi!';
+ }catch(error){
+  document.getElementById('writingMessage').textContent='Saqlash imkoni bo‘lmadi. Matnni daftaringizga ham yozib qo‘ying.';
+ }
+}
+
+function loadWriting(){
+ try{
+  const saved=localStorage.getItem('englishUpLesson11Writing');
+  if(saved){
+   const data=JSON.parse(saved);
+   document.getElementById('writing1').value=data.task1||'';
+   document.getElementById('writing2').value=data.task2||'';
+   document.getElementById('writing3').value=data.task3||'';
+  }
+ }catch(error){}
+}
+loadWriting();
+
+/* ==========================================
+   SPEAKING QUESTIONS
+========================================== */
+
+const speakingData=[
+ 'What did you do yesterday?',
+ 'Where did you go last weekend?',
+ 'What time did you wake up yesterday?',
+ 'Did you study English last night?',
+ 'What did you eat for breakfast yesterday?',
+ 'What were you doing at 7 pm yesterday?',
+ 'Were you sleeping at midnight?',
+ 'What was your family doing yesterday evening?',
+ 'What were you doing when your friend called?',
+ 'Were you watching TV when your mother came home?',
+ 'What happened while you were walking yesterday?',
+ 'What were you doing when it started to rain?',
+ 'Did you visit anyone last week?',
+ 'What were people doing in your town yesterday?',
+ 'What did you do when you arrived home?',
+ 'Were you studying while your family was watching TV?',
+ 'What happened when you were travelling?',
+ 'What were you doing this time yesterday?',
+ 'Tell me about an unexpected event in your life.',
+ 'Describe an interesting day you remember.'
+];
+
+function renderSpeaking(){
+ const container=document.getElementById('speakingQuestions');
+ container.innerHTML='';
+ speakingData.forEach((question,index)=>{
+  const div=document.createElement('div');
+  div.className='task';
+  div.innerHTML=`
+   <strong>${index+1}. ${question}</strong>
+   <br>
+   <button onclick="speak(${JSON.stringify(question)})">🔊 Savolni tinglash</button>
+  `;
+  container.appendChild(div);
+ });
+}
+renderSpeaking();
+
+/* ==========================================
+   FINAL TEST — 30 QUESTIONS
+========================================== */
+
+const finalTest=[
+ {
+  q:'I _____ my grandmother yesterday.',
+  options:['visit','visited','was visit','visiting'],
+  a:1
+ },
+ {
+  q:'She _____ dinner at 7 pm yesterday.',
+  options:['cooked','was cooking','cook','were cooking'],
+  a:1
+ },
+ {
+  q:'They _____ football when it started to rain.',
+  options:['played','was playing','were playing','play'],
+  a:2
+ },
+ {
+  q:'He did not _____ to school.',
+  options:['went','going','go','goes'],
+  a:2
+ },
+ {
+  q:'_____ you watching TV at 9 pm?',
+  options:['Was','Were','Did','Do'],
+  a:1
+ },
+ {
+  q:'My mother _____ tea when I arrived.',
+  options:['made','was making','make','were making'],
+  a:1
+ },
+ {
+  q:'We _____ to the park last Sunday.',
+  options:['go','were go','went','going'],
+  a:2
+ },
+ {
+  q:'I was reading _____ the phone rang.',
+  options:['while','when','because','during'],
+  a:1
+ },
+ {
+  q:'_____ I was studying, my brother was sleeping.',
+  options:['When','While','Did','Was'],
+  a:1
+ },
+ {
+  q:'She _____ sleeping when her father came home.',
+  options:['were','did','was','are'],
+  a:2
+ },
+ {
+  q:'Did they _____ the match?',
+  options:['watched','watch','watching','watches'],
+  a:1
+ },
+ {
+  q:'He _____ his keys two hours ago.',
+  options:['lose','losing','lost','was lose'],
+  a:2
+ },
+ {
+  q:'The children _____ playing outside at that moment.',
+  options:['was','were','did','is'],
+  a:1
+ },
+ {
+  q:'I _____ breakfast when you called me.',
+  options:['had','was having','have','were having'],
+  a:1
+ },
+ {
+  q:'She did not _____ the question.',
+  options:['understood','understanding','understand','understands'],
+  a:2
+ },
+ {
+  q:'What _____ you doing when I saw you?',
+  options:['was','were','did','are'],
+  a:1
+ },
+ {
+  q:'He _____ the door and entered the room.',
+  options:['opened','was opening','open','opening'],
+  a:0
+ },
+ {
+  q:'While we were walking, we _____ an old friend.',
+  options:['see','were see','saw','seeing'],
+  a:2
+ },
+ {
+  q:'I _____ working at 8 pm yesterday.',
+  options:['were','did','was','am'],
+  a:2
+ },
+ {
+  q:'They _____ not listening to the teacher.',
+  options:['was','were','did','are'],
+  a:1
+ },
+ {
+  q:'Which sentence is correct?',
+  options:[
+   'She was cook dinner.',
+   'She were cooking dinner.',
+   'She was cooking dinner.',
+   'She did cooking dinner.'
+  ],
+  a:2
+ },
+ {
+  q:'Which sentence is correct?',
+  options:[
+   'Did you went home?',
+   'Did you go home?',
+   'Were you go home?',
+   'Did you going home?'
+  ],
+  a:1
+ },
+ {
+  q:'At this time yesterday, I _____ to work.',
+  options:['was driving','drove','drive','am driving'],
+  a:0
+ },
+ {
+  q:'The lights went out while we _____ a film.',
+  options:['watched','were watching','watch','was watching'],
+  a:1
+ },
+ {
+  q:'He _____ his homework last night.',
+  options:['finish','finishing','finished','was finish'],
+  a:2
+ },
+ {
+  q:'What _____ she doing when you arrived?',
+  options:['were','did','was','does'],
+  a:2
+ },
+ {
+  q:'While my father was reading, my mother _____ dinner.',
+  options:['prepared','was preparing','prepare','were preparing'],
+  a:1
+ },
+ {
+  q:'The correct V-ing form of "write" is:',
+  options:['writeing','writting','writing','writtingg'],
+  a:2
+ },
+ {
+  q:'The correct V-ing form of "run" is:',
+  options:['runing','running','runnning','runing'],
+  a:1
+ },
+ {
+  q:'Choose the correct sentence:',
+  options:[
+   'I was sleeping when the phone rang.',
+   'I slept when the phone was ring.',
+   'I were sleeping when the phone rang.',
+   'I was sleep when the phone rang.'
+  ],
+  a:0
+ }
+];
+
+function renderFinalTest(){
+ const container=document.getElementById('finalQuestions');
+ container.innerHTML='';
+ finalTest.forEach((item,index)=>{
+  let html=`<div class="task"><strong>${index+1}. ${item.q}</strong>`;
+  item.options.forEach((option,j)=>{
+   html+=`
+    <label>
+     <input type="radio" name="final${index}" value="${j}" style="width:auto" onchange="updateTestProgress()">
+     ${String.fromCharCode(65+j)}. ${option}
+    </label>
+   `;
+  });
+  html+=`<p id="finalFeedback${index}" class="feedback"></p></div>`;
+  container.innerHTML+=html;
+ });
+}
+renderFinalTest();
+
+function updateTestProgress(){
+ let answered=0;
+ finalTest.forEach((item,index)=>{
+  if(document.querySelector('input[name="final'+index+'"]:checked')){
+   answered++;
+  }
+ });
+ document.getElementById('answeredCount').textContent='Javob berilgan: '+answered+' / '+finalTest.length;
+ document.getElementById('testProgress').style.width=(answered/finalTest.length*100)+'%';
+}
+
+function finishTest(){
+ let answered=0;
+ let score=0;
+ finalTest.forEach((item,index)=>{
+  const selected=document.querySelector('input[name="final'+index+'"]:checked');
+  const feedback=document.getElementById('finalFeedback'+index);
+  if(selected){
+   answered++;
+   if(Number(selected.value)===item.a){
+    score++;
+    feedback.textContent='To‘g‘ri!';
+    feedback.className='feedback correct';
+   }else{
+    feedback.textContent='Noto‘g‘ri. To‘g‘ri javob: '+item.options[item.a];
+    feedback.className='feedback incorrect';
+   }
+  }else{
+   feedback.textContent='Javob tanlanmagan.';
+   feedback.className='feedback incorrect';
+  }
+ });
+
+ if(answered<finalTest.length){
+  document.getElementById('testResult').innerHTML=
+   '<div class="note">Siz hali barcha savollarga javob bermadingiz. Javob berilgan: '+answered+' / 30. Qolgan savollarni ham bajaring.</div>';
+  return;
+ }
+
+ const percent=Math.round(score/finalTest.length*100);
+ let message='';
+ if(percent>=90){
+  message='Ajoyib! Mavzuni juda yaxshi o‘zlashtirdingiz!';
+ }else if(percent>=80){
+  message='Juda yaxshi! Asosiy qoidalarni tushungansiz.';
+ }else if(percent>=60){
+  message='Yaxshi urinish. Xatolarni qayta ko‘rib chiqing.';
+ }else{
+  message='Mavzuni qayta takrorlang va mashqlarni yana bajaring.';
+ }
+
+ document.getElementById('testResult').innerHTML=`
+  <div class="card">
+   <h3>Test natijasi</h3>
+   <p><strong>${score} / 30</strong></p>
+   <h2>${percent}%</h2>
+   <p>${message}</p>
+   <p>Har bir noto‘g‘ri javobni daftaringizga to‘g‘ri shaklda yozib chiqing.</p>
+  </div>
+ `;
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+function applySavedTheme(){
+ try{
+  if(localStorage.getItem('englishUpTheme')==='dark'){
+   document.body.classList.add('dark');
+  }
+ }catch(error){}
+}
+applySavedTheme();
+
+/* ==========================================
+   END OF MAIN LESSON
+   HOMEWORK WILL BE ADDED IN PART 2
+========================================== */
+</script>
+<!-- ==========================================
+     ENGLISH UP — 11-DARS
+     HOMEWORK: PAST SIMPLE VS PAST CONTINUOUS
+     BU KODNI BIRINCHI KODDAN KEYIN JOYLASHTIRING
+========================================== -->
+
+<section class="card" id="homework">
+<h2>17. HOMEWORK — Uy vazifasi</h2>
+
+<p>11-darsni mustahkamlash uchun quyidagi topshiriqlarni to‘liq bajaring.</p>
+
+<div class="note">
+QAT’IY QOIDA: Har bir topshiriq avval daftarda bajariladi. Keyin javoblar saytda tekshiriladi. Daftarga yozilmagan mashq bajarilgan hisoblanmaydi.
+</div>
+
+<div class="write-rule">
+<strong>DAFTAR SARLAVHASI:</strong>
+<p>ENGLISH UP — LESSON 11 HOMEWORK</p>
+<p>Topic: Past Simple vs Past Continuous</p>
+<p>Date: __________________</p>
+</div>
+
+<h3>17.1. Grammar Homework</h3>
+<p>Quyidagi gaplarni kerakli fe’l shakli bilan to‘ldiring.</p>
+
+<div id="hwGrammar"></div>
+<button onclick="checkHwGrammar()">Javoblarni tekshirish</button>
+<p id="hwGrammarResult" class="feedback"></p>
+
+<div class="write-rule">
+<strong>DAFTAR TOPSHIRIG‘I:</strong>
+<p>15 ta gapni to‘liq yozing.</p>
+<p>Har bir gapda nima uchun Past Simple yoki Past Continuous ishlatilganini izohlang.</p>
+</div>
+
+<hr>
+
+<h3>17.2. Negative Sentences</h3>
+<p>Quyidagi darak gaplarni inkor gapga aylantiring.</p>
+
+<ol>
+<li>She visited her grandmother.</li>
+<li>They were playing football.</li>
+<li>He watched television.</li>
+<li>I was sleeping.</li>
+<li>We went to school.</li>
+<li>My father was working.</li>
+<li>She bought a new dress.</li>
+<li>The children were studying.</li>
+<li>He called his friend.</li>
+<li>I was reading a book.</li>
+</ol>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>10 ta gapning inkor shaklini yozing.</p>
+<p>Past Simple va Past Continuous inkor formulalarini ham yozing.</p>
+</div>
+
+<hr>
+
+<h3>17.3. Question Formation</h3>
+<p>Quyidagi gaplardan so‘roq gap tuzing.</p>
+
+<ol>
+<li>You visited London.</li>
+<li>She was cooking dinner.</li>
+<li>They played tennis.</li>
+<li>He was sleeping.</li>
+<li>We watched a film.</li>
+<li>Your brother was studying.</li>
+<li>She bought a phone.</li>
+<li>They were waiting for you.</li>
+<li>He finished his homework.</li>
+<li>You were listening to music.</li>
+</ol>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>10 ta so‘roq gapni yozing.</p>
+<p>Har biriga Yes yoki No bilan javob ham yozing.</p>
+</div>
+
+<hr>
+
+<h3>17.4. Translation Homework</h3>
+<p>Gaplarni ingliz tiliga tarjima qiling.</p>
+
+<ol>
+<li>Men kecha do‘stim bilan uchrashdim.</li>
+<li>U soat 9 da uxlayotgan edi.</li>
+<li>Men ovqatlanayotganimda telefon jiringladi.</li>
+<li>Ular kecha ishlashmadi.</li>
+<li>Biz uyga kelganimizda yomg‘ir yog‘ayotgan edi.</li>
+<li>Sen kecha televizor ko‘rdingmi?</li>
+<li>Onam ovqat tayyorlayotgan paytda men kitob o‘qiyotgan edim.</li>
+<li>U maktabga ketayotganida eski do‘stini ko‘rdi.</li>
+<li>Men kecha ertalab ingliz tilini o‘rgandim.</li>
+<li>Ular kelganida biz futbol o‘ynayotgan edik.</li>
+</ol>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>10 ta tarjimani to‘liq bajaring.</p>
+<p>Har bir gapdagi fe’l zamonini belgilang.</p>
+</div>
+
+<hr>
+
+<h3>17.5. Vocabulary Homework</h3>
+<p>Bugungi 40 ta yangi so‘zdan foydalanib topshiriqlarni bajaring.</p>
+
+<ol>
+<li>40 ta so‘zni daftarga yozing.</li>
+<li>Har bir so‘zning o‘zbekcha ma’nosini yozing.</li>
+<li>Kamida 20 ta so‘z bilan inglizcha gap tuzing.</li>
+<li>10 ta so‘zni ovoz chiqarib talaffuz qiling.</li>
+<li>O‘zingiz uchun 10 ta so‘zdan iborat kichik test tuzing.</li>
+</ol>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Word — Pronunciation — Uzbek meaning — Example sentence.</p>
+</div>
+
+<hr>
+
+<h3>17.6. Listening Homework</h3>
+<p>Quyidagi matnni avval tinglang. Keyin savollarga javob bering.</p>
+
+<h3>A Strange Evening</h3>
+<button onclick="speak(hwListening)">🔊 Matnni tinglash</button>
+<button class="secondary" onclick="toggleText('hwListenText')">Matnni ko‘rsatish / yashirish</button>
+
+<div id="hwListenText" style="display:none">
+<p>Yesterday evening, I was sitting in my room and reading a book. My family was watching television in the living room. Suddenly, I heard a loud noise outside. I went to the window and looked outside. A man was trying to open his car door. He dropped his keys while he was looking for his phone. I went downstairs and helped him. He thanked me and drove away. It was an unusual evening.</p>
+</div>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Listening matnidan 5 ta gapni ko‘chiring.</p>
+<p>Ularni o‘zbek tiliga tarjima qiling.</p>
+</div>
+
+<div id="hwListeningQuestions"></div>
+<button onclick="checkHwListening()">Listening javoblarini tekshirish</button>
+<p id="hwListeningResult" class="feedback"></p>
+
+<hr>
+
+<h3>17.7. Reading Homework</h3>
+<h3>An Important Phone Call</h3>
+
+<p>Last Monday, I was working in my office. My colleagues were discussing an important project. At about eleven o'clock, my phone rang. It was my brother. He was calling to tell me some good news.</p>
+
+<p>While we were talking, my manager entered the office. I finished the conversation and returned to work. Later that afternoon, I met my brother at a café. We talked about his new plans and enjoyed our time together.</p>
+
+<p>It was a busy day, but I was very happy.</p>
+
+<button onclick="speak(hwReadingText)">🔊 Hikoyani tinglash</button>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Matnni o‘qing va 5 ta yangi iborani yozing.</p>
+<p>Hikoyani o‘zbek tilida qisqacha bayon qiling.</p>
+</div>
+
+<div id="hwReadingQuestions"></div>
+<button onclick="checkHwReading()">Reading javoblarini tekshirish</button>
+<p id="hwReadingResult" class="feedback"></p>
+
+<hr>
+
+<h3>17.8. Writing Homework</h3>
+
+<p><strong>Task 1:</strong> What did you do last weekend?</p>
+<p>O‘tgan dam olish kunlaringiz haqida 80–100 so‘z yozing.</p>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZISH SHART:</strong>
+<p>Kamida 8 ta Past Simple gap ishlating.</p>
+</div>
+<textarea id="hwWriting1" placeholder="Last weekend, I..."></textarea>
+
+<p><strong>Task 2:</strong> What were you doing at 8 pm yesterday?</p>
+<p>Kecha kechqurun soat 8 da nima qilayotganingiz haqida 60–80 so‘z yozing.</p>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZISH SHART:</strong>
+<p>Kamida 6 ta Past Continuous gap ishlating.</p>
+</div>
+<textarea id="hwWriting2" placeholder="At 8 pm yesterday, I was..."></textarea>
+
+<p><strong>Task 3:</strong> An Unexpected Event</p>
+<p>Hayotingizdagi kutilmagan voqea haqida 100–120 so‘zli hikoya yozing.</p>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZISH SHART:</strong>
+<p>Past Simple, Past Continuous, when va while dan foydalaning.</p>
+</div>
+<textarea id="hwWriting3" placeholder="One day, I was..."></textarea>
+
+<button onclick="saveHwWriting()">Yozganlarimni saqlash</button>
+<p id="hwWritingResult" class="feedback"></p>
+
+<hr>
+
+<h3>17.9. Speaking Homework</h3>
+<p>Quyidagi savollarga ovoz chiqarib javob bering.</p>
+
+<div class="write-rule">
+<strong>DAFTARGA YOZING:</strong>
+<p>Avval 10 ta savolga yozma javob tayyorlang.</p>
+<p>Keyin 15 ta savolga ovoz chiqarib javob bering.</p>
+</div>
+
+<div id="hwSpeakingQuestions"></div>
+
+<hr>
+
+<h3>17.10. Final Homework Challenge</h3>
+<p>Quyidagi 20 ta savolni bajaring. Avval daftarda ishlang, keyin javoblarni belgilang.</p>
+
+<div id="hwFinalQuestions"></div>
+<button onclick="checkHwFinal()">Homework testini tekshirish</button>
+<p id="hwFinalResult" class="feedback"></p>
+
+<hr>
+
+<h3>17.11. Homework Checklist</h3>
+<p>Har bir vazifani tugatganingizdan keyin belgilang.</p>
+
+<div id="homeworkChecklist">
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Grammar mashqlari bajarildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Inkor gaplar yozildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> So‘roq gaplar yozildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Tarjima mashqlari bajarildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> 40 ta so‘z daftarga yozildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Listening bajarildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Reading bajarildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Writing bajarildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Speaking bajarildi</label>
+<label><input type="checkbox" class="hwCheck" style="width:auto"> Final homework test bajarildi</label>
+</div>
+
+<p id="hwProgressText">Bajarilgan vazifalar: 0 / 10</p>
+<div class="progress"><div id="hwProgressBar"></div></div>
+
+<div class="note">
+Darsni tugatishdan oldin daftarni tekshiring. Har bir qoida, misol va mashq yozilgan bo‘lishi kerak.
+</div>
+
+<h3>Motivation</h3>
+<p>Small steps every day lead to big results. Har kuni oz-ozdan o‘rganish katta natijalarga olib keladi.</p>
+<p>Bugun o‘rgangan qoidalaringizni ertaga ham takrorlang. Ingliz tilida fikringizni erkin ifodalash uchun muntazam mashq qiling!</p>
+
+</section>
+
+<script>
+/* ==========================================
+   HOMEWORK JAVASCRIPT
+========================================== */
+
+const hwGrammar=[
+ {q:'I _____ (walk) home when it started raining.',a:'was walking'},
+ {q:'She _____ (visit) her aunt last week.',a:'visited'},
+ {q:'They _____ (play) football at 6 pm.',a:'were playing'},
+ {q:'He did not _____ (buy) anything.',a:'buy'},
+ {q:'We _____ (watch) TV when Dad arrived.',a:'were watching'},
+ {q:'My brother _____ (clean) his room yesterday.',a:'cleaned'},
+ {q:'I _____ (read) when the phone rang.',a:'was reading'},
+ {q:'_____ you _____ (see) him yesterday?',a:'did see'},
+ {q:'She _____ (not sleep) at midnight.',a:'was not sleeping'},
+ {q:'They _____ (travel) to Samarkand last year.',a:'travelled'},
+ {q:'While I was cooking, my sister _____ (study).',a:'was studying'},
+ {q:'He _____ (fall) while he was running.',a:'fell'},
+ {q:'We _____ (not go) to work yesterday.',a:'did not go'},
+ {q:'What _____ you doing at 9 pm?',a:'were'},
+ {q:'The children _____ (swim) when it started raining.',a:'were swimming'}
+];
+
+function renderHwGrammar(){
+ const box=document.getElementById('hwGrammar');
+ hwGrammar.forEach((item,i)=>{
+  box.innerHTML+=`
+   <div class="task">
+    <p>${i+1}. ${item.q}</p>
+    <input id="hwg${i}" placeholder="Javobingiz">
+    <p id="hwgf${i}" class="feedback"></p>
+   </div>`;
+ });
+}
+renderHwGrammar();
+
+function checkHwGrammar(){
+ let score=0;
+ hwGrammar.forEach((item,i)=>{
+  const value=document.getElementById('hwg'+i).value.trim().toLowerCase();
+  const correct=item.a.toLowerCase();
+  const feedback=document.getElementById('hwgf'+i);
+  if(value===correct){
+   score++;
+   feedback.textContent='To‘g‘ri!';
+   feedback.className='feedback correct';
+  }else{
+   feedback.textContent='To‘g‘ri javob: '+item.a;
+   feedback.className='feedback incorrect';
+  }
+ });
+ document.getElementById('hwGrammarResult').textContent='Natija: '+score+' / 15';
+}
+
+const hwListening='Yesterday evening, I was sitting in my room and reading a book. My family was watching television in the living room. Suddenly, I heard a loud noise outside. I went to the window and looked outside. A man was trying to open his car door. He dropped his keys while he was looking for his phone. I went downstairs and helped him. He thanked me and drove away. It was an unusual evening.';
+
+const hwListeningData=[
+ {q:'What was the speaker doing?',o:['Reading a book','Cooking dinner','Watching a film'],a:0},
+ {q:'What was the family doing?',o:['Sleeping','Watching television','Working'],a:1},
+ {q:'What happened suddenly?',o:['The phone rang','A loud noise was heard','The lights went out'],a:1},
+ {q:'What was the man trying to open?',o:['His house','His car door','A window'],a:1},
+ {q:'What did the speaker do?',o:['Helped the man','Called the police','Went to sleep'],a:0}
+];
+
+function renderHwQuestions(data,id){
+ const box=document.getElementById(id);
+ data.forEach((item,i)=>{
+  let html=`<div class="task"><strong>${i+1}. ${item.q}</strong>`;
+  item.o.forEach((option,j)=>{
+   html+=`<label><input type="radio" name="${id}${i}" value="${j}" style="width:auto"> ${option}</label>`;
+  });
+  box.innerHTML+=html+'</div>';
+ });
+}
+
+renderHwQuestions(hwListeningData,'hwListeningQuestions');
+
+function checkHwListening(){
+ let score=0;
+ hwListeningData.forEach((item,i)=>{
+  const selected=document.querySelector('input[name="hwListeningQuestions'+i+'"]:checked');
+  if(selected && Number(selected.value)===item.a) score++;
+ });
+ document.getElementById('hwListeningResult').textContent='Natija: '+score+' / 5';
+}
+
+const hwReadingText='Last Monday, I was working in my office. My colleagues were discussing an important project. At about eleven o clock, my phone rang. It was my brother. He was calling to tell me some good news. While we were talking, my manager entered the office. I finished the conversation and returned to work. Later that afternoon, I met my brother at a cafe. We talked about his new plans and enjoyed our time together. It was a busy day, but I was very happy.';
+
+const hwReadingData=[
+ {q:'When did the story happen?',o:['Last Monday','Last Sunday','Last Friday'],a:0},
+ {q:'Where was the speaker working?',o:['At home','In an office','At a café'],a:1},
+ {q:'Who called the speaker?',o:['His friend','His brother','His manager'],a:1},
+ {q:'What happened while they were talking?',o:['The manager entered','The phone broke','It started raining'],a:0},
+ {q:'Where did they meet later?',o:['At a café','At school','At home'],a:0}
+];
+
+renderHwQuestions(hwReadingData,'hwReadingQuestions');
+
+function checkHwReading(){
+ let score=0;
+ hwReadingData.forEach((item,i)=>{
+  const selected=document.querySelector('input[name="hwReadingQuestions'+i+'"]:checked');
+  if(selected && Number(selected.value)===item.a) score++;
+ });
+ document.getElementById('hwReadingResult').textContent='Natija: '+score+' / 5';
+}
+
+const hwSpeaking=[
+ 'What did you do last weekend?',
+ 'Where were you at 8 pm yesterday?',
+ 'What were you doing when you woke up this morning?',
+ 'Did you meet a friend last week?',
+ 'What happened yesterday that made you happy?',
+ 'What was your family doing last night?',
+ 'Were you studying English yesterday?',
+ 'What did you eat yesterday?',
+ 'What were people doing in your town yesterday?',
+ 'Did it rain last week?',
+ 'What were you doing when someone called you?',
+ 'Describe your last holiday.',
+ 'What did you do yesterday morning?',
+ 'What were you doing at this time last week?',
+ 'Tell me about a surprising moment in your life.'
+];
+
+function renderHwSpeaking(){
+ const box=document.getElementById('hwSpeakingQuestions');
+ hwSpeaking.forEach((q,i)=>{
+  box.innerHTML+=`
+   <div class="task">
+    <strong>${i+1}. ${q}</strong><br>
+    <button onclick="speak(${JSON.stringify(q)})">🔊 Tinglash</button>
+   </div>`;
+ });
+}
+renderHwSpeaking();
+
+const hwFinal=[
+ {q:'I _____ my friend yesterday.',o:['see','saw','was see','seeing'],a:1},
+ {q:'She _____ when I arrived.',o:['slept','was sleeping','were sleeping','sleep'],a:1},
+ {q:'They _____ football last Sunday.',o:['played','were play','playing','plays'],a:0},
+ {q:'Did you _____ breakfast?',o:['ate','eating','eat','eats'],a:2},
+ {q:'We _____ watching TV at 9 pm.',o:['was','were','did','are'],a:1},
+ {q:'While I was reading, he _____.',o:['arrived','was arrive','arrive','arriving'],a:0},
+ {q:'He _____ cooking when I called.',o:['were','was','did','is'],a:1},
+ {q:'She did not _____ home.',o:['went','go','going','goes'],a:1},
+ {q:'What _____ you doing?',o:['was','were','did','do'],a:1},
+ {q:'The phone rang while I _____.',o:['was sleeping','sleep','slept','were sleep'],a:0},
+ {q:'I _____ to school yesterday.',o:['go','went','going','was go'],a:1},
+ {q:'They _____ not studying.',o:['was','were','did','is'],a:1},
+ {q:'He _____ a book last night.',o:['read','was read','reading','were reading'],a:0},
+ {q:'While she was cooking, I _____ the room.',o:['cleaned','was clean','clean','cleaning'],a:0},
+ {q:'Which is correct?',o:['He were sleeping','He was sleeping','He was sleep','He did sleeping'],a:1},
+ {q:'Which is correct?',o:['Did she went?','Did she go?','Did she going?','Was she go?'],a:1},
+ {q:'At 7 pm, we _____ dinner.',o:['had','were having','have','was have'],a:1},
+ {q:'It _____ raining when we left.',o:['were','was','did','is'],a:1},
+ {q:'The V-ing form of "run" is _____.',o:['runing','running','runned','runs'],a:1},
+ {q:'Choose the correct sentence.',o:['I was reading when he came.','I were reading when he came.','I was read when he came.','I did reading when he came.'],a:0}
+];
+
+function renderHwFinal(){
+ const box=document.getElementById('hwFinalQuestions');
+ hwFinal.forEach((item,i)=>{
+  let html=`<div class="task"><strong>${i+1}. ${item.q}</strong>`;
+  item.o.forEach((option,j)=>{
+   html+=`<label><input type="radio" name="hwFinal${i}" value="${j}" style="width:auto"> ${String.fromCharCode(65+j)}. ${option}</label>`;
+  });
+  box.innerHTML+=html+'</div>';
+ });
+}
+renderHwFinal();
+
+function checkHwFinal(){
+ let score=0;
+ hwFinal.forEach((item,i)=>{
+  const selected=document.querySelector('input[name="hwFinal'+i+'"]:checked');
+  if(selected && Number(selected.value)===item.a) score++;
+ });
+ const percent=Math.round(score/hwFinal.length*100);
+ document.getElementById('hwFinalResult').textContent=
+ 'Natija: '+score+' / 20 ('+percent+'%). '+(percent>=80?'Juda yaxshi!':'Qoidalarni qayta takrorlang.');
+}
+
+function saveHwWriting(){
+ const data={
+  one:document.getElementById('hwWriting1').value,
+  two:document.getElementById('hwWriting2').value,
+  three:document.getElementById('hwWriting3').value
+ };
+ try{
+  localStorage.setItem('englishUpLesson11HomeworkWriting',JSON.stringify(data));
+  document.getElementById('hwWritingResult').textContent='Homework matnlaringiz saqlandi!';
+ }catch(error){
+  document.getElementById('hwWritingResult').textContent='Saqlash imkoni bo‘lmadi. Daftaringizdagi nusxani saqlang.';
+ }
+}
+
+function loadHwWriting(){
+ try{
+  const saved=localStorage.getItem('englishUpLesson11HomeworkWriting');
+  if(saved){
+   const data=JSON.parse(saved);
+   document.getElementById('hwWriting1').value=data.one||'';
+   document.getElementById('hwWriting2').value=data.two||'';
+   document.getElementById('hwWriting3').value=data.three||'';
+  }
+ }catch(error){}
+}
+loadHwWriting();
+
+/* Homework checklist progress */
+function updateHwProgress(){
+ const checks=[...document.querySelectorAll('.hwCheck')];
+ const done=checks.filter(item=>item.checked).length;
+ document.getElementById('hwProgressText').textContent='Bajarilgan vazifalar: '+done+' / '+checks.length;
+ document.getElementById('hwProgressBar').style.width=(done/checks.length*100)+'%';
+}
+document.querySelectorAll('.hwCheck').forEach(item=>{
+ item.addEventListener('change',updateHwProgress);
+});
+updateHwProgress();
+
+</script>
+
+</body>
+</html>
