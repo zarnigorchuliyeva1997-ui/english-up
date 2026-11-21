@@ -1,1 +1,258 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Lessons | English Up Admin</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">EU</div>
+      <div>
+        <strong>ENGLISH UP</strong>
+        <small>ADMIN PANEL</small>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="../index.html">Dashboard</a>
+      <a href="../students/index.html">Students</a>
+      <a href="../subscriptions/index.html">Subscriptions</a>
+      <a href="../activation-codes/index.html">Activation Codes</a>
+      <a href="../courses/index.html">Courses</a>
+      <a href="./index.html" class="active">Lessons</a>
+      <a href="../vocabulary/index.html">Vocabulary</a>
+      <a href="../tests/index.html">Tests</a>
+      <a href="../listening/index.html">Listening</a>
+      <a href="../reading/index.html">Reading</a>
+      <a href="../writing/index.html">Writing</a>
+      <a href="../speaking/index.html">Speaking</a>
+      <a href="../announcements/index.html">Announcements</a>
+      <a href="../messages/index.html">Messages</a>
+      <a href="../results/index.html">Results</a>
+      <a href="../statistics/index.html">Statistics</a>
+      <a href="../security/index.html">Security</a>
+      <a href="../backup/index.html">Backup</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span>English Up</span>
+      <small>Management System</small>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <div class="topbar-title">
+        <strong>Lessons</strong>
+        <small>Manage course lessons and learning content</small>
+      </div>
+      <div class="topbar-actions">
+        <span class="admin-badge">Administrator</span>
+      </div>
+    </header>
+
+    <section class="lessons-page">
+
+      <div class="page-heading">
+        <div>
+          <span class="eyebrow">LEARNING MANAGEMENT</span>
+          <h1>Lessons Management</h1>
+          <p>Create and organize lessons for every English level.</p>
+        </div>
+        <button class="primary-button" id="addLessonBtn">+ Add New Lesson</button>
+      </div>
+
+      <div class="lesson-stats">
+        <article class="stat-card">
+          <span>Total Lessons</span>
+          <strong id="totalLessons">0</strong>
+          <small>All lessons</small>
+        </article>
+        <article class="stat-card">
+          <span>Published</span>
+          <strong id="publishedLessons">0</strong>
+          <small>Visible to students</small>
+        </article>
+        <article class="stat-card">
+          <span>Drafts</span>
+          <strong id="draftLessons">0</strong>
+          <small>Not published</small>
+        </article>
+        <article class="stat-card">
+          <span>Courses</span>
+          <strong id="lessonCourses">0</strong>
+          <small>Courses with lessons</small>
+        </article>
+      </div>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <h2>All Lessons</h2>
+            <p>Search, filter and manage your lessons.</p>
+          </div>
+          <button class="secondary-button" id="refreshLessons">↻ Refresh</button>
+        </div>
+
+        <div class="lesson-toolbar">
+          <input type="search" id="lessonSearch" placeholder="Search lessons...">
+
+          <select id="lessonCourseFilter">
+            <option value="all">All courses</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Elementary">Elementary</option>
+            <option value="Pre-Intermediate">Pre-Intermediate</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Upper-Intermediate">Upper-Intermediate</option>
+            <option value="IELTS">IELTS</option>
+          </select>
+
+          <select id="lessonStatusFilter">
+            <option value="all">All statuses</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
+
+        <div class="table-responsive">
+          <table class="lessons-table">
+            <thead>
+              <tr>
+                <th>Lesson</th>
+                <th>Course</th>
+                <th>Order</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="lessonsTableBody">
+              <tr>
+                <td colspan="6" class="empty-state">
+                  No lessons available yet.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-footer">
+          <span id="lessonCount">0 lessons</span>
+        </div>
+      </section>
+
+      <section class="panel lesson-form-panel" id="lessonFormPanel" hidden>
+        <div class="panel-heading">
+          <div>
+            <h2 id="lessonFormTitle">Add New Lesson</h2>
+            <p>Enter lesson details and learning content.</p>
+          </div>
+          <button class="close-button" id="closeLessonForm" aria-label="Close">✕</button>
+        </div>
+
+        <form id="lessonForm">
+          <input type="hidden" id="lessonId">
+
+          <div class="form-grid">
+
+            <label>
+              Lesson title
+              <input type="text" id="lessonTitle" maxlength="150" required placeholder="Example: English Alphabet">
+            </label>
+
+            <label>
+              Course / Level
+              <select id="lessonCourse" required>
+                <option value="">Select course</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Elementary">Elementary</option>
+                <option value="Pre-Intermediate">Pre-Intermediate</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Upper-Intermediate">Upper-Intermediate</option>
+                <option value="IELTS">IELTS</option>
+              </select>
+            </label>
+
+            <label>
+              Lesson number
+              <input type="number" id="lessonOrder" min="1" max="500" required placeholder="1">
+            </label>
+
+            <label>
+              Duration (minutes)
+              <input type="number" id="lessonDuration" min="1" max="600" value="30">
+            </label>
+
+            <label>
+              Publication status
+              <select id="lessonStatus">
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+            </label>
+
+            <label>
+              Lesson type
+              <select id="lessonType">
+                <option value="General">General lesson</option>
+                <option value="Grammar">Grammar</option>
+                <option value="Vocabulary">Vocabulary</option>
+                <option value="Listening">Listening</option>
+                <option value="Reading">Reading</option>
+                <option value="Writing">Writing</option>
+                <option value="Speaking">Speaking</option>
+                <option value="Review">Revision</option>
+                <option value="Final Test">Final test</option>
+              </select>
+            </label>
+
+            <label class="full-width">
+              Short description
+              <textarea id="lessonDescription" rows="3" maxlength="1000" placeholder="What will students learn in this lesson?"></textarea>
+            </label>
+
+            <label class="full-width">
+              Lesson content
+              <textarea id="lessonContent" rows="8" placeholder="Write lesson material here..."></textarea>
+            </label>
+
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="secondary-button" id="cancelLessonForm">Cancel</button>
+            <button type="submit" class="primary-button">Save Lesson</button>
+          </div>
+        </form>
+      </section>
+
+      <div class="notice-box">
+        <strong>Firebase connection pending</strong>
+        <p>
+          This page currently provides a lesson management interface.
+          Lesson records are not yet saved to Firebase. Secure database
+          integration will be added in the backend setup stage.
+        </p>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<div class="toast-message" id="toastMessage" role="status" aria-live="polite"></div>
+
+<script src="../script.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
+
