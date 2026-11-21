@@ -123,7 +123,6 @@
 
   </aside>
 
-
   <main class="admin-main">
 
     <header class="topbar">
@@ -149,21 +148,19 @@
 
     </header>
 
-
     <section class="page-content">
 
       <div class="page-heading">
         <div>
           <div class="page-eyebrow">USER MANAGEMENT</div>
           <h1>Activation Codes</h1>
-          <p>Bir martalik aktivatsiya kodlarini yarating va boshqaring.</p>
+          <p>O‘quvchilar uchun Gmail manziliga bog‘langan bir martalik kodlar yarating.</p>
         </div>
 
-        <button class="btn btn-primary" id="refreshCodes">
+        <button class="btn btn-primary" id="refreshCodes" type="button">
           ↻ Refresh
         </button>
       </div>
-
 
       <!-- STATISTICS -->
 
@@ -192,7 +189,7 @@
           <div class="stat-info">
             <span>Ishlatilgan</span>
             <strong id="codesUsed">0</strong>
-            <small>Akkauntga bog‘langan</small>
+            <small>Faollashtirilgan kodlar</small>
           </div>
         </div>
 
@@ -207,7 +204,6 @@
 
       </div>
 
-
       <!-- CREATE CODE -->
 
       <div class="content-card create-code-card">
@@ -215,10 +211,10 @@
         <div class="card-heading">
           <div>
             <h2>Yangi aktivatsiya kodi</h2>
-            <p>O‘quvchiga beriladigan yangi kod uchun parametrlarni belgilang.</p>
+            <p>O‘quvchi Gmail manzili va obuna muddatini belgilang.</p>
           </div>
 
-          <span class="secure-label">🛡️ Secure system</span>
+          <span class="secure-label">🔑 One-time code</span>
         </div>
 
         <form id="createCodeForm">
@@ -226,13 +222,28 @@
           <div class="code-form-grid">
 
             <div class="form-group">
-              <label for="codePlan">Obuna tarifi</label>
+              <label for="codeEmail">O‘quvchi Gmail manzili</label>
 
-              <select id="codePlan" required>
-                <option value="monthly">1 oylik</option>
-                <option value="three-months">3 oylik</option>
-                <option value="six-months">6 oylik</option>
-                <option value="yearly">1 yillik</option>
+              <input
+                type="email"
+                id="codeEmail"
+                name="email"
+                placeholder="student@gmail.com"
+                autocomplete="email"
+                maxlength="254"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="codePlan">Obuna muddati</label>
+
+              <select id="codePlan" name="plan" required>
+                <option value="1">1 oy</option>
+                <option value="2">2 oy</option>
+                <option value="3">3 oy</option>
+                <option value="4">4 oy</option>
+                <option value="5">5 oy</option>
               </select>
             </div>
 
@@ -242,6 +253,7 @@
               <input
                 type="number"
                 id="codeQuantity"
+                name="quantity"
                 min="1"
                 max="100"
                 value="1"
@@ -255,28 +267,34 @@
               <input
                 type="text"
                 id="codeNote"
+                name="note"
                 maxlength="100"
-                placeholder="Masalan: November promotion"
+                placeholder="Masalan: To‘lov tasdiqlandi"
               >
             </div>
 
           </div>
 
           <div class="code-form-actions">
-            <button type="submit" class="btn btn-primary" id="generateCodes">
-              ＋ Generate Codes
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="generateCodes"
+            >
+              ＋ Generate Code
             </button>
 
             <p>
-              Har bir kod faqat bir marta ishlatilishi va bitta
-              tasdiqlangan akkauntga bog‘lanishi kerak.
+              Kod ko‘rsatilgan Gmail manziliga bog‘lanadi.
+              O‘quvchi uni faqat bir marta faollashtirishi mumkin.
             </p>
+
           </div>
 
         </form>
 
       </div>
-
 
       <!-- GENERATED CODES -->
 
@@ -285,10 +303,14 @@
         <div class="card-heading">
           <div>
             <h2>Yaratilgan kodlar</h2>
-            <p>Yangi yaratilgan kodlarni ko‘rib chiqing.</p>
+            <p>Yangi yaratilgan kodlarni ko‘rib chiqing va nusxalang.</p>
           </div>
 
-          <button type="button" class="btn btn-secondary" id="copyAllCodes">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="copyAllCodes"
+          >
             Copy all
           </button>
         </div>
@@ -297,7 +319,6 @@
 
       </div>
 
-
       <!-- CODE LIST -->
 
       <div class="content-card codes-list-card">
@@ -305,7 +326,7 @@
         <div class="card-heading">
           <div>
             <h2>Aktivatsiya kodlari ro‘yxati</h2>
-            <p>Barcha kodlar va ularning holatini kuzating.</p>
+            <p>Barcha kodlar, Gmail manzillari va obuna holatini kuzating.</p>
           </div>
         </div>
 
@@ -313,6 +334,7 @@
 
           <div class="search-box">
             <span>🔍</span>
+
             <input
               type="search"
               id="codeSearch"
@@ -331,17 +353,17 @@
             </select>
 
             <select id="codePlanFilter">
-              <option value="all">Barcha tariflar</option>
-              <option value="monthly">1 oylik</option>
-              <option value="three-months">3 oylik</option>
-              <option value="six-months">6 oylik</option>
-              <option value="yearly">1 yillik</option>
+              <option value="all">Barcha muddatlar</option>
+              <option value="1">1 oy</option>
+              <option value="2">2 oy</option>
+              <option value="3">3 oy</option>
+              <option value="4">4 oy</option>
+              <option value="5">5 oy</option>
             </select>
 
           </div>
 
         </div>
-
 
         <div class="table-container">
 
@@ -350,9 +372,10 @@
             <thead>
               <tr>
                 <th>AKTIVATSIYA KODI</th>
-                <th>TARIF</th>
+                <th>GMAIL</th>
+                <th>OBUNA MUDDATI</th>
                 <th>YARATILGAN SANA</th>
-                <th>ISHLATILGAN AKKAUNT</th>
+                <th>ISHLATILGAN SANA</th>
                 <th>HOLATI</th>
                 <th>AMALLAR</th>
               </tr>
@@ -361,10 +384,10 @@
             <tbody id="codesTableBody">
 
               <tr>
-                <td colspan="6" class="empty-state">
+                <td colspan="7" class="empty-state">
                   <div class="empty-icon">🔑</div>
                   <strong>Hozircha kodlar mavjud emas</strong>
-                  <p>Firebase xavfsiz integratsiyasi ulangandan keyin kodlar shu yerda ko‘rinadi.</p>
+                  <p>Yangi kod yaratilganda shu yerda ko‘rinadi.</p>
                 </td>
               </tr>
 
@@ -373,7 +396,6 @@
           </table>
 
         </div>
-
 
         <div class="table-footer">
 
@@ -391,7 +413,6 @@
 
       </div>
 
-
       <!-- SECURITY NOTICE -->
 
       <div class="code-security-notice">
@@ -399,17 +420,21 @@
         <div class="notice-icon">🛡️</div>
 
         <div>
-          <h3>Aktivatsiya xavfsizligi</h3>
+          <h3>Aktivatsiya tizimi</h3>
 
           <p>
-            Aktivatsiya kodi faqat bir marta ishlatilishi mumkin.
-            Kod birinchi marta muvaffaqiyatli faollashtirilganda,
-            o‘quvchining tasdiqlangan Firebase akkauntiga bog‘lanadi.
+            Har bir kod bitta Gmail manziliga biriktiriladi.
+            O‘quvchi kodni faollashtirganda obuna muddati boshlanadi.
           </p>
 
           <p>
-            Kodni takror ishlatish, boshqa akkauntga ko‘chirish yoki
-            ruxsatsiz faollashtirish server tomonidan rad etilishi kerak.
+            Masalan, 3 oylik kod 22-noyabr kuni faollashtirilsa,
+            tizim obuna tugash sanasini avtomatik hisoblaydi.
+          </p>
+
+          <p>
+            Ushbu GitHub mustaqil rejimida ma’lumotlar shu brauzer
+            xotirasida saqlanadi. Boshqa qurilmalar bilan sinxronlashmaydi.
           </p>
         </div>
 
@@ -421,10 +446,8 @@
 
 </div>
 
-
 <script src="../script.js"></script>
 <script src="./script.js"></script>
 
 </body>
 </html>
-
