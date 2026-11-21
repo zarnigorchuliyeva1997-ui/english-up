@@ -2,7 +2,8 @@
 /* ==========================================
    ENGLISH UP ADMIN PANEL
    SHARED MAIN JAVASCRIPT
-   Version: 1.2.0
+   Version: 2.0.0
+   GitHub Independent Mode
    ========================================== */
 
 "use strict";
@@ -11,9 +12,10 @@
 
 const AdminConfig = {
     appName: "English Up",
-    version: "1.2.0",
+    version: "2.0.0",
     currentPage: "dashboard",
-    mobileBreakpoint: 760
+    mobileBreakpoint: 760,
+    mode: "github"
 };
 
 /* 2. SAFE DOM HELPERS */
@@ -45,9 +47,7 @@ function showToast(message, duration = 3500) {
 
     toastContainer.appendChild(toast);
 
-    window.setTimeout(() => {
-        toast.remove();
-    }, duration);
+    window.setTimeout(() => toast.remove(), duration);
 }
 
 /* 4. MOBILE SIDEBAR */
@@ -71,20 +71,16 @@ function closeSidebar() {
 }
 
 menuToggle?.addEventListener("click", () => {
-    if (sidebar?.classList.contains("open")) {
-        closeSidebar();
-    } else {
-        openSidebar();
-    }
+    sidebar?.classList.contains("open")
+        ? closeSidebar()
+        : openSidebar();
 });
 
 sidebarClose?.addEventListener("click", closeSidebar);
 sidebarOverlay?.addEventListener("click", closeSidebar);
 
 document.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
-        closeSidebar();
-    }
+    if (event.key === "Escape") closeSidebar();
 });
 
 /* 5. NAVIGATION */
@@ -219,44 +215,20 @@ globalSearch?.addEventListener("keydown", event => {
 /* 8. NOTIFICATIONS */
 
 notificationButton?.addEventListener("click", () => {
-    showToast(
-        "Bildirishnomalar Firebase integratsiyasidan keyin faollashadi."
-    );
+    showToast("Hozircha yangi bildirishnomalar yo‘q.");
 });
 
-/* 9. FIREBASE LOGOUT */
+/* 9. LOGOUT - GITHUB MODE */
 
 if (logoutButton) {
-    logoutButton.addEventListener("click", async () => {
+    logoutButton.addEventListener("click", () => {
         const confirmed = window.confirm(
             "Admin paneldan chiqmoqchimisiz?"
         );
 
         if (!confirmed) return;
 
-        logoutButton.disabled = true;
-        logoutButton.textContent = "Chiqilmoqda...";
-
-        try {
-            const { auth } = await import("./login/firebase.js");
-            const { signOut } = await import(
-                "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js"
-            );
-
-            await signOut(auth);
-
-            window.location.replace("./login/index.html");
-
-        } catch (error) {
-            console.error("Logout error:", error);
-
-            showToast(
-                "Chiqishda xatolik yuz berdi. Qayta urinib ko‘ring."
-            );
-
-            logoutButton.disabled = false;
-            logoutButton.textContent = "Chiqish";
-        }
+        window.location.replace("./login/index.html");
     });
 }
 
@@ -268,15 +240,15 @@ function updateSystemStatus() {
     const databaseStatus = getElement("databaseStatus");
 
     if (firebaseStatus) {
-        firebaseStatus.textContent = "Firebase konfiguratsiyasi mavjud";
+        firebaseStatus.textContent = "GitHub mustaqil rejimi";
     }
 
     if (authStatus) {
-        authStatus.textContent = "Tekshirish auth-guard orqali bajariladi";
+        authStatus.textContent = "Lokal kirish tizimi";
     }
 
     if (databaseStatus) {
-        databaseStatus.textContent = "Hali ulanmagan";
+        databaseStatus.textContent = "LocalStorage rejimi";
     }
 }
 
@@ -317,6 +289,7 @@ function startAdminInterface() {
 
     console.log("English Up Admin Interface initialized.");
     console.log("Version:", AdminConfig.version);
+    console.log("Mode:", AdminConfig.mode);
 }
 
 if (document.readyState === "loading") {
