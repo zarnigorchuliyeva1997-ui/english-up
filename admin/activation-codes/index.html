@@ -1,1 +1,430 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Activation Codes | English Up Admin</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+  <aside class="sidebar" id="adminSidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-logo">EU</div>
+      <div>
+        <strong>ENGLISH UP</strong>
+        <small>ADMIN PANEL</small>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a href="../index.html" class="nav-link">
+        <span>📊</span> Dashboard
+      </a>
+
+      <div class="nav-section-title">USER MANAGEMENT</div>
+
+      <a href="../students/index.html" class="nav-link">
+        <span>👨‍🎓</span> Students
+      </a>
+
+      <a href="../subscriptions/index.html" class="nav-link">
+        <span>💳</span> Subscriptions
+      </a>
+
+      <a href="./index.html" class="nav-link active">
+        <span>🔑</span> Activation Codes
+      </a>
+
+      <div class="nav-section-title">EDUCATION</div>
+
+      <a href="../courses/index.html" class="nav-link">
+        <span>📚</span> Courses
+      </a>
+
+      <a href="../lessons/index.html" class="nav-link">
+        <span>📖</span> Lessons
+      </a>
+
+      <a href="../vocabulary/index.html" class="nav-link">
+        <span>🔤</span> Vocabulary
+      </a>
+
+      <a href="../tests/index.html" class="nav-link">
+        <span>📝</span> Tests
+      </a>
+
+      <a href="../listening/index.html" class="nav-link">
+        <span>🎧</span> Listening
+      </a>
+
+      <a href="../reading/index.html" class="nav-link">
+        <span>📄</span> Reading
+      </a>
+
+      <a href="../writing/index.html" class="nav-link">
+        <span>✍️</span> Writing
+      </a>
+
+      <a href="../speaking/index.html" class="nav-link">
+        <span>🎙️</span> Speaking
+      </a>
+
+      <div class="nav-section-title">COMMUNICATION</div>
+
+      <a href="../announcements/index.html" class="nav-link">
+        <span>📢</span> Announcements
+      </a>
+
+      <a href="../messages/index.html" class="nav-link">
+        <span>✉️</span> Messages
+      </a>
+
+      <div class="nav-section-title">REPORTS</div>
+
+      <a href="../results/index.html" class="nav-link">
+        <span>🏆</span> Results
+      </a>
+
+      <a href="../statistics/index.html" class="nav-link">
+        <span>📈</span> Statistics
+      </a>
+
+      <div class="nav-section-title">SYSTEM</div>
+
+      <a href="../security/index.html" class="nav-link">
+        <span>🛡️</span> Security
+      </a>
+
+      <a href="../backup/index.html" class="nav-link">
+        <span>💾</span> Backup
+      </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="admin-profile">
+        <div class="profile-avatar">A</div>
+        <div>
+          <strong>Administrator</strong>
+          <small>Owner account</small>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+
+  <main class="admin-main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          ☰
+        </button>
+
+        <div class="breadcrumb">
+          <span>Admin</span>
+          <span>/</span>
+          <strong>Activation Codes</strong>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="admin-top-label">
+          <span class="online-dot"></span>
+          Admin Panel
+        </div>
+      </div>
+
+    </header>
+
+
+    <section class="page-content">
+
+      <div class="page-heading">
+        <div>
+          <div class="page-eyebrow">USER MANAGEMENT</div>
+          <h1>Activation Codes</h1>
+          <p>Bir martalik aktivatsiya kodlarini yarating va boshqaring.</p>
+        </div>
+
+        <button class="btn btn-primary" id="refreshCodes">
+          ↻ Refresh
+        </button>
+      </div>
+
+
+      <!-- STATISTICS -->
+
+      <div class="code-stats">
+
+        <div class="stat-card">
+          <div class="stat-icon purple">🔑</div>
+          <div class="stat-info">
+            <span>Jami kodlar</span>
+            <strong id="codesTotal">0</strong>
+            <small>Yaratilgan kodlar</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">✓</div>
+          <div class="stat-info">
+            <span>Ishlatilmagan</span>
+            <strong id="codesUnused">0</strong>
+            <small>Faollashtirishga tayyor</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange">↗</div>
+          <div class="stat-info">
+            <span>Ishlatilgan</span>
+            <strong id="codesUsed">0</strong>
+            <small>Akkauntga bog‘langan</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon red">✕</div>
+          <div class="stat-info">
+            <span>Bekor qilingan</span>
+            <strong id="codesCancelled">0</strong>
+            <small>Faol bo‘lmagan kodlar</small>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- CREATE CODE -->
+
+      <div class="content-card create-code-card">
+
+        <div class="card-heading">
+          <div>
+            <h2>Yangi aktivatsiya kodi</h2>
+            <p>O‘quvchiga beriladigan yangi kod uchun parametrlarni belgilang.</p>
+          </div>
+
+          <span class="secure-label">🛡️ Secure system</span>
+        </div>
+
+        <form id="createCodeForm">
+
+          <div class="code-form-grid">
+
+            <div class="form-group">
+              <label for="codePlan">Obuna tarifi</label>
+
+              <select id="codePlan" required>
+                <option value="monthly">1 oylik</option>
+                <option value="three-months">3 oylik</option>
+                <option value="six-months">6 oylik</option>
+                <option value="yearly">1 yillik</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="codeQuantity">Kodlar soni</label>
+
+              <input
+                type="number"
+                id="codeQuantity"
+                min="1"
+                max="100"
+                value="1"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="codeNote">Izoh (ixtiyoriy)</label>
+
+              <input
+                type="text"
+                id="codeNote"
+                maxlength="100"
+                placeholder="Masalan: November promotion"
+              >
+            </div>
+
+          </div>
+
+          <div class="code-form-actions">
+            <button type="submit" class="btn btn-primary" id="generateCodes">
+              ＋ Generate Codes
+            </button>
+
+            <p>
+              Har bir kod faqat bir marta ishlatilishi va bitta
+              tasdiqlangan akkauntga bog‘lanishi kerak.
+            </p>
+          </div>
+
+        </form>
+
+      </div>
+
+
+      <!-- GENERATED CODES -->
+
+      <div class="content-card generated-card" id="generatedCard" hidden>
+
+        <div class="card-heading">
+          <div>
+            <h2>Yaratilgan kodlar</h2>
+            <p>Yangi yaratilgan kodlarni ko‘rib chiqing.</p>
+          </div>
+
+          <button type="button" class="btn btn-secondary" id="copyAllCodes">
+            Copy all
+          </button>
+        </div>
+
+        <div id="generatedCodesList" class="generated-codes-list"></div>
+
+      </div>
+
+
+      <!-- CODE LIST -->
+
+      <div class="content-card codes-list-card">
+
+        <div class="card-heading">
+          <div>
+            <h2>Aktivatsiya kodlari ro‘yxati</h2>
+            <p>Barcha kodlar va ularning holatini kuzating.</p>
+          </div>
+        </div>
+
+        <div class="codes-toolbar">
+
+          <div class="search-box">
+            <span>🔍</span>
+            <input
+              type="search"
+              id="codeSearch"
+              placeholder="Kod yoki Gmail orqali qidirish..."
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="filter-controls">
+
+            <select id="codeStatusFilter">
+              <option value="all">Barcha holatlar</option>
+              <option value="unused">Ishlatilmagan</option>
+              <option value="used">Ishlatilgan</option>
+              <option value="cancelled">Bekor qilingan</option>
+            </select>
+
+            <select id="codePlanFilter">
+              <option value="all">Barcha tariflar</option>
+              <option value="monthly">1 oylik</option>
+              <option value="three-months">3 oylik</option>
+              <option value="six-months">6 oylik</option>
+              <option value="yearly">1 yillik</option>
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+          <table class="admin-table">
+
+            <thead>
+              <tr>
+                <th>AKTIVATSIYA KODI</th>
+                <th>TARIF</th>
+                <th>YARATILGAN SANA</th>
+                <th>ISHLATILGAN AKKAUNT</th>
+                <th>HOLATI</th>
+                <th>AMALLAR</th>
+              </tr>
+            </thead>
+
+            <tbody id="codesTableBody">
+
+              <tr>
+                <td colspan="6" class="empty-state">
+                  <div class="empty-icon">🔑</div>
+                  <strong>Hozircha kodlar mavjud emas</strong>
+                  <p>Firebase xavfsiz integratsiyasi ulangandan keyin kodlar shu yerda ko‘rinadi.</p>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <div class="table-footer">
+
+          <div class="table-count" id="codesCount">
+            0 ta kod
+          </div>
+
+          <div class="pagination">
+            <button type="button" disabled>←</button>
+            <span>1</span>
+            <button type="button" disabled>→</button>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- SECURITY NOTICE -->
+
+      <div class="code-security-notice">
+
+        <div class="notice-icon">🛡️</div>
+
+        <div>
+          <h3>Aktivatsiya xavfsizligi</h3>
+
+          <p>
+            Aktivatsiya kodi faqat bir marta ishlatilishi mumkin.
+            Kod birinchi marta muvaffaqiyatli faollashtirilganda,
+            o‘quvchining tasdiqlangan Firebase akkauntiga bog‘lanadi.
+          </p>
+
+          <p>
+            Kodni takror ishlatish, boshqa akkauntga ko‘chirish yoki
+            ruxsatsiz faollashtirish server tomonidan rad etilishi kerak.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script src="../script.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
+
