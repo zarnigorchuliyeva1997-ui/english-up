@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#7047eb">
+    <meta name="description" content="English Up Admin — Listening Management">
+    <title>Listening | English Up Admin</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-icon">EU</div>
+            <div>
+                <strong>ENGLISH UP</strong>
+                <span>ADMIN PANEL</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="../index.html" class="nav-link"><span>▦</span> Dashboard</a>
+            <a href="../students/index.html" class="nav-link"><span>♙</span> Students</a>
+            <a href="../subscriptions/index.html" class="nav-link"><span>▣</span> Subscriptions</a>
+            <a href="../activation-codes/index.html" class="nav-link"><span>⌑</span> Activation Codes</a>
+            <a href="../courses/index.html" class="nav-link"><span>▤</span> Courses</a>
+            <a href="../lessons/index.html" class="nav-link"><span>▧</span> Lessons</a>
+            <a href="../vocabulary/index.html" class="nav-link"><span>Aa</span> Vocabulary</a>
+            <a href="../tests/index.html" class="nav-link"><span>☑</span> Tests</a>
+            <a href="./index.html" class="nav-link active"><span>♫</span> Listening</a>
+            <a href="../reading/index.html" class="nav-link"><span>▥</span> Reading</a>
+            <a href="../writing/index.html" class="nav-link"><span>✎</span> Writing</a>
+            <a href="../speaking/index.html" class="nav-link"><span>◉</span> Speaking</a>
+            <a href="../announcements/index.html" class="nav-link"><span>♢</span> Announcements</a>
+            <a href="../messages/index.html" class="nav-link"><span>✉</span> Messages</a>
+            <a href="../results/index.html" class="nav-link"><span>▨</span> Results</a>
+            <a href="../statistics/index.html" class="nav-link"><span>▥</span> Statistics</a>
+            <a href="../security/index.html" class="nav-link"><span>♜</span> Security</a>
+            <a href="../backup/index.html" class="nav-link"><span>▣</span> Backup</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>English Up Admin</span>
+            <small>Management System</small>
+        </div>
+
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle"
+                    type="button" aria-label="Menyuni ochish">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Admin</span>
+                    <span>/</span>
+                    <strong>Listening</strong>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <span class="admin-label">Administrator</span>
+            </div>
+        </header>
+
+        <section class="page-content listening-page">
+
+            <div class="page-heading">
+                <div>
+                    <h1>Listening Management</h1>
+                    <p>Audio darslar va tinglab tushunish mashqlarini boshqaring.</p>
+                </div>
+
+                <button class="primary-button" id="addAudioBtn" type="button">
+                    + Yangi audio dars
+                </button>
+            </div>
+
+            <div class="listening-stats">
+
+                <div class="listening-stat">
+                    <span class="stat-label">Jami audio darslar</span>
+                    <strong class="stat-value" id="totalAudios">0</strong>
+                    <span class="stat-description">Barcha audio materiallar</span>
+                </div>
+
+                <div class="listening-stat">
+                    <span class="stat-label">Faol darslar</span>
+                    <strong class="stat-value" id="activeAudios">0</strong>
+                    <span class="stat-description">O'quvchilarga ochiq</span>
+                </div>
+
+                <div class="listening-stat">
+                    <span class="stat-label">Qoralamalar</span>
+                    <strong class="stat-value" id="draftAudios">0</strong>
+                    <span class="stat-description">Tayyorlanayotgan darslar</span>
+                </div>
+
+                <div class="listening-stat">
+                    <span class="stat-label">Jami savollar</span>
+                    <strong class="stat-value" id="totalAudioQuestions">0</strong>
+                    <span class="stat-description">Audio mashqlar savollari</span>
+                </div>
+
+            </div>
+
+            <section class="audio-form-panel" id="audioFormPanel">
+
+                <div class="audio-form-heading">
+                    <div>
+                        <h2 id="audioFormTitle">Yangi audio dars</h2>
+                        <p>Audio dars ma'lumotlarini kiriting.</p>
+                    </div>
+
+                    <button class="form-close" id="closeAudioForm"
+                        type="button" aria-label="Yopish">×</button>
+                </div>
+
+                <form id="audioForm">
+
+                    <input type="hidden" id="audioId">
+
+                    <div class="audio-form-grid">
+
+                        <div class="audio-form-field">
+                            <label for="audioTitle">Dars nomi *</label>
+                            <input id="audioTitle" type="text"
+                                maxlength="150"
+                                placeholder="Masalan: My Daily Routine"
+                                required>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioLevel">Daraja *</label>
+                            <select id="audioLevel" required>
+                                <option value="">Darajani tanlang</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="elementary">Elementary</option>
+                                <option value="pre_intermediate">Pre-Intermediate</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="upper_intermediate">Upper-Intermediate</option>
+                                <option value="ielts">IELTS</option>
+                            </select>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioCategory">Audio turi *</label>
+                            <select id="audioCategory" required>
+                                <option value="">Turini tanlang</option>
+                                <option value="dialogue">Dialogue</option>
+                                <option value="story">Story</option>
+                                <option value="conversation">Conversation</option>
+                                <option value="lecture">Lecture</option>
+                                <option value="ielts">IELTS Listening</option>
+                                <option value="pronunciation">Pronunciation</option>
+                            </select>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioDuration">Davomiyligi (daqiqa)</label>
+                            <input id="audioDuration" type="number"
+                                min="1" max="300" value="5">
+                        </div>
+
+                        <div class="audio-form-field full-width">
+                            <label for="audioUrl">Audio fayl manzili (URL) *</label>
+                            <input id="audioUrl" type="url"
+                                placeholder="https://example.com/audio.mp3"
+                                required>
+                            <small>Audio fayl internet orqali ochiladigan manzilda joylashishi kerak.</small>
+                        </div>
+
+                        <div class="audio-form-field full-width">
+                            <label for="audioTranscript">Audio matni (Transcript)</label>
+                            <textarea id="audioTranscript"
+                                placeholder="Audio matnini shu yerga kiriting..."></textarea>
+                        </div>
+
+                        <div class="audio-form-field full-width">
+                            <label for="audioDescription">Dars tavsifi</label>
+                            <textarea id="audioDescription"
+                                placeholder="Dars haqida qisqacha ma'lumot..."></textarea>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioAttempts">Qayta tinglash limiti</label>
+                            <select id="audioAttempts">
+                                <option value="1">1 marta</option>
+                                <option value="2">2 marta</option>
+                                <option value="3">3 marta</option>
+                                <option value="4">4 marta</option>
+                                <option value="5" selected>5 marta</option>
+                                <option value="unlimited">Cheklanmagan</option>
+                            </select>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioStatus">Holati *</label>
+                            <select id="audioStatus" required>
+                                <option value="draft">Qoralama</option>
+                                <option value="active">Faol</option>
+                                <option value="archived">Arxivlangan</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="audio-form-actions">
+                        <button class="secondary-button" id="cancelAudioForm"
+                            type="button">Bekor qilish</button>
+
+                        <button class="primary-button" type="submit">
+                            Saqlash
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <section class="audio-questions-panel" id="audioQuestionsPanel">
+
+                <div class="audio-form-heading">
+                    <div>
+                        <h2 id="audioQuestionsTitle">Audio savollari</h2>
+                        <p>Tinglab tushunish uchun savollar yarating.</p>
+                    </div>
+
+                    <button class="form-close" id="closeAudioQuestions"
+                        type="button" aria-label="Yopish">×</button>
+                </div>
+
+                <form id="audioQuestionForm">
+
+                    <input type="hidden" id="audioQuestionId">
+
+                    <div class="audio-form-grid">
+
+                        <div class="audio-form-field full-width">
+                            <label for="audioQuestionText">Savol *</label>
+                            <textarea id="audioQuestionText"
+                                placeholder="Savolni kiriting..."
+                                required></textarea>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioOptionA">A varianti *</label>
+                            <input id="audioOptionA" type="text" required>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioOptionB">B varianti *</label>
+                            <input id="audioOptionB" type="text" required>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioOptionC">C varianti *</label>
+                            <input id="audioOptionC" type="text" required>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioOptionD">D varianti *</label>
+                            <input id="audioOptionD" type="text" required>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioCorrectAnswer">To'g'ri javob *</label>
+                            <select id="audioCorrectAnswer" required>
+                                <option value="">Tanlang</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+
+                        <div class="audio-form-field">
+                            <label for="audioQuestionPoints">Ball</label>
+                            <input id="audioQuestionPoints" type="number"
+                                min="1" max="100" value="1">
+                        </div>
+
+                    </div>
+
+                    <div class="audio-form-actions">
+                        <button class="secondary-button" id="cancelAudioQuestion"
+                            type="button">Bekor qilish</button>
+
+                        <button class="primary-button" type="submit">
+                            Savolni saqlash
+                        </button>
+                    </div>
+
+                </form>
+
+                <div class="audio-question-list-heading">
+                    <h3>Savollar ro'yxati</h3>
+                    <span id="audioQuestionCount">0 ta savol</span>
+                </div>
+
+                <div id="audioQuestionsList" class="audio-questions-list">
+                    <div class="listening-empty">
+                        Hozircha savollar mavjud emas.
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="listening-list-card">
+
+                <div class="listening-list-heading">
+                    <div>
+                        <h2>Barcha audio darslar</h2>
+                        <p>Audio materiallarni ko'rish va boshqarish.</p>
+                    </div>
+
+                    <button class="secondary-button" id="refreshAudios"
+                        type="button">↻ Yangilash</button>
+                </div>
+
+                <div class="listening-filters">
+
+                    <input type="search" id="audioSearch"
+                        placeholder="Audio nomi bo'yicha qidirish...">
+
+                    <select id="audioLevelFilter">
+                        <option value="">Barcha darajalar</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="elementary">Elementary</option>
+                        <option value="pre_intermediate">Pre-Intermediate</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="upper_intermediate">Upper-Intermediate</option>
+                        <option value="ielts">IELTS</option>
+                    </select>
+
+                    <select id="audioStatusFilter">
+                        <option value="">Barcha holatlar</option>
+                        <option value="active">Faol</option>
+                        <option value="draft">Qoralama</option>
+                        <option value="archived">Arxivlangan</option>
+                    </select>
+
+                </div>
+
+                <div class="listening-table-wrapper">
+                    <table class="listening-table">
+
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Dars nomi</th>
+                                <th>Daraja</th>
+                                <th>Audio turi</th>
+                                <th>Davomiyligi</th>
+                                <th>Savollar</th>
+                                <th>Holati</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="audiosTableBody">
+                            <tr>
+                                <td colspan="8">
+                                    <div class="listening-empty">
+                                        Hozircha audio darslar mavjud emas.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="listening-table-footer">
+                    <span id="audioCount">0 ta audio dars</span>
+                </div>
+
+            </section>
+
+            <div class="listening-notice">
+                <strong>Ma'lumot:</strong>
+                Audio manzillari va dars ma'lumotlari hozircha faqat
+                ushbu brauzerda vaqtinchalik saqlanadi. Firebase Storage
+                va Firestore bilan ulanish keyingi bosqichda amalga oshiriladi.
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="../script.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
