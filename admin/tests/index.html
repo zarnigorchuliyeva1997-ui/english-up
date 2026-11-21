@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#7047eb">
+    <meta name="description" content="English Up Admin — Tests Management">
+    <title>Tests | English Up Admin</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">EU</div>
+            <div>
+                <strong>ENGLISH UP</strong>
+                <span>ADMIN PANEL</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="../index.html" class="nav-link">
+                <span>▦</span> Dashboard
+            </a>
+            <a href="../students/index.html" class="nav-link">
+                <span>♙</span> Students
+            </a>
+            <a href="../subscriptions/index.html" class="nav-link">
+                <span>▣</span> Subscriptions
+            </a>
+            <a href="../activation-codes/index.html" class="nav-link">
+                <span>⌑</span> Activation Codes
+            </a>
+            <a href="../courses/index.html" class="nav-link">
+                <span>▤</span> Courses
+            </a>
+            <a href="../lessons/index.html" class="nav-link">
+                <span>▧</span> Lessons
+            </a>
+            <a href="../vocabulary/index.html" class="nav-link">
+                <span>Aa</span> Vocabulary
+            </a>
+            <a href="./index.html" class="nav-link active">
+                <span>☑</span> Tests
+            </a>
+            <a href="../listening/index.html" class="nav-link">
+                <span>♫</span> Listening
+            </a>
+            <a href="../reading/index.html" class="nav-link">
+                <span>▥</span> Reading
+            </a>
+            <a href="../writing/index.html" class="nav-link">
+                <span>✎</span> Writing
+            </a>
+            <a href="../speaking/index.html" class="nav-link">
+                <span>◉</span> Speaking
+            </a>
+            <a href="../announcements/index.html" class="nav-link">
+                <span>♢</span> Announcements
+            </a>
+            <a href="../messages/index.html" class="nav-link">
+                <span>✉</span> Messages
+            </a>
+            <a href="../results/index.html" class="nav-link">
+                <span>▨</span> Results
+            </a>
+            <a href="../statistics/index.html" class="nav-link">
+                <span>▥</span> Statistics
+            </a>
+            <a href="../security/index.html" class="nav-link">
+                <span>♜</span> Security
+            </a>
+            <a href="../backup/index.html" class="nav-link">
+                <span>▣</span> Backup
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>English Up Admin</span>
+            <small>Management System</small>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle" type="button"
+                    aria-label="Menyuni ochish">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Admin</span>
+                    <span>/</span>
+                    <strong>Tests</strong>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <span class="admin-label">Administrator</span>
+            </div>
+        </header>
+
+        <section class="page-content tests-page">
+
+            <div class="page-heading">
+                <div>
+                    <h1>Tests Management</h1>
+                    <p>Testlar, savollar va javob variantlarini boshqaring.</p>
+                </div>
+
+                <button class="primary-button" id="addTestBtn" type="button">
+                    + Yangi test
+                </button>
+            </div>
+
+            <div class="tests-stats">
+
+                <div class="test-stat-card">
+                    <span class="stat-label">Jami testlar</span>
+                    <strong class="stat-value" id="totalTests">0</strong>
+                    <span class="stat-description">Barcha testlar</span>
+                </div>
+
+                <div class="test-stat-card">
+                    <span class="stat-label">Faol testlar</span>
+                    <strong class="stat-value" id="activeTests">0</strong>
+                    <span class="stat-description">O'quvchilarga ochiq</span>
+                </div>
+
+                <div class="test-stat-card">
+                    <span class="stat-label">Qoralamalar</span>
+                    <strong class="stat-value" id="draftTests">0</strong>
+                    <span class="stat-description">Hali e'lon qilinmagan</span>
+                </div>
+
+                <div class="test-stat-card">
+                    <span class="stat-label">Jami savollar</span>
+                    <strong class="stat-value" id="totalQuestions">0</strong>
+                    <span class="stat-description">Barcha testlardagi savollar</span>
+                </div>
+
+            </div>
+
+            <section class="test-form-panel" id="testFormPanel">
+
+                <div class="test-form-heading">
+                    <div>
+                        <h2 id="testFormTitle">Yangi test yaratish</h2>
+                        <p>Test haqidagi asosiy ma'lumotlarni kiriting.</p>
+                    </div>
+
+                    <button class="form-close" id="closeTestForm"
+                        type="button" aria-label="Yopish">×</button>
+                </div>
+
+                <form id="testForm">
+
+                    <input type="hidden" id="testId">
+
+                    <div class="test-form-grid">
+
+                        <div class="test-form-field">
+                            <label for="testTitle">Test nomi *</label>
+                            <input id="testTitle" type="text"
+                                placeholder="Masalan: Beginner Final Test"
+                                maxlength="120" required>
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="testLevel">Daraja *</label>
+                            <select id="testLevel" required>
+                                <option value="">Darajani tanlang</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="elementary">Elementary</option>
+                                <option value="pre_intermediate">Pre-Intermediate</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="upper_intermediate">Upper-Intermediate</option>
+                                <option value="ielts">IELTS</option>
+                            </select>
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="testType">Test turi *</label>
+                            <select id="testType" required>
+                                <option value="">Test turini tanlang</option>
+                                <option value="lesson">Lesson Test</option>
+                                <option value="vocabulary">Vocabulary Test</option>
+                                <option value="grammar">Grammar Test</option>
+                                <option value="final">Final Exam</option>
+                                <option value="placement">Placement Test</option>
+                            </select>
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="testDuration">Vaqt (daqiqa) *</label>
+                            <input id="testDuration" type="number"
+                                min="1" max="300" value="30" required>
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="testPassingScore">O'tish foizi *</label>
+                            <input id="testPassingScore" type="number"
+                                min="1" max="100" value="80" required>
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="testStatus">Holati *</label>
+                            <select id="testStatus" required>
+                                <option value="draft">Qoralama</option>
+                                <option value="active">Faol</option>
+                                <option value="archived">Arxivlangan</option>
+                            </select>
+                        </div>
+
+                        <div class="test-form-field full-width">
+                            <label for="testDescription">Test tavsifi</label>
+                            <textarea id="testDescription"
+                                placeholder="Test haqida qisqacha ma'lumot..."></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="test-form-actions">
+                        <button class="secondary-button" id="cancelTestForm"
+                            type="button">Bekor qilish</button>
+
+                        <button class="primary-button" type="submit">
+                            Saqlash
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+            <section class="test-question-panel" id="questionPanel">
+
+                <div class="test-form-heading">
+                    <div>
+                        <h2 id="questionPanelTitle">Test savollari</h2>
+                        <p>Savollar va javob variantlarini boshqaring.</p>
+                    </div>
+
+                    <button class="form-close" id="closeQuestionPanel"
+                        type="button" aria-label="Yopish">×</button>
+                </div>
+
+                <form id="questionForm">
+
+                    <input type="hidden" id="questionId">
+
+                    <div class="test-form-grid">
+
+                        <div class="test-form-field full-width">
+                            <label for="questionText">Savol matni *</label>
+                            <textarea id="questionText"
+                                placeholder="Savolni kiriting..."
+                                required></textarea>
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="optionA">A javob varianti *</label>
+                            <input id="optionA" type="text" required
+                                placeholder="A variant">
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="optionB">B javob varianti *</label>
+                            <input id="optionB" type="text" required
+                                placeholder="B variant">
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="optionC">C javob varianti *</label>
+                            <input id="optionC" type="text" required
+                                placeholder="C variant">
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="optionD">D javob varianti *</label>
+                            <input id="optionD" type="text" required
+                                placeholder="D variant">
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="correctAnswer">To'g'ri javob *</label>
+                            <select id="correctAnswer" required>
+                                <option value="">Tanlang</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+
+                        <div class="test-form-field">
+                            <label for="questionPoints">Ball</label>
+                            <input id="questionPoints" type="number"
+                                min="1" max="100" value="1">
+                        </div>
+
+                        <div class="test-form-field full-width">
+                            <label for="questionExplanation">Izoh (ixtiyoriy)</label>
+                            <textarea id="questionExplanation"
+                                placeholder="Javobning tushuntirishi..."></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="test-form-actions">
+                        <button class="secondary-button" id="cancelQuestion"
+                            type="button">Bekor qilish</button>
+
+                        <button class="primary-button" type="submit">
+                            Savolni saqlash
+                        </button>
+                    </div>
+
+                </form>
+
+                <div class="question-list-heading">
+                    <h3>Savollar ro'yxati</h3>
+                    <span id="questionCount">0 ta savol</span>
+                </div>
+
+                <div id="questionsList" class="questions-list">
+                    <div class="tests-empty">
+                        Hozircha savollar mavjud emas.
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="tests-list-card">
+
+                <div class="tests-list-heading">
+                    <div>
+                        <h2>Barcha testlar</h2>
+                        <p>Yaratilgan testlarni ko'rish va boshqarish.</p>
+                    </div>
+
+                    <button class="secondary-button" id="refreshTests"
+                        type="button">↻ Yangilash</button>
+                </div>
+
+                <div class="tests-filters">
+
+                    <input type="search" id="testSearch"
+                        placeholder="Test nomi bo'yicha qidirish...">
+
+                    <select id="testLevelFilter">
+                        <option value="">Barcha darajalar</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="elementary">Elementary</option>
+                        <option value="pre_intermediate">Pre-Intermediate</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="upper_intermediate">Upper-Intermediate</option>
+                        <option value="ielts">IELTS</option>
+                    </select>
+
+                    <select id="testStatusFilter">
+                        <option value="">Barcha holatlar</option>
+                        <option value="active">Faol</option>
+                        <option value="draft">Qoralama</option>
+                        <option value="archived">Arxivlangan</option>
+                    </select>
+
+                </div>
+
+                <div class="tests-table-wrapper">
+                    <table class="tests-table">
+
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Test nomi</th>
+                                <th>Daraja</th>
+                                <th>Turi</th>
+                                <th>Savollar</th>
+                                <th>Vaqt</th>
+                                <th>Holati</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="testsTableBody">
+                            <tr>
+                                <td colspan="8">
+                                    <div class="tests-empty">
+                                        Hozircha testlar mavjud emas.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="tests-table-footer">
+                    <span id="testCount">0 ta test</span>
+                </div>
+
+            </section>
+
+            <div class="tests-notice">
+                <strong>Ma'lumot:</strong>
+                Ushbu sahifa hozircha brauzerda vaqtinchalik ishlaydi.
+                Firebase bilan xavfsiz ulanish keyingi bosqichda amalga oshiriladi.
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="../script.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
