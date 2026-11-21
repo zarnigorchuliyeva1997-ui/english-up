@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#7047eb">
+
+    <title>Admin Login | English Up</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <main class="login-container">
+
+        <div class="login-card">
+
+            <div class="brand">
+                <div class="brand-logo">EU</div>
+                <h1>ENGLISH UP</h1>
+                <p>ADMINISTRATION PANEL</p>
+            </div>
+
+            <div class="login-heading">
+                <h2>Admin panelga kirish</h2>
+                <p>Davom etish uchun ma'lumotlaringizni kiriting.</p>
+            </div>
+
+            <form id="adminLoginForm">
+
+                <label for="email">Email manzil</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Admin email"
+                    autocomplete="username"
+                    required
+                >
+
+                <label for="password">Parol</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Parolingiz"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button type="submit" id="loginButton">
+                    Kirish
+                </button>
+
+                <p id="loginMessage" role="status"></p>
+
+            </form>
+
+            <div class="login-footer">
+                <span>English Up Admin</span>
+                <span>Secure Access</span>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
