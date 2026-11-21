@@ -2,159 +2,150 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#7047eb">
-  <title>Students | English Up Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#7047eb">
 
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="./style.css">
+    <title>Students | English Up Admin</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
 
-  <div class="admin-layout">
+<div class="admin-layout">
 
     <aside class="sidebar" id="adminSidebar">
-      <div class="sidebar-brand">
-        <span class="brand-icon">EU</span>
-        <div>
-          <strong>ENGLISH UP</strong>
-          <small>ADMIN PANEL</small>
+        <div class="sidebar-brand">
+            <span class="brand-icon">EU</span>
+            <div>
+                <strong>ENGLISH UP</strong>
+                <small>ADMIN PANEL</small>
+            </div>
         </div>
-      </div>
 
-      <nav class="sidebar-nav">
-        <a href="../index.html">Dashboard</a>
-        <a href="./index.html" class="active">Students</a>
-        <a href="../subscriptions/index.html">Subscriptions</a>
-        <a href="../activation-codes/index.html">Activation Codes</a>
-        <a href="../courses/index.html">Courses</a>
-        <a href="../lessons/index.html">Lessons</a>
-        <a href="../vocabulary/index.html">Vocabulary</a>
-        <a href="../tests/index.html">Tests</a>
-        <a href="../listening/index.html">Listening</a>
-        <a href="../reading/index.html">Reading</a>
-        <a href="../writing/index.html">Writing</a>
-        <a href="../speaking/index.html">Speaking</a>
-        <a href="../announcements/index.html">Announcements</a>
-        <a href="../messages/index.html">Messages</a>
-        <a href="../results/index.html">Results</a>
-        <a href="../statistics/index.html">Statistics</a>
-        <a href="../security/index.html">Security</a>
-        <a href="../backup/index.html">Backup</a>
-      </nav>
+        <nav class="sidebar-nav">
+            <a href="../index.html">Dashboard</a>
+            <a href="./index.html" class="active">Students</a>
+            <a href="../subscriptions/index.html">Subscriptions</a>
+            <a href="../activation-codes/index.html">Activation Codes</a>
+            <a href="../courses/index.html">Courses</a>
+            <a href="../lessons/index.html">Lessons</a>
+            <a href="../vocabulary/index.html">Vocabulary</a>
+            <a href="../tests/index.html">Tests</a>
+            <a href="../listening/index.html">Listening</a>
+            <a href="../reading/index.html">Reading</a>
+            <a href="../writing/index.html">Writing</a>
+            <a href="../speaking/index.html">Speaking</a>
+            <a href="../announcements/index.html">Announcements</a>
+            <a href="../messages/index.html">Messages</a>
+            <a href="../results/index.html">Results</a>
+            <a href="../statistics/index.html">Statistics</a>
+            <a href="../security/index.html">Security</a>
+            <a href="../backup/index.html">Backup</a>
+        </nav>
     </aside>
 
     <main class="admin-main">
 
-      <header class="topbar">
-        <div>
-          <h2>Students</h2>
-          <p>O‘quvchilarni boshqarish</p>
-        </div>
+        <header class="topbar">
+            <div>
+                <h2>Students</h2>
+                <p>O‘quvchilarni boshqarish</p>
+            </div>
 
-        <div class="topbar-actions">
-          <button id="notificationButton" type="button">🔔</button>
-          <button id="logoutButton" type="button">Chiqish</button>
-        </div>
-      </header>
+            <div class="topbar-actions">
+                <button id="notificationButton" type="button">🔔</button>
+                <button id="logoutButton" type="button">Chiqish</button>
+            </div>
+        </header>
 
-      <section class="students-page">
+        <section class="students-page">
 
-        <div class="students-heading">
-          <div>
-            <h1>O‘quvchilar</h1>
-            <p>English Up platformasidagi barcha o‘quvchilar</p>
-          </div>
+            <div class="students-heading">
+                <div>
+                    <h1>O‘quvchilar</h1>
+                    <p>English Up platformasidagi o‘quvchilar</p>
+                </div>
 
-          <button class="students-button" id="refreshStudents">
-            ↻ Yangilash
-          </button>
-        </div>
+                <button class="students-button" id="refreshStudents" type="button">
+                    ↻ Yangilash
+                </button>
+            </div>
 
-        <div class="students-stats">
+            <div class="students-stats">
 
-          <div class="student-stat">
-            <span>Jami o‘quvchilar</span>
-            <strong id="studentsTotal">0</strong>
-          </div>
+                <div class="student-stat">
+                    <span>Jami o‘quvchilar</span>
+                    <strong id="studentsTotal">0</strong>
+                </div>
 
-          <div class="student-stat">
-            <span>Faol obunalar</span>
-            <strong id="studentsActive">0</strong>
-          </div>
+                <div class="student-stat">
+                    <span>Faol obunalar</span>
+                    <strong id="studentsActive">0</strong>
+                </div>
 
-          <div class="student-stat">
-            <span>Obunasi tugagan</span>
-            <strong id="studentsExpired">0</strong>
-          </div>
+                <div class="student-stat">
+                    <span>Obunasi tugagan</span>
+                    <strong id="studentsExpired">0</strong>
+                </div>
 
-        </div>
+            </div>
 
-        <div class="students-panel">
+            <div class="students-panel">
 
-          <div class="students-tools">
+                <div class="students-tools">
+                    <input
+                        type="search"
+                        id="studentSearch"
+                        placeholder="Ism yoki Gmail orqali qidirish..."
+                    >
 
-            <input
-              type="search"
-              id="studentSearch"
-              placeholder="Ism yoki Gmail orqali qidirish..."
-            >
+                    <select id="studentFilter">
+                        <option value="all">Barcha o‘quvchilar</option>
+                        <option value="active">Faol obuna</option>
+                        <option value="expired">Obunasi tugagan</option>
+                        <option value="none">Obunasi yo‘q</option>
+                    </select>
+                </div>
 
-            <select id="studentFilter">
-              <option value="all">Barcha o‘quvchilar</option>
-              <option value="active">Faol obuna</option>
-              <option value="expired">Obunasi tugagan</option>
-              <option value="none">Obunasi yo‘q</option>
-            </select>
+                <div class="students-table-wrap">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>O‘quvchi</th>
+                                <th>Gmail</th>
+                                <th>Ro‘yxatdan o‘tgan</th>
+                                <th>Obuna holati</th>
+                                <th>Tugash sanasi</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
 
-          </div>
+                        <tbody id="studentsTableBody">
+                            <tr>
+                                <td colspan="6" class="students-empty">
+                                    Hozircha o‘quvchilar ma’lumoti mavjud emas.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-          <div class="students-table-wrap">
+                <p class="students-note">
+                    Ma’lumotlar hozircha ushbu brauzerda saqlanadigan lokal rejimda ishlaydi.
+                </p>
 
-            <table class="students-table">
+            </div>
 
-              <thead>
-                <tr>
-                  <th>O‘quvchi</th>
-                  <th>Gmail</th>
-                  <th>Ro‘yxatdan o‘tgan</th>
-                  <th>Obuna holati</th>
-                  <th>Tugash sanasi</th>
-                  <th>Amallar</th>
-                </tr>
-              </thead>
-
-              <tbody id="studentsTableBody">
-
-                <tr>
-                  <td colspan="6" class="students-empty">
-                    O‘quvchilar ma’lumotlari yuklanmoqda...
-                  </td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-          <p class="students-note">
-            O‘quvchilar ma’lumotlari Firebase bazasidan olinadi.
-          </p>
-
-        </div>
-
-      </section>
+        </section>
 
     </main>
 
-  </div>
+</div>
 
-  <script src="../script.js"></script>
-  <script src="./script.js"></script>
+<script src="../script.js"></script>
+<script src="./script.js"></script>
 
 </body>
 </html>
-
