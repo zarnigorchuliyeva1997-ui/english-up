@@ -1,1 +1,346 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Subscriptions | English Up Admin</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="adminSidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-logo">EU</div>
+      <div>
+        <strong>ENGLISH UP</strong>
+        <small>ADMIN PANEL</small>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a href="../index.html" class="nav-link">
+        <span>📊</span> Dashboard
+      </a>
+
+      <div class="nav-section-title">USER MANAGEMENT</div>
+
+      <a href="../students/index.html" class="nav-link">
+        <span>👨‍🎓</span> Students
+      </a>
+
+      <a href="./index.html" class="nav-link active">
+        <span>💳</span> Subscriptions
+      </a>
+
+      <a href="../activation-codes/index.html" class="nav-link">
+        <span>🔑</span> Activation Codes
+      </a>
+
+      <div class="nav-section-title">EDUCATION</div>
+
+      <a href="../courses/index.html" class="nav-link">
+        <span>📚</span> Courses
+      </a>
+
+      <a href="../lessons/index.html" class="nav-link">
+        <span>📖</span> Lessons
+      </a>
+
+      <a href="../vocabulary/index.html" class="nav-link">
+        <span>🔤</span> Vocabulary
+      </a>
+
+      <a href="../tests/index.html" class="nav-link">
+        <span>📝</span> Tests
+      </a>
+
+      <a href="../listening/index.html" class="nav-link">
+        <span>🎧</span> Listening
+      </a>
+
+      <a href="../reading/index.html" class="nav-link">
+        <span>📄</span> Reading
+      </a>
+
+      <a href="../writing/index.html" class="nav-link">
+        <span>✍️</span> Writing
+      </a>
+
+      <a href="../speaking/index.html" class="nav-link">
+        <span>🎙️</span> Speaking
+      </a>
+
+      <div class="nav-section-title">COMMUNICATION</div>
+
+      <a href="../announcements/index.html" class="nav-link">
+        <span>📢</span> Announcements
+      </a>
+
+      <a href="../messages/index.html" class="nav-link">
+        <span>✉️</span> Messages
+      </a>
+
+      <div class="nav-section-title">REPORTS</div>
+
+      <a href="../results/index.html" class="nav-link">
+        <span>🏆</span> Results
+      </a>
+
+      <a href="../statistics/index.html" class="nav-link">
+        <span>📈</span> Statistics
+      </a>
+
+      <div class="nav-section-title">SYSTEM</div>
+
+      <a href="../security/index.html" class="nav-link">
+        <span>🛡️</span> Security
+      </a>
+
+      <a href="../backup/index.html" class="nav-link">
+        <span>💾</span> Backup
+      </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="admin-profile">
+        <div class="profile-avatar">A</div>
+        <div>
+          <strong>Administrator</strong>
+          <small>Owner account</small>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          ☰
+        </button>
+
+        <div class="breadcrumb">
+          <span>Admin</span>
+          <span>/</span>
+          <strong>Subscriptions</strong>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="admin-top-label">
+          <span class="online-dot"></span>
+          Admin Panel
+        </div>
+      </div>
+
+    </header>
+
+
+    <!-- PAGE CONTENT -->
+    <section class="page-content">
+
+      <div class="page-heading">
+        <div>
+          <div class="page-eyebrow">USER MANAGEMENT</div>
+          <h1>Subscriptions</h1>
+          <p>O‘quvchilarning obunalari va kirish muddatlarini boshqaring.</p>
+        </div>
+
+        <button class="btn btn-primary" id="refreshSubscriptions">
+          ↻ Refresh
+        </button>
+      </div>
+
+
+      <!-- STATISTICS -->
+      <div class="subscription-stats">
+
+        <div class="stat-card">
+          <div class="stat-icon purple">💳</div>
+          <div class="stat-info">
+            <span>Jami obunalar</span>
+            <strong id="totalSubscriptions">0</strong>
+            <small>Barcha obunalar</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">✓</div>
+          <div class="stat-info">
+            <span>Faol obunalar</span>
+            <strong id="activeSubscriptions">0</strong>
+            <small>Hozir foydalanmoqda</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange">⌛</div>
+          <div class="stat-info">
+            <span>Muddati tugayotgan</span>
+            <strong id="expiringSubscriptions">0</strong>
+            <small>Keyingi 7 kun ichida</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon red">✕</div>
+          <div class="stat-info">
+            <span>Tugagan obunalar</span>
+            <strong id="expiredSubscriptions">0</strong>
+            <small>Muddati yakunlangan</small>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- SUBSCRIPTION OVERVIEW -->
+      <div class="content-card subscription-overview">
+
+        <div class="card-heading">
+          <div>
+            <h2>Obunalarni boshqarish</h2>
+            <p>Obuna holati, o‘quvchi va amal qilish muddatlari.</p>
+          </div>
+        </div>
+
+        <div class="subscription-toolbar">
+
+          <div class="search-box">
+            <span>🔍</span>
+            <input
+              type="search"
+              id="subscriptionSearch"
+              placeholder="Ism yoki Gmail orqali qidirish..."
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="filter-controls">
+
+            <select id="subscriptionStatusFilter">
+              <option value="all">Barcha holatlar</option>
+              <option value="active">Faol</option>
+              <option value="expiring">Muddati tugayotgan</option>
+              <option value="expired">Muddati tugagan</option>
+              <option value="inactive">Faol emas</option>
+            </select>
+
+            <select id="subscriptionPlanFilter">
+              <option value="all">Barcha tariflar</option>
+              <option value="monthly">1 oylik</option>
+              <option value="three-months">3 oylik</option>
+              <option value="six-months">6 oylik</option>
+              <option value="yearly">1 yillik</option>
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+        <div class="table-container">
+
+          <table class="admin-table">
+
+            <thead>
+              <tr>
+                <th>O‘QUVCHI</th>
+                <th>GMAIL</th>
+                <th>TARIF</th>
+                <th>BOSHLANGAN SANA</th>
+                <th>TUGASH SANASI</th>
+                <th>HOLATI</th>
+                <th>AMALLAR</th>
+              </tr>
+            </thead>
+
+            <tbody id="subscriptionsTableBody">
+
+              <tr>
+                <td colspan="7" class="empty-state">
+                  <div class="empty-icon">💳</div>
+                  <strong>Hozircha obunalar mavjud emas</strong>
+                  <p>Firebase ma’lumotlar bazasi ulangandan keyin obunalar shu yerda ko‘rinadi.</p>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- PAGINATION -->
+        <div class="table-footer">
+
+          <div class="table-count" id="subscriptionCount">
+            0 ta obuna
+          </div>
+
+          <div class="pagination" id="subscriptionPagination">
+            <button type="button" disabled>←</button>
+            <span>1</span>
+            <button type="button" disabled>→</button>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- INFORMATION -->
+      <div class="subscription-info-card">
+
+        <div class="info-icon">ℹ️</div>
+
+        <div>
+          <h3>Obuna tizimi haqida</h3>
+
+          <p>
+            Har bir obuna o‘quvchining tasdiqlangan akkauntiga bog‘lanishi
+            kerak. Obuna muddati tugaganda tizim o‘quvchining pullik
+            kurslarga kirishini avtomatik cheklashi kerak.
+          </p>
+
+          <p>
+            Obuna ma’lumotlari Firebase orqali saqlanadi va xavfsizlik
+            qoidalari server tomonida tekshiriladi.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- PAGE SCRIPT -->
+<script src="../script.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
+
