@@ -1,0 +1,341 @@
+
+/* =========================================
+   ENGLISH UP — WRITING PAGE
+========================================= */
+
+.writing-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.writing-stats .stat-card,
+.writing-panel {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e8e5f0);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(25, 20, 50, 0.04);
+}
+
+.writing-stats .stat-card {
+  padding: 20px;
+}
+
+.writing-stats .stat-card span {
+  display: block;
+  color: var(--text-muted, #77738a);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.writing-stats .stat-card strong {
+  display: block;
+  color: var(--text-color, #28243a);
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.writing-panel {
+  padding: 22px;
+  margin-bottom: 24px;
+  min-width: 0;
+}
+
+.writing-panel .panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.writing-panel .panel-heading h2 {
+  margin: 0 0 6px;
+  color: var(--text-color, #28243a);
+  font-size: 19px;
+}
+
+.writing-panel .panel-heading p {
+  margin: 0;
+  color: var(--text-muted, #77738a);
+  font-size: 13px;
+}
+
+.writing-panel .close-btn {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 9px;
+  background: #f0edfa;
+  color: #7047eb;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.writing-panel .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.writing-panel .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.writing-panel .form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.writing-panel .form-group label {
+  color: var(--text-color, #302b43);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.writing-panel .form-group input,
+.writing-panel .form-group select,
+.writing-panel .form-group textarea,
+.writing-filters input,
+.writing-filters select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid var(--border-color, #dedbe8);
+  border-radius: 9px;
+  background: var(--input-bg, #ffffff);
+  color: var(--text-color, #302b43);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.writing-panel .form-group textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.writing-panel .form-group input:focus,
+.writing-panel .form-group select:focus,
+.writing-panel .form-group textarea:focus,
+.writing-filters input:focus,
+.writing-filters select:focus {
+  border-color: #7047eb;
+  box-shadow: 0 0 0 3px rgba(112, 71, 235, 0.10);
+}
+
+.writing-panel .form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.writing-panel .primary-btn,
+.writing-panel .secondary-btn,
+.page-heading .primary-btn {
+  min-height: 42px;
+  padding: 10px 17px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.writing-panel .primary-btn,
+.page-heading .primary-btn {
+  border: 1px solid #7047eb;
+  background: #7047eb;
+  color: #ffffff;
+}
+
+.writing-panel .primary-btn:hover,
+.page-heading .primary-btn:hover {
+  background: #5d36d1;
+}
+
+.writing-panel .secondary-btn {
+  border: 1px solid var(--border-color, #dedbe8);
+  background: var(--card-bg, #ffffff);
+  color: var(--text-color, #302b43);
+}
+
+.writing-panel .secondary-btn:hover {
+  background: #f5f2ff;
+}
+
+.writing-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.writing-panel .table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.writing-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.writing-table th {
+  padding: 14px 12px;
+  background: var(--table-head-bg, #f7f5fc);
+  color: var(--text-muted, #77738a);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.writing-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid var(--border-color, #eeeaf5);
+  color: var(--text-color, #302b43);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.writing-table td strong {
+  display: block;
+  font-size: 13px;
+}
+
+.writing-table td small {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-muted, #77738a);
+}
+
+.writing-status,
+.writing-access {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.writing-status.active {
+  background: #e6f8ee;
+  color: #16834a;
+}
+
+.writing-status.draft {
+  background: #fff3dc;
+  color: #a66b08;
+}
+
+.writing-status.archived {
+  background: #eeeef2;
+  color: #666477;
+}
+
+.writing-access.free {
+  background: #e9f2ff;
+  color: #2866b5;
+}
+
+.writing-access.subscription {
+  background: #f0eaff;
+  color: #7047eb;
+}
+
+.writing-action {
+  padding: 7px 10px;
+  margin: 2px;
+  border: 1px solid var(--border-color, #dedbe8);
+  border-radius: 7px;
+  background: var(--card-bg, #ffffff);
+  color: #7047eb;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.writing-action:hover {
+  background: #f2edff;
+}
+
+.writing-action.delete-task {
+  color: #d04444;
+}
+
+.writing-action.delete-task:hover {
+  background: #fff0f0;
+}
+
+.writing-empty {
+  padding: 30px !important;
+  text-align: center;
+  color: var(--text-muted, #77738a) !important;
+}
+
+.writing-panel .table-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  color: var(--text-muted, #77738a);
+  font-size: 12px;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .writing-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .writing-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .writing-stats {
+    gap: 10px;
+  }
+
+  .writing-stats .stat-card {
+    padding: 14px;
+  }
+
+  .writing-stats .stat-card strong {
+    font-size: 23px;
+  }
+
+  .writing-panel {
+    padding: 15px;
+  }
+
+  .writing-panel .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-panel .form-group.full-width {
+    grid-column: auto;
+  }
+
+  .writing-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-panel .panel-heading {
+    align-items: flex-start;
+  }
+
+  .page-heading {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
