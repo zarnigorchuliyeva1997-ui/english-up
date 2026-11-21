@@ -1,0 +1,442 @@
+/* =====================================
+   ENGLISH UP — ADMIN VOCABULARY
+   ===================================== */
+
+.vocabulary-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.vocabulary-page .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.vocabulary-page .page-heading h1 {
+    margin: 0 0 6px;
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--text-primary, #202033);
+}
+
+.vocabulary-page .page-heading p {
+    margin: 0;
+    color: var(--text-secondary, #77778a);
+    font-size: 14px;
+}
+
+.vocabulary-page button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.vocabulary-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.vocabulary-stat {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--border-color, #ececf2);
+    border-radius: 16px;
+    padding: 20px;
+    min-width: 0;
+}
+
+.vocabulary-stat .stat-label {
+    display: block;
+    color: var(--text-secondary, #77778a);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.vocabulary-stat .stat-value {
+    display: block;
+    color: var(--text-primary, #202033);
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.vocabulary-stat .stat-description {
+    display: block;
+    margin-top: 7px;
+    color: var(--text-secondary, #888899);
+    font-size: 12px;
+}
+
+.vocabulary-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.vocabulary-toolbar-left,
+.vocabulary-toolbar-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.vocabulary-page .primary-button {
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 17px;
+    background: #7047eb;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.vocabulary-page .primary-button:hover {
+    background: #5d35d5;
+}
+
+.vocabulary-page .secondary-button {
+    border: 1px solid var(--border-color, #e4e4ed);
+    border-radius: 10px;
+    padding: 10px 15px;
+    background: var(--card-bg, #ffffff);
+    color: var(--text-primary, #333344);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.vocabulary-page .secondary-button:hover {
+    background: var(--hover-bg, #f5f3ff);
+}
+
+.vocabulary-filters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1.5fr) repeat(2, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.vocabulary-page input,
+.vocabulary-page select,
+.vocabulary-page textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 13px;
+    border: 1px solid var(--border-color, #e3e3ec);
+    border-radius: 9px;
+    background: var(--input-bg, #ffffff);
+    color: var(--text-primary, #29293b);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.vocabulary-page input:focus,
+.vocabulary-page select:focus,
+.vocabulary-page textarea:focus {
+    border-color: #7047eb;
+    box-shadow: 0 0 0 3px rgba(112, 71, 235, 0.1);
+}
+
+.vocabulary-page textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.vocabulary-table-card {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--border-color, #ececf2);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.vocabulary-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border-color, #ececf2);
+}
+
+.vocabulary-table-header h2 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-primary, #29293b);
+}
+
+.vocabulary-table-header span {
+    color: var(--text-secondary, #77778a);
+    font-size: 12px;
+}
+
+.vocabulary-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.vocabulary-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.vocabulary-table th {
+    padding: 14px 16px;
+    background: var(--table-head-bg, #f8f7fc);
+    color: var(--text-secondary, #77778a);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+.vocabulary-table td {
+    padding: 15px 16px;
+    border-top: 1px solid var(--border-color, #eeeeF3);
+    color: var(--text-primary, #333344);
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.vocabulary-table tbody tr:hover {
+    background: var(--hover-bg, #faf9ff);
+}
+
+.word-english {
+    font-weight: 700;
+    color: var(--text-primary, #29293b);
+}
+
+.word-translation {
+    color: var(--text-secondary, #77778a);
+}
+
+.word-pronunciation {
+    color: #7047eb;
+    font-size: 12px;
+}
+
+.word-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #f0ebff;
+    color: #7047eb;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.word-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.word-action {
+    border: 1px solid var(--border-color, #e4e4ed);
+    border-radius: 7px;
+    padding: 6px 9px;
+    background: var(--card-bg, #ffffff);
+    color: var(--text-primary, #444455);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.word-action:hover {
+    border-color: #7047eb;
+    color: #7047eb;
+}
+
+.word-action.delete {
+    color: #dc4545;
+}
+
+.word-action.delete:hover {
+    border-color: #dc4545;
+    background: #fff4f4;
+}
+
+.vocabulary-empty {
+    padding: 45px 20px;
+    text-align: center;
+    color: var(--text-secondary, #77778a);
+}
+
+.vocabulary-empty strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary, #333344);
+    font-size: 15px;
+}
+
+.vocabulary-empty p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* WORD FORM */
+
+.word-form-panel {
+    display: none;
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--border-color, #ececf2);
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.word-form-panel.active {
+    display: block;
+}
+
+.word-form-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.word-form-heading h2 {
+    margin: 0;
+    color: var(--text-primary, #29293b);
+    font-size: 18px;
+}
+
+.word-form-close {
+    border: 0;
+    background: transparent;
+    color: var(--text-secondary, #77778a);
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.word-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.word-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.word-form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.word-form-field label {
+    color: var(--text-primary, #444455);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.word-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.vocabulary-notice {
+    padding: 14px 16px;
+    border: 1px solid #f0d99b;
+    border-radius: 11px;
+    background: #fff9e9;
+    color: #80621b;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .vocabulary-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vocabulary-filters {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .vocabulary-filters input {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .vocabulary-page {
+        gap: 17px;
+    }
+
+    .vocabulary-page .page-heading h1 {
+        font-size: 21px;
+    }
+
+    .vocabulary-stats {
+        gap: 10px;
+    }
+
+    .vocabulary-stat {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .vocabulary-stat .stat-value {
+        font-size: 22px;
+    }
+
+    .vocabulary-toolbar {
+        align-items: stretch;
+    }
+
+    .vocabulary-toolbar-left,
+    .vocabulary-toolbar-right {
+        width: 100%;
+    }
+
+    .vocabulary-toolbar button {
+        flex: 1;
+    }
+
+    .vocabulary-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .vocabulary-filters input {
+        grid-column: auto;
+    }
+
+    .word-form-panel {
+        padding: 16px;
+    }
+
+    .word-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .word-form-field.full-width {
+        grid-column: auto;
+    }
+
+    .word-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .word-form-actions button {
+        width: 100%;
+    }
+}
