@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Statistics | English Up Admin</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">EU</div>
+        <div>
+          <h2>ENGLISH UP</h2>
+          <span>ADMIN PANEL</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="../index.html">Dashboard</a>
+        <a href="../students/index.html">Students</a>
+        <a href="../subscriptions/index.html">Subscriptions</a>
+        <a href="../activation-codes/index.html">Activation Codes</a>
+        <a href="../courses/index.html">Courses</a>
+        <a href="../lessons/index.html">Lessons</a>
+        <a href="../vocabulary/index.html">Vocabulary</a>
+        <a href="../tests/index.html">Tests</a>
+        <a href="../listening/index.html">Listening</a>
+        <a href="../reading/index.html">Reading</a>
+        <a href="../writing/index.html">Writing</a>
+        <a href="../speaking/index.html">Speaking</a>
+        <a href="../announcements/index.html">Announcements</a>
+        <a href="../results/index.html">Results</a>
+        <a class="active" href="./index.html">Statistics</a>
+        <a href="../security/index.html">Security</a>
+        <a href="../backup/index.html">Backup</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span>English Up</span>
+        <small>Admin workspace</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu">☰</button>
+        <div>
+          <h1>Statistics</h1>
+          <p>Platform performance overview</p>
+        </div>
+        <a class="back-link" href="../index.html">Dashboard</a>
+      </header>
+
+      <section class="statistics-intro">
+        <div>
+          <h2>Platform statistics</h2>
+          <p>English Up faoliyati va o‘quvchilar natijalarini kuzatish.</p>
+        </div>
+        <button type="button" id="refreshStats">Yangilash</button>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span>Jami o‘quvchilar</span>
+          <strong id="totalStudents">0</strong>
+          <small>Ro‘yxatdagi o‘quvchilar</small>
+        </article>
+        <article class="stat-card">
+          <span>Faol obunalar</span>
+          <strong id="activeSubscriptions">0</strong>
+          <small>Faol deb belgilangan obunalar</small>
+        </article>
+        <article class="stat-card">
+          <span>Test natijalari</span>
+          <strong id="totalResults">0</strong>
+          <small>Saqlangan natijalar</small>
+        </article>
+        <article class="stat-card">
+          <span>O‘rtacha natija</span>
+          <strong id="averageScore">0%</strong>
+          <small>Barcha saqlangan natijalar bo‘yicha</small>
+        </article>
+      </section>
+
+      <section class="statistics-grid">
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Darajalar bo‘yicha</h2>
+              <p>O‘quvchilar soni</p>
+            </div>
+          </div>
+          <div id="levelStats" class="level-stats">
+            <p class="empty-state">Hozircha ma’lumot yo‘q.</p>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Natijalar tahlili</h2>
+              <p>Testlar bo‘yicha umumiy ko‘rsatkich</p>
+            </div>
+          </div>
+          <div id="resultStats" class="result-stats">
+            <p class="empty-state">Hozircha natijalar mavjud emas.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel activity-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Oxirgi natijalar</h2>
+            <p>Yaqinda saqlangan o‘quvchi natijalari</p>
+          </div>
+          <a href="../results/index.html">Barcha natijalar</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>O‘quvchi</th>
+                <th>Test turi</th>
+                <th>Daraja</th>
+                <th>Natija</th>
+                <th>Sana</th>
+              </tr>
+            </thead>
+            <tbody id="recentResults">
+              <tr>
+                <td colspan="5" class="empty-state">Hozircha natijalar yo‘q.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <p class="data-note">
+        Eslatma: bu sahifa hozircha brauzerda saqlangan mahalliy ma’lumotlarni ko‘rsatadi.
+        Haqiqiy umumiy statistika Firebase integratsiyasidan keyin ishlaydi.
+      </p>
+    </main>
+  </div>
+
+  <script src="../script.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
