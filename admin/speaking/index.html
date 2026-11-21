@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Speaking Management | English Up</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>ENGLISH <span>UP</span></h2>
+      <p>Admin Panel</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="../index.html">Dashboard</a>
+      <a href="../students/index.html">Students</a>
+      <a href="../subscriptions/index.html">Subscriptions</a>
+      <a href="../activation-codes/index.html">Activation Codes</a>
+      <a href="../courses/index.html">Courses</a>
+      <a href="../lessons/index.html">Lessons</a>
+      <a href="../vocabulary/index.html">Vocabulary</a>
+      <a href="../tests/index.html">Tests</a>
+      <a href="../listening/index.html">Listening</a>
+      <a href="../reading/index.html">Reading</a>
+      <a href="../writing/index.html">Writing</a>
+      <a href="./index.html" class="active">Speaking</a>
+      <a href="../announcements/index.html">Announcements</a>
+      <a href="../messages/index.html">Messages</a>
+      <a href="../results/index.html">Results</a>
+      <a href="../statistics/index.html">Statistics</a>
+      <a href="../security/index.html">Security</a>
+      <a href="../backup/index.html">Backup</a>
+    </nav>
+
+    <a href="../../index.html" class="back-to-site">← Main Website</a>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" type="button">☰</button>
+      <div>
+        <h2>Speaking Management</h2>
+        <p>Manage speaking topics and exercises</p>
+      </div>
+      <div class="admin-profile">
+        <span>Administrator</span>
+      </div>
+    </header>
+
+    <section class="page-content">
+
+      <div class="page-heading">
+        <div>
+          <h1>Speaking Library</h1>
+          <p>Create and manage speaking activities for students.</p>
+        </div>
+
+        <button class="primary-btn" id="addSpeakingBtn" type="button">
+          + Add Speaking Task
+        </button>
+      </div>
+
+      <div class="speaking-stats">
+        <div class="stat-card">
+          <span>Total Tasks</span>
+          <strong id="totalSpeakingTasks">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Active Tasks</span>
+          <strong id="activeSpeakingTasks">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Draft Tasks</span>
+          <strong id="draftSpeakingTasks">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Total Questions</span>
+          <strong id="totalSpeakingQuestions">0</strong>
+        </div>
+      </div>
+
+      <section class="speaking-panel" id="speakingFormPanel" style="display:none;">
+
+        <div class="panel-heading">
+          <div>
+            <h2 id="speakingFormTitle">Add Speaking Task</h2>
+            <p>Configure the speaking activity.</p>
+          </div>
+
+          <button type="button" class="close-btn" id="closeSpeakingForm">×</button>
+        </div>
+
+        <form id="speakingForm">
+          <input type="hidden" id="speakingId">
+
+          <div class="form-grid">
+
+            <div class="form-group full-width">
+              <label for="speakingTitle">Task Title *</label>
+              <input
+                type="text"
+                id="speakingTitle"
+                required
+                maxlength="180"
+                placeholder="Example: Introduce Yourself">
+            </div>
+
+            <div class="form-group">
+              <label for="speakingLevel">English Level *</label>
+              <select id="speakingLevel" required>
+                <option value="beginner">Beginner</option>
+                <option value="elementary">Elementary</option>
+                <option value="preintermediate">Pre-Intermediate</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="upperintermediate">Upper-Intermediate</option>
+                <option value="ielts">IELTS</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="speakingType">Speaking Type *</label>
+              <select id="speakingType" required>
+                <option value="personal">Personal Questions</option>
+                <option value="dialogue">Dialogue</option>
+                <option value="monologue">Monologue</option>
+                <option value="picture">Picture Description</option>
+                <option value="discussion">Discussion</option>
+                <option value="ielts-part-1">IELTS Speaking Part 1</option>
+                <option value="ielts-part-2">IELTS Speaking Part 2</option>
+                <option value="ielts-part-3">IELTS Speaking Part 3</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="speakingCategory">Category</label>
+              <input
+                type="text"
+                id="speakingCategory"
+                maxlength="100"
+                placeholder="Example: Family">
+            </div>
+
+            <div class="form-group">
+              <label for="speakingPreparation">Preparation Time (seconds)</label>
+              <input
+                type="number"
+                id="speakingPreparation"
+                min="0"
+                max="3600"
+                value="30">
+            </div>
+
+            <div class="form-group">
+              <label for="speakingDuration">Speaking Time (seconds)</label>
+              <input
+                type="number"
+                id="speakingDuration"
+                min="10"
+                max="3600"
+                value="60">
+            </div>
+
+            <div class="form-group">
+              <label for="speakingAttempts">Maximum Attempts</label>
+              <select id="speakingAttempts">
+                <option value="1">1 attempt</option>
+                <option value="2">2 attempts</option>
+                <option value="3" selected>3 attempts</option>
+                <option value="5">5 attempts</option>
+                <option value="0">Unlimited</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="speakingDescription">Description</label>
+              <textarea
+                id="speakingDescription"
+                rows="3"
+                placeholder="Explain the activity..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="speakingInstructions">Student Instructions</label>
+              <textarea
+                id="speakingInstructions"
+                rows="4"
+                placeholder="Explain what students should do..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="speakingSample">Sample Answer / Useful Phrases</label>
+              <textarea
+                id="speakingSample"
+                rows="5"
+                placeholder="Add a sample answer or useful expressions..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="speakingAccess">Access</label>
+              <select id="speakingAccess">
+                <option value="free">Free</option>
+                <option value="subscription">Subscription</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="speakingStatus">Status</label>
+              <select id="speakingStatus">
+                <option value="draft">Draft</option>
+                <option value="active">Active</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn">
+              Save Speaking Task
+            </button>
+
+            <button type="button" class="secondary-btn" id="cancelSpeakingForm">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="speaking-panel" id="speakingQuestionsPanel" style="display:none;">
+
+        <div class="panel-heading">
+          <div>
+            <h2 id="speakingQuestionsTitle">Speaking Questions</h2>
+            <p>Add questions to this speaking activity.</p>
+          </div>
+
+          <button type="button" class="close-btn" id="closeSpeakingQuestions">×</button>
+        </div>
+
+        <form id="speakingQuestionForm">
+          <input type="hidden" id="speakingQuestionId">
+
+          <div class="form-grid">
+
+            <div class="form-group full-width">
+              <label for="speakingQuestionText">Speaking Question *</label>
+              <textarea
+                id="speakingQuestionText"
+                rows="3"
+                required
+                placeholder="Write a speaking question..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="speakingQuestionHint">Hint / Vocabulary</label>
+              <textarea
+                id="speakingQuestionHint"
+                rows="3"
+                placeholder="Helpful words or ideas..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="speakingQuestionSample">Sample Answer</label>
+              <textarea
+                id="speakingQuestionSample"
+                rows="4"
+                placeholder="Optional example answer..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="speakingQuestionTime">Answer Time (seconds)</label>
+              <input
+                type="number"
+                id="speakingQuestionTime"
+                min="10"
+                max="3600"
+                value="60">
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn">
+              Save Question
+            </button>
+
+            <button type="button" class="secondary-btn" id="cancelSpeakingQuestion">
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        <div class="speaking-question-list">
+          <h3>Questions <span id="speakingQuestionCount">0</span></h3>
+          <div id="speakingQuestionsList"></div>
+        </div>
+
+      </section>
+
+      <section class="speaking-panel">
+
+        <div class="panel-heading">
+          <div>
+            <h2>Speaking Tasks</h2>
+            <p>Search, edit and manage speaking activities.</p>
+          </div>
+
+          <button class="secondary-btn" id="refreshSpeaking" type="button">
+            ↻ Refresh
+          </button>
+        </div>
+
+        <div class="speaking-filters">
+
+          <input
+            type="search"
+            id="speakingSearch"
+            placeholder="Search speaking tasks...">
+
+          <select id="speakingLevelFilter">
+            <option value="">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="elementary">Elementary</option>
+            <option value="preintermediate">Pre-Intermediate</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="upperintermediate">Upper-Intermediate</option>
+            <option value="ielts">IELTS</option>
+          </select>
+
+          <select id="speakingTypeFilter">
+            <option value="">All Types</option>
+            <option value="personal">Personal Questions</option>
+            <option value="dialogue">Dialogue</option>
+            <option value="monologue">Monologue</option>
+            <option value="picture">Picture Description</option>
+            <option value="discussion">Discussion</option>
+            <option value="ielts-part-1">IELTS Part 1</option>
+            <option value="ielts-part-2">IELTS Part 2</option>
+            <option value="ielts-part-3">IELTS Part 3</option>
+          </select>
+
+          <select id="speakingStatusFilter">
+            <option value="">All Statuses</option>
+            <option value="active">Active</option>
+            <option value="draft">Draft</option>
+            <option value="archived">Archived</option>
+          </select>
+
+        </div>
+
+        <div class="table-wrapper">
+          <table class="speaking-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Level</th>
+                <th>Type</th>
+                <th>Questions</th>
+                <th>Access</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="speakingTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="table-footer">
+          <span id="speakingTaskCount">0 tasks</span>
+        </div>
+
+      </section>
+
+    </section>
+  </main>
+</div>
+
+<script src="../script.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
