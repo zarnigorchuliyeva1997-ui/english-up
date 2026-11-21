@@ -1,62 +1,72 @@
 
 /* ==========================================
    ENGLISH UP ADMIN PANEL
-   MAIN JAVASCRIPT
+   SHARED MAIN JAVASCRIPT
+   Version: 1.1.0
    ========================================== */
 
 "use strict";
 
 
 /* ==========================================
-   1. DOM ELEMENTS
-   ========================================== */
-
-const sidebar = document.getElementById("sidebar");
-const sidebarOverlay = document.getElementById("sidebarOverlay");
-
-const menuToggle = document.getElementById("menuToggle");
-const sidebarClose = document.getElementById("sidebarClose");
-
-const logoutButton = document.getElementById("logoutButton");
-const notificationButton = document.getElementById("notificationButton");
-
-const globalSearch = document.getElementById("globalSearch");
-
-const adminLoading = document.getElementById("adminLoading");
-const dashboardDate = document.getElementById("dashboardDate");
-
-const toastContainer = document.getElementById("toastContainer");
-
-
-/* ==========================================
-   2. GENERAL CONFIGURATION
+   1. CONFIGURATION
    ========================================== */
 
 const AdminConfig = {
     appName: "English Up",
-    version: "1.0.0",
-    currentPage: "dashboard"
+    version: "1.1.0",
+    currentPage: "dashboard",
+    mobileBreakpoint: 760
 };
 
 
 /* ==========================================
-   3. TOAST NOTIFICATION SYSTEM
+   2. SAFE DOM HELPERS
+   ========================================== */
+
+const getElement = (id) => document.getElementById(id);
+
+const sidebar = getElement("sidebar");
+const sidebarOverlay = getElement("sidebarOverlay");
+
+const menuToggle = getElement("menuToggle");
+const sidebarClose = getElement("sidebarClose");
+
+const logoutButton = getElement("logoutButton");
+const notificationButton = getElement("notificationButton");
+
+const globalSearch = getElement("globalSearch");
+
+const adminLoading = getElement("adminLoading");
+const dashboardDate = getElement("dashboardDate");
+
+const toastContainer = getElement("toastContainer");
+
+
+/* ==========================================
+   3. TOAST NOTIFICATIONS
    ========================================== */
 
 function showToast(message, duration = 3500) {
 
-    if (!toastContainer) return;
+    if (!toastContainer) {
+        console.info(message);
+        return;
+    }
 
     const toast = document.createElement("div");
 
     toast.className = "toast";
-    toast.textContent = message;
+    toast.textContent = String(message);
 
     toastContainer.appendChild(toast);
 
-    setTimeout(() => {
+    window.setTimeout(() => {
+
         toast.remove();
+
     }, duration);
+
 }
 
 
@@ -75,6 +85,7 @@ function openSidebar() {
     menuToggle?.setAttribute("aria-expanded", "true");
 
     document.body.style.overflow = "hidden";
+
 }
 
 
@@ -89,6 +100,7 @@ function closeSidebar() {
     menuToggle?.setAttribute("aria-expanded", "false");
 
     document.body.style.overflow = "";
+
 }
 
 
@@ -108,10 +120,12 @@ sidebarClose?.addEventListener("click", closeSidebar);
 sidebarOverlay?.addEventListener("click", closeSidebar);
 
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", event => {
 
     if (event.key === "Escape") {
+
         closeSidebar();
+
     }
 
 });
@@ -129,18 +143,38 @@ function setActiveNavigation() {
         ".nav-link[data-page]"
     );
 
+    let activeFound = false;
+
     navigationLinks.forEach(link => {
 
-        const linkPath = new URL(
-            link.getAttribute("href"),
-            window.location.href
-        ).pathname;
+        const href = link.getAttribute("href");
+
+        if (!href) return;
+
+        let linkPath;
+
+        try {
+
+            linkPath = new URL(
+                href,
+                window.location.href
+            ).pathname;
+
+        } catch (error) {
+
+            console.warn("Navigation URL error:", href);
+            return;
+
+        }
 
         const isActive = currentPath === linkPath;
 
         link.classList.toggle("active", isActive);
 
         if (isActive) {
+
+            activeFound = true;
+
             AdminConfig.currentPage =
                 link.dataset.page || "dashboard";
 
@@ -154,6 +188,12 @@ function setActiveNavigation() {
 
     });
 
+    if (!activeFound) {
+
+        AdminConfig.currentPage = "unknown";
+
+    }
+
 }
 
 
@@ -166,9 +206,6 @@ document.querySelectorAll(".nav-link").forEach(link => {
     });
 
 });
-
-
-setActiveNavigation();
 
 
 /* ==========================================
@@ -193,8 +230,6 @@ function updateDashboardDate() {
 
 }
 
-updateDashboardDate();
-
 
 /* ==========================================
    7. GLOBAL NAVIGATION SEARCH
@@ -210,21 +245,26 @@ function searchNavigation(query) {
         ".sidebar-navigation .nav-section-title"
     );
 
-    const normalizedQuery = query
+    const normalizedQuery = String(query)
         .trim()
         .toLocaleLowerCase("uz");
 
     if (!normalizedQuery) {
 
         links.forEach(link => {
-            link.style.display = "flex";
+
+            link.style.display = "";
+
         });
 
         sections.forEach(section => {
-            section.style.display = "block";
+
+            section.style.display = "";
+
         });
 
         return;
+
     }
 
     links.forEach(link => {
@@ -245,13 +285,18 @@ function searchNavigation(query) {
 
         let hasVisibleLink = false;
 
-        while (next && !next.classList.contains("nav-section-title")) {
+        while (
+            next &&
+            !next.classList.contains("nav-section-title")
+        ) {
 
             if (
                 next.classList.contains("nav-link") &&
                 next.style.display !== "none"
             ) {
+
                 hasVisibleLink = true;
+
             }
 
             next = next.nextElementSibling;
@@ -259,7 +304,7 @@ function searchNavigation(query) {
         }
 
         section.style.display = hasVisibleLink
-            ? "block"
+            ? ""
             : "none";
 
     });
@@ -294,23 +339,23 @@ globalSearch?.addEventListener("keydown", event => {
 notificationButton?.addEventListener("click", () => {
 
     showToast(
-        "Bildirishnomalar tizimi Firebase bilan ulanishdan keyin ishlaydi."
+        "Bildirishnomalar Firebase integratsiyasidan keyin faollashadi."
     );
 
 });
 
 
 /* ==========================================
-   9. LOGOUT BUTTON
+   9. LOGOUT
    ========================================== */
 
 // Firebase Authentication hali ulanmagan.
-// Shu sababli hozircha haqiqiy chiqish funksiyasi yo'q.
+// Haqiqiy chiqish funksiyasi keyin qo'shiladi.
 
 logoutButton?.addEventListener("click", () => {
 
     showToast(
-        "Chiqish funksiyasi Firebase autentifikatsiyasi ulangach faollashadi."
+        "Chiqish funksiyasi Firebase Authentication ulangach faollashadi."
     );
 
 });
@@ -322,33 +367,29 @@ logoutButton?.addEventListener("click", () => {
 
 function updateSystemStatus() {
 
-    const firebaseStatus = document.getElementById(
-        "firebaseStatus"
-    );
-
-    const authStatus = document.getElementById(
-        "authStatus"
-    );
-
-    const databaseStatus = document.getElementById(
-        "databaseStatus"
-    );
+    const firebaseStatus = getElement("firebaseStatus");
+    const authStatus = getElement("authStatus");
+    const databaseStatus = getElement("databaseStatus");
 
     if (firebaseStatus) {
+
         firebaseStatus.textContent = "Hali ulanmagan";
+
     }
 
     if (authStatus) {
+
         authStatus.textContent = "Hali sozlanmagan";
+
     }
 
     if (databaseStatus) {
+
         databaseStatus.textContent = "Hali ulanmagan";
+
     }
 
 }
-
-updateSystemStatus();
 
 
 /* ==========================================
@@ -378,7 +419,7 @@ function hideLoadingScreen() {
 
     adminLoading.style.transition = "opacity 0.25s ease";
 
-    setTimeout(() => {
+    window.setTimeout(() => {
 
         adminLoading.style.display = "none";
 
@@ -393,7 +434,7 @@ function hideLoadingScreen() {
 
 window.addEventListener("resize", () => {
 
-    if (window.innerWidth > 760) {
+    if (window.innerWidth > AdminConfig.mobileBreakpoint) {
 
         closeSidebar();
 
@@ -406,7 +447,7 @@ window.addEventListener("resize", () => {
    14. START ADMIN INTERFACE
    ========================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+function startAdminInterface() {
 
     initializeDashboard();
 
@@ -421,10 +462,24 @@ document.addEventListener("DOMContentLoaded", () => {
         AdminConfig.version
     );
 
-});
+}
+
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        startAdminInterface,
+        { once: true }
+    );
+
+} else {
+
+    startAdminInterface();
+
+}
 
 
 /* ==========================================
    END ENGLISH UP ADMIN SCRIPT
    ========================================== */
-
