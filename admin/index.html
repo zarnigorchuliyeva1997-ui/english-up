@@ -11,21 +11,19 @@
 
     <link rel="stylesheet" href="./style.css">
 
-    <!-- ADMIN ACCESS CHECK -->
     <style>
         html {
             visibility: hidden;
         }
     </style>
 
-    <script type="module" src="./auth-guard.js"></script>
+    <script type="module" src="./auth.js"></script>
 </head>
 
 <body>
 
 <div class="admin-layout" id="adminLayout">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-brand">
@@ -42,7 +40,6 @@
             </button>
         </div>
 
-        <!-- ADMIN PROFILE -->
         <div class="sidebar-profile">
             <div class="profile-avatar">A</div>
 
@@ -54,7 +51,6 @@
             <span class="online-indicator"></span>
         </div>
 
-        <!-- MAIN NAVIGATION -->
         <nav class="sidebar-navigation" aria-label="Admin navigatsiyasi">
 
             <div class="nav-section-title">ASOSIY BOSHQARUV</div>
@@ -154,7 +150,6 @@
 
         </nav>
 
-        <!-- SIDEBAR FOOTER -->
         <div class="sidebar-footer">
             <div class="sidebar-footer-line"></div>
             <span>ENGLISH UP ADMIN</span>
@@ -163,10 +158,8 @@
 
     </aside>
 
-    <!-- MAIN AREA -->
     <div class="main-area">
 
-        <!-- TOP HEADER -->
         <header class="topbar">
 
             <div class="topbar-left">
@@ -216,10 +209,8 @@
 
         </header>
 
-        <!-- PAGE CONTENT -->
         <main class="main-content" id="mainContent">
 
-            <!-- PAGE HEADING -->
             <section class="page-heading">
 
                 <div>
@@ -240,7 +231,6 @@
 
             </section>
 
-            <!-- WELCOME PANEL -->
             <section class="welcome-panel">
 
                 <div class="welcome-content">
@@ -262,7 +252,6 @@
 
             </section>
 
-            <!-- STATISTICS -->
             <section class="statistics-section">
 
                 <div class="section-heading">
@@ -330,7 +319,6 @@
 
             </section>
 
-            <!-- QUICK ACTIONS -->
             <section class="quick-actions-section">
 
                 <div class="section-heading">
@@ -370,7 +358,6 @@
 
             </section>
 
-            <!-- RECENT ACTIVITY -->
             <section class="activity-section">
 
                 <div class="section-heading">
@@ -392,8 +379,7 @@
                         <h3>Hozircha ma'lumot yo‘q</h3>
 
                         <p>
-                            Firebase bilan ulanish tugagach,
-                            oxirgi faoliyatlar shu yerda ko‘rsatiladi.
+                            Platformadagi oxirgi faoliyatlar shu yerda ko‘rsatiladi.
                         </p>
                     </div>
 
@@ -401,7 +387,6 @@
 
             </section>
 
-            <!-- SYSTEM STATUS -->
             <section class="system-section">
 
                 <div class="section-heading">
@@ -417,8 +402,8 @@
                         <span class="system-status-icon">●</span>
 
                         <div>
-                            <strong>Firebase</strong>
-                            <span id="firebaseStatus">Tekshirilmagan</span>
+                            <strong>GitHub Pages</strong>
+                            <span id="firebaseStatus">Mustaqil rejim</span>
                         </div>
                     </div>
 
@@ -426,8 +411,8 @@
                         <span class="system-status-icon">●</span>
 
                         <div>
-                            <strong>Authentication</strong>
-                            <span id="authStatus">Tekshirilmagan</span>
+                            <strong>Admin Session</strong>
+                            <span id="authStatus">Lokal sessiya</span>
                         </div>
                     </div>
 
@@ -435,8 +420,8 @@
                         <span class="system-status-icon">●</span>
 
                         <div>
-                            <strong>Database</strong>
-                            <span id="databaseStatus">Tekshirilmagan</span>
+                            <strong>Local Storage</strong>
+                            <span id="databaseStatus">Brauzer xotirasi</span>
                         </div>
                     </div>
 
@@ -444,7 +429,6 @@
 
             </section>
 
-            <!-- FOOTER -->
             <footer class="admin-footer">
 
                 <div>
@@ -464,15 +448,12 @@
 
 </div>
 
-<!-- MOBILE SIDEBAR OVERLAY -->
 <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
-<!-- GLOBAL MESSAGE CONTAINER -->
 <div class="toast-container" id="toastContainer"
     aria-live="polite" aria-atomic="true">
 </div>
 
-<!-- LOADING SCREEN -->
 <div class="admin-loading" id="adminLoading">
 
     <div class="loading-logo">EU</div>
@@ -485,7 +466,6 @@
 
 </div>
 
-<!-- ADMIN SCRIPT -->
 <script src="./script.js"></script>
 
 </body>
