@@ -1,1 +1,544 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#7047eb">
+
+    <title>Dashboard | English Up Admin</title>
+
+    <meta name="description" content="English Up platformasining boshqaruv paneli">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <script type="module" src="./script.js"></script>
+</head>
+
+<body>
+
+<div class="admin-layout" id="adminLayout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">EU</div>
+
+            <div class="brand-info">
+                <h2>ENGLISH UP</h2>
+                <span>ADMIN CONTROL CENTER</span>
+            </div>
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Menyuni yopish"
+                type="button">
+                &times;
+            </button>
+        </div>
+
+        <!-- ADMIN PROFILE -->
+        <div class="sidebar-profile">
+            <div class="profile-avatar">A</div>
+
+            <div class="profile-details">
+                <strong>Administrator</strong>
+                <span>Platform Owner</span>
+            </div>
+
+            <span class="online-indicator"></span>
+        </div>
+
+        <!-- MAIN NAVIGATION -->
+        <nav class="sidebar-navigation" aria-label="Admin navigatsiyasi">
+
+            <div class="nav-section-title">ASOSIY BOSHQARUV</div>
+
+            <a href="./index.html" class="nav-link active"
+               data-page="dashboard">
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="./students.html" class="nav-link"
+               data-page="students">
+                <span class="nav-icon">♙</span>
+                <span>Students</span>
+            </a>
+
+            <a href="./subscriptions.html" class="nav-link"
+               data-page="subscriptions">
+                <span class="nav-icon">◈</span>
+                <span>Subscriptions</span>
+            </a>
+
+            <a href="./activation-codes.html" class="nav-link"
+               data-page="activation-codes">
+                <span class="nav-icon">⚿</span>
+                <span>Activation Codes</span>
+            </a>
+
+            <div class="nav-section-title">TA'LIM BOSHQARUVI</div>
+
+            <a href="./courses.html" class="nav-link"
+               data-page="courses">
+                <span class="nav-icon">▤</span>
+                <span>Courses</span>
+            </a>
+
+            <a href="./lessons.html" class="nav-link"
+               data-page="lessons">
+                <span class="nav-icon">▧</span>
+                <span>Lessons</span>
+            </a>
+
+            <a href="./vocabulary.html" class="nav-link"
+               data-page="vocabulary">
+                <span class="nav-icon">Aa</span>
+                <span>Vocabulary</span>
+            </a>
+
+            <a href="./tests.html" class="nav-link"
+               data-page="tests">
+                <span class="nav-icon">☑</span>
+                <span>Tests</span>
+            </a>
+
+            <div class="nav-section-title">4 TA KO'NIKMA</div>
+
+            <a href="./listening.html" class="nav-link"
+               data-page="listening">
+                <span class="nav-icon">♫</span>
+                <span>Listening</span>
+            </a>
+
+            <a href="./reading.html" class="nav-link"
+               data-page="reading">
+                <span class="nav-icon">▥</span>
+                <span>Reading</span>
+            </a>
+
+            <a href="./writing.html" class="nav-link"
+               data-page="writing">
+                <span class="nav-icon">✎</span>
+                <span>Writing</span>
+            </a>
+
+            <a href="./speaking.html" class="nav-link"
+               data-page="speaking">
+                <span class="nav-icon">◉</span>
+                <span>Speaking</span>
+            </a>
+
+            <div class="nav-section-title">ALOQA VA TAHLIL</div>
+
+            <a href="./announcements.html" class="nav-link"
+               data-page="announcements">
+                <span class="nav-icon">⚑</span>
+                <span>Announcements</span>
+            </a>
+
+            <a href="./messages.html" class="nav-link"
+               data-page="messages">
+                <span class="nav-icon">✉</span>
+                <span>Messages</span>
+            </a>
+
+            <a href="./results.html" class="nav-link"
+               data-page="results">
+                <span class="nav-icon">▣</span>
+                <span>Results</span>
+            </a>
+
+            <a href="./statistics.html" class="nav-link"
+               data-page="statistics">
+                <span class="nav-icon">▥</span>
+                <span>Statistics</span>
+            </a>
+
+            <div class="nav-section-title">TIZIM BOSHQARUVI</div>
+
+            <a href="./security.html" class="nav-link"
+               data-page="security">
+                <span class="nav-icon">♢</span>
+                <span>Security</span>
+            </a>
+
+            <a href="./backup.html" class="nav-link"
+               data-page="backup">
+                <span class="nav-icon">▣</span>
+                <span>Backup</span>
+            </a>
+
+        </nav>
+
+        <!-- SIDEBAR FOOTER -->
+        <div class="sidebar-footer">
+            <div class="sidebar-footer-line"></div>
+            <span>ENGLISH UP ADMIN</span>
+            <span>Management System</span>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Menyuni ochish">
+                    ☰
+                </button>
+
+                <div class="breadcrumb">
+                    <span>English Up</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <strong>Dashboard</strong>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input
+                        type="search"
+                        id="globalSearch"
+                        placeholder="Qidirish..."
+                        aria-label="Admin panel bo‘yicha qidirish">
+                </div>
+
+                <button
+                    class="notification-button"
+                    id="notificationButton"
+                    type="button"
+                    aria-label="Bildirishnomalar">
+                    ♧
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="topbar-admin">
+                    <div class="topbar-avatar">A</div>
+
+                    <div class="topbar-admin-info">
+                        <strong>Admin</strong>
+                        <span>Owner</span>
+                    </div>
+                </div>
+
+                <button
+                    class="logout-button"
+                    id="logoutButton"
+                    type="button">
+                    Chiqish
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <main class="main-content" id="mainContent">
+
+            <!-- PAGE HEADING -->
+            <section class="page-heading">
+
+                <div>
+                    <div class="page-eyebrow">
+                        ENGLISH UP MANAGEMENT
+                    </div>
+
+                    <h1>Dashboard</h1>
+
+                    <p>
+                        English Up platformasining umumiy boshqaruv markazi.
+                    </p>
+                </div>
+
+                <div class="dashboard-date" id="dashboardDate">
+                    Sana yuklanmoqda...
+                </div>
+
+            </section>
+
+
+            <!-- WELCOME PANEL -->
+            <section class="welcome-panel">
+
+                <div class="welcome-content">
+                    <span class="welcome-label">
+                        ADMIN CONTROL CENTER
+                    </span>
+
+                    <h2>Xush kelibsiz, Administrator!</h2>
+
+                    <p>
+                        Bu yerdan English Up platformasining barcha
+                        bo‘limlarini boshqarishingiz mumkin.
+                    </p>
+
+                </div>
+
+                <div class="welcome-decoration">
+                    <div class="welcome-circle">EU</div>
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="statistics-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Umumiy statistika</h2>
+                        <p>Platformaning asosiy ko‘rsatkichlari</p>
+                    </div>
+                </div>
+
+                <div class="statistics-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon purple">♙</span>
+                            <span class="stat-label">O‘quvchilar</span>
+                        </div>
+
+                        <div class="stat-value" id="totalStudents">—</div>
+
+                        <div class="stat-description">
+                            Jami ro‘yxatdan o‘tganlar
+                        </div>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon green">◈</span>
+                            <span class="stat-label">Faol obunalar</span>
+                        </div>
+
+                        <div class="stat-value" id="activeSubscriptions">—</div>
+
+                        <div class="stat-description">
+                            Hozir faol bo‘lgan obunalar
+                        </div>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon orange">⚿</span>
+                            <span class="stat-label">Aktivatsiya kodlari</span>
+                        </div>
+
+                        <div class="stat-value" id="unusedCodes">—</div>
+
+                        <div class="stat-description">
+                            Ishlatilmagan kodlar
+                        </div>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon blue">▤</span>
+                            <span class="stat-label">Kurslar</span>
+                        </div>
+
+                        <div class="stat-value" id="totalCourses">—</div>
+
+                        <div class="stat-description">
+                            Platformadagi kurslar
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUICK ACTIONS -->
+            <section class="quick-actions-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Tezkor boshqaruv</h2>
+                        <p>Ko‘p ishlatiladigan amallar</p>
+                    </div>
+                </div>
+
+                <div class="quick-actions-grid">
+
+                    <a href="./students.html" class="quick-action-card">
+                        <span class="quick-action-icon">♙</span>
+                        <strong>O‘quvchilar</strong>
+                        <span>Akkauntlarni boshqarish</span>
+                    </a>
+
+                    <a href="./activation-codes.html" class="quick-action-card">
+                        <span class="quick-action-icon">⚿</span>
+                        <strong>Kod yaratish</strong>
+                        <span>Yangi aktivatsiya kodi</span>
+                    </a>
+
+                    <a href="./courses.html" class="quick-action-card">
+                        <span class="quick-action-icon">▤</span>
+                        <strong>Kurslar</strong>
+                        <span>Kurslarni boshqarish</span>
+                    </a>
+
+                    <a href="./announcements.html" class="quick-action-card">
+                        <span class="quick-action-icon">⚑</span>
+                        <strong>E'lon yuborish</strong>
+                        <span>O‘quvchilarga xabar berish</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT ACTIVITY -->
+            <section class="activity-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>So‘nggi faoliyat</h2>
+                        <p>Platformadagi oxirgi o‘zgarishlar</p>
+                    </div>
+
+                    <a href="./statistics.html" class="text-link">
+                        Batafsil ko‘rish →
+                    </a>
+                </div>
+
+                <div class="activity-container" id="recentActivity">
+
+                    <div class="empty-state">
+                        <div class="empty-state-icon">▤</div>
+
+                        <h3>Hozircha ma'lumot yo‘q</h3>
+
+                        <p>
+                            Firebase bilan ulanish tugagach,
+                            oxirgi faoliyatlar shu yerda ko‘rsatiladi.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SYSTEM STATUS -->
+            <section class="system-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Tizim holati</h2>
+                        <p>Platforma xizmatlarining holati</p>
+                    </div>
+                </div>
+
+                <div class="system-status-grid">
+
+                    <div class="system-status-card">
+                        <span class="system-status-icon">●</span>
+
+                        <div>
+                            <strong>Firebase</strong>
+                            <span id="firebaseStatus">Tekshirilmagan</span>
+                        </div>
+                    </div>
+
+                    <div class="system-status-card">
+                        <span class="system-status-icon">●</span>
+
+                        <div>
+                            <strong>Authentication</strong>
+                            <span id="authStatus">Tekshirilmagan</span>
+                        </div>
+                    </div>
+
+                    <div class="system-status-card">
+                        <span class="system-status-icon">●</span>
+
+                        <div>
+                            <strong>Database</strong>
+                            <span id="databaseStatus">Tekshirilmagan</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="admin-footer">
+
+                <div>
+                    <strong>ENGLISH UP</strong>
+                    <span>Learn today. Succeed tomorrow.</span>
+                </div>
+
+                <div>
+                    Admin Control Center
+                </div>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<!-- MOBILE SIDEBAR OVERLAY -->
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+    aria-hidden="true">
+</div>
+
+
+<!-- GLOBAL MESSAGE CONTAINER -->
+<div
+    class="toast-container"
+    id="toastContainer"
+    aria-live="polite"
+    aria-atomic="true">
+</div>
+
+
+<!-- LOADING SCREEN -->
+<div class="admin-loading" id="adminLoading">
+
+    <div class="loading-logo">EU</div>
+
+    <h2>ENGLISH UP</h2>
+
+    <p>Admin panel yuklanmoqda...</p>
+
+    <div class="loading-spinner"></div>
+
+</div>
+
+
+</body>
+</html>
+
