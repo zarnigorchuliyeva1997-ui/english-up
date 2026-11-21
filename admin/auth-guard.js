@@ -5,12 +5,12 @@ import {
     signOut
 } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
 
-import { auth, authPersistence } from "./login/firebase.js";
+import { auth } from "./login/firebase.js";
+
+document.documentElement.style.visibility = "hidden";
 
 onAuthStateChanged(auth, async (user) => {
     try {
-        await authPersistence;
-
         if (!user) {
             window.location.replace("./login/index.html");
             return;
@@ -27,7 +27,7 @@ onAuthStateChanged(auth, async (user) => {
         document.documentElement.style.visibility = "visible";
 
     } catch (error) {
-        console.error("Admin tekshiruvi:", error);
+        console.error("Admin access error:", error);
         await signOut(auth);
         window.location.replace("./login/index.html");
     }
