@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Backup | English Up Admin</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">EU</div>
+        <div>
+          <h2>ENGLISH UP</h2>
+          <span>ADMIN PANEL</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="../index.html">Dashboard</a>
+        <a href="../students/index.html">Students</a>
+        <a href="../subscriptions/index.html">Subscriptions</a>
+        <a href="../activation-codes/index.html">Activation Codes</a>
+        <a href="../courses/index.html">Courses</a>
+        <a href="../lessons/index.html">Lessons</a>
+        <a href="../vocabulary/index.html">Vocabulary</a>
+        <a href="../tests/index.html">Tests</a>
+        <a href="../listening/index.html">Listening</a>
+        <a href="../reading/index.html">Reading</a>
+        <a href="../writing/index.html">Writing</a>
+        <a href="../speaking/index.html">Speaking</a>
+        <a href="../announcements/index.html">Announcements</a>
+        <a href="../results/index.html">Results</a>
+        <a href="../statistics/index.html">Statistics</a>
+        <a href="../security/index.html">Security</a>
+        <a class="active" href="./index.html">Backup</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span>English Up</span>
+        <small>Admin workspace</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu">☰</button>
+        <div>
+          <h1>Backup</h1>
+          <p>Data backup and recovery center</p>
+        </div>
+        <a class="back-link" href="../index.html">Dashboard</a>
+      </header>
+
+      <section class="backup-warning">
+        <strong>Backup tizimi hali Firebase bilan ulanmagan.</strong>
+        <p>
+          Hozirgi sahifa interfeys vazifasini bajaradi. Haqiqiy zaxira nusxasi
+          va tiklash imkoniyatlari Firebase integratsiyasidan keyin yoqiladi.
+        </p>
+      </section>
+
+      <section class="backup-summary">
+        <article class="backup-card">
+          <span>Oxirgi backup</span>
+          <strong id="lastBackup">Hozircha yo‘q</strong>
+          <small>Firebase backup ulanmagan</small>
+        </article>
+
+        <article class="backup-card">
+          <span>Backup nusxalari</span>
+          <strong id="backupCount">0</strong>
+          <small>Saqlangan zaxira nusxalari</small>
+        </article>
+
+        <article class="backup-card">
+          <span>Tizim holati</span>
+          <strong id="backupStatus">Kutilmoqda</strong>
+          <small>Avtomatik backup yoqilmagan</small>
+        </article>
+      </section>
+
+      <section class="backup-actions">
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Manual backup</h2>
+              <p>Administrator tomonidan zaxira nusxasi yaratish</p>
+            </div>
+          </div>
+          <p class="action-description">
+            Firebase ulangandan keyin ushbu amal ma’lumotlarning serverdagi
+            zaxira nusxasini yaratadi.
+          </p>
+          <button type="button" id="createBackup" disabled>
+            Backup yaratish
+          </button>
+          <small class="disabled-note">Firebase integratsiyasidan keyin faollashadi.</small>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Restore backup</h2>
+              <p>Oldingi zaxira nusxasidan tiklash</p>
+            </div>
+          </div>
+          <p class="action-description">
+            Tiklash amali faqat tekshirilgan zaxira nusxasi tanlangandan
+            va administrator tasdiqlagandan keyin bajariladi.
+          </p>
+          <button type="button" id="restoreBackup" disabled>
+            Ma’lumotlarni tiklash
+          </button>
+          <small class="disabled-note">Hozircha mavjud emas.</small>
+        </article>
+      </section>
+
+      <section class="panel backup-history">
+        <div class="panel-heading">
+          <div>
+            <h2>Backup history</h2>
+            <p>Yaratilgan zaxira nusxalari tarixi</p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Backup ID</th>
+                <th>Sana</th>
+                <th>Tur</th>
+                <th>Holat</th>
+              </tr>
+            </thead>
+            <tbody id="backupHistory">
+              <tr>
+                <td colspan="4" class="empty-state">
+                  Hozircha backup tarixi mavjud emas.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel backup-plan">
+        <div class="panel-heading">
+          <div>
+            <h2>Kelajakdagi backup sozlamalari</h2>
+            <p>Firebase integratsiyasida sozlanadigan imkoniyatlar</p>
+          </div>
+        </div>
+
+        <div class="backup-setting">
+          <div>
+            <strong>Avtomatik backup</strong>
+            <p>Belgilangan jadval asosida zaxira nusxasi yaratish.</p>
+          </div>
+          <span class="setting-status">Kutilmoqda</span>
+        </div>
+
+        <div class="backup-setting">
+          <div>
+            <strong>Backup xavfsizligi</strong>
+            <p>Zaxira fayllariga faqat ruxsatli administrator kira olishi.</p>
+          </div>
+          <span class="setting-status">Kutilmoqda</span>
+        </div>
+
+        <div class="backup-setting">
+          <div>
+            <strong>Tiklashdan oldin tasdiqlash</strong>
+            <p>Ma’lumotlar almashtirilishidan oldin qo‘shimcha tasdiq talab qilish.</p>
+          </div>
+          <span class="setting-status">Kutilmoqda</span>
+        </div>
+      </section>
+
+      <p class="backup-note">
+        Eslatma: brauzerdagi localStorage ma’lumotlari haqiqiy server backup
+        o‘rnini bosa olmaydi. Zaxira nusxalari server tomonda xavfsiz
+        yaratilishi va tekshirilishi kerak.
+      </p>
+    </main>
+  </div>
+
+  <script src="../script.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
