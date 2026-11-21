@@ -1,0 +1,145 @@
+
+.security-warning {
+  padding: 20px;
+  margin-bottom: 22px;
+  border: 1px solid #f0d89b;
+  border-radius: 14px;
+  background: #fff9e9;
+  color: #72551a;
+}
+
+.security-warning strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.security-warning p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.security-warning span {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #f5e8c5;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.security-card,
+.security-settings {
+  padding: 21px;
+  border: 1px solid var(--border-color, #e8e6ef);
+  border-radius: 15px;
+  background: var(--card-bg, #fff);
+}
+
+.security-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background: #f0ebff;
+  font-size: 22px;
+}
+
+.security-card h2 {
+  margin: 0 0 9px;
+  color: var(--text-color, #252238);
+  font-size: 17px;
+}
+
+.security-card p {
+  min-height: 42px;
+  margin: 0 0 15px;
+  color: var(--muted, #777);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.security-state {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.security-state.pending {
+  background: #fff3d9;
+  color: #936716;
+}
+
+.security-settings {
+  margin-bottom: 20px;
+}
+
+.security-checklist {
+  display: flex;
+  flex-direction: column;
+}
+
+.check-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color, #eee);
+  color: var(--text-color, #333);
+  font-size: 13px;
+}
+
+.check-row:last-child {
+  border-bottom: 0;
+}
+
+.task-status {
+  flex-shrink: 0;
+  padding: 6px 9px;
+  border-radius: 20px;
+  background: #fff3d9;
+  color: #936716;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.security-note {
+  padding: 15px;
+  border-left: 4px solid #7047eb;
+  border-radius: 8px;
+  background: var(--card-bg, #fff);
+  color: var(--muted, #777);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .security-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .security-card,
+  .security-settings {
+    padding: 17px;
+  }
+
+  .check-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+  }
+}
