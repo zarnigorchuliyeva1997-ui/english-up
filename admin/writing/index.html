@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Writing Management | English Up</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>ENGLISH <span>UP</span></h2>
+      <p>Admin Panel</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="../index.html">Dashboard</a>
+      <a href="../students/index.html">Students</a>
+      <a href="../subscriptions/index.html">Subscriptions</a>
+      <a href="../activation-codes/index.html">Activation Codes</a>
+      <a href="../courses/index.html">Courses</a>
+      <a href="../lessons/index.html">Lessons</a>
+      <a href="../vocabulary/index.html">Vocabulary</a>
+      <a href="../tests/index.html">Tests</a>
+      <a href="../listening/index.html">Listening</a>
+      <a href="../reading/index.html">Reading</a>
+      <a href="./index.html" class="active">Writing</a>
+      <a href="../speaking/index.html">Speaking</a>
+      <a href="../announcements/index.html">Announcements</a>
+      <a href="../messages/index.html">Messages</a>
+      <a href="../results/index.html">Results</a>
+      <a href="../statistics/index.html">Statistics</a>
+      <a href="../security/index.html">Security</a>
+      <a href="../backup/index.html">Backup</a>
+    </nav>
+
+    <a href="../../index.html" class="back-to-site">← Main Website</a>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" type="button">☰</button>
+      <div>
+        <h2>Writing Management</h2>
+        <p>Manage writing tasks and assignments</p>
+      </div>
+      <div class="admin-profile">
+        <span>Administrator</span>
+      </div>
+    </header>
+
+    <section class="page-content">
+
+      <div class="page-heading">
+        <div>
+          <h1>Writing Library</h1>
+          <p>Create and manage writing tasks for English Up students.</p>
+        </div>
+        <button class="primary-btn" id="addTaskBtn" type="button">
+          + Add Writing Task
+        </button>
+      </div>
+
+      <div class="writing-stats">
+        <div class="stat-card">
+          <span>Total Tasks</span>
+          <strong id="totalTasks">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Active Tasks</span>
+          <strong id="activeTasks">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Draft Tasks</span>
+          <strong id="draftTasks">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Total Submissions</span>
+          <strong id="totalSubmissions">0</strong>
+        </div>
+      </div>
+
+      <section class="writing-panel" id="taskFormPanel" style="display:none;">
+        <div class="panel-heading">
+          <div>
+            <h2 id="taskFormTitle">Add Writing Task</h2>
+            <p>Enter the task details and instructions.</p>
+          </div>
+          <button type="button" class="close-btn" id="closeTaskForm">×</button>
+        </div>
+
+        <form id="taskForm">
+          <input type="hidden" id="taskId">
+
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="taskTitle">Task Title *</label>
+              <input id="taskTitle" type="text" required maxlength="180"
+                placeholder="Example: My Daily Routine">
+            </div>
+
+            <div class="form-group">
+              <label for="taskLevel">English Level *</label>
+              <select id="taskLevel" required>
+                <option value="beginner">Beginner</option>
+                <option value="elementary">Elementary</option>
+                <option value="preintermediate">Pre-Intermediate</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="upperintermediate">Upper-Intermediate</option>
+                <option value="ielts">IELTS</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="taskType">Writing Type *</label>
+              <select id="taskType" required>
+                <option value="sentence">Sentence Writing</option>
+                <option value="paragraph">Paragraph</option>
+                <option value="essay">Essay</option>
+                <option value="email">Email / Letter</option>
+                <option value="ielts-task-1">IELTS Writing Task 1</option>
+                <option value="ielts-task-2">IELTS Writing Task 2</option>
+                <option value="translation">Translation</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="taskCategory">Category</label>
+              <input id="taskCategory" type="text" maxlength="100"
+                placeholder="Example: Education">
+            </div>
+
+            <div class="form-group">
+              <label for="taskTime">Suggested Time (minutes)</label>
+              <input id="taskTime" type="number" min="1" max="600" value="30">
+            </div>
+
+            <div class="form-group">
+              <label for="taskWords">Minimum Words</label>
+              <input id="taskWords" type="number" min="0" max="10000" value="0">
+            </div>
+
+            <div class="form-group">
+              <label for="taskMaxWords">Maximum Words</label>
+              <input id="taskMaxWords" type="number" min="0" max="10000" value="0">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="taskPrompt">Writing Question / Topic *</label>
+              <textarea id="taskPrompt" rows="4" required
+                placeholder="Write the question or topic for students..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="taskInstructions">Instructions</label>
+              <textarea id="taskInstructions" rows="4"
+                placeholder="Explain what students should do..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="taskUsefulWords">Useful Vocabulary / Phrases</label>
+              <textarea id="taskUsefulWords" rows="4"
+                placeholder="Add helpful words, phrases or sentence starters..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="taskExample">Model Answer / Example</label>
+              <textarea id="taskExample" rows="6"
+                placeholder="Add a sample answer for students..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="taskAccess">Access</label>
+              <select id="taskAccess">
+                <option value="free">Free</option>
+                <option value="subscription">Subscription</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="taskStatus">Status</label>
+              <select id="taskStatus">
+                <option value="draft">Draft</option>
+                <option value="active">Active</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn" id="saveTaskBtn">
+              Save Writing Task
+            </button>
+            <button type="button" class="secondary-btn" id="cancelTaskForm">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="writing-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Writing Tasks</h2>
+            <p>Search, edit and organize writing assignments.</p>
+          </div>
+          <button class="secondary-btn" id="refreshTasks" type="button">
+            ↻ Refresh
+          </button>
+        </div>
+
+        <div class="writing-filters">
+          <input type="search" id="taskSearch" placeholder="Search tasks...">
+
+          <select id="taskLevelFilter">
+            <option value="">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="elementary">Elementary</option>
+            <option value="preintermediate">Pre-Intermediate</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="upperintermediate">Upper-Intermediate</option>
+            <option value="ielts">IELTS</option>
+          </select>
+
+          <select id="taskTypeFilter">
+            <option value="">All Types</option>
+            <option value="sentence">Sentence Writing</option>
+            <option value="paragraph">Paragraph</option>
+            <option value="essay">Essay</option>
+            <option value="email">Email / Letter</option>
+            <option value="ielts-task-1">IELTS Task 1</option>
+            <option value="ielts-task-2">IELTS Task 2</option>
+            <option value="translation">Translation</option>
+            <option value="other">Other</option>
+          </select>
+
+          <select id="taskStatusFilter">
+            <option value="">All Statuses</option>
+            <option value="active">Active</option>
+            <option value="draft">Draft</option>
+            <option value="archived">Archived</option>
+          </select>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="writing-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Level</th>
+                <th>Type</th>
+                <th>Access</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tasksTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="table-footer">
+          <span id="taskCount">0 tasks</span>
+        </div>
+      </section>
+
+    </section>
+  </main>
+</div>
+
+<script src="../script.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
