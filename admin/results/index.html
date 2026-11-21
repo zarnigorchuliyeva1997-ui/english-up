@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Results | English Up Admin</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div class="admin-layout">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <h2>ENGLISH UP</h2>
+        <span>ADMIN PANEL</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="../index.html">Dashboard</a>
+        <a href="../students/index.html">Students</a>
+        <a href="../subscriptions/index.html">Subscriptions</a>
+        <a href="../activation-codes/index.html">Activation Codes</a>
+        <a href="../courses/index.html">Courses</a>
+        <a href="../lessons/index.html">Lessons</a>
+        <a href="../vocabulary/index.html">Vocabulary</a>
+        <a href="../tests/index.html">Tests</a>
+        <a href="../listening/index.html">Listening</a>
+        <a href="../reading/index.html">Reading</a>
+        <a href="../writing/index.html">Writing</a>
+        <a href="../speaking/index.html">Speaking</a>
+        <a href="../announcements/index.html">Announcements</a>
+        <a href="./index.html" class="active">Results</a>
+        <a href="../statistics/index.html">Statistics</a>
+        <a href="../security/index.html">Security</a>
+        <a href="../backup/index.html">Backup</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+
+      <header class="topbar">
+        <button type="button" class="menu-toggle" id="menuToggle"
+          aria-label="Open menu">☰</button>
+        <div>
+          <h1>Results</h1>
+          <p>O‘quvchilarning natijalari va o‘zlashtirish ko‘rsatkichlari</p>
+        </div>
+      </header>
+
+      <section class="page-content">
+
+        <div class="page-heading">
+          <div>
+            <h2>Natijalar boshqaruvi</h2>
+            <p>Har bir o‘quvchining natijalari alohida ko‘rsatiladi.</p>
+          </div>
+          <button type="button" class="secondary-btn"
+            id="refreshResults">Yangilash</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>Jami natijalar</span>
+            <strong id="totalResults">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>O‘quvchilar</span>
+            <strong id="totalStudents">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>O‘rtacha natija</span>
+            <strong id="averageScore">0%</strong>
+          </div>
+          <div class="stat-card">
+            <span>Yuqori natijalar</span>
+            <strong id="highScores">0</strong>
+          </div>
+        </div>
+
+        <section class="content-card">
+          <div class="section-heading">
+            <div>
+              <h2>O‘quvchini qidirish</h2>
+              <p>O‘quvchining barcha natijalarini alohida ko‘ring.</p>
+            </div>
+          </div>
+
+          <div class="filters">
+            <input type="search" id="studentSearch"
+              placeholder="Ism, email yoki UID bo‘yicha qidirish...">
+
+            <select id="levelFilter">
+              <option value="all">Barcha darajalar</option>
+              <option value="beginner">Beginner</option>
+              <option value="elementary">Elementary</option>
+              <option value="pre-intermediate">Pre-Intermediate</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="upper-intermediate">Upper-Intermediate</option>
+              <option value="ielts">IELTS</option>
+            </select>
+
+            <select id="resultTypeFilter">
+              <option value="all">Barcha natijalar</option>
+              <option value="lesson">Dars testlari</option>
+              <option value="grammar">Grammar</option>
+              <option value="vocabulary">Vocabulary</option>
+              <option value="listening">Listening</option>
+              <option value="reading">Reading</option>
+              <option value="writing">Writing</option>
+              <option value="speaking">Speaking</option>
+              <option value="final">Yakuniy imtihon</option>
+            </select>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>O‘quvchi</th>
+                  <th>UID</th>
+                  <th>Kurs darajasi</th>
+                  <th>Natijalar soni</th>
+                  <th>O‘rtacha ball</th>
+                  <th>Oxirgi faollik</th>
+                  <th>Amal</th>
+                </tr>
+              </thead>
+              <tbody id="studentsResultsTable"></tbody>
+            </table>
+          </div>
+
+          <p id="studentResultsCount">Jami: 0 ta o‘quvchi</p>
+        </section>
+
+        <section class="content-card" id="studentDetailPanel" hidden>
+          <div class="section-heading">
+            <div>
+              <h2>O‘quvchi natijalari</h2>
+              <p id="selectedStudentInfo">O‘quvchi ma’lumotlari</p>
+            </div>
+            <button type="button" class="secondary-btn"
+              id="closeStudentDetails">Yopish</button>
+          </div>
+
+          <div class="student-summary">
+            <div>
+              <span>Jami testlar</span>
+              <strong id="detailTotalTests">0</strong>
+            </div>
+            <div>
+              <span>O‘rtacha ball</span>
+              <strong id="detailAverage">0%</strong>
+            </div>
+            <div>
+              <span>Eng yaxshi natija</span>
+              <strong id="detailBest">0%</strong>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test yoki topshiriq</th>
+                  <th>Turi</th>
+                  <th>Daraja</th>
+                  <th>Ball</th>
+                  <th>Foiz</th>
+                  <th>Sana</th>
+                </tr>
+              </thead>
+              <tbody id="studentDetailResults"></tbody>
+            </table>
+          </div>
+
+          <p id="detailResultsCount">Jami: 0 ta natija</p>
+        </section>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="../script.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
