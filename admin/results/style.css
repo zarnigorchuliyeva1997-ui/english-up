@@ -1,0 +1,299 @@
+
+/* ENGLISH UP — RESULTS */
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-heading,
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page-heading h2,
+.section-heading h2 {
+  margin: 0 0 6px;
+}
+
+.page-heading p,
+.section-heading p {
+  margin: 0;
+  color: var(--text-muted, #777);
+}
+
+.primary-btn,
+.secondary-btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 17px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.primary-btn {
+  background: #7047eb;
+  color: #fff;
+}
+
+.secondary-btn {
+  background: var(--card-bg, #f0eef8);
+  color: var(--text-color, #333);
+  border: 1px solid var(--border-color, #e5e1ef);
+}
+
+.secondary-btn:hover {
+  background: #e7e1f8;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #e8e5ef);
+  border-radius: 13px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.stat-card span {
+  color: var(--text-muted, #777);
+  font-size: 13px;
+}
+
+.stat-card strong {
+  font-size: 27px;
+  color: var(--text-color, #222);
+}
+
+.content-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #e8e5ef);
+  border-radius: 14px;
+  padding: 22px;
+  min-width: 0;
+}
+
+.content-card[hidden] {
+  display: none !important;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 9px;
+  background: var(--input-bg, #fff);
+  color: var(--text-color, #222);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #7047eb;
+  box-shadow: 0 0 0 3px rgba(112, 71, 235, 0.1);
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+th,
+td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #e8e5ef);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+th {
+  color: var(--text-muted, #777);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+td {
+  color: var(--text-color, #333);
+}
+
+.student-name {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.student-email {
+  color: var(--text-muted, #777);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.student-uid {
+  font-family: monospace;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.result-score {
+  font-weight: 700;
+}
+
+.result-score.good {
+  color: #15803d;
+}
+
+.result-score.medium {
+  color: #b45309;
+}
+
+.result-score.low {
+  color: #dc2626;
+}
+
+.result-level,
+.result-type {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  background: #ede9fe;
+  color: #5b21b6;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.view-results-btn {
+  border: 0;
+  border-radius: 7px;
+  padding: 8px 12px;
+  background: #ede9fe;
+  color: #5b21b6;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.view-results-btn:hover {
+  background: #ddd6fe;
+}
+
+#studentResultsCount,
+#detailResultsCount {
+  margin: 16px 0 0;
+  color: var(--text-muted, #777);
+  font-size: 13px;
+}
+
+.student-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+
+.student-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 17px;
+  border: 1px solid var(--border-color, #e8e5ef);
+  border-radius: 11px;
+  background: var(--input-bg, #faf9fd);
+  min-width: 0;
+}
+
+.student-summary span {
+  color: var(--text-muted, #777);
+  font-size: 13px;
+}
+
+.student-summary strong {
+  color: var(--text-color, #222);
+  font-size: 23px;
+}
+
+.results-empty {
+  text-align: center;
+  padding: 30px 15px;
+  color: var(--text-muted, #777);
+}
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters input {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-card {
+    padding: 15px;
+  }
+
+  .stats-grid {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-card strong {
+    font-size: 23px;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .filters input {
+    grid-column: auto;
+  }
+
+  .student-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .page-heading .secondary-btn {
+    width: 100%;
+  }
+}
