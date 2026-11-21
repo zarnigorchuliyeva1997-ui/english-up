@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>Security | English Up Admin</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">EU</div>
+        <div>
+          <h2>ENGLISH UP</h2>
+          <span>ADMIN PANEL</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="../index.html">Dashboard</a>
+        <a href="../students/index.html">Students</a>
+        <a href="../subscriptions/index.html">Subscriptions</a>
+        <a href="../activation-codes/index.html">Activation Codes</a>
+        <a href="../courses/index.html">Courses</a>
+        <a href="../lessons/index.html">Lessons</a>
+        <a href="../vocabulary/index.html">Vocabulary</a>
+        <a href="../tests/index.html">Tests</a>
+        <a href="../listening/index.html">Listening</a>
+        <a href="../reading/index.html">Reading</a>
+        <a href="../writing/index.html">Writing</a>
+        <a href="../speaking/index.html">Speaking</a>
+        <a href="../announcements/index.html">Announcements</a>
+        <a href="../results/index.html">Results</a>
+        <a href="../statistics/index.html">Statistics</a>
+        <a class="active" href="./index.html">Security</a>
+        <a href="../backup/index.html">Backup</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span>English Up</span>
+        <small>Admin workspace</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu">☰</button>
+        <div>
+          <h1>Security</h1>
+          <p>Platform security and access control</p>
+        </div>
+        <a class="back-link" href="../index.html">Dashboard</a>
+      </header>
+
+      <section class="security-warning">
+        <strong>Diqqat: xavfsizlik holati</strong>
+        <p>
+          Ushbu sahifa hozircha boshqaruv interfeysi. Haqiqiy himoya
+          Firebase Authentication, server tekshiruvi va Firestore
+          Security Rules orqali o‘rnatiladi.
+        </p>
+        <span id="securityStatus">Firebase xavfsizlik integratsiyasi kutilmoqda</span>
+      </section>
+
+      <section class="security-grid">
+        <article class="security-card">
+          <div class="security-icon">🔐</div>
+          <h2>Admin access</h2>
+          <p>Admin huquqi faqat tasdiqlangan bitta administrator hisobiga beriladi.</p>
+          <span class="security-state pending">Integratsiya kutilmoqda</span>
+        </article>
+
+        <article class="security-card">
+          <div class="security-icon">👤</div>
+          <h2>Student accounts</h2>
+          <p>Har bir o‘quvchining shaxsiy ma’lumotlari alohida himoyalanadi.</p>
+          <span class="security-state pending">Integratsiya kutilmoqda</span>
+        </article>
+
+        <article class="security-card">
+          <div class="security-icon">🛡️</div>
+          <h2>Database rules</h2>
+          <p>Ma’lumotlarni faqat ruxsat berilgan foydalanuvchilar o‘qishi yoki o‘zgartirishi mumkin.</p>
+          <span class="security-state pending">Integratsiya kutilmoqda</span>
+        </article>
+
+        <article class="security-card">
+          <div class="security-icon">📋</div>
+          <h2>Security logs</h2>
+          <p>Admin harakatlari va muhim xavfsizlik hodisalari qayd etiladi.</p>
+          <span class="security-state pending">Integratsiya kutilmoqda</span>
+        </article>
+      </section>
+
+      <section class="panel security-settings">
+        <div class="panel-heading">
+          <div>
+            <h2>Xavfsizlik talablari</h2>
+            <p>Platforma ishga tushishidan oldin bajariladigan vazifalar</p>
+          </div>
+        </div>
+
+        <div class="security-checklist">
+          <div class="check-row">
+            <span>Admin hisobini Firebase orqali tasdiqlash</span>
+            <span class="task-status">Kutilmoqda</span>
+          </div>
+          <div class="check-row">
+            <span>Admin custom claims o‘rnatish</span>
+            <span class="task-status">Kutilmoqda</span>
+          </div>
+          <div class="check-row">
+            <span>Firestore Security Rules yozish</span>
+            <span class="task-status">Kutilmoqda</span>
+          </div>
+          <div class="check-row">
+            <span>O‘quvchi ma’lumotlarini UID bilan ajratish</span>
+            <span class="task-status">Kutilmoqda</span>
+          </div>
+          <div class="check-row">
+            <span>Server tomonida muhim amallarni tekshirish</span>
+            <span class="task-status">Kutilmoqda</span>
+          </div>
+          <div class="check-row">
+            <span>Xavfsizlik hodisalarini qayd etish</span>
+            <span class="task-status">Kutilmoqda</span>
+          </div>
+        </div>
+      </section>
+
+      <p class="security-note">
+        Muhim: admin paroli, Firebase service account kaliti yoki maxfiy
+        server ma’lumotlarini HTML yoki JavaScript ichiga joylashtirmang.
+      </p>
+    </main>
+  </div>
+
+  <script src="../script.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
