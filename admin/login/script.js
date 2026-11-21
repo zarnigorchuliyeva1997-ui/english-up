@@ -1,49 +1,79 @@
 
-/* =================================
-   ENGLISH UP ADMIN LOGIN
-   DEMO MODE - FIREBASE NOT CONNECTED
-================================= */
+import {
+    signInWithEmailAndPassword,
+    signOut,
+    getIdTokenResult
+} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("adminLoginForm");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const message = document.getElementById("loginMessage");
-    const loginButton = document.getElementById("loginButton");
+import {
+    auth,
+    authPersistence
+} from "./firebase.js";
 
-    if (!form || !emailInput || !passwordInput) {
-        return;
-    }
+const form = document.getElementById("adminLoginForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const loginButton = document.getElementById("loginButton");
+const message = document.getElementById("loginMessage");
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+function showMessage(text, success = false) {
+    message.textContent = text;
+    message.style.color = success ? "#16803c" : "#d93025";
+}
 
-        const email = emailInput.value.trim();
-        const password = passwordInput.value;
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-        message.style.color = "#d04444";
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
 
-        if (!email || !password) {
-            message.textContent = "Barcha maydonlarni to‘ldiring.";
+    loginButton.disabled = true;
+    loginButton.textContent = "Tekshirilmoqda...";
+    showMessage("");
+
+    try {
+        await authPersistence;
+
+        const credential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        const tokenResult = await getIdTokenResult(
+            credential.user,
+            true
+        );
+
+        if (tokenResult.claims.admin !== true) {
+            await signOut(auth);
+            showMessage("Bu akkauntda administrator huquqi mavjud emas.");
             return;
         }
 
-        if (password.length < 6) {
-            message.textContent = "Parol kamida 6 ta belgidan iborat bo‘lishi kerak.";
-            return;
-        }
+        showMessage("Admin tasdiqlandi. Dashboard ochilmoqda.", true);
 
-        loginButton.disabled = true;
-        loginButton.textContent = "Tekshirilmoqda...";
+        window.location.href = "../index.html";
 
-        message.style.color = "#7047eb";
-        message.textContent =
-            "Login interfeysi tayyor. Firebase hali ulanmagan.";
+    } catch (error) {
+        console.error("Login error:", error);
 
-        // Parolni saqlamaymiz va hech qayerga yubormaymiz.
-        passwordInput.value = "";
+        const errors = {
+            "auth/invalid-credential": "Email yoki parol noto‘g‘ri.",
+            "auth/user-not-found": "Bunday akkaunt topilmadi.",
+            "auth/wrong-password": "Parol noto‘g‘ri.",
+            "auth/invalid-email": "Email manzil noto‘g‘ri.",
+            "auth/too-many-requests": "Ko‘p urinish bo‘ldi. Keyinroq urinib ko‘ring.",
+            "auth/network-request-failed": "Internet aloqasini tekshiring."
+        };
 
+        showMessage(
+            errors[error.code] || "Kirishda xatolik yuz berdi."
+        );
+
+    } finally {
         loginButton.disabled = false;
         loginButton.textContent = "Kirish";
-    });
+        passwordInput.value = "";
+    }
 });
