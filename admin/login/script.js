@@ -1,13 +1,8 @@
 
-import {
-    signInWithEmailAndPassword,
-    signOut,
-    getIdTokenResult
-} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+"use strict";
 
 import {
-    auth,
-    authPersistence
+    createAdminSession
 } from "./firebase.js";
 
 const form = document.getElementById("adminLoginForm");
@@ -21,7 +16,7 @@ function showMessage(text, success = false) {
     message.style.color = success ? "#16803c" : "#d93025";
 }
 
-form.addEventListener("submit", async (event) => {
+form.addEventListener("submit", event => {
     event.preventDefault();
 
     const email = emailInput.value.trim();
@@ -31,49 +26,35 @@ form.addEventListener("submit", async (event) => {
     loginButton.textContent = "Tekshirilmoqda...";
     showMessage("");
 
-    try {
-        await authPersistence;
+    /*
+      DIQQAT:
+      Bu vaqtinchalik lokal interfeys.
+      Haqiqiy xavfsiz autentifikatsiya emas.
+      Keyingi bosqichda admin kirishini
+      xavfsiz backend orqali tashkil qilamiz.
+    */
 
-        const credential = await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
+    const adminEmail = localStorage.getItem("euAdminEmail");
+    const adminPassword = localStorage.getItem("euAdminPassword");
 
-        const tokenResult = await getIdTokenResult(
-            credential.user,
-            true
-        );
+    if (!adminEmail || !adminPassword) {
+        showMessage("Admin akkaunti hali yaratilmagan.");
+        loginButton.disabled = false;
+        loginButton.textContent = "Kirish";
+        return;
+    }
 
-        if (tokenResult.claims.admin !== true) {
-            await signOut(auth);
-            showMessage("Bu akkauntda administrator huquqi mavjud emas.");
-            return;
-        }
-
-        showMessage("Admin tasdiqlandi. Dashboard ochilmoqda.", true);
-
-        window.location.href = "../index.html";
-
-    } catch (error) {
-        console.error("Login error:", error);
-
-        const errors = {
-            "auth/invalid-credential": "Email yoki parol noto‘g‘ri.",
-            "auth/user-not-found": "Bunday akkaunt topilmadi.",
-            "auth/wrong-password": "Parol noto‘g‘ri.",
-            "auth/invalid-email": "Email manzil noto‘g‘ri.",
-            "auth/too-many-requests": "Ko‘p urinish bo‘ldi. Keyinroq urinib ko‘ring.",
-            "auth/network-request-failed": "Internet aloqasini tekshiring."
-        };
-
-        showMessage(
-            errors[error.code] || "Kirishda xatolik yuz berdi."
-        );
-
-    } finally {
+    if (email !== adminEmail || password !== adminPassword) {
+        showMessage("Email yoki parol noto‘g‘ri.");
         loginButton.disabled = false;
         loginButton.textContent = "Kirish";
         passwordInput.value = "";
+        return;
     }
+
+    createAdminSession(email);
+
+    showMessage("Kirish muvaffaqiyatli.", true);
+
+    window.location.href = "../index.html";
 });
