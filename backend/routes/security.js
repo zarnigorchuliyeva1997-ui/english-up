@@ -6,7 +6,12 @@ const { pool } = require("../config/database");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 
-// Xavfsizlik statistikasi
+// =========================================
+// XAVFSIZLIK STATISTIKASI
+// GET /api/security/overview
+// Admin only
+// =========================================
+
 router.get("/overview", auth, admin, async (req, res, next) => {
   try {
     const [users, logs] = await Promise.all([
@@ -40,30 +45,37 @@ router.get("/overview", auth, admin, async (req, res, next) => {
   }
 });
 
-// Xavfsizlik jurnali
+// =========================================
+// XAVFSIZLIK JURNALI
+// GET /api/security/logs
+// Admin only
+// =========================================
+
 router.get("/logs", auth, admin, async (req, res, next) => {
   try {
+    const parsedLimit = Number.parseInt(req.query.limit, 10);
+    const parsedOffset = Number.parseInt(req.query.offset, 10);
+
     const limit = Math.min(
-      Math.max(parseInt(req.query.limit, 10) || 50, 1),
+      Math.max(parsedLimit || 50, 1),
       100
     );
 
-    const offset = Math.max(
-      parseInt(req.query.offset, 10) || 0,
-      0
-    );
+    const offset = Math.max(parsedOffset || 0, 0);
 
     const result = await pool.query(
       `SELECT
          sl.id,
          sl.user_id,
          u.name AS user_name,
-         sl.action,
-         sl.details,
+         sl.event_type,
+         sl.description,
+         sl.ip_address,
+         sl.user_agent,
          sl.created_at
        FROM security_logs sl
        LEFT JOIN users u ON u.id = sl.user_id
-       ORDER BY sl.created_at DESC
+       ORDER BY sl.created_at DESC, sl.id DESC
        LIMIT $1 OFFSET $2`,
       [limit, offset]
     );
@@ -79,43 +91,58 @@ router.get("/logs", auth, admin, async (req, res, next) => {
   }
 });
 
-// Foydalanuvchi akkauntini faolsizlantirish yoki faollashtirish
+// =========================================
+// FOYDALANUVCHI AKKAUNTI HOLATINI O'ZGARTIRISH
+// PATCH /api/security/users/:id/status
+// Admin only
+// =========================================
+
 router.patch(
   "/users/:id/status",
   auth,
   admin,
   async (req, res, next) => {
-    const client = await pool.connect();
+    let client;
+    let transactionStarted = false;
 
     try {
+      const userId = Number(req.params.id);
       const { is_active } = req.body;
 
-      if (typeof is_active !== "boolean") {
+      if (
+        !Number.isInteger(userId) ||
+        userId < 1 ||
+        typeof is_active !== "boolean"
+      ) {
         return res.status(400).json({
           success: false,
-          message: "is_active qiymati true yoki false bo'lishi kerak."
+          message: "ID yoki is_active qiymati noto'g'ri."
         });
       }
 
-      if (String(req.params.id) === String(req.user.id)) {
+      if (userId === Number(req.user.id)) {
         return res.status(400).json({
           success: false,
           message: "Admin o'z akkauntini bu bo'limdan o'zgartira olmaydi."
         });
       }
 
+      client = await pool.connect();
+
       await client.query("BEGIN");
+      transactionStarted = true;
 
       const user = await client.query(
         `SELECT id, name, email, role, is_active
          FROM users
          WHERE id = $1
          FOR UPDATE`,
-        [req.params.id]
+        [userId]
       );
 
-      if (!user.rows.length) {
+      if (user.rows.length === 0) {
         await client.query("ROLLBACK");
+        transactionStarted = false;
 
         return res.status(404).json({
           success: false,
@@ -125,6 +152,7 @@ router.patch(
 
       if (user.rows[0].role === "admin") {
         await client.query("ROLLBACK");
+        transactionStarted = false;
 
         return res.status(403).json({
           success: false,
@@ -138,21 +166,24 @@ router.patch(
              updated_at = NOW()
          WHERE id = $2
          RETURNING id, name, email, role, is_active`,
-        [is_active, req.params.id]
+        [is_active, userId]
       );
 
       await client.query(
         `INSERT INTO security_logs
-         (user_id, action, details)
-         VALUES ($1, $2, $3)`,
+         (user_id, event_type, description, ip_address, user_agent)
+         VALUES ($1, $2, $3, $4, $5)`,
         [
           req.user.id,
           is_active ? "USER_ACTIVATED" : "USER_DEACTIVATED",
-          `User ID: ${req.params.id}`
+          `User ID: ${userId}`,
+          req.ip || null,
+          req.get("user-agent") || null
         ]
       );
 
       await client.query("COMMIT");
+      transactionStarted = false;
 
       res.json({
         success: true,
@@ -162,10 +193,19 @@ router.patch(
         user: updated.rows[0]
       });
     } catch (error) {
-      await client.query("ROLLBACK");
+      if (client && transactionStarted) {
+        try {
+          await client.query("ROLLBACK");
+        } catch (rollbackError) {
+          // Asosiy xatolik saqlanadi.
+        }
+      }
+
       next(error);
     } finally {
-      client.release();
+      if (client) {
+        client.release();
+      }
     }
   }
 );
