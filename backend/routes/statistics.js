@@ -33,6 +33,7 @@ router.get("/", auth, admin, async (req, res, next) => {
            COUNT(*)::int AS total,
            COUNT(*) FILTER (
              WHERE status = 'active'
+             AND start_date <= CURRENT_DATE
              AND end_date >= CURRENT_DATE
            )::int AS active
          FROM subscriptions`
@@ -61,14 +62,14 @@ router.get("/", auth, admin, async (req, res, next) => {
       pool.query(
         `SELECT
            COUNT(*)::int AS attempts,
-           COALESCE(ROUND(AVG(score)), 0) AS average_score
+           COALESCE(ROUND(AVG(score)), 0)::int AS average_score
          FROM test_attempts`
       ),
 
       pool.query(
         `SELECT
            COUNT(*)::int AS attempts,
-           COALESCE(ROUND(AVG(score)), 0) AS average_score
+           COALESCE(ROUND(AVG(score)), 0)::int AS average_score
          FROM reading_attempts`
       ),
 
@@ -146,7 +147,7 @@ router.get(
         `SELECT
            DATE(created_at) AS date,
            COUNT(*)::int AS attempts,
-           COALESCE(ROUND(AVG(score)), 0) AS average_score
+           COALESCE(ROUND(AVG(score)), 0)::int AS average_score
          FROM test_attempts
          WHERE created_at >= CURRENT_DATE - INTERVAL '6 days'
          GROUP BY DATE(created_at)
