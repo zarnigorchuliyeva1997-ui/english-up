@@ -1,36 +1,30 @@
 
 const { pool } = require("../config/database");
-const { getPagination } = require("../utils/pagination");
 
-async function getCourses(query = {}) {
-  const { page, limit, offset } = getPagination(query);
+async function getAllCourses({ level, isPublished } = {}) {
+  const conditions = [];
+  const values = [];
+
+  if (level) {
+    values.push(level);
+    conditions.push(`level = $${values.length}`);
+  }
+
+  if (typeof isPublished === "boolean") {
+    values.push(isPublished);
+    conditions.push(`is_published = $${values.length}`);
+  }
+
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
 
   const result = await pool.query(
-    `SELECT id, title, description, level, is_active, created_at
+    `SELECT *
      FROM courses
-     ORDER BY created_at DESC
-     LIMIT $1 OFFSET $2`,
-    [limit, offset]
-  );
-
-  const countResult = await pool.query(
-    "SELECT COUNT(*) FROM courses"
-  );
-
-  return {
-    courses: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
-}
-
-async function getActiveCourses() {
-  const result = await pool.query(
-    `SELECT id, title, description, level
-     FROM courses
-     WHERE is_active = TRUE
-     ORDER BY id ASC`
+     ${where}
+     ORDER BY sort_order ASC, created_at ASC`,
+    values
   );
 
   return result.rows;
@@ -38,62 +32,79 @@ async function getActiveCourses() {
 
 async function getCourseById(courseId) {
   const result = await pool.query(
-    `SELECT id, title, description, level, is_active, created_at
+    `SELECT *
      FROM courses
-     WHERE id = $1
-     LIMIT 1`,
+     WHERE id = $1`,
     [courseId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Course not found");
+  }
+
+  return result.rows[0];
 }
 
-async function createCourse(data) {
-  const { title, description, level } = data;
+async function createCourse({
+  title,
+  description = "",
+  level,
+  sortOrder = 0,
+  isPublished = false
+}) {
+  if (!title || !level) {
+    throw new Error("Course title and level are required");
+  }
 
   const result = await pool.query(
-    `INSERT INTO courses (title, description, level, is_active)
-     VALUES ($1, $2, $3, TRUE)
+    `INSERT INTO courses
+      (title, description, level, sort_order, is_published)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
-    [title, description || null, level]
+    [title.trim(), description, level, sortOrder, isPublished]
   );
 
   return result.rows[0];
 }
 
-async function updateCourse(courseId, data) {
-  const { title, description, level } = data;
+async function updateCourse(courseId, data = {}) {
+  const allowedFields = {
+    title: "title",
+    description: "description",
+    level: "level",
+    sortOrder: "sort_order",
+    isPublished: "is_published"
+  };
+
+  const fields = [];
+  const values = [];
+
+  for (const [key, column] of Object.entries(allowedFields)) {
+    if (data[key] !== undefined) {
+      values.push(data[key]);
+      fields.push(`${column} = $${values.length}`);
+    }
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No course fields provided");
+  }
+
+  values.push(courseId);
 
   const result = await pool.query(
     `UPDATE courses
-     SET title = COALESCE($2, title),
-         description = COALESCE($3, description),
-         level = COALESCE($4, level),
-         updated_at = NOW()
-     WHERE id = $1
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
      RETURNING *`,
-    [
-      courseId,
-      title ?? null,
-      description ?? null,
-      level ?? null
-    ]
+    values
   );
 
-  return result.rows[0] || null;
-}
+  if (result.rows.length === 0) {
+    throw new Error("Course not found");
+  }
 
-async function setCourseStatus(courseId, isActive) {
-  const result = await pool.query(
-    `UPDATE courses
-     SET is_active = $2,
-         updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, title, level, is_active`,
-    [courseId, isActive]
-  );
-
-  return result.rows[0] || null;
+  return result.rows[0];
 }
 
 async function deleteCourse(courseId) {
@@ -104,15 +115,17 @@ async function deleteCourse(courseId) {
     [courseId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Course not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
-  getCourses,
-  getActiveCourses,
+  getAllCourses,
   getCourseById,
   createCourse,
   updateCourse,
-  setCourseStatus,
   deleteCourse
 };
