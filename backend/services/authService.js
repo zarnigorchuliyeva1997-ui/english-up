@@ -18,16 +18,45 @@ function createToken(user) {
   );
 }
 
-async function registerUser({ name, email, password }) {
-  if (!name || !email || !password) {
+function normalizeEmail(email) {
+  if (typeof email !== "string") {
+    throw new Error("A valid email is required");
+  }
+
+  const normalized = email.trim().toLowerCase();
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(normalized)) {
+    throw new Error("A valid email is required");
+  }
+
+  return normalized;
+}
+
+async function registerUser({ name, email, password } = {}) {
+  if (
+    typeof name !== "string" ||
+    typeof password !== "string"
+  ) {
     throw new Error("Name, email and password are required");
   }
 
-  if (password.length < 8) {
-    throw new Error("Password must be at least 8 characters");
+  const normalizedName = name.trim();
+
+  if (normalizedName.length < 2 || normalizedName.length > 100) {
+    throw new Error("Name must be between 2 and 100 characters");
   }
 
-  const normalizedEmail = email.trim().toLowerCase();
+  if (password.length < 8 || password.length > 128) {
+    throw new Error("Password must be between 8 and 128 characters");
+  }
+
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is not configured");
+  }
+
+  const normalizedEmail = normalizeEmail(email);
 
   const existing = await pool.query(
     "SELECT id FROM users WHERE email = $1",
@@ -40,39 +69,72 @@ async function registerUser({ name, email, password }) {
 
   const passwordHash = await bcrypt.hash(password, 12);
 
-  const result = await pool.query(
-    `INSERT INTO users (name, email, password_hash, role)
-     VALUES ($1, $2, $3, 'student')
-     RETURNING id, name, email, role, level, is_active, created_at`,
-    [name.trim(), normalizedEmail, passwordHash]
-  );
+  try {
+    const result = await pool.query(
+      `INSERT INTO users (
+        name,
+        email,
+        password_hash,
+        role
+      )
+      VALUES ($1, $2, $3, 'student')
+      RETURNING
+        id,
+        name,
+        email,
+        role,
+        level,
+        is_active,
+        created_at`,
+      [normalizedName, normalizedEmail, passwordHash]
+    );
 
-  const user = result.rows[0];
+    const user = result.rows[0];
 
-  return {
-    user,
-    token: createToken(user)
-  };
+    return {
+      user,
+      token: createToken(user)
+    };
+  } catch (error) {
+    if (error.code === "23505") {
+      throw new Error("This email is already registered");
+    }
+
+    throw error;
+  }
 }
 
-async function loginUser({ email, password }) {
-  if (!email || !password) {
+async function loginUser({ email, password } = {}) {
+  if (
+    typeof password !== "string" ||
+    password.length === 0
+  ) {
     throw new Error("Email and password are required");
   }
 
-  const normalizedEmail = email.trim().toLowerCase();
+  const normalizedEmail = normalizeEmail(email);
 
   const result = await pool.query(
-    `SELECT id, name, email, password_hash,
-            role, level, is_active, created_at
-     FROM users
-     WHERE email = $1`,
+    `SELECT
+      id,
+      name,
+      email,
+      password_hash,
+      role,
+      level,
+      is_active,
+      created_at
+    FROM users
+    WHERE email = $1`,
     [normalizedEmail]
   );
 
   const user = result.rows[0];
 
-  if (!user || !(await bcrypt.compare(password, user.password_hash))) {
+  if (
+    !user ||
+    !(await bcrypt.compare(password, user.password_hash))
+  ) {
     throw new Error("Invalid email or password");
   }
 
