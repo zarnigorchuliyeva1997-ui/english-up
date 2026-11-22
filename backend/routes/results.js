@@ -21,7 +21,7 @@ router.get("/mine", auth, async (req, res, next) => {
        FROM test_attempts ta
        JOIN tests t ON t.id = ta.test_id
        WHERE ta.user_id = $1
-       ORDER BY ta.created_at DESC`,
+       ORDER BY ta.created_at DESC, ta.id DESC`,
       [req.user.id]
     );
 
@@ -35,17 +35,18 @@ router.get("/mine", auth, async (req, res, next) => {
          ra.score,
          ra.created_at
        FROM reading_attempts ra
-       JOIN reading_lessons rl ON rl.id = ra.reading_id
+       JOIN reading_lessons rl
+         ON rl.id = ra.reading_lesson_id
        WHERE ra.user_id = $1
-       ORDER BY ra.created_at DESC`,
+       ORDER BY ra.created_at DESC, ra.id DESC`,
       [req.user.id]
     );
 
-    const results = [...tests.rows, ...readings.rows]
-      .sort(
-        (a, b) =>
-          new Date(b.created_at) - new Date(a.created_at)
-      );
+    const results = [...tests.rows, ...readings.rows].sort(
+      (a, b) =>
+        new Date(b.created_at) - new Date(a.created_at) ||
+        b.id - a.id
+    );
 
     res.json({
       success: true,
@@ -93,15 +94,15 @@ router.get("/summary", auth, async (req, res, next) => {
 // Admin barcha o'quvchilar natijalarini ko'radi
 router.get("/admin/all", auth, admin, async (req, res, next) => {
   try {
+    const parsedLimit = Number.parseInt(req.query.limit, 10);
+    const parsedOffset = Number.parseInt(req.query.offset, 10);
+
     const limit = Math.min(
-      Math.max(parseInt(req.query.limit, 10) || 50, 1),
+      Math.max(parsedLimit || 50, 1),
       100
     );
 
-    const offset = Math.max(
-      parseInt(req.query.offset, 10) || 0,
-      0
-    );
+    const offset = Math.max(parsedOffset || 0, 0);
 
     const tests = await pool.query(
       `SELECT
@@ -118,7 +119,7 @@ router.get("/admin/all", auth, admin, async (req, res, next) => {
        FROM test_attempts ta
        JOIN users u ON u.id = ta.user_id
        JOIN tests t ON t.id = ta.test_id
-       ORDER BY ta.created_at DESC`
+       ORDER BY ta.created_at DESC, ta.id DESC`
     );
 
     const readings = await pool.query(
@@ -135,15 +136,16 @@ router.get("/admin/all", auth, admin, async (req, res, next) => {
          ra.created_at
        FROM reading_attempts ra
        JOIN users u ON u.id = ra.user_id
-       JOIN reading_lessons rl ON rl.id = ra.reading_id
-       ORDER BY ra.created_at DESC`
+       JOIN reading_lessons rl
+         ON rl.id = ra.reading_lesson_id
+       ORDER BY ra.created_at DESC, ra.id DESC`
     );
 
-    const allResults = [...tests.rows, ...readings.rows]
-      .sort(
-        (a, b) =>
-          new Date(b.created_at) - new Date(a.created_at)
-      );
+    const allResults = [...tests.rows, ...readings.rows].sort(
+      (a, b) =>
+        new Date(b.created_at) - new Date(a.created_at) ||
+        b.id - a.id
+    );
 
     const results = allResults.slice(offset, offset + limit);
 
@@ -166,14 +168,23 @@ router.get(
   admin,
   async (req, res, next) => {
     try {
+      const userId = Number(req.params.userId);
+
+      if (!Number.isInteger(userId) || userId < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "O'quvchi ID noto'g'ri."
+        });
+      }
+
       const student = await pool.query(
         `SELECT id, name, email
          FROM users
          WHERE id = $1`,
-        [req.params.userId]
+        [userId]
       );
 
-      if (!student.rows.length) {
+      if (student.rows.length === 0) {
         return res.status(404).json({
           success: false,
           message: "O'quvchi topilmadi."
@@ -191,8 +202,8 @@ router.get(
          FROM test_attempts ta
          JOIN tests t ON t.id = ta.test_id
          WHERE ta.user_id = $1
-         ORDER BY ta.created_at DESC`,
-        [req.params.userId]
+         ORDER BY ta.created_at DESC, ta.id DESC`,
+        [userId]
       );
 
       const readings = await pool.query(
@@ -204,10 +215,11 @@ router.get(
            ra.score,
            ra.created_at
          FROM reading_attempts ra
-         JOIN reading_lessons rl ON rl.id = ra.reading_id
+         JOIN reading_lessons rl
+           ON rl.id = ra.reading_lesson_id
          WHERE ra.user_id = $1
-         ORDER BY ra.created_at DESC`,
-        [req.params.userId]
+         ORDER BY ra.created_at DESC, ra.id DESC`,
+        [userId]
       );
 
       res.json({
