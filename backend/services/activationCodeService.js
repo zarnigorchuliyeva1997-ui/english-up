@@ -80,7 +80,7 @@ async function redeemActivationCode(userId, code) {
 
     const activation = codeResult.rows[0];
 
-    if (activation.assigned_user_id !== userId) {
+    if (String(activation.assigned_user_id) !== String(userId)) {
       throw new Error("Bu kod boshqa foydalanuvchiga biriktirilgan");
     }
 
@@ -102,8 +102,8 @@ async function redeemActivationCode(userId, code) {
          $1,
          $2,
          'active',
-         CURRENT_DATE,
-         CURRENT_DATE + ($3::int)
+         NOW(),
+         NOW() + ($3::int * INTERVAL '1 day')
        )
        RETURNING *`,
       [
