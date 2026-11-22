@@ -1,10 +1,10 @@
 
 const express = require("express");
+const router = express.Router();
+
 const { pool } = require("../config/database");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
-
-const router = express.Router();
 
 // =========================================
 // GET ACTIVE WRITING TASKS
@@ -14,8 +14,17 @@ const router = express.Router();
 router.get("/", auth, async (req, res, next) => {
   try {
     const result = await pool.query(
-      `SELECT id, title, description, level, instructions,
-              word_limit, created_at
+      `SELECT
+         id,
+         course_id,
+         lesson_id,
+         title,
+         description,
+         task_type,
+         level,
+         instructions,
+         word_limit,
+         created_at
        FROM writing_tasks
        WHERE is_active = TRUE
        ORDER BY created_at DESC`
@@ -47,10 +56,19 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const result = await pool.query(
-      `SELECT id, title, description, level, instructions,
-              word_limit
+      `SELECT
+         id,
+         course_id,
+         lesson_id,
+         title,
+         description,
+         task_type,
+         level,
+         instructions,
+         word_limit
        FROM writing_tasks
-       WHERE id = $1 AND is_active = TRUE`,
+       WHERE id = $1
+         AND is_active = TRUE`,
       [id]
     );
 
@@ -79,40 +97,82 @@ router.get("/:id", auth, async (req, res, next) => {
 router.post("/", auth, admin, async (req, res, next) => {
   try {
     const {
+      courseId,
+      lessonId,
       title,
       description,
+      taskType,
       level,
       instructions,
       wordLimit
     } = req.body;
 
-    if (!title || !level || !instructions) {
+    if (
+      typeof title !== "string" ||
+      !title.trim() ||
+      typeof level !== "string" ||
+      !level.trim() ||
+      typeof instructions !== "string" ||
+      !instructions.trim()
+    ) {
       return res.status(400).json({
         success: false,
         message: "Sarlavha, daraja va topshiriq matni kerak."
       });
     }
 
-    const limit = Number(wordLimit) || 0;
+    const parsedCourseId =
+      courseId === undefined || courseId === null || courseId === ""
+        ? null
+        : Number(courseId);
 
-    if (limit < 0 || limit > 10000) {
+    const parsedLessonId =
+      lessonId === undefined || lessonId === null || lessonId === ""
+        ? null
+        : Number(lessonId);
+
+    const parsedWordLimit =
+      wordLimit === undefined || wordLimit === null || wordLimit === ""
+        ? 0
+        : Number(wordLimit);
+
+    if (
+      (parsedCourseId !== null &&
+        (!Number.isInteger(parsedCourseId) || parsedCourseId < 1)) ||
+      (parsedLessonId !== null &&
+        (!Number.isInteger(parsedLessonId) || parsedLessonId < 1)) ||
+      !Number.isInteger(parsedWordLimit) ||
+      parsedWordLimit < 0 ||
+      parsedWordLimit > 10000
+    ) {
       return res.status(400).json({
         success: false,
-        message: "So‘zlar limiti noto‘g‘ri."
+        message: "Topshiriq parametrlari noto‘g‘ri."
       });
     }
 
     const result = await pool.query(
-      `INSERT INTO writing_tasks
-       (title, description, level, instructions, word_limit)
-       VALUES ($1, $2, $3, $4, $5)
+      `INSERT INTO writing_tasks (
+         course_id,
+         lesson_id,
+         title,
+         description,
+         task_type,
+         level,
+         instructions,
+         word_limit
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
        RETURNING *`,
       [
-        title,
+        parsedCourseId,
+        parsedLessonId,
+        title.trim(),
         description || null,
-        level,
-        instructions,
-        limit
+        taskType || "essay",
+        level.trim(),
+        instructions.trim(),
+        parsedWordLimit
       ]
     );
 
@@ -147,7 +207,9 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       });
     }
 
-    if (content.length > 30000) {
+    const cleanContent = content.trim();
+
+    if (cleanContent.length > 30000) {
       return res.status(400).json({
         success: false,
         message: "Matn 30 000 belgidan oshmasligi kerak."
@@ -157,7 +219,8 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     const task = await pool.query(
       `SELECT id, word_limit
        FROM writing_tasks
-       WHERE id = $1 AND is_active = TRUE`,
+       WHERE id = $1
+         AND is_active = TRUE`,
       [taskId]
     );
 
@@ -168,7 +231,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       });
     }
 
-    const wordCount = content.trim().split(/\s+/).length;
+    const wordCount = cleanContent.split(/\s+/).length;
     const wordLimit = Number(task.rows[0].word_limit);
 
     if (wordLimit > 0 && wordCount > wordLimit) {
@@ -180,11 +243,21 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     }
 
     const result = await pool.query(
-      `INSERT INTO writing_submissions
-       (user_id, task_id, content, word_count)
+      `INSERT INTO writing_submissions (
+         user_id,
+         task_id,
+         content,
+         word_count
+       )
        VALUES ($1, $2, $3, $4)
-       RETURNING id, task_id, content, word_count, status, created_at`,
-      [req.user.id, taskId, content.trim(), wordCount]
+       RETURNING
+         id,
+         task_id,
+         content,
+         word_count,
+         status,
+         created_at`,
+      [req.user.id, taskId, cleanContent, wordCount]
     );
 
     res.status(201).json({
@@ -208,9 +281,16 @@ router.get(
   async (req, res, next) => {
     try {
       const result = await pool.query(
-        `SELECT s.id, s.task_id, t.title, s.word_count,
-                s.status, s.score, s.feedback,
-                s.created_at, s.reviewed_at
+        `SELECT
+           s.id,
+           s.task_id,
+           t.title,
+           s.word_count,
+           s.status,
+           s.score,
+           s.feedback,
+           s.created_at,
+           s.reviewed_at
          FROM writing_submissions s
          JOIN writing_tasks t ON t.id = s.task_id
          WHERE s.user_id = $1
@@ -241,10 +321,21 @@ router.get(
   async (req, res, next) => {
     try {
       const result = await pool.query(
-        `SELECT s.id, s.user_id, u.name, u.email,
-                s.task_id, t.title, s.content,
-                s.word_count, s.status, s.score,
-                s.feedback, s.created_at
+        `SELECT
+           s.id,
+           s.user_id,
+           u.name,
+           u.email,
+           s.task_id,
+           t.title,
+           s.content,
+           s.word_count,
+           s.status,
+           s.score,
+           s.feedback,
+           s.reviewed_by,
+           s.reviewed_at,
+           s.created_at
          FROM writing_submissions s
          JOIN users u ON u.id = s.user_id
          JOIN writing_tasks t ON t.id = s.task_id
@@ -276,13 +367,19 @@ router.patch(
       const id = Number(req.params.id);
       const { score, feedback } = req.body;
 
+      const parsedScore = Number(score);
+
       if (
         !Number.isInteger(id) ||
         id < 1 ||
-        !Number.isFinite(Number(score)) ||
-        Number(score) < 0 ||
-        Number(score) > 100 ||
-        typeof feedback !== "string"
+        score === undefined ||
+        score === null ||
+        score === "" ||
+        !Number.isFinite(parsedScore) ||
+        parsedScore < 0 ||
+        parsedScore > 100 ||
+        typeof feedback !== "string" ||
+        !feedback.trim()
       ) {
         return res.status(400).json({
           success: false,
@@ -295,10 +392,18 @@ router.patch(
          SET score = $1,
              feedback = $2,
              status = 'reviewed',
-             reviewed_at = NOW()
-         WHERE id = $3
-         RETURNING id, score, feedback, status, reviewed_at`,
-        [Number(score), feedback, id]
+             reviewed_by = $3,
+             reviewed_at = NOW(),
+             updated_at = NOW()
+         WHERE id = $4
+         RETURNING
+           id,
+           score,
+           feedback,
+           status,
+           reviewed_by,
+           reviewed_at`,
+        [parsedScore, feedback.trim(), req.user.id, id]
       );
 
       if (!result.rows.length) {
@@ -346,7 +451,8 @@ router.patch(
 
       const result = await pool.query(
         `UPDATE writing_tasks
-         SET is_active = $1
+         SET is_active = $1,
+             updated_at = NOW()
          WHERE id = $2
          RETURNING id, title, is_active`,
         [isActive, id]
