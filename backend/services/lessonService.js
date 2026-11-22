@@ -1,41 +1,20 @@
 
 const { pool } = require("../config/database");
-const { getPagination } = require("../utils/pagination");
 
-async function getLessonsByCourse(courseId, query = {}) {
-  const { page, limit, offset } = getPagination(query);
+async function getLessonsByCourse(courseId, includeUnpublished = false) {
+  const conditions = ["course_id = $1"];
+  const values = [courseId];
+
+  if (!includeUnpublished) {
+    conditions.push("is_published = TRUE");
+  }
 
   const result = await pool.query(
-    `SELECT id, course_id, title, description, content,
-            audio_url, video_url, pdf_url, lesson_order, is_active
+    `SELECT *
      FROM lessons
-     WHERE course_id = $1
-     ORDER BY lesson_order ASC
-     LIMIT $2 OFFSET $3`,
-    [courseId, limit, offset]
-  );
-
-  const countResult = await pool.query(
-    "SELECT COUNT(*) FROM lessons WHERE course_id = $1",
-    [courseId]
-  );
-
-  return {
-    lessons: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
-}
-
-async function getActiveLessons(courseId) {
-  const result = await pool.query(
-    `SELECT id, course_id, title, description, content,
-            audio_url, video_url, pdf_url, lesson_order
-     FROM lessons
-     WHERE course_id = $1 AND is_active = TRUE
-     ORDER BY lesson_order ASC`,
-    [courseId]
+     WHERE ${conditions.join(" AND ")}
+     ORDER BY sort_order ASC, created_at ASC`,
+    values
   );
 
   return result.rows;
@@ -43,100 +22,88 @@ async function getActiveLessons(courseId) {
 
 async function getLessonById(lessonId) {
   const result = await pool.query(
-    `SELECT id, course_id, title, description, content,
-            audio_url, video_url, pdf_url, lesson_order, is_active
-     FROM lessons
-     WHERE id = $1
-     LIMIT 1`,
+    `SELECT l.*, c.title AS course_title
+     FROM lessons l
+     JOIN courses c ON c.id = l.course_id
+     WHERE l.id = $1`,
     [lessonId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Lesson not found");
+  }
+
+  return result.rows[0];
 }
 
-async function createLesson(data) {
-  const {
-    courseId,
-    title,
-    description,
-    content,
-    audioUrl,
-    videoUrl,
-    pdfUrl,
-    lessonOrder
-  } = data;
+async function createLesson({
+  courseId,
+  title,
+  description = "",
+  content = "",
+  sortOrder = 0,
+  isPublished = false
+}) {
+  if (!courseId || !title) {
+    throw new Error("Course ID and lesson title are required");
+  }
 
   const result = await pool.query(
-    `INSERT INTO lessons (
-       course_id, title, description, content,
-       audio_url, video_url, pdf_url, lesson_order, is_active
-     )
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, TRUE)
+    `INSERT INTO lessons
+      (course_id, title, description, content, sort_order, is_published)
+     VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
       courseId,
-      title,
-      description || null,
-      content || null,
-      audioUrl || null,
-      videoUrl || null,
-      pdfUrl || null,
-      lessonOrder || 1
+      title.trim(),
+      description,
+      content,
+      sortOrder,
+      isPublished
     ]
   );
 
   return result.rows[0];
 }
 
-async function updateLesson(lessonId, data) {
-  const {
-    title,
-    description,
-    content,
-    audioUrl,
-    videoUrl,
-    pdfUrl,
-    lessonOrder
-  } = data;
+async function updateLesson(lessonId, data = {}) {
+  const allowedFields = {
+    title: "title",
+    description: "description",
+    content: "content",
+    sortOrder: "sort_order",
+    isPublished: "is_published"
+  };
+
+  const fields = [];
+  const values = [];
+
+  for (const [key, column] of Object.entries(allowedFields)) {
+    if (data[key] !== undefined) {
+      values.push(data[key]);
+      fields.push(`${column} = $${values.length}`);
+    }
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No lesson fields provided");
+  }
+
+  values.push(lessonId);
 
   const result = await pool.query(
     `UPDATE lessons
-     SET title = COALESCE($2, title),
-         description = COALESCE($3, description),
-         content = COALESCE($4, content),
-         audio_url = COALESCE($5, audio_url),
-         video_url = COALESCE($6, video_url),
-         pdf_url = COALESCE($7, pdf_url),
-         lesson_order = COALESCE($8, lesson_order),
-         updated_at = NOW()
-     WHERE id = $1
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
      RETURNING *`,
-    [
-      lessonId,
-      title ?? null,
-      description ?? null,
-      content ?? null,
-      audioUrl ?? null,
-      videoUrl ?? null,
-      pdfUrl ?? null,
-      lessonOrder ?? null
-    ]
+    values
   );
 
-  return result.rows[0] || null;
-}
+  if (result.rows.length === 0) {
+    throw new Error("Lesson not found");
+  }
 
-async function setLessonStatus(lessonId, isActive) {
-  const result = await pool.query(
-    `UPDATE lessons
-     SET is_active = $2,
-         updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, course_id, title, is_active`,
-    [lessonId, isActive]
-  );
-
-  return result.rows[0] || null;
+  return result.rows[0];
 }
 
 async function deleteLesson(lessonId) {
@@ -147,15 +114,17 @@ async function deleteLesson(lessonId) {
     [lessonId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Lesson not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
   getLessonsByCourse,
-  getActiveLessons,
   getLessonById,
   createLesson,
   updateLesson,
-  setLessonStatus,
   deleteLesson
 };
