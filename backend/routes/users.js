@@ -5,10 +5,18 @@ const router = express.Router();
 const { pool } = require("../config/database");
 const authenticateToken = require("../middleware/auth");
 
+// O'quvchi o'z profilini ko'radi
 router.get("/me", authenticateToken, async (req, res, next) => {
   try {
     const result = await pool.query(
-      `SELECT id, name, email, role, created_at
+      `SELECT
+         id,
+         name,
+         email,
+         role,
+         level,
+         is_active,
+         created_at
        FROM users
        WHERE id = $1`,
       [req.user.id]
