@@ -6,14 +6,14 @@ const authenticateToken = require("../middleware/auth");
 const requireAdmin = require("../middleware/admin");
 
 const {
-  getCurrentSubscription,
+  getActiveSubscription,
   activateSubscription
 } = require("../services/subscriptionService");
 
-// O'quvchi o'z obunasini ko'radi
+// O'quvchi o'zining faol obunasini ko'radi
 router.get("/me", authenticateToken, async (req, res, next) => {
   try {
-    const subscription = await getCurrentSubscription(req.user.id);
+    const subscription = await getActiveSubscription(req.user.id);
 
     res.json({
       success: true,
