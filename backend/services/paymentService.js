@@ -1,22 +1,16 @@
 
-const PAYMENT_PROVIDER = process.env.PAYMENT_PROVIDER;
-
-function isPaymentConfigured() {
-  return Boolean(
-    PAYMENT_PROVIDER &&
-    process.env.PAYMENT_SECRET
-  );
-}
-
-async function createPayment({ userId, plan, amount, currency }) {
-  if (!userId || !plan || !amount || !currency) {
-    throw new Error("Payment information is incomplete");
+async function createPayment({
+  userId,
+  plan,
+  amount,
+  currency = "RUB"
+}) {
+  if (!userId || !plan || !amount || Number(amount) <= 0) {
+    throw new Error("Payment details are invalid");
   }
 
-  if (!isPaymentConfigured()) {
-    throw new Error(
-      "Payment provider is not configured yet"
-    );
+  if (!process.env.PAYMENT_PROVIDER || !process.env.PAYMENT_SECRET) {
+    throw new Error("Payment provider is not configured");
   }
 
   throw new Error(
@@ -24,14 +18,17 @@ async function createPayment({ userId, plan, amount, currency }) {
   );
 }
 
-async function verifyPayment() {
+async function verifyPayment(paymentId) {
+  if (!paymentId) {
+    throw new Error("Payment ID is required");
+  }
+
   throw new Error(
-    "Payment verification is unavailable until a provider is integrated"
+    "Payment verification is not implemented yet"
   );
 }
 
 module.exports = {
   createPayment,
-  verifyPayment,
-  isPaymentConfigured
+  verifyPayment
 };
