@@ -1,62 +1,53 @@
 
 const { pool } = require("../config/database");
+const { getFileUrl } = require("./fileService");
 
-async function getSpeakingTasks({ page = 1, limit = 20, level = null } = {}) {
-  const offset = (Number(page) - 1) * Number(limit);
+async function getSpeakingTasks({ level, isPublished } = {}) {
+  const conditions = [];
   const values = [];
-  let where = "WHERE is_active = TRUE";
 
   if (level) {
     values.push(level);
-    where += ` AND level = $${values.length}`;
+    conditions.push(`level = $${values.length}`);
   }
 
-  const countResult = await pool.query(
-    `SELECT COUNT(*)::int AS total
-     FROM speaking_tasks
-     ${where}`,
-    values
-  );
+  if (typeof isPublished === "boolean") {
+    values.push(isPublished);
+    conditions.push(`is_published = $${values.length}`);
+  }
 
-  values.push(Number(limit), offset);
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
 
   const result = await pool.query(
-    `SELECT id, title, description, level, instructions,
-            created_at
+    `SELECT *
      FROM speaking_tasks
      ${where}
-     ORDER BY created_at DESC
-     LIMIT $${values.length - 1}
-     OFFSET $${values.length}`,
+     ORDER BY sort_order ASC, created_at DESC`,
     values
   );
 
-  return {
-    items: result.rows,
-    total: countResult.rows[0].total,
-    page: Number(page),
-    limit: Number(limit)
-  };
+  return result.rows;
 }
 
 async function getSpeakingTaskById(taskId) {
   const taskResult = await pool.query(
-    `SELECT id, title, description, level, instructions,
-            is_active, created_at
+    `SELECT *
      FROM speaking_tasks
      WHERE id = $1`,
     [taskId]
   );
 
-  if (!taskResult.rows.length) {
-    return null;
+  if (taskResult.rows.length === 0) {
+    throw new Error("Speaking task not found");
   }
 
   const questionsResult = await pool.query(
-    `SELECT id, question, question_order
+    `SELECT id, task_id, question, sort_order
      FROM speaking_questions
      WHERE task_id = $1
-     ORDER BY question_order ASC, id ASC`,
+     ORDER BY sort_order ASC, id ASC`,
     [taskId]
   );
 
@@ -68,218 +59,243 @@ async function getSpeakingTaskById(taskId) {
 
 async function createSpeakingTask({
   title,
-  description,
+  description = "",
   level,
-  instructions
+  instructions = "",
+  sortOrder = 0,
+  isPublished = false
 }) {
+  if (!title || !level) {
+    throw new Error("Title and level are required");
+  }
+
   const result = await pool.query(
     `INSERT INTO speaking_tasks
-      (title, description, level, instructions, is_active)
-     VALUES ($1, $2, $3, $4, TRUE)
+      (title, description, level, instructions, sort_order, is_published)
+     VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
-    [title, description || null, level, instructions || null]
+    [title.trim(), description, level, instructions, sortOrder, isPublished]
   );
 
   return result.rows[0];
 }
 
-async function addSpeakingQuestion(
+async function addSpeakingQuestion({
   taskId,
-  { question, questionOrder = 1 }
-) {
-  const task = await pool.query(
-    "SELECT id FROM speaking_tasks WHERE id = $1",
-    [taskId]
-  );
-
-  if (!task.rows.length) {
-    throw new Error("Speaking topshirig'i topilmadi");
+  question,
+  sortOrder = 0
+}) {
+  if (!taskId || !question) {
+    throw new Error("Task ID and question are required");
   }
 
   const result = await pool.query(
     `INSERT INTO speaking_questions
-      (task_id, question, question_order)
+      (task_id, question, sort_order)
      VALUES ($1, $2, $3)
      RETURNING *`,
-    [taskId, question, questionOrder]
+    [taskId, question, sortOrder]
   );
 
   return result.rows[0];
 }
 
-async function submitSpeaking(
+async function submitSpeaking({
   userId,
   taskId,
+  questionId = null,
   audioKey,
-  durationSeconds
-) {
-  if (
-    typeof audioKey !== "string" ||
-    !audioKey.startsWith("english-up/speaking/")
-  ) {
-    throw new Error("Audio fayl manzili noto'g'ri");
+  duration = null
+}) {
+  if (!userId || !taskId || !audioKey) {
+    throw new Error("User, task and audio file are required");
   }
 
-  const duration = Number(durationSeconds);
-
-  if (
-    !Number.isInteger(duration) ||
-    duration < 1 ||
-    duration > 900
-  ) {
-    throw new Error("Audio davomiyligi 1–900 soniya bo'lishi kerak");
+  if (!audioKey.startsWith("english-up/")) {
+    throw new Error("Invalid audio file key");
   }
 
   const task = await pool.query(
-    `SELECT id FROM speaking_tasks
-     WHERE id = $1 AND is_active = TRUE`,
+    `SELECT id
+     FROM speaking_tasks
+     WHERE id = $1 AND is_published = TRUE`,
     [taskId]
   );
 
-  if (!task.rows.length) {
-    throw new Error("Faol speaking topshirig'i topilmadi");
+  if (task.rows.length === 0) {
+    throw new Error("Speaking task not found or not published");
+  }
+
+  if (questionId) {
+    const question = await pool.query(
+      `SELECT id
+       FROM speaking_questions
+       WHERE id = $1 AND task_id = $2`,
+      [questionId, taskId]
+    );
+
+    if (question.rows.length === 0) {
+      throw new Error("Speaking question not found");
+    }
   }
 
   const result = await pool.query(
     `INSERT INTO speaking_submissions
-      (user_id, task_id, audio_key, duration_seconds, status)
-     VALUES ($1, $2, $3, $4, 'pending')
-     RETURNING id, user_id, task_id, duration_seconds,
-               status, created_at`,
-    [userId, taskId, audioKey, duration]
+      (user_id, task_id, question_id, audio_key, duration, status)
+     VALUES ($1, $2, $3, $4, $5, 'submitted')
+     RETURNING *`,
+    [userId, taskId, questionId, audioKey, duration]
   );
 
   return result.rows[0];
 }
 
-async function getMySpeakingSubmissions(
-  userId,
-  { page = 1, limit = 20 } = {}
-) {
-  const offset = (Number(page) - 1) * Number(limit);
-
-  const countResult = await pool.query(
-    `SELECT COUNT(*)::int AS total
-     FROM speaking_submissions
-     WHERE user_id = $1`,
+async function getUserSpeakingSubmissions(userId) {
+  const result = await pool.query(
+    `SELECT ss.*, st.title AS task_title
+     FROM speaking_submissions ss
+     JOIN speaking_tasks st ON st.id = ss.task_id
+     WHERE ss.user_id = $1
+     ORDER BY ss.created_at DESC`,
     [userId]
   );
 
-  const result = await pool.query(
-    `SELECT s.id, s.task_id, t.title AS task_title,
-            s.duration_seconds, s.status, s.score,
-            s.feedback, s.created_at, s.reviewed_at
-     FROM speaking_submissions s
-     JOIN speaking_tasks t ON t.id = s.task_id
-     WHERE s.user_id = $1
-     ORDER BY s.created_at DESC
-     LIMIT $2 OFFSET $3`,
-    [userId, Number(limit), offset]
+  return Promise.all(
+    result.rows.map(async (submission) => ({
+      ...submission,
+      audio_url: submission.audio_key
+        ? await getFileUrl(submission.audio_key)
+        : null
+    }))
   );
-
-  return {
-    items: result.rows,
-    total: countResult.rows[0].total,
-    page: Number(page),
-    limit: Number(limit)
-  };
 }
 
-async function getSpeakingSubmissions({
-  page = 1,
-  limit = 20,
-  status = null
-} = {}) {
-  const offset = (Number(page) - 1) * Number(limit);
+async function getAllSpeakingSubmissions({ status, page = 1, limit = 50 } = {}) {
+  const safePage = Math.max(1, Number.parseInt(page, 10) || 1);
+  const safeLimit = Math.min(100, Math.max(1, Number.parseInt(limit, 10) || 50));
   const values = [];
   let where = "";
 
   if (status) {
     values.push(status);
-    where = `WHERE s.status = $${values.length}`;
+    where = `WHERE ss.status = $1`;
   }
 
-  const countResult = await pool.query(
-    `SELECT COUNT(*)::int AS total
-     FROM speaking_submissions s
-     ${where}`,
-    values
-  );
-
-  values.push(Number(limit), offset);
+  values.push(safeLimit, (safePage - 1) * safeLimit);
 
   const result = await pool.query(
-    `SELECT s.id, s.user_id, u.name AS student_name,
-            s.task_id, t.title AS task_title,
-            s.audio_key, s.duration_seconds,
-            s.status, s.score, s.feedback,
-            s.created_at, s.reviewed_at
-     FROM speaking_submissions s
-     JOIN users u ON u.id = s.user_id
-     JOIN speaking_tasks t ON t.id = s.task_id
+    `SELECT ss.*, u.name AS user_name, u.email, st.title AS task_title
+     FROM speaking_submissions ss
+     JOIN users u ON u.id = ss.user_id
+     JOIN speaking_tasks st ON st.id = ss.task_id
      ${where}
-     ORDER BY s.created_at DESC
+     ORDER BY ss.created_at DESC
      LIMIT $${values.length - 1}
      OFFSET $${values.length}`,
     values
   );
 
-  return {
-    items: result.rows,
-    total: countResult.rows[0].total,
-    page: Number(page),
-    limit: Number(limit)
-  };
+  return Promise.all(
+    result.rows.map(async (submission) => ({
+      ...submission,
+      audio_url: submission.audio_key
+        ? await getFileUrl(submission.audio_key)
+        : null
+    }))
+  );
 }
 
-async function reviewSpeaking(
+async function reviewSpeakingSubmission({
   submissionId,
-  { score, feedback }
-) {
-  const numericScore = Number(score);
+  reviewerId,
+  feedback,
+  score
+}) {
+  if (!submissionId || !reviewerId || feedback === undefined) {
+    throw new Error("Submission, reviewer and feedback are required");
+  }
 
   if (
-    !Number.isInteger(numericScore) ||
-    numericScore < 0 ||
-    numericScore > 100
+    score !== undefined &&
+    score !== null &&
+    (!Number.isFinite(Number(score)) || Number(score) < 0 || Number(score) > 100)
   ) {
-    throw new Error("Baholash 0 dan 100 gacha bo'lishi kerak");
+    throw new Error("Score must be between 0 and 100");
   }
 
   const result = await pool.query(
     `UPDATE speaking_submissions
-     SET score = $1,
-         feedback = $2,
+     SET feedback = $1,
+         score = $2,
          status = 'reviewed',
+         reviewed_by = $3,
          reviewed_at = NOW()
-     WHERE id = $3
-     RETURNING id, user_id, task_id, score,
-               feedback, status, reviewed_at`,
-    [numericScore, feedback || null, submissionId]
+     WHERE id = $4
+     RETURNING *`,
+    [feedback, score ?? null, reviewerId, submissionId]
   );
 
-  if (!result.rows.length) {
-    throw new Error("Speaking javobi topilmadi");
+  if (result.rows.length === 0) {
+    throw new Error("Speaking submission not found");
   }
 
   return result.rows[0];
 }
 
-async function setSpeakingTaskStatus(taskId, isActive) {
+async function updateSpeakingTask(taskId, data = {}) {
+  const allowedFields = {
+    title: "title",
+    description: "description",
+    level: "level",
+    instructions: "instructions",
+    sortOrder: "sort_order",
+    isPublished: "is_published"
+  };
+
+  const fields = [];
+  const values = [];
+
+  for (const [key, column] of Object.entries(allowedFields)) {
+    if (data[key] !== undefined) {
+      values.push(data[key]);
+      fields.push(`${column} = $${values.length}`);
+    }
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No speaking task fields provided");
+  }
+
+  values.push(taskId);
+
   const result = await pool.query(
     `UPDATE speaking_tasks
-     SET is_active = $1,
-         updated_at = NOW()
-     WHERE id = $2
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
      RETURNING *`,
-    [Boolean(isActive), taskId]
+    values
   );
 
-  if (!result.rows.length) {
-    throw new Error("Speaking topshirig'i topilmadi");
+  if (result.rows.length === 0) {
+    throw new Error("Speaking task not found");
   }
 
   return result.rows[0];
+}
+
+async function deleteSpeakingTask(taskId) {
+  const result = await pool.query(
+    `DELETE FROM speaking_tasks
+     WHERE id = $1
+     RETURNING id`,
+    [taskId]
+  );
+
+  if (result.rows.length === 0) {
+    throw new Error("Speaking task not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
@@ -288,8 +304,9 @@ module.exports = {
   createSpeakingTask,
   addSpeakingQuestion,
   submitSpeaking,
-  getMySpeakingSubmissions,
-  getSpeakingSubmissions,
-  reviewSpeaking,
-  setSpeakingTaskStatus
+  getUserSpeakingSubmissions,
+  getAllSpeakingSubmissions,
+  reviewSpeakingSubmission,
+  updateSpeakingTask,
+  deleteSpeakingTask
 };
