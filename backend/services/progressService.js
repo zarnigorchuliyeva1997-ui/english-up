@@ -1,30 +1,21 @@
 
 const { pool } = require("../config/database");
 
-async function getStudentProgress(userId) {
+async function getUserProgress(userId) {
   const result = await pool.query(
-    `SELECT
-       COUNT(*) AS total_lessons,
-       COUNT(*) FILTER (WHERE completed = TRUE) AS completed_lessons,
-       COALESCE(AVG(score), 0) AS average_score
+    `SELECT *
      FROM learning_progress
-     WHERE user_id = $1`,
+     WHERE user_id = $1
+     ORDER BY updated_at DESC`,
     [userId]
   );
 
-  const row = result.rows[0];
-
-  return {
-    totalLessons: Number(row.total_lessons),
-    completedLessons: Number(row.completed_lessons),
-    averageScore: Number(Number(row.average_score).toFixed(2))
-  };
+  return result.rows;
 }
 
 async function getLessonProgress(userId, lessonId) {
   const result = await pool.query(
-    `SELECT id, user_id, lesson_id, score,
-            completed, completed_at
+    `SELECT *
      FROM learning_progress
      WHERE user_id = $1 AND lesson_id = $2
      LIMIT 1`,
@@ -34,63 +25,77 @@ async function getLessonProgress(userId, lessonId) {
   return result.rows[0] || null;
 }
 
-async function saveLessonProgress(userId, data) {
-  const { lessonId, score, completed } = data;
+async function updateLessonProgress({
+  userId,
+  lessonId,
+  status,
+  score = null
+}) {
+  if (!userId || !lessonId) {
+    throw new Error("User ID and lesson ID are required");
+  }
+
+  const allowedStatuses = ["not_started", "in_progress", "completed"];
+
+  if (!allowedStatuses.includes(status)) {
+    throw new Error("Invalid progress status");
+  }
+
+  if (
+    score !== null &&
+    (!Number.isFinite(Number(score)) ||
+      Number(score) < 0 ||
+      Number(score) > 100)
+  ) {
+    throw new Error("Score must be between 0 and 100");
+  }
 
   const result = await pool.query(
-    `INSERT INTO learning_progress (
-       user_id, lesson_id, score, completed, completed_at
-     )
-     VALUES (
-       $1, $2, $3, $4,
-       CASE WHEN $4 = TRUE THEN NOW() ELSE NULL END
-     )
+    `INSERT INTO learning_progress
+      (user_id, lesson_id, status, score)
+     VALUES ($1, $2, $3, $4)
      ON CONFLICT (user_id, lesson_id)
      DO UPDATE SET
+       status = EXCLUDED.status,
        score = EXCLUDED.score,
-       completed = EXCLUDED.completed,
-       completed_at = CASE
-         WHEN EXCLUDED.completed = TRUE
-         THEN COALESCE(learning_progress.completed_at, NOW())
-         ELSE NULL
-       END
+       updated_at = NOW()
      RETURNING *`,
-    [userId, lessonId, score ?? null, Boolean(completed)]
+    [userId, lessonId, status, score]
   );
 
   return result.rows[0];
 }
 
-async function getCourseProgress(userId, courseId) {
+async function getProgressSummary(userId) {
   const result = await pool.query(
     `SELECT
-       COUNT(l.id) AS total_lessons,
-       COUNT(lp.id) FILTER (
-         WHERE lp.completed = TRUE
-       ) AS completed_lessons
-     FROM lessons l
-     LEFT JOIN learning_progress lp
-       ON lp.lesson_id = l.id AND lp.user_id = $1
-     WHERE l.course_id = $2 AND l.is_active = TRUE`,
-    [userId, courseId]
+       COUNT(*)::int AS total_lessons,
+       COUNT(*) FILTER (WHERE status = 'completed')::int AS completed_lessons,
+       COUNT(*) FILTER (WHERE status = 'in_progress')::int AS in_progress_lessons,
+       COALESCE(AVG(score), 0)::numeric(5,2) AS average_score
+     FROM learning_progress
+     WHERE user_id = $1`,
+    [userId]
   );
 
-  const row = result.rows[0];
-  const total = Number(row.total_lessons);
-  const completedCount = Number(row.completed_lessons);
+  return result.rows[0];
+}
 
-  return {
-    totalLessons: total,
-    completedLessons: completedCount,
-    percentage: total > 0
-      ? Math.round((completedCount / total) * 100)
-      : 0
-  };
+async function resetLessonProgress(userId, lessonId) {
+  const result = await pool.query(
+    `DELETE FROM learning_progress
+     WHERE user_id = $1 AND lesson_id = $2
+     RETURNING id`,
+    [userId, lessonId]
+  );
+
+  return { success: true, deleted: result.rowCount };
 }
 
 module.exports = {
-  getStudentProgress,
+  getUserProgress,
   getLessonProgress,
-  saveLessonProgress,
-  getCourseProgress
+  updateLessonProgress,
+  getProgressSummary,
+  resetLessonProgress
 };
