@@ -7,7 +7,7 @@ const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 
 const {
-  uploadMiddleware,
+  upload,
   uploadFile,
   deleteFile,
   getFileUrl
@@ -23,7 +23,7 @@ router.post(
   "/upload",
   auth,
   admin,
-  uploadMiddleware.single("file"),
+  upload.single("file"),
   async (req, res, next) => {
     try {
       if (!req.file) {
@@ -33,7 +33,7 @@ router.post(
         });
       }
 
-      const folder = req.body.folder || "media";
+      const folder = req.body?.folder || "media";
 
       const file = await uploadFile(req.file, folder);
 
@@ -48,36 +48,39 @@ router.post(
   }
 );
 
-
 // =========================================
 // GET TEMPORARY FILE URL
-// GET /api/files/url
+// GET /api/files/url?key=...
 // Admin only
 // =========================================
 
-router.get("/url", auth, admin, async (req, res, next) => {
-  try {
-    const { key } = req.query;
+router.get(
+  "/url",
+  auth,
+  admin,
+  async (req, res, next) => {
+    try {
+      const { key } = req.query;
 
-    if (!key) {
-      return res.status(400).json({
-        success: false,
-        message: "Fayl manzili ko‘rsatilmagan."
+      if (typeof key !== "string" || !key.trim()) {
+        return res.status(400).json({
+          success: false,
+          message: "Fayl manzili ko‘rsatilmagan."
+        });
+      }
+
+      const url = await getFileUrl(key.trim(), 900);
+
+      return res.json({
+        success: true,
+        url,
+        expiresIn: 900
       });
+    } catch (error) {
+      next(error);
     }
-
-    const url = await getFileUrl(key);
-
-    return res.json({
-      success: true,
-      url,
-      expiresIn: 900
-    });
-  } catch (error) {
-    next(error);
   }
-});
-
+);
 
 // =========================================
 // DELETE FILE
@@ -91,16 +94,16 @@ router.delete(
   admin,
   async (req, res, next) => {
     try {
-      const { key } = req.body;
+      const { key } = req.body || {};
 
-      if (!key) {
+      if (typeof key !== "string" || !key.trim()) {
         return res.status(400).json({
           success: false,
           message: "O‘chiriladigan fayl manzili ko‘rsatilmagan."
         });
       }
 
-      await deleteFile(key);
+      await deleteFile(key.trim());
 
       return res.json({
         success: true,
