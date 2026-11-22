@@ -1,142 +1,137 @@
 
 const { pool } = require("../config/database");
-const { getPagination } = require("../utils/pagination");
 
-async function getVocabulary(query = {}) {
-  const { page, limit, offset } = getPagination(query);
+async function getVocabulary({
+  level,
+  category,
+  page = 1,
+  limit = 100
+} = {}) {
+  const safePage = Math.max(1, Number.parseInt(page, 10) || 1);
+  const safeLimit = Math.min(
+    500,
+    Math.max(1, Number.parseInt(limit, 10) || 100)
+  );
 
   const conditions = [];
   const values = [];
 
-  if (query.level) {
-    values.push(query.level);
+  if (level) {
+    values.push(level);
     conditions.push(`level = $${values.length}`);
   }
 
-  if (query.day) {
-    const day = Number(query.day);
-
-    if (!Number.isInteger(day) || day < 1) {
-      throw new Error("Kun raqami noto'g'ri.");
-    }
-
-    values.push(day);
-    conditions.push(`day_number = $${values.length}`);
-  }
-
-  if (query.search) {
-    values.push(`%${String(query.search).trim()}%`);
-    conditions.push(
-      `(word ILIKE $${values.length} OR translation ILIKE $${values.length})`
-    );
+  if (category) {
+    values.push(category);
+    conditions.push(`category = $${values.length}`);
   }
 
   const where = conditions.length
     ? `WHERE ${conditions.join(" AND ")}`
     : "";
 
-  const listValues = [...values, limit, offset];
+  values.push(safeLimit, (safePage - 1) * safeLimit);
 
   const result = await pool.query(
-    `SELECT id, level, day_number, word, translation,
-            pronunciation, example
+    `SELECT *
      FROM vocabulary
      ${where}
-     ORDER BY level, day_number, id
-     LIMIT $${values.length + 1}
-     OFFSET $${values.length + 2}`,
-    listValues
-  );
-
-  const countResult = await pool.query(
-    `SELECT COUNT(*) FROM vocabulary ${where}`,
+     ORDER BY id ASC
+     LIMIT $${values.length - 1}
+     OFFSET $${values.length}`,
     values
-  );
-
-  return {
-    words: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
-}
-
-async function getDailyVocabulary(level, day) {
-  const result = await pool.query(
-    `SELECT id, word, translation, pronunciation, example
-     FROM vocabulary
-     WHERE level = $1 AND day_number = $2
-     ORDER BY id ASC`,
-    [level, day]
   );
 
   return result.rows;
 }
 
-async function createVocabulary(data) {
-  const {
-    level,
-    dayNumber,
-    word,
-    translation,
-    pronunciation,
-    example
-  } = data;
+async function getWordById(wordId) {
+  const result = await pool.query(
+    `SELECT *
+     FROM vocabulary
+     WHERE id = $1`,
+    [wordId]
+  );
+
+  if (result.rows.length === 0) {
+    throw new Error("Vocabulary word not found");
+  }
+
+  return result.rows[0];
+}
+
+async function createWord({
+  word,
+  translation,
+  pronunciation = "",
+  example = "",
+  level,
+  category = "general"
+}) {
+  if (!word || !translation || !level) {
+    throw new Error("Word, translation and level are required");
+  }
 
   const result = await pool.query(
-    `INSERT INTO vocabulary (
-       level, day_number, word, translation, pronunciation, example
-     )
+    `INSERT INTO vocabulary
+      (word, translation, pronunciation, example, level, category)
      VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
-      level,
-      dayNumber,
       word.trim(),
       translation.trim(),
-      pronunciation || null,
-      example || null
+      pronunciation,
+      example,
+      level,
+      category
     ]
   );
 
   return result.rows[0];
 }
 
-async function updateVocabulary(wordId, data) {
-  const {
-    level,
-    dayNumber,
-    word,
-    translation,
-    pronunciation,
-    example
-  } = data;
+async function updateWord(wordId, data = {}) {
+  const allowedFields = {
+    word: "word",
+    translation: "translation",
+    pronunciation: "pronunciation",
+    example: "example",
+    level: "level",
+    category: "category"
+  };
+
+  const fields = [];
+  const values = [];
+
+  for (const [key, column] of Object.entries(allowedFields)) {
+    if (data[key] !== undefined) {
+      values.push(data[key]);
+      fields.push(`${column} = $${values.length}`);
+    }
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No vocabulary fields provided");
+  }
+
+  values.push(wordId);
 
   const result = await pool.query(
     `UPDATE vocabulary
-     SET level = COALESCE($2, level),
-         day_number = COALESCE($3, day_number),
-         word = COALESCE($4, word),
-         translation = COALESCE($5, translation),
-         pronunciation = COALESCE($6, pronunciation),
-         example = COALESCE($7, example)
-     WHERE id = $1
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
      RETURNING *`,
-    [
-      wordId,
-      level ?? null,
-      dayNumber ?? null,
-      word?.trim() ?? null,
-      translation?.trim() ?? null,
-      pronunciation ?? null,
-      example ?? null
-    ]
+    values
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Vocabulary word not found");
+  }
+
+  return result.rows[0];
 }
 
-async function deleteVocabulary(wordId) {
+async function deleteWord(wordId) {
   const result = await pool.query(
     `DELETE FROM vocabulary
      WHERE id = $1
@@ -144,13 +139,17 @@ async function deleteVocabulary(wordId) {
     [wordId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Vocabulary word not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
   getVocabulary,
-  getDailyVocabulary,
-  createVocabulary,
-  updateVocabulary,
-  deleteVocabulary
+  getWordById,
+  createWord,
+  updateWord,
+  deleteWord
 };
