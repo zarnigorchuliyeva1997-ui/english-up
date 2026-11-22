@@ -1,171 +1,182 @@
 
 const { pool } = require("../config/database");
-const { getPagination } = require("../utils/pagination");
 
-async function getReadingLessons(query = {}) {
-  const { page, limit, offset } = getPagination(query);
+async function getReadingLessons({ level, isPublished } = {}) {
+  const conditions = [];
+  const values = [];
+
+  if (level) {
+    values.push(level);
+    conditions.push(`level = $${values.length}`);
+  }
+
+  if (typeof isPublished === "boolean") {
+    values.push(isPublished);
+    conditions.push(`is_published = $${values.length}`);
+  }
+
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
 
   const result = await pool.query(
-    `SELECT id, title, description, level, reading_order
+    `SELECT *
      FROM reading_lessons
-     WHERE is_active = TRUE
-       AND ($1::text IS NULL OR level = $1)
-     ORDER BY reading_order ASC
-     LIMIT $2 OFFSET $3`,
-    [query.level || null, limit, offset]
+     ${where}
+     ORDER BY sort_order ASC, created_at DESC`,
+    values
   );
 
-  const countResult = await pool.query(
-    `SELECT COUNT(*) FROM reading_lessons
-     WHERE is_active = TRUE
-       AND ($1::text IS NULL OR level = $1)`,
-    [query.level || null]
-  );
-
-  return {
-    lessons: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
+  return result.rows;
 }
 
 async function getReadingLessonById(lessonId) {
   const lessonResult = await pool.query(
-    `SELECT id, title, description, level, content, reading_order
+    `SELECT *
      FROM reading_lessons
-     WHERE id = $1 AND is_active = TRUE
-     LIMIT 1`,
+     WHERE id = $1`,
     [lessonId]
   );
 
-  const lesson = lessonResult.rows[0];
-
-  if (!lesson) {
-    return null;
+  if (lessonResult.rows.length === 0) {
+    throw new Error("Reading lesson not found");
   }
 
   const questionsResult = await pool.query(
-    `SELECT id, question, options, question_order
+    `SELECT id, lesson_id, question, options, sort_order
      FROM reading_questions
-     WHERE reading_id = $1
-     ORDER BY question_order ASC`,
+     WHERE lesson_id = $1
+     ORDER BY sort_order ASC, id ASC`,
     [lessonId]
   );
 
   return {
-    ...lesson,
+    ...lessonResult.rows[0],
     questions: questionsResult.rows
   };
 }
 
-async function createReadingLesson(data) {
-  const { title, description, level, content, readingOrder } = data;
+async function createReadingLesson({
+  title,
+  description = "",
+  level,
+  content,
+  sortOrder = 0,
+  isPublished = false
+}) {
+  if (!title || !level || !content) {
+    throw new Error("Title, level and reading content are required");
+  }
 
   const result = await pool.query(
-    `INSERT INTO reading_lessons (
-       title, description, level, content,
-       reading_order, is_active
-     )
-     VALUES ($1, $2, $3, $4, $5, FALSE)
+    `INSERT INTO reading_lessons
+      (title, description, level, content, sort_order, is_published)
+     VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
-    [
-      title,
-      description || null,
-      level,
-      content,
-      readingOrder || 1
-    ]
+    [title.trim(), description, level, content, sortOrder, isPublished]
   );
 
   return result.rows[0];
 }
 
-async function addReadingQuestion(lessonId, data) {
-  const { question, options, correctAnswer, questionOrder } = data;
+async function addReadingQuestion({
+  lessonId,
+  question,
+  options,
+  correctAnswer,
+  explanation = "",
+  sortOrder = 0
+}) {
+  if (!lessonId || !question || !options || correctAnswer === undefined) {
+    throw new Error("Required question fields are missing");
+  }
 
   const result = await pool.query(
-    `INSERT INTO reading_questions (
-       reading_id, question, options,
-       correct_answer, question_order
-     )
-     VALUES ($1, $2, $3, $4, $5)
-     RETURNING id, reading_id, question, options, question_order`,
+    `INSERT INTO reading_questions
+      (lesson_id, question, options, correct_answer, explanation, sort_order)
+     VALUES ($1, $2, $3, $4, $5, $6)
+     RETURNING *`,
     [
       lessonId,
       question,
       JSON.stringify(options),
       correctAnswer,
-      questionOrder || 1
+      explanation,
+      sortOrder
     ]
   );
 
   return result.rows[0];
 }
 
-async function submitReading(userId, lessonId, answers) {
+async function submitReadingAnswers({ userId, lessonId, answers }) {
+  if (!userId || !lessonId || !Array.isArray(answers)) {
+    throw new Error("Invalid reading submission");
+  }
+
   const client = await pool.connect();
 
   try {
     await client.query("BEGIN");
 
-    const lessonResult = await client.query(
-      `SELECT id FROM reading_lessons
-       WHERE id = $1 AND is_active = TRUE
-       FOR SHARE`,
+    const lesson = await client.query(
+      `SELECT id
+       FROM reading_lessons
+       WHERE id = $1 AND is_published = TRUE`,
       [lessonId]
     );
 
-    if (!lessonResult.rows.length) {
-      const error = new Error("Reading darsi topilmadi.");
-      error.statusCode = 404;
-      throw error;
+    if (lesson.rows.length === 0) {
+      throw new Error("Reading lesson not found or not published");
     }
 
     const questionResult = await client.query(
       `SELECT id, correct_answer
        FROM reading_questions
-       WHERE reading_id = $1`,
+       WHERE lesson_id = $1`,
       [lessonId]
     );
 
     const questions = questionResult.rows;
 
-    if (!questions.length) {
-      const error = new Error("Reading savollari mavjud emas.");
-      error.statusCode = 400;
-      throw error;
+    if (questions.length === 0) {
+      throw new Error("Reading lesson has no questions");
     }
 
     const answerMap = new Map(
-      (Array.isArray(answers) ? answers : [])
-        .map(item => [String(item.questionId), item.answer])
+      answers.map((item) => [String(item.questionId), item.answer])
     );
 
-    let correct = 0;
+    let correctCount = 0;
 
     for (const question of questions) {
+      const answer = answerMap.get(String(question.id));
+
       if (
-        answerMap.has(String(question.id)) &&
-        String(answerMap.get(String(question.id))).trim() ===
-          String(question.correct_answer).trim()
+        answer !== undefined &&
+        String(answer) === String(question.correct_answer)
       ) {
-        correct++;
+        correctCount++;
       }
     }
 
     const score = Math.round(
-      (correct / questions.length) * 100
+      (correctCount / questions.length) * 100
     );
 
     const result = await client.query(
-      `INSERT INTO reading_attempts (
-         user_id, reading_id, total_questions,
-         correct_answers, score
-       )
-       VALUES ($1, $2, $3, $4, $5)
+      `INSERT INTO reading_attempts
+        (user_id, lesson_id, answers, score, total_questions, correct_answers)
+       VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
-      [userId, lessonId, questions.length, correct, score]
+      [
+        userId,
+        lessonId,
+        JSON.stringify(answers),
+        score,
+        questions.length,
+        correctCount
+      ]
     );
 
     await client.query("COMMIT");
@@ -179,16 +190,80 @@ async function submitReading(userId, lessonId, answers) {
   }
 }
 
-async function setReadingLessonStatus(lessonId, isActive) {
+async function getUserReadingAttempts(userId, lessonId = null) {
+  const values = [userId];
+  let condition = "user_id = $1";
+
+  if (lessonId) {
+    values.push(lessonId);
+    condition += " AND lesson_id = $2";
+  }
+
   const result = await pool.query(
-    `UPDATE reading_lessons
-     SET is_active = $2, updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, title, level, is_active`,
-    [lessonId, isActive]
+    `SELECT *
+     FROM reading_attempts
+     WHERE ${condition}
+     ORDER BY created_at DESC`,
+    values
   );
 
-  return result.rows[0] || null;
+  return result.rows;
+}
+
+async function updateReadingLesson(lessonId, data = {}) {
+  const allowedFields = {
+    title: "title",
+    description: "description",
+    level: "level",
+    content: "content",
+    sortOrder: "sort_order",
+    isPublished: "is_published"
+  };
+
+  const fields = [];
+  const values = [];
+
+  for (const [key, column] of Object.entries(allowedFields)) {
+    if (data[key] !== undefined) {
+      values.push(data[key]);
+      fields.push(`${column} = $${values.length}`);
+    }
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No reading lesson fields provided");
+  }
+
+  values.push(lessonId);
+
+  const result = await pool.query(
+    `UPDATE reading_lessons
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
+     RETURNING *`,
+    values
+  );
+
+  if (result.rows.length === 0) {
+    throw new Error("Reading lesson not found");
+  }
+
+  return result.rows[0];
+}
+
+async function deleteReadingLesson(lessonId) {
+  const result = await pool.query(
+    `DELETE FROM reading_lessons
+     WHERE id = $1
+     RETURNING id`,
+    [lessonId]
+  );
+
+  if (result.rows.length === 0) {
+    throw new Error("Reading lesson not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
@@ -196,6 +271,8 @@ module.exports = {
   getReadingLessonById,
   createReadingLesson,
   addReadingQuestion,
-  submitReading,
-  setReadingLessonStatus
+  submitReadingAnswers,
+  getUserReadingAttempts,
+  updateReadingLesson,
+  deleteReadingLesson
 };
