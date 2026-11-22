@@ -64,12 +64,24 @@ router.post("/", auth, admin, async (req, res, next) => {
       message,
       audience = "all",
       level = null
-    } = req.body;
+    } = req.body || {};
 
-    if (!title || !message) {
+    if (
+      typeof title !== "string" ||
+      typeof message !== "string" ||
+      !title.trim() ||
+      !message.trim()
+    ) {
       return res.status(400).json({
         success: false,
         message: "E'lon sarlavhasi va matni kerak."
+      });
+    }
+
+    if (title.trim().length > 200) {
+      return res.status(400).json({
+        success: false,
+        message: "Sarlavha 200 belgidan oshmasligi kerak."
       });
     }
 
@@ -80,7 +92,10 @@ router.post("/", auth, admin, async (req, res, next) => {
       });
     }
 
-    if (audience === "level" && !level) {
+    if (
+      audience === "level" &&
+      (typeof level !== "string" || !level.trim())
+    ) {
       return res.status(400).json({
         success: false,
         message: "Darajani tanlash kerak."
@@ -92,7 +107,12 @@ router.post("/", auth, admin, async (req, res, next) => {
        (title, message, audience, level, is_active)
        VALUES ($1, $2, $3, $4, TRUE)
        RETURNING *`,
-      [title.trim(), message.trim(), audience, level]
+      [
+        title.trim(),
+        message.trim(),
+        audience,
+        audience === "level" ? level.trim() : null
+      ]
     );
 
     res.status(201).json({
@@ -108,11 +128,26 @@ router.post("/", auth, admin, async (req, res, next) => {
 // E'lonni tahrirlash
 router.patch("/:id", auth, admin, async (req, res, next) => {
   try {
-    const { title, message, audience, level, is_active } = req.body;
+    const id = Number(req.params.id);
+
+    if (!Number.isSafeInteger(id) || id <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: "E'lon ID noto'g'ri."
+      });
+    }
+
+    const {
+      title,
+      message,
+      audience,
+      level,
+      is_active
+    } = req.body || {};
 
     const current = await pool.query(
       "SELECT * FROM announcements WHERE id = $1",
-      [req.params.id]
+      [id]
     );
 
     if (!current.rows.length) {
@@ -123,6 +158,20 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
     }
 
     const old = current.rows[0];
+
+    if (title !== undefined && typeof title !== "string") {
+      return res.status(400).json({
+        success: false,
+        message: "Sarlavha matn ko'rinishida bo'lishi kerak."
+      });
+    }
+
+    if (message !== undefined && typeof message !== "string") {
+      return res.status(400).json({
+        success: false,
+        message: "E'lon matni noto'g'ri."
+      });
+    }
 
     const newTitle = title !== undefined ? title.trim() : old.title;
     const newMessage = message !== undefined ? message.trim() : old.message;
@@ -137,6 +186,13 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
       });
     }
 
+    if (newTitle.length > 200) {
+      return res.status(400).json({
+        success: false,
+        message: "Sarlavha 200 belgidan oshmasligi kerak."
+      });
+    }
+
     if (!["all", "level"].includes(newAudience)) {
       return res.status(400).json({
         success: false,
@@ -144,10 +200,20 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
       });
     }
 
-    if (newAudience === "level" && !newLevel) {
+    if (
+      newAudience === "level" &&
+      (typeof newLevel !== "string" || !newLevel.trim())
+    ) {
       return res.status(400).json({
         success: false,
         message: "Darajani tanlash kerak."
+      });
+    }
+
+    if (typeof newStatus !== "boolean") {
+      return res.status(400).json({
+        success: false,
+        message: "E'lon holati noto'g'ri."
       });
     }
 
@@ -165,9 +231,9 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
         newTitle,
         newMessage,
         newAudience,
-        newLevel,
+        newAudience === "level" ? newLevel.trim() : null,
         newStatus,
-        req.params.id
+        id
       ]
     );
 
@@ -184,9 +250,18 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
 // E'lonni o'chirish
 router.delete("/:id", auth, admin, async (req, res, next) => {
   try {
+    const id = Number(req.params.id);
+
+    if (!Number.isSafeInteger(id) || id <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: "E'lon ID noto'g'ri."
+      });
+    }
+
     const result = await pool.query(
       "DELETE FROM announcements WHERE id = $1 RETURNING id",
-      [req.params.id]
+      [id]
     );
 
     if (!result.rows.length) {
