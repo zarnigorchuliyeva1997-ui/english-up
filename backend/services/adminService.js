@@ -1,6 +1,26 @@
 
 const { pool } = require("../config/database");
 
+// Xavfsiz sahifalash
+function normalizePagination(page = 1, limit = 20) {
+  const safePage = Math.min(
+    Math.max(Math.floor(Number(page) || 1), 1),
+    1000000
+  );
+
+  const safeLimit = Math.min(
+    Math.max(Math.floor(Number(limit) || 20), 1),
+    100
+  );
+
+  return {
+    page: safePage,
+    limit: safeLimit,
+    offset: (safePage - 1) * safeLimit
+  };
+}
+
+// Admin dashboard
 async function getAdminDashboard() {
   const result = await pool.query(
     `SELECT
@@ -37,6 +57,7 @@ async function getAdminDashboard() {
   return result.rows[0];
 }
 
+// O'quvchilar ro'yxati
 async function getStudents({
   page = 1,
   limit = 20,
@@ -44,17 +65,12 @@ async function getStudents({
   level = null,
   status = null
 } = {}) {
-  const safePage = Math.max(Number(page) || 1, 1);
-  const safeLimit = Math.min(
-    Math.max(Number(limit) || 20, 1),
-    100
-  );
-  const offset = (safePage - 1) * safeLimit;
+  const pagination = normalizePagination(page, limit);
 
   const conditions = ["role = 'student'"];
   const values = [];
 
-  if (search) {
+  if (search && String(search).trim()) {
     values.push(`%${String(search).trim()}%`);
     conditions.push(
       `(name ILIKE $${values.length}
@@ -62,8 +78,8 @@ async function getStudents({
     );
   }
 
-  if (level) {
-    values.push(level);
+  if (level && String(level).trim()) {
+    values.push(String(level).trim());
     conditions.push(`level = $${values.length}`);
   }
 
@@ -82,7 +98,11 @@ async function getStudents({
     values
   );
 
-  const queryValues = [...values, safeLimit, offset];
+  const queryValues = [
+    ...values,
+    pagination.limit,
+    pagination.offset
+  ];
 
   const result = await pool.query(
     `SELECT
@@ -95,20 +115,23 @@ async function getStudents({
      FROM users
      ${where}
      ORDER BY created_at DESC, id DESC
-     LIMIT $${queryValues.length - 1}
-     OFFSET $${queryValues.length}`,
+     LIMIT $${values.length + 1}
+     OFFSET $${values.length + 2}`,
     queryValues
   );
 
+  const total = countResult.rows[0].total;
+
   return {
     items: result.rows,
-    total: countResult.rows[0].total,
-    page: safePage,
-    limit: safeLimit,
-    totalPages: Math.ceil(countResult.rows[0].total / safeLimit)
+    total,
+    page: pagination.page,
+    limit: pagination.limit,
+    totalPages: Math.ceil(total / pagination.limit)
   };
 }
 
+// O'quvchi tafsilotlari
 async function getStudentDetails(studentId) {
   const studentResult = await pool.query(
     `SELECT
@@ -128,7 +151,12 @@ async function getStudentDetails(studentId) {
   }
 
   const subscriptionResult = await pool.query(
-    `SELECT id, plan, status, start_date, end_date
+    `SELECT
+       id,
+       plan,
+       status,
+       start_date,
+       end_date
      FROM subscriptions
      WHERE user_id = $1
      ORDER BY created_at DESC
@@ -139,8 +167,9 @@ async function getStudentDetails(studentId) {
   const progressResult = await pool.query(
     `SELECT
        COUNT(*)::int AS lessons_started,
-       COUNT(*) FILTER (WHERE completed = TRUE)::int
-         AS lessons_completed
+       COUNT(*) FILTER (
+         WHERE completed = TRUE
+       )::int AS lessons_completed
      FROM learning_progress
      WHERE user_id = $1`,
     [studentId]
