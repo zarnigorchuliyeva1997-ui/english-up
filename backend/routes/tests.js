@@ -14,10 +14,21 @@ const router = express.Router();
 router.get("/", auth, async (req, res, next) => {
   try {
     const result = await pool.query(
-      `SELECT id, title, description, level, created_at
-       FROM tests
-       WHERE is_active = TRUE
-       ORDER BY created_at DESC`
+      `SELECT
+         t.id,
+         t.course_id,
+         t.lesson_id,
+         t.title,
+         t.description,
+         t.test_type,
+         t.time_limit,
+         t.passing_score,
+         t.created_at,
+         c.level
+       FROM tests t
+       LEFT JOIN courses c ON c.id = t.course_id
+       WHERE t.is_active = TRUE
+       ORDER BY t.created_at DESC`
     );
 
     res.json({
@@ -47,9 +58,20 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const testResult = await pool.query(
-      `SELECT id, title, description, level
-       FROM tests
-       WHERE id = $1 AND is_active = TRUE`,
+      `SELECT
+         t.id,
+         t.course_id,
+         t.lesson_id,
+         t.title,
+         t.description,
+         t.test_type,
+         t.time_limit,
+         t.passing_score,
+         c.level
+       FROM tests t
+       LEFT JOIN courses c ON c.id = t.course_id
+       WHERE t.id = $1
+         AND t.is_active = TRUE`,
       [testId]
     );
 
@@ -61,7 +83,12 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const questionsResult = await pool.query(
-      `SELECT id, question, options, question_order
+      `SELECT
+         id,
+         question,
+         options,
+         question_order,
+         points
        FROM test_questions
        WHERE test_id = $1
        ORDER BY question_order ASC`,
@@ -86,20 +113,81 @@ router.get("/:id", auth, async (req, res, next) => {
 
 router.post("/", auth, admin, async (req, res, next) => {
   try {
-    const { title, description, level } = req.body;
+    const {
+      courseId,
+      lessonId,
+      title,
+      description,
+      testType,
+      timeLimit,
+      passingScore
+    } = req.body;
 
-    if (!title || !level) {
+    if (!title || typeof title !== "string" || !title.trim()) {
       return res.status(400).json({
         success: false,
-        message: "Test nomi va darajasi kerak."
+        message: "Test nomini kiriting."
+      });
+    }
+
+    const parsedCourseId =
+      courseId === undefined || courseId === null || courseId === ""
+        ? null
+        : Number(courseId);
+
+    const parsedLessonId =
+      lessonId === undefined || lessonId === null || lessonId === ""
+        ? null
+        : Number(lessonId);
+
+    const parsedTimeLimit =
+      timeLimit === undefined || timeLimit === null || timeLimit === ""
+        ? null
+        : Number(timeLimit);
+
+    const parsedPassingScore =
+      passingScore === undefined || passingScore === null
+        ? 80
+        : Number(passingScore);
+
+    if (
+      (parsedCourseId !== null &&
+        (!Number.isInteger(parsedCourseId) || parsedCourseId < 1)) ||
+      (parsedLessonId !== null &&
+        (!Number.isInteger(parsedLessonId) || parsedLessonId < 1)) ||
+      (parsedTimeLimit !== null &&
+        (!Number.isInteger(parsedTimeLimit) || parsedTimeLimit < 1)) ||
+      !Number.isFinite(parsedPassingScore) ||
+      parsedPassingScore < 0 ||
+      parsedPassingScore > 100
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Test parametrlari noto‘g‘ri."
       });
     }
 
     const result = await pool.query(
-      `INSERT INTO tests (title, description, level)
-       VALUES ($1, $2, $3)
+      `INSERT INTO tests (
+         course_id,
+         lesson_id,
+         title,
+         description,
+         test_type,
+         time_limit,
+         passing_score
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING *`,
-      [title, description || null, level]
+      [
+        parsedCourseId,
+        parsedLessonId,
+        title.trim(),
+        description || null,
+        testType || "general",
+        parsedTimeLimit,
+        parsedPassingScore
+      ]
     );
 
     res.status(201).json({
@@ -124,19 +212,43 @@ router.post(
   async (req, res, next) => {
     try {
       const testId = Number(req.params.id);
-      const { question, options, correctAnswer, questionOrder } = req.body;
+
+      const {
+        question,
+        options,
+        correctAnswer,
+        explanation,
+        questionOrder,
+        points
+      } = req.body;
+
+      const parsedQuestionOrder =
+        questionOrder === undefined || questionOrder === null
+          ? 1
+          : Number(questionOrder);
+
+      const parsedPoints =
+        points === undefined || points === null
+          ? 1
+          : Number(points);
 
       if (
         !Number.isInteger(testId) ||
         testId < 1 ||
-        !question ||
+        typeof question !== "string" ||
+        !question.trim() ||
         !Array.isArray(options) ||
         options.length < 2 ||
-        correctAnswer === undefined
+        correctAnswer === undefined ||
+        correctAnswer === null ||
+        !Number.isInteger(parsedQuestionOrder) ||
+        parsedQuestionOrder < 1 ||
+        !Number.isFinite(parsedPoints) ||
+        parsedPoints <= 0
       ) {
         return res.status(400).json({
           success: false,
-          message: "Savol, variantlar va to‘g‘ri javobni kiriting."
+          message: "Savol, variantlar va to‘g‘ri javobni to‘g‘ri kiriting."
         });
       }
 
@@ -153,16 +265,32 @@ router.post(
       }
 
       const result = await pool.query(
-        `INSERT INTO test_questions
-         (test_id, question, options, correct_answer, question_order)
-         VALUES ($1, $2, $3, $4, $5)
-         RETURNING id, test_id, question, options, question_order`,
+        `INSERT INTO test_questions (
+           test_id,
+           question,
+           options,
+           correct_answer,
+           explanation,
+           question_order,
+           points
+         )
+         VALUES ($1, $2, $3, $4, $5, $6, $7)
+         RETURNING
+           id,
+           test_id,
+           question,
+           options,
+           explanation,
+           question_order,
+           points`,
         [
           testId,
-          question,
+          question.trim(),
           JSON.stringify(options),
           String(correctAnswer),
-          Number(questionOrder) || 1
+          explanation || null,
+          parsedQuestionOrder,
+          parsedPoints
         ]
       );
 
@@ -182,7 +310,8 @@ router.post(
 // =========================================
 
 router.post("/:id/submit", auth, async (req, res, next) => {
-  const client = await pool.connect();
+  let client;
+  let transactionStarted = false;
 
   try {
     const testId = Number(req.params.id);
@@ -199,16 +328,23 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       });
     }
 
+    client = await pool.connect();
+
     await client.query("BEGIN");
+    transactionStarted = true;
 
     const testResult = await client.query(
-      `SELECT id FROM tests
-       WHERE id = $1 AND is_active = TRUE`,
+      `SELECT id, passing_score
+       FROM tests
+       WHERE id = $1
+         AND is_active = TRUE
+       FOR UPDATE`,
       [testId]
     );
 
     if (!testResult.rows.length) {
       await client.query("ROLLBACK");
+      transactionStarted = false;
 
       return res.status(404).json({
         success: false,
@@ -217,9 +353,10 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     }
 
     const questionsResult = await client.query(
-      `SELECT id, correct_answer
+      `SELECT id, correct_answer, points
        FROM test_questions
-       WHERE test_id = $1`,
+       WHERE test_id = $1
+       ORDER BY question_order ASC`,
       [testId]
     );
 
@@ -227,6 +364,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
 
     if (!questions.length) {
       await client.query("ROLLBACK");
+      transactionStarted = false;
 
       return res.status(400).json({
         success: false,
@@ -237,13 +375,31 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     const submittedAnswers = new Map();
 
     for (const answer of answers) {
+      if (
+        !answer ||
+        typeof answer !== "object" ||
+        Array.isArray(answer)
+      ) {
+        await client.query("ROLLBACK");
+        transactionStarted = false;
+
+        return res.status(400).json({
+          success: false,
+          message: "Javoblar formati noto‘g‘ri."
+        });
+      }
+
       const questionId = Number(answer.questionId);
 
       if (
         !Number.isInteger(questionId) ||
+        questionId < 1 ||
+        answer.answer === undefined ||
+        answer.answer === null ||
         submittedAnswers.has(questionId)
       ) {
         await client.query("ROLLBACK");
+        transactionStarted = false;
 
         return res.status(400).json({
           success: false,
@@ -251,19 +407,17 @@ router.post("/:id/submit", auth, async (req, res, next) => {
         });
       }
 
-      submittedAnswers.set(
-        questionId,
-        String(answer.answer)
-      );
+      submittedAnswers.set(questionId, String(answer.answer));
     }
 
     const questionIds = new Set(
-      questions.map((question) => Number(question.id))
+      questions.map((item) => Number(item.id))
     );
 
     for (const questionId of submittedAnswers.keys()) {
       if (!questionIds.has(questionId)) {
         await client.query("ROLLBACK");
+        transactionStarted = false;
 
         return res.status(400).json({
           success: false,
@@ -273,40 +427,68 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     }
 
     let correctCount = 0;
+    let earnedPoints = 0;
+    let totalPoints = 0;
 
     for (const question of questions) {
-      const submitted = submittedAnswers.get(
-        Number(question.id)
-      );
+      const questionPoints = Number(question.points);
+      totalPoints += questionPoints;
+
+      const submitted = submittedAnswers.get(Number(question.id));
 
       if (
         submitted !== undefined &&
         submitted === String(question.correct_answer)
       ) {
         correctCount++;
+        earnedPoints += questionPoints;
       }
     }
 
-    const totalQuestions = questions.length;
     const score = Number(
-      ((correctCount / totalQuestions) * 100).toFixed(2)
+      ((earnedPoints / totalPoints) * 100).toFixed(2)
     );
 
+    const passingScore = Number(testResult.rows[0].passing_score);
+    const passed = score >= passingScore;
+
     const attemptResult = await client.query(
-      `INSERT INTO test_attempts
-       (user_id, test_id, total_questions, correct_answers, score)
-       VALUES ($1, $2, $3, $4, $5)
-       RETURNING id, total_questions, correct_answers, score, created_at`,
+      `INSERT INTO test_attempts (
+         user_id,
+         test_id,
+         answers,
+         score,
+         correct_answers,
+         total_questions,
+         passed,
+         started_at,
+         completed_at
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), NOW())
+       RETURNING
+         id,
+         test_id,
+         answers,
+         score,
+         correct_answers,
+         total_questions,
+         passed,
+         started_at,
+         completed_at,
+         created_at`,
       [
         req.user.id,
         testId,
-        totalQuestions,
+        JSON.stringify(answers),
+        score,
         correctCount,
-        score
+        questions.length,
+        passed
       ]
     );
 
     await client.query("COMMIT");
+    transactionStarted = false;
 
     res.json({
       success: true,
@@ -314,10 +496,19 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       result: attemptResult.rows[0]
     });
   } catch (error) {
-    await client.query("ROLLBACK");
+    if (client && transactionStarted) {
+      try {
+        await client.query("ROLLBACK");
+      } catch (rollbackError) {
+        // Asosiy xatoni saqlab qolamiz.
+      }
+    }
+
     next(error);
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 });
 
