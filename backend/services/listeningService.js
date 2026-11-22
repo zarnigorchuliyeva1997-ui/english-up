@@ -1,150 +1,159 @@
 
 const { pool } = require("../config/database");
 const { getFileUrl } = require("./fileService");
-const { getPagination } = require("../utils/pagination");
 
-async function getListeningLessons(query = {}) {
-  const { page, limit, offset } = getPagination(query);
+async function getListeningLessons({ level, isPublished } = {}) {
+  const conditions = [];
+  const values = [];
+
+  if (level) {
+    values.push(level);
+    conditions.push(`level = $${values.length}`);
+  }
+
+  if (typeof isPublished === "boolean") {
+    values.push(isPublished);
+    conditions.push(`is_published = $${values.length}`);
+  }
+
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
 
   const result = await pool.query(
-    `SELECT id, title, description, level,
-            audio_key, duration_seconds, lesson_order
+    `SELECT *
      FROM listening_lessons
-     WHERE is_active = TRUE
-       AND ($1::text IS NULL OR level = $1)
-     ORDER BY lesson_order ASC
-     LIMIT $2 OFFSET $3`,
-    [query.level || null, limit, offset]
+     ${where}
+     ORDER BY sort_order ASC, created_at DESC`,
+    values
   );
 
-  const countResult = await pool.query(
-    `SELECT COUNT(*)
-     FROM listening_lessons
-     WHERE is_active = TRUE
-       AND ($1::text IS NULL OR level = $1)`,
-    [query.level || null]
+  return Promise.all(
+    result.rows.map(async (lesson) => ({
+      ...lesson,
+      audio_url: lesson.audio_key
+        ? await getFileUrl(lesson.audio_key)
+        : lesson.audio_url
+    }))
   );
-
-  return {
-    lessons: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
 }
 
 async function getListeningLessonById(lessonId) {
   const result = await pool.query(
-    `SELECT id, title, description, level,
-            audio_key, duration_seconds, lesson_order
+    `SELECT *
      FROM listening_lessons
-     WHERE id = $1 AND is_active = TRUE
-     LIMIT 1`,
+     WHERE id = $1`,
     [lessonId]
   );
 
-  const lesson = result.rows[0];
-
-  if (!lesson) {
-    return null;
+  if (result.rows.length === 0) {
+    throw new Error("Listening lesson not found");
   }
 
-  const audioUrl = lesson.audio_key
-    ? await getFileUrl(lesson.audio_key)
-    : null;
+  const lesson = result.rows[0];
 
   return {
     ...lesson,
-    audioUrl
+    audio_url: lesson.audio_key
+      ? await getFileUrl(lesson.audio_key)
+      : lesson.audio_url
   };
 }
 
-async function createListeningLesson(data) {
-  const {
-    title,
-    description,
-    level,
-    audioKey,
-    durationSeconds,
-    lessonOrder
-  } = data;
+async function createListeningLesson({
+  title,
+  description = "",
+  level,
+  audioKey = null,
+  audioUrl = null,
+  transcript = "",
+  duration = 0,
+  sortOrder = 0,
+  isPublished = false
+}) {
+  if (!title || !level || (!audioKey && !audioUrl)) {
+    throw new Error("Title, level and audio file are required");
+  }
 
   const result = await pool.query(
-    `INSERT INTO listening_lessons (
-       title, description, level, audio_key,
-       duration_seconds, lesson_order, is_active
-     )
-     VALUES ($1, $2, $3, $4, $5, $6, FALSE)
+    `INSERT INTO listening_lessons
+      (title, description, level, audio_key, audio_url,
+       transcript, duration, sort_order, is_published)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
      RETURNING *`,
     [
-      title,
-      description || null,
+      title.trim(),
+      description,
       level,
       audioKey,
-      durationSeconds || null,
-      lessonOrder || 1
+      audioUrl,
+      transcript,
+      duration,
+      sortOrder,
+      isPublished
     ]
   );
 
   return result.rows[0];
 }
 
-async function updateListeningLesson(lessonId, data) {
-  const {
-    title,
-    description,
-    level,
-    audioKey,
-    durationSeconds,
-    lessonOrder
-  } = data;
+async function updateListeningLesson(lessonId, data = {}) {
+  const allowedFields = {
+    title: "title",
+    description: "description",
+    level: "level",
+    audioKey: "audio_key",
+    audioUrl: "audio_url",
+    transcript: "transcript",
+    duration: "duration",
+    sortOrder: "sort_order",
+    isPublished: "is_published"
+  };
+
+  const fields = [];
+  const values = [];
+
+  for (const [key, column] of Object.entries(allowedFields)) {
+    if (data[key] !== undefined) {
+      values.push(data[key]);
+      fields.push(`${column} = $${values.length}`);
+    }
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No listening lesson fields provided");
+  }
+
+  values.push(lessonId);
 
   const result = await pool.query(
     `UPDATE listening_lessons
-     SET title = COALESCE($2, title),
-         description = COALESCE($3, description),
-         level = COALESCE($4, level),
-         audio_key = COALESCE($5, audio_key),
-         duration_seconds = COALESCE($6, duration_seconds),
-         lesson_order = COALESCE($7, lesson_order),
-         updated_at = NOW()
-     WHERE id = $1
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
      RETURNING *`,
-    [
-      lessonId,
-      title ?? null,
-      description ?? null,
-      level ?? null,
-      audioKey ?? null,
-      durationSeconds ?? null,
-      lessonOrder ?? null
-    ]
+    values
   );
 
-  return result.rows[0] || null;
-}
+  if (result.rows.length === 0) {
+    throw new Error("Listening lesson not found");
+  }
 
-async function setListeningLessonStatus(lessonId, isActive) {
-  const result = await pool.query(
-    `UPDATE listening_lessons
-     SET is_active = $2, updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, title, level, is_active`,
-    [lessonId, isActive]
-  );
-
-  return result.rows[0] || null;
+  return result.rows[0];
 }
 
 async function deleteListeningLesson(lessonId) {
   const result = await pool.query(
     `DELETE FROM listening_lessons
      WHERE id = $1
-     RETURNING id, audio_key`,
+     RETURNING id`,
     [lessonId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Listening lesson not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
@@ -152,6 +161,5 @@ module.exports = {
   getListeningLessonById,
   createListeningLesson,
   updateListeningLesson,
-  setListeningLessonStatus,
   deleteListeningLesson
 };
