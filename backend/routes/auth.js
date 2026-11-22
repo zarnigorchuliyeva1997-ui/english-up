@@ -21,7 +21,8 @@ router.post("/register", async (req, res, next) => {
       error.statusCode = 409;
     } else if (
       error.message.includes("required") ||
-      error.message.includes("at least")
+      error.message.includes("valid") ||
+      error.message.includes("between")
     ) {
       error.statusCode = 400;
     }
@@ -41,10 +42,16 @@ router.post("/login", async (req, res, next) => {
     });
   } catch (error) {
     if (
-      error.message === "Invalid email or password" ||
-      error.message.includes("required")
+      error.message === "Invalid email or password"
     ) {
       error.statusCode = 401;
+    } else if (
+      error.message.includes("required") ||
+      error.message.includes("valid")
+    ) {
+      error.statusCode = 400;
+    } else if (error.message === "Account is inactive") {
+      error.statusCode = 403;
     }
 
     next(error);
