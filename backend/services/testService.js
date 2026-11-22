@@ -1,108 +1,139 @@
 
 const { pool } = require("../config/database");
-const { getPagination } = require("../utils/pagination");
 
-async function getTests(query = {}) {
-  const { page, limit, offset } = getPagination(query);
+async function getTests({ level, courseId, isPublished } = {}) {
+  const conditions = [];
+  const values = [];
+
+  if (level) {
+    values.push(level);
+    conditions.push(`level = $${values.length}`);
+  }
+
+  if (courseId) {
+    values.push(courseId);
+    conditions.push(`course_id = $${values.length}`);
+  }
+
+  if (typeof isPublished === "boolean") {
+    values.push(isPublished);
+    conditions.push(`is_published = $${values.length}`);
+  }
+
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
 
   const result = await pool.query(
-    `SELECT id, title, description, level, is_active, created_at
+    `SELECT *
      FROM tests
-     WHERE ($1::text IS NULL OR level = $1)
-     ORDER BY created_at DESC
-     LIMIT $2 OFFSET $3`,
-    [query.level || null, limit, offset]
-  );
-
-  const countResult = await pool.query(
-    `SELECT COUNT(*) FROM tests
-     WHERE ($1::text IS NULL OR level = $1)`,
-    [query.level || null]
-  );
-
-  return {
-    tests: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
-}
-
-async function getTestById(testId) {
-  const result = await pool.query(
-    `SELECT id, title, description, level, is_active
-     FROM tests
-     WHERE id = $1
-     LIMIT 1`,
-    [testId]
-  );
-
-  return result.rows[0] || null;
-}
-
-async function getTestQuestions(testId) {
-  const result = await pool.query(
-    `SELECT id, test_id, question, options, question_order
-     FROM test_questions
-     WHERE test_id = $1
-     ORDER BY question_order ASC`,
-    [testId]
+     ${where}
+     ORDER BY created_at DESC`,
+    values
   );
 
   return result.rows;
 }
 
-async function createTest(data) {
-  const { title, description, level } = data;
+async function getTestById(testId, includeAnswers = false) {
+  const testResult = await pool.query(
+    `SELECT *
+     FROM tests
+     WHERE id = $1`,
+    [testId]
+  );
+
+  if (testResult.rows.length === 0) {
+    throw new Error("Test not found");
+  }
+
+  const questionsResult = await pool.query(
+    `SELECT id, test_id, question, options, ${
+      includeAnswers ? "correct_answer" : "NULL AS correct_answer"
+    }, explanation, sort_order
+     FROM test_questions
+     WHERE test_id = $1
+     ORDER BY sort_order ASC, id ASC`,
+    [testId]
+  );
+
+  return {
+    ...testResult.rows[0],
+    questions: questionsResult.rows
+  };
+}
+
+async function createTest({
+  title,
+  description = "",
+  level,
+  courseId = null,
+  isPublished = false
+}) {
+  if (!title || !level) {
+    throw new Error("Test title and level are required");
+  }
 
   const result = await pool.query(
-    `INSERT INTO tests (title, description, level, is_active)
-     VALUES ($1, $2, $3, FALSE)
+    `INSERT INTO tests
+      (title, description, level, course_id, is_published)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
-    [title, description || null, level]
+    [title.trim(), description, level, courseId, isPublished]
   );
 
   return result.rows[0];
 }
 
-async function addQuestion(testId, data) {
-  const { question, options, correctAnswer, questionOrder } = data;
+async function addQuestion({
+  testId,
+  question,
+  options,
+  correctAnswer,
+  explanation = "",
+  sortOrder = 0
+}) {
+  if (!testId || !question || !options || correctAnswer === undefined) {
+    throw new Error("Required question fields are missing");
+  }
 
   const result = await pool.query(
-    `INSERT INTO test_questions (
-       test_id, question, options, correct_answer, question_order
-     )
-     VALUES ($1, $2, $3, $4, $5)
-     RETURNING id, test_id, question, options, question_order`,
+    `INSERT INTO test_questions
+      (test_id, question, options, correct_answer, explanation, sort_order)
+     VALUES ($1, $2, $3, $4, $5, $6)
+     RETURNING *`,
     [
       testId,
       question,
       JSON.stringify(options),
       correctAnswer,
-      questionOrder || 1
+      explanation,
+      sortOrder
     ]
   );
 
   return result.rows[0];
 }
 
-async function submitTest(userId, testId, answers) {
+async function submitTest({ userId, testId, answers }) {
+  if (!userId || !testId || !Array.isArray(answers)) {
+    throw new Error("Invalid test submission");
+  }
+
   const client = await pool.connect();
 
   try {
     await client.query("BEGIN");
 
     const testResult = await client.query(
-      `SELECT id FROM tests
-       WHERE id = $1 AND is_active = TRUE
-       FOR SHARE`,
+      `SELECT id
+       FROM tests
+       WHERE id = $1 AND is_published = TRUE`,
       [testId]
     );
 
-    if (!testResult.rows.length) {
-      const error = new Error("Test topilmadi yoki faol emas.");
-      error.statusCode = 404;
-      throw error;
+    if (testResult.rows.length === 0) {
+      throw new Error("Test not found or not published");
     }
 
     const questionsResult = await client.query(
@@ -114,46 +145,49 @@ async function submitTest(userId, testId, answers) {
 
     const questions = questionsResult.rows;
 
-    if (!questions.length) {
-      const error = new Error("Testda savollar mavjud emas.");
-      error.statusCode = 400;
-      throw error;
+    if (questions.length === 0) {
+      throw new Error("Test has no questions");
     }
 
     const answerMap = new Map(
-      (Array.isArray(answers) ? answers : [])
-        .map(item => [String(item.questionId), item.answer])
+      answers.map((item) => [String(item.questionId), item.answer])
     );
 
-    let correct = 0;
+    let correctCount = 0;
 
     for (const question of questions) {
+      const submittedAnswer = answerMap.get(String(question.id));
+
       if (
-        answerMap.has(String(question.id)) &&
-        String(answerMap.get(String(question.id))).trim() ===
-          String(question.correct_answer).trim()
+        submittedAnswer !== undefined &&
+        String(submittedAnswer) === String(question.correct_answer)
       ) {
-        correct++;
+        correctCount++;
       }
     }
 
     const score = Math.round(
-      (correct / questions.length) * 100
+      (correctCount / questions.length) * 100
     );
 
-    const attemptResult = await client.query(
-      `INSERT INTO test_attempts (
-         user_id, test_id, total_questions, correct_answers, score
-       )
-       VALUES ($1, $2, $3, $4, $5)
-       RETURNING id, user_id, test_id, total_questions,
-                 correct_answers, score, created_at`,
-      [userId, testId, questions.length, correct, score]
+    const result = await client.query(
+      `INSERT INTO test_attempts
+        (user_id, test_id, answers, score, total_questions, correct_answers)
+       VALUES ($1, $2, $3, $4, $5, $6)
+       RETURNING *`,
+      [
+        userId,
+        testId,
+        JSON.stringify(answers),
+        score,
+        questions.length,
+        correctCount
+      ]
     );
 
     await client.query("COMMIT");
 
-    return attemptResult.rows[0];
+    return result.rows[0];
   } catch (error) {
     await client.query("ROLLBACK");
     throw error;
@@ -162,24 +196,47 @@ async function submitTest(userId, testId, answers) {
   }
 }
 
-async function setTestStatus(testId, isActive) {
+async function getUserTestAttempts(userId, testId = null) {
+  const values = [userId];
+  let condition = "user_id = $1";
+
+  if (testId) {
+    values.push(testId);
+    condition += " AND test_id = $2";
+  }
+
   const result = await pool.query(
-    `UPDATE tests
-     SET is_active = $2, updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, title, is_active`,
-    [testId, isActive]
+    `SELECT *
+     FROM test_attempts
+     WHERE ${condition}
+     ORDER BY created_at DESC`,
+    values
   );
 
-  return result.rows[0] || null;
+  return result.rows;
+}
+
+async function deleteTest(testId) {
+  const result = await pool.query(
+    `DELETE FROM tests
+     WHERE id = $1
+     RETURNING id`,
+    [testId]
+  );
+
+  if (result.rows.length === 0) {
+    throw new Error("Test not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
   getTests,
   getTestById,
-  getTestQuestions,
   createTest,
   addQuestion,
   submitTest,
-  setTestStatus
+  getUserTestAttempts,
+  deleteTest
 };
