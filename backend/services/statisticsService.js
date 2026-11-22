@@ -1,6 +1,18 @@
 
 const { pool } = require("../config/database");
 
+// Statistik davrni tekshirish
+function normalizeDays(days = 7) {
+  const value = Number(days);
+
+  if (!Number.isFinite(value)) {
+    return 7;
+  }
+
+  return Math.min(Math.max(Math.floor(value), 1), 365);
+}
+
+// Dashboard statistikasi
 async function getDashboardStatistics() {
   const result = await pool.query(
     `SELECT
@@ -12,7 +24,8 @@ async function getDashboardStatistics() {
        AS active_students,
 
       (SELECT COUNT(*) FROM subscriptions
-       WHERE status = 'active' AND end_date >= CURRENT_DATE)::int
+       WHERE status = 'active'
+       AND end_date >= CURRENT_DATE)::int
        AS active_subscriptions,
 
       (SELECT COUNT(*) FROM courses)::int AS total_courses,
@@ -37,11 +50,9 @@ async function getDashboardStatistics() {
   return result.rows[0];
 }
 
+// Ro'yxatdan o'tish statistikasi
 async function getRegistrationStatistics(days = 7) {
-  const safeDays = Math.min(
-    Math.max(Number(days) || 7, 1),
-    365
-  );
+  const safeDays = normalizeDays(days);
 
   const result = await pool.query(
     `SELECT
@@ -58,11 +69,9 @@ async function getRegistrationStatistics(days = 7) {
   return result.rows;
 }
 
+// Test va reading faolligi
 async function getTestActivityStatistics(days = 7) {
-  const safeDays = Math.min(
-    Math.max(Number(days) || 7, 1),
-    365
-  );
+  const safeDays = normalizeDays(days);
 
   const result = await pool.query(
     `SELECT
@@ -93,6 +102,7 @@ async function getTestActivityStatistics(days = 7) {
   return result.rows;
 }
 
+// Obuna statistikasi
 async function getSubscriptionStatistics() {
   const result = await pool.query(
     `SELECT
@@ -106,6 +116,7 @@ async function getSubscriptionStatistics() {
   return result.rows;
 }
 
+// Kurs statistikasi
 async function getCourseStatistics() {
   const result = await pool.query(
     `SELECT
