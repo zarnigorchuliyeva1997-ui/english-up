@@ -1,87 +1,128 @@
 
 const { pool } = require("../config/database");
-const { getPagination } = require("../utils/pagination");
+
+async function getAllUsers({ page = 1, limit = 50, search = "" } = {}) {
+  const safePage = Math.max(1, Number.parseInt(page, 10) || 1);
+  const safeLimit = Math.min(100, Math.max(1, Number.parseInt(limit, 10) || 50));
+  const offset = (safePage - 1) * safeLimit;
+
+  const values = [];
+  let where = "";
+
+  if (search.trim()) {
+    values.push(`%${search.trim()}%`);
+    where = `WHERE name ILIKE $1 OR email ILIKE $1`;
+  }
+
+  values.push(safeLimit, offset);
+
+  const result = await pool.query(
+    `SELECT id, name, email, role, level, is_active, created_at
+     FROM users
+     ${where}
+     ORDER BY created_at DESC
+     LIMIT $${values.length - 1}
+     OFFSET $${values.length}`,
+    values
+  );
+
+  return result.rows;
+}
 
 async function getUserById(userId) {
   const result = await pool.query(
     `SELECT id, name, email, role, level, is_active, created_at
      FROM users
-     WHERE id = $1
-     LIMIT 1`,
+     WHERE id = $1`,
     [userId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("User not found");
+  }
+
+  return result.rows[0];
 }
 
-async function getUserByEmail(email) {
-  const result = await pool.query(
-    `SELECT id, name, email, role, level, is_active, created_at
-     FROM users
-     WHERE LOWER(email) = LOWER($1)
-     LIMIT 1`,
-    [email]
-  );
+async function updateUser(userId, { name, email, level } = {}) {
+  const fields = [];
+  const values = [];
 
-  return result.rows[0] || null;
-}
+  if (name !== undefined) {
+    values.push(name.trim());
+    fields.push(`name = $${values.length}`);
+  }
 
-async function updateUser(userId, data) {
-  const { name, level } = data;
+  if (email !== undefined) {
+    values.push(email.trim().toLowerCase());
+    fields.push(`email = $${values.length}`);
+  }
+
+  if (level !== undefined) {
+    values.push(level);
+    fields.push(`level = $${values.length}`);
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No fields provided for update");
+  }
+
+  values.push(userId);
 
   const result = await pool.query(
     `UPDATE users
-     SET name = COALESCE($2, name),
-         level = COALESCE($3, level),
-         updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, name, email, role, level, is_active, updated_at`,
-    [userId, name ?? null, level ?? null]
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
+     RETURNING id, name, email, role, level, is_active, created_at`,
+    values
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("User not found");
+  }
+
+  return result.rows[0];
 }
 
-async function setUserStatus(userId, isActive) {
+async function setUserActiveStatus(userId, isActive) {
+  if (typeof isActive !== "boolean") {
+    throw new Error("isActive must be true or false");
+  }
+
   const result = await pool.query(
     `UPDATE users
-     SET is_active = $2,
-         updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, name, email, role, is_active`,
-    [userId, isActive]
+     SET is_active = $1, updated_at = NOW()
+     WHERE id = $2
+     RETURNING id, name, email, role, level, is_active`,
+    [isActive, userId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("User not found");
+  }
+
+  return result.rows[0];
 }
 
-async function getUsers(query = {}) {
-  const { page, limit, offset } = getPagination(query);
-
+async function deleteUser(userId) {
   const result = await pool.query(
-    `SELECT id, name, email, role, level, is_active, created_at
-     FROM users
-     ORDER BY created_at DESC
-     LIMIT $1 OFFSET $2`,
-    [limit, offset]
+    `DELETE FROM users
+     WHERE id = $1 AND role <> 'admin'
+     RETURNING id`,
+    [userId]
   );
 
-  const countResult = await pool.query(
-    "SELECT COUNT(*) FROM users"
-  );
+  if (result.rows.length === 0) {
+    throw new Error("User not found or admin account cannot be deleted");
+  }
 
-  return {
-    users: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
+  return { success: true };
 }
 
 module.exports = {
+  getAllUsers,
   getUserById,
-  getUserByEmail,
   updateUser,
-  setUserStatus,
-  getUsers
+  setUserActiveStatus,
+  deleteUser
 };
