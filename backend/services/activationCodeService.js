@@ -10,6 +10,21 @@ function hashCode(code) {
     .digest("hex");
 }
 
+function normalizePagination(page = 1, limit = 20) {
+  const safePage = Math.max(Math.floor(Number(page) || 1), 1);
+  const safeLimit = Math.min(
+    Math.max(Math.floor(Number(limit) || 20), 1),
+    100
+  );
+
+  return {
+    page: safePage,
+    limit: safeLimit,
+    offset: (safePage - 1) * safeLimit
+  };
+}
+
+// Aktivatsiya kodi yaratish
 async function createActivationCode({
   userId,
   plan,
@@ -18,12 +33,24 @@ async function createActivationCode({
 }) {
   const days = Number(durationDays);
 
+  if (!userId) {
+    throw new Error("O'quvchi ID ko'rsatilmagan");
+  }
+
   if (!Number.isInteger(days) || days < 1 || days > 3650) {
     throw new Error("Obuna muddati noto'g'ri");
   }
 
-  if (!plan || typeof plan !== "string") {
-    throw new Error("Obuna rejasi ko'rsatilmagan");
+  if (
+    typeof plan !== "string" ||
+    !plan.trim() ||
+    plan.trim().length > 100
+  ) {
+    throw new Error("Obuna rejasi noto'g'ri");
+  }
+
+  if (expiresAt !== null && Number.isNaN(Date.parse(expiresAt))) {
+    throw new Error("Kodning amal qilish sanasi noto'g'ri");
   }
 
   const userResult = await pool.query(
@@ -38,6 +65,11 @@ async function createActivationCode({
   }
 
   const code = generateCode();
+
+  if (typeof code !== "string" || !code.trim()) {
+    throw new Error("Aktivatsiya kodi yaratilmadi");
+  }
+
   const codeHash = hashCode(code);
 
   const result = await pool.query(
@@ -46,7 +78,7 @@ async function createActivationCode({
      VALUES ($1, $2, $3, $4, $5)
      RETURNING id, assigned_user_id, plan,
                duration_days, expires_at, created_at`,
-    [codeHash, userId, plan, days, expiresAt]
+    [codeHash, userId, plan.trim(), days, expiresAt]
   );
 
   return {
@@ -55,9 +87,18 @@ async function createActivationCode({
   };
 }
 
+// Aktivatsiya kodini ishlatish
 async function redeemActivationCode(userId, code) {
-  if (!code || typeof code !== "string") {
-    throw new Error("Aktivatsiya kodi kiritilmagan");
+  if (!userId) {
+    throw new Error("Foydalanuvchi aniqlanmadi");
+  }
+
+  if (
+    typeof code !== "string" ||
+    !code.trim() ||
+    code.trim().length > 100
+  ) {
+    throw new Error("Aktivatsiya kodi noto'g'ri");
   }
 
   const codeHash = hashCode(code);
@@ -95,6 +136,17 @@ async function redeemActivationCode(userId, code) {
       throw new Error("Aktivatsiya kodining muddati tugagan");
     }
 
+    const userResult = await client.query(
+      `SELECT id
+       FROM users
+       WHERE id = $1 AND role = 'student' AND is_active = TRUE`,
+      [userId]
+    );
+
+    if (!userResult.rows.length) {
+      throw new Error("Faol o'quvchi akkaunti topilmadi");
+    }
+
     const subscriptionResult = await client.query(
       `INSERT INTO subscriptions
         (user_id, plan, status, start_date, end_date)
@@ -116,7 +168,7 @@ async function redeemActivationCode(userId, code) {
     await client.query(
       `UPDATE activation_codes
        SET used_at = NOW()
-       WHERE id = $1`,
+       WHERE id = $1 AND used_at IS NULL`,
       [activation.id]
     );
 
@@ -134,18 +186,14 @@ async function redeemActivationCode(userId, code) {
   }
 }
 
+// Aktivatsiya kodlari ro'yxati
 async function getActivationCodes({
   page = 1,
   limit = 20,
   userId = null
 } = {}) {
-  const safePage = Math.max(Number(page) || 1, 1);
-  const safeLimit = Math.min(
-    Math.max(Number(limit) || 20, 1),
-    100
-  );
+  const pagination = normalizePagination(page, limit);
 
-  const offset = (safePage - 1) * safeLimit;
   const values = [];
   let where = "";
 
@@ -161,7 +209,11 @@ async function getActivationCodes({
     values
   );
 
-  values.push(safeLimit, offset);
+  const queryValues = [
+    ...values,
+    pagination.limit,
+    pagination.offset
+  ];
 
   const result = await pool.query(
     `SELECT
@@ -175,20 +227,28 @@ async function getActivationCodes({
      FROM activation_codes
      ${where}
      ORDER BY created_at DESC
-     LIMIT $${values.length - 1}
-     OFFSET $${values.length}`,
-    values
+     LIMIT $${values.length + 1}
+     OFFSET $${values.length + 2}`,
+    queryValues
   );
+
+  const total = countResult.rows[0].total;
 
   return {
     items: result.rows,
-    total: countResult.rows[0].total,
-    page: safePage,
-    limit: safeLimit
+    total,
+    page: pagination.page,
+    limit: pagination.limit,
+    totalPages: Math.ceil(total / pagination.limit)
   };
 }
 
+// Ishlatilmagan kodni bekor qilish
 async function revokeActivationCode(codeId) {
+  if (!codeId) {
+    throw new Error("Kod ID ko'rsatilmagan");
+  }
+
   const result = await pool.query(
     `DELETE FROM activation_codes
      WHERE id = $1 AND used_at IS NULL
