@@ -1,161 +1,127 @@
 
+const crypto = require("crypto");
+const path = require("path");
+const multer = require("multer");
+
 const {
-  S3Client,
   PutObjectCommand,
   DeleteObjectCommand,
   GetObjectCommand
 } = require("@aws-sdk/client-s3");
 
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-const multer = require("multer");
-const crypto = require("crypto");
-const path = require("path");
-
-const {
-  storageConfig,
-  validateStorageConfig
-} = require("../config/storage");
-
-const MAX_FILE_SIZE = 100 * 1024 * 1024;
+const { s3, bucketName } = require("../config/storage");
 
 const ALLOWED_TYPES = [
   "audio/mpeg",
+  "audio/mp3",
   "audio/wav",
-  "audio/x-wav",
   "audio/ogg",
   "audio/mp4",
-  "audio/aac",
-  "audio/webm",
   "video/mp4",
   "video/webm",
-  "video/quicktime",
   "application/pdf"
 ];
 
-let s3Client = null;
+const MAX_FILE_SIZE = 100 * 1024 * 1024;
 
-function getS3Client() {
-  if (s3Client) return s3Client;
-
-  validateStorageConfig();
-
-  s3Client = new S3Client({
-    endpoint: storageConfig.endpoint,
-    region: storageConfig.region,
-    forcePathStyle: true,
-    credentials: {
-      accessKeyId: storageConfig.accessKeyId,
-      secretAccessKey: storageConfig.secretAccessKey
-    }
-  });
-
-  return s3Client;
-}
-
-const uploadMiddleware = multer({
+const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: MAX_FILE_SIZE,
-    files: 1
+    fileSize: MAX_FILE_SIZE
   },
   fileFilter: (req, file, callback) => {
     if (!ALLOWED_TYPES.includes(file.mimetype)) {
-      return callback(
-        new Error("Bu fayl turi yuklash uchun ruxsat etilmagan.")
-      );
+      return callback(new Error("File type is not allowed"));
     }
 
     callback(null, true);
   }
 });
 
-async function uploadFile(file, folder = "media") {
-  if (!file || !file.buffer) {
-    throw new Error("Yuklanadigan fayl topilmadi.");
-  }
-
-  if (!ALLOWED_TYPES.includes(file.mimetype)) {
-    throw new Error("Fayl turi ruxsat etilmagan.");
-  }
-
-  if (file.size > MAX_FILE_SIZE) {
-    throw new Error("Fayl hajmi 100 MB dan oshmasligi kerak.");
+async function uploadFile(file, folder = "uploads") {
+  if (!file || !file.buffer || !file.originalname) {
+    throw new Error("Invalid file");
   }
 
   const safeFolder = String(folder)
-    .toLowerCase()
-    .replace(/[^a-z0-9_-]/g, "");
+    .replace(/[^a-zA-Z0-9_-]/g, "")
+    .slice(0, 50);
 
   if (!safeFolder) {
-    throw new Error("Fayl papkasi noto‘g‘ri.");
+    throw new Error("Invalid folder name");
   }
 
-  const extension = path.extname(file.originalname || "").toLowerCase();
-  const fileId = crypto.randomUUID();
+  const extension = path.extname(file.originalname)
+    .toLowerCase()
+    .replace(/[^a-z0-9.]/g, "");
 
-  const key = `english-up/${safeFolder}/${fileId}${extension}`;
+  const fileName = `${crypto.randomUUID()}${extension}`;
+  const key = `english-up/${safeFolder}/${fileName}`;
 
-  const command = new PutObjectCommand({
-    Bucket: storageConfig.bucket,
-    Key: key,
-    Body: file.buffer,
-    ContentType: file.mimetype,
-    ContentLength: file.size
-  });
-
-  await getS3Client().send(command);
+  await s3.send(
+    new PutObjectCommand({
+      Bucket: bucketName,
+      Key: key,
+      Body: file.buffer,
+      ContentType: file.mimetype
+    })
+  );
 
   return {
     key,
+    fileName,
     originalName: file.originalname,
-    contentType: file.mimetype,
+    mimeType: file.mimetype,
     size: file.size
   };
 }
 
 async function deleteFile(key) {
-  if (!key || typeof key !== "string") {
-    throw new Error("Fayl manzili noto‘g‘ri.");
+  if (
+    typeof key !== "string" ||
+    !key.startsWith("english-up/") ||
+    key.includes("..")
+  ) {
+    throw new Error("Invalid file key");
   }
 
-  if (!key.startsWith("english-up/")) {
-    throw new Error("Bu faylni o‘chirishga ruxsat yo‘q.");
-  }
-
-  const command = new DeleteObjectCommand({
-    Bucket: storageConfig.bucket,
-    Key: key
-  });
-
-  await getS3Client().send(command);
+  await s3.send(
+    new DeleteObjectCommand({
+      Bucket: bucketName,
+      Key: key
+    })
+  );
 
   return { success: true };
 }
 
 async function getFileUrl(key, expiresIn = 900) {
-  if (!key || !key.startsWith("english-up/")) {
-    throw new Error("Fayl manzili noto‘g‘ri.");
+  if (
+    typeof key !== "string" ||
+    !key.startsWith("english-up/") ||
+    key.includes("..")
+  ) {
+    throw new Error("Invalid file key");
   }
 
-  const safeExpiry = Math.min(
+  const duration = Math.min(
     Math.max(Number(expiresIn) || 900, 60),
     3600
   );
 
   const command = new GetObjectCommand({
-    Bucket: storageConfig.bucket,
+    Bucket: bucketName,
     Key: key
   });
 
-  return getSignedUrl(
-    getS3Client(),
-    command,
-    { expiresIn: safeExpiry }
-  );
+  return getSignedUrl(s3, command, {
+    expiresIn: duration
+  });
 }
 
 module.exports = {
-  uploadMiddleware,
+  upload,
   uploadFile,
   deleteFile,
   getFileUrl
