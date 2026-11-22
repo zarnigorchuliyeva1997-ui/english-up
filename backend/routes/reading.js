@@ -16,11 +16,19 @@ router.get("/", auth, async (req, res, next) => {
     const { level } = req.query;
 
     const result = await pool.query(
-      `SELECT id, title, description, level, reading_order
+      `SELECT
+         id,
+         course_id,
+         lesson_id,
+         title,
+         description,
+         level,
+         instructions,
+         created_at
        FROM reading_lessons
        WHERE is_active = TRUE
-       AND ($1::varchar IS NULL OR level = $1)
-       ORDER BY level, reading_order`,
+         AND ($1::varchar IS NULL OR level = $1)
+       ORDER BY level NULLS LAST, created_at, id`,
       [level || null]
     );
 
@@ -50,14 +58,22 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const result = await pool.query(
-      `SELECT id, title, description, level, content,
-              reading_order
+      `SELECT
+         id,
+         course_id,
+         lesson_id,
+         title,
+         description,
+         level,
+         passage,
+         instructions,
+         created_at
        FROM reading_lessons
        WHERE id = $1 AND is_active = TRUE`,
       [id]
     );
 
-    if (!result.rows.length) {
+    if (result.rows.length === 0) {
       return res.status(404).json({
         success: false,
         message: "Reading matni topilmadi."
@@ -65,10 +81,14 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const questions = await pool.query(
-      `SELECT id, question, options, question_order
+      `SELECT
+         id,
+         question,
+         options,
+         question_order
        FROM reading_questions
-       WHERE reading_id = $1
-       ORDER BY question_order`,
+       WHERE reading_lesson_id = $1
+       ORDER BY question_order, id`,
       [id]
     );
 
@@ -91,31 +111,55 @@ router.get("/:id", auth, async (req, res, next) => {
 router.post("/", auth, admin, async (req, res, next) => {
   try {
     const {
+      courseId,
+      lessonId,
       title,
       description,
       level,
-      content,
-      readingOrder
+      passage,
+      instructions
     } = req.body;
 
-    if (!title || !level || !content) {
+    const validOptionalId = (value) =>
+      value === undefined ||
+      value === null ||
+      (Number.isInteger(value) && value > 0);
+
+    if (
+      typeof title !== "string" ||
+      !title.trim() ||
+      typeof passage !== "string" ||
+      !passage.trim() ||
+      !validOptionalId(courseId) ||
+      !validOptionalId(lessonId)
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Sarlavha, daraja va matn kerak."
+        message: "Sarlavha va reading matni kerak. Course ID yoki Lesson ID noto‘g‘ri."
       });
     }
 
     const result = await pool.query(
       `INSERT INTO reading_lessons
-       (title, description, level, content, reading_order)
-       VALUES ($1, $2, $3, $4, $5)
+       (
+         course_id,
+         lesson_id,
+         title,
+         description,
+         level,
+         passage,
+         instructions
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING *`,
       [
-        title,
+        courseId || null,
+        lessonId || null,
+        title.trim(),
         description || null,
-        level,
-        content,
-        Math.max(1, Number(readingOrder) || 1)
+        level || null,
+        passage.trim(),
+        instructions || null
       ]
     );
 
@@ -141,20 +185,26 @@ router.post(
   async (req, res, next) => {
     try {
       const readingId = Number(req.params.id);
+
       const {
         question,
         options,
         correctAnswer,
-        questionOrder
+        explanation,
+        questionOrder,
+        points
       } = req.body;
 
       if (
         !Number.isInteger(readingId) ||
         readingId < 1 ||
-        !question ||
+        typeof question !== "string" ||
+        !question.trim() ||
         !Array.isArray(options) ||
         options.length < 2 ||
-        correctAnswer === undefined
+        correctAnswer === undefined ||
+        correctAnswer === null ||
+        !String(correctAnswer).trim()
       ) {
         return res.status(400).json({
           success: false,
@@ -167,24 +217,56 @@ router.post(
         [readingId]
       );
 
-      if (!reading.rows.length) {
+      if (reading.rows.length === 0) {
         return res.status(404).json({
           success: false,
           message: "Reading matni topilmadi."
         });
       }
 
+      const order = Number(questionOrder) || 1;
+      const questionPoints = points === undefined ? 1 : Number(points);
+
+      if (
+        !Number.isInteger(order) ||
+        order < 1 ||
+        !Number.isFinite(questionPoints) ||
+        questionPoints <= 0
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Savol tartibi yoki ball noto‘g‘ri."
+        });
+      }
+
       const result = await pool.query(
         `INSERT INTO reading_questions
-         (reading_id, question, options, correct_answer, question_order)
-         VALUES ($1, $2, $3, $4, $5)
-         RETURNING id, reading_id, question, options, question_order`,
+         (
+           reading_lesson_id,
+           question,
+           options,
+           correct_answer,
+           explanation,
+           question_order,
+           points
+         )
+         VALUES ($1, $2, $3, $4, $5, $6, $7)
+         RETURNING
+           id,
+           reading_lesson_id,
+           question,
+           options,
+           explanation,
+           question_order,
+           points`,
         [
           readingId,
-          question,
+          question.trim(),
           JSON.stringify(options),
           String(correctAnswer),
-          Math.max(1, Number(questionOrder) || 1)
+          explanation || null,
+          order,
+          questionPoints
         ]
       );
 
@@ -204,7 +286,8 @@ router.post(
 // =========================================
 
 router.post("/:id/submit", auth, async (req, res, next) => {
-  const client = await pool.connect();
+  let client;
+  let transactionStarted = false;
 
   try {
     const readingId = Number(req.params.id);
@@ -221,16 +304,21 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       });
     }
 
+    client = await pool.connect();
+
     await client.query("BEGIN");
+    transactionStarted = true;
 
     const reading = await client.query(
-      `SELECT id FROM reading_lessons
+      `SELECT id
+       FROM reading_lessons
        WHERE id = $1 AND is_active = TRUE`,
       [readingId]
     );
 
-    if (!reading.rows.length) {
+    if (reading.rows.length === 0) {
       await client.query("ROLLBACK");
+      transactionStarted = false;
 
       return res.status(404).json({
         success: false,
@@ -241,14 +329,16 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     const questionsResult = await client.query(
       `SELECT id, correct_answer
        FROM reading_questions
-       WHERE reading_id = $1`,
+       WHERE reading_lesson_id = $1
+       ORDER BY question_order, id`,
       [readingId]
     );
 
     const questions = questionsResult.rows;
 
-    if (!questions.length) {
+    if (questions.length === 0) {
       await client.query("ROLLBACK");
+      transactionStarted = false;
 
       return res.status(400).json({
         success: false,
@@ -263,9 +353,13 @@ router.post("/:id/submit", auth, async (req, res, next) => {
 
       if (
         !Number.isInteger(questionId) ||
-        submitted.has(questionId)
+        questionId < 1 ||
+        submitted.has(questionId) ||
+        item.answer === undefined ||
+        item.answer === null
       ) {
         await client.query("ROLLBACK");
+        transactionStarted = false;
 
         return res.status(400).json({
           success: false,
@@ -283,6 +377,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     for (const questionId of submitted.keys()) {
       if (!validIds.has(questionId)) {
         await client.query("ROLLBACK");
+        transactionStarted = false;
 
         return res.status(400).json({
           success: false,
@@ -303,25 +398,45 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     }
 
     const totalQuestions = questions.length;
+
     const score = Number(
       ((correctCount / totalQuestions) * 100).toFixed(2)
     );
 
     const saved = await client.query(
       `INSERT INTO reading_attempts
-       (user_id, reading_id, total_questions, correct_answers, score)
-       VALUES ($1, $2, $3, $4, $5)
-       RETURNING id, total_questions, correct_answers, score, created_at`,
+       (
+         user_id,
+         reading_lesson_id,
+         answers,
+         score,
+         correct_answers,
+         total_questions,
+         completed_at
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, NOW())
+       RETURNING
+         id,
+         reading_lesson_id,
+         total_questions,
+         correct_answers,
+         score,
+         completed_at,
+         created_at`,
       [
         req.user.id,
         readingId,
-        totalQuestions,
+        JSON.stringify(
+          Object.fromEntries(submitted)
+        ),
+        score,
         correctCount,
-        score
+        totalQuestions
       ]
     );
 
     await client.query("COMMIT");
+    transactionStarted = false;
 
     res.json({
       success: true,
@@ -329,10 +444,19 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       result: saved.rows[0]
     });
   } catch (error) {
-    await client.query("ROLLBACK");
+    if (client && transactionStarted) {
+      try {
+        await client.query("ROLLBACK");
+      } catch (rollbackError) {
+        // Asosiy xatolik saqlanadi.
+      }
+    }
+
     next(error);
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 });
 
@@ -370,7 +494,7 @@ router.patch(
         [isActive, id]
       );
 
-      if (!result.rows.length) {
+      if (result.rows.length === 0) {
         return res.status(404).json({
           success: false,
           message: "Reading matni topilmadi."
