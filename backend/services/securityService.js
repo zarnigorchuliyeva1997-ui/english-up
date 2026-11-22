@@ -1,86 +1,120 @@
 
 const { pool } = require("../config/database");
 
-// Xavfsizlik hodisasini jurnalga yozish
 async function logSecurityEvent({
   userId = null,
   action,
-  details = null,
-  ipAddress = null
+  ipAddress = null,
+  userAgent = null,
+  details = null
 }) {
-  if (
-    typeof action !== "string" ||
-    !action.trim()
-  ) {
-    throw new Error("Xavfsizlik hodisasi nomi kerak.");
+  if (!action || typeof action !== "string") {
+    throw new Error("Security action is required");
   }
 
   const result = await pool.query(
     `INSERT INTO security_logs
-     (user_id, action, details, ip_address)
-     VALUES ($1, $2, $3, $4)
-     RETURNING id, user_id, action, details, ip_address, created_at`,
+      (user_id, action, ip_address, user_agent, details)
+     VALUES ($1, $2, $3, $4, $5)
+     RETURNING *`,
     [
       userId,
-      action.trim(),
-      details,
-      ipAddress
+      action.slice(0, 150),
+      ipAddress,
+      userAgent,
+      details ? JSON.stringify(details) : null
     ]
   );
 
   return result.rows[0];
 }
 
-// Xavfsizlik jurnalini olish
 async function getSecurityLogs({
+  page = 1,
   limit = 50,
-  offset = 0,
-  userId = null
+  userId = null,
+  action = null
 } = {}) {
+  const safePage = Math.max(1, Number.parseInt(page, 10) || 1);
   const safeLimit = Math.min(
-    Math.max(Number.parseInt(limit, 10) || 50, 1),
-    100
+    100,
+    Math.max(1, Number.parseInt(limit, 10) || 50)
   );
 
-  const safeOffset = Math.max(
-    Number.parseInt(offset, 10) || 0,
-    0
-  );
+  const offset = (safePage - 1) * safeLimit;
+
+  const conditions = [];
+  const values = [];
+
+  if (userId !== null) {
+    values.push(userId);
+    conditions.push(`user_id = $${values.length}`);
+  }
+
+  if (action) {
+    values.push(action);
+    conditions.push(`action = $${values.length}`);
+  }
+
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
+
+  values.push(safeLimit);
+  const limitPosition = values.length;
+
+  values.push(offset);
+  const offsetPosition = values.length;
 
   const result = await pool.query(
-    `SELECT
-       sl.id,
-       sl.user_id,
-       u.name AS user_name,
-       sl.action,
-       sl.details,
-       sl.ip_address,
-       sl.created_at
-     FROM security_logs sl
-     LEFT JOIN users u ON u.id = sl.user_id
-     WHERE ($1::integer IS NULL OR sl.user_id = $1)
-     ORDER BY sl.created_at DESC
-     LIMIT $2 OFFSET $3`,
-    [userId, safeLimit, safeOffset]
+    `SELECT *
+     FROM security_logs
+     ${where}
+     ORDER BY created_at DESC
+     LIMIT $${limitPosition}
+     OFFSET $${offsetPosition}`,
+    values
   );
 
   return result.rows;
 }
 
-// Muayyan foydalanuvchi hodisalari soni
-async function countUserSecurityEvents(userId) {
+async function deleteSecurityLog(logId) {
   const result = await pool.query(
-    `SELECT COUNT(*)::int AS total
-     FROM security_logs
-     WHERE user_id = $1`,
-    [userId]
+    `DELETE FROM security_logs
+     WHERE id = $1
+     RETURNING id`,
+    [logId]
   );
 
-  return result.rows[0].total;
+  if (result.rows.length === 0) {
+    throw new Error("Security log not found");
+  }
+
+  return { success: true };
+}
+
+async function clearOldSecurityLogs(days = 90) {
+  const safeDays = Math.min(
+    3650,
+    Math.max(30, Number.parseInt(days, 10) || 90)
+  );
+
+  const result = await pool.query(
+    `DELETE FROM security_logs
+     WHERE created_at < NOW() - ($1 * INTERVAL '1 day')
+     RETURNING id`,
+    [safeDays]
+  );
+
+  return {
+    deletedCount: result.rowCount
+  };
 }
 
 module.exports = {
   logSecurityEvent,
   getSecurityLogs,
-  countUserSecurityEvents
+  deleteSecurityLog,
+  clearOldSecurityLogs
 };
