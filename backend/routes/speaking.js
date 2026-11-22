@@ -15,11 +15,19 @@ const router = express.Router();
 router.get("/", auth, async (req, res, next) => {
   try {
     const result = await pool.query(
-      `SELECT id, title, description, level,
-              instructions, task_order
+      `SELECT
+         id,
+         course_id,
+         lesson_id,
+         title,
+         description,
+         level,
+         instructions,
+         time_limit,
+         created_at
        FROM speaking_tasks
        WHERE is_active = TRUE
-       ORDER BY level, task_order`
+       ORDER BY level NULLS LAST, created_at, id`
     );
 
     res.json({
@@ -48,13 +56,21 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const task = await pool.query(
-      `SELECT id, title, description, level, instructions
+      `SELECT
+         id,
+         course_id,
+         lesson_id,
+         title,
+         description,
+         level,
+         instructions,
+         time_limit
        FROM speaking_tasks
        WHERE id = $1 AND is_active = TRUE`,
       [id]
     );
 
-    if (!task.rows.length) {
+    if (task.rows.length === 0) {
       return res.status(404).json({
         success: false,
         message: "Speaking topshirig‘i topilmadi."
@@ -62,10 +78,15 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const questions = await pool.query(
-      `SELECT id, question, question_order
+      `SELECT
+         id,
+         question,
+         preparation_seconds,
+         speaking_seconds,
+         question_order
        FROM speaking_questions
-       WHERE task_id = $1
-       ORDER BY question_order`,
+       WHERE speaking_task_id = $1
+       ORDER BY question_order, id`,
       [id]
     );
 
@@ -88,31 +109,70 @@ router.get("/:id", auth, async (req, res, next) => {
 router.post("/", auth, admin, async (req, res, next) => {
   try {
     const {
+      courseId,
+      lessonId,
       title,
       description,
       level,
       instructions,
-      taskOrder
+      timeLimit
     } = req.body;
 
-    if (!title || !level || !instructions) {
+    const validOptionalId = (value) =>
+      value === undefined ||
+      value === null ||
+      (Number.isInteger(value) && value > 0);
+
+    if (
+      typeof title !== "string" ||
+      !title.trim() ||
+      typeof instructions !== "string" ||
+      !instructions.trim() ||
+      !validOptionalId(courseId) ||
+      !validOptionalId(lessonId)
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Sarlavha, daraja va topshiriq ko‘rsatmasi kerak."
+        message: "Sarlavha va topshiriq ko‘rsatmasi kerak. Course ID yoki Lesson ID noto‘g‘ri."
+      });
+    }
+
+    const parsedTimeLimit =
+      timeLimit === undefined || timeLimit === null
+        ? null
+        : Number(timeLimit);
+
+    if (
+      parsedTimeLimit !== null &&
+      (!Number.isInteger(parsedTimeLimit) || parsedTimeLimit < 1)
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Vaqt chegarasi noto‘g‘ri."
       });
     }
 
     const result = await pool.query(
       `INSERT INTO speaking_tasks
-       (title, description, level, instructions, task_order)
-       VALUES ($1, $2, $3, $4, $5)
+       (
+         course_id,
+         lesson_id,
+         title,
+         description,
+         level,
+         instructions,
+         time_limit
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING *`,
       [
-        title,
+        courseId || null,
+        lessonId || null,
+        title.trim(),
         description || null,
-        level,
-        instructions,
-        Math.max(1, Number(taskOrder) || 1)
+        level || null,
+        instructions.trim(),
+        parsedTimeLimit
       ]
     );
 
@@ -138,7 +198,13 @@ router.post(
   async (req, res, next) => {
     try {
       const taskId = Number(req.params.id);
-      const { question, questionOrder } = req.body;
+
+      const {
+        question,
+        questionOrder,
+        preparationSeconds,
+        speakingSeconds
+      } = req.body;
 
       if (
         !Number.isInteger(taskId) ||
@@ -152,15 +218,53 @@ router.post(
         });
       }
 
+      const order = Number(questionOrder) || 1;
+      const preparation = Number(preparationSeconds ?? 30);
+      const speaking = Number(speakingSeconds ?? 60);
+
+      if (
+        !Number.isInteger(order) ||
+        order < 1 ||
+        !Number.isInteger(preparation) ||
+        preparation < 0 ||
+        !Number.isInteger(speaking) ||
+        speaking < 1
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Savol tartibi yoki vaqt qiymatlari noto‘g‘ri."
+        });
+      }
+
+      const task = await pool.query(
+        "SELECT id FROM speaking_tasks WHERE id = $1",
+        [taskId]
+      );
+
+      if (task.rows.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: "Speaking topshirig‘i topilmadi."
+        });
+      }
+
       const result = await pool.query(
         `INSERT INTO speaking_questions
-         (task_id, question, question_order)
-         VALUES ($1, $2, $3)
+         (
+           speaking_task_id,
+           question,
+           preparation_seconds,
+           speaking_seconds,
+           question_order
+         )
+         VALUES ($1, $2, $3, $4, $5)
          RETURNING *`,
         [
           taskId,
           question.trim(),
-          Math.max(1, Number(questionOrder) || 1)
+          preparation,
+          speaking,
+          order
         ]
       );
 
@@ -189,7 +293,9 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       !Number.isInteger(taskId) ||
       taskId < 1 ||
       typeof audioKey !== "string" ||
-      !audioKey.startsWith("english-up/speaking/")
+      !audioKey.startsWith("english-up/speaking/") ||
+      audioKey.includes("..") ||
+      audioKey.includes("\\")
     ) {
       return res.status(400).json({
         success: false,
@@ -197,25 +303,30 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       });
     }
 
+    const duration = Number(durationSeconds);
+
+    if (
+      !Number.isInteger(duration) ||
+      duration < 1 ||
+      duration > 900
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Audio davomiyligi 1–900 soniya oralig‘ida bo‘lishi kerak."
+      });
+    }
+
     const task = await pool.query(
-      `SELECT id FROM speaking_tasks
+      `SELECT id
+       FROM speaking_tasks
        WHERE id = $1 AND is_active = TRUE`,
       [taskId]
     );
 
-    if (!task.rows.length) {
+    if (task.rows.length === 0) {
       return res.status(404).json({
         success: false,
         message: "Speaking topshirig‘i topilmadi."
-      });
-    }
-
-    const duration = Number(durationSeconds) || 0;
-
-    if (duration < 1 || duration > 900) {
-      return res.status(400).json({
-        success: false,
-        message: "Audio davomiyligi 1–900 soniya oralig‘ida bo‘lishi kerak."
       });
     }
 
@@ -223,7 +334,12 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       `INSERT INTO speaking_submissions
        (user_id, task_id, audio_key, duration_seconds)
        VALUES ($1, $2, $3, $4)
-       RETURNING id, task_id, duration_seconds, status, created_at`,
+       RETURNING
+         id,
+         task_id,
+         duration_seconds,
+         status,
+         created_at`,
       [req.user.id, taskId, audioKey, duration]
     );
 
@@ -248,14 +364,20 @@ router.get(
   async (req, res, next) => {
     try {
       const result = await pool.query(
-        `SELECT s.id, s.task_id, t.title,
-                s.duration_seconds, s.status,
-                s.score, s.feedback, s.created_at,
-                s.reviewed_at
+        `SELECT
+           s.id,
+           s.task_id,
+           t.title,
+           s.duration_seconds,
+           s.status,
+           s.score,
+           s.feedback,
+           s.created_at,
+           s.reviewed_at
          FROM speaking_submissions s
          JOIN speaking_tasks t ON t.id = s.task_id
          WHERE s.user_id = $1
-         ORDER BY s.created_at DESC`,
+         ORDER BY s.created_at DESC, s.id DESC`,
         [req.user.id]
       );
 
@@ -282,14 +404,26 @@ router.get(
   async (req, res, next) => {
     try {
       const result = await pool.query(
-        `SELECT s.id, s.user_id, u.name, u.email,
-                s.task_id, t.title, s.audio_key,
-                s.duration_seconds, s.status,
-                s.score, s.feedback, s.created_at
+        `SELECT
+           s.id,
+           s.user_id,
+           u.name,
+           u.email,
+           s.task_id,
+           t.title,
+           s.audio_key,
+           s.duration_seconds,
+           s.transcript,
+           s.status,
+           s.score,
+           s.feedback,
+           s.reviewed_by,
+           s.reviewed_at,
+           s.created_at
          FROM speaking_submissions s
          JOIN users u ON u.id = s.user_id
          JOIN speaking_tasks t ON t.id = s.task_id
-         ORDER BY s.created_at DESC`
+         ORDER BY s.created_at DESC, s.id DESC`
       );
 
       res.json({
@@ -330,7 +464,7 @@ router.get(
         [id]
       );
 
-      if (!result.rows.length) {
+      if (result.rows.length === 0) {
         return res.status(404).json({
           success: false,
           message: "Audio javob topilmadi."
@@ -367,10 +501,12 @@ router.patch(
       if (
         !Number.isInteger(id) ||
         id < 1 ||
-        !Number.isFinite(Number(score)) ||
-        Number(score) < 0 ||
-        Number(score) > 100 ||
-        typeof feedback !== "string"
+        typeof score !== "number" ||
+        !Number.isFinite(score) ||
+        score < 0 ||
+        score > 100 ||
+        typeof feedback !== "string" ||
+        !feedback.trim()
       ) {
         return res.status(400).json({
           success: false,
@@ -383,13 +519,21 @@ router.patch(
          SET score = $1,
              feedback = $2,
              status = 'reviewed',
-             reviewed_at = NOW()
-         WHERE id = $3
-         RETURNING id, score, feedback, status, reviewed_at`,
-        [Number(score), feedback, id]
+             reviewed_by = $3,
+             reviewed_at = NOW(),
+             updated_at = NOW()
+         WHERE id = $4
+         RETURNING
+           id,
+           score,
+           feedback,
+           status,
+           reviewed_by,
+           reviewed_at`,
+        [score, feedback.trim(), req.user.id, id]
       );
 
-      if (!result.rows.length) {
+      if (result.rows.length === 0) {
         return res.status(404).json({
           success: false,
           message: "Speaking javobi topilmadi."
@@ -434,13 +578,14 @@ router.patch(
 
       const result = await pool.query(
         `UPDATE speaking_tasks
-         SET is_active = $1
+         SET is_active = $1,
+             updated_at = NOW()
          WHERE id = $2
          RETURNING id, title, is_active`,
         [isActive, id]
       );
 
-      if (!result.rows.length) {
+      if (result.rows.length === 0) {
         return res.status(404).json({
           success: false,
           message: "Speaking topshirig‘i topilmadi."
