@@ -1,189 +1,249 @@
 
 const { pool } = require("../config/database");
-const { getPagination } = require("../utils/pagination");
 
-function countWords(content) {
-  return content.trim().split(/\s+/).filter(Boolean).length;
-}
+async function getWritingTasks({ level, isPublished } = {}) {
+  const conditions = [];
+  const values = [];
 
-async function getWritingTasks(query = {}) {
-  const { page, limit, offset } = getPagination(query);
+  if (level) {
+    values.push(level);
+    conditions.push(`level = $${values.length}`);
+  }
+
+  if (typeof isPublished === "boolean") {
+    values.push(isPublished);
+    conditions.push(`is_published = $${values.length}`);
+  }
+
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
 
   const result = await pool.query(
-    `SELECT id, title, description, level,
-            instructions, word_limit
+    `SELECT *
      FROM writing_tasks
-     WHERE is_active = TRUE
-       AND ($1::text IS NULL OR level = $1)
-     ORDER BY created_at DESC
-     LIMIT $2 OFFSET $3`,
-    [query.level || null, limit, offset]
+     ${where}
+     ORDER BY created_at DESC`,
+    values
   );
 
-  const countResult = await pool.query(
-    `SELECT COUNT(*) FROM writing_tasks
-     WHERE is_active = TRUE
-       AND ($1::text IS NULL OR level = $1)`,
-    [query.level || null]
-  );
-
-  return {
-    tasks: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
+  return result.rows;
 }
 
 async function getWritingTaskById(taskId) {
   const result = await pool.query(
-    `SELECT id, title, description, level,
-            instructions, word_limit
+    `SELECT *
      FROM writing_tasks
-     WHERE id = $1 AND is_active = TRUE
-     LIMIT 1`,
+     WHERE id = $1`,
     [taskId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Writing task not found");
+  }
+
+  return result.rows[0];
 }
 
-async function createWritingTask(data) {
-  const {
-    title,
-    description,
-    level,
-    instructions,
-    wordLimit
-  } = data;
+async function createWritingTask({
+  title,
+  description = "",
+  level,
+  instructions,
+  wordLimit = null,
+  isPublished = false
+}) {
+  if (!title || !level || !instructions) {
+    throw new Error("Title, level and instructions are required");
+  }
 
   const result = await pool.query(
-    `INSERT INTO writing_tasks (
-       title, description, level,
-       instructions, word_limit, is_active
-     )
-     VALUES ($1, $2, $3, $4, $5, FALSE)
+    `INSERT INTO writing_tasks
+      (title, description, level, instructions, word_limit, is_published)
+     VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
-      title,
-      description || null,
+      title.trim(),
+      description,
       level,
       instructions,
-      wordLimit || null
+      wordLimit,
+      isPublished
     ]
   );
 
   return result.rows[0];
 }
 
-async function submitWriting(userId, taskId, content) {
-  if (typeof content !== "string" || !content.trim()) {
-    throw new Error("Yozma ish bo'sh bo'lishi mumkin emas.");
+async function submitWriting({ userId, taskId, content }) {
+  if (!userId || !taskId || !content || !content.trim()) {
+    throw new Error("User, task and writing content are required");
   }
 
-  const task = await getWritingTaskById(taskId);
+  const task = await pool.query(
+    `SELECT id
+     FROM writing_tasks
+     WHERE id = $1 AND is_published = TRUE`,
+    [taskId]
+  );
 
-  if (!task) {
-    const error = new Error("Writing topshirig'i topilmadi.");
-    error.statusCode = 404;
-    throw error;
-  }
-
-  const wordCount = countWords(content);
-
-  if (task.word_limit && wordCount > task.word_limit) {
-    const error = new Error(
-      `So'zlar soni ${task.word_limit} tadan oshmasligi kerak.`
-    );
-    error.statusCode = 400;
-    throw error;
+  if (task.rows.length === 0) {
+    throw new Error("Writing task not found or not published");
   }
 
   const result = await pool.query(
-    `INSERT INTO writing_submissions (
-       user_id, task_id, content, word_count, status
-     )
-     VALUES ($1, $2, $3, $4, 'pending')
-     RETURNING id, user_id, task_id, content,
-               word_count, status, created_at`,
-    [userId, taskId, content.trim(), wordCount]
+    `INSERT INTO writing_submissions
+      (user_id, task_id, content, status)
+     VALUES ($1, $2, $3, 'submitted')
+     RETURNING *`,
+    [userId, taskId, content.trim()]
   );
 
   return result.rows[0];
 }
 
-async function getMyWritingSubmissions(userId, query = {}) {
-  const { page, limit, offset } = getPagination(query);
-
+async function getUserWritingSubmissions(userId) {
   const result = await pool.query(
-    `SELECT ws.id, ws.task_id, wt.title,
-            ws.content, ws.word_count, ws.status,
-            ws.score, ws.feedback, ws.created_at
+    `SELECT ws.*, wt.title AS task_title
      FROM writing_submissions ws
      JOIN writing_tasks wt ON wt.id = ws.task_id
      WHERE ws.user_id = $1
-     ORDER BY ws.created_at DESC
-     LIMIT $2 OFFSET $3`,
-    [userId, limit, offset]
-  );
-
-  const countResult = await pool.query(
-    "SELECT COUNT(*) FROM writing_submissions WHERE user_id = $1",
+     ORDER BY ws.created_at DESC`,
     [userId]
   );
 
-  return {
-    submissions: result.rows,
-    page,
-    limit,
-    total: Number(countResult.rows[0].count)
-  };
+  return result.rows;
 }
 
-async function reviewWriting(submissionId, data) {
-  const { score, feedback } = data;
+async function getAllWritingSubmissions({ status, page = 1, limit = 50 } = {}) {
+  const safePage = Math.max(1, Number.parseInt(page, 10) || 1);
+  const safeLimit = Math.min(100, Math.max(1, Number.parseInt(limit, 10) || 50));
+  const values = [];
+  let where = "";
+
+  if (status) {
+    values.push(status);
+    where = `WHERE ws.status = $1`;
+  }
+
+  values.push(safeLimit, (safePage - 1) * safeLimit);
+
+  const result = await pool.query(
+    `SELECT ws.*, u.name AS user_name, u.email, wt.title AS task_title
+     FROM writing_submissions ws
+     JOIN users u ON u.id = ws.user_id
+     JOIN writing_tasks wt ON wt.id = ws.task_id
+     ${where}
+     ORDER BY ws.created_at DESC
+     LIMIT $${values.length - 1}
+     OFFSET $${values.length}`,
+    values
+  );
+
+  return result.rows;
+}
+
+async function reviewWritingSubmission({
+  submissionId,
+  reviewerId,
+  feedback,
+  score
+}) {
+  if (!submissionId || !reviewerId || feedback === undefined) {
+    throw new Error("Submission, reviewer and feedback are required");
+  }
 
   if (
-    !Number.isFinite(Number(score)) ||
-    Number(score) < 0 ||
-    Number(score) > 100
+    score !== undefined &&
+    score !== null &&
+    (!Number.isFinite(Number(score)) || Number(score) < 0 || Number(score) > 100)
   ) {
-    throw new Error("Baho 0 dan 100 gacha bo'lishi kerak.");
+    throw new Error("Score must be between 0 and 100");
   }
 
   const result = await pool.query(
     `UPDATE writing_submissions
-     SET score = $2,
-         feedback = $3,
+     SET feedback = $1,
+         score = $2,
          status = 'reviewed',
+         reviewed_by = $3,
          reviewed_at = NOW()
-     WHERE id = $1
+     WHERE id = $4
      RETURNING *`,
-    [submissionId, Number(score), feedback || null]
+    [feedback, score ?? null, reviewerId, submissionId]
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Writing submission not found");
+  }
+
+  return result.rows[0];
 }
 
-async function setWritingTaskStatus(taskId, isActive) {
+async function updateWritingTask(taskId, data = {}) {
+  const allowedFields = {
+    title: "title",
+    description: "description",
+    level: "level",
+    instructions: "instructions",
+    wordLimit: "word_limit",
+    isPublished: "is_published"
+  };
+
+  const fields = [];
+  const values = [];
+
+  for (const [key, column] of Object.entries(allowedFields)) {
+    if (data[key] !== undefined) {
+      values.push(data[key]);
+      fields.push(`${column} = $${values.length}`);
+    }
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No writing task fields provided");
+  }
+
+  values.push(taskId);
+
   const result = await pool.query(
     `UPDATE writing_tasks
-     SET is_active = $2, updated_at = NOW()
-     WHERE id = $1
-     RETURNING id, title, is_active`,
-    [taskId, isActive]
+     SET ${fields.join(", ")}, updated_at = NOW()
+     WHERE id = $${values.length}
+     RETURNING *`,
+    values
   );
 
-  return result.rows[0] || null;
+  if (result.rows.length === 0) {
+    throw new Error("Writing task not found");
+  }
+
+  return result.rows[0];
+}
+
+async function deleteWritingTask(taskId) {
+  const result = await pool.query(
+    `DELETE FROM writing_tasks
+     WHERE id = $1
+     RETURNING id`,
+    [taskId]
+  );
+
+  if (result.rows.length === 0) {
+    throw new Error("Writing task not found");
+  }
+
+  return { success: true };
 }
 
 module.exports = {
-  countWords,
   getWritingTasks,
   getWritingTaskById,
   createWritingTask,
   submitWriting,
-  getMyWritingSubmissions,
-  reviewWriting,
-  setWritingTaskStatus
+  getUserWritingSubmissions,
+  getAllWritingSubmissions,
+  reviewWritingSubmission,
+  updateWritingTask,
+  deleteWritingTask
 };
