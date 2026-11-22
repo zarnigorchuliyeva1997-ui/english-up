@@ -6,7 +6,11 @@ const { pool } = require("../config/database");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 
-// O'quvchining murojaatlari
+// =========================================
+// GET USER CONVERSATIONS
+// GET /api/messages/mine
+// =========================================
+
 router.get("/mine", auth, async (req, res, next) => {
   try {
     const result = await pool.query(
@@ -20,7 +24,7 @@ router.get("/mine", auth, async (req, res, next) => {
            SELECT m.message
            FROM messages m
            WHERE m.conversation_id = c.id
-           ORDER BY m.created_at DESC
+           ORDER BY m.created_at DESC, m.id DESC
            LIMIT 1
          ) AS last_message
        FROM conversations c
@@ -29,7 +33,7 @@ router.get("/mine", auth, async (req, res, next) => {
       [req.user.id]
     );
 
-    res.json({
+    return res.json({
       success: true,
       conversations: result.rows
     });
@@ -38,38 +42,51 @@ router.get("/mine", auth, async (req, res, next) => {
   }
 });
 
-// Yangi murojaat yaratish
+// =========================================
+// CREATE CONVERSATION
+// POST /api/messages
+// =========================================
+
 router.post("/", auth, async (req, res, next) => {
-  const client = await pool.connect();
+  let client;
 
   try {
-    const { subject, message } = req.body;
+    const { subject, message } = req.body || {};
 
     if (
       typeof subject !== "string" ||
       !subject.trim() ||
+      subject.trim().length > 200 ||
       typeof message !== "string" ||
       !message.trim()
     ) {
       return res.status(400).json({
         success: false,
-        message: "Mavzu va xabar matnini kiriting."
+        message: "Mavzu va xabar matnini to‘g‘ri kiriting."
       });
     }
+
+    client = await pool.connect();
 
     await client.query("BEGIN");
 
     const conversation = await client.query(
-      `INSERT INTO conversations
-       (user_id, subject, status)
+      `INSERT INTO conversations (
+         user_id,
+         subject,
+         status
+       )
        VALUES ($1, $2, 'open')
        RETURNING *`,
       [req.user.id, subject.trim()]
     );
 
     const newMessage = await client.query(
-      `INSERT INTO messages
-       (conversation_id, sender_id, message)
+      `INSERT INTO messages (
+         conversation_id,
+         sender_id,
+         message
+       )
        VALUES ($1, $2, $3)
        RETURNING *`,
       [
@@ -81,20 +98,30 @@ router.post("/", auth, async (req, res, next) => {
 
     await client.query("COMMIT");
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       conversation: conversation.rows[0],
       message: newMessage.rows[0]
     });
   } catch (error) {
-    await client.query("ROLLBACK");
+    if (client) {
+      await client.query("ROLLBACK").catch(() => {});
+    }
+
     next(error);
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 });
 
-// Admin uchun barcha murojaatlar
+// =========================================
+// GET ALL CONVERSATIONS
+// GET /api/messages/admin/conversations
+// Admin only
+// =========================================
+
 router.get(
   "/admin/conversations",
   auth,
@@ -110,15 +137,15 @@ router.get(
              SELECT m.message
              FROM messages m
              WHERE m.conversation_id = c.id
-             ORDER BY m.created_at DESC
+             ORDER BY m.created_at DESC, m.id DESC
              LIMIT 1
            ) AS last_message
          FROM conversations c
-         JOIN users u ON u.id = c.user_id
+         INNER JOIN users u ON u.id = c.user_id
          ORDER BY c.updated_at DESC`
       );
 
-      res.json({
+      return res.json({
         success: true,
         conversations: result.rows
       });
@@ -128,17 +155,39 @@ router.get(
   }
 );
 
-// Suhbat xabarlarini ko'rish
+// =========================================
+// GET CONVERSATION MESSAGES
+// GET /api/messages/:conversationId/messages
+// =========================================
+
 router.get(
   "/:conversationId/messages",
   auth,
   async (req, res, next) => {
     try {
+      const conversationId = Number(req.params.conversationId);
+
+      if (
+        !Number.isSafeInteger(conversationId) ||
+        conversationId < 1
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Murojaat ID noto‘g‘ri."
+        });
+      }
+
       const conversation = await pool.query(
-        `SELECT id, user_id, subject, status
+        `SELECT
+           id,
+           user_id,
+           subject,
+           status,
+           created_at,
+           updated_at
          FROM conversations
          WHERE id = $1`,
-        [req.params.conversationId]
+        [conversationId]
       );
 
       if (!conversation.rows.length) {
@@ -151,10 +200,13 @@ router.get(
       const item = conversation.rows[0];
       const isAdmin = req.user.role === "admin";
 
-      if (!isAdmin && String(item.user_id) !== String(req.user.id)) {
+      if (
+        !isAdmin &&
+        String(item.user_id) !== String(req.user.id)
+      ) {
         return res.status(403).json({
           success: false,
-          message: "Bu murojaatni ko'rishga ruxsat yo'q."
+          message: "Bu murojaatni ko‘rishga ruxsat yo‘q."
         });
       }
 
@@ -166,15 +218,16 @@ router.get(
            u.name AS sender_name,
            u.role AS sender_role,
            m.message,
+           m.is_read,
            m.created_at
          FROM messages m
-         JOIN users u ON u.id = m.sender_id
+         INNER JOIN users u ON u.id = m.sender_id
          WHERE m.conversation_id = $1
-         ORDER BY m.created_at ASC`,
-        [req.params.conversationId]
+         ORDER BY m.created_at ASC, m.id ASC`,
+        [conversationId]
       );
 
-      res.json({
+      return res.json({
         success: true,
         conversation: item,
         messages: result.rows
@@ -185,29 +238,56 @@ router.get(
   }
 );
 
-// Suhbatga javob yuborish
+// =========================================
+// SEND MESSAGE
+// POST /api/messages/:conversationId/messages
+// =========================================
+
 router.post(
   "/:conversationId/messages",
   auth,
   async (req, res, next) => {
-    try {
-      const { message } = req.body;
+    let client;
 
-      if (typeof message !== "string" || !message.trim()) {
+    try {
+      const conversationId = Number(req.params.conversationId);
+      const { message } = req.body || {};
+
+      if (
+        !Number.isSafeInteger(conversationId) ||
+        conversationId < 1
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Murojaat ID noto‘g‘ri."
+        });
+      }
+
+      if (
+        typeof message !== "string" ||
+        !message.trim()
+      ) {
         return res.status(400).json({
           success: false,
           message: "Xabar matnini kiriting."
         });
       }
 
-      const conversation = await pool.query(
+      client = await pool.connect();
+
+      await client.query("BEGIN");
+
+      const conversation = await client.query(
         `SELECT id, user_id, status
          FROM conversations
-         WHERE id = $1`,
-        [req.params.conversationId]
+         WHERE id = $1
+         FOR UPDATE`,
+        [conversationId]
       );
 
       if (!conversation.rows.length) {
+        await client.query("ROLLBACK");
+
         return res.status(404).json({
           success: false,
           message: "Murojaat topilmadi."
@@ -217,73 +297,109 @@ router.post(
       const item = conversation.rows[0];
       const isAdmin = req.user.role === "admin";
 
-      if (!isAdmin && String(item.user_id) !== String(req.user.id)) {
+      if (
+        !isAdmin &&
+        String(item.user_id) !== String(req.user.id)
+      ) {
+        await client.query("ROLLBACK");
+
         return res.status(403).json({
           success: false,
-          message: "Bu suhbatga yozishga ruxsat yo'q."
+          message: "Bu suhbatga yozishga ruxsat yo‘q."
         });
       }
 
       if (item.status === "closed") {
+        await client.query("ROLLBACK");
+
         return res.status(400).json({
           success: false,
           message: "Bu murojaat yopilgan."
         });
       }
 
-      const result = await pool.query(
-        `INSERT INTO messages
-         (conversation_id, sender_id, message)
+      const result = await client.query(
+        `INSERT INTO messages (
+           conversation_id,
+           sender_id,
+           message
+         )
          VALUES ($1, $2, $3)
          RETURNING *`,
         [
-          item.id,
+          conversationId,
           req.user.id,
           message.trim()
         ]
       );
 
-      await pool.query(
+      await client.query(
         `UPDATE conversations
-         SET updated_at = NOW(),
-             status = 'open'
+         SET updated_at = NOW()
          WHERE id = $1`,
-        [item.id]
+        [conversationId]
       );
 
-      res.status(201).json({
+      await client.query("COMMIT");
+
+      return res.status(201).json({
         success: true,
         message: result.rows[0]
       });
     } catch (error) {
+      if (client) {
+        await client.query("ROLLBACK").catch(() => {});
+      }
+
       next(error);
+    } finally {
+      if (client) {
+        client.release();
+      }
     }
   }
 );
 
-// Admin murojaat holatini o'zgartiradi
+// =========================================
+// UPDATE CONVERSATION STATUS
+// PATCH /api/messages/admin/conversations/:id/status
+// Admin only
+// =========================================
+
 router.patch(
   "/admin/conversations/:id/status",
   auth,
   admin,
   async (req, res, next) => {
     try {
-      const { status } = req.body;
+      const conversationId = Number(req.params.id);
+      const { status } = req.body || {};
+
+      if (
+        !Number.isSafeInteger(conversationId) ||
+        conversationId < 1
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Murojaat ID noto‘g‘ri."
+        });
+      }
 
       if (!["open", "closed"].includes(status)) {
         return res.status(400).json({
           success: false,
-          message: "Murojaat holati noto'g'ri."
+          message: "Murojaat holati noto‘g‘ri."
         });
       }
 
       const result = await pool.query(
         `UPDATE conversations
-         SET status = $1,
-             updated_at = NOW()
+         SET
+           status = $1,
+           updated_at = NOW()
          WHERE id = $2
          RETURNING *`,
-        [status, req.params.id]
+        [status, conversationId]
       );
 
       if (!result.rows.length) {
@@ -293,7 +409,7 @@ router.patch(
         });
       }
 
-      res.json({
+      return res.json({
         success: true,
         conversation: result.rows[0]
       });
