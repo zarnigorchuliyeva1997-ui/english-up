@@ -6,176 +6,164 @@ const path = require("path");
 const crypto = require("crypto");
 
 const {
-  S3Client,
   PutObjectCommand,
   DeleteObjectCommand
 } = require("@aws-sdk/client-s3");
 
-const { pool } = require("../config/database");
-const {
-  storageConfig,
-  validateStorageConfig
-} = require("../config/storage");
+const pool = require("../config/database");
+const { s3, bucketName } = require("../config/storage");
 
-function getS3Client() {
-  validateStorageConfig();
+function getDatabaseConfig() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL is not configured");
+  }
 
-  return new S3Client({
-    endpoint: storageConfig.endpoint,
-    region: storageConfig.region,
-    credentials: {
-      accessKeyId: storageConfig.accessKeyId,
-      secretAccessKey: storageConfig.secretAccessKey
-    },
-    forcePathStyle: true
-  });
+  const url = new URL(process.env.DATABASE_URL);
+
+  return {
+    host: url.hostname,
+    port: url.port || "5432",
+    user: decodeURIComponent(url.username),
+    password: decodeURIComponent(url.password),
+    database: url.pathname.replace(/^\//, ""),
+    sslmode: url.searchParams.get("sslmode")
+  };
 }
 
-// PostgreSQL backup faylini yaratish
-function createDatabaseDump(outputPath) {
+function runPgDump(outputPath) {
   return new Promise((resolve, reject) => {
-    if (!process.env.DATABASE_URL) {
-      return reject(new Error("DATABASE_URL sozlanmagan."));
+    let config;
+
+    try {
+      config = getDatabaseConfig();
+    } catch (error) {
+      reject(error);
+      return;
     }
 
-    const dump = spawn(
-      "pg_dump",
-      [
-        "--dbname",
-        process.env.DATABASE_URL,
-        "--format=custom",
-        "--no-owner",
-        "--no-acl",
-        "--file",
-        outputPath
-      ],
-      {
-        shell: false,
-        stdio: ["ignore", "ignore", "pipe"]
+    const args = [
+      "--host", config.host,
+      "--port", config.port,
+      "--username", config.user,
+      "--dbname", config.database,
+      "--format=custom",
+      "--no-owner",
+      "--no-privileges",
+      "--file", outputPath
+    ];
+
+    const child = spawn("pg_dump", args, {
+      env: {
+        ...process.env,
+        PGPASSWORD: config.password,
+        ...(config.sslmode ? { PGSSLMODE: config.sslmode } : {})
       }
-    );
+    });
 
     let errorOutput = "";
 
-    dump.stderr.on("data", (chunk) => {
-      errorOutput += chunk.toString();
+    child.stderr.on("data", (data) => {
+      errorOutput += data.toString();
     });
 
-    dump.on("error", (error) => {
-      reject(error);
-    });
+    child.on("error", reject);
 
-    dump.on("close", (code) => {
+    child.on("close", (code) => {
       if (code === 0) {
-        resolve(outputPath);
+        resolve();
       } else {
-        reject(
-          new Error(
-            `pg_dump xatosi. Kod: ${code}. ${errorOutput}`
-          )
-        );
+        reject(new Error(errorOutput || "Database backup failed"));
       }
     });
   });
 }
 
-// Backup yaratish va S3 ga yuklash
-async function createBackup() {
-  const client = getS3Client();
+async function createBackup(adminId) {
+  if (!adminId) {
+    throw new Error("Admin ID is required");
+  }
 
-  const backupId = crypto.randomUUID();
-  const fileName = `english-up-backup-${backupId}.dump`;
-  const storageKey = `english-up/backups/${fileName}`;
-  const outputPath = path.join(
+  const tempPath = path.join(
     os.tmpdir(),
-    fileName
+    `english-up-${crypto.randomUUID()}.dump`
   );
 
-  let uploaded = false;
-
   try {
-    await createDatabaseDump(outputPath);
+    await runPgDump(tempPath);
 
-    const fileBuffer = await fs.promises.readFile(outputPath);
-    const fileSize = fileBuffer.length;
+    const fileBuffer = await fs.promises.readFile(tempPath);
+    const fileName = `backup-${new Date().toISOString().replace(/[:.]/g, "-")}.dump`;
+    const storageKey = `english-up/backups/${fileName}`;
 
-    await client.send(
-      new PutObjectCommand({
-        Bucket: storageConfig.bucket,
-        Key: storageKey,
-        Body: fileBuffer,
-        ContentType: "application/octet-stream",
-        Metadata: {
-          backupid: backupId
-        }
-      })
-    );
-
-    uploaded = true;
+    await s3.send(new PutObjectCommand({
+      Bucket: bucketName,
+      Key: storageKey,
+      Body: fileBuffer,
+      ContentType: "application/octet-stream"
+    }));
 
     const result = await pool.query(
       `INSERT INTO backups
-       (file_name, storage_key, file_size, status)
-       VALUES ($1, $2, $3, 'completed')
-       RETURNING id, file_name, storage_key, file_size, status, created_at`,
-      [fileName, storageKey, fileSize]
+       (file_name, storage_key, file_size, status, created_by)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *`,
+      [fileName, storageKey, fileBuffer.length, "completed", adminId]
     );
 
     return result.rows[0];
   } catch (error) {
-    if (uploaded) {
-      try {
-        await client.send(
-          new DeleteObjectCommand({
-            Bucket: storageConfig.bucket,
-            Key: storageKey
-          })
-        );
-      } catch (deleteError) {
-        console.error(
-          "Yuklangan backupni tozalash xatosi:",
-          deleteError.message
-        );
-      }
-    }
-
-    throw error;
+    throw new Error(`Backup creation failed: ${error.message}`);
   } finally {
-    try {
-      await fs.promises.unlink(outputPath);
-    } catch (error) {
-      if (error.code !== "ENOENT") {
-        console.error(
-          "Vaqtinchalik faylni o'chirish xatosi:",
-          error.message
-        );
-      }
-    }
+    await fs.promises.unlink(tempPath).catch(() => {});
   }
 }
 
-// Backup faylini S3 dan o'chirish
-async function deleteBackupFile(storageKey) {
-  if (
-    typeof storageKey !== "string" ||
-    !storageKey.startsWith("english-up/backups/")
-  ) {
-    throw new Error("Backup fayl manzili noto'g'ri.");
-  }
-
-  const client = getS3Client();
-
-  await client.send(
-    new DeleteObjectCommand({
-      Bucket: storageConfig.bucket,
-      Key: storageKey
-    })
+async function getBackups() {
+  const result = await pool.query(
+    `SELECT *
+     FROM backups
+     ORDER BY created_at DESC`
   );
 
-  return true;
+  return result.rows;
+}
+
+async function deleteBackup(backupId) {
+  const result = await pool.query(
+    `SELECT id, storage_key
+     FROM backups
+     WHERE id = $1`,
+    [backupId]
+  );
+
+  if (result.rows.length === 0) {
+    throw new Error("Backup not found");
+  }
+
+  const backup = result.rows[0];
+
+  if (
+    typeof backup.storage_key !== "string" ||
+    !backup.storage_key.startsWith("english-up/backups/")
+  ) {
+    throw new Error("Invalid backup storage key");
+  }
+
+  await s3.send(new DeleteObjectCommand({
+    Bucket: bucketName,
+    Key: backup.storage_key
+  }));
+
+  await pool.query(
+    "DELETE FROM backups WHERE id = $1",
+    [backupId]
+  );
+
+  return { success: true };
 }
 
 module.exports = {
   createBackup,
-  deleteBackupFile
+  getBackups,
+  deleteBackup
 };
