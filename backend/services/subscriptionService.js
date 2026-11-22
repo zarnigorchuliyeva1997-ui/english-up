@@ -1,13 +1,55 @@
 
 const { pool } = require("../config/database");
 
+const ALLOWED_STATUSES = [
+  "active",
+  "expired",
+  "cancelled",
+  "pending"
+];
+
+const ALLOWED_PLANS = [
+  "monthly",
+  "quarterly",
+  "yearly"
+];
+
+function normalizePagination(page, limit) {
+  const safePage = Math.max(
+    1,
+    Math.floor(Number(page) || 1)
+  );
+
+  const safeLimit = Math.min(
+    100,
+    Math.max(1, Math.floor(Number(limit) || 20))
+  );
+
+  return {
+    page: safePage,
+    limit: safeLimit,
+    offset: (safePage - 1) * safeLimit
+  };
+}
+
 async function getUserSubscriptions(userId) {
+  if (!userId) {
+    throw new Error("User ID is required");
+  }
+
   const result = await pool.query(
-    `SELECT id, user_id, plan, status, start_date,
-            end_date, created_at, updated_at
-     FROM subscriptions
-     WHERE user_id = $1
-     ORDER BY created_at DESC`,
+    `SELECT
+      id,
+      user_id,
+      plan,
+      status,
+      start_date,
+      end_date,
+      created_at,
+      updated_at
+    FROM subscriptions
+    WHERE user_id = $1
+    ORDER BY created_at DESC`,
     [userId]
   );
 
@@ -15,6 +57,10 @@ async function getUserSubscriptions(userId) {
 }
 
 async function getActiveSubscription(userId) {
+  if (!userId) {
+    throw new Error("User ID is required");
+  }
+
   const result = await pool.query(
     `SELECT *
      FROM subscriptions
@@ -33,46 +79,85 @@ async function activateSubscription({
   userId,
   plan,
   durationDays
-}) {
+} = {}) {
   const days = Number(durationDays);
 
-  if (!userId || !plan || !Number.isInteger(days) || days < 1 || days > 3650) {
+  if (
+    !userId ||
+    typeof plan !== "string" ||
+    !ALLOWED_PLANS.includes(plan) ||
+    !Number.isInteger(days) ||
+    days < 1 ||
+    days > 3650
+  ) {
     throw new Error("Subscription details are invalid");
   }
 
-  const userResult = await pool.query(
-    `SELECT id
-     FROM users
-     WHERE id = $1 AND role = 'student' AND is_active = TRUE`,
-    [userId]
-  );
+  const client = await pool.connect();
 
-  if (!userResult.rows.length) {
-    throw new Error("Student not found or inactive");
+  try {
+    await client.query("BEGIN");
+
+    const userResult = await client.query(
+      `SELECT id
+       FROM users
+       WHERE id = $1
+         AND role = 'student'
+         AND is_active = TRUE
+       FOR UPDATE`,
+      [userId]
+    );
+
+    if (!userResult.rows.length) {
+      throw new Error("Student not found or inactive");
+    }
+
+    const result = await client.query(
+      `INSERT INTO subscriptions (
+        user_id,
+        plan,
+        status,
+        start_date,
+        end_date
+      )
+      VALUES (
+        $1,
+        $2,
+        'active',
+        NOW(),
+        NOW() + ($3::int * INTERVAL '1 day')
+      )
+      RETURNING *`,
+      [userId, plan, days]
+    );
+
+    await client.query("COMMIT");
+
+    return result.rows[0];
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
   }
-
-  const result = await pool.query(
-    `INSERT INTO subscriptions
-      (user_id, plan, status, start_date, end_date)
-     VALUES ($1, $2, 'active', NOW(),
-             NOW() + ($3::int * INTERVAL '1 day'))
-     RETURNING *`,
-    [userId, plan, days]
-  );
-
-  return result.rows[0];
 }
 
-async function updateSubscriptionStatus(subscriptionId, status) {
-  const allowedStatuses = ["active", "expired", "cancelled", "pending"];
+async function updateSubscriptionStatus(
+  subscriptionId,
+  status
+) {
+  if (!subscriptionId) {
+    throw new Error("Subscription ID is required");
+  }
 
-  if (!allowedStatuses.includes(status)) {
+  if (!ALLOWED_STATUSES.includes(status)) {
     throw new Error("Invalid subscription status");
   }
 
   const result = await pool.query(
     `UPDATE subscriptions
-     SET status = $2
+     SET status = $2,
+         updated_at = NOW()
      WHERE id = $1
      RETURNING *`,
     [subscriptionId, status]
@@ -89,28 +174,30 @@ async function getAllSubscriptions({
   page = 1,
   limit = 20
 } = {}) {
-  const safePage = Math.max(Number(page) || 1, 1);
-  const safeLimit = Math.min(Math.max(Number(limit) || 20, 1), 100);
-  const offset = (safePage - 1) * safeLimit;
+  const pagination = normalizePagination(page, limit);
 
   const countResult = await pool.query(
-    "SELECT COUNT(*)::int AS total FROM subscriptions"
+    `SELECT COUNT(*)::int AS total
+     FROM subscriptions`
   );
 
   const result = await pool.query(
-    `SELECT s.*, u.name AS user_name, u.email AS user_email
+    `SELECT
+      s.*,
+      u.name AS user_name,
+      u.email AS user_email
      FROM subscriptions s
      JOIN users u ON u.id = s.user_id
      ORDER BY s.created_at DESC
      LIMIT $1 OFFSET $2`,
-    [safeLimit, offset]
+    [pagination.limit, pagination.offset]
   );
 
   return {
     items: result.rows,
     total: countResult.rows[0].total,
-    page: safePage,
-    limit: safeLimit
+    page: pagination.page,
+    limit: pagination.limit
   };
 }
 
