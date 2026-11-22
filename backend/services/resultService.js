@@ -1,8 +1,24 @@
 
 const { pool } = require("../config/database");
 
+// Sahifalash qiymatlarini tekshirish
+function normalizePagination(limit = 20, offset = 0) {
+  const safeLimit = Math.min(Math.max(parseInt(limit, 10) || 20, 1), 100);
+  const safeOffset = Math.max(parseInt(offset, 10) || 0, 0);
+
+  return {
+    limit: safeLimit,
+    offset: safeOffset
+  };
+}
+
 // Foydalanuvchining test natijalari
-async function getUserTestResults(userId, { limit = 20, offset = 0 } = {}) {
+async function getUserTestResults(userId, pagination = {}) {
+  const { limit, offset } = normalizePagination(
+    pagination.limit,
+    pagination.offset
+  );
+
   const result = await pool.query(
     `SELECT
        id,
@@ -22,7 +38,12 @@ async function getUserTestResults(userId, { limit = 20, offset = 0 } = {}) {
 }
 
 // Foydalanuvchining reading natijalari
-async function getUserReadingResults(userId, { limit = 20, offset = 0 } = {}) {
+async function getUserReadingResults(userId, pagination = {}) {
+  const { limit, offset } = normalizePagination(
+    pagination.limit,
+    pagination.offset
+  );
+
   const result = await pool.query(
     `SELECT
        id,
@@ -83,12 +104,7 @@ async function getUserSpeakingResults(userId) {
 
 // Foydalanuvchining barcha natijalari
 async function getUserAllResults(userId) {
-  const [
-    tests,
-    reading,
-    writing,
-    speaking
-  ] = await Promise.all([
+  const [tests, reading, writing, speaking] = await Promise.all([
     getUserTestResults(userId),
     getUserReadingResults(userId),
     getUserWritingResults(userId),
@@ -104,7 +120,12 @@ async function getUserAllResults(userId) {
 }
 
 // Admin uchun barcha test natijalari
-async function getAllTestResults({ limit = 50, offset = 0 } = {}) {
+async function getAllTestResults(pagination = {}) {
+  const { limit, offset } = normalizePagination(
+    pagination.limit || 50,
+    pagination.offset
+  );
+
   const result = await pool.query(
     `SELECT
        a.*,
