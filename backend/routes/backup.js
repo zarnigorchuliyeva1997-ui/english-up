@@ -1,104 +1,82 @@
-
 const express = require("express");
-const crypto = require("crypto");
 const router = express.Router();
 
-const { pool } = require("../config/database");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
-const { uploadBuffer } = require("../services/fileService");
 
-// Backup yaratish uchun tashqi xavfsiz jarayon talab qilinadi.
-// Bu endpoint tayyor bo'lmaguncha backup yaratilgan deb ko'rsatmaydi.
-router.post("/create", auth, admin, async (req, res) => {
-  return res.status(501).json({
-    success: false,
-    message:
-      "Backup yaratish xizmati hali sozlanmagan. PostgreSQL backup jarayoni va S3 saqlash integratsiyasi ulanishi kerak."
-  });
-});
+const {
+  createBackup,
+  getBackups,
+  deleteBackup
+} = require("../services/backupService");
 
-// Backup ro'yxati
-router.get("/", auth, admin, async (req, res, next) => {
+router.use(auth, admin);
+
+// BACKUP YARATISH
+router.post("/create", async (req, res) => {
   try {
-    const result = await pool.query(
-      `SELECT
-         id,
-         file_name,
-         storage_key,
-         file_size,
-         status,
-         created_at
-       FROM backups
-       ORDER BY created_at DESC`
-    );
+    const backup = await createBackup(req.user.id);
 
-    res.json({
+    res.status(201).json({
       success: true,
-      backups: result.rows
+      message: "Backup muvaffaqiyatli yaratildi",
+      backup
     });
   } catch (error) {
-    next(error);
+    console.error("Backup yaratish xatosi:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Backup yaratishda xatolik yuz berdi"
+    });
   }
 });
 
-// Bitta backup ma'lumoti
-router.get("/:id", auth, admin, async (req, res, next) => {
+// BACKUPLAR RO‘YXATI
+router.get("/", async (req, res) => {
   try {
-    const result = await pool.query(
-      `SELECT
-         id,
-         file_name,
-         storage_key,
-         file_size,
-         status,
-         created_at
-       FROM backups
-       WHERE id = $1`,
-      [req.params.id]
-    );
-
-    if (!result.rows.length) {
-      return res.status(404).json({
-        success: false,
-        message: "Backup topilmadi."
-      });
-    }
+    const backups = await getBackups();
 
     res.json({
       success: true,
-      backup: result.rows[0]
+      backups
     });
   } catch (error) {
-    next(error);
+    console.error("Backup ro‘yxati xatosi:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Backuplarni olishda xatolik"
+    });
   }
 });
 
-// Backup yozuvini o'chirish
-// S3 faylini o'chirish integratsiyasi keyin ulanadi.
-router.delete("/:id", auth, admin, async (req, res, next) => {
+// BACKUPNI O‘CHIRISH
+router.delete("/:id", async (req, res) => {
   try {
-    const result = await pool.query(
-      `DELETE FROM backups
-       WHERE id = $1
-       RETURNING id, storage_key`,
-      [req.params.id]
-    );
+    const backupId = Number(req.params.id);
 
-    if (!result.rows.length) {
-      return res.status(404).json({
+    if (!Number.isInteger(backupId) || backupId <= 0) {
+      return res.status(400).json({
         success: false,
-        message: "Backup topilmadi."
+        message: "Backup ID noto‘g‘ri"
       });
     }
 
+    const result = await deleteBackup(backupId);
+
     res.json({
       success: true,
-      message:
-        "Backup ro'yxatidagi yozuv o'chirildi. S3 faylini o'chirish integratsiyasi alohida ulanadi."
+      message: "Backup muvaffaqiyatli o‘chirildi",
+      result
     });
   } catch (error) {
-    next(error);
+    console.error("Backup o‘chirish xatosi:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Backupni o‘chirishda xatolik"
+    });
   }
 });
 
