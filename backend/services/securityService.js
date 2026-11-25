@@ -12,9 +12,15 @@ async function logSecurityEvent({
     throw new Error("Security action is required");
   }
 
+  const description = details
+    ? typeof details === "string"
+      ? details
+      : JSON.stringify(details)
+    : null;
+
   const result = await pool.query(
     `INSERT INTO security_logs
-      (user_id, action, ip_address, user_agent, details)
+      (user_id, event_type, ip_address, user_agent, description)
      VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
     [
@@ -22,11 +28,15 @@ async function logSecurityEvent({
       action.slice(0, 150),
       ipAddress,
       userAgent,
-      details ? JSON.stringify(details) : null
+      description
     ]
   );
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    action: result.rows[0].event_type,
+    details: result.rows[0].description
+  };
 }
 
 async function getSecurityLogs({
@@ -53,7 +63,7 @@ async function getSecurityLogs({
 
   if (action) {
     values.push(action);
-    conditions.push(`action = $${values.length}`);
+    conditions.push(`event_type = $${values.length}`);
   }
 
   const where = conditions.length
@@ -76,7 +86,11 @@ async function getSecurityLogs({
     values
   );
 
-  return result.rows;
+  return result.rows.map((row) => ({
+    ...row,
+    action: row.event_type,
+    details: row.description
+  }));
 }
 
 async function deleteSecurityLog(logId) {
