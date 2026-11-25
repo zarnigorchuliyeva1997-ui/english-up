@@ -1,14 +1,9 @@
 
 const { pool } = require("../config/database");
 
-async function getTests({ level, courseId, isPublished } = {}) {
+async function getTests({ courseId, isPublished } = {}) {
   const conditions = [];
   const values = [];
-
-  if (level) {
-    values.push(level);
-    conditions.push(`level = $${values.length}`);
-  }
 
   if (courseId) {
     values.push(courseId);
@@ -17,7 +12,7 @@ async function getTests({ level, courseId, isPublished } = {}) {
 
   if (typeof isPublished === "boolean") {
     values.push(isPublished);
-    conditions.push(`is_published = $${values.length}`);
+    conditions.push(`is_active = $${values.length}`);
   }
 
   const where = conditions.length
@@ -48,12 +43,21 @@ async function getTestById(testId, includeAnswers = false) {
   }
 
   const questionsResult = await pool.query(
-    `SELECT id, test_id, question, options, ${
-      includeAnswers ? "correct_answer" : "NULL AS correct_answer"
-    }, explanation, sort_order
+    `SELECT
+       id,
+       test_id,
+       question,
+       options,
+       ${
+         includeAnswers
+           ? "correct_answer"
+           : "NULL AS correct_answer"
+       },
+       explanation,
+       question_order AS sort_order
      FROM test_questions
      WHERE test_id = $1
-     ORDER BY sort_order ASC, id ASC`,
+     ORDER BY question_order ASC, id ASC`,
     [testId]
   );
 
@@ -66,20 +70,24 @@ async function getTestById(testId, includeAnswers = false) {
 async function createTest({
   title,
   description = "",
-  level,
   courseId = null,
   isPublished = false
 }) {
-  if (!title || !level) {
-    throw new Error("Test title and level are required");
+  if (!title) {
+    throw new Error("Test title is required");
   }
 
   const result = await pool.query(
     `INSERT INTO tests
-      (title, description, level, course_id, is_published)
-     VALUES ($1, $2, $3, $4, $5)
+      (title, description, course_id, is_active)
+     VALUES ($1, $2, $3, $4)
      RETURNING *`,
-    [title.trim(), description, level, courseId, isPublished]
+    [
+      title.trim(),
+      description,
+      courseId,
+      isPublished
+    ]
   );
 
   return result.rows[0];
@@ -93,13 +101,25 @@ async function addQuestion({
   explanation = "",
   sortOrder = 0
 }) {
-  if (!testId || !question || !options || correctAnswer === undefined) {
+  if (
+    !testId ||
+    !question ||
+    !options ||
+    correctAnswer === undefined
+  ) {
     throw new Error("Required question fields are missing");
   }
 
   const result = await pool.query(
     `INSERT INTO test_questions
-      (test_id, question, options, correct_answer, explanation, sort_order)
+      (
+        test_id,
+        question,
+        options,
+        correct_answer,
+        explanation,
+        question_order
+      )
      VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
@@ -112,7 +132,10 @@ async function addQuestion({
     ]
   );
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    sort_order: result.rows[0].question_order
+  };
 }
 
 async function submitTest({ userId, testId, answers }) {
@@ -128,12 +151,12 @@ async function submitTest({ userId, testId, answers }) {
     const testResult = await client.query(
       `SELECT id
        FROM tests
-       WHERE id = $1 AND is_published = TRUE`,
+       WHERE id = $1 AND is_active = TRUE`,
       [testId]
     );
 
     if (testResult.rows.length === 0) {
-      throw new Error("Test not found or not published");
+      throw new Error("Test not found or not active");
     }
 
     const questionsResult = await client.query(
@@ -150,7 +173,10 @@ async function submitTest({ userId, testId, answers }) {
     }
 
     const answerMap = new Map(
-      answers.map((item) => [String(item.questionId), item.answer])
+      answers.map((item) => [
+        String(item.questionId),
+        item.answer
+      ])
     );
 
     let correctCount = 0;
@@ -172,7 +198,14 @@ async function submitTest({ userId, testId, answers }) {
 
     const result = await client.query(
       `INSERT INTO test_attempts
-        (user_id, test_id, answers, score, total_questions, correct_answers)
+        (
+          user_id,
+          test_id,
+          answers,
+          score,
+          total_questions,
+          correct_answers
+        )
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
       [
