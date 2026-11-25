@@ -7,7 +7,30 @@ const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 
 // =========================================
-// XAVFSIZLIK STATISTIKASI
+// HELPERS
+// =========================================
+
+const isObject = (value) =>
+  value !== null &&
+  typeof value === "object" &&
+  !Array.isArray(value);
+
+const parsePagination = (value, defaultValue, min, max) => {
+  if (value === undefined || value === "") {
+    return defaultValue;
+  }
+
+  const parsed = Number(value);
+
+  if (!Number.isInteger(parsed)) {
+    return null;
+  }
+
+  return Math.min(Math.max(parsed, min), max);
+};
+
+// =========================================
+// SECURITY OVERVIEW
 // GET /api/security/overview
 // Admin only
 // =========================================
@@ -46,22 +69,27 @@ router.get("/overview", auth, admin, async (req, res, next) => {
 });
 
 // =========================================
-// XAVFSIZLIK JURNALI
+// SECURITY LOGS
 // GET /api/security/logs
 // Admin only
 // =========================================
 
 router.get("/logs", auth, admin, async (req, res, next) => {
   try {
-    const parsedLimit = Number.parseInt(req.query.limit, 10);
-    const parsedOffset = Number.parseInt(req.query.offset, 10);
-
-    const limit = Math.min(
-      Math.max(parsedLimit || 50, 1),
-      100
+    const limit = parsePagination(req.query.limit, 50, 1, 100);
+    const offset = parsePagination(
+      req.query.offset,
+      0,
+      0,
+      100000000
     );
 
-    const offset = Math.max(parsedOffset || 0, 0);
+    if (limit === null || offset === null) {
+      return res.status(400).json({
+        success: false,
+        message: "Limit yoki offset qiymati noto'g'ri."
+      });
+    }
 
     const result = await pool.query(
       `SELECT
@@ -92,7 +120,7 @@ router.get("/logs", auth, admin, async (req, res, next) => {
 });
 
 // =========================================
-// FOYDALANUVCHI AKKAUNTI HOLATINI O'ZGARTIRISH
+// CHANGE USER ACCOUNT STATUS
 // PATCH /api/security/users/:id/status
 // Admin only
 // =========================================
@@ -107,18 +135,20 @@ router.patch(
 
     try {
       const userId = Number(req.params.id);
-      const { is_active } = req.body;
 
       if (
         !Number.isInteger(userId) ||
         userId < 1 ||
-        typeof is_active !== "boolean"
+        !isObject(req.body) ||
+        typeof req.body.is_active !== "boolean"
       ) {
         return res.status(400).json({
           success: false,
           message: "ID yoki is_active qiymati noto'g'ri."
         });
       }
+
+      const { is_active } = req.body;
 
       if (userId === Number(req.user.id)) {
         return res.status(400).json({
@@ -170,8 +200,13 @@ router.patch(
       );
 
       await client.query(
-        `INSERT INTO security_logs
-         (user_id, event_type, description, ip_address, user_agent)
+        `INSERT INTO security_logs (
+           user_id,
+           event_type,
+           description,
+           ip_address,
+           user_agent
+         )
          VALUES ($1, $2, $3, $4, $5)`,
         [
           req.user.id,
