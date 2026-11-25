@@ -7,6 +7,29 @@ const admin = require("../middleware/admin");
 const router = express.Router();
 
 // =========================================
+// HELPERS
+// =========================================
+
+const isObject = (value) =>
+  value !== null &&
+  typeof value === "object" &&
+  !Array.isArray(value);
+
+const isOptionalText = (value) =>
+  value === undefined ||
+  value === null ||
+  typeof value === "string";
+
+const isOptionalId = (value) => {
+  if (value === undefined || value === null || value === "") {
+    return true;
+  }
+
+  const id = Number(value);
+  return Number.isInteger(id) && id > 0;
+};
+
+// =========================================
 // GET ACTIVE READING MATERIALS
 // GET /api/reading
 // =========================================
@@ -14,6 +37,16 @@ const router = express.Router();
 router.get("/", auth, async (req, res, next) => {
   try {
     const { level } = req.query;
+
+    if (
+      level !== undefined &&
+      (typeof level !== "string" || !level.trim())
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Reading darajasi noto‘g‘ri."
+      });
+    }
 
     const result = await pool.query(
       `SELECT
@@ -29,7 +62,7 @@ router.get("/", auth, async (req, res, next) => {
        WHERE is_active = TRUE
          AND ($1::varchar IS NULL OR level = $1)
        ORDER BY level NULLS LAST, created_at, id`,
-      [level || null]
+      [level ? level.trim() : null]
     );
 
     res.json({
@@ -110,6 +143,13 @@ router.get("/:id", auth, async (req, res, next) => {
 
 router.post("/", auth, admin, async (req, res, next) => {
   try {
+    if (!isObject(req.body)) {
+      return res.status(400).json({
+        success: false,
+        message: "Yuborilgan ma’lumot noto‘g‘ri."
+      });
+    }
+
     const {
       courseId,
       lessonId,
@@ -120,22 +160,20 @@ router.post("/", auth, admin, async (req, res, next) => {
       instructions
     } = req.body;
 
-    const validOptionalId = (value) =>
-      value === undefined ||
-      value === null ||
-      (Number.isInteger(value) && value > 0);
-
     if (
       typeof title !== "string" ||
       !title.trim() ||
       typeof passage !== "string" ||
       !passage.trim() ||
-      !validOptionalId(courseId) ||
-      !validOptionalId(lessonId)
+      !isOptionalId(courseId) ||
+      !isOptionalId(lessonId) ||
+      !isOptionalText(description) ||
+      !isOptionalText(level) ||
+      !isOptionalText(instructions)
     ) {
       return res.status(400).json({
         success: false,
-        message: "Sarlavha va reading matni kerak. Course ID yoki Lesson ID noto‘g‘ri."
+        message: "Sarlavha va reading matni kerak. Boshqa maydonlarni ham tekshiring."
       });
     }
 
@@ -153,13 +191,13 @@ router.post("/", auth, admin, async (req, res, next) => {
        VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING *`,
       [
-        courseId || null,
-        lessonId || null,
+        courseId ? Number(courseId) : null,
+        lessonId ? Number(lessonId) : null,
         title.trim(),
-        description || null,
-        level || null,
+        description ? description.trim() : null,
+        level ? level.trim() : null,
         passage.trim(),
-        instructions || null
+        instructions ? instructions.trim() : null
       ]
     );
 
@@ -186,6 +224,20 @@ router.post(
     try {
       const readingId = Number(req.params.id);
 
+      if (!Number.isInteger(readingId) || readingId < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "Reading ID noto‘g‘ri."
+        });
+      }
+
+      if (!isObject(req.body)) {
+        return res.status(400).json({
+          success: false,
+          message: "Yuborilgan ma’lumot noto‘g‘ri."
+        });
+      }
+
       const {
         question,
         options,
@@ -196,19 +248,23 @@ router.post(
       } = req.body;
 
       if (
-        !Number.isInteger(readingId) ||
-        readingId < 1 ||
         typeof question !== "string" ||
         !question.trim() ||
         !Array.isArray(options) ||
         options.length < 2 ||
+        options.some((option) =>
+          option === null ||
+          option === undefined ||
+          (typeof option === "string" && !option.trim())
+        ) ||
         correctAnswer === undefined ||
         correctAnswer === null ||
-        !String(correctAnswer).trim()
+        !String(correctAnswer).trim() ||
+        !isOptionalText(explanation)
       ) {
         return res.status(400).json({
           success: false,
-          message: "Savol, javob variantlari va to‘g‘ri javob kerak."
+          message: "Savol, kamida ikkita javob varianti va to‘g‘ri javob kerak."
         });
       }
 
@@ -224,8 +280,20 @@ router.post(
         });
       }
 
-      const order = Number(questionOrder) || 1;
-      const questionPoints = points === undefined ? 1 : Number(points);
+      let order = 1;
+
+      if (
+        questionOrder !== undefined &&
+        questionOrder !== null &&
+        questionOrder !== ""
+      ) {
+        order = Number(questionOrder);
+      }
+
+      const questionPoints =
+        points === undefined || points === null
+          ? 1
+          : Number(points);
 
       if (
         !Number.isInteger(order) ||
@@ -263,8 +331,8 @@ router.post(
           readingId,
           question.trim(),
           JSON.stringify(options),
-          String(correctAnswer),
-          explanation || null,
+          String(correctAnswer).trim(),
+          explanation ? explanation.trim() : null,
           order,
           questionPoints
         ]
@@ -291,18 +359,20 @@ router.post("/:id/submit", auth, async (req, res, next) => {
 
   try {
     const readingId = Number(req.params.id);
-    const { answers } = req.body;
 
     if (
       !Number.isInteger(readingId) ||
       readingId < 1 ||
-      !Array.isArray(answers)
+      !isObject(req.body) ||
+      !Array.isArray(req.body.answers)
     ) {
       return res.status(400).json({
         success: false,
         message: "Reading ID yoki javoblar noto‘g‘ri."
       });
     }
+
+    const { answers } = req.body;
 
     client = await pool.connect();
 
@@ -349,6 +419,16 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     const submitted = new Map();
 
     for (const item of answers) {
+      if (!isObject(item)) {
+        await client.query("ROLLBACK");
+        transactionStarted = false;
+
+        return res.status(400).json({
+          success: false,
+          message: "Javoblar formati noto‘g‘ri."
+        });
+      }
+
       const questionId = Number(item.questionId);
 
       if (
@@ -426,9 +506,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       [
         req.user.id,
         readingId,
-        JSON.stringify(
-          Object.fromEntries(submitted)
-        ),
+        JSON.stringify(Object.fromEntries(submitted)),
         score,
         correctCount,
         totalQuestions
@@ -473,12 +551,12 @@ router.patch(
   async (req, res, next) => {
     try {
       const id = Number(req.params.id);
-      const { isActive } = req.body;
 
       if (
         !Number.isInteger(id) ||
         id < 1 ||
-        typeof isActive !== "boolean"
+        !isObject(req.body) ||
+        typeof req.body.isActive !== "boolean"
       ) {
         return res.status(400).json({
           success: false,
@@ -491,7 +569,7 @@ router.patch(
          SET is_active = $1
          WHERE id = $2
          RETURNING id, title, is_active`,
-        [isActive, id]
+        [req.body.isActive, id]
       );
 
       if (result.rows.length === 0) {
