@@ -6,14 +6,14 @@ async function getLessonsByCourse(courseId, includeUnpublished = false) {
   const values = [courseId];
 
   if (!includeUnpublished) {
-    conditions.push("is_published = TRUE");
+    conditions.push("is_active = TRUE");
   }
 
   const result = await pool.query(
     `SELECT *
      FROM lessons
      WHERE ${conditions.join(" AND ")}
-     ORDER BY sort_order ASC, created_at ASC`,
+     ORDER BY lesson_order ASC, created_at ASC`,
     values
   );
 
@@ -50,7 +50,7 @@ async function createLesson({
 
   const result = await pool.query(
     `INSERT INTO lessons
-      (course_id, title, description, content, sort_order, is_published)
+      (course_id, title, description, content, lesson_order, is_active)
      VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
@@ -71,8 +71,8 @@ async function updateLesson(lessonId, data = {}) {
     title: "title",
     description: "description",
     content: "content",
-    sortOrder: "sort_order",
-    isPublished: "is_published"
+    sortOrder: "lesson_order",
+    isPublished: "is_active"
   };
 
   const fields = [];
