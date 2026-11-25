@@ -13,7 +13,7 @@ async function getListeningLessons({ level, isPublished } = {}) {
 
   if (typeof isPublished === "boolean") {
     values.push(isPublished);
-    conditions.push(`is_published = $${values.length}`);
+    conditions.push(`is_active = $${values.length}`);
   }
 
   const where = conditions.length
@@ -24,7 +24,7 @@ async function getListeningLessons({ level, isPublished } = {}) {
     `SELECT *
      FROM listening_lessons
      ${where}
-     ORDER BY sort_order ASC, created_at DESC`,
+     ORDER BY created_at DESC`,
     values
   );
 
@@ -68,18 +68,26 @@ async function createListeningLesson({
   audioUrl = null,
   transcript = "",
   duration = 0,
-  sortOrder = 0,
   isPublished = false
 }) {
   if (!title || !level || (!audioKey && !audioUrl)) {
     throw new Error("Title, level and audio file are required");
   }
 
+  const durationSeconds = Number(duration);
+
+  if (
+    !Number.isInteger(durationSeconds) ||
+    durationSeconds < 0
+  ) {
+    throw new Error("Invalid listening duration");
+  }
+
   const result = await pool.query(
     `INSERT INTO listening_lessons
       (title, description, level, audio_key, audio_url,
-       transcript, duration, sort_order, is_published)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       transcript, duration_seconds, is_active)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
      RETURNING *`,
     [
       title.trim(),
@@ -88,8 +96,7 @@ async function createListeningLesson({
       audioKey,
       audioUrl,
       transcript,
-      duration,
-      sortOrder,
+      durationSeconds,
       isPublished
     ]
   );
@@ -105,9 +112,8 @@ async function updateListeningLesson(lessonId, data = {}) {
     audioKey: "audio_key",
     audioUrl: "audio_url",
     transcript: "transcript",
-    duration: "duration",
-    sortOrder: "sort_order",
-    isPublished: "is_published"
+    duration: "duration_seconds",
+    isPublished: "is_active"
   };
 
   const fields = [];
@@ -115,7 +121,17 @@ async function updateListeningLesson(lessonId, data = {}) {
 
   for (const [key, column] of Object.entries(allowedFields)) {
     if (data[key] !== undefined) {
-      values.push(data[key]);
+      let value = data[key];
+
+      if (key === "duration") {
+        value = Number(value);
+
+        if (!Number.isInteger(value) || value < 0) {
+          throw new Error("Invalid listening duration");
+        }
+      }
+
+      values.push(value);
       fields.push(`${column} = $${values.length}`);
     }
   }
