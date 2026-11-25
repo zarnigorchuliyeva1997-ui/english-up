@@ -13,7 +13,6 @@ const {
 // =========================================
 // GET COURSE LESSONS
 // GET /api/lessons/course/:courseId
-// Active subscription required
 // =========================================
 
 router.get(
@@ -50,6 +49,7 @@ router.get(
            l.video_url,
            l.pdf_url,
            l.lesson_order,
+           l.is_active,
            l.created_at,
            l.updated_at
          FROM lessons l
@@ -74,7 +74,6 @@ router.get(
 // =========================================
 // CREATE LESSON
 // POST /api/lessons
-// Admin only
 // =========================================
 
 router.post(
@@ -97,10 +96,7 @@ router.post(
 
       const parsedCourseId = Number(courseId);
 
-      if (
-        !Number.isSafeInteger(parsedCourseId) ||
-        parsedCourseId < 1
-      ) {
+      if (!Number.isSafeInteger(parsedCourseId) || parsedCourseId < 1) {
         return res.status(400).json({
           success: false,
           message: "Valid course ID is required"
@@ -128,10 +124,7 @@ router.post(
         });
       }
 
-      if (
-        isActive !== undefined &&
-        typeof isActive !== "boolean"
-      ) {
+      if (isActive !== undefined && typeof isActive !== "boolean") {
         return res.status(400).json({
           success: false,
           message: "isActive must be true or false"
@@ -148,7 +141,8 @@ router.post(
 
       if (
         optionalFields.some(
-          value => value !== undefined &&
+          value =>
+            value !== undefined &&
             value !== null &&
             typeof value !== "string"
         )
@@ -156,6 +150,20 @@ router.post(
         return res.status(400).json({
           success: false,
           message: "Lesson fields must be strings"
+        });
+      }
+
+      const course = await pool.query(
+        `SELECT id
+         FROM courses
+         WHERE id = $1`,
+        [parsedCourseId]
+      );
+
+      if (!course.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Course not found"
         });
       }
 
@@ -224,7 +232,6 @@ router.post(
 // =========================================
 // UPDATE LESSON
 // PATCH /api/lessons/:id
-// Admin only
 // =========================================
 
 router.patch(
@@ -288,14 +295,34 @@ router.patch(
         });
       }
 
-      if (
-        isActive !== undefined &&
-        typeof isActive !== "boolean"
-      ) {
+      if (isActive !== undefined && typeof isActive !== "boolean") {
         return res.status(400).json({
           success: false,
           message: "isActive must be true or false"
         });
+      }
+
+      const stringFields = [
+        "description",
+        "content",
+        "audio_url",
+        "video_url",
+        "pdf_url"
+      ];
+
+      for (const field of stringFields) {
+        const value = updates[field];
+
+        if (
+          value !== undefined &&
+          value !== null &&
+          typeof value !== "string"
+        ) {
+          return res.status(400).json({
+            success: false,
+            message: `Invalid ${field} value`
+          });
+        }
       }
 
       const fields = [];
@@ -304,18 +331,6 @@ router.patch(
       for (const [column, value] of Object.entries(updates)) {
         if (value === undefined) {
           continue;
-        }
-
-        if (
-          column !== "is_active" &&
-          column !== "lesson_order" &&
-          value !== null &&
-          typeof value !== "string"
-        ) {
-          return res.status(400).json({
-            success: false,
-            message: "Invalid lesson field value"
-          });
         }
 
         values.push(
@@ -327,7 +342,7 @@ router.patch(
         fields.push(`${column} = $${values.length}`);
       }
 
-      if (fields.length === 0) {
+      if (!fields.length) {
         return res.status(400).json({
           success: false,
           message: "No lesson fields provided"
