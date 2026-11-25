@@ -1,13 +1,14 @@
 
 const { pool } = require("../config/database");
 
-async function getAnnouncements({ isPublished } = {}) {
+// E'lonlar ro'yxati
+async function getAnnouncements({ isActive } = {}) {
   const values = [];
   let where = "";
 
-  if (typeof isPublished === "boolean") {
-    values.push(isPublished);
-    where = "WHERE is_published = $1";
+  if (typeof isActive === "boolean") {
+    values.push(isActive);
+    where = "WHERE is_active = $1";
   }
 
   const result = await pool.query(
@@ -21,6 +22,7 @@ async function getAnnouncements({ isPublished } = {}) {
   return result.rows;
 }
 
+// ID orqali e'lonni olish
 async function getAnnouncementById(announcementId) {
   const result = await pool.query(
     `SELECT *
@@ -36,34 +38,59 @@ async function getAnnouncementById(announcementId) {
   return result.rows[0];
 }
 
+// Yangi e'lon yaratish
 async function createAnnouncement({
   title,
   message,
-  targetLevel = null,
-  isPublished = false,
+  isActive = false,
+  publishAt = null,
   createdBy
 }) {
-  if (!title || !message || !createdBy) {
+  if (
+    typeof title !== "string" ||
+    !title.trim() ||
+    typeof message !== "string" ||
+    !message.trim() ||
+    !createdBy
+  ) {
     throw new Error("Title, message and creator are required");
+  }
+
+  if (typeof isActive !== "boolean") {
+    throw new Error("Invalid announcement status");
+  }
+
+  if (
+    publishAt !== null &&
+    Number.isNaN(Date.parse(publishAt))
+  ) {
+    throw new Error("Invalid publish date");
   }
 
   const result = await pool.query(
     `INSERT INTO announcements
-      (title, message, target_level, is_published, created_by)
+      (title, message, is_active, publish_at, created_by)
      VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
-    [title.trim(), message, targetLevel, isPublished, createdBy]
+    [
+      title.trim(),
+      message.trim(),
+      isActive,
+      publishAt,
+      createdBy
+    ]
   );
 
   return result.rows[0];
 }
 
+// E'lonni yangilash
 async function updateAnnouncement(announcementId, data = {}) {
   const allowedFields = {
     title: "title",
     message: "message",
-    targetLevel: "target_level",
-    isPublished: "is_published"
+    isActive: "is_active",
+    publishAt: "publish_at"
   };
 
   const fields = [];
@@ -71,7 +98,28 @@ async function updateAnnouncement(announcementId, data = {}) {
 
   for (const [key, column] of Object.entries(allowedFields)) {
     if (data[key] !== undefined) {
-      values.push(data[key]);
+      const value = data[key];
+
+      if (key === "title" || key === "message") {
+        if (typeof value !== "string" || !value.trim()) {
+          throw new Error(`Invalid ${key}`);
+        }
+        values.push(value.trim());
+      } else if (key === "isActive") {
+        if (typeof value !== "boolean") {
+          throw new Error("Invalid announcement status");
+        }
+        values.push(value);
+      } else {
+        if (
+          value !== null &&
+          Number.isNaN(Date.parse(value))
+        ) {
+          throw new Error("Invalid publish date");
+        }
+        values.push(value);
+      }
+
       fields.push(`${column} = $${values.length}`);
     }
   }
@@ -97,6 +145,7 @@ async function updateAnnouncement(announcementId, data = {}) {
   return result.rows[0];
 }
 
+// E'lonni o'chirish
 async function deleteAnnouncement(announcementId) {
   const result = await pool.query(
     `DELETE FROM announcements
@@ -109,7 +158,10 @@ async function deleteAnnouncement(announcementId) {
     throw new Error("Announcement not found");
   }
 
-  return { success: true };
+  return {
+    success: true,
+    id: result.rows[0].id
+  };
 }
 
 module.exports = {
