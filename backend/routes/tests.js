@@ -7,6 +7,15 @@ const admin = require("../middleware/admin");
 const router = express.Router();
 
 // =========================================
+// HELPERS
+// =========================================
+
+const isObject = (value) =>
+  value !== null &&
+  typeof value === "object" &&
+  !Array.isArray(value);
+
+// =========================================
 // GET ACTIVE TESTS
 // GET /api/tests
 // =========================================
@@ -28,7 +37,7 @@ router.get("/", auth, async (req, res, next) => {
        FROM tests t
        LEFT JOIN courses c ON c.id = t.course_id
        WHERE t.is_active = TRUE
-       ORDER BY t.created_at DESC`
+       ORDER BY t.created_at DESC, t.id DESC`
     );
 
     res.json({
@@ -91,7 +100,7 @@ router.get("/:id", auth, async (req, res, next) => {
          points
        FROM test_questions
        WHERE test_id = $1
-       ORDER BY question_order ASC`,
+       ORDER BY question_order ASC, id ASC`,
       [testId]
     );
 
@@ -113,6 +122,13 @@ router.get("/:id", auth, async (req, res, next) => {
 
 router.post("/", auth, admin, async (req, res, next) => {
   try {
+    if (!isObject(req.body)) {
+      return res.status(400).json({
+        success: false,
+        message: "Yuborilgan ma’lumot noto‘g‘ri."
+      });
+    }
+
     const {
       courseId,
       lessonId,
@@ -123,10 +139,19 @@ router.post("/", auth, admin, async (req, res, next) => {
       passingScore
     } = req.body;
 
-    if (!title || typeof title !== "string" || !title.trim()) {
+    if (
+      typeof title !== "string" ||
+      !title.trim() ||
+      (description !== undefined &&
+        description !== null &&
+        typeof description !== "string") ||
+      (testType !== undefined &&
+        testType !== null &&
+        typeof testType !== "string")
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Test nomini kiriting."
+        message: "Test nomi yoki qo‘shimcha ma’lumot noto‘g‘ri."
       });
     }
 
@@ -183,8 +208,8 @@ router.post("/", auth, admin, async (req, res, next) => {
         parsedCourseId,
         parsedLessonId,
         title.trim(),
-        description || null,
-        testType || "general",
+        description ? description.trim() : null,
+        testType ? testType.trim() : "general",
         parsedTimeLimit,
         parsedPassingScore
       ]
@@ -213,6 +238,20 @@ router.post(
     try {
       const testId = Number(req.params.id);
 
+      if (!Number.isInteger(testId) || testId < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "Test ID noto‘g‘ri."
+        });
+      }
+
+      if (!isObject(req.body)) {
+        return res.status(400).json({
+          success: false,
+          message: "Yuborilgan ma’lumot noto‘g‘ri."
+        });
+      }
+
       const {
         question,
         options,
@@ -233,14 +272,21 @@ router.post(
           : Number(points);
 
       if (
-        !Number.isInteger(testId) ||
-        testId < 1 ||
         typeof question !== "string" ||
         !question.trim() ||
         !Array.isArray(options) ||
         options.length < 2 ||
+        options.some((option) =>
+          option === null ||
+          option === undefined ||
+          (typeof option === "string" && !option.trim())
+        ) ||
         correctAnswer === undefined ||
         correctAnswer === null ||
+        !String(correctAnswer).trim() ||
+        (explanation !== undefined &&
+          explanation !== null &&
+          typeof explanation !== "string") ||
         !Number.isInteger(parsedQuestionOrder) ||
         parsedQuestionOrder < 1 ||
         !Number.isFinite(parsedPoints) ||
@@ -287,8 +333,8 @@ router.post(
           testId,
           question.trim(),
           JSON.stringify(options),
-          String(correctAnswer),
-          explanation || null,
+          String(correctAnswer).trim(),
+          explanation ? explanation.trim() : null,
           parsedQuestionOrder,
           parsedPoints
         ]
@@ -315,18 +361,20 @@ router.post("/:id/submit", auth, async (req, res, next) => {
 
   try {
     const testId = Number(req.params.id);
-    const { answers } = req.body;
 
     if (
       !Number.isInteger(testId) ||
       testId < 1 ||
-      !Array.isArray(answers)
+      !isObject(req.body) ||
+      !Array.isArray(req.body.answers)
     ) {
       return res.status(400).json({
         success: false,
         message: "Test yoki javoblar noto‘g‘ri."
       });
     }
+
+    const { answers } = req.body;
 
     client = await pool.connect();
 
@@ -356,7 +404,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       `SELECT id, correct_answer, points
        FROM test_questions
        WHERE test_id = $1
-       ORDER BY question_order ASC`,
+       ORDER BY question_order ASC, id ASC`,
       [testId]
     );
 
@@ -375,11 +423,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     const submittedAnswers = new Map();
 
     for (const answer of answers) {
-      if (
-        !answer ||
-        typeof answer !== "object" ||
-        Array.isArray(answer)
-      ) {
+      if (!isObject(answer)) {
         await client.query("ROLLBACK");
         transactionStarted = false;
 
@@ -432,6 +476,11 @@ router.post("/:id/submit", auth, async (req, res, next) => {
 
     for (const question of questions) {
       const questionPoints = Number(question.points);
+
+      if (!Number.isFinite(questionPoints) || questionPoints <= 0) {
+        throw new Error("Test savolining ball qiymati noto‘g‘ri.");
+      }
+
       totalPoints += questionPoints;
 
       const submitted = submittedAnswers.get(Number(question.id));
@@ -443,6 +492,10 @@ router.post("/:id/submit", auth, async (req, res, next) => {
         correctCount++;
         earnedPoints += questionPoints;
       }
+    }
+
+    if (totalPoints <= 0) {
+      throw new Error("Testning umumiy ball qiymati noto‘g‘ri.");
     }
 
     const score = Number(
@@ -479,7 +532,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       [
         req.user.id,
         testId,
-        JSON.stringify(answers),
+        JSON.stringify(Object.fromEntries(submittedAnswers)),
         score,
         correctCount,
         questions.length,
@@ -525,12 +578,12 @@ router.patch(
   async (req, res, next) => {
     try {
       const testId = Number(req.params.id);
-      const { isActive } = req.body;
 
       if (
         !Number.isInteger(testId) ||
         testId < 1 ||
-        typeof isActive !== "boolean"
+        !isObject(req.body) ||
+        typeof req.body.isActive !== "boolean"
       ) {
         return res.status(400).json({
           success: false,
@@ -543,7 +596,7 @@ router.patch(
          SET is_active = $1
          WHERE id = $2
          RETURNING id, title, is_active`,
-        [isActive, testId]
+        [req.body.isActive, testId]
       );
 
       if (!result.rows.length) {
