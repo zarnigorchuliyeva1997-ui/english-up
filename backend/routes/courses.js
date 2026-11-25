@@ -2,30 +2,21 @@
 const express = require("express");
 const router = express.Router();
 
-const { pool } = require("../config/database");
 const authenticateToken = require("../middleware/auth");
 const requireAdmin = require("../middleware/admin");
+
+const courseService = require("../services/courseService");
 
 // Barcha faol kurslarni ko'rish
 router.get("/", async (req, res, next) => {
   try {
-    const result = await pool.query(
-      `SELECT
-         id,
-         title,
-         level,
-         description,
-         is_active,
-         created_at,
-         updated_at
-       FROM courses
-       WHERE is_active = TRUE
-       ORDER BY id ASC`
-    );
+    const courses = await courseService.getAllCourses({
+      isActive: true
+    });
 
     res.json({
       success: true,
-      courses: result.rows
+      courses
     });
   } catch (error) {
     next(error);
@@ -39,22 +30,11 @@ router.get(
   requireAdmin,
   async (req, res, next) => {
     try {
-      const result = await pool.query(
-        `SELECT
-           id,
-           title,
-           level,
-           description,
-           is_active,
-           created_at,
-           updated_at
-         FROM courses
-         ORDER BY id ASC`
-      );
+      const courses = await courseService.getAllCourses();
 
       res.json({
         success: true,
-        courses: result.rows
+        courses
       });
     } catch (error) {
       next(error);
@@ -108,28 +88,16 @@ router.post(
         });
       }
 
-      const result = await pool.query(
-        `INSERT INTO courses
-           (title, level, description)
-         VALUES ($1, $2, $3)
-         RETURNING
-           id,
-           title,
-           level,
-           description,
-           is_active,
-           created_at,
-           updated_at`,
-        [
-          title.trim(),
-          level.trim(),
-          description || ""
-        ]
-      );
+      const course = await courseService.createCourse({
+        title,
+        level,
+        description: description || "",
+        isActive: false
+      });
 
       res.status(201).json({
         success: true,
-        course: result.rows[0]
+        course
       });
     } catch (error) {
       next(error);
@@ -189,42 +157,40 @@ router.patch(
         });
       }
 
-      const result = await pool.query(
-        `UPDATE courses
-         SET
-           title = COALESCE($1, title),
-           level = COALESCE($2, level),
-           description = COALESCE($3, description),
-           updated_at = NOW()
-         WHERE id = $4
-         RETURNING
-           id,
-           title,
-           level,
-           description,
-           is_active,
-           created_at,
-           updated_at`,
-        [
-          title !== undefined ? title.trim() : null,
-          level !== undefined ? level.trim() : null,
-          description !== undefined ? description : null,
-          courseId
-        ]
+      const updateData = {};
+
+      if (title !== undefined) updateData.title = title;
+      if (level !== undefined) updateData.level = level;
+
+      // null yuborilsa, eski description saqlanadi
+      if (description !== undefined && description !== null) {
+        updateData.description = description;
+      }
+
+      if (Object.keys(updateData).length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: "No course fields provided"
+        });
+      }
+
+      const course = await courseService.updateCourse(
+        courseId,
+        updateData
       );
 
-      if (!result.rows.length) {
+      res.json({
+        success: true,
+        course
+      });
+    } catch (error) {
+      if (error.message === "Course not found") {
         return res.status(404).json({
           success: false,
           message: "Course not found"
         });
       }
 
-      res.json({
-        success: true,
-        course: result.rows[0]
-      });
-    } catch (error) {
       next(error);
     }
   }
@@ -254,35 +220,23 @@ router.patch(
         });
       }
 
-      const result = await pool.query(
-        `UPDATE courses
-         SET
-           is_active = $1,
-           updated_at = NOW()
-         WHERE id = $2
-         RETURNING
-           id,
-           title,
-           level,
-           description,
-           is_active,
-           created_at,
-           updated_at`,
-        [isActive, courseId]
+      const course = await courseService.updateCourse(
+        courseId,
+        { isActive }
       );
 
-      if (!result.rows.length) {
+      res.json({
+        success: true,
+        course
+      });
+    } catch (error) {
+      if (error.message === "Course not found") {
         return res.status(404).json({
           success: false,
           message: "Course not found"
         });
       }
 
-      res.json({
-        success: true,
-        course: result.rows[0]
-      });
-    } catch (error) {
       next(error);
     }
   }
@@ -304,25 +258,20 @@ router.delete(
         });
       }
 
-      const result = await pool.query(
-        `DELETE FROM courses
-         WHERE id = $1
-         RETURNING id`,
-        [courseId]
-      );
-
-      if (!result.rows.length) {
-        return res.status(404).json({
-          success: false,
-          message: "Course not found"
-        });
-      }
+      await courseService.deleteCourse(courseId);
 
       res.json({
         success: true,
         message: "Course deleted successfully"
       });
     } catch (error) {
+      if (error.message === "Course not found") {
+        return res.status(404).json({
+          success: false,
+          message: "Course not found"
+        });
+      }
+
       next(error);
     }
   }
