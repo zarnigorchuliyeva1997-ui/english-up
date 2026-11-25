@@ -6,27 +6,21 @@ const { pool } = require("../config/database");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 
-// O'quvchi uchun faol e'lonlar
+// O'quvchi uchun faol va e'lon qilish vaqti kelgan e'lonlar
 router.get("/", auth, async (req, res, next) => {
   try {
-    const userLevel = req.user.level || null;
-
     const result = await pool.query(
       `SELECT
          id,
          title,
          message,
-         audience,
-         level,
+         is_active,
+         publish_at,
          created_at
        FROM announcements
        WHERE is_active = TRUE
-         AND (
-           audience = 'all'
-           OR (audience = 'level' AND level = $1)
-         )
-       ORDER BY created_at DESC`,
-      [userLevel]
+         AND (publish_at IS NULL OR publish_at <= NOW())
+       ORDER BY created_at DESC`
     );
 
     res.json({
@@ -62,8 +56,7 @@ router.post("/", auth, admin, async (req, res, next) => {
     const {
       title,
       message,
-      audience = "all",
-      level = null
+      publish_at = null
     } = req.body || {};
 
     if (
@@ -85,33 +78,28 @@ router.post("/", auth, admin, async (req, res, next) => {
       });
     }
 
-    if (!["all", "level"].includes(audience)) {
-      return res.status(400).json({
-        success: false,
-        message: "E'lon auditoriyasi noto'g'ri."
-      });
-    }
-
     if (
-      audience === "level" &&
-      (typeof level !== "string" || !level.trim())
+      publish_at !== null &&
+      (
+        typeof publish_at !== "string" ||
+        Number.isNaN(Date.parse(publish_at))
+      )
     ) {
       return res.status(400).json({
         success: false,
-        message: "Darajani tanlash kerak."
+        message: "E'lon qilish sanasi noto'g'ri."
       });
     }
 
     const result = await pool.query(
       `INSERT INTO announcements
-       (title, message, audience, level, is_active)
-       VALUES ($1, $2, $3, $4, TRUE)
+        (title, message, is_active, publish_at)
+       VALUES ($1, $2, TRUE, $3)
        RETURNING *`,
       [
         title.trim(),
         message.trim(),
-        audience,
-        audience === "level" ? level.trim() : null
+        publish_at
       ]
     );
 
@@ -140,9 +128,8 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
     const {
       title,
       message,
-      audience,
-      level,
-      is_active
+      is_active,
+      publish_at
     } = req.body || {};
 
     const current = await pool.query(
@@ -175,9 +162,10 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
 
     const newTitle = title !== undefined ? title.trim() : old.title;
     const newMessage = message !== undefined ? message.trim() : old.message;
-    const newAudience = audience !== undefined ? audience : old.audience;
-    const newLevel = level !== undefined ? level : old.level;
     const newStatus = is_active !== undefined ? is_active : old.is_active;
+    const newPublishAt = publish_at !== undefined
+      ? publish_at
+      : old.publish_at;
 
     if (!newTitle || !newMessage) {
       return res.status(400).json({
@@ -193,23 +181,6 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
       });
     }
 
-    if (!["all", "level"].includes(newAudience)) {
-      return res.status(400).json({
-        success: false,
-        message: "E'lon auditoriyasi noto'g'ri."
-      });
-    }
-
-    if (
-      newAudience === "level" &&
-      (typeof newLevel !== "string" || !newLevel.trim())
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "Darajani tanlash kerak."
-      });
-    }
-
     if (typeof newStatus !== "boolean") {
       return res.status(400).json({
         success: false,
@@ -217,22 +188,33 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
       });
     }
 
+    if (
+      newPublishAt !== null &&
+      (
+        typeof newPublishAt !== "string" ||
+        Number.isNaN(Date.parse(newPublishAt))
+      )
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "E'lon qilish sanasi noto'g'ri."
+      });
+    }
+
     const result = await pool.query(
       `UPDATE announcements
        SET title = $1,
            message = $2,
-           audience = $3,
-           level = $4,
-           is_active = $5,
+           is_active = $3,
+           publish_at = $4,
            updated_at = NOW()
-       WHERE id = $6
+       WHERE id = $5
        RETURNING *`,
       [
         newTitle,
         newMessage,
-        newAudience,
-        newAudience === "level" ? newLevel.trim() : null,
         newStatus,
+        newPublishAt,
         id
       ]
     );
