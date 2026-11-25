@@ -7,6 +7,20 @@ const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 
 // =========================================
+// HELPERS
+// =========================================
+
+const isObject = (value) =>
+  value !== null &&
+  typeof value === "object" &&
+  !Array.isArray(value);
+
+const isOptionalText = (value) =>
+  value === undefined ||
+  value === null ||
+  typeof value === "string";
+
+// =========================================
 // GET ACTIVE WRITING TASKS
 // GET /api/writing
 // =========================================
@@ -27,7 +41,7 @@ router.get("/", auth, async (req, res, next) => {
          created_at
        FROM writing_tasks
        WHERE is_active = TRUE
-       ORDER BY created_at DESC`
+       ORDER BY created_at DESC, id DESC`
     );
 
     res.json({
@@ -96,6 +110,13 @@ router.get("/:id", auth, async (req, res, next) => {
 
 router.post("/", auth, admin, async (req, res, next) => {
   try {
+    if (!isObject(req.body)) {
+      return res.status(400).json({
+        success: false,
+        message: "Yuborilgan ma’lumot noto‘g‘ri."
+      });
+    }
+
     const {
       courseId,
       lessonId,
@@ -113,7 +134,9 @@ router.post("/", auth, admin, async (req, res, next) => {
       typeof level !== "string" ||
       !level.trim() ||
       typeof instructions !== "string" ||
-      !instructions.trim()
+      !instructions.trim() ||
+      !isOptionalText(description) ||
+      !isOptionalText(taskType)
     ) {
       return res.status(400).json({
         success: false,
@@ -168,8 +191,8 @@ router.post("/", auth, admin, async (req, res, next) => {
         parsedCourseId,
         parsedLessonId,
         title.trim(),
-        description || null,
-        taskType || "essay",
+        description ? description.trim() : null,
+        taskType ? taskType.trim() : "essay",
         level.trim(),
         instructions.trim(),
         parsedWordLimit
@@ -193,13 +216,13 @@ router.post("/", auth, admin, async (req, res, next) => {
 router.post("/:id/submit", auth, async (req, res, next) => {
   try {
     const taskId = Number(req.params.id);
-    const { content } = req.body;
 
     if (
       !Number.isInteger(taskId) ||
       taskId < 1 ||
-      typeof content !== "string" ||
-      !content.trim()
+      !isObject(req.body) ||
+      typeof req.body.content !== "string" ||
+      !req.body.content.trim()
     ) {
       return res.status(400).json({
         success: false,
@@ -207,7 +230,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       });
     }
 
-    const cleanContent = content.trim();
+    const cleanContent = req.body.content.trim();
 
     if (cleanContent.length > 30000) {
       return res.status(400).json({
@@ -294,7 +317,7 @@ router.get(
          FROM writing_submissions s
          JOIN writing_tasks t ON t.id = s.task_id
          WHERE s.user_id = $1
-         ORDER BY s.created_at DESC`,
+         ORDER BY s.created_at DESC, s.id DESC`,
         [req.user.id]
       );
 
@@ -339,7 +362,7 @@ router.get(
          FROM writing_submissions s
          JOIN users u ON u.id = s.user_id
          JOIN writing_tasks t ON t.id = s.task_id
-         ORDER BY s.created_at DESC`
+         ORDER BY s.created_at DESC, s.id DESC`
       );
 
       res.json({
@@ -365,13 +388,18 @@ router.patch(
   async (req, res, next) => {
     try {
       const id = Number(req.params.id);
-      const { score, feedback } = req.body;
 
+      if (!Number.isInteger(id) || id < 1 || !isObject(req.body)) {
+        return res.status(400).json({
+          success: false,
+          message: "Javob ID yoki yuborilgan ma’lumot noto‘g‘ri."
+        });
+      }
+
+      const { score, feedback } = req.body;
       const parsedScore = Number(score);
 
       if (
-        !Number.isInteger(id) ||
-        id < 1 ||
         score === undefined ||
         score === null ||
         score === "" ||
@@ -436,12 +464,12 @@ router.patch(
   async (req, res, next) => {
     try {
       const id = Number(req.params.id);
-      const { isActive } = req.body;
 
       if (
         !Number.isInteger(id) ||
         id < 1 ||
-        typeof isActive !== "boolean"
+        !isObject(req.body) ||
+        typeof req.body.isActive !== "boolean"
       ) {
         return res.status(400).json({
           success: false,
@@ -455,7 +483,7 @@ router.patch(
              updated_at = NOW()
          WHERE id = $2
          RETURNING id, title, is_active`,
-        [isActive, id]
+        [req.body.isActive, id]
       );
 
       if (!result.rows.length) {
