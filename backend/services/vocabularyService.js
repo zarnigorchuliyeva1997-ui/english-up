@@ -3,7 +3,7 @@ const { pool } = require("../config/database");
 
 async function getVocabulary({
   level,
-  category,
+  dayNumber,
   page = 1,
   limit = 100
 } = {}) {
@@ -21,9 +21,9 @@ async function getVocabulary({
     conditions.push(`level = $${values.length}`);
   }
 
-  if (category) {
-    values.push(category);
-    conditions.push(`category = $${values.length}`);
+  if (dayNumber !== undefined && dayNumber !== null) {
+    values.push(dayNumber);
+    conditions.push(`day_number = $${values.length}`);
   }
 
   const where = conditions.length
@@ -66,7 +66,7 @@ async function createWord({
   pronunciation = "",
   example = "",
   level,
-  category = "general"
+  dayNumber = null
 }) {
   if (!word || !translation || !level) {
     throw new Error("Word, translation and level are required");
@@ -74,7 +74,7 @@ async function createWord({
 
   const result = await pool.query(
     `INSERT INTO vocabulary
-      (word, translation, pronunciation, example, level, category)
+      (word, translation, pronunciation, example, level, day_number)
      VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
@@ -83,7 +83,7 @@ async function createWord({
       pronunciation,
       example,
       level,
-      category
+      dayNumber
     ]
   );
 
@@ -97,7 +97,7 @@ async function updateWord(wordId, data = {}) {
     pronunciation: "pronunciation",
     example: "example",
     level: "level",
-    category: "category"
+    dayNumber: "day_number"
   };
 
   const fields = [];
@@ -118,7 +118,7 @@ async function updateWord(wordId, data = {}) {
 
   const result = await pool.query(
     `UPDATE vocabulary
-     SET ${fields.join(", ")}, updated_at = NOW()
+     SET ${fields.join(", ")}
      WHERE id = $${values.length}
      RETURNING *`,
     values
