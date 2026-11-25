@@ -12,7 +12,7 @@ async function getReadingLessons({ level, isPublished } = {}) {
 
   if (typeof isPublished === "boolean") {
     values.push(isPublished);
-    conditions.push(`is_published = $${values.length}`);
+    conditions.push(`is_active = $${values.length}`);
   }
 
   const where = conditions.length
@@ -23,7 +23,7 @@ async function getReadingLessons({ level, isPublished } = {}) {
     `SELECT *
      FROM reading_lessons
      ${where}
-     ORDER BY sort_order ASC, created_at DESC`,
+     ORDER BY created_at DESC`,
     values
   );
 
@@ -43,15 +43,21 @@ async function getReadingLessonById(lessonId) {
   }
 
   const questionsResult = await pool.query(
-    `SELECT id, lesson_id, question, options, sort_order
+    `SELECT
+       id,
+       reading_lesson_id AS lesson_id,
+       question,
+       options,
+       question_order AS sort_order
      FROM reading_questions
-     WHERE lesson_id = $1
-     ORDER BY sort_order ASC, id ASC`,
+     WHERE reading_lesson_id = $1
+     ORDER BY question_order ASC, id ASC`,
     [lessonId]
   );
 
   return {
     ...lessonResult.rows[0],
+    content: lessonResult.rows[0].passage,
     questions: questionsResult.rows
   };
 }
@@ -61,7 +67,6 @@ async function createReadingLesson({
   description = "",
   level,
   content,
-  sortOrder = 0,
   isPublished = false
 }) {
   if (!title || !level || !content) {
@@ -70,13 +75,22 @@ async function createReadingLesson({
 
   const result = await pool.query(
     `INSERT INTO reading_lessons
-      (title, description, level, content, sort_order, is_published)
-     VALUES ($1, $2, $3, $4, $5, $6)
+      (title, description, level, passage, is_active)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
-    [title.trim(), description, level, content, sortOrder, isPublished]
+    [
+      title.trim(),
+      description,
+      level,
+      content,
+      isPublished
+    ]
   );
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    content: result.rows[0].passage
+  };
 }
 
 async function addReadingQuestion({
@@ -87,13 +101,25 @@ async function addReadingQuestion({
   explanation = "",
   sortOrder = 0
 }) {
-  if (!lessonId || !question || !options || correctAnswer === undefined) {
+  if (
+    !lessonId ||
+    !question ||
+    !options ||
+    correctAnswer === undefined
+  ) {
     throw new Error("Required question fields are missing");
   }
 
   const result = await pool.query(
     `INSERT INTO reading_questions
-      (lesson_id, question, options, correct_answer, explanation, sort_order)
+      (
+        reading_lesson_id,
+        question,
+        options,
+        correct_answer,
+        explanation,
+        question_order
+      )
      VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
@@ -106,10 +132,18 @@ async function addReadingQuestion({
     ]
   );
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    lesson_id: result.rows[0].reading_lesson_id,
+    sort_order: result.rows[0].question_order
+  };
 }
 
-async function submitReadingAnswers({ userId, lessonId, answers }) {
+async function submitReadingAnswers({
+  userId,
+  lessonId,
+  answers
+}) {
   if (!userId || !lessonId || !Array.isArray(answers)) {
     throw new Error("Invalid reading submission");
   }
@@ -122,18 +156,18 @@ async function submitReadingAnswers({ userId, lessonId, answers }) {
     const lesson = await client.query(
       `SELECT id
        FROM reading_lessons
-       WHERE id = $1 AND is_published = TRUE`,
+       WHERE id = $1 AND is_active = TRUE`,
       [lessonId]
     );
 
     if (lesson.rows.length === 0) {
-      throw new Error("Reading lesson not found or not published");
+      throw new Error("Reading lesson not found or not active");
     }
 
     const questionResult = await client.query(
       `SELECT id, correct_answer
        FROM reading_questions
-       WHERE lesson_id = $1`,
+       WHERE reading_lesson_id = $1`,
       [lessonId]
     );
 
@@ -144,7 +178,10 @@ async function submitReadingAnswers({ userId, lessonId, answers }) {
     }
 
     const answerMap = new Map(
-      answers.map((item) => [String(item.questionId), item.answer])
+      answers.map((item) => [
+        String(item.questionId),
+        item.answer
+      ])
     );
 
     let correctCount = 0;
@@ -166,7 +203,14 @@ async function submitReadingAnswers({ userId, lessonId, answers }) {
 
     const result = await client.query(
       `INSERT INTO reading_attempts
-        (user_id, lesson_id, answers, score, total_questions, correct_answers)
+        (
+          user_id,
+          reading_lesson_id,
+          answers,
+          score,
+          total_questions,
+          correct_answers
+        )
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
       [
@@ -181,7 +225,10 @@ async function submitReadingAnswers({ userId, lessonId, answers }) {
 
     await client.query("COMMIT");
 
-    return result.rows[0];
+    return {
+      ...result.rows[0],
+      lesson_id: result.rows[0].reading_lesson_id
+    };
   } catch (error) {
     await client.query("ROLLBACK");
     throw error;
@@ -196,7 +243,7 @@ async function getUserReadingAttempts(userId, lessonId = null) {
 
   if (lessonId) {
     values.push(lessonId);
-    condition += " AND lesson_id = $2";
+    condition += " AND reading_lesson_id = $2";
   }
 
   const result = await pool.query(
@@ -207,7 +254,10 @@ async function getUserReadingAttempts(userId, lessonId = null) {
     values
   );
 
-  return result.rows;
+  return result.rows.map((row) => ({
+    ...row,
+    lesson_id: row.reading_lesson_id
+  }));
 }
 
 async function updateReadingLesson(lessonId, data = {}) {
@@ -215,9 +265,8 @@ async function updateReadingLesson(lessonId, data = {}) {
     title: "title",
     description: "description",
     level: "level",
-    content: "content",
-    sortOrder: "sort_order",
-    isPublished: "is_published"
+    content: "passage",
+    isPublished: "is_active"
   };
 
   const fields = [];
@@ -248,7 +297,10 @@ async function updateReadingLesson(lessonId, data = {}) {
     throw new Error("Reading lesson not found");
   }
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    content: result.rows[0].passage
+  };
 }
 
 async function deleteReadingLesson(lessonId) {
