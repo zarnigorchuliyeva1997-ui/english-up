@@ -13,7 +13,7 @@ async function getSpeakingTasks({ level, isPublished } = {}) {
 
   if (typeof isPublished === "boolean") {
     values.push(isPublished);
-    conditions.push(`is_published = $${values.length}`);
+    conditions.push(`is_active = $${values.length}`);
   }
 
   const where = conditions.length
@@ -24,7 +24,7 @@ async function getSpeakingTasks({ level, isPublished } = {}) {
     `SELECT *
      FROM speaking_tasks
      ${where}
-     ORDER BY sort_order ASC, created_at DESC`,
+     ORDER BY created_at DESC`,
     values
   );
 
@@ -44,10 +44,14 @@ async function getSpeakingTaskById(taskId) {
   }
 
   const questionsResult = await pool.query(
-    `SELECT id, task_id, question, sort_order
+    `SELECT
+       id,
+       speaking_task_id AS task_id,
+       question,
+       question_order AS sort_order
      FROM speaking_questions
-     WHERE task_id = $1
-     ORDER BY sort_order ASC, id ASC`,
+     WHERE speaking_task_id = $1
+     ORDER BY question_order ASC, id ASC`,
     [taskId]
   );
 
@@ -62,7 +66,6 @@ async function createSpeakingTask({
   description = "",
   level,
   instructions = "",
-  sortOrder = 0,
   isPublished = false
 }) {
   if (!title || !level) {
@@ -71,10 +74,16 @@ async function createSpeakingTask({
 
   const result = await pool.query(
     `INSERT INTO speaking_tasks
-      (title, description, level, instructions, sort_order, is_published)
-     VALUES ($1, $2, $3, $4, $5, $6)
+      (title, description, level, instructions, is_active)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
-    [title.trim(), description, level, instructions, sortOrder, isPublished]
+    [
+      title.trim(),
+      description,
+      level,
+      instructions,
+      isPublished
+    ]
   );
 
   return result.rows[0];
@@ -91,13 +100,17 @@ async function addSpeakingQuestion({
 
   const result = await pool.query(
     `INSERT INTO speaking_questions
-      (task_id, question, sort_order)
+      (speaking_task_id, question, question_order)
      VALUES ($1, $2, $3)
      RETURNING *`,
     [taskId, question, sortOrder]
   );
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    task_id: result.rows[0].speaking_task_id,
+    sort_order: result.rows[0].question_order
+  };
 }
 
 async function submitSpeaking({
@@ -118,19 +131,19 @@ async function submitSpeaking({
   const task = await pool.query(
     `SELECT id
      FROM speaking_tasks
-     WHERE id = $1 AND is_published = TRUE`,
+     WHERE id = $1 AND is_active = TRUE`,
     [taskId]
   );
 
   if (task.rows.length === 0) {
-    throw new Error("Speaking task not found or not published");
+    throw new Error("Speaking task not found or not active");
   }
 
   if (questionId) {
     const question = await pool.query(
       `SELECT id
        FROM speaking_questions
-       WHERE id = $1 AND task_id = $2`,
+       WHERE id = $1 AND speaking_task_id = $2`,
       [questionId, taskId]
     );
 
@@ -141,13 +154,21 @@ async function submitSpeaking({
 
   const result = await pool.query(
     `INSERT INTO speaking_submissions
-      (user_id, task_id, question_id, audio_key, duration, status)
-     VALUES ($1, $2, $3, $4, $5, 'submitted')
+      (user_id, task_id, audio_key, duration_seconds, status)
+     VALUES ($1, $2, $3, $4, 'submitted')
      RETURNING *`,
-    [userId, taskId, questionId, audioKey, duration]
+    [
+      userId,
+      taskId,
+      audioKey,
+      duration
+    ]
   );
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    duration: result.rows[0].duration_seconds
+  };
 }
 
 async function getUserSpeakingSubmissions(userId) {
@@ -163,6 +184,7 @@ async function getUserSpeakingSubmissions(userId) {
   return Promise.all(
     result.rows.map(async (submission) => ({
       ...submission,
+      duration: submission.duration_seconds,
       audio_url: submission.audio_key
         ? await getFileUrl(submission.audio_key)
         : null
@@ -170,9 +192,17 @@ async function getUserSpeakingSubmissions(userId) {
   );
 }
 
-async function getAllSpeakingSubmissions({ status, page = 1, limit = 50 } = {}) {
+async function getAllSpeakingSubmissions({
+  status,
+  page = 1,
+  limit = 50
+} = {}) {
   const safePage = Math.max(1, Number.parseInt(page, 10) || 1);
-  const safeLimit = Math.min(100, Math.max(1, Number.parseInt(limit, 10) || 50));
+  const safeLimit = Math.min(
+    100,
+    Math.max(1, Number.parseInt(limit, 10) || 50)
+  );
+
   const values = [];
   let where = "";
 
@@ -184,7 +214,11 @@ async function getAllSpeakingSubmissions({ status, page = 1, limit = 50 } = {}) 
   values.push(safeLimit, (safePage - 1) * safeLimit);
 
   const result = await pool.query(
-    `SELECT ss.*, u.name AS user_name, u.email, st.title AS task_title
+    `SELECT
+       ss.*,
+       u.name AS user_name,
+       u.email,
+       st.title AS task_title
      FROM speaking_submissions ss
      JOIN users u ON u.id = ss.user_id
      JOIN speaking_tasks st ON st.id = ss.task_id
@@ -198,6 +232,7 @@ async function getAllSpeakingSubmissions({ status, page = 1, limit = 50 } = {}) 
   return Promise.all(
     result.rows.map(async (submission) => ({
       ...submission,
+      duration: submission.duration_seconds,
       audio_url: submission.audio_key
         ? await getFileUrl(submission.audio_key)
         : null
@@ -218,7 +253,11 @@ async function reviewSpeakingSubmission({
   if (
     score !== undefined &&
     score !== null &&
-    (!Number.isFinite(Number(score)) || Number(score) < 0 || Number(score) > 100)
+    (
+      !Number.isFinite(Number(score)) ||
+      Number(score) < 0 ||
+      Number(score) > 100
+    )
   ) {
     throw new Error("Score must be between 0 and 100");
   }
@@ -239,7 +278,10 @@ async function reviewSpeakingSubmission({
     throw new Error("Speaking submission not found");
   }
 
-  return result.rows[0];
+  return {
+    ...result.rows[0],
+    duration: result.rows[0].duration_seconds
+  };
 }
 
 async function updateSpeakingTask(taskId, data = {}) {
@@ -248,8 +290,7 @@ async function updateSpeakingTask(taskId, data = {}) {
     description: "description",
     level: "level",
     instructions: "instructions",
-    sortOrder: "sort_order",
-    isPublished: "is_published"
+    isPublished: "is_active"
   };
 
   const fields = [];
