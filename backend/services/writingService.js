@@ -12,7 +12,7 @@ async function getWritingTasks({ level, isPublished } = {}) {
 
   if (typeof isPublished === "boolean") {
     values.push(isPublished);
-    conditions.push(`is_published = $${values.length}`);
+    conditions.push(`is_active = $${values.length}`);
   }
 
   const where = conditions.length
@@ -59,7 +59,7 @@ async function createWritingTask({
 
   const result = await pool.query(
     `INSERT INTO writing_tasks
-      (title, description, level, instructions, word_limit, is_published)
+      (title, description, level, instructions, word_limit, is_active)
      VALUES ($1, $2, $3, $4, $5, $6)
      RETURNING *`,
     [
@@ -83,12 +83,12 @@ async function submitWriting({ userId, taskId, content }) {
   const task = await pool.query(
     `SELECT id
      FROM writing_tasks
-     WHERE id = $1 AND is_published = TRUE`,
+     WHERE id = $1 AND is_active = TRUE`,
     [taskId]
   );
 
   if (task.rows.length === 0) {
-    throw new Error("Writing task not found or not published");
+    throw new Error("Writing task not found or not active");
   }
 
   const result = await pool.query(
@@ -115,9 +115,17 @@ async function getUserWritingSubmissions(userId) {
   return result.rows;
 }
 
-async function getAllWritingSubmissions({ status, page = 1, limit = 50 } = {}) {
+async function getAllWritingSubmissions({
+  status,
+  page = 1,
+  limit = 50
+} = {}) {
   const safePage = Math.max(1, Number.parseInt(page, 10) || 1);
-  const safeLimit = Math.min(100, Math.max(1, Number.parseInt(limit, 10) || 50));
+  const safeLimit = Math.min(
+    100,
+    Math.max(1, Number.parseInt(limit, 10) || 50)
+  );
+
   const values = [];
   let where = "";
 
@@ -129,7 +137,11 @@ async function getAllWritingSubmissions({ status, page = 1, limit = 50 } = {}) {
   values.push(safeLimit, (safePage - 1) * safeLimit);
 
   const result = await pool.query(
-    `SELECT ws.*, u.name AS user_name, u.email, wt.title AS task_title
+    `SELECT
+       ws.*,
+       u.name AS user_name,
+       u.email,
+       wt.title AS task_title
      FROM writing_submissions ws
      JOIN users u ON u.id = ws.user_id
      JOIN writing_tasks wt ON wt.id = ws.task_id
@@ -156,7 +168,11 @@ async function reviewWritingSubmission({
   if (
     score !== undefined &&
     score !== null &&
-    (!Number.isFinite(Number(score)) || Number(score) < 0 || Number(score) > 100)
+    (
+      !Number.isFinite(Number(score)) ||
+      Number(score) < 0 ||
+      Number(score) > 100
+    )
   ) {
     throw new Error("Score must be between 0 and 100");
   }
@@ -187,7 +203,7 @@ async function updateWritingTask(taskId, data = {}) {
     level: "level",
     instructions: "instructions",
     wordLimit: "word_limit",
-    isPublished: "is_published"
+    isPublished: "is_active"
   };
 
   const fields = [];
