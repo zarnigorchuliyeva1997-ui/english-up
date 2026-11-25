@@ -52,7 +52,7 @@ async function createConversation({ userId, subject, message }) {
     const conversationId = conversation.rows[0].id;
 
     const newMessage = await client.query(
-      `INSERT INTO messages (conversation_id, sender_id, content)
+      `INSERT INTO messages (conversation_id, sender_id, message)
        VALUES ($1, $2, $3)
        RETURNING *`,
       [conversationId, userId, message]
@@ -73,9 +73,14 @@ async function createConversation({ userId, subject, message }) {
 }
 
 // Suhbat xabarlarini olish
-async function getConversationMessages(conversationId, userId, isAdmin = false) {
+async function getConversationMessages(
+  conversationId,
+  userId,
+  isAdmin = false
+) {
   const conversation = await pool.query(
-    `SELECT * FROM conversations
+    `SELECT *
+     FROM conversations
      WHERE id = $1`,
     [conversationId]
   );
@@ -84,7 +89,10 @@ async function getConversationMessages(conversationId, userId, isAdmin = false) 
     throw new Error("Suhbat topilmadi");
   }
 
-  if (!isAdmin && String(conversation.rows[0].user_id) !== String(userId)) {
+  if (
+    !isAdmin &&
+    String(conversation.rows[0].user_id) !== String(userId)
+  ) {
     throw new Error("Bu suhbatga ruxsatingiz yo'q");
   }
 
@@ -103,7 +111,9 @@ async function getConversationMessages(conversationId, userId, isAdmin = false) 
 // Xabar yuborish
 async function sendMessage({ conversationId, senderId, message }) {
   const conversation = await pool.query(
-    `SELECT * FROM conversations WHERE id = $1`,
+    `SELECT *
+     FROM conversations
+     WHERE id = $1`,
     [conversationId]
   );
 
@@ -116,7 +126,7 @@ async function sendMessage({ conversationId, senderId, message }) {
   }
 
   const result = await pool.query(
-    `INSERT INTO messages (conversation_id, sender_id, content)
+    `INSERT INTO messages (conversation_id, sender_id, message)
      VALUES ($1, $2, $3)
      RETURNING *`,
     [conversationId, senderId, message]
@@ -133,9 +143,15 @@ async function sendMessage({ conversationId, senderId, message }) {
 }
 
 // Xabarlarni o'qilgan deb belgilash
-async function markMessagesAsRead(conversationId, userId, isAdmin = false) {
+async function markMessagesAsRead(
+  conversationId,
+  userId,
+  isAdmin = false
+) {
   const conversation = await pool.query(
-    `SELECT * FROM conversations WHERE id = $1`,
+    `SELECT *
+     FROM conversations
+     WHERE id = $1`,
     [conversationId]
   );
 
@@ -143,7 +159,10 @@ async function markMessagesAsRead(conversationId, userId, isAdmin = false) {
     throw new Error("Suhbat topilmadi");
   }
 
-  if (!isAdmin && String(conversation.rows[0].user_id) !== String(userId)) {
+  if (
+    !isAdmin &&
+    String(conversation.rows[0].user_id) !== String(userId)
+  ) {
     throw new Error("Bu suhbatga ruxsatingiz yo'q");
   }
 
@@ -184,9 +203,15 @@ async function updateConversationStatus(conversationId, status) {
 }
 
 // Suhbatni yopish
-async function closeConversation(conversationId, userId, isAdmin = false) {
+async function closeConversation(
+  conversationId,
+  userId,
+  isAdmin = false
+) {
   const conversation = await pool.query(
-    `SELECT * FROM conversations WHERE id = $1`,
+    `SELECT *
+     FROM conversations
+     WHERE id = $1`,
     [conversationId]
   );
 
@@ -194,7 +219,10 @@ async function closeConversation(conversationId, userId, isAdmin = false) {
     throw new Error("Suhbat topilmadi");
   }
 
-  if (!isAdmin && String(conversation.rows[0].user_id) !== String(userId)) {
+  if (
+    !isAdmin &&
+    String(conversation.rows[0].user_id) !== String(userId)
+  ) {
     throw new Error("Bu suhbatga ruxsatingiz yo'q");
   }
 
