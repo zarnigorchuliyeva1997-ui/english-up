@@ -12,14 +12,15 @@ const requireAdmin = require("../middleware/admin");
 
 function handleError(error) {
   const messages = {
-    "Subscription details are invalid": 400,
-    "Invalid activation code details": 400,
-    "User not found or inactive": 404,
-    "Student not found or inactive": 404,
-    "Invalid activation code": 404,
-    "This code belongs to another account": 403,
-    "This code has already been used": 409,
-    "Activation code has expired": 410
+    "Obuna muddati noto'g'ri": 400,
+    "Obuna rejasi ko'rsatilmagan": 400,
+    "O'quvchi topilmadi": 404,
+    "Aktivatsiya kodi kiritilmagan": 400,
+    "Aktivatsiya kodi noto'g'ri": 404,
+    "Bu kod boshqa foydalanuvchiga biriktirilgan": 403,
+    "Bu kod avval ishlatilgan": 409,
+    "Aktivatsiya kodining muddati tugagan": 410,
+    "Kod topilmadi yoki u allaqachon ishlatilgan": 404
   };
 
   if (messages[error.message]) {
@@ -73,7 +74,7 @@ router.post(
 
       const result = await redeemActivationCode(
         req.user.id,
-        code
+        code.trim()
       );
 
       res.json({
