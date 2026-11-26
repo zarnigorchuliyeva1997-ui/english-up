@@ -2,7 +2,10 @@
 const express = require("express");
 const cors = require("cors");
 
-const { testDatabase } = require("./backend/config/database");
+const {
+  testDatabase,
+  closeDatabase
+} = require("./backend/config/database");
 
 const app = express();
 
@@ -11,8 +14,13 @@ const app = express();
 // =========================================
 
 app.use(cors());
+
 app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true }));
+
+app.use(express.urlencoded({
+  extended: true,
+  limit: "10mb"
+}));
 
 // =========================================
 // BASIC ROUTES
@@ -48,7 +56,10 @@ app.get("/api/health/database", async (req, res) => {
       time: result.current_time
     });
   } catch (error) {
-    console.error("Database health check failed:", error.message);
+    console.error(
+      "Database health check failed:",
+      error
+    );
 
     res.status(503).json({
       success: false,
@@ -106,9 +117,20 @@ app.use((req, res) => {
 // =========================================
 
 app.use((error, req, res, next) => {
-  console.error("Server error:", error);
+  console.error("Server error:", {
+    method: req.method,
+    url: req.originalUrl,
+    message: error.message,
+    code: error.code,
+    stack: error.stack
+  });
 
-  const statusCode = error.statusCode || 500;
+  const statusCode =
+    Number.isInteger(error.statusCode) &&
+    error.statusCode >= 400 &&
+    error.statusCode <= 599
+      ? error.statusCode
+      : 500;
 
   res.status(statusCode).json({
     success: false,
@@ -122,8 +144,45 @@ app.use((error, req, res, next) => {
 // START SERVER
 // =========================================
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT || 3000);
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`English Up Backend running on port ${PORT}`);
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log(
+    `English Up Backend running on port ${PORT}`
+  );
 });
+
+// =========================================
+// GRACEFUL SHUTDOWN
+// =========================================
+
+let isShuttingDown = false;
+
+async function shutdown(signal) {
+  if (isShuttingDown) return;
+
+  isShuttingDown = true;
+
+  console.log(`${signal} received. Closing server...`);
+
+  server.close(async (error) => {
+    if (error) {
+      console.error("HTTP server shutdown error:", error);
+      process.exitCode = 1;
+    }
+
+    try {
+      await closeDatabase();
+      console.log("Database pool closed.");
+    } catch (dbError) {
+      console.error(
+        "Database shutdown error:",
+        dbError
+      );
+      process.exitCode = 1;
+    }
+  });
+}
+
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+process.on("SIGINT", () => shutdown("SIGINT"));
