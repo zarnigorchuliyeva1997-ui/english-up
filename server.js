@@ -1,6 +1,7 @@
+
 const express = require("express");
 const cors = require("cors");
-const path = require("path"); // <--- YANGI QO'SHILDI
+const path = require("path");
 
 const {
   testDatabase,
@@ -23,7 +24,7 @@ app.use(express.urlencoded({
 }));
 
 // =========================================
-// BASIC ROUTES
+// API HEALTH
 // =========================================
 
 app.get("/api/health", (req, res) => {
@@ -35,7 +36,7 @@ app.get("/api/health", (req, res) => {
 });
 
 // =========================================
-// DATABASE HEALTH CHECK
+// DATABASE HEALTH
 // =========================================
 
 app.get("/api/health/database", async (req, res) => {
@@ -48,10 +49,7 @@ app.get("/api/health/database", async (req, res) => {
       time: result.current_time
     });
   } catch (error) {
-    console.error(
-      "Database health check failed:",
-      error
-    );
+    console.error("Database health check failed:", error);
 
     res.status(503).json({
       success: false,
@@ -94,32 +92,35 @@ app.use("/api/vocabulary", require("./backend/routes/vocabulary"));
 app.use("/api/writing", require("./backend/routes/writing"));
 
 // =========================================
-// FRONTEND STATIC FILES (XAVFSIZ USUL)
+// FRONTEND FILES
 // =========================================
 
-// 1. Admin papkasini ochish (faqat admin ichidagi fayllar)
-app.use('/admin', express.static(path.join(__dirname, 'admin')));
-
-// 2. Asosiy papkadagi faqat kerakli fayllarni ochish (HTML, CSS, JS)
-// Backend, node_modules va .env kabi fayllar yopiq qoladi
-app.get(['/', '/index.html'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Asosiy manzil: avval login sahifasi
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.html"));
 });
 
-app.get('/login.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
+// Login sahifasi
+app.get("/login.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.html"));
 });
 
-app.get('/script.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'script.js'));
+// O'quvchi sayti
+app.get("/index.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get('/style.css', (req, res) => {
-  res.sendFile(path.join(__dirname, 'style.css'));
+// Asosiy CSS va JS
+app.get("/script.js", (req, res) => {
+  res.sendFile(path.join(__dirname, "script.js"));
 });
 
-// Rasm yoki boshqa statik fayllar uchun (agar papkada bo'lsa)
-// app.use(express.static(path.join(__dirname, 'public'))); 
+app.get("/style.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "style.css"));
+});
+
+// Admin fayllari
+app.use("/admin", express.static(path.join(__dirname, "admin")));
 
 // =========================================
 // 404 HANDLER
@@ -167,9 +168,7 @@ app.use((error, req, res, next) => {
 const PORT = Number(process.env.PORT || 3000);
 
 const server = app.listen(PORT, "0.0.0.0", () => {
-  console.log(
-    `English Up Backend running on port ${PORT}`
-  );
+  console.log(`English Up running on port ${PORT}`);
 });
 
 // =========================================
@@ -195,10 +194,7 @@ async function shutdown(signal) {
       await closeDatabase();
       console.log("Database pool closed.");
     } catch (dbError) {
-      console.error(
-        "Database shutdown error:",
-        dbError
-      );
+      console.error("Database shutdown error:", dbError);
       process.exitCode = 1;
     }
   });
