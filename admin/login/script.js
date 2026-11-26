@@ -29,7 +29,6 @@ form.addEventListener("submit", async function (event) {
     }
 
     try {
-        // Haqiqiy backend API'ga so'rov yuborish
         const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -39,16 +38,15 @@ form.addEventListener("submit", async function (event) {
         const data = await response.json();
 
         if (data.success) {
-            // Admin ekanligini tekshirish
             if (data.user && data.user.role === 'admin') {
-                // Tokenni va foydalanuvchi ma'lumotlarini saqlash
+                // TOKENNI TO'G'RI SAQLASH
                 localStorage.setItem('englishUpToken', data.token);
                 localStorage.setItem('englishUpAdmin', JSON.stringify(data.user));
                 
                 showMessage("Kirish muvaffaqiyatli. Yo'naltirilmoqda...", true);
                 
                 setTimeout(() => {
-                    window.location.href = "../index.html";
+                    window.location.href = "../index.html"; // Admin panelning asosiy sahifasiga o'tish
                 }, 1000);
             } else {
                 showMessage("Sizda admin huquqi yo'q!");
