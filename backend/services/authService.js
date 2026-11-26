@@ -3,6 +3,10 @@ const { pool } = require("../config/database");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+// =========================================
+// TOKEN
+// =========================================
+
 function createToken(user) {
   if (!process.env.JWT_SECRET) {
     throw new Error("JWT_SECRET is not configured");
@@ -14,9 +18,15 @@ function createToken(user) {
       role: user.role
     },
     process.env.JWT_SECRET,
-    { expiresIn: "7d" }
+    {
+      expiresIn: "7d"
+    }
   );
 }
+
+// =========================================
+// EMAIL VALIDATION
+// =========================================
 
 function normalizeEmail(email) {
   if (typeof email !== "string") {
@@ -31,8 +41,16 @@ function normalizeEmail(email) {
     throw new Error("A valid email is required");
   }
 
+  if (normalized.length > 255) {
+    throw new Error("A valid email is required");
+  }
+
   return normalized;
 }
+
+// =========================================
+// REGISTER USER
+// =========================================
 
 async function registerUser({ name, email, password } = {}) {
   if (
@@ -44,27 +62,24 @@ async function registerUser({ name, email, password } = {}) {
 
   const normalizedName = name.trim();
 
-  if (normalizedName.length < 2 || normalizedName.length > 100) {
+  if (
+    normalizedName.length < 2 ||
+    normalizedName.length > 100
+  ) {
     throw new Error("Name must be between 2 and 100 characters");
   }
 
-  if (password.length < 8 || password.length > 128) {
+  if (
+    password.length < 8 ||
+    password.length > 128
+  ) {
     throw new Error("Password must be between 8 and 128 characters");
-  }
-
-  if (!process.env.JWT_SECRET) {
-    throw new Error("JWT_SECRET is not configured");
   }
 
   const normalizedEmail = normalizeEmail(email);
 
-  const existing = await pool.query(
-    "SELECT id FROM users WHERE email = $1",
-    [normalizedEmail]
-  );
-
-  if (existing.rows.length > 0) {
-    throw new Error("This email is already registered");
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is not configured");
   }
 
   const passwordHash = await bcrypt.hash(password, 12);
@@ -86,7 +101,11 @@ async function registerUser({ name, email, password } = {}) {
         level,
         is_active,
         created_at`,
-      [normalizedName, normalizedEmail, passwordHash]
+      [
+        normalizedName,
+        normalizedEmail,
+        passwordHash
+      ]
     );
 
     const user = result.rows[0];
@@ -103,6 +122,10 @@ async function registerUser({ name, email, password } = {}) {
     throw error;
   }
 }
+
+// =========================================
+// LOGIN USER
+// =========================================
 
 async function loginUser({ email, password } = {}) {
   if (
@@ -157,6 +180,10 @@ async function loginUser({ email, password } = {}) {
     token: createToken(safeUser)
   };
 }
+
+// =========================================
+// EXPORTS
+// =========================================
 
 module.exports = {
   registerUser,
