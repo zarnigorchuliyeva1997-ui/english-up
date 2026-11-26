@@ -38,15 +38,17 @@ form.addEventListener("submit", async function (event) {
         const data = await response.json();
 
         if (data.success) {
-            if (data.user && data.user.role === 'admin') {
-                // TOKENNI TO'G'RI SAQLASH
+            // Admin ekanligini tekshirish (role har xil yozilgan bo'lishi mumkin)
+            const userRole = data.user?.role || data.user?.user?.role;
+            
+            if (userRole === 'admin') {
                 localStorage.setItem('englishUpToken', data.token);
                 localStorage.setItem('englishUpAdmin', JSON.stringify(data.user));
                 
                 showMessage("Kirish muvaffaqiyatli. Yo'naltirilmoqda...", true);
                 
                 setTimeout(() => {
-                    window.location.href = "../index.html"; // Admin panelning asosiy sahifasiga o'tish
+                    window.location.href = "../index.html";
                 }, 1000);
             } else {
                 showMessage("Sizda admin huquqi yo'q!");
@@ -61,7 +63,7 @@ form.addEventListener("submit", async function (event) {
         }
     } catch (error) {
         console.error("Login error:", error);
-        showMessage("Server bilan aloqa yo'q. Keyinroq urinib ko'ring.");
+        showMessage("Server bilan aloqa yo'q.");
         loginButton.disabled = false;
         loginButton.textContent = "Kirish";
     }
