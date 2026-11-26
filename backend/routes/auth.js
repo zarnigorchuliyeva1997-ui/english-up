@@ -7,6 +7,10 @@ const {
   loginUser
 } = require("../services/authService");
 
+// =========================================
+// REGISTER
+// =========================================
+
 router.post("/register", async (req, res, next) => {
   try {
     const result = await registerUser(req.body);
@@ -17,12 +21,14 @@ router.post("/register", async (req, res, next) => {
       ...result
     });
   } catch (error) {
-    if (error.message === "This email is already registered") {
+    const message = String(error.message || "");
+
+    if (message === "This email is already registered") {
       error.statusCode = 409;
     } else if (
-      error.message.includes("required") ||
-      error.message.includes("valid") ||
-      error.message.includes("between")
+      message.includes("required") ||
+      message.includes("valid") ||
+      message.includes("between")
     ) {
       error.statusCode = 400;
     }
@@ -30,6 +36,10 @@ router.post("/register", async (req, res, next) => {
     next(error);
   }
 });
+
+// =========================================
+// LOGIN
+// =========================================
 
 router.post("/login", async (req, res, next) => {
   try {
@@ -41,16 +51,16 @@ router.post("/login", async (req, res, next) => {
       ...result
     });
   } catch (error) {
-    if (
-      error.message === "Invalid email or password"
-    ) {
+    const message = String(error.message || "");
+
+    if (message === "Invalid email or password") {
       error.statusCode = 401;
     } else if (
-      error.message.includes("required") ||
-      error.message.includes("valid")
+      message.includes("required") ||
+      message.includes("valid")
     ) {
       error.statusCode = 400;
-    } else if (error.message === "Account is inactive") {
+    } else if (message === "Account is inactive") {
       error.statusCode = 403;
     }
 
