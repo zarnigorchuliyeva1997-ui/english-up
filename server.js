@@ -1,6 +1,6 @@
-
 const express = require("express");
 const cors = require("cors");
+const path = require("path"); // <--- YANGI QO'SHILDI
 
 const {
   testDatabase,
@@ -25,14 +25,6 @@ app.use(express.urlencoded({
 // =========================================
 // BASIC ROUTES
 // =========================================
-
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    project: "English Up",
-    message: "English Up Backend is running"
-  });
-});
 
 app.get("/api/health", (req, res) => {
   res.json({
@@ -102,13 +94,41 @@ app.use("/api/vocabulary", require("./backend/routes/vocabulary"));
 app.use("/api/writing", require("./backend/routes/writing"));
 
 // =========================================
+// FRONTEND STATIC FILES (XAVFSIZ USUL)
+// =========================================
+
+// 1. Admin papkasini ochish (faqat admin ichidagi fayllar)
+app.use('/admin', express.static(path.join(__dirname, 'admin')));
+
+// 2. Asosiy papkadagi faqat kerakli fayllarni ochish (HTML, CSS, JS)
+// Backend, node_modules va .env kabi fayllar yopiq qoladi
+app.get(['/', '/index.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/login.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+app.get('/script.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'script.js'));
+});
+
+app.get('/style.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'style.css'));
+});
+
+// Rasm yoki boshqa statik fayllar uchun (agar papkada bo'lsa)
+// app.use(express.static(path.join(__dirname, 'public'))); 
+
+// =========================================
 // 404 HANDLER
 // =========================================
 
 app.use((req, res) => {
   res.status(404).json({
     success: false,
-    message: "API endpoint not found"
+    message: "API endpoint or file not found"
   });
 });
 
