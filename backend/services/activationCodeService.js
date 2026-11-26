@@ -24,18 +24,15 @@ function normalizePagination(page = 1, limit = 20) {
   };
 }
 
-// Aktivatsiya kodi yaratish
+// Admin: Gmail yoki userId orqali aktivatsiya kodi yaratish
 async function createActivationCode({
-  userId,
+  email = null,
+  userId = null,
   plan,
   durationDays,
   expiresAt = null
 }) {
   const days = Number(durationDays);
-
-  if (!userId) {
-    throw new Error("O'quvchi ID ko'rsatilmagan");
-  }
 
   if (!Number.isInteger(days) || days < 1 || days > 3650) {
     throw new Error("Obuna muddati noto'g'ri");
@@ -53,17 +50,39 @@ async function createActivationCode({
     throw new Error("Kodning amal qilish sanasi noto'g'ri");
   }
 
-  const userResult = await pool.query(
-    `SELECT id
-     FROM users
-     WHERE id = $1 AND role = 'student'`,
-    [userId]
-  );
+  if (!userId && !email) {
+    throw new Error("O'quvchi email manzili ko'rsatilmagan");
+  }
+
+  let userResult;
+
+  if (userId) {
+    userResult = await pool.query(
+      `SELECT id, email
+       FROM users
+       WHERE id = $1
+         AND role = 'student'
+         AND is_active = TRUE`,
+      [userId]
+    );
+  } else {
+    const normalizedEmail = String(email).trim().toLowerCase();
+
+    userResult = await pool.query(
+      `SELECT id, email
+       FROM users
+       WHERE LOWER(email) = $1
+         AND role = 'student'
+         AND is_active = TRUE`,
+      [normalizedEmail]
+    );
+  }
 
   if (!userResult.rows.length) {
     throw new Error("O'quvchi topilmadi");
   }
 
+  const user = userResult.rows[0];
   const code = generateCode();
 
   if (typeof code !== "string" || !code.trim()) {
@@ -78,16 +97,77 @@ async function createActivationCode({
      VALUES ($1, $2, $3, $4, $5)
      RETURNING id, assigned_user_id, plan,
                duration_days, expires_at, created_at`,
-    [codeHash, userId, plan.trim(), days, expiresAt]
+    [codeHash, user.id, plan.trim(), days, expiresAt]
   );
 
   return {
     activationCode: code,
+    email: user.email,
     details: result.rows[0]
   };
 }
 
-// Aktivatsiya kodini ishlatish
+// O'quvchi emaili va kod mosligini tekshirish
+async function verifyActivationCode(code, email) {
+  if (
+    typeof code !== "string" ||
+    !code.trim() ||
+    code.trim().length > 100
+  ) {
+    throw new Error("Aktivatsiya kodi noto'g'ri");
+  }
+
+  if (
+    typeof email !== "string" ||
+    !email.trim()
+  ) {
+    throw new Error("Email manzili kiritilmagan");
+  }
+
+  const normalizedEmail = email.trim().toLowerCase();
+
+  const result = await pool.query(
+    `SELECT
+       ac.id,
+       ac.plan,
+       ac.duration_days,
+       ac.used_at,
+       ac.expires_at,
+       u.email
+     FROM activation_codes ac
+     INNER JOIN users u ON u.id = ac.assigned_user_id
+     WHERE ac.code_hash = $1
+       AND LOWER(u.email) = $2
+       AND u.role = 'student'
+       AND u.is_active = TRUE`,
+    [hashCode(code), normalizedEmail]
+  );
+
+  if (!result.rows.length) {
+    throw new Error("Aktivatsiya kodi noto'g'ri");
+  }
+
+  const activation = result.rows[0];
+
+  if (activation.used_at) {
+    throw new Error("Bu kod avval ishlatilgan");
+  }
+
+  if (
+    activation.expires_at &&
+    new Date(activation.expires_at) <= new Date()
+  ) {
+    throw new Error("Aktivatsiya kodining muddati tugagan");
+  }
+
+  return {
+    valid: true,
+    plan: activation.plan,
+    durationDays: activation.duration_days
+  };
+}
+
+// O'quvchi: o'z kodini ishlatish
 async function redeemActivationCode(userId, code) {
   if (!userId) {
     throw new Error("Foydalanuvchi aniqlanmadi");
@@ -139,7 +219,9 @@ async function redeemActivationCode(userId, code) {
     const userResult = await client.query(
       `SELECT id
        FROM users
-       WHERE id = $1 AND role = 'student' AND is_active = TRUE`,
+       WHERE id = $1
+         AND role = 'student'
+         AND is_active = TRUE`,
       [userId]
     );
 
@@ -168,7 +250,8 @@ async function redeemActivationCode(userId, code) {
     await client.query(
       `UPDATE activation_codes
        SET used_at = NOW()
-       WHERE id = $1 AND used_at IS NULL`,
+       WHERE id = $1
+         AND used_at IS NULL`,
       [activation.id]
     );
 
@@ -186,25 +269,45 @@ async function redeemActivationCode(userId, code) {
   }
 }
 
-// Aktivatsiya kodlari ro'yxati
+// Admin: kodlar ro'yxati
 async function getActivationCodes({
   page = 1,
-  limit = 20,
-  userId = null
+  limit = 100,
+  search = "",
+  status = "all",
+  plan = "all"
 } = {}) {
   const pagination = normalizePagination(page, limit);
 
+  const conditions = [];
   const values = [];
-  let where = "";
 
-  if (userId) {
-    values.push(userId);
-    where = `WHERE assigned_user_id = $${values.length}`;
+  if (search && String(search).trim()) {
+    values.push(`%${String(search).trim().toLowerCase()}%`);
+    conditions.push(
+      `(LOWER(u.email) LIKE $${values.length} OR CAST(ac.id AS TEXT) LIKE $${values.length})`
+    );
   }
+
+  if (status === "unused") {
+    conditions.push("ac.used_at IS NULL");
+  } else if (status === "used") {
+    conditions.push("ac.used_at IS NOT NULL");
+  }
+
+  if (plan && plan !== "all") {
+    values.push(String(plan));
+    conditions.push(`ac.plan = $${values.length}`);
+  }
+
+  const where = conditions.length
+    ? `WHERE ${conditions.join(" AND ")}`
+    : "";
 
   const countResult = await pool.query(
     `SELECT COUNT(*)::int AS total
-     FROM activation_codes
+     FROM activation_codes ac
+     INNER JOIN users u ON u.id = ac.assigned_user_id
      ${where}`,
     values
   );
@@ -217,16 +320,18 @@ async function getActivationCodes({
 
   const result = await pool.query(
     `SELECT
-       id,
-       assigned_user_id,
-       plan,
-       duration_days,
-       used_at,
-       expires_at,
-       created_at
-     FROM activation_codes
+       ac.id,
+       u.email,
+       ac.assigned_user_id,
+       ac.plan,
+       ac.duration_days,
+       ac.used_at,
+       ac.expires_at,
+       ac.created_at
+     FROM activation_codes ac
+     INNER JOIN users u ON u.id = ac.assigned_user_id
      ${where}
-     ORDER BY created_at DESC
+     ORDER BY ac.created_at DESC
      LIMIT $${values.length + 1}
      OFFSET $${values.length + 2}`,
     queryValues
@@ -235,7 +340,10 @@ async function getActivationCodes({
   const total = countResult.rows[0].total;
 
   return {
-    items: result.rows,
+    items: result.rows.map(item => ({
+      ...item,
+      status: item.used_at ? "used" : "unused"
+    })),
     total,
     page: pagination.page,
     limit: pagination.limit,
@@ -243,7 +351,7 @@ async function getActivationCodes({
   };
 }
 
-// Ishlatilmagan kodni bekor qilish
+// Admin: ishlatilmagan kodni bekor qilish
 async function revokeActivationCode(codeId) {
   if (!codeId) {
     throw new Error("Kod ID ko'rsatilmagan");
@@ -251,7 +359,8 @@ async function revokeActivationCode(codeId) {
 
   const result = await pool.query(
     `DELETE FROM activation_codes
-     WHERE id = $1 AND used_at IS NULL
+     WHERE id = $1
+       AND used_at IS NULL
      RETURNING id`,
     [codeId]
   );
@@ -270,6 +379,7 @@ async function revokeActivationCode(codeId) {
 
 module.exports = {
   createActivationCode,
+  verifyActivationCode,
   redeemActivationCode,
   getActivationCodes,
   revokeActivationCode
