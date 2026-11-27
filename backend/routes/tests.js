@@ -1,4 +1,3 @@
-
 const express = require("express");
 const { pool } = require("../config/database");
 const auth = require("../middleware/auth");
@@ -608,6 +607,55 @@ router.patch(
 
       res.json({
         success: true,
+        test: result.rows[0]
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+// =========================================
+// DELETE TEST (SOFT DELETE)
+// DELETE /api/tests/:id
+// Admin only
+// =========================================
+
+router.delete(
+  "/:id",
+  auth,
+  admin,
+  async (req, res, next) => {
+    try {
+      const testId = Number(req.params.id);
+
+      if (!Number.isInteger(testId) || testId < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "Test ID noto‘g‘ri."
+        });
+      }
+
+      const result = await pool.query(
+        `UPDATE tests
+         SET is_active = FALSE,
+             updated_at = NOW()
+         WHERE id = $1
+           AND is_active = TRUE
+         RETURNING id, title, is_active, updated_at`,
+        [testId]
+      );
+
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Test topilmadi yoki allaqachon o‘chirilgan."
+        });
+      }
+
+      res.json({
+        success: true,
+        message: "Test o‘chirildi.",
         test: result.rows[0]
       });
     } catch (error) {
