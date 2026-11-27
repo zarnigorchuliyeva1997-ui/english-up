@@ -1,4 +1,3 @@
-
 const express = require("express");
 const router = express.Router();
 
@@ -379,6 +378,54 @@ router.patch(
         });
       }
 
+      next(error);
+    }
+  }
+);
+
+// =========================================
+// DELETE LESSON (SOFT DELETE)
+// DELETE /api/lessons/:id
+// =========================================
+
+router.delete(
+  "/:id",
+  authenticateToken,
+  requireAdmin,
+  async (req, res, next) => {
+    try {
+      const lessonId = Number(req.params.id);
+
+      if (!Number.isSafeInteger(lessonId) || lessonId < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid lesson ID"
+        });
+      }
+
+      const result = await pool.query(
+        `UPDATE lessons
+         SET is_active = FALSE,
+             updated_at = NOW()
+         WHERE id = $1
+           AND is_active = TRUE
+         RETURNING id, course_id, is_active, updated_at`,
+        [lessonId]
+      );
+
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Lesson not found or already deleted"
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Lesson deleted",
+        lesson: result.rows[0]
+      });
+    } catch (error) {
       next(error);
     }
   }
