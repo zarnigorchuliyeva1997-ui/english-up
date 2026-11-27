@@ -12,8 +12,38 @@ const {
 
 router.use(auth, admin);
 
+// =========================================
+// HELPERS
+// =========================================
+
+function isNotFoundError(error) {
+  return (
+    typeof error?.message === "string" &&
+    error.message.toLowerCase().includes("not found")
+  );
+}
+
+function isServiceUnavailableError(error) {
+  if (!error || typeof error.message !== "string") {
+    return false;
+  }
+
+  const message = error.message.toLowerCase();
+
+  return (
+    message.includes("pg_dump") ||
+    message.includes("database configuration") ||
+    message.includes("database_url") ||
+    message.includes("db_host")
+  );
+}
+
+// =========================================
 // BACKUP YARATISH
-router.post("/create", async (req, res) => {
+// POST /api/backup/create
+// =========================================
+
+router.post("/create", async (req, res, next) => {
   try {
     const backup = await createBackup(req.user.id);
 
@@ -23,17 +53,24 @@ router.post("/create", async (req, res) => {
       backup
     });
   } catch (error) {
-    console.error("Backup yaratish xatosi:", error);
+    if (isServiceUnavailableError(error)) {
+      return res.status(503).json({
+        success: false,
+        message:
+          "Backup xizmati mavjud emas. Serverda pg_dump o‘rnatilganini va DB sozlamalarini tekshiring."
+      });
+    }
 
-    res.status(500).json({
-      success: false,
-      message: "Backup yaratishda xatolik yuz berdi"
-    });
+    next(error);
   }
 });
 
+// =========================================
 // BACKUPLAR RO‘YXATI
-router.get("/", async (req, res) => {
+// GET /api/backup
+// =========================================
+
+router.get("/", async (req, res, next) => {
   try {
     const backups = await getBackups();
 
@@ -42,17 +79,16 @@ router.get("/", async (req, res) => {
       backups
     });
   } catch (error) {
-    console.error("Backup ro‘yxati xatosi:", error);
-
-    res.status(500).json({
-      success: false,
-      message: "Backuplarni olishda xatolik"
-    });
+    next(error);
   }
 });
 
+// =========================================
 // BACKUPNI O‘CHIRISH
-router.delete("/:id", async (req, res) => {
+// DELETE /api/backup/:id
+// =========================================
+
+router.delete("/:id", async (req, res, next) => {
   try {
     const backupId = Number(req.params.id);
 
@@ -71,12 +107,14 @@ router.delete("/:id", async (req, res) => {
       result
     });
   } catch (error) {
-    console.error("Backup o‘chirish xatosi:", error);
+    if (isNotFoundError(error)) {
+      return res.status(404).json({
+        success: false,
+        message: "Backup topilmadi"
+      });
+    }
 
-    res.status(500).json({
-      success: false,
-      message: "Backupni o‘chirishda xatolik"
-    });
+    next(error);
   }
 });
 
