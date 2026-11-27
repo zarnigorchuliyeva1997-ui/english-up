@@ -432,4 +432,247 @@ button {
     padding: 17px;
   }
   }
-  
+  /* =====================================
+   ENGLISH UP — SCRIPT.JS ELEMENTS
+===================================== */
+
+.nav-btn {
+  padding: 10px 13px;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: var(--purple-light);
+  color: var(--purple);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.feature-card {
+  cursor: pointer;
+}
+
+.feature-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.level-icon {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.level-card span,
+.lesson-card span {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--purple);
+  font-weight: 900;
+}
+
+.lesson-body {
+  line-height: 1.9;
+}
+
+.lesson-body p {
+  margin: 8px 0;
+}
+
+.lesson-body h3 {
+  margin-top: 22px;
+}
+
+.lesson-box {
+  background: #f7f5ff;
+  border-radius: 15px;
+  padding: 17px;
+  margin: 15px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px 15px;
+}
+
+.lesson-header {
+  border-bottom: 1px solid #eeeaf8;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.lesson-header h2 {
+  margin-top: 0;
+}
+
+.completed-label {
+  display: inline-block;
+  margin-top: 10px;
+  color: #16885b;
+  font-weight: 900;
+}
+
+.lesson-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.lesson-actions .primary-btn {
+  background: var(--purple);
+  color: white;
+}
+
+.lesson-actions .primary-btn:hover {
+  background: var(--purple-dark);
+}
+
+.quiz-container,
+.quiz-result {
+  padding: 10px 0;
+}
+
+.quiz-container h2,
+.quiz-result h2 {
+  color: var(--purple);
+}
+
+.quiz-container h3 {
+  margin: 25px 0 18px;
+  color: var(--text);
+  font-size: 19px;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.quiz-option {
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  border-radius: 12px;
+  background: #f7f5ff;
+  border: 1px solid #e9e2ff;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.quiz-option:hover:not(:disabled) {
+  background: var(--purple-light);
+  border-color: var(--purple);
+}
+
+.quiz-option:disabled {
+  cursor: default;
+  opacity: .75;
+}
+
+#quizFeedback {
+  margin-top: 18px;
+  font-weight: 900;
+}
+
+.quiz-container .primary-btn {
+  margin-top: 15px;
+  background: var(--purple);
+  color: white;
+}
+
+.result-score {
+  font-size: 45px;
+  font-weight: 900;
+  color: var(--purple);
+  margin: 20px 0;
+}
+
+.quiz-result p {
+  margin: 12px 0;
+  line-height: 1.7;
+}
+
+.message.show {
+  display: block;
+  animation: appear .25s ease;
+}
+
+.progress-card p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+#progressDetails p {
+  padding: 9px 0;
+  border-bottom: 1px solid #f0edf8;
+}
+
+button:focus-visible,
+.feature-card:focus-visible,
+.level-card:focus-visible,
+.lesson-card:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .main-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+  }
+
+  .nav-btn {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+
+  .home-btn {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .lesson-box {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-actions {
+    flex-direction: column;
+  }
+
+  .lesson-actions button {
+    width: 100%;
+  }
+}
