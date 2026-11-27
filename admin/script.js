@@ -2,8 +2,8 @@
 /* ==========================================
    ENGLISH UP ADMIN PANEL
    SHARED MAIN JAVASCRIPT
-   Version: 2.0.0
-   GitHub Independent Mode
+   Version: 3.0.0
+   Timeweb + JWT + PostgreSQL
    ========================================== */
 
 "use strict";
@@ -12,10 +12,12 @@
 
 const AdminConfig = {
     appName: "English Up",
-    version: "2.0.0",
+    version: "3.0.0",
     currentPage: "dashboard",
     mobileBreakpoint: 760,
-    mode: "github"
+    mode: "timeweb",
+    tokenKey: "englishUpToken",
+    adminKey: "englishUpAdmin"
 };
 
 /* 2. SAFE DOM HELPERS */
@@ -47,7 +49,9 @@ function showToast(message, duration = 3500) {
 
     toastContainer.appendChild(toast);
 
-    window.setTimeout(() => toast.remove(), duration);
+    window.setTimeout(() => {
+        toast.remove();
+    }, duration);
 }
 
 /* 4. MOBILE SIDEBAR */
@@ -71,16 +75,25 @@ function closeSidebar() {
 }
 
 menuToggle?.addEventListener("click", () => {
-    sidebar?.classList.contains("open")
-        ? closeSidebar()
-        : openSidebar();
+    if (sidebar?.classList.contains("open")) {
+        closeSidebar();
+    } else {
+        openSidebar();
+    }
 });
 
 sidebarClose?.addEventListener("click", closeSidebar);
 sidebarOverlay?.addEventListener("click", closeSidebar);
 
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeSidebar();
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        closeSidebar();
+
+        if (globalSearch) {
+            globalSearch.value = "";
+            searchNavigation("");
+        }
+    }
 });
 
 /* 5. NAVIGATION */
@@ -94,7 +107,7 @@ function setActiveNavigation() {
 
     let activeFound = false;
 
-    navigationLinks.forEach(link => {
+    navigationLinks.forEach((link) => {
         const href = link.getAttribute("href");
         if (!href) return;
 
@@ -110,6 +123,7 @@ function setActiveNavigation() {
 
             if (isActive) {
                 activeFound = true;
+
                 AdminConfig.currentPage =
                     link.dataset.page || "dashboard";
 
@@ -117,7 +131,6 @@ function setActiveNavigation() {
             } else {
                 link.removeAttribute("aria-current");
             }
-
         } catch (error) {
             console.warn("Navigation URL error:", href);
         }
@@ -128,7 +141,7 @@ function setActiveNavigation() {
     }
 }
 
-document.querySelectorAll(".nav-link").forEach(link => {
+document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", closeSidebar);
 });
 
@@ -164,12 +177,18 @@ function searchNavigation(query) {
         .toLocaleLowerCase("uz");
 
     if (!normalizedQuery) {
-        links.forEach(link => link.style.display = "");
-        sections.forEach(section => section.style.display = "");
+        links.forEach((link) => {
+            link.style.display = "";
+        });
+
+        sections.forEach((section) => {
+            section.style.display = "";
+        });
+
         return;
     }
 
-    links.forEach(link => {
+    links.forEach((link) => {
         const text = link.textContent
             .trim()
             .toLocaleLowerCase("uz");
@@ -179,7 +198,7 @@ function searchNavigation(query) {
             : "none";
     });
 
-    sections.forEach(section => {
+    sections.forEach((section) => {
         let next = section.nextElementSibling;
         let hasVisibleLink = false;
 
@@ -201,11 +220,11 @@ function searchNavigation(query) {
     });
 }
 
-globalSearch?.addEventListener("input", event => {
+globalSearch?.addEventListener("input", (event) => {
     searchNavigation(event.target.value);
 });
 
-globalSearch?.addEventListener("keydown", event => {
+globalSearch?.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
         globalSearch.value = "";
         searchNavigation("");
@@ -218,19 +237,31 @@ notificationButton?.addEventListener("click", () => {
     showToast("Hozircha yangi bildirishnomalar yo‘q.");
 });
 
-/* 9. LOGOUT - GITHUB MODE */
+/* 9. LOGOUT - JWT SESSION */
 
-if (logoutButton) {
-    logoutButton.addEventListener("click", () => {
-        const confirmed = window.confirm(
-            "Admin paneldan chiqmoqchimisiz?"
-        );
+function logoutAdmin() {
+    const confirmed = window.confirm(
+        "Admin paneldan chiqmoqchimisiz?"
+    );
 
-        if (!confirmed) return;
+    if (!confirmed) return;
 
-        window.location.replace("./login/index.html");
-    });
+    try {
+        localStorage.removeItem(AdminConfig.tokenKey);
+        localStorage.removeItem(AdminConfig.adminKey);
+
+        // Eski sessiya kaliti qolgan bo‘lsa, uni ham tozalash.
+        localStorage.removeItem("englishUpAdminSession");
+
+        sessionStorage.clear();
+    } catch (error) {
+        console.error("Logout storage error:", error);
+    }
+
+    window.location.replace("./login/index.html");
 }
+
+logoutButton?.addEventListener("click", logoutAdmin);
 
 /* 10. SYSTEM STATUS */
 
@@ -240,27 +271,58 @@ function updateSystemStatus() {
     const databaseStatus = getElement("databaseStatus");
 
     if (firebaseStatus) {
-        firebaseStatus.textContent = "GitHub mustaqil rejimi";
+        firebaseStatus.textContent = "Timeweb API";
     }
 
     if (authStatus) {
-        authStatus.textContent = "Lokal kirish tizimi";
+        authStatus.textContent = "JWT autentifikatsiya";
     }
 
     if (databaseStatus) {
-        databaseStatus.textContent = "LocalStorage rejimi";
+        databaseStatus.textContent = "PostgreSQL";
     }
 }
 
-/* 11. DASHBOARD INITIALIZATION */
+/* 11. ADMIN INFORMATION */
+
+function updateAdminInformation() {
+    const adminNameElements = document.querySelectorAll(
+        "#adminName, #sidebarAdminName"
+    );
+
+    try {
+        const savedAdmin = localStorage.getItem(
+            AdminConfig.adminKey
+        );
+
+        if (!savedAdmin) return;
+
+        const admin = JSON.parse(savedAdmin);
+
+        const displayName =
+            admin.name ||
+            admin.fullName ||
+            admin.email ||
+            "Administrator";
+
+        adminNameElements.forEach((element) => {
+            element.textContent = displayName;
+        });
+    } catch (error) {
+        console.warn("Admin information could not be loaded.");
+    }
+}
+
+/* 12. DASHBOARD INITIALIZATION */
 
 function initializeDashboard() {
     updateDashboardDate();
     setActiveNavigation();
     updateSystemStatus();
+    updateAdminInformation();
 }
 
-/* 12. LOADING SCREEN */
+/* 13. LOADING SCREEN */
 
 function hideLoadingScreen() {
     if (!adminLoading) return;
@@ -273,7 +335,7 @@ function hideLoadingScreen() {
     }, 260);
 }
 
-/* 13. RESPONSIVE MENU */
+/* 14. RESPONSIVE MENU */
 
 window.addEventListener("resize", () => {
     if (window.innerWidth > AdminConfig.mobileBreakpoint) {
@@ -281,7 +343,7 @@ window.addEventListener("resize", () => {
     }
 });
 
-/* 14. START ADMIN INTERFACE */
+/* 15. START ADMIN INTERFACE */
 
 function startAdminInterface() {
     initializeDashboard();
