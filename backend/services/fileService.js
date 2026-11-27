@@ -28,7 +28,8 @@ const MAX_FILE_SIZE = 100 * 1024 * 1024;
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: MAX_FILE_SIZE
+    fileSize: MAX_FILE_SIZE,
+    files: 1
   },
   fileFilter: (req, file, callback) => {
     if (!ALLOWED_TYPES.includes(file.mimetype)) {
@@ -40,8 +41,20 @@ const upload = multer({
 });
 
 async function uploadFile(file, folder = "uploads") {
-  if (!file || !file.buffer || !file.originalname) {
+  if (
+    !file ||
+    !Buffer.isBuffer(file.buffer) ||
+    !file.originalname ||
+    !ALLOWED_TYPES.includes(file.mimetype)
+  ) {
     throw new Error("Invalid file");
+  }
+
+  if (
+    file.buffer.length === 0 ||
+    file.buffer.length > MAX_FILE_SIZE
+  ) {
+    throw new Error("Invalid file size");
   }
 
   const safeFolder = String(folder)
@@ -54,7 +67,8 @@ async function uploadFile(file, folder = "uploads") {
 
   const extension = path.extname(file.originalname)
     .toLowerCase()
-    .replace(/[^a-z0-9.]/g, "");
+    .replace(/[^a-z0-9.]/g, "")
+    .slice(0, 10);
 
   const fileName = `${crypto.randomUUID()}${extension}`;
   const key = `english-up/${safeFolder}/${fileName}`;
@@ -71,20 +85,26 @@ async function uploadFile(file, folder = "uploads") {
   return {
     key,
     fileName,
-    originalName: file.originalname,
+    originalName: path.basename(file.originalname).slice(0, 255),
     mimeType: file.mimetype,
-    size: file.size
+    size: file.buffer.length
   };
 }
 
-async function deleteFile(key) {
+function validateFileKey(key) {
   if (
     typeof key !== "string" ||
     !key.startsWith("english-up/") ||
-    key.includes("..")
+    key.includes("..") ||
+    key.includes("\\") ||
+    key.length > 500
   ) {
     throw new Error("Invalid file key");
   }
+}
+
+async function deleteFile(key) {
+  validateFileKey(key);
 
   await s3.send(
     new DeleteObjectCommand({
@@ -97,13 +117,7 @@ async function deleteFile(key) {
 }
 
 async function getFileUrl(key, expiresIn = 900) {
-  if (
-    typeof key !== "string" ||
-    !key.startsWith("english-up/") ||
-    key.includes("..")
-  ) {
-    throw new Error("Invalid file key");
-  }
+  validateFileKey(key);
 
   const duration = Math.min(
     Math.max(Number(expiresIn) || 900, 60),
