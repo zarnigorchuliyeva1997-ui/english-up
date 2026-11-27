@@ -1,26 +1,48 @@
 
-/* ==========================================
-   ENGLISH UP ADMIN AUTH GUARD
-   GitHub Independent Mode
-   Version: 2.0.0
-   ========================================== */
-
 "use strict";
 
 import {
-    isAdminLoggedIn,
+    getAdminSession,
     clearAdminSession
-} from "../login/firebase.js";
+} from "./login/firebase.js";
 
 document.documentElement.style.visibility = "hidden";
 
-function checkAdminAccess() {
+async function checkAdminAccess() {
     try {
-        if (!isAdminLoggedIn()) {
+        const session = getAdminSession();
+
+        if (!session || !session.token) {
             clearAdminSession();
-            window.location.replace("../login/index.html");
+            window.location.replace("./login/index.html");
             return;
         }
+
+        const response = await fetch("/api/admin/me", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${session.token}`,
+                "Content-Type": "application/json"
+            }
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (
+            !response.ok ||
+            !data.success ||
+            !data.user ||
+            data.user.role !== "admin"
+        ) {
+            clearAdminSession();
+            window.location.replace("./login/index.html");
+            return;
+        }
+
+        localStorage.setItem(
+            "englishUpAdmin",
+            JSON.stringify(data.user)
+        );
 
         document.documentElement.style.visibility = "visible";
 
@@ -28,7 +50,7 @@ function checkAdminAccess() {
         console.error("Admin access error:", error);
 
         clearAdminSession();
-        window.location.replace("../login/index.html");
+        window.location.replace("./login/index.html");
     }
 }
 
