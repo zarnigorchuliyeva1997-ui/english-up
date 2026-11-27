@@ -1,166 +1,350 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Up - Kirish</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: linear-gradient(135deg, #e0eafc, #cfdef3); color: #333; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .container { background: #fff; padding: 30px 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 450px; width: 100%; text-align: center; }
-        .hidden { display: none !important; }
-        
-        .intro-title { color: #6a1b9a; font-weight: 900; font-size: 26px; margin-bottom: 15px; }
-        .intro-text { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 20px; text-align: center; }
-        
-        input[type="email"], input[type="text"] { width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px; margin-bottom: 15px; outline: none; transition: 0.3s; }
-        input:focus { border-color: #6a1b9a; }
-        
-        .btn { background-color: #6a1b9a; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 10px; }
-        .btn:disabled { background-color: #ccc; }
-        
-        .price-list { background: #f9f9f9; border-radius: 10px; padding: 15px; margin-bottom: 20px; text-align: left; }
-        .price-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; }
-        .price-item:last-child { border-bottom: none; }
-        .price-cost { font-weight: bold; color: #2e7d32; }
-        
-        .btn-telegram { background-color: #0088cc; color: white; padding: 14px; border-radius: 10px; font-size: 16px; font-weight: bold; text-decoration: none; display: block; margin-bottom: 20px; }
-        
-        .error-msg { color: #d32f2f; font-size: 14px; margin-bottom: 10px; font-weight: bold; display: none; }
-        .success-icon { font-size: 50px; margin-bottom: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7047eb">
+  <title>English Up — Kirish va ro‘yxatdan o‘tish</title>
+  <style>
+    :root { color-scheme: light; --primary:#7047eb; --primary-dark:#5834c7; --ink:#252238; --muted:#716d82; --line:#e8e5f0; --surface:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; padding:24px 14px; display:grid; place-items:center; background:linear-gradient(135deg,#f1edff,#eaf2ff); color:var(--ink); font-family:Arial,Helvetica,sans-serif; }
+    .container { width:min(100%,460px); padding:28px; background:var(--surface); border:1px solid rgba(112,71,235,.10); border-radius:22px; box-shadow:0 18px 55px rgba(54,38,105,.12); }
+    .brand { text-align:center; color:var(--primary); font-size:27px; font-weight:900; letter-spacing:.5px; margin-bottom:8px; }
+    .subtitle { text-align:center; color:var(--muted); line-height:1.55; margin:0 0 22px; font-size:14px; }
+    .tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:5px; background:#f4f1fc; border-radius:12px; margin-bottom:20px; }
+    .tab { border:0; border-radius:9px; padding:11px 8px; background:transparent; color:var(--muted); font-weight:700; cursor:pointer; }
+    .tab.active { background:#fff; color:var(--primary); box-shadow:0 2px 8px rgba(30,20,70,.08); }
+    .panel.hidden { display:none; }
+    h1 { font-size:21px; margin:0 0 8px; }
+    .hint { color:var(--muted); font-size:13px; line-height:1.5; margin:0 0 18px; }
+    label { display:block; margin:13px 0 6px; font-size:13px; font-weight:700; }
+    input { width:100%; padding:13px 14px; border:1.5px solid var(--line); border-radius:10px; font-size:15px; outline:none; background:#fff; color:var(--ink); }
+    input:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(112,71,235,.10); }
+    .btn { width:100%; border:0; border-radius:10px; padding:14px; margin-top:18px; background:var(--primary); color:#fff; font-size:15px; font-weight:800; cursor:pointer; }
+    .btn:hover { background:var(--primary-dark); }
+    .btn:disabled { opacity:.6; cursor:wait; }
+    .secondary { background:#f1edff; color:var(--primary); }
+    .secondary:hover { background:#e9e1ff; }
+    .message { display:none; padding:11px 12px; margin:0 0 14px; border-radius:9px; font-size:13px; line-height:1.5; }
+    .message.error { display:block; color:#a52828; background:#fff0f0; }
+    .message.success { display:block; color:#176b3a; background:#eaf8ef; }
+    .price-list { background:#f8f6fd; border-radius:12px; padding:13px 15px; margin:16px 0; }
+    .price-row { display:flex; justify-content:space-between; gap:12px; padding:7px 0; border-bottom:1px solid #ebe7f4; font-size:13px; }
+    .price-row:last-child { border-bottom:0; }
+    .price { color:#23834b; font-weight:800; white-space:nowrap; }
+    .link { display:block; text-align:center; margin-top:15px; color:var(--primary); font-size:13px; text-decoration:none; }
+    .small { color:var(--muted); font-size:12px; line-height:1.5; text-align:center; margin-top:18px; }
+    .account { background:#f8f6fd; border-radius:12px; padding:13px; margin:14px 0; font-size:13px; line-height:1.6; }
+    @media(max-width:380px) { .container{padding:22px 18px;} }
+  </style>
 </head>
 <body>
+  <main class="container">
+    <div class="brand">ENGLISH<span style="color:#9b7af3"> UP</span></div>
+    <p class="subtitle">Ingliz tilini bosqichma-bosqich o‘rganing.</p>
 
-    <div class="container">
-        <!-- 1-OYNA: Email kiritish -->
-        <div id="step-1">
-            <div class="intro-title">ENGLISH<span style="color:#9c27b0">UP</span></div>
-            <div class="intro-text">
-                <p><strong>Orzular ushaladigan makon!</strong></p>
-                <p>Bizning oilamizga xush kelibsiz!!!</p>
-            </div>
-            <p style="font-size: 14px; margin-bottom: 10px;">Ro'yxatdan o'tish uchun Gmail manzilingizni kiriting:</p>
-            <input type="email" id="emailInput" placeholder="example@gmail.com">
-            <div id="error-1" class="error-msg">Iltimos, to'g'ri email kiriting!</div>
-            <button class="btn" id="btn-step1" onclick="submitEmail()">Ro'yxatdan o'tish</button>
-        </div>
+    <div id="authArea">
+      <div class="tabs" role="tablist" aria-label="Akkaunt turi">
+        <button class="tab active" id="signupTab" type="button">Ro‘yxatdan o‘tish</button>
+        <button class="tab" id="loginTab" type="button">Kirish</button>
+      </div>
 
-        <!-- 2-OYNA: Narxlar va Kod -->
-        <div id="step-2" class="hidden">
-            <h2 style="color: #6a1b9a; margin-bottom: 15px;">Obuna tariflari</h2>
-            <div class="price-list">
-                <div class="price-item"><span>1 oylik</span><span class="price-cost">100 000 so'm</span></div>
-                <div class="price-item"><span>2 oylik</span><span class="price-cost">200 000 so'm</span></div>
-                <div class="price-item"><span>3 oylik</span><span class="price-cost">300 000 so'm</span></div>
-            </div>
+      <div id="signupPanel" class="panel">
+        <h1>Yangi akkaunt yaratish</h1>
+        <p class="hint">Ismingiz, emailingiz va o‘zingiz tanlagan parolni kiriting.</p>
+        <form id="signupForm">
+          <label for="signupName">Ism va familiya</label>
+          <input id="signupName" name="name" type="text" minlength="2" maxlength="100" autocomplete="name" required placeholder="Ismingiz">
+          <label for="signupEmail">Email</label>
+          <input id="signupEmail" name="email" type="email" maxlength="255" autocomplete="email" required placeholder="name@example.com">
+          <label for="signupPassword">Parol (kamida 8 ta belgi)</label>
+          <input id="signupPassword" name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required placeholder="Yangi parol">
+          <label for="signupPasswordConfirm">Parolni takrorlang</label>
+          <input id="signupPasswordConfirm" name="passwordConfirm" type="password" minlength="8" maxlength="128" autocomplete="new-password" required placeholder="Parolni qayta kiriting">
+          <div id="signupMessage" class="message" role="alert"></div>
+          <button class="btn" id="signupButton" type="submit">Akkaunt yaratish</button>
+        </form>
+      </div>
 
-            <a href="https://t.me/englishupsuccess" target="_blank" class="btn-telegram">✈️ Obuna sotib olish uchun bog'lanish</a>
-            
-            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">To'lov qilib, kod olgan bo'lsangiz, uni kiriting:</p>
-            <input type="text" id="codeInput" placeholder="Kodingizni kiriting...">
-            <div id="error-2" class="error-msg">Noto'g'ri yoki ishlatilgan kod!</div>
-            <button class="btn" id="btn-step2" onclick="verifyCode()">Tasdiqlash</button>
-        </div>
-
-        <!-- 3-OYNA: Xush kelibsiz -->
-        <div id="step-3" class="hidden">
-            <div class="success-icon">🎉</div>
-            <div class="intro-title">Xush kelibsiz!</div>
-            <p style="color: #555; margin-bottom: 20px;">Siz muvaffaqiyatli tizimga kirdingiz.</p>
-            <a href="index.html" class="btn" style="text-decoration: none; display: block;">Darslarga o'tish</a>
-        </div>
+      <div id="loginPanel" class="panel hidden">
+        <h1>Akkauntga kirish</h1>
+        <p class="hint">Ro‘yxatdan o‘tgan emailingiz va parolingizni kiriting.</p>
+        <form id="loginForm">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" name="email" type="email" maxlength="255" autocomplete="email" required placeholder="name@example.com">
+          <label for="loginPassword">Parol</label>
+          <input id="loginPassword" name="password" type="password" maxlength="128" autocomplete="current-password" required placeholder="Parolingiz">
+          <div id="loginMessage" class="message" role="alert"></div>
+          <button class="btn" id="loginButton" type="submit">Kirish</button>
+        </form>
+      </div>
     </div>
 
-    <script>
-        let userEmail = "";
+    <section id="activationPanel" class="panel hidden">
+      <h1>Obunani faollashtirish</h1>
+      <p class="hint">Akkauntingiz yaratildi. To‘lovdan keyin berilgan aktivatsiya kodini kiriting.</p>
+      <div id="accountInfo" class="account"></div>
+      <div class="price-list">
+        <div class="price-row"><span>1 oylik obuna</span><span class="price">100 000 so‘m</span></div>
+        <div class="price-row"><span>2 oylik obuna</span><span class="price">200 000 so‘m</span></div>
+        <div class="price-row"><span>3 oylik obuna</span><span class="price">300 000 so‘m</span></div>
+      </div>
+      <a class="btn secondary" style="display:block;text-align:center;text-decoration:none" href="https://t.me/englishupsuccess" target="_blank" rel="noopener">✈️ Obuna va to‘lov bo‘yicha bog‘lanish</a>
+      <form id="activationForm">
+        <label for="activationCode">Aktivatsiya kodi</label>
+        <input id="activationCode" name="code" type="text" maxlength="64" autocomplete="off" required placeholder="EU-XXXXXX-XXXXXX-XXXXXX">
+        <div id="activationMessage" class="message" role="alert"></div>
+        <button class="btn" id="activationButton" type="submit">Kodni tasdiqlash va obunani yoqish</button>
+      </form>
+      <button class="btn secondary" id="logoutButton" type="button">Boshqa akkauntga kirish</button>
+    </section>
 
-        // 1. Emailni yuborish va ro'yxatdan o'tkazish
-        async function submitEmail() {
-            const email = document.getElementById('emailInput').value.trim();
-            const errorMsg = document.getElementById('error-1');
-            const btn = document.getElementById('btn-step1');
+    <section id="activePanel" class="panel hidden">
+      <h1>Akkauntingiz tayyor!</h1>
+      <p class="hint">Obunangiz faol. English Up darslariga o‘tishingiz mumkin.</p>
+      <div id="activeAccountInfo" class="account"></div>
+      <a class="btn" href="/index.html" style="display:block;text-align:center;text-decoration:none">Darslarga o‘tish</a>
+      <button class="btn secondary" id="activeLogoutButton" type="button">Chiqish</button>
+    </section>
 
-            if (!email || !email.includes('@')) {
-                errorMsg.style.display = 'block';
-                return;
-            }
-            errorMsg.style.display = 'none';
-            btn.disabled = true;
-            btn.innerText = "Tekshirilmoqda...";
+    <a class="link" href="/admin/login/index.html">Administratorlar uchun kirish</a>
+    <p class="small">English Up © 2026</p>
+  </main>
 
-            // Backendga emailni yuborish (vaqtinchalik ism beriladi)
-            try {
-                const response = await fetch('/api/auth/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        name: "Yangi o'quvchi", 
-                        email: email, 
-                        password: "Parol12345" 
-                    })
-                });
+  <script>
+    "use strict";
 
-                const data = await response.json();
-                
-                // Agar muvaffaqiyatli bo'lsa yoki email allaqachon mavjud bo'lsa, 2-oynaga o'tamiz
-                if (data.success || data.message === "This email is already registered") {
-                    userEmail = email;
-                    document.getElementById('step-1').classList.add('hidden');
-                    document.getElementById('step-2').classList.remove('hidden');
-                } else {
-                    errorMsg.innerText = data.message || "Xatolik yuz berdi";
-                    errorMsg.style.display = 'block';
-                }
-            } catch (err) {
-                errorMsg.innerText = "Server bilan aloqa yo'q";
-                errorMsg.style.display = 'block';
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "Ro'yxatdan o'tish";
-            }
+    const TOKEN_KEY = "englishUpStudentToken";
+    const USER_KEY = "englishUpStudent";
+    const $ = (id) => document.getElementById(id);
+
+    function showMessage(id, text, type = "error") {
+      const box = $(id);
+      box.textContent = text;
+      box.className = `message ${type}`;
+    }
+
+    function clearMessage(id) {
+      const box = $(id);
+      box.textContent = "";
+      box.className = "message";
+    }
+
+    function setLoading(button, loading, label) {
+      button.disabled = loading;
+      button.textContent = loading ? "Tekshirilmoqda..." : label;
+    }
+
+    function saveSession(data) {
+      if (!data || !data.token || !data.user) {
+        throw new Error("Server javobida akkaunt ma’lumoti topilmadi.");
+      }
+      if (data.user.role !== "student") {
+        throw new Error("Bu sahifa o‘quvchilar uchun. Admin alohida kirish sahifasidan kirsin.");
+      }
+      localStorage.setItem(TOKEN_KEY, data.token);
+      localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+    }
+
+    function getSession() {
+      const token = localStorage.getItem(TOKEN_KEY);
+      const rawUser = localStorage.getItem(USER_KEY);
+      if (!token || !rawUser) return null;
+      try {
+        const user = JSON.parse(rawUser);
+        return user && user.id ? { token, user } : null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function clearSession() {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(USER_KEY);
+    }
+
+    function showAuth(mode = "signup") {
+      $("authArea").classList.remove("hidden");
+      $("activationPanel").classList.add("hidden");
+      $("activePanel").classList.add("hidden");
+      const signup = mode === "signup";
+      $("signupPanel").classList.toggle("hidden", !signup);
+      $("loginPanel").classList.toggle("hidden", signup);
+      $("signupTab").classList.toggle("active", signup);
+      $("loginTab").classList.toggle("active", !signup);
+    }
+
+    function showActivation(user) {
+      $("authArea").classList.add("hidden");
+      $("activePanel").classList.add("hidden");
+      $("activationPanel").classList.remove("hidden");
+      $("accountInfo").textContent = `${user.name} — ${user.email}`;
+      clearMessage("activationMessage");
+    }
+
+    function showActive(user, subscription) {
+      $("authArea").classList.add("hidden");
+      $("activationPanel").classList.add("hidden");
+      $("activePanel").classList.remove("hidden");
+      const endDate = subscription && subscription.end_date
+        ? new Date(subscription.end_date).toLocaleDateString("uz-UZ")
+        : "";
+      $("activeAccountInfo").textContent = `${user.name} — ${user.email}${endDate ? ` | Amal qilish muddati: ${endDate}` : ""}`;
+    }
+
+    async function apiRequest(url, options = {}) {
+      const response = await fetch(url, options);
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || data.success === false) {
+        throw new Error(data.message || `Server xatosi (${response.status})`);
+      }
+      return data;
+    }
+
+    async function checkSubscription(session) {
+      const data = await apiRequest("/api/subscriptions/me", {
+        method: "GET",
+        headers: { "Authorization": `Bearer ${session.token}` }
+      });
+      return data.subscription || null;
+    }
+
+    async function continueWithSession(session) {
+      try {
+        const subscription = await checkSubscription(session);
+        if (subscription && subscription.status === "active" && new Date(subscription.end_date) > new Date()) {
+          showActive(session.user, subscription);
+        } else {
+          showActivation(session.user);
         }
-
-        // 2. Kodni bazadan tekshirish
-        async function verifyCode() {
-            const code = document.getElementById('codeInput').value.trim();
-            const errorMsg = document.getElementById('error-2');
-            const btn = document.getElementById('btn-step2');
-
-            if (!code) {
-                errorMsg.style.display = 'block';
-                return;
-            }
-            errorMsg.style.display = 'none';
-            btn.disabled = true;
-            btn.innerText = "Tekshirilmoqda...";
-
-            try {
-                // Bazadagi /api/activation-codes/check orqali tekshiramiz
-                const response = await fetch('/api/activation-codes/check', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ code: code, email: userEmail })
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    // Kod to'g'ri bo'lsa, 3-oynaga o'tadi
-                    document.getElementById('step-2').classList.add('hidden');
-                    document.getElementById('step-3').classList.remove('hidden');
-                } else {
-                    errorMsg.innerText = data.message || "Kod noto'g'ri!";
-                    errorMsg.style.display = 'block';
-                }
-            } catch (err) {
-                errorMsg.innerText = "Server bilan aloqa yo'q";
-                errorMsg.style.display = 'block';
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "Tasdiqlash";
-            }
+      } catch (error) {
+        if (/token|auth|sessiya|foydalanuvchi/i.test(error.message)) {
+          clearSession();
+          showAuth("login");
+          showMessage("loginMessage", "Sessiya tugagan. Qayta kiring.");
+        } else {
+          showActivation(session.user);
+          showMessage("activationMessage", "Obuna holatini tekshirib bo‘lmadi. Internet yoki serverni tekshiring.");
         }
-    </script>
+      }
+    }
+
+    $("signupTab").addEventListener("click", () => showAuth("signup"));
+    $("loginTab").addEventListener("click", () => showAuth("login"));
+
+    $("signupForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearMessage("signupMessage");
+      const name = $("signupName").value.trim();
+      const email = $("signupEmail").value.trim().toLowerCase();
+      const password = $("signupPassword").value;
+      const confirm = $("signupPasswordConfirm").value;
+      const button = $("signupButton");
+
+      if (password !== confirm) {
+        showMessage("signupMessage", "Parollar bir-biriga mos kelmaydi.");
+        return;
+      }
+      if (password.length < 8) {
+        showMessage("signupMessage", "Parol kamida 8 ta belgidan iborat bo‘lishi kerak.");
+        return;
+      }
+
+      setLoading(button, true, "Akkaunt yaratish");
+      try {
+        const data = await apiRequest("/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password })
+        });
+        saveSession(data);
+        showMessage("signupMessage", "Akkaunt yaratildi.", "success");
+        await continueWithSession({ token: data.token, user: data.user });
+      } catch (error) {
+        showMessage("signupMessage", error.message);
+      } finally {
+        setLoading(button, false, "Akkaunt yaratish");
+      }
+    });
+
+    $("loginForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearMessage("loginMessage");
+      const email = $("loginEmail").value.trim().toLowerCase();
+      const password = $("loginPassword").value;
+      const button = $("loginButton");
+      setLoading(button, true, "Kirish");
+      try {
+        const data = await apiRequest("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+        saveSession(data);
+        await continueWithSession({ token: data.token, user: data.user });
+      } catch (error) {
+        showMessage("loginMessage", error.message);
+      } finally {
+        setLoading(button, false, "Kirish");
+      }
+    });
+
+    $("activationForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearMessage("activationMessage");
+      const session = getSession();
+      if (!session) {
+        clearSession();
+        showAuth("login");
+        showMessage("loginMessage", "Avval akkauntingizga kiring.");
+        return;
+      }
+
+      const code = $("activationCode").value.trim();
+      const button = $("activationButton");
+      setLoading(button, true, "Kodni tasdiqlash va obunani yoqish");
+      try {
+        await apiRequest("/api/activation-codes/check", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code, email: session.user.email })
+        });
+
+        const redeemed = await apiRequest("/api/activation-codes/redeem", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${session.token}`
+          },
+          body: JSON.stringify({ code })
+        });
+
+        showMessage("activationMessage", redeemed.message || "Obuna faollashtirildi.", "success");
+        showActive(session.user, redeemed.subscription);
+      } catch (error) {
+        showMessage("activationMessage", error.message);
+      } finally {
+        setLoading(button, false, "Kodni tasdiqlash va obunani yoqish");
+      }
+    });
+
+    function logout() {
+      clearSession();
+      $("signupForm").reset();
+      $("loginForm").reset();
+      $("activationForm").reset();
+      showAuth("login");
+    }
+
+    $("logoutButton").addEventListener("click", logout);
+    $("activeLogoutButton").addEventListener("click", logout);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const session = getSession();
+      if (session) continueWithSession(session);
+      else showAuth("signup");
+    });
+  </script>
 </body>
 </html>
