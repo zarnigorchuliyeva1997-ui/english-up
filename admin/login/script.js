@@ -1,3 +1,4 @@
+
 "use strict";
 
 const form = document.getElementById("adminLoginForm");
@@ -11,60 +12,70 @@ function showMessage(text, success = false) {
     message.style.color = success ? "#16803c" : "#d93025";
 }
 
+function setLoading(loading) {
+    loginButton.disabled = loading;
+    loginButton.textContent = loading ? "Tekshirilmoqda..." : "Kirish";
+}
+
 form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const email = emailInput.value.trim().toLowerCase();
     const password = passwordInput.value;
 
-    loginButton.disabled = true;
-    loginButton.textContent = "Tekshirilmoqda...";
     showMessage("");
 
     if (!email || !password) {
         showMessage("Email va parolni kiriting.");
-        loginButton.disabled = false;
-        loginButton.textContent = "Kirish";
         return;
     }
 
+    setLoading(true);
+
     try {
-        const response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+        const response = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
         });
 
-        const data = await response.json();
+        const data = await response.json().catch(() => ({}));
 
-        if (data.success) {
-            // Admin ekanligini tekshirish (role har xil yozilgan bo'lishi mumkin)
-            const userRole = data.user?.role || data.user?.user?.role;
-            
-            if (userRole === 'admin') {
-                localStorage.setItem('englishUpToken', data.token);
-                localStorage.setItem('englishUpAdmin', JSON.stringify(data.user));
-                
-                showMessage("Kirish muvaffaqiyatli. Yo'naltirilmoqda...", true);
-                
-                setTimeout(() => {
-                    window.location.href = "../index.html";
-                }, 1000);
-            } else {
-                showMessage("Sizda admin huquqi yo'q!");
-                loginButton.disabled = false;
-                loginButton.textContent = "Kirish";
-            }
-        } else {
-            showMessage(data.message || "Email yoki parol noto'g'ri.");
-            passwordInput.value = "";
-            loginButton.disabled = false;
-            loginButton.textContent = "Kirish";
+        if (!response.ok || !data.success) {
+            throw new Error(
+                data.message || "Email yoki parol noto‘g‘ri."
+            );
         }
+
+        const user = data.user;
+        const token = data.token;
+
+        if (!user || !token) {
+            throw new Error("Server javobida foydalanuvchi yoki token yo‘q.");
+        }
+
+        if (user.role !== "admin") {
+            throw new Error("Sizda admin huquqi yo‘q.");
+        }
+
+        localStorage.setItem("englishUpToken", token);
+        localStorage.setItem("englishUpAdmin", JSON.stringify(user));
+
+        showMessage("Kirish muvaffaqiyatli. Yo‘naltirilmoqda...", true);
+
+        window.location.replace("../index.html");
+
     } catch (error) {
-        console.error("Login error:", error);
-        showMessage("Server bilan aloqa yo'q.");
-        loginButton.disabled = false;
-        loginButton.textContent = "Kirish";
+        console.error("Admin login error:", error);
+
+        showMessage(error.message || "Server bilan aloqa yo‘q.");
+
+        passwordInput.value = "";
+        setLoading(false);
     }
 });
