@@ -1,4 +1,3 @@
-
 (() => {
   "use strict";
 
@@ -149,7 +148,6 @@
 
       return `
         <tr>
-          <td>${escapeHTML(item.id)}</td>
           <td><code>${codeText}</code></td>
           <td>${escapeHTML(item.email || "—")}</td>
           <td>${escapeHTML(item.plan || "—")}</td>
@@ -311,7 +309,7 @@
     });
 
     $("codePlanFilter")?.addEventListener("change", (event) => {
-      state.plan = event.target.value
+      state.plan = event.target.value && event.target.value !== "all"
         ? PLAN_LABELS[event.target.value] || event.target.value
         : "";
 
