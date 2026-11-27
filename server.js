@@ -92,35 +92,122 @@ app.use("/api/vocabulary", require("./backend/routes/vocabulary"));
 app.use("/api/writing", require("./backend/routes/writing"));
 
 // =========================================
-// FRONTEND FILES
+// FRONTEND ROUTES
 // =========================================
 
-// Asosiy manzil: avval login sahifasi
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "login.html"));
 });
 
-// Login sahifasi
 app.get("/login.html", (req, res) => {
   res.sendFile(path.join(__dirname, "login.html"));
 });
 
-// O'quvchi sayti
 app.get("/index.html", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Asosiy CSS va JS
-app.get("/script.js", (req, res) => {
-  res.sendFile(path.join(__dirname, "script.js"));
+// =========================================
+// STATIC FILE SECURITY
+// =========================================
+
+const blockedPaths = [
+  "backend",
+  "node_modules",
+  ".git",
+  ".github",
+  ".vscode"
+];
+
+const blockedFiles = [
+  "server.js",
+  "package.json",
+  "package-lock.json",
+  "yarn.lock",
+  "pnpm-lock.yaml"
+];
+
+const allowedExtensions = new Set([
+  ".html",
+  ".css",
+  ".js",
+  ".mjs",
+  ".json",
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".gif",
+  ".svg",
+  ".webp",
+  ".ico",
+  ".woff",
+  ".woff2",
+  ".ttf",
+  ".otf",
+  ".mp3",
+  ".wav",
+  ".ogg",
+  ".mp4",
+  ".webm",
+  ".pdf"
+]);
+
+app.use((req, res, next) => {
+  let requestedPath;
+
+  try {
+    requestedPath = decodeURIComponent(req.path);
+  } catch {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid file path"
+    });
+  }
+
+  const normalizedPath = path.posix.normalize(
+    requestedPath.replace(/\\/g, "/")
+  );
+
+  const segments = normalizedPath
+    .split("/")
+    .filter(Boolean);
+
+  const filename = segments[segments.length - 1] || "";
+
+  if (
+    segments.some(segment =>
+      blockedPaths.includes(segment.toLowerCase()) ||
+      segment.startsWith(".")
+    ) ||
+    blockedFiles.includes(filename.toLowerCase()) ||
+    !allowedExtensions.has(path.extname(filename).toLowerCase())
+  ) {
+    return res.status(404).json({
+      success: false,
+      message: "File not found"
+    });
+  }
+
+  next();
 });
 
-app.get("/style.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "style.css"));
-});
+// =========================================
+// FRONTEND STATIC FILES
+// =========================================
 
-// Admin fayllari
-app.use("/admin", express.static(path.join(__dirname, "admin")));
+app.use(express.static(__dirname, {
+  index: false,
+  dotfiles: "deny",
+  fallthrough: true,
+  maxAge: process.env.NODE_ENV === "production"
+    ? "1d"
+    : 0,
+  setHeaders(res, filePath) {
+    if (filePath.endsWith(".html")) {
+      res.setHeader("Cache-Control", "no-cache");
+    }
+  }
+}));
 
 // =========================================
 // 404 HANDLER
