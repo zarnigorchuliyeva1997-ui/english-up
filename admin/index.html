@@ -10,6 +10,8 @@
     <meta name="description" content="English Up platformasining boshqaruv paneli">
 
     <link rel="stylesheet" href="./style.css">
+
+    <script type="module" src="./auth-guard.js"></script>
 </head>
 
 <body>
@@ -36,7 +38,7 @@
             <div class="profile-avatar">A</div>
 
             <div class="profile-details">
-                <strong>Administrator</strong>
+                <strong id="sidebarAdminName">Administrator</strong>
                 <span>Platform Owner</span>
             </div>
 
@@ -188,7 +190,7 @@
                     <div class="topbar-avatar">A</div>
 
                     <div class="topbar-admin-info">
-                        <strong>Admin</strong>
+                        <strong id="topbarAdminName">Admin</strong>
                         <span>Owner</span>
                     </div>
                 </div>
@@ -394,8 +396,8 @@
                         <span class="system-status-icon">●</span>
 
                         <div>
-                            <strong>GitHub Pages</strong>
-                            <span id="firebaseStatus">Mustaqil rejim</span>
+                            <strong>Timeweb API</strong>
+                            <span id="firebaseStatus">Tekshirilmoqda...</span>
                         </div>
                     </div>
 
@@ -404,7 +406,7 @@
 
                         <div>
                             <strong>Admin Session</strong>
-                            <span id="authStatus">Lokal sessiya</span>
+                            <span id="authStatus">JWT session</span>
                         </div>
                     </div>
 
@@ -412,8 +414,8 @@
                         <span class="system-status-icon">●</span>
 
                         <div>
-                            <strong>Local Storage</strong>
-                            <span id="databaseStatus">Brauzer xotirasi</span>
+                            <strong>Database</strong>
+                            <span id="databaseStatus">PostgreSQL</span>
                         </div>
                     </div>
 
@@ -458,7 +460,7 @@
 
 </div>
 
-<script src="./script.js"></script>
+<script src="./script.js" defer></script>
 
 </body>
 </html>
