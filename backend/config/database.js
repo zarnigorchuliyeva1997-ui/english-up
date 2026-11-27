@@ -1,3 +1,4 @@
+
 const { Pool } = require("pg");
 
 const requiredEnv = [
@@ -24,10 +25,9 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
 
-  ssl:
-    process.env.DB_SSL === "true"
-      ? { rejectUnauthorized: false }
-      : false,
+  ssl: process.env.DB_SSL === "true"
+    ? { rejectUnauthorized: true }
+    : false,
 
   max: 10,
   idleTimeoutMillis: 30000,
@@ -36,10 +36,7 @@ const pool = new Pool({
 });
 
 pool.on("error", (error) => {
-  console.error(
-    "Unexpected PostgreSQL pool error:",
-    error
-  );
+  console.error("Unexpected PostgreSQL pool error:", error);
 });
 
 async function testDatabase() {
