@@ -143,6 +143,14 @@ button {
   margin-bottom: 25px;
 }
 
+.hero-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
 .primary-btn {
   background: white;
   color: var(--purple);
@@ -172,6 +180,7 @@ button {
   box-shadow: var(--shadow);
   border: 1px solid #f0edf8;
   transition: .25s;
+  cursor: pointer;
 }
 
 .feature-card:hover {
@@ -188,6 +197,11 @@ button {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.6;
+}
+
+.feature-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
 }
 
 .page-title {
@@ -243,6 +257,19 @@ button {
   line-height: 1.6;
 }
 
+.level-icon {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.level-card span,
+.lesson-card span {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--purple);
+  font-weight: 900;
+}
+
 .lesson-number {
   width: 43px;
   height: 43px;
@@ -262,6 +289,12 @@ button {
   padding: 22px;
   box-shadow: var(--shadow);
   margin: 22px 0;
+}
+
+.progress-card p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .progress-track {
@@ -365,128 +398,6 @@ button {
   justify-content: space-between;
   gap: 12px;
   margin-top: 25px;
-}
-
-.message {
-  display: none;
-  position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #29213e;
-  color: white;
-  padding: 14px 22px;
-  border-radius: 14px;
-  z-index: 200;
-  box-shadow: var(--shadow);
-  max-width: 90%;
-  text-align: center;
-}
-
-.footer {
-  text-align: center;
-  padding: 28px 15px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-@media (max-width: 650px) {
-  .header {
-    min-height: 65px;
-    padding: 10px 17px;
-  }
-
-  .logo {
-    font-size: 22px;
-  }
-
-  .page {
-    padding: 22px 15px 40px;
-  }
-
-  .hero {
-    padding: 42px 23px;
-    border-radius: 22px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .level-list,
-  .lesson-list {
-    grid-template-columns: 1fr;
-    gap: 13px;
-  }
-
-  .page-title {
-    font-size: 26px;
-  }
-
-  .lesson-content {
-    padding: 17px;
-  }
-  }
-  /* =====================================
-   ENGLISH UP — SCRIPT.JS ELEMENTS
-===================================== */
-
-.nav-btn {
-  padding: 10px 13px;
-  border-radius: 11px;
-  background: transparent;
-  color: var(--muted);
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.nav-btn:hover,
-.nav-btn.active {
-  background: var(--purple-light);
-  color: var(--purple);
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  flex-wrap: wrap;
-}
-
-.hero-label {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-}
-
-.feature-card {
-  cursor: pointer;
-}
-
-.feature-icon {
-  font-size: 30px;
-  margin-bottom: 8px;
-}
-
-.level-icon {
-  font-size: 30px;
-  margin-bottom: 12px;
-}
-
-.level-card span,
-.lesson-card span {
-  display: inline-block;
-  margin-top: 14px;
-  color: var(--purple);
-  font-weight: 900;
 }
 
 .lesson-body {
@@ -611,20 +522,53 @@ button {
   line-height: 1.7;
 }
 
-.message.show {
-  display: block;
-  animation: appear .25s ease;
-}
-
-.progress-card p {
-  margin-top: 10px;
-  color: var(--muted);
-  font-weight: 700;
-}
-
 #progressDetails p {
   padding: 9px 0;
   border-bottom: 1px solid #f0edf8;
+}
+
+.nav-btn {
+  padding: 10px 13px;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: var(--purple-light);
+  color: var(--purple);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.message {
+  display: none;
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #29213e;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 14px;
+  z-index: 200;
+  box-shadow: var(--shadow);
+  max-width: 90%;
+  text-align: center;
+}
+
+.message.show {
+  display: block;
+  animation: appear .25s ease;
 }
 
 button:focus-visible,
@@ -635,6 +579,13 @@ button:focus-visible,
   outline-offset: 3px;
 }
 
+.footer {
+  text-align: center;
+  padding: 28px 15px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 @media (max-width: 800px) {
   .header {
     flex-wrap: wrap;
@@ -643,6 +594,49 @@ button:focus-visible,
   .main-nav {
     order: 3;
     width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .header {
+    min-height: 65px;
+    padding: 10px 17px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .page {
+    padding: 22px 15px 40px;
+  }
+
+  .hero {
+    padding: 42px 23px;
+    border-radius: 22px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .level-list,
+  .lesson-list {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .page-title {
+    font-size: 26px;
+  }
+
+  .lesson-content {
+    padding: 17px;
   }
 }
 
