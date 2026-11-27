@@ -23,7 +23,29 @@ router.post(
   "/upload",
   auth,
   admin,
-  upload.single("file"),
+  (req, res, next) => {
+    upload.single("file")(req, res, (error) => {
+      if (error) {
+        if (error.code === "LIMIT_FILE_SIZE") {
+          return res.status(413).json({
+            success: false,
+            message: "Fayl hajmi 100 MB dan oshmasligi kerak."
+          });
+        }
+
+        if (error.message === "File type is not allowed") {
+          return res.status(400).json({
+            success: false,
+            message: "Bu fayl turiga ruxsat berilmagan."
+          });
+        }
+
+        return next(error);
+      }
+
+      next();
+    });
+  },
   async (req, res, next) => {
     try {
       if (!req.file) {
@@ -34,7 +56,6 @@ router.post(
       }
 
       const folder = req.body?.folder || "media";
-
       const file = await uploadFile(req.file, folder);
 
       return res.status(201).json({
@@ -77,6 +98,13 @@ router.get(
         expiresIn: 900
       });
     } catch (error) {
+      if (error.message === "Invalid file key") {
+        return res.status(400).json({
+          success: false,
+          message: "Fayl manzili noto‘g‘ri."
+        });
+      }
+
       next(error);
     }
   }
@@ -110,6 +138,13 @@ router.delete(
         message: "Fayl muvaffaqiyatli o‘chirildi."
       });
     } catch (error) {
+      if (error.message === "Invalid file key") {
+        return res.status(400).json({
+          success: false,
+          message: "Fayl manzili noto‘g‘ri."
+        });
+      }
+
       next(error);
     }
   }
