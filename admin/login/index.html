@@ -27,12 +27,13 @@
                 <p>Davom etish uchun ma'lumotlaringizni kiriting.</p>
             </div>
 
-            <form id="adminLoginForm">
+            <form id="adminLoginForm" autocomplete="on">
 
                 <label for="email">Email manzil</label>
                 <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="Admin email"
                     autocomplete="username"
                     required
@@ -42,6 +43,7 @@
                 <input
                     type="password"
                     id="password"
+                    name="password"
                     placeholder="Parolingiz"
                     autocomplete="current-password"
                     required
@@ -51,7 +53,7 @@
                     Kirish
                 </button>
 
-                <p id="loginMessage" role="status"></p>
+                <p id="loginMessage" role="status" aria-live="polite"></p>
 
             </form>
 
@@ -64,8 +66,7 @@
 
     </main>
 
-    <!-- Firebase bilan ishlaydigan asosiy JavaScript -->
-    <script type="module" src="./script.js"></script>
+    <script src="./script.js" defer></script>
 
 </body>
 </html>
