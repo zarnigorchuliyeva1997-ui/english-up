@@ -9,13 +9,15 @@
 
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="./style.css">
+
+  <script type="module" src="../auth-guard.js"></script>
 </head>
 
 <body>
 
 <div class="admin-layout">
 
-  <aside class="sidebar" id="adminSidebar">
+  <aside class="sidebar" id="sidebar">
 
     <div class="sidebar-brand">
       <div class="brand-logo">EU</div>
@@ -25,87 +27,87 @@
       </div>
     </div>
 
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav sidebar-navigation">
 
-      <a href="../index.html" class="nav-link">
+      <a href="../index.html" class="nav-link" data-page="dashboard">
         <span>📊</span> Dashboard
       </a>
 
       <div class="nav-section-title">USER MANAGEMENT</div>
 
-      <a href="../students/index.html" class="nav-link">
+      <a href="../students/index.html" class="nav-link" data-page="students">
         <span>👨‍🎓</span> Students
       </a>
 
-      <a href="../subscriptions/index.html" class="nav-link">
+      <a href="../subscriptions/index.html" class="nav-link" data-page="subscriptions">
         <span>💳</span> Subscriptions
       </a>
 
-      <a href="./index.html" class="nav-link active">
+      <a href="./index.html" class="nav-link active" data-page="activation-codes" aria-current="page">
         <span>🔑</span> Activation Codes
       </a>
 
       <div class="nav-section-title">EDUCATION</div>
 
-      <a href="../courses/index.html" class="nav-link">
+      <a href="../courses/index.html" class="nav-link" data-page="courses">
         <span>📚</span> Courses
       </a>
 
-      <a href="../lessons/index.html" class="nav-link">
+      <a href="../lessons/index.html" class="nav-link" data-page="lessons">
         <span>📖</span> Lessons
       </a>
 
-      <a href="../vocabulary/index.html" class="nav-link">
+      <a href="../vocabulary/index.html" class="nav-link" data-page="vocabulary">
         <span>🔤</span> Vocabulary
       </a>
 
-      <a href="../tests/index.html" class="nav-link">
+      <a href="../tests/index.html" class="nav-link" data-page="tests">
         <span>📝</span> Tests
       </a>
 
-      <a href="../listening/index.html" class="nav-link">
+      <a href="../listening/index.html" class="nav-link" data-page="listening">
         <span>🎧</span> Listening
       </a>
 
-      <a href="../reading/index.html" class="nav-link">
+      <a href="../reading/index.html" class="nav-link" data-page="reading">
         <span>📄</span> Reading
       </a>
 
-      <a href="../writing/index.html" class="nav-link">
+      <a href="../writing/index.html" class="nav-link" data-page="writing">
         <span>✍️</span> Writing
       </a>
 
-      <a href="../speaking/index.html" class="nav-link">
+      <a href="../speaking/index.html" class="nav-link" data-page="speaking">
         <span>🎙️</span> Speaking
       </a>
 
       <div class="nav-section-title">COMMUNICATION</div>
 
-      <a href="../announcements/index.html" class="nav-link">
+      <a href="../announcements/index.html" class="nav-link" data-page="announcements">
         <span>📢</span> Announcements
       </a>
 
-      <a href="../messages/index.html" class="nav-link">
+      <a href="../messages/index.html" class="nav-link" data-page="messages">
         <span>✉️</span> Messages
       </a>
 
       <div class="nav-section-title">REPORTS</div>
 
-      <a href="../results/index.html" class="nav-link">
+      <a href="../results/index.html" class="nav-link" data-page="results">
         <span>🏆</span> Results
       </a>
 
-      <a href="../statistics/index.html" class="nav-link">
+      <a href="../statistics/index.html" class="nav-link" data-page="statistics">
         <span>📈</span> Statistics
       </a>
 
       <div class="nav-section-title">SYSTEM</div>
 
-      <a href="../security/index.html" class="nav-link">
+      <a href="../security/index.html" class="nav-link" data-page="security">
         <span>🛡️</span> Security
       </a>
 
-      <a href="../backup/index.html" class="nav-link">
+      <a href="../backup/index.html" class="nav-link" data-page="backup">
         <span>💾</span> Backup
       </a>
 
@@ -115,7 +117,7 @@
       <div class="admin-profile">
         <div class="profile-avatar">A</div>
         <div>
-          <strong>Administrator</strong>
+          <strong id="sidebarAdminName">Administrator</strong>
           <small>Owner account</small>
         </div>
       </div>
@@ -123,12 +125,20 @@
 
   </aside>
 
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
   <main class="admin-main">
 
     <header class="topbar">
 
       <div class="topbar-left">
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
           ☰
         </button>
 
@@ -433,8 +443,9 @@
           </p>
 
           <p>
-            Ushbu GitHub mustaqil rejimida ma’lumotlar shu brauzer
-            xotirasida saqlanadi. Boshqa qurilmalar bilan sinxronlashmaydi.
+            Aktivatsiya kodlari Timeweb serveridagi PostgreSQL
+            ma’lumotlar bazasida saqlanishi rejalashtirilgan.
+            Ular boshqa qurilmalardan ham server orqali boshqariladi.
           </p>
         </div>
 
