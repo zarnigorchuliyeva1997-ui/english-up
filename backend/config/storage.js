@@ -1,4 +1,8 @@
 
+const {
+  S3Client
+} = require("@aws-sdk/client-s3");
+
 const storageConfig = {
   endpoint: process.env.S3_ENDPOINT,
   region: process.env.S3_REGION || "us-east-1",
@@ -8,11 +12,18 @@ const storageConfig = {
 };
 
 function validateStorageConfig() {
-  const missing = Object.entries(storageConfig)
-    .filter(([key, value]) => !value && key !== "region")
-    .map(([key]) => key);
+  const required = [
+    "endpoint",
+    "bucket",
+    "accessKeyId",
+    "secretAccessKey"
+  ];
 
-  if (missing.length) {
+  const missing = required.filter(
+    (key) => !storageConfig[key]
+  );
+
+  if (missing.length > 0) {
     throw new Error(
       `Missing S3 configuration: ${missing.join(", ")}`
     );
@@ -21,7 +32,19 @@ function validateStorageConfig() {
   return true;
 }
 
+const s3 = new S3Client({
+  endpoint: storageConfig.endpoint,
+  region: storageConfig.region,
+  credentials: {
+    accessKeyId: storageConfig.accessKeyId,
+    secretAccessKey: storageConfig.secretAccessKey
+  },
+  forcePathStyle: true
+});
+
 module.exports = {
+  s3,
+  bucketName: storageConfig.bucket,
   storageConfig,
   validateStorageConfig
 };
