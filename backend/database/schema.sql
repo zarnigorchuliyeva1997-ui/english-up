@@ -67,16 +67,28 @@ CREATE TABLE IF NOT EXISTS activation_codes (
         REFERENCES users(id) ON DELETE CASCADE,
     plan VARCHAR(100) NOT NULL,
     duration_days INTEGER NOT NULL CHECK (duration_days > 0),
+    note TEXT,
     used_at TIMESTAMPTZ,
+    revoked_at TIMESTAMPTZ,
     expires_at TIMESTAMPTZ,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Mavjud jadval bo‘lsa ham yangi ustunlarni xavfsiz qo‘shadi
+ALTER TABLE activation_codes
+ADD COLUMN IF NOT EXISTS note TEXT;
+
+ALTER TABLE activation_codes
+ADD COLUMN IF NOT EXISTS revoked_at TIMESTAMPTZ;
 
 CREATE INDEX IF NOT EXISTS idx_activation_codes_user
 ON activation_codes(assigned_user_id);
 
 CREATE INDEX IF NOT EXISTS idx_activation_codes_used
 ON activation_codes(used_at);
+
+CREATE INDEX IF NOT EXISTS idx_activation_codes_revoked
+ON activation_codes(revoked_at);
 
 
 -- =========================================
@@ -617,7 +629,8 @@ CREATE TRIGGER learning_progress_updated_at
 BEFORE UPDATE ON learning_progress
 FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 
-DROP TRIGGER IF EXISTS tests_updated_at ON tests;
+DROP TRIGGER IF EXISTS tests_updated_at ON tests
+;
 CREATE TRIGGER tests_updated_at
 BEFORE UPDATE ON tests
 FOR EACH ROW EXECUTE FUNCTION update_updated_at();
