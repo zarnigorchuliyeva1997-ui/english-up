@@ -1,4 +1,3 @@
-
 const express = require("express");
 const router = express.Router();
 
@@ -170,6 +169,217 @@ router.post(
         });
       }
 
+      next(error);
+    }
+  }
+);
+
+// Admin so'zni yangilaydi
+router.put(
+  "/:id",
+  authenticateToken,
+  requireAdmin,
+  async (req, res, next) => {
+    try {
+      const wordId = Number(req.params.id);
+
+      if (!Number.isSafeInteger(wordId) || wordId < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid vocabulary ID"
+        });
+      }
+
+      const {
+        level,
+        dayNumber,
+        word,
+        translation,
+        pronunciation,
+        example
+      } = req.body || {};
+
+      const updates = {
+        level,
+        day_number: dayNumber,
+        word,
+        translation,
+        pronunciation,
+        example
+      };
+
+      if (level !== undefined && !allowedLevels.includes(level)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid vocabulary level"
+        });
+      }
+
+      if (
+        dayNumber !== undefined &&
+        (!Number.isInteger(dayNumber) || dayNumber < 1)
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid day number"
+        });
+      }
+
+      if (
+        word !== undefined &&
+        (typeof word !== "string" || !word.trim())
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid word value"
+        });
+      }
+
+      if (
+        translation !== undefined &&
+        (typeof translation !== "string" || !translation.trim())
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid translation value"
+        });
+      }
+
+      const nullableStringFields = ["pronunciation", "example"];
+
+      for (const field of nullableStringFields) {
+        const value = updates[field];
+
+        if (
+          value !== undefined &&
+          value !== null &&
+          typeof value !== "string"
+        ) {
+          return res.status(400).json({
+            success: false,
+            message: `Invalid ${field} value`
+          });
+        }
+      }
+
+      const fields = [];
+      const values = [];
+
+      for (const [column, value] of Object.entries(updates)) {
+        if (value === undefined) {
+          continue;
+        }
+
+        let normalized = value;
+
+        if (typeof value === "string") {
+          normalized = value.trim();
+        }
+
+        if (column === "pronunciation" || column === "example") {
+          if (normalized === "") {
+            normalized = null;
+          }
+        }
+
+        values.push(normalized);
+        fields.push(`${column} = $${values.length}`);
+      }
+
+      if (!fields.length) {
+        return res.status(400).json({
+          success: false,
+          message: "No vocabulary fields provided"
+        });
+      }
+
+      fields.push("updated_at = NOW()");
+      values.push(wordId);
+
+      const result = await pool.query(
+        `UPDATE vocabulary
+         SET ${fields.join(", ")}
+         WHERE id = $${values.length}
+         RETURNING
+           id,
+           level,
+           day_number,
+           word,
+           translation,
+           pronunciation,
+           example,
+           created_at,
+           updated_at`,
+        values
+      );
+
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Vocabulary word not found"
+        });
+      }
+
+      res.json({
+        success: true,
+        word: result.rows[0]
+      });
+    } catch (error) {
+      if (error.code === "23505") {
+        return res.status(409).json({
+          success: false,
+          message: "This vocabulary word already exists for this level and day."
+        });
+      }
+
+      next(error);
+    }
+  }
+);
+
+// Admin so'zni o'chiradi
+router.delete(
+  "/:id",
+  authenticateToken,
+  requireAdmin,
+  async (req, res, next) => {
+    try {
+      const wordId = Number(req.params.id);
+
+      if (!Number.isSafeInteger(wordId) || wordId < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid vocabulary ID"
+        });
+      }
+
+      const result = await pool.query(
+        `DELETE FROM vocabulary
+         WHERE id = $1
+         RETURNING
+           id,
+           level,
+           day_number,
+           word,
+           translation,
+           pronunciation,
+           example`,
+        [wordId]
+      );
+
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Vocabulary word not found"
+        });
+      }
+
+      res.json({
+        success: true,
+        message: "Vocabulary word deleted",
+        word: result.rows[0]
+      });
+    } catch (error) {
       next(error);
     }
   }
