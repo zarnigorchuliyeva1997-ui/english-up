@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  createActivationCode,
+  createActivationCodes,
   verifyActivationCode,
   redeemActivationCode,
   getActivationCodes,
@@ -13,52 +13,51 @@ const {
 const authenticateToken = require("../middleware/auth");
 const requireAdmin = require("../middleware/admin");
 
-function handleError(error) {
-  const messages = {
-    "Obuna muddati noto'g'ri": 400,
-    "Obuna rejasi noto'g'ri": 400,
-    "O'quvchi email manzili ko'rsatilmagan": 400,
-    "O'quvchi topilmadi": 404,
-    "Aktivatsiya kodi kiritilmagan": 400,
-    "Aktivatsiya kodi noto'g'ri": 404,
-    "Bu kod boshqa foydalanuvchiga biriktirilgan": 403,
-    "Bu kod avval ishlatilgan": 409,
-    "Aktivatsiya kodining muddati tugagan": 410,
-    "Kod topilmadi yoki u allaqachon ishlatilgan": 404,
-    "Email manzili kiritilmagan": 400,
-    "Kodning amal qilish sanasi noto'g'ri": 400
-  };
+function sendError(res, error) {
+  const status = error.statusCode || 500;
 
-  if (messages[error.message]) {
-    error.statusCode = messages[error.message];
+  if (status >= 500) {
+    console.error("Activation code error:", error);
   }
 
-  return error;
+  return res.status(status).json({
+    success: false,
+    message: error.message || "Serverda xatolik yuz berdi."
+  });
 }
 
-// O'quvchi: kod va email mosligini tekshirish
-router.post("/check", async (req, res, next) => {
+// Aktivatsiya kodini tekshirish
+router.post("/check", async (req, res) => {
   try {
     const { code, email } = req.body || {};
 
-    const result = await verifyActivationCode(code, email);
+    if (!code || !email) {
+      return res.status(400).json({
+        success: false,
+        message: "Kod va email kiritilishi kerak."
+      });
+    }
 
-    res.json({
+    const result = await verifyActivationCode(
+      String(code).trim(),
+      String(email).trim().toLowerCase()
+    );
+
+    return res.json({
       success: true,
-      message: "Activation code is valid",
-      details: result
+      ...result
     });
   } catch (error) {
-    next(handleError(error));
+    return sendError(res, error);
   }
 });
 
-// Admin: kodlar ro'yxati
+// Admin: aktivatsiya kodlari ro‘yxati
 router.get(
   "/admin/list",
   authenticateToken,
   requireAdmin,
-  async (req, res, next) => {
+  async (req, res) => {
     try {
       const result = await getActivationCodes({
         page: req.query.page,
@@ -68,117 +67,140 @@ router.get(
         plan: req.query.plan
       });
 
-      res.json({
+      return res.json({
         success: true,
         ...result
       });
     } catch (error) {
-      next(handleError(error));
+      return sendError(res, error);
     }
   }
 );
 
-// Admin: Gmail uchun bitta yoki bir nechta kod yaratish
+// Admin: yangi kodlar yaratish
 router.post(
   "/admin/create",
   authenticateToken,
   requireAdmin,
-  async (req, res, next) => {
+  async (req, res) => {
     try {
-      const {
-        email,
-        plan,
-        durationDays,
-        quantity = 1
-      } = req.body || {};
+      const { email, plan, durationDays, quantity, note } = req.body || {};
 
-      const count = Number(quantity);
+      const normalizedEmail = String(email || "").trim().toLowerCase();
+      const normalizedPlan = String(plan || "").trim();
+      const days = Number(durationDays);
+      const amount = Number(quantity ?? 1);
 
-      if (!Number.isInteger(count) || count < 1 || count > 100) {
+      if (!normalizedEmail || !normalizedPlan) {
         return res.status(400).json({
           success: false,
-          message: "Kodlar soni 1 dan 100 gacha bo'lishi kerak."
+          message: "Email va obuna rejasi kiritilishi kerak."
         });
       }
 
-      const created = [];
-
-      for (let i = 0; i < count; i++) {
-        const result = await createActivationCode({
-          email,
-          plan,
-          durationDays
-        });
-
-        created.push({
-          id: result.details.id,
-          code: result.activationCode,
-          email: result.email,
-          plan: result.details.plan,
-          durationDays: result.details.duration_days,
-          createdAt: result.details.created_at,
-          expiresAt: result.details.expires_at
+      if (
+        !Number.isInteger(days) ||
+        days < 1 ||
+        days > 3650
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Obuna muddati noto‘g‘ri."
         });
       }
 
-      res.status(201).json({
+      if (
+        !Number.isInteger(amount) ||
+        amount < 1 ||
+        amount > 100
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Kodlar soni 1 dan 100 gacha bo‘lishi kerak."
+        });
+      }
+
+      const items = await createActivationCodes({
+        email: normalizedEmail,
+        plan: normalizedPlan,
+        durationDays: days,
+        quantity: amount,
+        note: String(note || "").trim()
+      });
+
+      return res.status(201).json({
         success: true,
-        message: `${created.length} ta kod yaratildi.`,
-        items: created
+        message: `${items.length} ta aktivatsiya kodi yaratildi.`,
+        items
       });
     } catch (error) {
-      next(handleError(error));
+      return sendError(res, error);
     }
   }
 );
 
-// Admin: ishlatilmagan kodni bekor qilish
+// Admin: kodni bekor qilish
 router.delete(
   "/admin/:id",
   authenticateToken,
   requireAdmin,
-  async (req, res, next) => {
+  async (req, res) => {
     try {
-      const result = await revokeActivationCode(req.params.id);
+      const id = Number(req.params.id);
 
-      res.json({
+      if (!Number.isSafeInteger(id) || id <= 0) {
+        return res.status(400).json({
+          success: false,
+          message: "Aktivatsiya kodi ID raqami noto‘g‘ri."
+        });
+      }
+
+      const result = await revokeActivationCode(id);
+
+      return res.json({
         success: true,
-        message: "Activation code cancelled",
-        id: result.id
+        message: "Aktivatsiya kodi bekor qilindi.",
+        item: result
       });
     } catch (error) {
-      next(handleError(error));
+      return sendError(res, error);
     }
   }
 );
 
-// O'quvchi: o'z kodini obunaga aylantirish
+// O‘quvchi: kodni ishlatish
 router.post(
   "/redeem",
   authenticateToken,
-  async (req, res, next) => {
+  async (req, res) => {
     try {
-      const { code } = req.body || {};
+      const code = String(req.body?.code || "").trim();
 
-      if (typeof code !== "string" || !code.trim()) {
+      if (!code) {
         return res.status(400).json({
           success: false,
-          message: "Activation code is required"
+          message: "Aktivatsiya kodini kiriting."
         });
       }
 
-      const result = await redeemActivationCode(
-        req.user.id,
-        code.trim()
-      );
+      const userId = req.user?.id;
 
-      res.json({
+      if (!userId) {
+        return res.status(401).json({
+          success: false,
+          message: "Foydalanuvchi sessiyasi topilmadi."
+        });
+      }
+
+      const result = await redeemActivationCode(userId, code);
+
+      return res.json({
         success: true,
-        message: "Subscription activated successfully",
-        subscription: result.subscription
+        message: "Obuna muvaffaqiyatli faollashtirildi.",
+        subscription: result
       });
     } catch (error) {
-      next(handleError(error));
+      return sendError(res, error);
     }
   }
 );
