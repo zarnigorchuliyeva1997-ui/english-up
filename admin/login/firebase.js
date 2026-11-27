@@ -1,45 +1,50 @@
 
-/* ==========================================
-   ENGLISH UP
-   LOCAL AUTHENTICATION CONFIGURATION
-   GitHub Independent Mode
-   Version: 2.0.0
-   ========================================== */
-
 "use strict";
 
-const STORAGE_KEY = "englishUpAdminSession";
+const TOKEN_KEY = "englishUpToken";
+const ADMIN_KEY = "englishUpAdmin";
 
 export function getAdminSession() {
     try {
-        const session = localStorage.getItem(STORAGE_KEY);
-        return session ? JSON.parse(session) : null;
+        const token = localStorage.getItem(TOKEN_KEY);
+        const adminData = localStorage.getItem(ADMIN_KEY);
+
+        if (!token || !adminData) {
+            return null;
+        }
+
+        const admin = JSON.parse(adminData);
+
+        if (!admin || admin.role !== "admin") {
+            return null;
+        }
+
+        return {
+            token,
+            admin,
+            loggedIn: true
+        };
     } catch (error) {
-        console.error("Session error:", error);
+        console.error("Admin session error:", error);
         return null;
     }
 }
 
-export function createAdminSession(username) {
-    const session = {
-        username: String(username),
-        loggedIn: true,
-        createdAt: new Date().toISOString()
-    };
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(session)
-    );
-
-    return session;
-}
-
 export function clearAdminSession() {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(ADMIN_KEY);
 }
 
 export function isAdminLoggedIn() {
+    return Boolean(getAdminSession());
+}
+
+export function getAdminToken() {
     const session = getAdminSession();
-    return Boolean(session?.loggedIn);
+    return session ? session.token : null;
+}
+
+export function getAdminData() {
+    const session = getAdminSession();
+    return session ? session.admin : null;
 }
