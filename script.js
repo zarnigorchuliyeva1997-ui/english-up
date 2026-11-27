@@ -117,7 +117,7 @@ const lessons = [
     questions: [
       M('"Good morning" tarjimasi nima?', ["Xayrli tun", "Xayrli tong", "Xayr"], 1),
       M('"Thank you" nimani anglatadi?', ["Rahmat", "Salom", "Xayr"], 0),
-      M('"What is your name?" tarjimasi?", ["Qayerdansiz?", "Yoshingiz nechida?", "Ismingiz nima?"], 2),
+      M("\"What is your name?\" tarjimasi?", ["Qayerdansiz?", "Yoshingiz nechida?", "Ismingiz nima?"], 2),
       M('"I am fine" tarjimasi nima?', ["Men charchadim", "Men yaxshiman", "Men uydaman"], 1),
       M('"Goodbye" nimani anglatadi?', ["Xayr", "Rahmat", "Salom"], 0)
     ]
@@ -255,12 +255,11 @@ const lessons = [
       M("I bilan qaysi shakl ishlatiladi?", ["Is", "Am", "Are"], 1),
       M("She bilan qaysi shakl ishlatiladi?", ["Are", "Am", "Is"], 2),
       M("They bilan qaysi shakl ishlatiladi?", ["Are", "Is", "Am"], 0),
-      M('"I am a student" tarjimasi?", ["Men o‘qituvchiman", "Men o‘quvchiman", "U o‘quvchi"], 1),
+      M('"I am a student" tarjimasi?', ["Men o‘qituvchiman", "Men o‘quvchiman", "U o‘quvchi"], 1),
       M("He ___ happy.", ["am", "are", "is"], 2)
     ]
   },
-
-  {
+     {
     id: 6,
     title: "Nouns and Articles",
     description: "Otlar va a, an, the artikllari.",
@@ -295,7 +294,7 @@ const lessons = [
     questions: [
       M('"Book" qanday so‘z turkumi?', ["Fe'l", "Ot", "Sifat"], 1),
       M("Qaysi biri to‘g‘ri?", ["A apple", "An apple", "The an apple"], 1),
-      M('"A book" tarjimasi?", ["Bitta kitob", "Kitoblar", "Kitob o‘qimoq"], 0),
+      M('"A book" tarjimasi?', ["Bitta kitob", "Kitoblar", "Kitob o‘qimoq"], 0),
       M('"An" qachon ishlatiladi?', ["Har doim", "Unli tovush oldidan", "Faqat fe'l oldidan"], 1),
       M('"The" nimaga ishlatiladi?', ["Aniq narsaga", "Faqat odamlarga", "Faqat fe'llarga"], 0)
     ]
@@ -335,7 +334,7 @@ const lessons = [
       M("Uzoqdagi bitta narsa uchun qaysi so‘z ishlatiladi?", ["That", "This", "These"], 0),
       M('"These" tarjimasi nima?', ["Ana u", "Bular", "Bu"], 1),
       M('"Those" tarjimasi nima?', ["Ana ular", "Bular", "Bu"], 0),
-      M('"This is a book" tarjimasi?", ["Ana u kitob", "Bu kitob", "Bular kitoblar"], 1)
+      M('"This is a book" tarjimasi?', ["Ana u kitob", "Bu kitob", "Bular kitoblar"], 1)
     ]
   },
 
@@ -586,7 +585,6 @@ function openProgress() {
   updateProgress();
   showPage("progressPage");
 }
-
 /* =====================================
    BEGINNER LESSON LIST
 ===================================== */
