@@ -111,21 +111,21 @@ app.get("/index.html", (req, res) => {
 // STATIC FILE SECURITY
 // =========================================
 
-const blockedPaths = [
+const blockedPaths = new Set([
   "backend",
   "node_modules",
   ".git",
   ".github",
   ".vscode"
-];
+]);
 
-const blockedFiles = [
+const blockedFiles = new Set([
   "server.js",
   "package.json",
   "package-lock.json",
   "yarn.lock",
   "pnpm-lock.yaml"
-];
+]);
 
 const allowedExtensions = new Set([
   ".html",
@@ -153,6 +153,13 @@ const allowedExtensions = new Set([
 ]);
 
 app.use((req, res, next) => {
+  if (req.method !== "GET" && req.method !== "HEAD") {
+    return res.status(404).json({
+      success: false,
+      message: "File not found"
+    });
+  }
+
   let requestedPath;
 
   try {
@@ -174,13 +181,25 @@ app.use((req, res, next) => {
 
   const filename = segments[segments.length - 1] || "";
 
+  const containsBlockedPath = segments.some(segment => {
+    const name = segment.toLowerCase();
+
+    return (
+      blockedPaths.has(name) ||
+      name.startsWith(".")
+    );
+  });
+
+  const isBlockedFile = blockedFiles.has(
+    filename.toLowerCase()
+  );
+
+  const extension = path.extname(filename).toLowerCase();
+
   if (
-    segments.some(segment =>
-      blockedPaths.includes(segment.toLowerCase()) ||
-      segment.startsWith(".")
-    ) ||
-    blockedFiles.includes(filename.toLowerCase()) ||
-    !allowedExtensions.has(path.extname(filename).toLowerCase())
+    containsBlockedPath ||
+    isBlockedFile ||
+    !allowedExtensions.has(extension)
   ) {
     return res.status(404).json({
       success: false,
@@ -199,13 +218,17 @@ app.use(express.static(__dirname, {
   index: false,
   dotfiles: "deny",
   fallthrough: true,
+
   maxAge: process.env.NODE_ENV === "production"
     ? "1d"
     : 0,
+
   setHeaders(res, filePath) {
     if (filePath.endsWith(".html")) {
       res.setHeader("Cache-Control", "no-cache");
     }
+
+    res.setHeader("X-Content-Type-Options", "nosniff");
   }
 }));
 
@@ -232,6 +255,10 @@ app.use((error, req, res, next) => {
     code: error.code,
     stack: error.stack
   });
+
+  if (res.headersSent) {
+    return next(error);
+  }
 
   const statusCode =
     Number.isInteger(error.statusCode) &&
