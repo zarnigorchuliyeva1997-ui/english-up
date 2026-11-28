@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -53,10 +52,12 @@
 
     <header class="topbar">
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
       <div class="topbar-title">
         <strong>Vocabulary</strong>
         <small>Manage vocabulary and word collections</small>
       </div>
+
       <div class="topbar-actions">
         <span class="admin-badge">Administrator</span>
       </div>
@@ -70,206 +71,247 @@
           <h1>Vocabulary Management</h1>
           <p>Organize words, translations, pronunciation and daily plans.</p>
         </div>
-        <button class="primary-button" id="addWordBtn">+ Add New Word</button>
+
+        <button class="primary-button" id="addWordBtn">
+          + Add New Word
+        </button>
       </div>
 
       <div class="vocabulary-stats">
+
         <article class="stat-card">
           <span>Total Words</span>
           <strong id="totalWords">0</strong>
           <small>All vocabulary entries</small>
         </article>
+
         <article class="stat-card">
           <span>Beginner</span>
           <strong id="beginnerWords">0</strong>
           <small>Beginner vocabulary</small>
         </article>
+
         <article class="stat-card">
           <span>Other Levels</span>
           <strong id="otherWords">0</strong>
           <small>All other levels</small>
         </article>
+
         <article class="stat-card">
-          <span>Categories</span>
+          <span>Levels</span>
           <strong id="wordCategories">0</strong>
-          <small>Vocabulary categories</small>
+          <small>Vocabulary levels</small>
         </article>
+
       </div>
 
       <section class="panel">
+
         <div class="panel-heading">
           <div>
             <h2>All Vocabulary</h2>
             <p>Search, filter and manage vocabulary entries.</p>
           </div>
-          <button class="secondary-button" id="refreshWords">↻ Refresh</button>
+
+          <button class="secondary-button" id="refreshWords">
+            ↻ Refresh
+          </button>
         </div>
 
         <div class="vocabulary-toolbar">
-          <input type="search" id="wordSearch" placeholder="Search English or Uzbek word...">
+
+          <input
+            type="search"
+            id="wordSearch"
+            placeholder="Search English or Uzbek word..."
+          >
 
           <select id="wordLevelFilter">
             <option value="all">All levels</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Elementary">Elementary</option>
-            <option value="Pre-Intermediate">Pre-Intermediate</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Upper-Intermediate">Upper-Intermediate</option>
-            <option value="IELTS">IELTS</option>
+            <option value="beginner">Beginner</option>
+            <option value="elementary">Elementary</option>
+            <option value="pre-intermediate">Pre-Intermediate</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="upper-intermediate">Upper-Intermediate</option>
+            <option value="ielts">IELTS</option>
           </select>
 
           <select id="wordCategoryFilter">
-            <option value="all">All categories</option>
-            <option value="General">General</option>
-            <option value="Family">Family</option>
-            <option value="Home">Home</option>
-            <option value="School">School</option>
-            <option value="Food">Food</option>
-            <option value="Colors">Colors</option>
-            <option value="Clothes">Clothes</option>
-            <option value="Verbs">Verbs</option>
-            <option value="Adjectives">Adjectives</option>
+            <option value="all">All words</option>
           </select>
+
         </div>
 
         <div class="table-responsive">
+
           <table class="vocabulary-table">
+
             <thead>
               <tr>
                 <th>English</th>
                 <th>Uzbek</th>
                 <th>Pronunciation</th>
                 <th>Level</th>
-                <th>Category</th>
+                <th>Study Day</th>
                 <th>Action</th>
               </tr>
             </thead>
+
             <tbody id="wordsTableBody">
               <tr>
                 <td colspan="6" class="empty-state">
-                  No vocabulary entries available yet.
+                  Loading vocabulary...
                 </td>
               </tr>
             </tbody>
+
           </table>
+
         </div>
 
         <div class="table-footer">
           <span id="wordCount">0 words</span>
         </div>
+
       </section>
 
-      <section class="panel word-form-panel" id="wordFormPanel" hidden>
+      <section
+        class="panel word-form-panel"
+        id="wordFormPanel"
+        hidden
+      >
+
         <div class="panel-heading">
           <div>
             <h2 id="wordFormTitle">Add New Word</h2>
             <p>Enter the word and its learning information.</p>
           </div>
-          <button class="close-button" id="closeWordForm" aria-label="Close">✕</button>
+
+          <button
+            class="close-button"
+            id="closeWordForm"
+            aria-label="Close"
+            type="button"
+          >
+            ✕
+          </button>
         </div>
 
         <form id="wordForm">
+
           <input type="hidden" id="wordId">
 
           <div class="form-grid">
 
             <label>
               English word
-              <input type="text" id="wordEnglish" maxlength="100" required placeholder="Example: beautiful">
+              <input
+                type="text"
+                id="wordEnglish"
+                maxlength="100"
+                required
+                placeholder="Example: beautiful"
+              >
             </label>
 
             <label>
               Uzbek translation
-              <input type="text" id="wordUzbek" maxlength="150" required placeholder="chiroyli">
+              <input
+                type="text"
+                id="wordUzbek"
+                maxlength="150"
+                required
+                placeholder="chiroyli"
+              >
             </label>
 
             <label>
               Pronunciation
-              <input type="text" id="wordPronunciation" maxlength="100" placeholder="byu-ti-ful">
-            </label>
-
-            <label>
-              Part of speech
-              <select id="wordType">
-                <option value="Noun">Noun</option>
-                <option value="Verb">Verb</option>
-                <option value="Adjective">Adjective</option>
-                <option value="Adverb">Adverb</option>
-                <option value="Pronoun">Pronoun</option>
-                <option value="Preposition">Preposition</option>
-                <option value="Other">Other</option>
-              </select>
+              <input
+                type="text"
+                id="wordPronunciation"
+                maxlength="100"
+                placeholder="byu-ti-ful"
+              >
             </label>
 
             <label>
               Level
               <select id="wordLevel" required>
                 <option value="">Select level</option>
-                <option value="Beginner">Beginner</option>
-                <option value="Elementary">Elementary</option>
-                <option value="Pre-Intermediate">Pre-Intermediate</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Upper-Intermediate">Upper-Intermediate</option>
-                <option value="IELTS">IELTS</option>
-              </select>
-            </label>
-
-            <label>
-              Category
-              <select id="wordCategory" required>
-                <option value="">Select category</option>
-                <option value="General">General</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="School">School</option>
-                <option value="Food">Food</option>
-                <option value="Colors">Colors</option>
-                <option value="Clothes">Clothes</option>
-                <option value="Verbs">Verbs</option>
-                <option value="Adjectives">Adjectives</option>
+                <option value="beginner">Beginner</option>
+                <option value="elementary">Elementary</option>
+                <option value="pre-intermediate">Pre-Intermediate</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="upper-intermediate">Upper-Intermediate</option>
+                <option value="ielts">IELTS</option>
               </select>
             </label>
 
             <label>
               Study day
-              <input type="number" id="wordDay" min="1" max="365" placeholder="Example: 1">
+              <input
+                type="number"
+                id="wordDay"
+                min="1"
+                max="365"
+                value="1"
+                required
+                placeholder="Example: 1"
+              >
             </label>
 
             <label class="full-width">
               Example sentence
-              <textarea id="wordExample" rows="3" maxlength="500" placeholder="Example: This is a beautiful house."></textarea>
-            </label>
-
-            <label class="full-width">
-              Example translation
-              <textarea id="wordExampleUzbek" rows="3" maxlength="500" placeholder="Bu chiroyli uy."></textarea>
+              <textarea
+                id="wordExample"
+                rows="3"
+                maxlength="500"
+                placeholder="Example: This is a beautiful house."
+              ></textarea>
             </label>
 
           </div>
 
           <div class="form-actions">
-            <button type="button" class="secondary-button" id="cancelWordForm">Cancel</button>
-            <button type="submit" class="primary-button">Save Word</button>
+
+            <button
+              type="button"
+              class="secondary-button"
+              id="cancelWordForm"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              class="primary-button"
+            >
+              Save Word
+            </button>
+
           </div>
+
         </form>
+
       </section>
 
-      <div class="notice-box">
-        <strong>Firebase connection pending</strong>
-        <p>
-          This page currently provides the vocabulary management interface.
-          Word records are not yet saved to Firebase. Secure database
-          integration will be added in the backend setup stage.
-        </p>
-      </div>
-
     </section>
+
   </main>
+
 </div>
 
-<div class="toast-message" id="toastMessage" role="status" aria-live="polite"></div>
+<div
+  class="toast-message"
+  id="toastMessage"
+  role="status"
+  aria-live="polite"
+></div>
 
+<script type="module" src="../auth-guard.js"></script>
 <script src="../script.js"></script>
 <script src="./script.js"></script>
+
 </body>
 </html>
