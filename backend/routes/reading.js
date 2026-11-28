@@ -1,4 +1,3 @@
-
 const express = require("express");
 const { pool } = require("../config/database");
 const auth = require("../middleware/auth");
@@ -6,33 +5,69 @@ const admin = require("../middleware/admin");
 
 const router = express.Router();
 
-// =========================================
-// HELPERS
-// =========================================
+const isObject = value =>
+  value !== null && typeof value === "object" && !Array.isArray(value);
 
-const isObject = (value) =>
-  value !== null &&
-  typeof value === "object" &&
-  !Array.isArray(value);
+const validId = value =>
+  Number.isInteger(Number(value)) && Number(value) > 0;
 
-const isOptionalText = (value) =>
-  value === undefined ||
-  value === null ||
-  typeof value === "string";
+const optionalText = value =>
+  value === undefined || value === null || typeof value === "string";
 
-const isOptionalId = (value) => {
-  if (value === undefined || value === null || value === "") {
-    return true;
+const validateQuestion = body => {
+  if (
+    !isObject(body) ||
+    typeof body.question !== "string" ||
+    !body.question.trim() ||
+    !Array.isArray(body.options) ||
+    body.options.length < 2 ||
+    body.options.some(option =>
+      typeof option !== "string" || !option.trim()
+    ) ||
+    body.correctAnswer === undefined ||
+    body.correctAnswer === null ||
+    !String(body.correctAnswer).trim() ||
+    !optionalText(body.explanation)
+  ) {
+    return false;
   }
 
-  const id = Number(value);
-  return Number.isInteger(id) && id > 0;
+  const points = body.points === undefined ? 1 : Number(body.points);
+
+  return Number.isFinite(points) && points > 0;
 };
 
-// =========================================
-// GET ACTIVE READING MATERIALS
-// GET /api/reading
-// =========================================
+/* =========================================
+   ADMIN: GET ALL READING MATERIALS
+   GET /api/reading/admin/all
+========================================= */
+
+router.get("/admin/all", auth, admin, async (req, res, next) => {
+  try {
+    const result = await pool.query(`
+      SELECT
+        r.*,
+        COUNT(q.id)::INTEGER AS questions_count
+      FROM reading_lessons r
+      LEFT JOIN reading_questions q
+        ON q.reading_lesson_id = r.id
+      GROUP BY r.id
+      ORDER BY r.created_at DESC, r.id DESC
+    `);
+
+    res.json({
+      success: true,
+      lessons: result.rows
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/* =========================================
+   GET ACTIVE READING MATERIALS
+   GET /api/reading
+========================================= */
 
 router.get("/", auth, async (req, res, next) => {
   try {
@@ -74,23 +109,23 @@ router.get("/", auth, async (req, res, next) => {
   }
 });
 
-// =========================================
-// GET ONE READING MATERIAL
-// GET /api/reading/:id
-// =========================================
+/* =========================================
+   GET ONE READING MATERIAL
+   GET /api/reading/:id
+========================================= */
 
 router.get("/:id", auth, async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
-
-    if (!Number.isInteger(id) || id < 1) {
+    if (!validId(req.params.id)) {
       return res.status(400).json({
         success: false,
         message: "Reading ID noto‘g‘ri."
       });
     }
 
-    const result = await pool.query(
+    const id = Number(req.params.id);
+
+    const lessonResult = await pool.query(
       `SELECT
          id,
          course_id,
@@ -106,19 +141,15 @@ router.get("/:id", auth, async (req, res, next) => {
       [id]
     );
 
-    if (result.rows.length === 0) {
+    if (!lessonResult.rows.length) {
       return res.status(404).json({
         success: false,
         message: "Reading matni topilmadi."
       });
     }
 
-    const questions = await pool.query(
-      `SELECT
-         id,
-         question,
-         options,
-         question_order
+    const questionsResult = await pool.query(
+      `SELECT id, question, options, question_order
        FROM reading_questions
        WHERE reading_lesson_id = $1
        ORDER BY question_order, id`,
@@ -127,29 +158,21 @@ router.get("/:id", auth, async (req, res, next) => {
 
     res.json({
       success: true,
-      lesson: result.rows[0],
-      questions: questions.rows
+      lesson: lessonResult.rows[0],
+      questions: questionsResult.rows
     });
   } catch (error) {
     next(error);
   }
 });
 
-// =========================================
-// CREATE READING MATERIAL
-// POST /api/reading
-// Admin only
-// =========================================
+/* =========================================
+   CREATE READING MATERIAL
+   POST /api/reading
+========================================= */
 
 router.post("/", auth, admin, async (req, res, next) => {
   try {
-    if (!isObject(req.body)) {
-      return res.status(400).json({
-        success: false,
-        message: "Yuborilgan ma’lumot noto‘g‘ri."
-      });
-    }
-
     const {
       courseId,
       lessonId,
@@ -158,22 +181,22 @@ router.post("/", auth, admin, async (req, res, next) => {
       level,
       passage,
       instructions
-    } = req.body;
+    } = req.body || {};
 
     if (
       typeof title !== "string" ||
       !title.trim() ||
       typeof passage !== "string" ||
       !passage.trim() ||
-      !isOptionalId(courseId) ||
-      !isOptionalId(lessonId) ||
-      !isOptionalText(description) ||
-      !isOptionalText(level) ||
-      !isOptionalText(instructions)
+      (courseId !== undefined && courseId !== null && courseId !== "" && !validId(courseId)) ||
+      (lessonId !== undefined && lessonId !== null && lessonId !== "" && !validId(lessonId)) ||
+      !optionalText(description) ||
+      !optionalText(level) ||
+      !optionalText(instructions)
     ) {
       return res.status(400).json({
         success: false,
-        message: "Sarlavha va reading matni kerak. Boshqa maydonlarni ham tekshiring."
+        message: "Sarlavha va reading matnini to‘g‘ri kiriting."
       });
     }
 
@@ -194,10 +217,10 @@ router.post("/", auth, admin, async (req, res, next) => {
         courseId ? Number(courseId) : null,
         lessonId ? Number(lessonId) : null,
         title.trim(),
-        description ? description.trim() : null,
-        level ? level.trim() : null,
+        description?.trim() || null,
+        level?.trim() || null,
         passage.trim(),
-        instructions ? instructions.trim() : null
+        instructions?.trim() || null
       ]
     );
 
@@ -210,135 +233,293 @@ router.post("/", auth, admin, async (req, res, next) => {
   }
 });
 
-// =========================================
-// ADD READING QUESTION
-// POST /api/reading/:id/questions
-// Admin only
-// =========================================
+/* =========================================
+   UPDATE READING MATERIAL
+   PUT /api/reading/:id
+========================================= */
 
-router.post(
-  "/:id/questions",
+router.put("/:id", auth, admin, async (req, res, next) => {
+  try {
+    if (!validId(req.params.id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Reading ID noto‘g‘ri."
+      });
+    }
+
+    const {
+      courseId,
+      lessonId,
+      title,
+      description,
+      level,
+      passage,
+      instructions,
+      isActive
+    } = req.body || {};
+
+    if (
+      typeof title !== "string" ||
+      !title.trim() ||
+      typeof passage !== "string" ||
+      !passage.trim() ||
+      (courseId !== undefined && courseId !== null && courseId !== "" && !validId(courseId)) ||
+      (lessonId !== undefined && lessonId !== null && lessonId !== "" && !validId(lessonId)) ||
+      !optionalText(description) ||
+      !optionalText(level) ||
+      !optionalText(instructions) ||
+      (isActive !== undefined && typeof isActive !== "boolean")
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Reading ma’lumotlarini tekshiring."
+      });
+    }
+
+    const result = await pool.query(
+      `UPDATE reading_lessons
+       SET
+         course_id = $1,
+         lesson_id = $2,
+         title = $3,
+         description = $4,
+         level = $5,
+         passage = $6,
+         instructions = $7,
+         is_active = COALESCE($8, is_active),
+         updated_at = NOW()
+       WHERE id = $9
+       RETURNING *`,
+      [
+        courseId ? Number(courseId) : null,
+        lessonId ? Number(lessonId) : null,
+        title.trim(),
+        description?.trim() || null,
+        level?.trim() || null,
+        passage.trim(),
+        instructions?.trim() || null,
+        isActive ?? null,
+        Number(req.params.id)
+      ]
+    );
+
+    if (!result.rows.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Reading matni topilmadi."
+      });
+    }
+
+    res.json({
+      success: true,
+      lesson: result.rows[0]
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/* =========================================
+   UPDATE READING STATUS
+   PATCH /api/reading/:id/status
+========================================= */
+
+router.patch("/:id/status", auth, admin, async (req, res, next) => {
+  try {
+    if (
+      !validId(req.params.id) ||
+      typeof req.body?.isActive !== "boolean"
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "ID yoki holat noto‘g‘ri."
+      });
+    }
+
+    const result = await pool.query(
+      `UPDATE reading_lessons
+       SET is_active = $1, updated_at = NOW()
+       WHERE id = $2
+       RETURNING id, title, is_active`,
+      [req.body.isActive, Number(req.params.id)]
+    );
+
+    if (!result.rows.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Reading matni topilmadi."
+      });
+    }
+
+    res.json({
+      success: true,
+      lesson: result.rows[0]
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/* =========================================
+   DELETE READING MATERIAL
+   DELETE /api/reading/:id
+========================================= */
+
+router.delete("/:id", auth, admin, async (req, res, next) => {
+  try {
+    if (!validId(req.params.id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Reading ID noto‘g‘ri."
+      });
+    }
+
+    const result = await pool.query(
+      `DELETE FROM reading_lessons
+       WHERE id = $1
+       RETURNING id, title`,
+      [Number(req.params.id)]
+    );
+
+    if (!result.rows.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Reading matni topilmadi."
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Reading matni o‘chirildi.",
+      lesson: result.rows[0]
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/* =========================================
+   ADD READING QUESTION
+   POST /api/reading/:id/questions
+========================================= */
+
+router.post("/:id/questions", auth, admin, async (req, res, next) => {
+  try {
+    const readingId = Number(req.params.id);
+
+    if (!validId(readingId) || !validateQuestion(req.body)) {
+      return res.status(400).json({
+        success: false,
+        message: "Savol va javob variantlarini to‘g‘ri kiriting."
+      });
+    }
+
+    const reading = await pool.query(
+      "SELECT id FROM reading_lessons WHERE id = $1",
+      [readingId]
+    );
+
+    if (!reading.rows.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Reading matni topilmadi."
+      });
+    }
+
+    const orderResult = await pool.query(
+      `SELECT COALESCE(MAX(question_order), 0) + 1 AS next_order
+       FROM reading_questions
+       WHERE reading_lesson_id = $1`,
+      [readingId]
+    );
+
+    const result = await pool.query(
+      `INSERT INTO reading_questions
+       (
+         reading_lesson_id,
+         question,
+         options,
+         correct_answer,
+         explanation,
+         question_order,
+         points
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING *`,
+      [
+        readingId,
+        req.body.question.trim(),
+        JSON.stringify(req.body.options),
+        String(req.body.correctAnswer).trim(),
+        req.body.explanation?.trim() || null,
+        orderResult.rows[0].next_order,
+        req.body.points === undefined ? 1 : Number(req.body.points)
+      ]
+    );
+
+    res.status(201).json({
+      success: true,
+      question: result.rows[0]
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/* =========================================
+   UPDATE READING QUESTION
+   PUT /api/reading/:id/questions/:questionId
+========================================= */
+
+router.put(
+  "/:id/questions/:questionId",
   auth,
   admin,
   async (req, res, next) => {
     try {
       const readingId = Number(req.params.id);
-
-      if (!Number.isInteger(readingId) || readingId < 1) {
-        return res.status(400).json({
-          success: false,
-          message: "Reading ID noto‘g‘ri."
-        });
-      }
-
-      if (!isObject(req.body)) {
-        return res.status(400).json({
-          success: false,
-          message: "Yuborilgan ma’lumot noto‘g‘ri."
-        });
-      }
-
-      const {
-        question,
-        options,
-        correctAnswer,
-        explanation,
-        questionOrder,
-        points
-      } = req.body;
+      const questionId = Number(req.params.questionId);
 
       if (
-        typeof question !== "string" ||
-        !question.trim() ||
-        !Array.isArray(options) ||
-        options.length < 2 ||
-        options.some((option) =>
-          option === null ||
-          option === undefined ||
-          (typeof option === "string" && !option.trim())
-        ) ||
-        correctAnswer === undefined ||
-        correctAnswer === null ||
-        !String(correctAnswer).trim() ||
-        !isOptionalText(explanation)
+        !validId(readingId) ||
+        !validId(questionId) ||
+        !validateQuestion(req.body)
       ) {
         return res.status(400).json({
           success: false,
-          message: "Savol, kamida ikkita javob varianti va to‘g‘ri javob kerak."
-        });
-      }
-
-      const reading = await pool.query(
-        "SELECT id FROM reading_lessons WHERE id = $1",
-        [readingId]
-      );
-
-      if (reading.rows.length === 0) {
-        return res.status(404).json({
-          success: false,
-          message: "Reading matni topilmadi."
-        });
-      }
-
-      let order = 1;
-
-      if (
-        questionOrder !== undefined &&
-        questionOrder !== null &&
-        questionOrder !== ""
-      ) {
-        order = Number(questionOrder);
-      }
-
-      const questionPoints =
-        points === undefined || points === null
-          ? 1
-          : Number(points);
-
-      if (
-        !Number.isInteger(order) ||
-        order < 1 ||
-        !Number.isFinite(questionPoints) ||
-        questionPoints <= 0
-      ) {
-        return res.status(400).json({
-          success: false,
-          message: "Savol tartibi yoki ball noto‘g‘ri."
+          message: "Savol ma’lumotlarini tekshiring."
         });
       }
 
       const result = await pool.query(
-        `INSERT INTO reading_questions
-         (
-           reading_lesson_id,
-           question,
-           options,
-           correct_answer,
-           explanation,
-           question_order,
-           points
-         )
-         VALUES ($1, $2, $3, $4, $5, $6, $7)
-         RETURNING
-           id,
-           reading_lesson_id,
-           question,
-           options,
-           explanation,
-           question_order,
-           points`,
+        `UPDATE reading_questions
+         SET
+           question = $1,
+           options = $2,
+           correct_answer = $3,
+           explanation = $4,
+           points = $5
+         WHERE id = $6 AND reading_lesson_id = $7
+         RETURNING *`,
         [
-          readingId,
-          question.trim(),
-          JSON.stringify(options),
-          String(correctAnswer).trim(),
-          explanation ? explanation.trim() : null,
-          order,
-          questionPoints
+          req.body.question.trim(),
+          JSON.stringify(req.body.options),
+          String(req.body.correctAnswer).trim(),
+          req.body.explanation?.trim() || null,
+          req.body.points === undefined ? 1 : Number(req.body.points),
+          questionId,
+          readingId
         ]
       );
 
-      res.status(201).json({
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Savol topilmadi."
+        });
+      }
+
+      res.json({
         success: true,
         question: result.rows[0]
       });
@@ -348,10 +529,55 @@ router.post(
   }
 );
 
-// =========================================
-// SUBMIT READING ANSWERS
-// POST /api/reading/:id/submit
-// =========================================
+/* =========================================
+   DELETE READING QUESTION
+   DELETE /api/reading/:id/questions/:questionId
+========================================= */
+
+router.delete(
+  "/:id/questions/:questionId",
+  auth,
+  admin,
+  async (req, res, next) => {
+    try {
+      const readingId = Number(req.params.id);
+      const questionId = Number(req.params.questionId);
+
+      if (!validId(readingId) || !validId(questionId)) {
+        return res.status(400).json({
+          success: false,
+          message: "Reading yoki savol ID noto‘g‘ri."
+        });
+      }
+
+      const result = await pool.query(
+        `DELETE FROM reading_questions
+         WHERE id = $1 AND reading_lesson_id = $2
+         RETURNING id`,
+        [questionId, readingId]
+      );
+
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Savol topilmadi."
+        });
+      }
+
+      res.json({
+        success: true,
+        message: "Savol o‘chirildi."
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+/* =========================================
+   SUBMIT READING ANSWERS
+   POST /api/reading/:id/submit
+========================================= */
 
 router.post("/:id/submit", auth, async (req, res, next) => {
   let client;
@@ -359,20 +585,14 @@ router.post("/:id/submit", auth, async (req, res, next) => {
 
   try {
     const readingId = Number(req.params.id);
+    const answers = req.body?.answers;
 
-    if (
-      !Number.isInteger(readingId) ||
-      readingId < 1 ||
-      !isObject(req.body) ||
-      !Array.isArray(req.body.answers)
-    ) {
+    if (!validId(readingId) || !Array.isArray(answers)) {
       return res.status(400).json({
         success: false,
         message: "Reading ID yoki javoblar noto‘g‘ri."
       });
     }
-
-    const { answers } = req.body;
 
     client = await pool.connect();
 
@@ -386,7 +606,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       [readingId]
     );
 
-    if (reading.rows.length === 0) {
+    if (!reading.rows.length) {
       await client.query("ROLLBACK");
       transactionStarted = false;
 
@@ -396,7 +616,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       });
     }
 
-    const questionsResult = await client.query(
+    const questionResult = await client.query(
       `SELECT id, correct_answer
        FROM reading_questions
        WHERE reading_lesson_id = $1
@@ -404,9 +624,9 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       [readingId]
     );
 
-    const questions = questionsResult.rows;
+    const questions = questionResult.rows;
 
-    if (questions.length === 0) {
+    if (!questions.length) {
       await client.query("ROLLBACK");
       transactionStarted = false;
 
@@ -419,7 +639,12 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     const submitted = new Map();
 
     for (const item of answers) {
-      if (!isObject(item)) {
+      if (
+        !isObject(item) ||
+        !validId(item.questionId) ||
+        item.answer === undefined ||
+        item.answer === null
+      ) {
         await client.query("ROLLBACK");
         transactionStarted = false;
 
@@ -431,31 +656,25 @@ router.post("/:id/submit", auth, async (req, res, next) => {
 
       const questionId = Number(item.questionId);
 
-      if (
-        !Number.isInteger(questionId) ||
-        questionId < 1 ||
-        submitted.has(questionId) ||
-        item.answer === undefined ||
-        item.answer === null
-      ) {
+      if (submitted.has(questionId)) {
         await client.query("ROLLBACK");
         transactionStarted = false;
 
         return res.status(400).json({
           success: false,
-          message: "Javoblar noto‘g‘ri yoki takrorlangan."
+          message: "Takrorlangan javob yuborildi."
         });
       }
 
       submitted.set(questionId, String(item.answer));
     }
 
-    const validIds = new Set(
-      questions.map((item) => Number(item.id))
+    const validQuestionIds = new Set(
+      questions.map(question => Number(question.id))
     );
 
     for (const questionId of submitted.keys()) {
-      if (!validIds.has(questionId)) {
+      if (!validQuestionIds.has(questionId)) {
         await client.query("ROLLBACK");
         transactionStarted = false;
 
@@ -478,7 +697,6 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     }
 
     const totalQuestions = questions.length;
-
     const score = Number(
       ((correctCount / totalQuestions) * 100).toFixed(2)
     );
@@ -526,7 +744,7 @@ router.post("/:id/submit", auth, async (req, res, next) => {
       try {
         await client.query("ROLLBACK");
       } catch (rollbackError) {
-        // Asosiy xatolik saqlanadi.
+        // Original error is preserved.
       }
     }
 
@@ -537,56 +755,5 @@ router.post("/:id/submit", auth, async (req, res, next) => {
     }
   }
 });
-
-// =========================================
-// UPDATE READING STATUS
-// PATCH /api/reading/:id/status
-// Admin only
-// =========================================
-
-router.patch(
-  "/:id/status",
-  auth,
-  admin,
-  async (req, res, next) => {
-    try {
-      const id = Number(req.params.id);
-
-      if (
-        !Number.isInteger(id) ||
-        id < 1 ||
-        !isObject(req.body) ||
-        typeof req.body.isActive !== "boolean"
-      ) {
-        return res.status(400).json({
-          success: false,
-          message: "ID yoki holat noto‘g‘ri."
-        });
-      }
-
-      const result = await pool.query(
-        `UPDATE reading_lessons
-         SET is_active = $1
-         WHERE id = $2
-         RETURNING id, title, is_active`,
-        [req.body.isActive, id]
-      );
-
-      if (result.rows.length === 0) {
-        return res.status(404).json({
-          success: false,
-          message: "Reading matni topilmadi."
-        });
-      }
-
-      res.json({
-        success: true,
-        lesson: result.rows[0]
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
-);
 
 module.exports = router;
