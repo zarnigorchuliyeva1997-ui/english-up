@@ -8,6 +8,7 @@
   <title>Backup | English Up Admin</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="./style.css">
+  <script type="module" src="../auth-guard.js"></script>
 </head>
 <body>
   <div class="admin-layout">
@@ -57,10 +58,10 @@
       </header>
 
       <section class="backup-warning">
-        <strong>Backup tizimi hali Firebase bilan ulanmagan.</strong>
+        <strong>Backup tizimi hali server API bilan ulanmagan.</strong>
         <p>
           Hozirgi sahifa interfeys vazifasini bajaradi. Haqiqiy zaxira nusxasi
-          va tiklash imkoniyatlari Firebase integratsiyasidan keyin yoqiladi.
+          va tiklash imkoniyatlari backend integratsiyasidan keyin yoqiladi.
         </p>
       </section>
 
@@ -68,7 +69,7 @@
         <article class="backup-card">
           <span>Oxirgi backup</span>
           <strong id="lastBackup">Hozircha yo‘q</strong>
-          <small>Firebase backup ulanmagan</small>
+          <small>Server backup ulanmagan</small>
         </article>
 
         <article class="backup-card">
@@ -93,13 +94,13 @@
             </div>
           </div>
           <p class="action-description">
-            Firebase ulangandan keyin ushbu amal ma’lumotlarning serverdagi
-            zaxira nusxasini yaratadi.
+            Backend backup API tayyorlangandan keyin ushbu amal serverdagi
+            ma’lumotlarning zaxira nusxasini yaratadi.
           </p>
           <button type="button" id="createBackup" disabled>
             Backup yaratish
           </button>
-          <small class="disabled-note">Firebase integratsiyasidan keyin faollashadi.</small>
+          <small class="disabled-note">Backend integratsiyasidan keyin faollashadi.</small>
         </article>
 
         <article class="panel">
@@ -153,7 +154,7 @@
         <div class="panel-heading">
           <div>
             <h2>Kelajakdagi backup sozlamalari</h2>
-            <p>Firebase integratsiyasida sozlanadigan imkoniyatlar</p>
+            <p>Backend integratsiyasida sozlanadigan imkoniyatlar</p>
           </div>
         </div>
 
