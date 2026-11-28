@@ -1,3 +1,4 @@
+"use strict";
 
 const { pool } = require("../config/database");
 
@@ -24,40 +25,71 @@ function normalizePagination(page = 1, limit = 20) {
 async function getAdminDashboard() {
   const result = await pool.query(
     `SELECT
-       (SELECT COUNT(*) FROM users
-        WHERE role = 'student')::int AS total_students,
+       (
+         SELECT COUNT(*)
+         FROM users
+         WHERE role = 'student'
+       )::int AS total_students,
 
-       (SELECT COUNT(*) FROM users
-        WHERE role = 'student' AND is_active = TRUE)::int
-        AS active_students,
+       (
+         SELECT COUNT(*)
+         FROM users
+         WHERE role = 'student'
+           AND is_active = TRUE
+       )::int AS active_students,
 
-       (SELECT COUNT(*) FROM subscriptions
-        WHERE status = 'active'
-        AND end_date >= CURRENT_DATE)::int
-        AS active_subscriptions,
+       (
+         SELECT COUNT(*)
+         FROM subscriptions
+         WHERE status = 'active'
+           AND end_date > NOW()
+       )::int AS active_subscriptions,
 
-       (SELECT COUNT(*) FROM courses)::int AS total_courses,
+       (
+         SELECT COUNT(*)
+         FROM activation_codes
+         WHERE used_at IS NULL
+           AND revoked_at IS NULL
+           AND (expires_at IS NULL OR expires_at > NOW())
+       )::int AS unused_activation_codes,
 
-       (SELECT COUNT(*) FROM lessons)::int AS total_lessons,
+       (
+         SELECT COUNT(*)
+         FROM courses
+       )::int AS total_courses,
 
-       (SELECT COUNT(*) FROM tests)::int AS total_tests,
+       (
+         SELECT COUNT(*)
+         FROM lessons
+       )::int AS total_lessons,
 
-       (SELECT COUNT(*) FROM test_attempts)::int
-        AS total_test_attempts,
+       (
+         SELECT COUNT(*)
+         FROM tests
+       )::int AS total_tests,
 
-       (SELECT COUNT(*) FROM writing_submissions
-        WHERE status = 'pending')::int
-        AS pending_writing_reviews,
+       (
+         SELECT COUNT(*)
+         FROM test_attempts
+       )::int AS total_test_attempts,
 
-       (SELECT COUNT(*) FROM speaking_submissions
-        WHERE status = 'pending')::int
-        AS pending_speaking_reviews`
+       (
+         SELECT COUNT(*)
+         FROM writing_submissions
+         WHERE status = 'pending'
+       )::int AS pending_writing_reviews,
+
+       (
+         SELECT COUNT(*)
+         FROM speaking_submissions
+         WHERE status = 'pending'
+       )::int AS pending_speaking_reviews`
   );
 
   return result.rows[0];
 }
 
-// O'quvchilar ro'yxati
+// O‘quvchilar ro‘yxati
 async function getStudents({
   page = 1,
   limit = 20,
@@ -67,33 +99,34 @@ async function getStudents({
 } = {}) {
   const pagination = normalizePagination(page, limit);
 
-  const conditions = ["role = 'student'"];
+  const conditions = ["u.role = 'student'"];
   const values = [];
 
-  if (search && String(search).trim()) {
-    values.push(`%${String(search).trim()}%`);
+  if (typeof search === "string" && search.trim()) {
+    values.push(`%${search.trim()}%`);
+
     conditions.push(
-      `(name ILIKE $${values.length}
-        OR email ILIKE $${values.length})`
+      `(u.name ILIKE $${values.length}
+        OR u.email ILIKE $${values.length})`
     );
   }
 
-  if (level && String(level).trim()) {
-    values.push(String(level).trim());
-    conditions.push(`level = $${values.length}`);
+  if (typeof level === "string" && level.trim()) {
+    values.push(level.trim());
+    conditions.push(`u.level = $${values.length}`);
   }
 
   if (status === "active") {
-    conditions.push("is_active = TRUE");
+    conditions.push("u.is_active = TRUE");
   } else if (status === "inactive") {
-    conditions.push("is_active = FALSE");
+    conditions.push("u.is_active = FALSE");
   }
 
   const where = `WHERE ${conditions.join(" AND ")}`;
 
   const countResult = await pool.query(
     `SELECT COUNT(*)::int AS total
-     FROM users
+     FROM users u
      ${where}`,
     values
   );
@@ -106,15 +139,29 @@ async function getStudents({
 
   const result = await pool.query(
     `SELECT
-       id,
-       name,
-       email,
-       level,
-       is_active,
-       created_at
-     FROM users
+       u.id,
+       u.name,
+       u.email,
+       u.level,
+       u.is_active,
+       u.created_at AS "createdAt",
+
+       (
+         SELECT jsonb_build_object(
+           'id', s.id,
+           'plan', s.plan,
+           'status', s.status,
+           'endDate', s.end_date
+         )
+         FROM subscriptions s
+         WHERE s.user_id = u.id
+         ORDER BY s.created_at DESC
+         LIMIT 1
+       ) AS subscription
+
+     FROM users u
      ${where}
-     ORDER BY created_at DESC, id DESC
+     ORDER BY u.created_at DESC, u.id DESC
      LIMIT $${values.length + 1}
      OFFSET $${values.length + 2}`,
     queryValues
@@ -131,7 +178,7 @@ async function getStudents({
   };
 }
 
-// O'quvchi tafsilotlari
+// O‘quvchi tafsilotlari
 async function getStudentDetails(studentId) {
   const studentResult = await pool.query(
     `SELECT
@@ -142,7 +189,9 @@ async function getStudentDetails(studentId) {
        is_active,
        created_at
      FROM users
-     WHERE id = $1 AND role = 'student'`,
+     WHERE id = $1
+       AND role = 'student'
+     LIMIT 1`,
     [studentId]
   );
 
