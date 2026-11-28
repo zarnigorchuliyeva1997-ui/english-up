@@ -1,15 +1,31 @@
 
+"use strict";
+
 const { pool } = require("../config/database");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // =========================================
-// TOKEN
+// TOKEN CONFIGURATION
+// =========================================
+
+function getJwtSecret() {
+  const secret = process.env.JWT_SECRET;
+
+  if (!secret || typeof secret !== "string") {
+    throw new Error("JWT_SECRET is not configured");
+  }
+
+  return secret;
+}
+
+// =========================================
+// CREATE JWT TOKEN
 // =========================================
 
 function createToken(user) {
-  if (!process.env.JWT_SECRET) {
-    throw new Error("JWT_SECRET is not configured");
+  if (!user || !user.id || !user.role) {
+    throw new Error("Invalid user information");
   }
 
   return jwt.sign(
@@ -17,15 +33,16 @@ function createToken(user) {
       id: user.id,
       role: user.role
     },
-    process.env.JWT_SECRET,
+    getJwtSecret(),
     {
+      algorithm: "HS256",
       expiresIn: "7d"
     }
   );
 }
 
 // =========================================
-// EMAIL VALIDATION
+// NORMALIZE EMAIL
 // =========================================
 
 function normalizeEmail(email) {
@@ -37,11 +54,10 @@ function normalizeEmail(email) {
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!emailPattern.test(normalized)) {
-    throw new Error("A valid email is required");
-  }
-
-  if (normalized.length > 255) {
+  if (
+    !emailPattern.test(normalized) ||
+    normalized.length > 255
+  ) {
     throw new Error("A valid email is required");
   }
 
@@ -49,10 +65,10 @@ function normalizeEmail(email) {
 }
 
 // =========================================
-// REGISTER USER
+// VALIDATE REGISTRATION DATA
 // =========================================
 
-async function registerUser({ name, email, password } = {}) {
+function validateRegistration({ name, email, password } = {}) {
   if (
     typeof name !== "string" ||
     typeof password !== "string"
@@ -66,23 +82,48 @@ async function registerUser({ name, email, password } = {}) {
     normalizedName.length < 2 ||
     normalizedName.length > 100
   ) {
-    throw new Error("Name must be between 2 and 100 characters");
+    throw new Error(
+      "Name must be between 2 and 100 characters"
+    );
   }
 
   if (
     password.length < 8 ||
     password.length > 128
   ) {
-    throw new Error("Password must be between 8 and 128 characters");
+    throw new Error(
+      "Password must be between 8 and 128 characters"
+    );
   }
 
-  const normalizedEmail = normalizeEmail(email);
+  const passwordBytes = Buffer.byteLength(password, "utf8");
 
-  if (!process.env.JWT_SECRET) {
-    throw new Error("JWT_SECRET is not configured");
+  if (passwordBytes > 72) {
+    throw new Error(
+      "Password must not exceed 72 UTF-8 bytes"
+    );
   }
 
-  const passwordHash = await bcrypt.hash(password, 12);
+  return {
+    name: normalizedName,
+    email: normalizeEmail(email),
+    password
+  };
+}
+
+// =========================================
+// REGISTER USER
+// =========================================
+
+async function registerUser(data = {}) {
+  const validated = validateRegistration(data);
+
+  getJwtSecret();
+
+  const passwordHash = await bcrypt.hash(
+    validated.password,
+    12
+  );
 
   try {
     const result = await pool.query(
@@ -102,8 +143,8 @@ async function registerUser({ name, email, password } = {}) {
         is_active,
         created_at`,
       [
-        normalizedName,
-        normalizedEmail,
+        validated.name,
+        validated.email,
         passwordHash
       ]
     );
@@ -114,9 +155,12 @@ async function registerUser({ name, email, password } = {}) {
       user,
       token: createToken(user)
     };
+
   } catch (error) {
     if (error.code === "23505") {
-      throw new Error("This email is already registered");
+      throw new Error(
+        "This email is already registered"
+      );
     }
 
     throw error;
@@ -130,12 +174,15 @@ async function registerUser({ name, email, password } = {}) {
 async function loginUser({ email, password } = {}) {
   if (
     typeof password !== "string" ||
-    password.length === 0
+    password.length === 0 ||
+    password.length > 1024
   ) {
     throw new Error("Email and password are required");
   }
 
   const normalizedEmail = normalizeEmail(email);
+
+  getJwtSecret();
 
   const result = await pool.query(
     `SELECT
@@ -148,20 +195,27 @@ async function loginUser({ email, password } = {}) {
       is_active,
       created_at
     FROM users
-    WHERE email = $1`,
+    WHERE email = $1
+    LIMIT 1`,
     [normalizedEmail]
   );
 
   const user = result.rows[0];
 
-  if (
-    !user ||
-    !(await bcrypt.compare(password, user.password_hash))
-  ) {
+  if (!user) {
     throw new Error("Invalid email or password");
   }
 
-  if (!user.is_active) {
+  const passwordMatches = await bcrypt.compare(
+    password,
+    user.password_hash
+  );
+
+  if (!passwordMatches) {
+    throw new Error("Invalid email or password");
+  }
+
+  if (user.is_active !== true) {
     throw new Error("Account is inactive");
   }
 
@@ -187,5 +241,7 @@ async function loginUser({ email, password } = {}) {
 
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
+  createToken,
+  normalizeEmail
 };
