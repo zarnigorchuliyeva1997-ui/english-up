@@ -6,6 +6,8 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 100%;
+    min-width: 0;
 }
 
 .vocabulary-page .page-heading {
@@ -29,6 +31,15 @@
     font-size: 14px;
 }
 
+.vocabulary-page .eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: #7047eb;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
 .vocabulary-page button {
     cursor: pointer;
     font-family: inherit;
@@ -40,7 +51,10 @@
     gap: 16px;
 }
 
-.vocabulary-stat {
+/* STAT CARDS */
+
+.vocabulary-stat,
+.vocabulary-stats .stat-card {
     background: var(--card-bg, #ffffff);
     border: 1px solid var(--border-color, #ececf2);
     border-radius: 16px;
@@ -48,42 +62,31 @@
     min-width: 0;
 }
 
-.vocabulary-stat .stat-label {
+.vocabulary-stat .stat-label,
+.vocabulary-stats .stat-card span {
     display: block;
     color: var(--text-secondary, #77778a);
     font-size: 13px;
     margin-bottom: 12px;
 }
 
-.vocabulary-stat .stat-value {
+.vocabulary-stat .stat-value,
+.vocabulary-stats .stat-card strong {
     display: block;
     color: var(--text-primary, #202033);
     font-size: 27px;
     font-weight: 800;
 }
 
-.vocabulary-stat .stat-description {
+.vocabulary-stat .stat-description,
+.vocabulary-stats .stat-card small {
     display: block;
     margin-top: 7px;
     color: var(--text-secondary, #888899);
     font-size: 12px;
 }
 
-.vocabulary-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 14px;
-}
-
-.vocabulary-toolbar-left,
-.vocabulary-toolbar-right {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
+/* BUTTONS */
 
 .vocabulary-page .primary-button {
     border: 0;
@@ -114,12 +117,38 @@
     background: var(--hover-bg, #f5f3ff);
 }
 
-.vocabulary-filters {
+.vocabulary-page button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* TOOLBAR */
+
+.vocabulary-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.vocabulary-toolbar-left,
+.vocabulary-toolbar-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.vocabulary-filters,
+.vocabulary-page .vocabulary-toolbar {
     display: grid;
     grid-template-columns: minmax(180px, 1.5fr) repeat(2, minmax(150px, 1fr));
     gap: 12px;
     margin-bottom: 18px;
 }
+
+/* INPUTS */
 
 .vocabulary-page input,
 .vocabulary-page select,
@@ -149,6 +178,39 @@
     resize: vertical;
 }
 
+/* PANELS */
+
+.vocabulary-page .panel {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--border-color, #ececf2);
+    border-radius: 16px;
+    background: var(--card-bg, #ffffff);
+}
+
+.vocabulary-page .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.vocabulary-page .panel-heading h2 {
+    margin: 0 0 6px;
+    color: var(--text-primary, #29293b);
+    font-size: 17px;
+}
+
+.vocabulary-page .panel-heading p {
+    margin: 0;
+    color: var(--text-secondary, #77778a);
+    font-size: 12px;
+}
+
+/* TABLE */
+
 .vocabulary-table-card {
     background: var(--card-bg, #ffffff);
     border: 1px solid var(--border-color, #ececf2);
@@ -176,19 +238,22 @@
     font-size: 12px;
 }
 
-.vocabulary-table-wrapper {
+.vocabulary-table-wrapper,
+.vocabulary-page .table-responsive {
     width: 100%;
     overflow-x: auto;
 }
 
-.vocabulary-table {
+.vocabulary-table,
+.vocabulary-page .vocabulary-table {
     width: 100%;
     min-width: 850px;
     border-collapse: collapse;
     text-align: left;
 }
 
-.vocabulary-table th {
+.vocabulary-table th,
+.vocabulary-page .vocabulary-table th {
     padding: 14px 16px;
     background: var(--table-head-bg, #f8f7fc);
     color: var(--text-secondary, #77778a);
@@ -199,7 +264,8 @@
     white-space: nowrap;
 }
 
-.vocabulary-table td {
+.vocabulary-table td,
+.vocabulary-page .vocabulary-table td {
     padding: 15px 16px;
     border-top: 1px solid var(--border-color, #eeeeF3);
     color: var(--text-primary, #333344);
@@ -210,6 +276,16 @@
 .vocabulary-table tbody tr:hover {
     background: var(--hover-bg, #faf9ff);
 }
+
+.vocabulary-page .table-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    color: var(--text-secondary, #77778a);
+    font-size: 12px;
+}
+
+/* WORD DETAILS */
 
 .word-english {
     font-weight: 700;
@@ -236,6 +312,8 @@
     font-weight: 700;
     white-space: nowrap;
 }
+
+/* ACTIONS */
 
 .word-actions {
     display: flex;
@@ -267,6 +345,8 @@
     background: #fff4f4;
 }
 
+/* EMPTY STATE */
+
 .vocabulary-empty {
     padding: 45px 20px;
     text-align: center;
@@ -288,18 +368,23 @@
 /* WORD FORM */
 
 .word-form-panel {
-    display: none;
+    display: block;
     background: var(--card-bg, #ffffff);
     border: 1px solid var(--border-color, #ececf2);
     border-radius: 16px;
     padding: 22px;
 }
 
+.word-form-panel[hidden] {
+    display: none !important;
+}
+
 .word-form-panel.active {
     display: block;
 }
 
-.word-form-heading {
+.word-form-heading,
+.vocabulary-page .panel-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -313,7 +398,8 @@
     font-size: 18px;
 }
 
-.word-form-close {
+.word-form-close,
+.vocabulary-page .close-button {
     border: 0;
     background: transparent;
     color: var(--text-secondary, #77778a);
@@ -321,20 +407,26 @@
     cursor: pointer;
 }
 
-.word-form-grid {
+.word-form-grid,
+.vocabulary-page .form-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
 }
 
-.word-form-field {
+.word-form-field,
+.vocabulary-page .form-grid label {
     display: flex;
     flex-direction: column;
     gap: 7px;
     min-width: 0;
+    color: var(--text-primary, #444455);
+    font-size: 12px;
+    font-weight: 700;
 }
 
-.word-form-field.full-width {
+.word-form-field.full-width,
+.vocabulary-page .form-grid .full-width {
     grid-column: 1 / -1;
 }
 
@@ -344,12 +436,15 @@
     font-weight: 700;
 }
 
-.word-form-actions {
+.word-form-actions,
+.vocabulary-page .form-actions {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-top: 22px;
 }
+
+/* NOTICE */
 
 .vocabulary-notice {
     padding: 14px 16px;
@@ -361,6 +456,16 @@
     line-height: 1.6;
 }
 
+/* TOAST */
+
+.vocabulary-page .toast-message,
+.toast-message {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 1000px) {
@@ -368,12 +473,39 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .vocabulary-filters {
+    .vocabulary-filters,
+    .vocabulary-page .vocabulary-toolbar {
         grid-template-columns: 1fr 1fr;
     }
 
     .vocabulary-filters input {
         grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 700px) {
+    .vocabulary-page .vocabulary-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .vocabulary-page .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vocabulary-page .form-grid .full-width {
+        grid-column: auto;
+    }
+
+    .vocabulary-page .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .vocabulary-page .form-actions button {
+        width: 100%;
+    }
+
+    .vocabulary-page .panel {
+        padding: 15px;
     }
 }
 
@@ -390,12 +522,14 @@
         gap: 10px;
     }
 
-    .vocabulary-stat {
+    .vocabulary-stat,
+    .vocabulary-stats .stat-card {
         padding: 14px;
         border-radius: 12px;
     }
 
-    .vocabulary-stat .stat-value {
+    .vocabulary-stat .stat-value,
+    .vocabulary-stats .stat-card strong {
         font-size: 22px;
     }
 
