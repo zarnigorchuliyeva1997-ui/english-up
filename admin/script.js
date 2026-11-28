@@ -2,7 +2,7 @@
 /* ==========================================
    ENGLISH UP ADMIN PANEL
    SHARED MAIN JAVASCRIPT
-   Version: 3.1.0
+   Version: 3.1.1
    Timeweb + JWT + PostgreSQL
    ========================================== */
 
@@ -16,7 +16,7 @@ const ADMIN_SCRIPT_URL =
 
 const AdminConfig = {
     appName: "English Up",
-    version: "3.1.0",
+    version: "3.1.1",
     currentPage: "dashboard",
     mobileBreakpoint: 760,
     mode: "timeweb",
@@ -575,6 +575,30 @@ function renderDashboardStatistics(statistics) {
         return;
     }
 
+    // HTML ID va PostgreSQL ustunlari mosligi
+    const statElements = {
+        totalStudents: "total_students",
+        activeSubscriptions: "active_subscriptions",
+        unusedCodes: "unused_codes",
+        totalCourses: "total_courses"
+    };
+
+    Object.entries(statElements).forEach(
+        ([elementId, statisticKey]) => {
+            const element = getElement(elementId);
+
+            if (!element) return;
+
+            const value = statistics[statisticKey];
+
+            element.textContent =
+                value === null || value === undefined
+                    ? "0"
+                    : String(value);
+        }
+    );
+
+    // Qo'shimcha data-stat elementlarini ham qo'llab-quvvatlash
     document.querySelectorAll("[data-stat]").forEach(
         (element) => {
             const key = element.dataset.stat;
