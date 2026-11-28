@@ -6,36 +6,45 @@ import {
     clearAdminSession
 } from "./login/firebase.js";
 
+const LOGIN_URL = "/admin/login/index.html";
+const ADMIN_API = "/api/admin/me";
+
 document.documentElement.style.visibility = "hidden";
 
+function redirectToLogin() {
+    clearAdminSession();
+    window.location.replace(LOGIN_URL);
+}
+
 async function checkAdminAccess() {
+    const session = getAdminSession();
+
+    if (!session || !session.token) {
+        redirectToLogin();
+        return;
+    }
+
     try {
-        const session = getAdminSession();
-
-        if (!session || !session.token) {
-            clearAdminSession();
-            window.location.replace("./login/index.html");
-            return;
-        }
-
-        const response = await fetch("/api/admin/me", {
+        const response = await fetch(ADMIN_API, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${session.token}`,
-                "Content-Type": "application/json"
-            }
+                "Accept": "application/json"
+            },
+            cache: "no-store"
         });
 
-        const data = await response.json().catch(() => ({}));
+        const data = await response.json().catch(() => null);
 
         if (
             !response.ok ||
-            !data.success ||
+            !data ||
+            data.success !== true ||
             !data.user ||
-            data.user.role !== "admin"
+            data.user.role !== "admin" ||
+            data.user.is_active !== true
         ) {
-            clearAdminSession();
-            window.location.replace("./login/index.html");
+            redirectToLogin();
             return;
         }
 
@@ -47,10 +56,8 @@ async function checkAdminAccess() {
         document.documentElement.style.visibility = "visible";
 
     } catch (error) {
-        console.error("Admin access error:", error);
-
-        clearAdminSession();
-        window.location.replace("./login/index.html");
+        console.error("Admin authentication error:", error);
+        redirectToLogin();
     }
 }
 
