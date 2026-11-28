@@ -10,13 +10,57 @@ const {
 
 const app = express();
 
+app.disable("x-powered-by");
+
+if (process.env.TRUST_PROXY === "true") {
+  app.set("trust proxy", 1);
+}
+
 // =========================================
-// MIDDLEWARE
+// CORS CONFIGURATION
 // =========================================
 
-app.use(cors());
+const allowedOrigins = (process.env.CORS_ORIGINS || "")
+  .split(",")
+  .map(origin => origin.trim().replace(/\/+$/, ""))
+  .filter(Boolean);
 
-app.use(express.json({ limit: "10mb" }));
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    const normalizedOrigin = origin.replace(/\/+$/, "");
+
+    callback(
+      null,
+      allowedOrigins.includes(normalizedOrigin)
+    );
+  },
+  credentials: true,
+  methods: [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS"
+  ],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization"
+  ],
+  optionsSuccessStatus: 204
+}));
+
+// =========================================
+// BODY PARSING
+// =========================================
+
+app.use(express.json({
+  limit: "10mb"
+}));
 
 app.use(express.urlencoded({
   extended: true,
@@ -31,7 +75,8 @@ app.get("/api/health", (req, res) => {
   res.json({
     success: true,
     status: "online",
-    service: "English Up API"
+    service: "English Up API",
+    timestamp: new Date().toISOString()
   });
 });
 
@@ -46,10 +91,14 @@ app.get("/api/health/database", async (req, res) => {
     res.json({
       success: true,
       database: "connected",
-      time: result.current_time
+      time: result.current_time,
+      databaseName: result.database_name
     });
   } catch (error) {
-    console.error("Database health check failed:", error);
+    console.error(
+      "Database health check failed:",
+      error.message
+    );
 
     res.status(503).json({
       success: false,
@@ -67,10 +116,17 @@ app.use("/api/auth", require("./backend/routes/auth"));
 app.use("/api/users", require("./backend/routes/users"));
 app.use("/api/admin", require("./backend/routes/admin"));
 
-app.use("/api/activation-codes", require("./backend/routes/activationCodes"));
-app.use("/api/announcements", require("./backend/routes/announcements"));
-app.use("/api/backup", require("./backend/routes/backup"));
+app.use(
+  "/api/activation-codes",
+  require("./backend/routes/activationCodes")
+);
 
+app.use(
+  "/api/announcements",
+  require("./backend/routes/announcements")
+);
+
+app.use("/api/backup", require("./backend/routes/backup"));
 app.use("/api/courses", require("./backend/routes/courses"));
 app.use("/api/files", require("./backend/routes/files"));
 app.use("/api/lessons", require("./backend/routes/lessons"));
@@ -85,7 +141,10 @@ app.use("/api/security", require("./backend/routes/security"));
 
 app.use("/api/speaking", require("./backend/routes/speaking"));
 app.use("/api/statistics", require("./backend/routes/statistics"));
-app.use("/api/subscriptions", require("./backend/routes/subscriptions"));
+app.use(
+  "/api/subscriptions",
+  require("./backend/routes/subscriptions")
+);
 
 app.use("/api/tests", require("./backend/routes/tests"));
 app.use("/api/vocabulary", require("./backend/routes/vocabulary"));
@@ -153,7 +212,10 @@ const allowedExtensions = new Set([
 ]);
 
 app.use((req, res, next) => {
-  if (req.method !== "GET" && req.method !== "HEAD") {
+  if (
+    req.method !== "GET" &&
+    req.method !== "HEAD"
+  ) {
     return res.status(404).json({
       success: false,
       message: "File not found"
@@ -171,15 +233,26 @@ app.use((req, res, next) => {
     });
   }
 
+  if (
+    requestedPath.includes("\0") ||
+    requestedPath.includes("\\")
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid file path"
+    });
+  }
+
   const normalizedPath = path.posix.normalize(
-    requestedPath.replace(/\\/g, "/")
+    requestedPath
   );
 
   const segments = normalizedPath
     .split("/")
     .filter(Boolean);
 
-  const filename = segments[segments.length - 1] || "";
+  const filename =
+    segments[segments.length - 1] || "";
 
   const containsBlockedPath = segments.some(segment => {
     const name = segment.toLowerCase();
@@ -228,7 +301,10 @@ app.use(express.static(__dirname, {
       res.setHeader("Cache-Control", "no-cache");
     }
 
-    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader(
+      "X-Content-Type-Options",
+      "nosniff"
+    );
   }
 }));
 
@@ -252,8 +328,7 @@ app.use((error, req, res, next) => {
     method: req.method,
     url: req.originalUrl,
     message: error.message,
-    code: error.code,
-    stack: error.stack
+    code: error.code
   });
 
   if (res.headersSent) {
@@ -265,7 +340,11 @@ app.use((error, req, res, next) => {
     error.statusCode >= 400 &&
     error.statusCode <= 599
       ? error.statusCode
-      : 500;
+      : Number.isInteger(error.status) &&
+        error.status >= 400 &&
+        error.status <= 599
+        ? error.status
+        : 500;
 
   res.status(statusCode).json({
     success: false,
@@ -280,6 +359,14 @@ app.use((error, req, res, next) => {
 // =========================================
 
 const PORT = Number(process.env.PORT || 3000);
+
+if (
+  !Number.isInteger(PORT) ||
+  PORT < 1 ||
+  PORT > 65535
+) {
+  throw new Error("Invalid PORT configuration");
+}
 
 const server = app.listen(PORT, "0.0.0.0", () => {
   console.log(`English Up running on port ${PORT}`);
@@ -300,7 +387,11 @@ async function shutdown(signal) {
 
   server.close(async (error) => {
     if (error) {
-      console.error("HTTP server shutdown error:", error);
+      console.error(
+        "HTTP server shutdown error:",
+        error
+      );
+
       process.exitCode = 1;
     }
 
@@ -308,7 +399,11 @@ async function shutdown(signal) {
       await closeDatabase();
       console.log("Database pool closed.");
     } catch (dbError) {
-      console.error("Database shutdown error:", dbError);
+      console.error(
+        "Database shutdown error:",
+        dbError.message
+      );
+
       process.exitCode = 1;
     }
   });
