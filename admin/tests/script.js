@@ -1,5 +1,7 @@
+
 /* =====================================
    ENGLISH UP — ADMIN TESTS
+   PostgreSQL API
    ===================================== */
 
 (() => {
@@ -7,13 +9,10 @@
 
     const $ = id => document.getElementById(id);
 
-    const STORAGE_KEY = "englishUpAdminTests";
+    const API_URL = "/api";
+    const TOKEN_KEY = "englishUpToken";
 
-    let tests = [];
-    let selectedTestId = null;
-    let editingQuestionId = null;
-
-    const levels = {
+    const LEVELS = {
         beginner: "Beginner",
         elementary: "Elementary",
         pre_intermediate: "Pre-Intermediate",
@@ -22,7 +21,7 @@
         ielts: "IELTS"
     };
 
-    const types = {
+    const TYPES = {
         lesson: "Lesson Test",
         vocabulary: "Vocabulary Test",
         grammar: "Grammar Test",
@@ -30,11 +29,15 @@
         placement: "Placement Test"
     };
 
-    const statuses = {
-        active: "Faol",
-        draft: "Qoralama",
-        archived: "Arxivlangan"
-    };
+    let tests = [];
+    let courses = [];
+    let selectedTestId = null;
+    let editingQuestionId = null;
+    let loading = false;
+
+    function getToken() {
+        return localStorage.getItem(TOKEN_KEY);
+    }
 
     function escapeHTML(value) {
         return String(value ?? "").replace(/[&<>"']/g, char => ({
@@ -75,6 +78,7 @@
 
         toast.textContent = message;
         toast.style.display = "block";
+        toast.style.background = type === "error" ? "#b83232" : "#29243b";
 
         clearTimeout(toast._timer);
 
@@ -83,51 +87,113 @@
         }, 3000);
     }
 
-    function loadTests() {
-        try {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            tests = saved ? JSON.parse(saved) : [];
+    async function apiRequest(path, options = {}) {
+        const token = getToken();
 
-            if (!Array.isArray(tests)) tests = [];
-        } catch (error) {
-            console.error("Tests loading error:", error);
-            tests = [];
+        if (!token) {
+            window.location.href = "../login/index.html";
+            throw new Error("Admin token topilmadi.");
         }
+
+        const headers = {
+            "Authorization": `Bearer ${token}`,
+            ...(options.body ? { "Content-Type": "application/json" } : {}),
+            ...(options.headers || {})
+        };
+
+        const response = await fetch(`${API_URL}${path}`, {
+            ...options,
+            headers
+        });
+
+        let data = {};
+
+        try {
+            data = await response.json();
+        } catch {
+            data = {};
+        }
+
+        if (response.status === 401 || response.status === 403) {
+            localStorage.removeItem(TOKEN_KEY);
+            localStorage.removeItem("englishUpAdmin");
+            window.location.href = "../login/index.html";
+            throw new Error("Ruxsat berilmadi. Qayta tizimga kiring.");
+        }
+
+        if (!response.ok || data.success === false) {
+            throw new Error(
+                data.message || `Server xatosi: ${response.status}`
+            );
+        }
+
+        return data;
     }
 
-    function saveTests() {
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(tests));
-            return true;
-        } catch (error) {
-            console.error("Tests saving error:", error);
-            showToast("Ma'lumotni saqlab bo'lmadi.", "error");
-            return false;
-        }
-    }
-
-    function createId(prefix) {
-        return prefix + "_" + Date.now() + "_" +
-            Math.random().toString(36).slice(2, 8);
+    function normalizeTest(row) {
+        return {
+            id: String(row.id),
+            title: row.title || "",
+            description: row.description || "",
+            courseId: row.course_id ?? row.courseId ?? null,
+            lessonId: row.lesson_id ?? row.lessonId ?? null,
+            level: row.level || "",
+            type: row.test_type || row.testType || "general",
+            duration: Number(row.time_limit ?? row.timeLimit ?? 0),
+            passingScore: Number(row.passing_score ?? row.passingScore ?? 80),
+            status: row.is_active ? "active" : "draft",
+            questionCount: Number(row.question_count ?? row.questionCount ?? 0),
+            questions: []
+        };
     }
 
     function getTest(id) {
-        return tests.find(test => test.id === id);
+        return tests.find(test => String(test.id) === String(id));
+    }
+
+    function getCourseForLevel(level) {
+        return courses.find(course =>
+            String(course.level || "").toLowerCase() ===
+            String(level || "").toLowerCase()
+        );
+    }
+
+    async function loadCourses() {
+        const data = await apiRequest("/courses/admin/all");
+        courses = Array.isArray(data.courses) ? data.courses : [];
+    }
+
+    async function loadTests(showMessage = false) {
+        if (loading) return;
+
+        loading = true;
+
+        try {
+            const data = await apiRequest("/tests/admin/all");
+
+            tests = Array.isArray(data.tests)
+                ? data.tests.map(normalizeTest)
+                : [];
+
+            updatePage();
+
+            if (showMessage) {
+                showToast("Testlar yangilandi.");
+            }
+        } catch (error) {
+            console.error("Tests loading error:", error);
+            showToast(error.message || "Testlarni yuklab bo'lmadi.", "error");
+        } finally {
+            loading = false;
+        }
     }
 
     function updateStatistics() {
         const total = tests.length;
-
-        const active = tests.filter(
-            test => test.status === "active"
-        ).length;
-
-        const draft = tests.filter(
-            test => test.status === "draft"
-        ).length;
-
+        const active = tests.filter(test => test.status === "active").length;
+        const draft = tests.filter(test => test.status === "draft").length;
         const questions = tests.reduce(
-            (sum, test) => sum + (test.questions?.length || 0),
+            (sum, test) => sum + test.questionCount,
             0
         );
 
@@ -185,31 +251,24 @@
         tbody.innerHTML = filtered.map((test, index) => `
             <tr>
                 <td>${index + 1}</td>
-
                 <td>
                     <span class="test-title-cell">
                         ${escapeHTML(test.title)}
                     </span>
                 </td>
-
                 <td>
                     <span class="test-level-badge">
-                        ${escapeHTML(levels[test.level] || test.level)}
+                        ${escapeHTML(LEVELS[test.level] || test.level || "—")}
                     </span>
                 </td>
-
-                <td>${escapeHTML(types[test.type] || test.type)}</td>
-
-                <td>${test.questions?.length || 0}</td>
-
-                <td>${Number(test.duration) || 0} daq.</td>
-
+                <td>${escapeHTML(TYPES[test.type] || test.type)}</td>
+                <td>${test.questionCount}</td>
+                <td>${test.duration || 0} daq.</td>
                 <td>
-                    <span class="test-status status-${escapeHTML(test.status)}">
-                        ${escapeHTML(statuses[test.status] || test.status)}
+                    <span class="test-status status-${test.status}">
+                        ${test.status === "active" ? "Faol" : "Qoralama"}
                     </span>
                 </td>
-
                 <td>
                     <div class="test-actions">
                         <button
@@ -228,7 +287,7 @@
 
                         <button
                             type="button"
-                            class="test-action delete"
+                            class="test-action"
                             data-action="delete"
                             data-id="${escapeHTML(test.id)}"
                         >O'chirish</button>
@@ -251,26 +310,17 @@
 
         form.reset();
 
-        if ($("testFormTitle")) {
-            $("testFormTitle").textContent =
-                test ? "Testni tahrirlash" : "Yangi test yaratish";
-        }
+        $("testFormTitle").textContent =
+            test ? "Testni tahrirlash" : "Yangi test yaratish";
 
-        if (test) {
-            $("testId").value = test.id;
-            $("testTitle").value = test.title;
-            $("testLevel").value = test.level;
-            $("testType").value = test.type;
-            $("testDuration").value = test.duration;
-            $("testPassingScore").value = test.passingScore;
-            $("testStatus").value = test.status;
-            $("testDescription").value = test.description || "";
-        } else {
-            $("testId").value = "";
-            $("testDuration").value = 30;
-            $("testPassingScore").value = 80;
-            $("testStatus").value = "draft";
-        }
+        $("testId").value = test?.id || "";
+        $("testTitle").value = test?.title || "";
+        $("testLevel").value = test?.level || "";
+        $("testType").value = test?.type || "";
+        $("testDuration").value = test?.duration || 30;
+        $("testPassingScore").value = test?.passingScore ?? 80;
+        $("testStatus").value = test?.status || "draft";
+        $("testDescription").value = test?.description || "";
 
         panel.classList.add("active");
         panel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -280,7 +330,7 @@
         $("testFormPanel")?.classList.remove("active");
     }
 
-    function handleTestSubmit(event) {
+    async function handleTestSubmit(event) {
         event.preventDefault();
 
         const id = $("testId").value;
@@ -302,107 +352,167 @@
             return;
         }
 
-        if (!Number.isInteger(passingScore) ||
+        if (!Number.isFinite(passingScore) ||
             passingScore < 1 || passingScore > 100) {
             showToast("O'tish foizi 1–100 oralig'ida bo'lishi kerak.", "error");
             return;
         }
 
-        const duplicate = tests.some(test =>
-            test.title.toLowerCase() === title.toLowerCase() &&
-            test.id !== id
-        );
+        const course = getCourseForLevel(level);
 
-        if (duplicate) {
-            showToast("Bu nomdagi test allaqachon mavjud.", "error");
+        if (!course) {
+            showToast(
+                "Bu daraja uchun avval Courses bo'limida kurs yarating.",
+                "error"
+            );
             return;
         }
 
-        if (id) {
-            const test = getTest(id);
+        const payload = {
+            courseId: Number(course.id),
+            title,
+            description,
+            testType: type,
+            timeLimit: duration,
+            passingScore
+        };
 
-            if (!test) {
-                showToast("Test topilmadi.", "error");
-                return;
+        const submitButton = $("testForm").querySelector(
+            'button[type="submit"]'
+        );
+
+        if (submitButton) submitButton.disabled = true;
+
+        try {
+            let savedTestId = id;
+
+            if (id) {
+                await apiRequest(`/tests/${encodeURIComponent(id)}`, {
+                    method: "PUT",
+                    body: JSON.stringify(payload)
+                });
+            } else {
+                const data = await apiRequest("/tests", {
+                    method: "POST",
+                    body: JSON.stringify(payload)
+                });
+
+                savedTestId = data.test?.id;
+
+                if (!savedTestId) {
+                    throw new Error("Server test ID qaytarmadi.");
+                }
             }
 
-            Object.assign(test, {
-                title,
-                level,
-                type,
-                duration,
-                passingScore,
-                status,
-                description,
-                updatedAt: new Date().toISOString()
-            });
-        } else {
-            tests.unshift({
-                id: createId("test"),
-                title,
-                level,
-                type,
-                duration,
-                passingScore,
-                status,
-                description,
-                questions: [],
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString()
-            });
+            await apiRequest(
+                `/tests/${encodeURIComponent(savedTestId)}/status`,
+                {
+                    method: "PATCH",
+                    body: JSON.stringify({
+                        isActive: status === "active"
+                    })
+                }
+            );
+
+            closeTestForm();
+            await loadTests();
+            showToast(id ? "Test yangilandi." : "Test yaratildi.");
+        } catch (error) {
+            console.error("Test save error:", error);
+            showToast(error.message || "Testni saqlab bo'lmadi.", "error");
+        } finally {
+            if (submitButton) submitButton.disabled = false;
         }
-
-        if (!saveTests()) return;
-
-        closeTestForm();
-        updatePage();
-        showToast(id ? "Test yangilandi." : "Yangi test yaratildi.");
     }
 
-    function deleteTest(id) {
+    async function deleteTest(id) {
         const test = getTest(id);
         if (!test) return;
 
-        const confirmed = confirm(
-            `"${test.title}" testini va uning savollarini o'chirmoqchimisiz?`
-        );
+        if (!confirm(
+            `"${test.title}" testini faolsizlantirmoqchimisiz?`
+        )) return;
 
-        if (!confirmed) return;
+        try {
+            await apiRequest(`/tests/${encodeURIComponent(id)}`, {
+                method: "DELETE"
+            });
 
-        tests = tests.filter(item => item.id !== id);
+            if (String(selectedTestId) === String(id)) {
+                closeQuestionPanel();
+            }
 
-        if (selectedTestId === id) {
-            closeQuestionPanel();
+            await loadTests();
+            showToast("Test faolsizlantirildi.");
+        } catch (error) {
+            showToast(error.message || "Testni o'chirib bo'lmadi.", "error");
         }
-
-        if (!saveTests()) return;
-
-        updatePage();
-        showToast("Test o'chirildi.");
     }
 
-    function openQuestionPanel(testId) {
+    async function openQuestionPanel(testId) {
         const test = getTest(testId);
         if (!test) return;
 
         selectedTestId = testId;
+        editingQuestionId = null;
 
-        if (!Array.isArray(test.questions)) {
-            test.questions = [];
-        }
-
-        $("questionPanelTitle").textContent =
-            `Savollar: ${test.title}`;
-
+        $("questionPanelTitle").textContent = `Savollar: ${test.title}`;
         $("questionPanel").classList.add("active");
-
-        resetQuestionForm();
-        renderQuestions();
+        $("questionsList").innerHTML = `
+            <div class="tests-empty">Savollar yuklanmoqda...</div>
+        `;
 
         $("questionPanel").scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
+
+        try {
+            const data = await apiRequest(
+                `/tests/${encodeURIComponent(testId)}`
+            );
+
+            const rows = Array.isArray(data.questions)
+                ? data.questions
+                : [];
+
+            test.questions = rows.map(row => {
+                let options = row.options || [];
+
+                if (typeof options === "string") {
+                    try {
+                        options = JSON.parse(options);
+                    } catch {
+                        options = [];
+                    }
+                }
+
+                if (!Array.isArray(options)) {
+                    options = Object.values(options);
+                }
+
+                return {
+                    id: String(row.id),
+                    text: row.question || "",
+                    options,
+                    correctAnswer: row.correct_answer || row.correctAnswer || "",
+                    points: Number(row.points) || 1,
+                    explanation: row.explanation || ""
+                };
+            });
+
+            renderQuestions();
+        } catch (error) {
+            console.error("Question loading error:", error);
+            $("questionsList").innerHTML = `
+                <div class="tests-empty">
+                    ${escapeHTML(error.message)}
+                </div>
+            `;
+            showToast(error.message || "Savollarni yuklab bo'lmadi.", "error");
+        }
+
+        resetQuestionForm();
     }
 
     function closeQuestionPanel() {
@@ -413,94 +523,95 @@
 
     function resetQuestionForm() {
         $("questionForm")?.reset();
-
         editingQuestionId = null;
 
         if ($("questionId")) $("questionId").value = "";
         if ($("questionPoints")) $("questionPoints").value = 1;
     }
 
-    function handleQuestionSubmit(event) {
+    async function handleQuestionSubmit(event) {
         event.preventDefault();
 
-        const test = getTest(selectedTestId);
-
-        if (!test) {
+        if (!selectedTestId) {
             showToast("Avval testni tanlang.", "error");
             return;
         }
 
         const questionText = $("questionText").value.trim();
 
-        const options = {
-            A: $("optionA").value.trim(),
-            B: $("optionB").value.trim(),
-            C: $("optionC").value.trim(),
-            D: $("optionD").value.trim()
-        };
+        const options = [
+            $("optionA").value.trim(),
+            $("optionB").value.trim(),
+            $("optionC").value.trim(),
+            $("optionD").value.trim()
+        ];
 
-        const correctAnswer = $("correctAnswer").value;
+        const correctLetter = $("correctAnswer").value;
         const points = Number($("questionPoints").value);
         const explanation = $("questionExplanation").value.trim();
 
-        if (!questionText || Object.values(options).some(value => !value)) {
+        if (!questionText || options.some(option => !option)) {
             showToast("Savol va barcha variantlarni to'ldiring.", "error");
             return;
         }
 
-        if (!["A", "B", "C", "D"].includes(correctAnswer)) {
+        if (!["A", "B", "C", "D"].includes(correctLetter)) {
             showToast("To'g'ri javobni belgilang.", "error");
             return;
         }
 
-        if (!Number.isInteger(points) || points < 1 || points > 100) {
-            showToast("Ball 1–100 oralig'ida bo'lishi kerak.", "error");
+        if (!Number.isFinite(points) || points <= 0 || points > 100) {
+            showToast("Ball 0 dan katta va 100 dan oshmasligi kerak.", "error");
             return;
         }
 
-        const questionData = {
-            id: editingQuestionId || createId("question"),
-            text: questionText,
+        const test = getTest(selectedTestId);
+        const questionOrder = editingQuestionId
+            ? Math.max(
+                1,
+                (test?.questions || []).findIndex(
+                    item => String(item.id) === String(editingQuestionId)
+                ) + 1
+            )
+            : (test?.questions?.length || 0) + 1;
+
+        const payload = {
+            question: questionText,
             options,
-            correctAnswer,
-            points,
+            correctAnswer: correctLetter,
             explanation,
-            updatedAt: new Date().toISOString()
+            questionOrder,
+            points
         };
 
-        if (!Array.isArray(test.questions)) {
-            test.questions = [];
-        }
-
-        if (editingQuestionId) {
-            const index = test.questions.findIndex(
-                question => question.id === editingQuestionId
-            );
-
-            if (index === -1) {
-                showToast("Savol topilmadi.", "error");
-                return;
+        try {
+            if (editingQuestionId) {
+                await apiRequest(
+                    `/tests/${encodeURIComponent(selectedTestId)}/questions/${encodeURIComponent(editingQuestionId)}`,
+                    {
+                        method: "PUT",
+                        body: JSON.stringify(payload)
+                    }
+                );
+            } else {
+                await apiRequest(
+                    `/tests/${encodeURIComponent(selectedTestId)}/questions`,
+                    {
+                        method: "POST",
+                        body: JSON.stringify(payload)
+                    }
+                );
             }
 
-            test.questions[index] = {
-                ...test.questions[index],
-                ...questionData
-            };
-        } else {
-            test.questions.push(questionData);
+            await openQuestionPanel(selectedTestId);
+            await loadTests();
+            showToast(
+                editingQuestionId ? "Savol yangilandi." : "Savol qo'shildi."
+            );
+        } catch (error) {
+            console.error("Question save error:", error);
+            showToast(error.message || "Savolni saqlab bo'lmadi.", "error");
         }
-
-        test.updatedAt = new Date().toISOString();
-
-        if (!saveTests()) return;
-
-        resetQuestionForm();
-        renderQuestions();
-        updatePage();
-
-        showToast(
-            editingQuestionId ? "Savol yangilandi." : "Savol qo'shildi."
-        );
     }
 
     function renderQuestions() {
@@ -511,8 +622,7 @@
 
         const questions = test.questions || [];
 
-        $("questionCount").textContent =
-            `${questions.length} ta savol`;
+        $("questionCount").textContent = `${questions.length} ta savol`;
 
         if (!questions.length) {
             container.innerHTML = `
@@ -525,25 +635,23 @@
 
         container.innerHTML = questions.map((question, index) => `
             <article class="question-item">
-
                 <div class="question-item-title">
                     ${index + 1}. ${escapeHTML(question.text)}
                 </div>
 
                 <div class="question-options">
-                    ${["A", "B", "C", "D"].map(letter => `
+                    ${["A", "B", "C", "D"].map((letter, optionIndex) => `
                         <div class="question-option ${
                             question.correctAnswer === letter ? "correct" : ""
                         }">
                             <strong>${letter}.</strong>
-                            ${escapeHTML(question.options?.[letter] || "")}
+                            ${escapeHTML(question.options?.[optionIndex] || "")}
                             ${question.correctAnswer === letter ? " ✓" : ""}
                         </div>
                     `).join("")}
                 </div>
 
                 <div class="question-item-footer">
-
                     <span class="question-points">
                         ${Number(question.points) || 1} ball
                     </span>
@@ -563,9 +671,7 @@
                             data-id="${escapeHTML(question.id)}"
                         >O'chirish</button>
                     </div>
-
                 </div>
-
             </article>
         `).join("");
     }
@@ -573,7 +679,7 @@
     function editQuestion(questionId) {
         const test = getTest(selectedTestId);
         const question = test?.questions?.find(
-            item => item.id === questionId
+            item => String(item.id) === String(questionId)
         );
 
         if (!question) return;
@@ -582,10 +688,12 @@
 
         $("questionId").value = question.id;
         $("questionText").value = question.text;
-        $("optionA").value = question.options?.A || "";
-        $("optionB").value = question.options?.B || "";
-        $("optionC").value = question.options?.C || "";
-        $("optionD").value = question.options?.D || "";
+
+        $("optionA").value = question.options?.[0] || "";
+        $("optionB").value = question.options?.[1] || "";
+        $("optionC").value = question.options?.[2] || "";
+        $("optionD").value = question.options?.[3] || "";
+
         $("correctAnswer").value = question.correctAnswer;
         $("questionPoints").value = question.points || 1;
         $("questionExplanation").value = question.explanation || "";
@@ -596,27 +704,23 @@
         });
     }
 
-    function deleteQuestion(questionId) {
-        const test = getTest(selectedTestId);
-        if (!test) return;
-
-        const question = test.questions.find(
-            item => item.id === questionId
-        );
-
-        if (!question) return;
+    async function deleteQuestion(questionId) {
+        if (!selectedTestId) return;
 
         if (!confirm("Ushbu savolni o'chirmoqchimisiz?")) return;
 
-        test.questions = test.questions.filter(
-            item => item.id !== questionId
-        );
+        try {
+            await apiRequest(
+                `/tests/${encodeURIComponent(selectedTestId)}/questions/${encodeURIComponent(questionId)}`,
+                { method: "DELETE" }
+            );
 
-        if (!saveTests()) return;
-
-        renderQuestions();
-        updatePage();
-        showToast("Savol o'chirildi.");
+            await openQuestionPanel(selectedTestId);
+            await loadTests();
+            showToast("Savol o'chirildi.");
+        } catch (error) {
+            showToast(error.message || "Savolni o'chirib bo'lmadi.", "error");
+        }
     }
 
     function handleTestsTableClick(event) {
@@ -637,7 +741,10 @@
     }
 
     function handleQuestionsClick(event) {
-        const button = event.target.closest("button[data-question-action]");
+        const button = event.target.closest(
+            "button[data-question-action]"
+        );
+
         if (!button) return;
 
         const id = button.dataset.id;
@@ -647,16 +754,12 @@
         if (action === "delete") deleteQuestion(id);
     }
 
-    function refreshTests() {
-        loadTests();
-        updatePage();
-        showToast("Testlar ro'yxati yangilandi.");
+    async function refreshTests() {
+        await loadTests(true);
     }
 
     function bindEvents() {
-        $("addTestBtn")?.addEventListener("click", () => {
-            openTestForm();
-        });
+        $("addTestBtn")?.addEventListener("click", () => openTestForm());
 
         $("closeTestForm")?.addEventListener("click", closeTestForm);
         $("cancelTestForm")?.addEventListener("click", closeTestForm);
@@ -695,10 +798,17 @@
         );
     }
 
-    function initialize() {
-        loadTests();
+    async function initialize() {
         bindEvents();
-        updatePage();
+
+        try {
+            await loadCourses();
+        } catch (error) {
+            console.error("Courses loading error:", error);
+            showToast("Kurslar ro'yxatini yuklab bo'lmadi.", "error");
+        }
+
+        await loadTests();
     }
 
     if (document.readyState === "loading") {
