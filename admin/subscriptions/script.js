@@ -1,13 +1,16 @@
-
 /* =========================================
    ENGLISH UP ADMIN
-   SUBSCRIPTIONS PAGE SCRIPT
+   SUBSCRIPTIONS — POSTGRESQL API
 ========================================= */
 
 (() => {
   "use strict";
 
   const $ = (id) => document.getElementById(id);
+
+  const API_URL = "/api/subscriptions";
+  const TOKEN_KEY = "englishUpToken";
+  const PAGE_LIMIT = 20;
 
   const elements = {
     total: $("totalSubscriptions"),
@@ -19,12 +22,15 @@
     plan: $("subscriptionPlanFilter"),
     table: $("subscriptionsTableBody"),
     count: $("subscriptionCount"),
+    pagination: $("subscriptionPagination"),
     refresh: $("refreshSubscriptions")
   };
 
-  // Firebase ulanmaguncha ma'lumotlar bo'sh.
-  // Keyinchalik bu massiv Firestore ma'lumotlari bilan to'ldiriladi.
   let subscriptions = [];
+  let currentPage = 1;
+  let totalPages = 1;
+  let totalSubscriptions = 0;
+  let loading = false;
 
   const state = {
     search: "",
@@ -34,9 +40,19 @@
 
   const PLAN_LABELS = {
     monthly: "1 oylik",
+    quarterly: "3 oylik",
+    yearly: "1 yillik",
     "three-months": "3 oylik",
-    "six-months": "6 oylik",
-    yearly: "1 yillik"
+    "six-months": "6 oylik"
+  };
+
+  const STATUS_LABELS = {
+    active: "Faol",
+    expiring: "Tugash arafasida",
+    expired: "Muddati tugagan",
+    cancelled: "Bekor qilingan",
+    pending: "Kutilmoqda",
+    inactive: "Faol emas"
   };
 
   function escapeHTML(value) {
@@ -49,12 +65,22 @@
     })[char]);
   }
 
+  function getToken() {
+    return localStorage.getItem(TOKEN_KEY);
+  }
+
+  function showMessage(message) {
+    if (typeof window.showToast === "function") {
+      window.showToast(message);
+    } else {
+      console.info(message);
+    }
+  }
+
   function parseDate(value) {
     if (!value) return null;
 
-    const date = value instanceof Date
-      ? new Date(value.getTime())
-      : new Date(value);
+    const date = new Date(value);
 
     return Number.isNaN(date.getTime()) ? null : date;
   }
@@ -72,35 +98,26 @@
   }
 
   function getStatus(subscription) {
-    if (subscription.active === false) {
-      return "inactive";
+    if (subscription.status === "cancelled") {
+      return "cancelled";
     }
 
-    const endDate = parseDate(subscription.endDate);
-
-    if (!endDate) {
-      return "inactive";
+    if (subscription.status === "pending") {
+      return "pending";
     }
 
-    const now = new Date();
-    const today = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate()
-    );
+    const endDate = parseDate(subscription.end_date);
 
-    const endDay = new Date(
-      endDate.getFullYear(),
-      endDate.getMonth(),
-      endDate.getDate()
-    );
+    if (!endDate || endDate <= new Date()) {
+      return "expired";
+    }
 
-    if (endDay < today) {
+    if (subscription.status === "expired") {
       return "expired";
     }
 
     const daysLeft = Math.ceil(
-      (endDay - today) / 86400000
+      (endDate.getTime() - Date.now()) / 86400000
     );
 
     if (daysLeft <= 7) {
@@ -110,34 +127,65 @@
     return "active";
   }
 
-  function getStatusLabel(status) {
-    const labels = {
-      active: "Faol",
-      expiring: "Tugash arafasida",
-      expired: "Muddati tugagan",
-      inactive: "Faol emas"
-    };
-
-    return labels[status] || "Noma'lum";
-  }
-
   function getStatusClass(status) {
     const classes = {
       active: "status-active",
       expiring: "status-expiring",
       expired: "status-expired",
-      inactive: "status-inactive"
+      cancelled: "status-inactive",
+      pending: "status-expiring"
     };
 
     return classes[status] || "status-inactive";
+  }
+
+  async function apiRequest(path, options = {}) {
+    const token = getToken();
+
+    if (!token) {
+      throw new Error("Admin sessiyasi topilmadi. Qayta kiring.");
+    }
+
+    const response = await fetch(`${API_URL}${path}`, {
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        ...(options.headers || {})
+      }
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (response.status === 401 || response.status === 403) {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem("englishUpAdmin");
+
+      window.location.href = "../login/index.html";
+
+      throw new Error("Sessiya tugagan yoki ruxsat mavjud emas.");
+    }
+
+    if (!response.ok || data.success === false) {
+      throw new Error(
+        data.message || `Server xatosi: ${response.status}`
+      );
+    }
+
+    return data;
   }
 
   function getFilteredSubscriptions() {
     const query = state.search.trim().toLowerCase();
 
     return subscriptions.filter((subscription) => {
-      const name = String(subscription.name || "").toLowerCase();
-      const email = String(subscription.email || "").toLowerCase();
+      const name = String(
+        subscription.user_name || ""
+      ).toLowerCase();
+
+      const email = String(
+        subscription.user_email || ""
+      ).toLowerCase();
 
       const matchesSearch =
         !query ||
@@ -160,7 +208,7 @@
 
   function updateStatistics() {
     const counts = {
-      total: subscriptions.length,
+      total: totalSubscriptions,
       active: 0,
       expiring: 0,
       expired: 0
@@ -212,107 +260,254 @@
 
     if (elements.count) {
       elements.count.textContent =
-        `${filtered.length} ta obuna`;
+        `${filtered.length} ta obuna (ushbu sahifada)`;
     }
 
-    if (filtered.length === 0) {
-      if (subscriptions.length === 0) {
-        renderEmpty(
-          "Hozircha obunalar mavjud emas",
-          "Firebase ma'lumotlar bazasi ulangandan keyin obunalar shu yerda ko'rinadi."
-        );
-      } else {
-        renderEmpty(
-          "Natija topilmadi",
-          "Qidiruv yoki filtr shartlarini o'zgartirib ko'ring."
-        );
-      }
+    if (!filtered.length) {
+      renderEmpty(
+        subscriptions.length
+          ? "Natija topilmadi"
+          : "Hozircha obunalar mavjud emas",
+        subscriptions.length
+          ? "Qidiruv yoki filtr shartlarini o‘zgartiring."
+          : "PostgreSQL bazasida obunalar topilmadi."
+      );
 
       return;
     }
 
     elements.table.innerHTML = filtered.map((subscription) => {
       const status = getStatus(subscription);
-      const plan = PLAN_LABELS[subscription.plan] || "Noma'lum";
+
+      const plan =
+        PLAN_LABELS[subscription.plan] ||
+        subscription.plan ||
+        "Noma'lum";
+
+      const canCancel = [
+        "active",
+        "pending"
+      ].includes(subscription.status);
 
       return `
         <tr>
           <td>
-            <strong>${escapeHTML(subscription.name || "Noma'lum")}</strong>
+            <strong>
+              ${escapeHTML(subscription.user_name || "Noma'lum")}
+            </strong>
           </td>
 
-          <td>${escapeHTML(subscription.email || "—")}</td>
+          <td>
+            ${escapeHTML(subscription.user_email || "—")}
+          </td>
 
-          <td>${escapeHTML(plan)}</td>
+          <td>
+            ${escapeHTML(plan)}
+          </td>
 
-          <td>${escapeHTML(formatDate(subscription.startDate))}</td>
+          <td>
+            ${escapeHTML(formatDate(subscription.start_date))}
+          </td>
 
-          <td>${escapeHTML(formatDate(subscription.endDate))}</td>
+          <td>
+            ${escapeHTML(formatDate(subscription.end_date))}
+          </td>
 
           <td>
             <span class="subscription-status ${getStatusClass(status)}">
-              ${escapeHTML(getStatusLabel(status))}
+              ${escapeHTML(STATUS_LABELS[status] || "Noma'lum")}
             </span>
           </td>
 
           <td>
-            <span class="subscription-no-action">
-              Firebase ulanmagan
-            </span>
+            ${
+              canCancel
+                ? `
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-cancel-subscription="${Number(subscription.id)}"
+                  >
+                    Bekor qilish
+                  </button>
+                `
+                : "—"
+            }
           </td>
         </tr>
       `;
     }).join("");
   }
 
-  function refreshPage() {
-    updateStatistics();
+  function renderPagination() {
+    if (!elements.pagination) return;
+
+    elements.pagination.innerHTML = `
+      <button
+        type="button"
+        data-page="${currentPage - 1}"
+        ${currentPage <= 1 ? "disabled" : ""}
+      >
+        ←
+      </button>
+
+      <span>${currentPage} / ${totalPages}</span>
+
+      <button
+        type="button"
+        data-page="${currentPage + 1}"
+        ${currentPage >= totalPages ? "disabled" : ""}
+      >
+        →
+      </button>
+    `;
+  }
+
+  async function loadSubscriptions() {
+    if (loading) return;
+
+    loading = true;
+
+    if (elements.table) {
+      renderEmpty("Yuklanmoqda...", "Obunalar serverdan olinmoqda.");
+    }
+
+    try {
+      const data = await apiRequest(
+        `/admin?page=${currentPage}&limit=${PAGE_LIMIT}`
+      );
+
+      subscriptions = Array.isArray(data.subscriptions)
+        ? data.subscriptions
+        : [];
+
+      const pagination = data.pagination || {};
+
+      totalSubscriptions = Number(pagination.total) || 0;
+      totalPages = Math.max(
+        1,
+        Number(pagination.totalPages) || 1
+      );
+
+      currentPage = Number(pagination.page) || currentPage;
+
+      updateStatistics();
+      renderTable();
+      renderPagination();
+
+    } catch (error) {
+      console.error("Subscriptions API:", error);
+
+      renderEmpty(
+        "Obunalarni yuklab bo‘lmadi",
+        error.message
+      );
+
+      showMessage(error.message);
+
+    } finally {
+      loading = false;
+    }
+  }
+
+  async function cancelSubscription(subscriptionId) {
+    const confirmed = window.confirm(
+      "Ushbu obunani bekor qilishni tasdiqlaysizmi?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      await apiRequest(
+        `/admin/${subscriptionId}/status`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            status: "cancelled"
+          })
+        }
+      );
+
+      showMessage("Obuna bekor qilindi.");
+
+      await loadSubscriptions();
+
+    } catch (error) {
+      console.error("Subscription update:", error);
+      showMessage(error.message);
+    }
+  }
+
+  function applyFilters() {
+    state.search = elements.search?.value || "";
+    state.status = elements.status?.value || "all";
+    state.plan = elements.plan?.value || "all";
+
     renderTable();
   }
 
   function bindEvents() {
-    if (elements.search) {
-      elements.search.addEventListener("input", (event) => {
-        state.search = event.target.value;
-        renderTable();
-      });
-    }
+    elements.search?.addEventListener("input", applyFilters);
 
-    if (elements.status) {
-      elements.status.addEventListener("change", (event) => {
-        state.status = event.target.value;
-        renderTable();
-      });
-    }
+    elements.status?.addEventListener("change", applyFilters);
 
-    if (elements.plan) {
-      elements.plan.addEventListener("change", (event) => {
-        state.plan = event.target.value;
-        renderTable();
-      });
-    }
+    elements.plan?.addEventListener("change", applyFilters);
 
-    if (elements.refresh) {
-      elements.refresh.addEventListener("click", () => {
-        refreshPage();
+    elements.refresh?.addEventListener("click", () => {
+      loadSubscriptions();
+    });
 
-        if (typeof window.showToast === "function") {
-          window.showToast("Sahifa yangilandi");
-        }
-      });
-    }
+    elements.pagination?.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-page]");
+
+      if (!button || button.disabled) return;
+
+      const page = Number(button.dataset.page);
+
+      if (
+        !Number.isInteger(page) ||
+        page < 1 ||
+        page > totalPages
+      ) {
+        return;
+      }
+
+      currentPage = page;
+      loadSubscriptions();
+    });
+
+    elements.table?.addEventListener("click", (event) => {
+      const button = event.target.closest(
+        "[data-cancel-subscription]"
+      );
+
+      if (!button) return;
+
+      const subscriptionId = Number(
+        button.dataset.cancelSubscription
+      );
+
+      if (
+        Number.isInteger(subscriptionId) &&
+        subscriptionId > 0
+      ) {
+        cancelSubscription(subscriptionId);
+      }
+    });
   }
 
   function initialize() {
     bindEvents();
-    refreshPage();
+    loadSubscriptions();
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialize);
+    document.addEventListener(
+      "DOMContentLoaded",
+      initialize
+    );
   } else {
     initialize();
   }
 
 })();
-
