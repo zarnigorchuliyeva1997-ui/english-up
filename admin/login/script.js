@@ -7,6 +7,9 @@ const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("loginButton");
 const message = document.getElementById("loginMessage");
 
+const TOKEN_KEY = "englishUpToken";
+const ADMIN_KEY = "englishUpAdmin";
+
 function showMessage(text, success = false) {
     message.textContent = text;
     message.style.color = success ? "#16803c" : "#d93025";
@@ -14,7 +17,14 @@ function showMessage(text, success = false) {
 
 function setLoading(loading) {
     loginButton.disabled = loading;
-    loginButton.textContent = loading ? "Tekshirilmoqda..." : "Kirish";
+    loginButton.textContent = loading
+        ? "Tekshirilmoqda..."
+        : "Kirish";
+}
+
+function clearSession() {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(ADMIN_KEY);
 }
 
 form.addEventListener("submit", async function (event) {
@@ -30,18 +40,21 @@ form.addEventListener("submit", async function (event) {
         return;
     }
 
+    clearSession();
     setLoading(true);
 
     try {
         const response = await fetch("/api/auth/login", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             body: JSON.stringify({
                 email,
                 password
-            })
+            }),
+            cache: "no-store"
         });
 
         const data = await response.json().catch(() => ({}));
@@ -56,24 +69,60 @@ form.addEventListener("submit", async function (event) {
         const token = data.token;
 
         if (!user || !token) {
-            throw new Error("Server javobida foydalanuvchi yoki token yo‘q.");
+            throw new Error("Server javobida ma'lumot yetishmaydi.");
         }
 
         if (user.role !== "admin") {
             throw new Error("Sizda admin huquqi yo‘q.");
         }
 
-        localStorage.setItem("englishUpToken", token);
-        localStorage.setItem("englishUpAdmin", JSON.stringify(user));
+        if (user.is_active !== true) {
+            throw new Error("Admin akkaunti faol emas.");
+        }
 
-        showMessage("Kirish muvaffaqiyatli. Yo‘naltirilmoqda...", true);
+        localStorage.setItem(TOKEN_KEY, token);
 
-        window.location.replace("../index.html");
+        const verifyResponse = await fetch("/api/admin/me", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json"
+            },
+            cache: "no-store"
+        });
+
+        const verifyData = await verifyResponse.json().catch(() => ({}));
+
+        if (
+            !verifyResponse.ok ||
+            !verifyData.success ||
+            !verifyData.user ||
+            verifyData.user.role !== "admin" ||
+            verifyData.user.is_active !== true
+        ) {
+            throw new Error("Admin huquqini tasdiqlash amalga oshmadi.");
+        }
+
+        localStorage.setItem(
+            ADMIN_KEY,
+            JSON.stringify(verifyData.user)
+        );
+
+        showMessage(
+            "Kirish muvaffaqiyatli. Yo‘naltirilmoqda...",
+            true
+        );
+
+        window.location.replace("/admin/index.html");
 
     } catch (error) {
         console.error("Admin login error:", error);
 
-        showMessage(error.message || "Server bilan aloqa yo‘q.");
+        clearSession();
+
+        showMessage(
+            error.message || "Server bilan aloqa yo‘q."
+        );
 
         passwordInput.value = "";
         setLoading(false);
