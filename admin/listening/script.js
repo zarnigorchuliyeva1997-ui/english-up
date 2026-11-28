@@ -1,21 +1,24 @@
-/* ENGLISH UP — LISTENING ADMIN */
+/* ENGLISH UP — LISTENING ADMIN
+   PostgreSQL API version
+*/
 
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "englishUpAdminListening";
+  const API_BASE = "/api/listening";
+  const TOKEN_KEY = "englishUpToken";
 
   const $ = (id) => document.getElementById(id);
 
-  const elements = {
+  const el = {
     total: $("totalAudios"),
     active: $("activeAudios"),
     draft: $("draftAudios"),
     questions: $("totalAudioQuestions"),
 
     formPanel: $("audioFormPanel"),
-    form: $("audioForm"),
     formTitle: $("audioFormTitle"),
+    form: $("audioForm"),
     id: $("audioId"),
     title: $("audioTitle"),
     level: $("audioLevel"),
@@ -27,7 +30,7 @@
     attempts: $("audioAttempts"),
     status: $("audioStatus"),
 
-    addButton: $("addAudioBtn"),
+    add: $("addAudioBtn"),
     closeForm: $("closeAudioForm"),
     cancelForm: $("cancelAudioForm"),
 
@@ -55,38 +58,22 @@
     count: $("audioCount")
   };
 
-  let audios = loadAudios();
+  let audios = [];
   let selectedAudioId = null;
+  let selectedQuestions = [];
 
-  function loadAudios() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      const parsed = saved ? JSON.parse(saved) : [];
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (error) {
-      console.error("Listening data error:", error);
-      return [];
-    }
-  }
-
-  function saveAudios() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(audios));
-      return true;
-    } catch (error) {
-      showToast("Ma'lumotni saqlashda xatolik yuz berdi.", "error");
-      return false;
-    }
+  function getToken() {
+    return localStorage.getItem(TOKEN_KEY);
   }
 
   function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    return String(value ?? "").replace(/[&<>"']/g, (char) => ({
       "&": "&amp;",
       "<": "&lt;",
       ">": "&gt;",
       '"': "&quot;",
       "'": "&#039;"
-    })[character]);
+    })[char]);
   }
 
   function showToast(message, type = "success") {
@@ -107,8 +94,8 @@
         z-index:99999;
         padding:13px 18px;
         border-radius:10px;
-        color:white;
-        background:#333;
+        color:#fff;
+        background:#25834f;
         box-shadow:0 5px 20px rgba(0,0,0,.2);
         font-size:14px;
         max-width:calc(100% - 40px);
@@ -126,66 +113,133 @@
     }, 3000);
   }
 
-  function getStatusLabel(status) {
-    const labels = {
-      active: "Faol",
-      draft: "Qoralama",
-      archived: "Arxiv"
+  async function apiRequest(path, options = {}) {
+    const token = getToken();
+
+    if (!token) {
+      window.location.href = "../login/index.html";
+      throw new Error("Tizimga qayta kirishingiz kerak.");
+    }
+
+    const headers = {
+      "Authorization": `Bearer ${token}`,
+      ...(options.body ? { "Content-Type": "application/json" } : {}),
+      ...(options.headers || {})
     };
 
-    return labels[status] || status;
+    const response = await fetch(`${API_BASE}${path}`, {
+      ...options,
+      headers
+    });
+
+    let data = {};
+
+    try {
+      data = await response.json();
+    } catch {
+      data = {};
+    }
+
+    if (response.status === 401 || response.status === 403) {
+      localStorage.removeItem(TOKEN_KEY);
+      window.location.href = "../login/index.html";
+      throw new Error("Ruxsat berilmadi. Qayta tizimga kiring.");
+    }
+
+    if (!response.ok || data.success === false) {
+      throw new Error(
+        data.message || "Server bilan ishlashda xatolik yuz berdi."
+      );
+    }
+
+    return data;
+  }
+
+  function normalizeAudio(audio) {
+    const active = Boolean(audio.is_active ?? audio.isActive);
+
+    return {
+      id: audio.id,
+      title: audio.title || "",
+      level: audio.level || "",
+      description: audio.description || "",
+      transcript: audio.transcript || "",
+      audioUrl: audio.audio_url || audio.audioUrl || "",
+      duration: Number(
+        audio.duration_seconds ?? audio.durationSeconds ?? 0
+      ),
+      isActive: active,
+      questions: Array.isArray(audio.questions) ? audio.questions : [],
+      questionCount: Number(
+        audio.questions_count ??
+        audio.question_count ??
+        audio.questionCount ??
+        (Array.isArray(audio.questions) ? audio.questions.length : 0)
+      )
+    };
+  }
+
+  function getStatus(audio) {
+    return audio.isActive ? "active" : "draft";
+  }
+
+  function getStatusLabel(status) {
+    return status === "active" ? "Faol" : "Qoralama";
   }
 
   function updateStats() {
-    if (elements.total) {
-      elements.total.textContent = audios.length;
+    if (el.total) {
+      el.total.textContent = audios.length;
     }
 
-    if (elements.active) {
-      elements.active.textContent =
-        audios.filter(audio => audio.status === "active").length;
+    if (el.active) {
+      el.active.textContent =
+        audios.filter(audio => audio.isActive).length;
     }
 
-    if (elements.draft) {
-      elements.draft.textContent =
-        audios.filter(audio => audio.status === "draft").length;
+    if (el.draft) {
+      el.draft.textContent =
+        audios.filter(audio => !audio.isActive).length;
     }
 
-    if (elements.questions) {
-      elements.questions.textContent =
-        audios.reduce((sum, audio) => sum + (audio.questions?.length || 0), 0);
+    if (el.questions) {
+      el.questions.textContent = audios.reduce(
+        (sum, audio) => sum + audio.questionCount,
+        0
+      );
     }
   }
 
   function getFilteredAudios() {
-    const search = elements.search?.value.trim().toLowerCase() || "";
-    const level = elements.levelFilter?.value || "";
-    const status = elements.statusFilter?.value || "";
+    const search = el.search?.value.trim().toLowerCase() || "";
+    const level = el.levelFilter?.value || "";
+    const status = el.statusFilter?.value || "";
 
     return audios.filter(audio => {
       const matchesSearch =
-        !search ||
-        audio.title.toLowerCase().includes(search) ||
-        audio.category.toLowerCase().includes(search);
+        !search || audio.title.toLowerCase().includes(search);
 
-      const matchesLevel = !level || audio.level === level;
-      const matchesStatus = !status || audio.status === status;
+      const matchesLevel =
+        !level || audio.level === level;
+
+      const matchesStatus =
+        !status || getStatus(audio) === status;
 
       return matchesSearch && matchesLevel && matchesStatus;
     });
   }
 
   function renderAudios() {
-    if (!elements.table) return;
+    if (!el.table) return;
 
     const filtered = getFilteredAudios();
 
-    if (elements.count) {
-      elements.count.textContent = filtered.length;
+    if (el.count) {
+      el.count.textContent = filtered.length;
     }
 
-    if (filtered.length === 0) {
-      elements.table.innerHTML = `
+    if (!filtered.length) {
+      el.table.innerHTML = `
         <tr>
           <td colspan="7" class="audio-empty">
             Hozircha audio materiallar mavjud emas.
@@ -195,38 +249,46 @@
       return;
     }
 
-    elements.table.innerHTML = filtered.map(audio => `
-      <tr>
-        <td>
-          <strong>${escapeHTML(audio.title)}</strong>
-        </td>
-        <td>${escapeHTML(audio.level)}</td>
-        <td>${escapeHTML(audio.category)}</td>
-        <td>${escapeHTML(audio.duration)} min</td>
-        <td>${audio.questions.length}</td>
-        <td>
-          <span class="audio-status ${escapeHTML(audio.status)}">
-            ${escapeHTML(getStatusLabel(audio.status))}
-          </span>
-        </td>
-        <td>
-          <div class="audio-action">
-            <button type="button" data-action="questions"
-              data-id="${escapeHTML(audio.id)}">
-              Savollar
-            </button>
-            <button type="button" data-action="edit"
-              data-id="${escapeHTML(audio.id)}">
-              Tahrirlash
-            </button>
-            <button type="button" class="delete-audio"
-              data-action="delete" data-id="${escapeHTML(audio.id)}">
-              O'chirish
-            </button>
-          </div>
-        </td>
-      </tr>
-    `).join("");
+    el.table.innerHTML = filtered.map(audio => {
+      const status = getStatus(audio);
+
+      return `
+        <tr>
+          <td><strong>${escapeHTML(audio.title)}</strong></td>
+          <td>${escapeHTML(audio.level || "—")}</td>
+          <td>—</td>
+          <td>${escapeHTML(audio.duration)} min</td>
+          <td>${audio.questionCount}</td>
+          <td>
+            <span class="audio-status ${status}">
+              ${getStatusLabel(status)}
+            </span>
+          </td>
+          <td>
+            <div class="audio-action">
+              <button type="button"
+                data-action="questions"
+                data-id="${escapeHTML(audio.id)}">
+                Savollar
+              </button>
+
+              <button type="button"
+                data-action="edit"
+                data-id="${escapeHTML(audio.id)}">
+                Tahrirlash
+              </button>
+
+              <button type="button"
+                class="delete-audio"
+                data-action="delete"
+                data-id="${escapeHTML(audio.id)}">
+                O'chirish
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join("");
   }
 
   function renderAll() {
@@ -234,158 +296,260 @@
     renderAudios();
   }
 
-  function openAudioForm(audio = null) {
-    if (!elements.formPanel || !elements.form) return;
-
-    elements.form.reset();
-
-    if (audio) {
-      elements.formTitle.textContent = "Audio materialni tahrirlash";
-      elements.id.value = audio.id;
-      elements.title.value = audio.title;
-      elements.level.value = audio.level;
-      elements.category.value = audio.category;
-      elements.duration.value = audio.duration;
-      elements.url.value = audio.url;
-      elements.transcript.value = audio.transcript;
-      elements.description.value = audio.description;
-      elements.attempts.value = audio.attempts;
-      elements.status.value = audio.status;
-    } else {
-      elements.formTitle.textContent = "Yangi audio material";
-      elements.id.value = "";
-      elements.attempts.value = "5";
-      elements.status.value = "draft";
+  async function loadAudios() {
+    if (el.table) {
+      el.table.innerHTML = `
+        <tr>
+          <td colspan="7" class="audio-empty">Yuklanmoqda...</td>
+        </tr>
+      `;
     }
 
-    elements.formPanel.classList.add("show");
-    elements.formPanel.scrollIntoView({
+    try {
+      const data = await apiRequest("/admin/all");
+
+      const rows = data.lessons || data.audios || data.listeningLessons || [];
+
+      audios = rows.map(normalizeAudio);
+
+      renderAll();
+    } catch (error) {
+      console.error("Listening load error:", error);
+
+      if (el.table) {
+        el.table.innerHTML = `
+          <tr>
+            <td colspan="7" class="audio-empty">
+              ${escapeHTML(error.message)}
+            </td>
+          </tr>
+        `;
+      }
+
+      showToast(error.message, "error");
+    }
+  }
+
+  function openAudioForm(audio = null) {
+    if (!el.form || !el.formPanel) return;
+
+    el.form.reset();
+
+    if (audio) {
+      el.formTitle.textContent = "Audio materialni tahrirlash";
+      el.id.value = audio.id;
+      el.title.value = audio.title;
+      el.level.value = audio.level;
+      el.duration.value = audio.duration || 5;
+      el.url.value = audio.audioUrl;
+      el.transcript.value = audio.transcript;
+      el.description.value = audio.description;
+      el.status.value = audio.isActive ? "active" : "draft";
+    } else {
+      el.formTitle.textContent = "Yangi audio material";
+      el.id.value = "";
+      el.duration.value = 5;
+      el.status.value = "draft";
+    }
+
+    el.formPanel.classList.add("show");
+    el.formPanel.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
   }
 
   function closeAudioForm() {
-    elements.formPanel?.classList.remove("show");
-    elements.form?.reset();
+    el.formPanel?.classList.remove("show");
+    el.form?.reset();
+
+    if (el.id) {
+      el.id.value = "";
+    }
   }
 
-  function saveAudio(event) {
+  async function saveAudio(event) {
     event.preventDefault();
 
-    const title = elements.title.value.trim();
-    const url = elements.url.value.trim();
+    const id = el.id.value.trim();
+    const durationMinutes = Number(el.duration.value);
 
-    if (!title) {
+    if (!el.title.value.trim()) {
       showToast("Audio nomini kiriting.", "error");
       return;
     }
 
-    if (!url) {
+    if (!el.url.value.trim()) {
       showToast("Audio URL manzilini kiriting.", "error");
       return;
     }
 
-    const existingId = elements.id.value;
-    const existing = audios.find(audio => audio.id === existingId);
-
-    const audio = {
-      id: existingId || (
-        "audio_" + Date.now() + "_" + Math.random().toString(36).slice(2, 7)
-      ),
-      title,
-      level: elements.level.value,
-      category: elements.category.value,
-      duration: Number(elements.duration.value) || 0,
-      url,
-      transcript: elements.transcript.value.trim(),
-      description: elements.description.value.trim(),
-      attempts: elements.attempts.value,
-      status: elements.status.value,
-      questions: existing?.questions || [],
-      createdAt: existing?.createdAt || new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    };
-
-    const previousAudios = [...audios];
-
-    if (existing) {
-      audios = audios.map(item => item.id === existingId ? audio : item);
-    } else {
-      audios.unshift(audio);
-    }
-
-    if (!saveAudios()) {
-      audios = previousAudios;
+    if (!Number.isFinite(durationMinutes) || durationMinutes < 0) {
+      showToast("Audio davomiyligini tekshiring.", "error");
       return;
     }
 
-    closeAudioForm();
-    renderAll();
-    showToast(existing ? "Audio yangilandi." : "Audio qo'shildi.");
+    const payload = {
+      title: el.title.value.trim(),
+      level: el.level.value || null,
+      description: el.description.value.trim() || null,
+      transcript: el.transcript.value.trim() || null,
+      audioUrl: el.url.value.trim(),
+      durationSeconds: Math.round(durationMinutes * 60),
+      isActive: el.status.value === "active"
+    };
+
+    try {
+      if (id) {
+        await apiRequest(`/${encodeURIComponent(id)}`, {
+          method: "PATCH",
+          body: JSON.stringify(payload)
+        });
+
+        showToast("Audio material yangilandi.");
+      } else {
+        await apiRequest("", {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
+
+        showToast("Audio material qo'shildi.");
+      }
+
+      closeAudioForm();
+      await loadAudios();
+    } catch (error) {
+      console.error("Listening save error:", error);
+      showToast(error.message, "error");
+    }
   }
 
-  function deleteAudio(id) {
-    const audio = audios.find(item => item.id === id);
+  async function deleteAudio(id) {
+    const audio = audios.find(item => String(item.id) === String(id));
     if (!audio) return;
 
     if (!confirm(`"${audio.title}" audio materialini o'chirmoqchimisiz?`)) {
       return;
     }
 
-    const previousAudios = [...audios];
-    audios = audios.filter(item => item.id !== id);
+    try {
+      await apiRequest(`/${encodeURIComponent(id)}`, {
+        method: "DELETE"
+      });
 
-    if (!saveAudios()) {
-      audios = previousAudios;
-      return;
+      if (String(selectedAudioId) === String(id)) {
+        closeQuestionsPanel();
+      }
+
+      showToast("Audio material o'chirildi.");
+      await loadAudios();
+    } catch (error) {
+      console.error("Listening delete error:", error);
+      showToast(error.message, "error");
     }
-
-    if (selectedAudioId === id) {
-      closeQuestionsPanel();
-    }
-
-    renderAll();
-    showToast("Audio material o'chirildi.");
   }
 
-  function openQuestionsPanel(id) {
-    const audio = audios.find(item => item.id === id);
-    if (!audio || !elements.questionsPanel) return;
+  function normalizeQuestion(question) {
+    const options = question.options || {};
 
-    selectedAudioId = id;
-    elements.questionsTitle.textContent = `Savollar: ${audio.title}`;
-    elements.questionsPanel.classList.add("show");
+    return {
+      id: question.id,
+      text: question.question || question.text || "",
+      options: {
+        A: Array.isArray(options) ? options[0] || "" : options.A || "",
+        B: Array.isArray(options) ? options[1] || "" : options.B || "",
+        C: Array.isArray(options) ? options[2] || "" : options.C || "",
+        D: Array.isArray(options) ? options[3] || "" : options.D || ""
+      },
+      correctAnswer: question.correct_answer || question.correctAnswer || "",
+      points: Number(question.points || 1),
+      explanation: question.explanation || ""
+    };
+  }
+
+  async function loadQuestions(audioId) {
+    const data = await apiRequest(`/${encodeURIComponent(audioId)}`);
+
+    const lesson = data.lesson || data.audio || {};
+    const questions = data.questions || lesson.questions || [];
+
+    selectedQuestions = Array.isArray(questions)
+      ? questions.map(normalizeQuestion)
+      : [];
+
+    const audio = audios.find(
+      item => String(item.id) === String(audioId)
+    );
+
+    if (audio) {
+      audio.questionCount = selectedQuestions.length;
+      audio.questions = selectedQuestions;
+    }
 
     renderQuestions();
-    elements.questionsPanel.scrollIntoView({
+    updateStats();
+    renderAudios();
+  }
+
+  async function openQuestions(id) {
+    const audio = audios.find(item => String(item.id) === String(id));
+    if (!audio || !el.questionsPanel) return;
+
+    selectedAudioId = audio.id;
+    selectedQuestions = [];
+
+    el.questionsTitle.textContent = `Savollar: ${audio.title}`;
+    el.questionsPanel.classList.add("show");
+
+    if (el.questionsList) {
+      el.questionsList.innerHTML = `
+        <div class="audio-empty">Savollar yuklanmoqda...</div>
+      `;
+    }
+
+    el.questionsPanel.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
+
+    try {
+      await loadQuestions(id);
+    } catch (error) {
+      console.error("Listening questions load error:", error);
+
+      if (el.questionsList) {
+        el.questionsList.innerHTML = `
+          <div class="audio-empty">
+            ${escapeHTML(error.message)}
+          </div>
+        `;
+      }
+
+      showToast(error.message, "error");
+    }
   }
 
   function closeQuestionsPanel() {
     selectedAudioId = null;
-    elements.questionsPanel?.classList.remove("show");
-    elements.questionForm?.reset();
+    selectedQuestions = [];
 
-    if (elements.questionId) {
-      elements.questionId.value = "";
+    el.questionsPanel?.classList.remove("show");
+    el.questionForm?.reset();
+
+    if (el.questionId) {
+      el.questionId.value = "";
     }
   }
 
   function renderQuestions() {
-    const audio = audios.find(item => item.id === selectedAudioId);
-    if (!audio || !elements.questionsList) return;
+    if (!el.questionsList) return;
 
-    const questions = audio.questions || [];
-
-    if (elements.questionCount) {
-      elements.questionCount.textContent = questions.length;
+    if (el.questionCount) {
+      el.questionCount.textContent = selectedQuestions.length;
     }
 
-    if (questions.length === 0) {
-      elements.questionsList.innerHTML = `
+    if (!selectedQuestions.length) {
+      el.questionsList.innerHTML = `
         <div class="audio-empty">
           Bu audio uchun hali savollar qo'shilmagan.
         </div>
@@ -393,7 +557,7 @@
       return;
     }
 
-    elements.questionsList.innerHTML = questions.map((question, index) => `
+    el.questionsList.innerHTML = selectedQuestions.map((question, index) => `
       <div class="audio-question-item">
         <h4>${index + 1}. ${escapeHTML(question.text)}</h4>
         <p>A) ${escapeHTML(question.options.A)}</p>
@@ -404,12 +568,16 @@
           To'g'ri javob: ${escapeHTML(question.correctAnswer)}
           | Ball: ${escapeHTML(question.points)}
         </p>
+
         <div class="audio-action">
-          <button type="button" data-question-action="edit"
+          <button type="button"
+            data-question-action="edit"
             data-id="${escapeHTML(question.id)}">
             Tahrirlash
           </button>
-          <button type="button" class="delete-audio"
+
+          <button type="button"
+            class="delete-audio"
             data-question-action="delete"
             data-id="${escapeHTML(question.id)}">
             O'chirish
@@ -419,172 +587,208 @@
     `).join("");
   }
 
+  function resetQuestionForm() {
+    el.questionForm?.reset();
+
+    if (el.questionId) {
+      el.questionId.value = "";
+    }
+
+    if (el.questionPoints) {
+      el.questionPoints.value = 1;
+    }
+  }
+
   function editQuestion(id) {
-    const audio = audios.find(item => item.id === selectedAudioId);
-    const question = audio?.questions.find(item => item.id === id);
+    const question = selectedQuestions.find(
+      item => String(item.id) === String(id)
+    );
 
     if (!question) return;
 
-    elements.questionId.value = question.id;
-    elements.questionText.value = question.text;
-    elements.optionA.value = question.options.A;
-    elements.optionB.value = question.options.B;
-    elements.optionC.value = question.options.C;
-    elements.optionD.value = question.options.D;
-    elements.correctAnswer.value = question.correctAnswer;
-    elements.questionPoints.value = question.points;
+    el.questionId.value = question.id;
+    el.questionText.value = question.text;
+    el.optionA.value = question.options.A;
+    el.optionB.value = question.options.B;
+    el.optionC.value = question.options.C;
+    el.optionD.value = question.options.D;
+    el.correctAnswer.value = question.correctAnswer;
+    el.questionPoints.value = question.points;
 
-    elements.questionText.scrollIntoView({
+    el.questionForm.scrollIntoView({
       behavior: "smooth",
       block: "center"
     });
   }
 
-  function saveQuestion(event) {
+  async function saveQuestion(event) {
     event.preventDefault();
 
-    const audio = audios.find(item => item.id === selectedAudioId);
-    if (!audio) return;
+    if (!selectedAudioId) {
+      showToast("Avval audio materialni tanlang.", "error");
+      return;
+    }
 
-    const text = elements.questionText.value.trim();
+    const questionId = el.questionId.value.trim();
 
-    const options = {
-      A: elements.optionA.value.trim(),
-      B: elements.optionB.value.trim(),
-      C: elements.optionC.value.trim(),
-      D: elements.optionD.value.trim()
+    const payload = {
+      question: el.questionText.value.trim(),
+      options: {
+        A: el.optionA.value.trim(),
+        B: el.optionB.value.trim(),
+        C: el.optionC.value.trim(),
+        D: el.optionD.value.trim()
+      },
+      correctAnswer: el.correctAnswer.value,
+      points: Number(el.questionPoints.value)
     };
 
-    if (!text || Object.values(options).some(value => !value)) {
-      showToast("Savol va barcha javob variantlarini to'ldiring.", "error");
+    if (
+      !payload.question ||
+      !payload.options.A ||
+      !payload.options.B ||
+      !payload.options.C ||
+      !payload.options.D ||
+      !["A", "B", "C", "D"].includes(payload.correctAnswer) ||
+      !Number.isInteger(payload.points) ||
+      payload.points < 1
+    ) {
+      showToast("Savol ma'lumotlarini to'liq kiriting.", "error");
       return;
     }
 
-    const correctAnswer = elements.correctAnswer.value;
+    const basePath = `/${encodeURIComponent(selectedAudioId)}/questions`;
 
-    if (!["A", "B", "C", "D"].includes(correctAnswer)) {
-      showToast("To'g'ri javobni tanlang.", "error");
-      return;
+    try {
+      if (questionId) {
+        await apiRequest(
+          `${basePath}/${encodeURIComponent(questionId)}`,
+          {
+            method: "PUT",
+            body: JSON.stringify(payload)
+          }
+        );
+
+        showToast("Savol yangilandi.");
+      } else {
+        await apiRequest(basePath, {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
+
+        showToast("Savol qo'shildi.");
+      }
+
+      resetQuestionForm();
+      await loadQuestions(selectedAudioId);
+    } catch (error) {
+      console.error("Listening question save error:", error);
+      showToast(error.message, "error");
     }
-
-    const questionId = elements.questionId.value;
-
-    const question = {
-      id: questionId || (
-        "question_" + Date.now() + "_" + Math.random().toString(36).slice(2, 7)
-      ),
-      text,
-      options,
-      correctAnswer,
-      points: Math.max(1, Number(elements.questionPoints.value) || 1)
-    };
-
-    const previousAudios = JSON.stringify(audios);
-
-    if (questionId) {
-      audio.questions = audio.questions.map(item =>
-        item.id === questionId ? question : item
-      );
-    } else {
-      audio.questions.push(question);
-    }
-
-    if (!saveAudios()) {
-      audios = JSON.parse(previousAudios);
-      return;
-    }
-
-    elements.questionForm.reset();
-    elements.questionId.value = "";
-
-    renderQuestions();
-    renderAll();
-
-    showToast(questionId ? "Savol yangilandi." : "Savol qo'shildi.");
   }
 
-  function deleteQuestion(id) {
-    const audio = audios.find(item => item.id === selectedAudioId);
-    if (!audio) return;
+  async function deleteQuestion(id) {
+    const question = selectedQuestions.find(
+      item => String(item.id) === String(id)
+    );
 
-    if (!confirm("Ushbu savolni o'chirmoqchimisiz?")) return;
+    if (!question) return;
 
-    const previousAudios = JSON.stringify(audios);
-
-    audio.questions = audio.questions.filter(item => item.id !== id);
-
-    if (!saveAudios()) {
-      audios = JSON.parse(previousAudios);
+    if (!confirm("Ushbu savolni o'chirmoqchimisiz?")) {
       return;
     }
 
-    renderQuestions();
-    renderAll();
-    showToast("Savol o'chirildi.");
+    try {
+      await apiRequest(
+        `/${encodeURIComponent(selectedAudioId)}/questions/${encodeURIComponent(id)}`,
+        { method: "DELETE" }
+      );
+
+      showToast("Savol o'chirildi.");
+      resetQuestionForm();
+      await loadQuestions(selectedAudioId);
+    } catch (error) {
+      console.error("Listening question delete error:", error);
+      showToast(error.message, "error");
+    }
   }
 
   function bindEvents() {
-    elements.addButton?.addEventListener("click", () => openAudioForm());
-    elements.closeForm?.addEventListener("click", closeAudioForm);
-    elements.cancelForm?.addEventListener("click", closeAudioForm);
-    elements.form?.addEventListener("submit", saveAudio);
+    el.add?.addEventListener("click", () => openAudioForm());
 
-    elements.refresh?.addEventListener("click", renderAll);
-    elements.search?.addEventListener("input", renderAudios);
-    elements.levelFilter?.addEventListener("change", renderAudios);
-    elements.statusFilter?.addEventListener("change", renderAudios);
+    el.closeForm?.addEventListener("click", closeAudioForm);
+    el.cancelForm?.addEventListener("click", closeAudioForm);
 
-    elements.table?.addEventListener("click", event => {
+    el.form?.addEventListener("submit", saveAudio);
+
+    el.closeQuestions?.addEventListener(
+      "click",
+      closeQuestionsPanel
+    );
+
+    el.cancelQuestion?.addEventListener(
+      "click",
+      resetQuestionForm
+    );
+
+    el.questionForm?.addEventListener(
+      "submit",
+      saveQuestion
+    );
+
+    el.refresh?.addEventListener("click", loadAudios);
+
+    el.search?.addEventListener("input", renderAudios);
+    el.levelFilter?.addEventListener("change", renderAudios);
+    el.statusFilter?.addEventListener("change", renderAudios);
+
+    el.table?.addEventListener("click", event => {
       const button = event.target.closest("button[data-action]");
       if (!button) return;
 
       const id = button.dataset.id;
       const action = button.dataset.action;
-      const audio = audios.find(item => item.id === id);
 
-      if (action === "edit" && audio) openAudioForm(audio);
-      if (action === "delete") deleteAudio(id);
-      if (action === "questions") openQuestionsPanel(id);
+      if (action === "questions") {
+        openQuestions(id);
+      } else if (action === "edit") {
+        const audio = audios.find(
+          item => String(item.id) === String(id)
+        );
+
+        if (audio) openAudioForm(audio);
+      } else if (action === "delete") {
+        deleteAudio(id);
+      }
     });
 
-    elements.closeQuestions?.addEventListener("click", closeQuestionsPanel);
+    el.questionsList?.addEventListener("click", event => {
+      const button = event.target.closest(
+        "button[data-question-action]"
+      );
 
-    elements.questionForm?.addEventListener("submit", saveQuestion);
-
-    elements.cancelQuestion?.addEventListener("click", () => {
-      elements.questionForm?.reset();
-      if (elements.questionId) elements.questionId.value = "";
-    });
-
-    elements.questionsList?.addEventListener("click", event => {
-      const button = event.target.closest("button[data-question-action]");
       if (!button) return;
 
       const id = button.dataset.id;
+      const action = button.dataset.questionAction;
 
-      if (button.dataset.questionAction === "edit") {
+      if (action === "edit") {
         editQuestion(id);
-      }
-
-      if (button.dataset.questionAction === "delete") {
+      } else if (action === "delete") {
         deleteQuestion(id);
       }
     });
   }
 
-  function init() {
-    if (!elements.table || !elements.form) {
-      console.error("Listening admin: HTML elementlari topilmadi.");
+  function initialize() {
+    if (!getToken()) {
+      window.location.href = "../login/index.html";
       return;
     }
 
     bindEvents();
-    renderAll();
+    loadAudios();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  initialize();
 })();
