@@ -10,6 +10,52 @@ const {
 } = require("../services/subscriptionService");
 
 // =========================================
+// ADMIN: GET ALL LESSONS
+// GET /api/lessons/admin/all
+// =========================================
+
+router.get(
+  "/admin/all",
+  authenticateToken,
+  requireAdmin,
+  async (req, res, next) => {
+    try {
+      const result = await pool.query(
+        `SELECT
+           l.id,
+           l.course_id,
+           l.title,
+           l.description,
+           l.content,
+           l.audio_url,
+           l.video_url,
+           l.pdf_url,
+           l.lesson_order,
+           l.is_active,
+           l.created_at,
+           l.updated_at,
+           c.title AS course_title,
+           c.level AS course_level
+         FROM lessons l
+         INNER JOIN courses c ON c.id = l.course_id
+         ORDER BY
+           c.level ASC,
+           c.title ASC,
+           l.lesson_order ASC,
+           l.id ASC`
+      );
+
+      return res.json({
+        success: true,
+        lessons: result.rows
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+// =========================================
 // GET COURSE LESSONS
 // GET /api/lessons/course/:courseId
 // =========================================
