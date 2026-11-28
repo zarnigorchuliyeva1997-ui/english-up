@@ -7,6 +7,133 @@ const { getFileUrl } = require("../services/fileService");
 
 const router = express.Router();
 
+function validId(value) {
+  const id = Number(value);
+  return Number.isSafeInteger(id) && id > 0 ? id : null;
+}
+
+function validAudioKey(value) {
+  return typeof value === "string" &&
+    value.startsWith("english-up/") &&
+    !value.includes("..");
+}
+
+function validAudioUrl(value) {
+  if (typeof value !== "string") return false;
+
+  try {
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol);
+  } catch {
+    return false;
+  }
+}
+
+function validateQuestion(body) {
+  const {
+    question,
+    options,
+    correctAnswer,
+    explanation,
+    points
+  } = body || {};
+
+  if (
+    typeof question !== "string" ||
+    !question.trim()
+  ) {
+    return "Savol matnini kiriting.";
+  }
+
+  if (
+    !Array.isArray(options) ||
+    options.length !== 4 ||
+    options.some(
+      option => typeof option !== "string" || !option.trim()
+    )
+  ) {
+    return "A, B, C, D variantlarini to‘liq kiriting.";
+  }
+
+  if (!["A", "B", "C", "D"].includes(correctAnswer)) {
+    return "To‘g‘ri javobni belgilang.";
+  }
+
+  if (
+    points !== undefined &&
+    (!Number.isFinite(Number(points)) ||
+      Number(points) <= 0 ||
+      Number(points) > 100)
+  ) {
+    return "Savol balli noto‘g‘ri.";
+  }
+
+  if (
+    explanation !== undefined &&
+    explanation !== null &&
+    typeof explanation !== "string"
+  ) {
+    return "Izoh noto‘g‘ri.";
+  }
+
+  return null;
+}
+
+async function resolveAudioUrl(lesson) {
+  if (lesson.audio_key) {
+    return await getFileUrl(lesson.audio_key);
+  }
+
+  return lesson.audio_url || null;
+}
+
+// =========================================
+// ADMIN: ALL LISTENING LESSONS
+// GET /api/listening/admin/all
+// =========================================
+
+router.get("/admin/all", auth, admin, async (req, res, next) => {
+  try {
+    const result = await pool.query(
+      `SELECT
+         l.id,
+         l.course_id,
+         l.lesson_id,
+         l.title,
+         l.description,
+         l.level,
+         l.audio_key,
+         l.audio_url,
+         l.transcript,
+         l.duration_seconds,
+         l.instructions,
+         l.is_active,
+         l.created_at,
+         l.updated_at,
+         COUNT(q.id)::INTEGER AS question_count
+       FROM listening_lessons l
+       LEFT JOIN listening_questions q
+         ON q.listening_lesson_id = l.id
+       GROUP BY l.id
+       ORDER BY l.created_at DESC, l.id DESC`
+    );
+
+    const lessons = await Promise.all(
+      result.rows.map(async lesson => ({
+        ...lesson,
+        audio_url: await resolveAudioUrl(lesson)
+      }))
+    );
+
+    return res.json({
+      success: true,
+      lessons
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // =========================================
 // GET ACTIVE LISTENING LESSONS
 // GET /api/listening
@@ -46,9 +173,9 @@ router.get("/", auth, async (req, res, next) => {
 
 router.get("/:id", auth, async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
+    const id = validId(req.params.id);
 
-    if (!Number.isSafeInteger(id) || id < 1) {
+    if (!id) {
       return res.status(400).json({
         success: false,
         message: "Dars ID noto‘g‘ri."
@@ -83,22 +210,30 @@ router.get("/:id", auth, async (req, res, next) => {
     }
 
     const lesson = result.rows[0];
+    const audioUrl = await resolveAudioUrl(lesson);
 
-    let audioUrl = lesson.audio_url;
-
-    if (lesson.audio_key) {
-      audioUrl = await getFileUrl(lesson.audio_key);
-    }
-
-    delete lesson.audio_key;
-    delete lesson.audio_url;
+    const questionsResult = await pool.query(
+      `SELECT
+         id,
+         question,
+         options,
+         explanation,
+         question_order,
+         points
+       FROM listening_questions
+       WHERE listening_lesson_id = $1
+       ORDER BY question_order ASC, id ASC`,
+      [id]
+    );
 
     return res.json({
       success: true,
       lesson: {
         ...lesson,
+        audio_key: undefined,
         audio_url: audioUrl
-      }
+      },
+      questions: questionsResult.rows
     });
   } catch (error) {
     next(error);
@@ -134,29 +269,25 @@ router.post("/", auth, admin, async (req, res, next) => {
     ) {
       return res.status(400).json({
         success: false,
-        message: "Dars nomi kiritilishi kerak."
+        message: "Dars nomini kiriting."
       });
     }
 
     if (
       audioKey !== undefined &&
       audioKey !== null &&
-      (
-        typeof audioKey !== "string" ||
-        !audioKey.startsWith("english-up/") ||
-        audioKey.includes("..")
-      )
+      !validAudioKey(audioKey)
     ) {
       return res.status(400).json({
         success: false,
-        message: "Audio fayl manzili noto‘g‘ri."
+        message: "Audio fayl kaliti noto‘g‘ri."
       });
     }
 
     if (
       audioUrl !== undefined &&
       audioUrl !== null &&
-      typeof audioUrl !== "string"
+      !validAudioUrl(audioUrl)
     ) {
       return res.status(400).json({
         success: false,
@@ -173,10 +304,8 @@ router.post("/", auth, admin, async (req, res, next) => {
 
     if (
       durationSeconds !== undefined &&
-      (
-        !Number.isInteger(durationSeconds) ||
-        durationSeconds < 0
-      )
+      durationSeconds !== null &&
+      (!Number.isInteger(durationSeconds) || durationSeconds < 0)
     ) {
       return res.status(400).json({
         success: false,
@@ -194,7 +323,7 @@ router.post("/", auth, admin, async (req, res, next) => {
       });
     }
 
-    const optionalTextFields = [
+    const textFields = [
       description,
       level,
       transcript,
@@ -202,7 +331,7 @@ router.post("/", auth, admin, async (req, res, next) => {
     ];
 
     if (
-      optionalTextFields.some(
+      textFields.some(
         value =>
           value !== undefined &&
           value !== null &&
@@ -216,29 +345,19 @@ router.post("/", auth, admin, async (req, res, next) => {
     }
 
     const parsedCourseId =
-      courseId === undefined || courseId === null
-        ? null
-        : Number(courseId);
+      courseId == null ? null : validId(courseId);
 
     const parsedLessonId =
-      lessonId === undefined || lessonId === null
-        ? null
-        : Number(lessonId);
+      lessonId == null ? null : validId(lessonId);
 
-    if (
-      parsedCourseId !== null &&
-      (!Number.isSafeInteger(parsedCourseId) || parsedCourseId < 1)
-    ) {
+    if (courseId != null && !parsedCourseId) {
       return res.status(400).json({
         success: false,
         message: "Course ID noto‘g‘ri."
       });
     }
 
-    if (
-      parsedLessonId !== null &&
-      (!Number.isSafeInteger(parsedLessonId) || parsedLessonId < 1)
-    ) {
+    if (lessonId != null && !parsedLessonId) {
       return res.status(400).json({
         success: false,
         message: "Lesson ID noto‘g‘ri."
@@ -259,7 +378,7 @@ router.post("/", auth, admin, async (req, res, next) => {
          instructions,
          is_active
        )
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
        RETURNING *`,
       [
         parsedCourseId,
@@ -300,44 +419,32 @@ router.post("/", auth, admin, async (req, res, next) => {
 
 router.patch("/:id", auth, admin, async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
+    const id = validId(req.params.id);
 
-    if (!Number.isSafeInteger(id) || id < 1) {
+    if (!id) {
       return res.status(400).json({
         success: false,
         message: "Dars ID noto‘g‘ri."
       });
     }
 
-    const {
-      courseId,
-      lessonId,
-      title,
-      description,
-      level,
-      audioKey,
-      audioUrl,
-      transcript,
-      durationSeconds,
-      instructions,
-      isActive
-    } = req.body || {};
+    const body = req.body || {};
 
     const updates = {
-      course_id: courseId,
-      lesson_id: lessonId,
-      title,
-      description,
-      level,
-      audio_key: audioKey,
-      audio_url: audioUrl,
-      transcript,
-      duration_seconds: durationSeconds,
-      instructions,
-      is_active: isActive
+      course_id: body.courseId,
+      lesson_id: body.lessonId,
+      title: body.title,
+      description: body.description,
+      level: body.level,
+      audio_key: body.audioKey,
+      audio_url: body.audioUrl,
+      transcript: body.transcript,
+      duration_seconds: body.durationSeconds,
+      instructions: body.instructions,
+      is_active: body.isActive
     };
 
-    const nullableFields = new Set([
+    const nullable = new Set([
       "course_id",
       "lesson_id",
       "description",
@@ -353,27 +460,25 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
     const values = [];
 
     for (const [column, value] of Object.entries(updates)) {
-      if (value === undefined) {
-        continue;
-      }
+      if (value === undefined) continue;
 
-      if (value === null && nullableFields.has(column)) {
+      if (value === null && nullable.has(column)) {
         values.push(null);
         fields.push(`${column} = $${values.length}`);
         continue;
       }
 
       if (column === "course_id" || column === "lesson_id") {
-        const parsedId = Number(value);
+        const parsed = validId(value);
 
-        if (!Number.isSafeInteger(parsedId) || parsedId < 1) {
+        if (!parsed) {
           return res.status(400).json({
             success: false,
             message: `${column} noto‘g‘ri.`
           });
         }
 
-        values.push(parsedId);
+        values.push(parsed);
       } else if (column === "title") {
         if (
           typeof value !== "string" ||
@@ -388,20 +493,16 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
 
         values.push(value.trim());
       } else if (column === "audio_key") {
-        if (
-          typeof value !== "string" ||
-          !value.startsWith("english-up/") ||
-          value.includes("..")
-        ) {
+        if (!validAudioKey(value)) {
           return res.status(400).json({
             success: false,
-            message: "Audio fayl manzili noto‘g‘ri."
+            message: "Audio fayl kaliti noto‘g‘ri."
           });
         }
 
         values.push(value);
       } else if (column === "audio_url") {
-        if (typeof value !== "string") {
+        if (!validAudioUrl(value)) {
           return res.status(400).json({
             success: false,
             message: "Audio URL noto‘g‘ri."
@@ -483,6 +584,216 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
 });
 
 // =========================================
+// ADD LISTENING QUESTION
+// POST /api/listening/:id/questions
+// Admin only
+// =========================================
+
+router.post("/:id/questions", auth, admin, async (req, res, next) => {
+  try {
+    const lessonId = validId(req.params.id);
+
+    if (!lessonId) {
+      return res.status(400).json({
+        success: false,
+        message: "Listening darsi ID noto‘g‘ri."
+      });
+    }
+
+    const validationError = validateQuestion(req.body);
+
+    if (validationError) {
+      return res.status(400).json({
+        success: false,
+        message: validationError
+      });
+    }
+
+    const lesson = await pool.query(
+      `SELECT id FROM listening_lessons WHERE id = $1`,
+      [lessonId]
+    );
+
+    if (!lesson.rows.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Listening darsi topilmadi."
+      });
+    }
+
+    const orderResult = await pool.query(
+      `SELECT COALESCE(MAX(question_order), 0) + 1 AS next_order
+       FROM listening_questions
+       WHERE listening_lesson_id = $1`,
+      [lessonId]
+    );
+
+    const {
+      question,
+      options,
+      correctAnswer,
+      explanation,
+      points
+    } = req.body;
+
+    const result = await pool.query(
+      `INSERT INTO listening_questions (
+         listening_lesson_id,
+         question,
+         options,
+         correct_answer,
+         explanation,
+         question_order,
+         points
+       )
+       VALUES ($1,$2,$3,$4,$5,$6,$7)
+       RETURNING *`,
+      [
+        lessonId,
+        question.trim(),
+        JSON.stringify(options.map(option => option.trim())),
+        correctAnswer,
+        explanation?.trim() || null,
+        Number(orderResult.rows[0].next_order),
+        points === undefined ? 1 : Number(points)
+      ]
+    );
+
+    return res.status(201).json({
+      success: true,
+      question: result.rows[0]
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// =========================================
+// UPDATE LISTENING QUESTION
+// PUT /api/listening/:id/questions/:questionId
+// Admin only
+// =========================================
+
+router.put(
+  "/:id/questions/:questionId",
+  auth,
+  admin,
+  async (req, res, next) => {
+    try {
+      const lessonId = validId(req.params.id);
+      const questionId = validId(req.params.questionId);
+
+      if (!lessonId || !questionId) {
+        return res.status(400).json({
+          success: false,
+          message: "ID noto‘g‘ri."
+        });
+      }
+
+      const validationError = validateQuestion(req.body);
+
+      if (validationError) {
+        return res.status(400).json({
+          success: false,
+          message: validationError
+        });
+      }
+
+      const {
+        question,
+        options,
+        correctAnswer,
+        explanation,
+        points
+      } = req.body;
+
+      const result = await pool.query(
+        `UPDATE listening_questions
+         SET question = $1,
+             options = $2,
+             correct_answer = $3,
+             explanation = $4,
+             points = $5,
+             updated_at = NOW()
+         WHERE id = $6
+           AND listening_lesson_id = $7
+         RETURNING *`,
+        [
+          question.trim(),
+          JSON.stringify(options.map(option => option.trim())),
+          correctAnswer,
+          explanation?.trim() || null,
+          points === undefined ? 1 : Number(points),
+          questionId,
+          lessonId
+        ]
+      );
+
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Savol topilmadi."
+        });
+      }
+
+      return res.json({
+        success: true,
+        question: result.rows[0]
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+// =========================================
+// DELETE LISTENING QUESTION
+// DELETE /api/listening/:id/questions/:questionId
+// Admin only
+// =========================================
+
+router.delete(
+  "/:id/questions/:questionId",
+  auth,
+  admin,
+  async (req, res, next) => {
+    try {
+      const lessonId = validId(req.params.id);
+      const questionId = validId(req.params.questionId);
+
+      if (!lessonId || !questionId) {
+        return res.status(400).json({
+          success: false,
+          message: "ID noto‘g‘ri."
+        });
+      }
+
+      const result = await pool.query(
+        `DELETE FROM listening_questions
+         WHERE id = $1
+           AND listening_lesson_id = $2
+         RETURNING id`,
+        [questionId, lessonId]
+      );
+
+      if (!result.rows.length) {
+        return res.status(404).json({
+          success: false,
+          message: "Savol topilmadi."
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: "Savol o‘chirildi."
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+// =========================================
 // DELETE LISTENING LESSON
 // DELETE /api/listening/:id
 // Admin only
@@ -490,9 +801,9 @@ router.patch("/:id", auth, admin, async (req, res, next) => {
 
 router.delete("/:id", auth, admin, async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
+    const id = validId(req.params.id);
 
-    if (!Number.isSafeInteger(id) || id < 1) {
+    if (!id) {
       return res.status(400).json({
         success: false,
         message: "Dars ID noto‘g‘ri."
